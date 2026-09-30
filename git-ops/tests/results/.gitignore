@@ -1,0 +1,7 @@
+# skill-harness: commit verdicts (results.yaml), ignore generated artifacts.
+*.txt
+*.jsonl
+report.html
+!results.yaml
+!pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-09-30T09-48-08-404Z/A13.force.txt
+!pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-09-30T09-48-08-404Z/A13.force.judge.txt
