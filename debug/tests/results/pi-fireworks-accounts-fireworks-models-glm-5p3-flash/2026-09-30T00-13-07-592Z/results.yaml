@@ -1,0 +1,85 @@
+schema: 2
+harness_version: 0.21.0
+harness_cli_version: 0.87.1
+skill: debug
+harness: pi
+model: fireworks:accounts/fireworks/models/glm-5p3-flash
+judge:
+  provider: openai-codex
+  model: gpt-6-astra
+timestamp: '2026-09-30T00:13:07.592Z'
+label: null
+mode: green
+partial: true
+source_hashes:
+  SKILL.md: e48b9daeefcb9ec07a259c825e7a860726716cb042c46dacd546ed5ff780dece
+  skill:prompt: d29d9907dddb9ff6c2249bcd135619916aa6748dbe901a892b7d74e9c8c0dff9
+  rubric:__persona: 84760bc1e73f37403c07fcdf7279442c90174b26601ea51acbf627f2e6f843de
+  stimulus:A1: e64dc025c2147038b2fbb6250a67251d43d2e892b0806c53c5d7e4bcca4f4f4e
+  rubric:A1: 45a5260a128f0f02adb361de2918b4ccbeca94257580015b2e3ee311bf418c7c
+  policy:A1: 5c02de06cf52726a720b313386100cee906ba590da05b29d9f326ffa8f01e3b7
+  fixture:fixtures/A1: c450a8764281295bfcb71d1eb451eb5fd418e56ab3a94b09c2250e881e9ef09c
+source_hash_roots:
+  SKILL.md: skills
+  skill:prompt: skills
+  rubric:__persona: specs
+  stimulus:A1: specs
+  rubric:A1: specs
+  policy:A1: specs
+  fixture:fixtures/A1: specs
+effective_grade:
+  passed: 0
+  total: 0
+  pct: 0
+  letter: '-'
+  ship: false
+  note: partial run (--only) — not scored
+scenarios:
+  - id: A1
+    judge_verdict: PASS
+    judge_reason: '1 PASS: “total = n”; 2 PASS: “overwriting”; 3 PASS: “total += n”, “passed”.'
+    suspect: false
+    metrics:
+      wall_time_ms: 27365
+      judge_calls: 1
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 6897
+      output_tokens: 488
+      cache_read_tokens: 18432
+      subject_cost_usd: 0.00183151
+      cost_source: price-table
+      tool_calls: 7
+      delegated_children: 0
+      max_concurrency: 2
+    usage:
+      - repetition: 0
+        inputTokens: 6897
+        outputTokens: 488
+        cacheReadTokens: 18432
+        costUsd: 0.00183151
+        priceAsOf: '2026-09-29'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: '1 PASS: “total = n”; 2 PASS: “overwriting”; 3 PASS: “total += n”, “passed”.'
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
+              - index: 2
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
+              - index: 3
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
+        recorded_verdict: PASS
