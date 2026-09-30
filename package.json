@@ -1,0 +1,14 @@
+{
+  "name": "principal-pi-skills-evals",
+  "version": "0.0.0",
+  "private": false,
+  "scripts": {
+    "lint": "skill-harness lint all --skills node_modules/principal-pi-skills --specs .",
+    "list": "skill-harness list --skills node_modules/principal-pi-skills --specs .",
+    "run": "skill-harness run --skills node_modules/principal-pi-skills --specs ."
+  },
+  "devDependencies": {
+    "principal-pi-skills": "4.6.0",
+    "skill-harness": "^0.21.0"
+  }
+}

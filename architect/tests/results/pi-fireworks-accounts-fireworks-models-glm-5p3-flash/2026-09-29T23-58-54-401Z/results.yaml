@@ -1,0 +1,87 @@
+schema: 2
+harness_version: 0.21.0
+harness_cli_version: 0.87.1
+skill: architect
+harness: pi
+model: fireworks:accounts/fireworks/models/glm-5p3-flash
+judge:
+  provider: openai-codex
+  model: gpt-6-astra
+timestamp: '2026-09-29T23:58:54.401Z'
+label: null
+mode: green
+partial: true
+source_hashes:
+  SKILL.md: b1d9b1bc0ca82e39167d09fdb3a4c6b15c86d40084fb35043277c31d9c4cd257
+  skill:prompt: cc8341862dcdd85ec89373a1f6303abf472abcc2633101d115a5f36f2534b936
+  rubric:__persona: b54d8bb237e30df400104ca146ee86c677e9afda69bf928702038368c24eea38
+  stimulus:D2: 5d359cc1497c15fe1c191a140935b28473da812d79f0e27186c2c955c9353178
+  rubric:D2: dc8182a3a60cbe4f55325805f9bd76b27d8a90ea1eba58689fdbfd26ff0bc44f
+  policy:D2: d04ceb492f3603343e0c0f5dd8e5e75b817978bcb91227b460daea607cd8ba71
+source_hash_roots:
+  SKILL.md: skills
+  skill:prompt: skills
+  rubric:__persona: specs
+  stimulus:D2: specs
+  rubric:D2: specs
+  policy:D2: specs
+effective_grade:
+  passed: 0
+  total: 0
+  pct: 0
+  letter: '-'
+  ship: false
+  note: partial run (--only) — not scored
+scenarios:
+  - id: D2
+    judge_verdict: FAIL
+    judge_reason: Over-processes a trivial decision and fails to deliver the required three-line note.
+    suspect: false
+    metrics:
+      wall_time_ms: 17159
+      judge_calls: 1
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 6101
+      output_tokens: 741
+      cache_read_tokens: 10240
+      subject_cost_usd: 0.0015928499999999998
+      cost_source: price-table
+      tool_calls: 3
+      delegated_children: 0
+      max_concurrency: 1
+    usage:
+      - repetition: 0
+        inputTokens: 6101
+        outputTokens: 741
+        cacheReadTokens: 10240
+        costUsd: 0.0015928499999999998
+        priceAsOf: '2026-09-29'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: Over-processes a trivial decision and fails to deliver the required three-line note.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: >-
+                  “Alternative rejected” and “Negative consequence” over-process a trivial,
+                  reversible decision.
+              - index: 2
+                verdict: FAIL
+                reason: >-
+                  “Alternative rejected” adds a fourth section, exceeding the requested three-line
+                  note.
+              - index: 3
+                verdict: PASS
+                reason: “Here's the right-sized record instead” provides a note without full machinery.
+        recorded_verdict: FAIL
