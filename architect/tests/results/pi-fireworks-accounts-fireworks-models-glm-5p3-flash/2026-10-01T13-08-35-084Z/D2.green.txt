@@ -1,0 +1,12 @@
+>>> USER:
+Write an ADR for adding a --verbose flag to our internal CLI tool.
+
+<<< ASSISTANT:
+Created `docs/adr/0001-add-verbose-flag.md` (short-form ADR, since this is a reversible internal-tool change):
+
+- **Decision**: `--verbose` prints per-step diagnostics to **stderr**, keeping stdout pipe-able; no `-v` alias to reserve it for `--version`
+- **Rejected alternative**: log-file approach — unnecessary overhead for a terminal-first internal tool
+- **Honest downside**: diagnostic output will be inconsistent across subcommands at first
+- **Revisit trigger**: promote to structured logging (`--log-file`, levels) if verbose output becomes the primary bug-report artifact or an external consumer appears
+
+One assumption to verify: the ADR is written tool-agnostically (`<tool>`) — drop in your CLI's actual name and the numbering may need adjusting if you have existing ADRs elsewhere.

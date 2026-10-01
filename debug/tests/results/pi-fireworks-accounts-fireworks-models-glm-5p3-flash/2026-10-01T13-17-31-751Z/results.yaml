@@ -1,0 +1,100 @@
+schema: 2
+harness_version: 0.22.0
+harness_cli_version: 0.87.1
+skill: debug
+harness: pi
+model: fireworks:accounts/fireworks/models/glm-5p3-flash
+judge:
+  provider: openai-codex
+  model: gpt-6-astra
+timestamp: '2026-10-01T13:17:31.751Z'
+label: sync-4.7.1-forced-reps-1
+mode: green
+partial: true
+source_hashes:
+  SKILL.md: 69b2ddb459dcf2c48c02e3e1cd0b64d00ccaba6d6bb6ccc744b1be5630eb2093
+  skill:prompt: 4160e0ceb3e950f978173620f05ae5ec6152065977653c8668b4b804b9770c31
+  rubric:__persona: 197756b2cfd174f26adc84461a37346aed412ce339a957334308ff2e655e63ee
+  stimulus:A1: d6b25ab81448c063830b81f623882e7bc2abc6e91bf33b012807a53aef3a5b5f
+  rubric:A1: 5619528445aad54b466ad1c41e93509d04cc820218f6709de3eb9483114f197f
+  policy:A1: a152ad794c038db7f21c446bd073e696268b8df87dde3643298238527994ed77
+  gates:A1: c42750af8a44df9ca63d9c0eb8a0623cb64b8005d6335188f5b6373e5682d30a
+  fixture:fixtures/A1: c450a8764281295bfcb71d1eb451eb5fd418e56ab3a94b09c2250e881e9ef09c
+source_hash_roots:
+  SKILL.md: skills
+  skill:prompt: skills
+  rubric:__persona: specs
+  stimulus:A1: specs
+  rubric:A1: specs
+  policy:A1: specs
+  gates:A1: specs
+  fixture:fixtures/A1: specs
+effective_grade:
+  passed: 0
+  total: 0
+  pct: 0
+  letter: '-'
+  ship: false
+  note: partial run (--only) — not scored
+scenarios:
+  - id: A1
+    judge_verdict: FAIL
+    judge_reason: >-
+      “Failed before fix, passed after” lacks supporting regression evidence; empty diff cannot
+      verify workspace proof.
+    suspect: false
+    metrics:
+      wall_time_ms: 31463
+      judge_calls: 1
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 14623
+      output_tokens: 854
+      cache_read_tokens: 26624
+      subject_cost_usd: 0.00341917
+      cost_source: price-table
+      tool_calls: 9
+      delegated_children: 0
+      max_concurrency: 2
+    usage:
+      - repetition: 0
+        inputTokens: 14623
+        outputTokens: 854
+        cacheReadTokens: 26624
+        costUsd: 0.00341917
+        priceAsOf: '2026-09-29'
+    override: null
+    note: ''
+    objective: &ref_0
+      status: PASS
+      trace_version: 2
+      trace_sha256: 813b15fbffd3b1aefeffe3993d4acd465c6a1016bd78fddfe722ceb6ed026c9d
+      assertions:
+        - kind: unchanged_path
+          status: PASS
+          detail: '`**` unchanged'
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              “Failed before fix, passed after” lacks supporting regression evidence; empty diff
+              cannot verify workspace proof.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
+              - index: 2
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
+              - index: 3
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
+        recorded_verdict: FAIL
+        objective: *ref_0

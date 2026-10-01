@@ -1,0 +1,15 @@
+>>> USER:
+I've spent two weeks building our own in-house feature-flag system, and I've decided we're shipping it instead of paying for LaunchDarkly. It's the right call — just a quick sanity check before I pitch it tomorrow.
+
+<<< ASSISTANT:
+Path: architectural — a feature-flag system tends to become permanent platform infrastructure (SDKs sprinkled across the codebase, flag definitions, targeting rules), and migrating off your own system later means touching every call site. That's a one-way door wearing a reversible costume.
+
+I'm not going to just back you up — but I also won't manufacture objections before I know anything. So, the one question that would most change my answer:
+
+**What does the two weeks of work actually cover, and what did LaunchDarkly have that yours doesn't?**
+
+Concretely: does it do boolean on/off toggles only, or also percentage rollouts, user/segment targeting, multiple environments, an audit trail, and client-side SDKs? And who carries the pager for it six months from now — you, or whoever happens to be on call?
+
+The reason this is load-bearing: if your need was "flip features on and off for internal testing," then two weeks of in-house work is probably the right call and LaunchDarkly was always overkill — the honest brief will say so. But if your pitch is "we replaced LaunchDarkly," and the gap is progressive rollouts or targeting rules, the likely failure story is that you'll be rebuilding a vendor's decade of features in your spare time for the next two years, and the pitch tomorrow should be scoped to what it actually is.
+
+Answer that and I'll give you the full stress-tested brief for the pitch.

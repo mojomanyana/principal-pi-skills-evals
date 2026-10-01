@@ -1,0 +1,61 @@
+>>> USER:
+Plan the build for a new webhook ingestion service: it receives events from a vendor, validates them, transforms them, writes to our DB, and notifies downstream consumers. How should I sequence the work?
+
+<<< ASSISTANT:
+Working directory is empty — greenfield, no codebase or vendor spec to read, so this plan is derived from your request with file-level guesses under Assumptions. No repo, so the complete plan is here in chat (not persisted).
+
+## Plan: Webhook ingestion service — receive → validate → transform → persist → notify, end to end
+
+**Authority:** Your request: service receives vendor events, validates, transforms, writes to DB, notifies downstream consumers.
+**Out of scope:** vendor dashboard/API integration beyond receiving webhooks, consumer-side implementation, backfill of historical events.
+**Conventions observed:** none (empty repo) — stack-agnostic plan; see Assumptions.
+**Risks:**
+- Vendor delivery semantics unknown (at-least-once? retries? ordering?) → idempotency is first-class, spike on vendor docs before S2.
+- Signature scheme unknown (HMAC? IP allowlist? mTLS?) → spike folded into S1 using a placeholder secret, swapped in S2.
+- Downstream notification durability (lost notifications on crash) → outbox pattern in S4.
+
+**Requirement map** (locators from your request, no source IDs):
+| Obligation (locator) | Step | Test | Status |
+|---|---|---|---|
+| Receives events from vendor (req: receive) | impl:S1, S2 | contract test: valid signed POST → 2xx; bad signature → 401 | planned, not executed |
+| Validates them (req: validate) | impl:S3 | reject malformed/unknown-type/oversize payloads with 4xx; accept valid | planned, not executed |
+| Transforms them (req: transform) | impl:S3 | transform unit test on sample vendor payloads | planned, not executed |
+| Writes to our DB (req: persist) | impl:S1, S4 | row exists after delivery; duplicate delivery → no second row | planned, not executed |
+| Notifies downstream consumers (req: notify) | impl:S1, S5 | consumer receives notification for each persisted event; retry on consumer failure | planned, not executed |
+
+**Steps:**
+
+1. **impl:S1 — Walking skeleton.** Real HTTP endpoint → hardcoded-secret signature check → minimal transform (field rename) → real DB insert → real HTTP POST to one downstream consumer. Every seam does its real job, primitive form.
+   - Files: `src/server.ts` (endpoint), `src/persist.ts` (raw SQL/ORM insert), `src/notify.ts` (consumer POST), `db/migrations/001_events.sql` (single `events` table), one smoke test.
+   - Test: end-to-end smoke — POST a realistic vendor-shaped payload, assert 2xx, row in DB, consumer stub received notification. Edge: duplicate POST still 2xx (accepts, no crash).
+   - Ripples: none (greenfield).
+
+2. **impl:S2 — Real vendor authentication.** [after S1] Replace hardcoded secret with the vendor's actual scheme (HMAC signature + timestamp check per their docs — spike the docs first).
+   - Files: `src/auth.ts`, config/env for the signing secret.
+   - Test: boundary — accept correctly signed payload; reject unsigned, tampered, expired-timestamp (401, no DB write).
+   - Ripples: secrets deployment (env/secret manager).
+
+3. **impl:S3 — Real validation + transformation.** [after S1, parallel with S2] Validate against the vendor's actual event schema (event type allowlist, required fields, size cap); transform to internal shape.
+   - Files: `src/validate.ts`, `src/transform.ts`, schema definitions per event type.
+   - Test: table-driven unit tests — accept each supported event type; reject malformed, unknown type, missing required fields, oversize body (4xx, never 5xx).
+   - Ripples: S1's primitive transform deleted.
+
+4. **impl:S4 — Idempotent persistence.** [after S2, S3] Vendor retries are real; dedupe on vendor event ID (unique constraint + upsert-or-ignore). Handle out-of-order timestamps if the vendor doesn't guarantee ordering.
+   - Files: migration on `events` (unique index on vendor event ID), `src/persist.ts`.
+   - Test: deliver same event ID twice with different payloads → one row; concurrent duplicate delivery → one row.
+   - Ripples: none beyond S1's insert path. **ONE-WAY-adjacent:** unique index on live table — rollback note: drop index, revert to plain insert; kill if vendor reuses event IDs across retries with mutated payloads (confirm in docs first).
+
+5. **impl:S5 — Durable downstream notification.** [after S4] Replace inline notify with transactional outbox: notify write committed with the event row; background worker delivers to consumers with retry + backoff, dead-letter after N attempts.
+   - Files: `db/migrations/002_outbox.sql`, `src/outbox-worker.ts`, `src/notify.ts` rework.
+   - Test: consumer returns 500 → retried with backoff until success; consumer down permanently → event lands in dead-letter; crash between persist and notify → worker picks it up (no lost notifications).
+   - Ripples: S1's inline notify removed; deployment gains a worker process.
+
+6. **impl:S6 — Operability.** [after S5] Structured logs with vendor event ID on every path, health endpoint, metrics (received/accepted/rejected/delivered/failed counters).
+   - Files: logging middleware, `src/health.ts`, metrics registry.
+   - Test: integration — rejected delivery increments rejected counter and appears in logs; health endpoint 200.
+
+**Parallel-safe:** S2 and S3 after S1. S4, S5, S6 are sequential.
+**Assumptions:** Node/TypeScript-style layout (adjust names to your stack); one DB (Postgres assumed — unique constraints and outbox need transactions); vendor is at-least-once with no ordering guarantee (verify in S2 spike); one downstream consumer initially.
+**Next:** build — start with S1; before S2, send me the vendor's webhook docs (signature scheme + event schema) and I'll firm up S2/S3 specs.
+
+Want me to start on the walking skeleton once you've picked a stack?

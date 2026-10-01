@@ -1,0 +1,7 @@
+1. FAIL — “transactional outbox” chooses structure; unknown authority gets assumptions, not BLOCKED.
+2. PASS — “Real HTTP endpoint” through “real HTTP POST” integrates every seam.
+3. PASS — “signature check,” “field rename,” “real DB insert,” “real HTTP POST.”
+4. PASS — “Walking skeleton” integrates first; subsequent steps deepen working behavior.
+
+VERDICT: FAIL
+REASON: Chooses architecture and speculates around missing vendor authority instead of blocking.

@@ -5,10 +5,12 @@
   "scripts": {
     "lint": "skill-harness lint all --skills node_modules/principal-pi-skills --specs .",
     "list": "skill-harness list --skills node_modules/principal-pi-skills --specs .",
-    "run": "skill-harness run --skills node_modules/principal-pi-skills --specs ."
+    "run": "skill-harness run --skills node_modules/principal-pi-skills --specs .",
+    "test": "node --test tests/unit/*.test.mjs tests/evidence/*.test.mjs"
   },
   "devDependencies": {
-    "principal-pi-skills": "4.6.0",
+    "js-yaml": "^4.3.2",
+    "principal-pi-skills": "4.7.1",
     "skill-harness": "^0.22.0"
   }
 }

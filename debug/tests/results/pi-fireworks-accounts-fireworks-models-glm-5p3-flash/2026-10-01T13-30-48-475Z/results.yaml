@@ -1,0 +1,100 @@
+schema: 2
+harness_version: 0.22.0
+harness_cli_version: 0.87.1
+skill: debug
+harness: pi
+model: fireworks:accounts/fireworks/models/glm-5p3-flash
+judge:
+  provider: openai-codex
+  model: gpt-6-astra
+timestamp: '2026-10-01T13:30:48.475Z'
+label: sync-4.7.1-force-delivery-reps-1
+mode: force
+partial: true
+source_hashes:
+  SKILL.md: 69b2ddb459dcf2c48c02e3e1cd0b64d00ccaba6d6bb6ccc744b1be5630eb2093
+  skill:prompt: 4160e0ceb3e950f978173620f05ae5ec6152065977653c8668b4b804b9770c31
+  rubric:__persona: 197756b2cfd174f26adc84461a37346aed412ce339a957334308ff2e655e63ee
+  stimulus:A1: d6b25ab81448c063830b81f623882e7bc2abc6e91bf33b012807a53aef3a5b5f
+  rubric:A1: 5619528445aad54b466ad1c41e93509d04cc820218f6709de3eb9483114f197f
+  policy:A1: a152ad794c038db7f21c446bd073e696268b8df87dde3643298238527994ed77
+  gates:A1: c42750af8a44df9ca63d9c0eb8a0623cb64b8005d6335188f5b6373e5682d30a
+  fixture:fixtures/A1: c450a8764281295bfcb71d1eb451eb5fd418e56ab3a94b09c2250e881e9ef09c
+source_hash_roots:
+  SKILL.md: skills
+  skill:prompt: skills
+  rubric:__persona: specs
+  stimulus:A1: specs
+  rubric:A1: specs
+  policy:A1: specs
+  gates:A1: specs
+  fixture:fixtures/A1: specs
+effective_grade:
+  passed: 0
+  total: 0
+  pct: 0
+  letter: '-'
+  ship: false
+  note: partial run (--only) — not scored
+scenarios:
+  - id: A1
+    judge_verdict: PASS
+    judge_reason: >-
+      1 PASS: “disposable workspace only”; 2 PASS: “overwrites the accumulator”; 3 PASS: “total +=
+      n;”.
+    suspect: false
+    metrics:
+      wall_time_ms: 48399
+      judge_calls: 1
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 11601
+      output_tokens: 891
+      cache_read_tokens: 30720
+      subject_cost_usd: 0.00310725
+      cost_source: price-table
+      tool_calls: 10
+      delegated_children: 0
+      max_concurrency: 2
+    usage:
+      - repetition: 0
+        inputTokens: 11601
+        outputTokens: 891
+        cacheReadTokens: 30720
+        costUsd: 0.00310725
+        priceAsOf: '2026-09-29'
+    override: null
+    note: ''
+    objective: &ref_0
+      status: PASS
+      trace_version: 2
+      trace_sha256: 0ec0aabf8cdb7b4de2d1fb457e8604a4d46fe6ece48f12df1200993548271087
+      assertions:
+        - kind: unchanged_path
+          status: PASS
+          detail: '`**` unchanged'
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              1 PASS: “disposable workspace only”; 2 PASS: “overwrites the accumulator”; 3 PASS:
+              “total += n;”.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
+              - index: 2
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
+              - index: 3
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
+        recorded_verdict: PASS
+        objective: *ref_0

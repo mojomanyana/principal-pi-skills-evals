@@ -3,3 +3,6 @@
 *.jsonl
 report.html
 !results.yaml
+# Retain the authorized 4.7.1 merged-spec rerun evidence.
+!pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-19-44-191Z/*.txt
+!pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-19-44-191Z/*.jsonl

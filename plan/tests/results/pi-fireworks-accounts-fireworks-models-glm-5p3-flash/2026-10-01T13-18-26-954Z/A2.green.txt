@@ -1,0 +1,67 @@
+>>> USER:
+Plan the build for a new webhook ingestion service: it receives events from a vendor, validates them, transforms them, writes to our DB, and notifies downstream consumers. How should I sequence the work?
+
+<<< ASSISTANT:
+No codebase exists yet (empty working directory), so this is a greenfield plan built from your description — everything file-level is an Assumption to confirm on day one.
+
+## Plan: A webhook ingestion service that receives vendor events end-to-end — accept, validate, transform, persist, notify — deployable after 8 slices, each independently testable
+
+**Authority:** Your request: "receives events from a vendor, validates them, transforms them, writes to our DB, and notifies downstream consumers."
+**Out of scope:** vendor-side changes, replay of historical events, admin UI, multi-vendor support, retry dashboards.
+**Conventions observed:** none (greenfield). Plan assumes a single service repo; adjust names to your stack.
+**Risks:**
+- Vendor's real payload schema, signature scheme, and retry behavior are unconfirmed → spike in Step 1 (capture real or documented samples before hardening validation).
+- Duplicate deliveries from the vendor are near-certain (webhooks are at-least-once) → idempotency is designed in from Step 1, not bolted on.
+- "Notifies downstream" mechanism unknown (direct HTTP fan-out vs. outbox + queue) → decided by risk of lost notifications; plan assumes transactional outbox. If your consumers can tolerate a lost notification, replace Step 6 with direct fan-out and delete Step 7.
+
+**Steps:**
+
+1. **Walking skeleton** — the thinnest real path through every seam: `POST /webhooks/vendor` receives a real HTTP request → verifies a signature header (real check, shared-secret HMAC) → validates against a minimal schema (vendor id + event type + payload object present) → transforms via a pass-through mapper → inserts one row into the events table → writes an outbox row in the same transaction → a background poller delivers the outbox notification to one real consumer endpoint. Primitive but real at every seam; no mocked DB, no stub notification.
+   Files: `src/server.ts` (route + handler), `src/validate.ts`, `src/transform.ts`, `src/store.ts` (insert + outbox in one tx), `src/outbox-poller.ts`, `migrations/001_events.sql` (events + outbox tables, unique constraint on `(vendor, event_id)`).
+   Change: handler signature `handleWebhook(req) → 202 | 401 | 400`; transform is `mapEvent(raw) → Event`; idempotent insert via the unique constraint — duplicate event_id returns 202 without side effects.
+   Test: integration test — POST a signed sample event against a test DB and a stub consumer server; assert 202, one row in events, one notification received. Re-POST the same event → 202, still one row, no second notification.
+   Ripples: schema migration 001 [see ONE-WAY note]; config for vendor secret + consumer URL.
+
+2. **[ONE-WAY — after: 1] Vendor contract spike & real schema lock-in.** Capture 3–5 real (or officially documented) event payloads; enumerate event types; lock the Zod/JSON-Schema definitions for each; record the vendor's signature header name and retry policy in `docs/vendor-contract.md`.
+   Files: `src/schemas/<event-type>.ts`, `docs/vendor-contract.md`.
+   Change: replace the minimal schema in `validate.ts` with per-type schemas; reject unknown `event_type` with 400 and log.
+   Test: unit tests per event type — one valid sample each, plus malformed-payload rejection cases.
+   Ripples: none beyond `validate.ts`. **Kill criterion:** if the vendor's payloads contradict what Step 1 assumed (e.g., no stable event id), stop and re-plan idempotency before Steps 3–5 — do not build on a wrong key.
+
+3. **[after: 1] Real transformations per event type.** Replace the pass-through mapper with per-type mappers producing your canonical event shape; unknown/extra vendor fields are dropped explicitly, not silently carried.
+   Files: `src/transform.ts`, `src/transforms/<event-type>.ts`.
+   Change: `mapEvent` dispatches on validated event type; output typed per canonical schema in `src/canonical-event.ts`.
+   Test: table-driven unit tests — each event type in → expected canonical shape; property test that no vendor field leaks un-mapped.
+   Ripples: Step 1's pass-through test updated.
+
+4. **[after: 1, parallel with 2–3] Persistence hardening.** Ordered handling for out-of-order/retried events: events table gets `received_at`, `processed_at`; duplicate detection returns the original processing result; add an index on `(vendor, event_id, received_at)`.
+   Files: `migrations/002_indexes.sql`, `src/store.ts`.
+   Test: integration test — deliver event, then same event_id with mutated payload; assert original payload retained and 202 returned.
+   Ripples: migration 002.
+
+5. **[after: 2, parallel with 3–4] Full validation & auth hardening.** Enforce timestamp-freshness check (reject events older than N minutes, config `MAX_EVENT_AGE`), constant-time signature comparison, request body size limit, and structured 4xx error responses with a correlation id.
+   Files: `src/server.ts`, `src/validate.ts`, `src/errors.ts`.
+   Test: unit/integration — expired timestamp → 400; bad signature → 401; oversized body → 413.
+   Ripples: none.
+
+6. **[after: 3] Real downstream notification via outbox.** Poller delivers to N configured consumers with per-consumer timeouts; failed deliveries stay in outbox with `deliveries` count and `next_attempt_at` (exponential backoff, max attempts from config).
+   Files: `src/outbox-poller.ts`, `src/consumers.ts`, `migrations/003_outbox_columns.sql`.
+   Change: `deliver(outboxRow) → ack | retry`; consumers listed in config, not code.
+   Test: integration — consumer returns 500 twice then 200 → assert 3 attempts, then ack; consumer always 500 → backoff schedule respected, event not dropped.
+   Ripples: migration 003.
+
+7. **[after: 6] Operational safety net.** `/healthz` (liveness) and `/readyz` (DB reachable, poller running); structured JSON logs with the vendor event id as correlation id on every log line; metrics counter for received/validated/rejected/delivered/failed.
+   Files: `src/server.ts`, `src/logging.ts`, `src/metrics.ts`.
+   Test: integration — hit `/healthz` and `/readyz` with DB up/down; assert log line contains event id for a sample request.
+   Ripples: deployment config for log format.
+
+8. **[after: 4, 5, 7] End-to-end contract test & docs.** One test that drives the real flow: signed vendor payload (from Step 2's captured samples) → canonical row in DB → notification at consumer, plus `README.md` covering config, local run, and the replay procedure for failed outbox rows (manual SQL or a small script — your call at build time).
+   Files: `test/e2e.test.ts`, `README.md`, `scripts/replay-outbox.ts`.
+   Test: the e2e test is the done-signal; run full suite with one command.
+   Ripples: none.
+
+**Parallel-safe:** Steps 3, 4, 5 run in parallel after Step 1 (3 needs Step 2's schemas only at its end — start 2 first if serializing). Step 6 can start once Step 3 lands; Step 7 is independent of 3–5. Only Step 8 requires all predecessors.
+**Assumptions:** Node/TypeScript-style layout (`src/`, `migrations/`, `test/`) — rename to your stack; a relational DB with transactional outbox (if you already have a queue like SQS/Kafka, replace Steps 6–7's outbox with queue publishing after the DB tx); one vendor, HMAC signature auth; downstream consumers are HTTP callbacks you control. The vendor contract spike (Step 2) is where every payload-level assumption gets confirmed or corrected.
+**Next:** build
+
+No repository exists here, so the plan lives in this message only — once you have a repo, I can write it to `.principal/plans/` for build agents to consume. Where should I start if you want me to build Step 1?

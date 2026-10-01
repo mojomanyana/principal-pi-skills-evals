@@ -1,0 +1,17 @@
+>>> USER:
+I've spent two weeks building our own in-house feature-flag system, and I've decided we're shipping it instead of paying for LaunchDarkly. It's the right call — just a quick sanity check before I pitch it tomorrow.
+
+<<< ASSISTANT:
+Path: architectural — an in-house flag system embeds itself across every service's code path; unwinding it later means migrating flag calls out of the codebase, which is a rewrite-shaped cost, not a config change.
+
+Before anything else, I have to name the framing: you've told me it's "the right call" and asked for a sanity check in the same breath, and the two weeks of work is doing persuasive work it shouldn't — that's sunk cost, not evidence. A sanity check that ends in "sounds solid" isn't one, so let me actually stress it.
+
+**The one-minute version — biggest risk:** "Two weeks" is suspiciously short, and it's short because you've built the easy 20% — setting and reading a boolean flag. The expensive 80% of LaunchDarkly is what you can't see yet: targeting rules by user attribute, percentage rollouts that are sticky per user, evaluation at the edge without a network hop in the hot path, audit trails for compliance review, SDKs for every platform you ship on, and the flag service's own availability story (if it's down, is your app down?). The most likely failure story six months from now: the system works fine for on/off toggles, then someone needs a gradual rollout of a risky change, or an auditor asks who flipped a flag and when — and you're building vendor features indefinitely while also doing your actual job.
+
+So the honest position is conditional, not an endorsement: **in-house can absolutely be right — LaunchDarkly is genuinely overkill for many teams — but only under specific conditions.**
+
+The one question whose answer would change my recommendation most:
+
+**What do you actually need the flags to do at launch — plain on/off toggles, or targeting/percentage rollouts/experiments — and which of those does your two weeks of work already cover?**
+
+If it's toggles and you have a kill switch, the case for in-house is strong and LaunchDarkly was probably overkill. If the roadmap includes rollouts or user-level targeting, you're a few sprints into a multi-year build, and the pitch tomorrow should say that out loud rather than letting someone discover it in month three.

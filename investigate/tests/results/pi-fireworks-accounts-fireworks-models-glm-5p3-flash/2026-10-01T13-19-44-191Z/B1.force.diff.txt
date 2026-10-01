@@ -1,0 +1,11 @@
+diff --git a/src/config/retry.ts b/src/config/retry.ts
+index 1df56f6..a0547f6 100644
+--- a/src/config/retry.ts
++++ b/src/config/retry.ts
+@@ -7,5 +7,5 @@ export interface RetryPolicy {
+ export const paymentRetry: RetryPolicy = {
+   maxAttempts: 3,
+   baseDelayMs: 200,
+-  maxDelayMs: 2_000,
++  maxDelayMs: 5_000,
+ };

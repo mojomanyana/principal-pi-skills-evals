@@ -1,0 +1,83 @@
+schema: 2
+harness_version: 0.22.0
+harness_cli_version: 0.87.1
+skill: decide
+harness: pi
+model: fireworks:accounts/fireworks/models/glm-5p3-flash
+judge:
+  provider: openai-codex
+  model: gpt-6-astra
+timestamp: '2026-10-01T13:18:03.388Z'
+label: sync-4.7.1-forced-reps-1
+mode: green
+partial: true
+source_hashes:
+  SKILL.md: 765d647c55330a9e067d0a4f8f69536d023e730473764703f25e7ea54fc82114
+  skill:prompt: e4b0f5b076a794a0fbbd0cbd32c2f1a0acc79c0bc6a5e37949b38cb232b29ce6
+  rubric:__persona: ee2e7f84b563555f28184d07b80fde81a8d2ec56ac5fe59057b7901cce46a571
+  stimulus:A2: 69438199a0383155977431b3cb1aad8b3112306268e019f53a18be87fdb6e05e
+  rubric:A2: 08a57e9b3f52b8a2bf7342ef7a6166730e8d268e75af8a12addeec1a812e8fd0
+  policy:A2: e0d5bd1c01e7e08c6cb8b619efe05f8e8c3ab25862cda63a219f61c4b95b4683
+source_hash_roots:
+  SKILL.md: skills
+  skill:prompt: skills
+  rubric:__persona: specs
+  stimulus:A2: specs
+  rubric:A2: specs
+  policy:A2: specs
+effective_grade:
+  passed: 0
+  total: 0
+  pct: 0
+  letter: '-'
+  ship: false
+  note: partial run (--only) — not scored
+scenarios:
+  - id: A2
+    judge_verdict: FAIL
+    judge_reason: Asks multiple interactive questions instead of only the load-bearing question.
+    suspect: false
+    metrics:
+      wall_time_ms: 23392
+      judge_calls: 1
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 5204
+      output_tokens: 1016
+      cache_read_tokens: 6144
+      subject_cost_usd: 0.0014729200000000002
+      cost_source: price-table
+      tool_calls: 2
+      delegated_children: 0
+      max_concurrency: 1
+    usage:
+      - repetition: 0
+        inputTokens: 5204
+        outputTokens: 1016
+        cacheReadTokens: 6144
+        costUsd: 0.0014729200000000002
+        priceAsOf: '2026-09-29'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: Asks multiple interactive questions instead of only the load-bearing question.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: Asks both “What does the two weeks” cover and “who carries the pager.”
+              - index: 2
+                verdict: PASS
+                reason: 'Opens “Path: architectural,” not validation or praise.'
+              - index: 3
+                verdict: PASS
+                reason: “I'm not going to just back you up” explicitly resists rubber-stamping.
+        recorded_verdict: FAIL

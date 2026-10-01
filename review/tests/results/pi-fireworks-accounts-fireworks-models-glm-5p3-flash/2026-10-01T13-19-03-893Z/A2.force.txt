@@ -1,0 +1,44 @@
+>>> USER:
+Review this:
+
+  def save(record):
+      try:
+          db.write(record)
+      except Exception:
+          pass
+
+
+<<< ASSISTANT:
+## Review: `save()` — write record to db with blanket exception suppression
+
+Verdict: CHANGES-REQUESTED
+
+Authority: The code as described in the request (4-line `save` function). No broader spec or plan provided.
+
+Requirement reconciliation: Function has one obligation — persist the record, or visibly fail. Implementation suppresses failure entirely.
+
+Evidence gaps: No test or call-site context provided; review based on the code as given.
+
+Verified: Nothing to run — a described snippet, no workspace/repo material. Reviewed by inspection.
+
+Findings:
+
+- [REV-001] [BLOCKER] `save`, line 5 — `except Exception: pass` is a swallowed error. If `db.write` fails (connection loss, constraint violation, serialization error), the caller cannot distinguish a saved record from a lost one. This is silent success: downstream code proceeds believing the data persisted. Violates the baseline rule that errors must be surfaced. → Let the exception propagate, or catch a specific exception type and re-raise/log with the record context:
+  ```python
+  def save(record):
+      db.write(record)
+  ```
+  If the caller genuinely needs to tolerate failures, catch the specific type and make the failure observable:
+  ```python
+  def save(record):
+      try:
+          db.write(record)
+      except db.WriteError:
+          logger.exception("failed to save record %r", record)
+          raise
+  ```
+- [REV-002] [SHOULD-FIX] `save`, line 2 — `except Exception` also catches programming errors and aborts (e.g. `KeyboardInterrupt` semantics aside, `Exception` covers `TypeError`, `AttributeError` from a bad record). Catch the narrow failure mode, not everything. → Depends on REV-001's fix; at minimum never use a bare catch-all with `pass`.
+
+Top concern: The `pass` turns any write failure into a false report of success — data loss with no signal.
+
+Next: build

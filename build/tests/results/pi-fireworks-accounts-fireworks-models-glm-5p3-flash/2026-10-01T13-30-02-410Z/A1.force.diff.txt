@@ -1,0 +1,37 @@
+diff --git a/account.test.ts b/account.test.ts
+index 6b8b43b..927a96c 100644
+--- a/account.test.ts
++++ b/account.test.ts
+@@ -7,4 +7,16 @@ describe("Account", () => {
+     a.deposit(100);
+     expect(a.balance).toBe(100);
+   });
++
++  it("withdraw decreases the balance", () => {
++    const a = new Account();
++    a.deposit(100);
++    a.withdraw(40);
++    expect(a.balance).toBe(60);
++  });
++
++  it("withdraw throws on overdraft", () => {
++    const a = new Account();
++    expect(() => a.withdraw(1)).toThrow(/insufficient/i);
++  });
+ });
+diff --git a/account.ts b/account.ts
+index 4630af2..fe722f2 100644
+--- a/account.ts
++++ b/account.ts
+@@ -4,4 +4,11 @@ export class Account {
+   deposit(amount: number): void {
+     this.balance += amount;
+   }
++
++  withdraw(amount: number): void {
++    if (amount > this.balance) {
++      throw new Error(`Insufficient funds: balance ${this.balance}, tried to withdraw ${amount}`);
++    }
++    this.balance -= amount;
++  }
+ }

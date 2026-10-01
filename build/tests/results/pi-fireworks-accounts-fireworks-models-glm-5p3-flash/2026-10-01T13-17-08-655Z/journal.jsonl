@@ -1,0 +1,4 @@
+{"event":"run-started","ts":"2026-10-01T13:17:08.813Z","skill":"build","harness":"pi","model":"fireworks:accounts/fireworks/models/glm-5p3-flash","harness_cli_version":"0.87.1","judge":{"provider":"openai-codex","model":"gpt-6-astra"},"mode":"green","label":"sync-4.7.1-forced-reps-1"}
+{"event":"scenario-started","ts":"2026-10-01T13:17:08.814Z","id":"A1","title":"regression test + correct impl"}
+{"event":"gate-result","ts":"2026-10-01T13:17:31.746Z","id":"A1","ok":false,"detail":"post_test \"post/A1.test.ts\" failed (exit 1)"}
+{"event":"judge-verdict","ts":"2026-10-01T13:17:31.746Z","id":"A1","verdict":"FAIL","reason":"post_test \"post/A1.test.ts\" failed (exit 1)","suspect":false}

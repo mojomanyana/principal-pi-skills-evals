@@ -1,0 +1,12 @@
+>>> USER:
+Write an ADR for adding a --verbose flag to our internal CLI tool.
+
+<<< ASSISTANT:
+Written to `docs/adr/0001-add-verbose-flag.md`.
+
+Summary:
+- **Decision:** opt-in `--verbose` flag on stderr; default output unchanged, not persisted.
+- **Why:** kills the "re-run and paste output" round-trip during internal debugging; always-on logging was rejected as noisier for the common successful run. Noted downside: users must know the flag exists, so error messages should hint at it.
+- **Revisit trigger:** when a second diagnostic surface appears or flags exceed ~5, switch to `--log-level=<level>`.
+
+No decision-record machinery beyond this — it's a reversible, sprint-scale change. If you later add structured output or log files, that's the point to promote this to a fuller ADR.

@@ -1,0 +1,87 @@
+schema: 2
+harness_version: 0.22.0
+harness_cli_version: 0.87.1
+skill: architect
+harness: pi
+model: fireworks:accounts/fireworks/models/glm-5p3-flash
+judge:
+  provider: openai-codex
+  model: gpt-6-astra
+timestamp: '2026-10-01T13:29:41.559Z'
+label: sync-4.7.1-force-delivery-reps-1
+mode: force
+partial: true
+source_hashes:
+  SKILL.md: b4a78c7738bcfaca3de3ba1c23e32ae7b332d4d1daa72f5fd2c5978f070fdf98
+  skill:prompt: b008f5a2001cb7c7b69d002de7578584d6e3b3e8b390663423980e636d87f3e3
+  rubric:__persona: 118c82fbfd6b84001ba71baf947dd7db2c3f1a5e5f9bb9347b124b0df8fde180
+  stimulus:D2: 5d359cc1497c15fe1c191a140935b28473da812d79f0e27186c2c955c9353178
+  rubric:D2: a41f7101606a71939be2f21faf0d4694edad62d49facf3e6ca003b355a732de4
+  policy:D2: 0d9b03a5e1651b062c3751a01ff2300af961ccaac1f15b63082215c95a41eabe
+source_hash_roots:
+  SKILL.md: skills
+  skill:prompt: skills
+  rubric:__persona: specs
+  stimulus:D2: specs
+  rubric:D2: specs
+  policy:D2: specs
+effective_grade:
+  passed: 0
+  total: 0
+  pct: 0
+  letter: '-'
+  ship: false
+  note: partial run (--only) — not scored
+scenarios:
+  - id: D2
+    judge_verdict: PASS
+    judge_reason: >-
+      Provides a proportionate decision, rationale, and revisit trigger without heavyweight
+      machinery or implementation instructions.
+    suspect: false
+    metrics:
+      wall_time_ms: 20676
+      judge_calls: 1
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 5016
+      output_tokens: 675
+      cache_read_tokens: 2048
+      subject_cost_usd: 0.0011513399999999998
+      cost_source: price-table
+      tool_calls: 1
+      delegated_children: 0
+      max_concurrency: 1
+    usage:
+      - repetition: 0
+        inputTokens: 5016
+        outputTokens: 675
+        cacheReadTokens: 2048
+        costUsd: 0.0011513399999999998
+        priceAsOf: '2026-09-29'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Provides a proportionate decision, rationale, and revisit trigger without heavyweight
+              machinery or implementation instructions.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: “reversible, sprint-scale change” keeps the architectural answer proportionate.
+              - index: 2
+                verdict: PASS
+                reason: “Decision,” “Why,” and “Revisit trigger” deliver the requested three-line note.
+              - index: 3
+                verdict: PASS
+                reason: “No decision-record machinery beyond this” matches the concise note provided.
+        recorded_verdict: PASS
