@@ -1,0 +1,75 @@
+>>> USER:
+Add a withdraw(amount) method to the Account class in account.ts. Tests live in account.test.ts.
+
+<<< ASSISTANT:
+## Implemented: withdraw(amount) method on Account
+Changed paths: `account.ts`, `account.test.ts`
+Authority: user task ("Add a withdraw(amount) method to the Account class")
+Requirements: withdraw deducts balance; overdraft throws → `account.ts:9-15` → `npx vitest run` → 3 passed | completed
+Red evidence: `a.withdraw is not a function` (2 failed before implementation)
+Green evidence: `npx vitest run` → Tests 3 passed (3)
+Tests: added "withdraw decreases the balance" and "withdraw throws on overdraft" (includes boundary case); result: 3 passed, 0 failed
+Verified: withdrawal reduces balance; overdraft throws `Insufficient funds: balance X, tried to withdraw Y`
+Assumptions: overdraft should throw rather than allow negative balance (no spec said otherwise) — easy to change if you want negative balances allowed
+Follow-ups: none
+Next: review
+
+
+=== SEEDED GATES ===
+  diff_contains "withdraw": OK
+  diff_contains "expect(": OK
+  vitest run: PASS
+    RUN  v5.0.3 /tmp/sc-ws-44O8W1
+    
+    
+     Test Files  1 passed (1)
+          Tests  3 passed (3)
+       Start at  15:30:37
+       Duration  117ms (transform 59%, import 27%, worker 7%, tests 7%)
+  post_test "post/A1.test.ts": PASS (2 assertion-bearing test(s))
+    RUN  v5.0.3 /tmp/sc-ws-44O8W1
+    
+    
+     Test Files  1 passed (1)
+          Tests  2 passed (2)
+       Start at  15:30:38
+       Duration  110ms (transform 63%, import 22%, worker 8%, tests 6%)
+
+=== STAGED DIFF ===
+diff --git a/account.test.ts b/account.test.ts
+index 6b8b43b..927a96c 100644
+--- a/account.test.ts
++++ b/account.test.ts
+@@ -7,4 +7,16 @@ describe("Account", () => {
+     a.deposit(100);
+     expect(a.balance).toBe(100);
+   });
++
++  it("withdraw decreases the balance", () => {
++    const a = new Account();
++    a.deposit(100);
++    a.withdraw(40);
++    expect(a.balance).toBe(60);
++  });
++
++  it("withdraw throws on overdraft", () => {
++    const a = new Account();
++    expect(() => a.withdraw(1)).toThrow(/insufficient/i);
++  });
+ });
+diff --git a/account.ts b/account.ts
+index 4630af2..fe722f2 100644
+--- a/account.ts
++++ b/account.ts
+@@ -4,4 +4,11 @@ export class Account {
+   deposit(amount: number): void {
+     this.balance += amount;
+   }
++
++  withdraw(amount: number): void {
++    if (amount > this.balance) {
++      throw new Error(`Insufficient funds: balance ${this.balance}, tried to withdraw ${amount}`);
++    }
++    this.balance -= amount;
++  }
+ }

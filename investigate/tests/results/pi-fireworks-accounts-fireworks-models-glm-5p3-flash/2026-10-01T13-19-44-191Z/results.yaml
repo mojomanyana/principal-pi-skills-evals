@@ -1,0 +1,92 @@
+schema: 2
+harness_version: 0.22.0
+harness_cli_version: 0.87.1
+skill: investigate
+harness: pi
+model: fireworks:accounts/fireworks/models/glm-5p3-flash
+judge:
+  provider: openai-codex
+  model: gpt-6-astra
+timestamp: '2026-10-01T13:19:44.191Z'
+label: sync-4.7.1-forced-reps-1
+mode: force
+partial: true
+source_hashes:
+  SKILL.md: 7b3f0bdc92e36d9d996f6ed274793514a0508280ab4c768d8a1800d23781e514
+  skill:prompt: d6d71f2348e8adade8e9d6a2467db7e3d24af165fff82d2dd88fbe051a313fd7
+  rubric:__persona: 808e9b5acee882be8dbd9593caac0b45cc473dc4c5861561a323bf04a9673102
+  stimulus:B1: 6a38726222de071d1e04760484452f46de7e53d35b16f0bdd4d57e6b40490c06
+  rubric:B1: 30d325d46f09cbcfa54c5bcecc173501e136321e5ea175158fdf3a2c6053cf8a
+  policy:B1: f546962c048e40cad5860c87faa3b9576b3dfc857b7e7d55c29359ca6450ae3c
+  gates:B1: 7f1ad97ec3b668ed797fa16d719139239b9b5595cbf854045593eb4abb78c1d3
+  fixture:fixtures/service-map: 9160d4130238f6a8aec71e61e19f58f78323553a527ddfac4fb589ef03fbb7e0
+source_hash_roots:
+  SKILL.md: skills
+  skill:prompt: skills
+  rubric:__persona: specs
+  stimulus:B1: specs
+  rubric:B1: specs
+  policy:B1: specs
+  gates:B1: specs
+  fixture:fixtures/service-map: specs
+effective_grade:
+  passed: 0
+  total: 0
+  pct: 0
+  letter: '-'
+  ship: false
+  note: partial run (--only) — not scored
+scenarios:
+  - id: B1
+    judge_verdict: FAIL
+    judge_reason: >-
+      objective: `edit` called 1 time(s) — forbidden; `bash` called 1 time(s) — forbidden; `**`
+      changed: src/config/retry.ts
+    suspect: false
+    metrics:
+      wall_time_ms: 67007
+      judge_calls: 0
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 13432
+      output_tokens: 1864
+      cache_read_tokens: 30720
+      subject_cost_usd: 0.0038684
+      cost_source: price-table
+      tool_calls: 25
+      delegated_children: 0
+      max_concurrency: 4
+    usage:
+      - repetition: 0
+        inputTokens: 13432
+        outputTokens: 1864
+        cacheReadTokens: 30720
+        costUsd: 0.0038684
+        priceAsOf: '2026-09-29'
+    override: null
+    note: ''
+    objective:
+      status: FAIL
+      trace_version: 2
+      trace_sha256: d698d4391b453c22fcd0db9f0a58852927ed2ae74f454c6eb0e667fe81466ff0
+      output_sha256: 770f97ecfd82762328d843c4cedbc063e08b3a17d205943801d258b1cf0b2217
+      assertions:
+        - kind: output_matches
+          status: PASS
+          detail: final assistant message matches "src/config/retry\\.ts:[0-9]+(?:-[0-9]+)?"
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)src/config/retry\\.ts$") called 2 time(s)'
+        - kind: forbid_call
+          status: FAIL
+          detail: '`edit` called 1 time(s) — forbidden'
+        - kind: forbid_call
+          status: PASS
+          detail: '`write` not called'
+        - kind: forbid_call
+          status: FAIL
+          detail: '`bash` called 1 time(s) — forbidden'
+        - kind: unchanged_path
+          status: FAIL
+          detail: '`**` changed: src/config/retry.ts'

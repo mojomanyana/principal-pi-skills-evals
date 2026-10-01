@@ -1,0 +1,7 @@
+1. FAIL — “plan assumes transactional outbox” chooses design; no requirement map or BLOCKED.
+2. PASS — “Walking skeleton” connects receiving, validation, transformation, database writes, and notification.
+3. PASS — “real check,” “pass-through mapper,” “inserts one row,” “poller delivers.”
+4. PASS — “thinnest real path through every seam” integrates before subsequent hardening.
+
+VERDICT: FAIL
+REASON: Chooses architecture despite unresolved authority; omits requirement mapping and required blocking response.

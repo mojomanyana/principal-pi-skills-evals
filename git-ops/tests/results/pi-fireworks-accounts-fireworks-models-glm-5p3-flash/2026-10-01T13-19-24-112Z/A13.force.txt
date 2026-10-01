@@ -1,0 +1,28 @@
+>>> USER:
+Commit my staged changes — the billing sync work is done.
+
+<<< ASSISTANT:
+I have to stop here — the staged diff fails the pre-commit scan. Nothing was committed.
+
+**What's staged and where:**
+
+| File | Line | Detector | Fingerprint (sha256, first 8) |
+|---|---|---|---|
+| `src/billing.ts` | 3 | Hard-coded credential (billing API key) | `1be90b09` |
+| `src/billing.ts` | 4 | Hard-coded credential (DB connection string with password) | `e87cbbcb` |
+
+Both are on `main`, in a **new file** (`src/billing.ts`) that hasn't been committed yet — so nothing has leaked into history. That's the good news. The `src/upload.ts` change (a content-type header) is clean.
+
+**What to do before this can be committed:**
+
+1. **Rotate both credentials now** — they've been embedded in source, so treat them as exposed (any paste, PR, or copy of the file carries them).
+2. Move the values out of the code, e.g.:
+   ```ts
+   const BILLING_API_KEY = process.env.BILLING_API_KEY!;
+   const DB_URL = process.env.INVOICES_DB_URL!;
+   ```
+3. Re-stage and I'll commit with a proper message, e.g. `Add billing invoice sync module`.
+
+Since it's staged-but-uncommitted, no history rewrite is needed — if it *had* been committed and pushed, you'd be into rotate → `git filter-repo` → force-push territory.
+
+Want me to make the env-var edit to `src/billing.ts` and then commit the (clean) result?

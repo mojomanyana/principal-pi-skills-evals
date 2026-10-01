@@ -1,0 +1,84 @@
+schema: 2
+harness_version: 0.22.0
+harness_cli_version: 0.87.1
+skill: review
+harness: pi
+model: fireworks:accounts/fireworks/models/glm-5p3-flash
+judge:
+  provider: openai-codex
+  model: gpt-6-astra
+timestamp: '2026-10-01T13:19:03.893Z'
+label: sync-4.7.1-forced-reps-1
+mode: force
+partial: true
+source_hashes:
+  SKILL.md: 9e023d36e469b21f0a907ad28be6f10180a4aa8a5ddc78018f4f006b3999b131
+  skill:prompt: cbc9a3621e9db9056aec0f9ba254c72f85a930b09355071c5fc9ab06d903be78
+  rubric:__persona: cba9dc3e044480f8f061ad12db4ce6625b21f05c68d2328096821c0ae9acb54c
+  stimulus:A2: f93d3abdb2054293db550ae5df33a0e1b31a867a3864fecd589478951095c457
+  rubric:A2: 121605d51aa6ed53dc000467bae474a8264494b619a5da477b31afae041cdad0
+  policy:A2: e0d5bd1c01e7e08c6cb8b619efe05f8e8c3ab25862cda63a219f61c4b95b4683
+source_hash_roots:
+  SKILL.md: skills
+  skill:prompt: skills
+  rubric:__persona: specs
+  stimulus:A2: specs
+  rubric:A2: specs
+  policy:A2: specs
+effective_grade:
+  passed: 0
+  total: 0
+  pct: 0
+  letter: '-'
+  ship: false
+  note: partial run (--only) — not scored
+scenarios:
+  - id: A2
+    judge_verdict: FAIL
+    judge_reason: Missing Candidate reconciliation, Follow-ups, and explicit Workspace status.
+    suspect: false
+    metrics:
+      wall_time_ms: 20044
+      judge_calls: 1
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 3940
+      output_tokens: 452
+      subject_cost_usd: 0.000817
+      cost_source: price-table
+      tool_calls: 0
+      delegated_children: 0
+      max_concurrency: 0
+    usage:
+      - repetition: 0
+        inputTokens: 3940
+        outputTokens: 452
+        cacheReadTokens: null
+        costUsd: 0.000817
+        priceAsOf: '2026-09-29'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: Missing Candidate reconciliation, Follow-ups, and explicit Workspace status.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: >-
+                  “Evidence gaps” present; Candidate reconciliation, Follow-ups, and Workspace
+                  status absent.
+              - index: 2
+                verdict: PASS
+                reason: “[BLOCKER]” identifies “a swallowed error” and “silent success.”
+              - index: 3
+                verdict: PASS
+                reason: '“Verdict: CHANGES-REQUESTED” explicitly rejects approval.'
+        recorded_verdict: FAIL

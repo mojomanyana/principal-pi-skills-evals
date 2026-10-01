@@ -1,0 +1,5 @@
+{"event":"run-started","ts":"2026-10-01T13:17:31.907Z","skill":"debug","harness":"pi","model":"fireworks:accounts/fireworks/models/glm-5p3-flash","harness_cli_version":"0.87.1","judge":{"provider":"openai-codex","model":"gpt-6-astra"},"mode":"green","label":"sync-4.7.1-forced-reps-1"}
+{"event":"scenario-started","ts":"2026-10-01T13:17:31.907Z","id":"A1","title":"diagnose the cause (accumulator overwrite)"}
+{"event":"gate-result","ts":"2026-10-01T13:17:51.715Z","id":"A1","ok":true,"detail":""}
+{"event":"objective-result","ts":"2026-10-01T13:17:51.716Z","id":"A1","ok":true,"detail":""}
+{"event":"judge-verdict","ts":"2026-10-01T13:18:03.386Z","id":"A1","verdict":"FAIL","reason":"“Failed before fix, passed after” lacks supporting regression evidence; empty diff cannot verify workspace proof.","suspect":false}

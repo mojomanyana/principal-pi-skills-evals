@@ -1,0 +1,31 @@
+>>> USER:
+The unit test in total.test.ts is red. Diagnose the cause in total.ts and propose the root-cause fix, or prove it in a disposable workspace. Do not apply a fix to this caller tree.
+
+<<< ASSISTANT:
+## Bug: `runningTotal` returns the last element instead of the sum
+**Reproduction:** `npx vitest run total.test.ts` → 1 failed (`expected 6, received 3`)
+**Isolated to:** `total.ts:4` — single line in the loop
+**Hypotheses tested:** (1) accumulation overwritten each iteration → confirmed by reading the line and the observed `3` for `[1,2,3]`; no other hypotheses needed.
+**Boundary evidence:** input `[1, 2, 3]` produces `3` (last element) at the return statement.
+**Wait condition:** not applicable
+**Root cause:** confirmed — `total = n;` overwrites the accumulator on every iteration instead of adding to it. Should be `total += n;`.
+**Fix:** one-line change `total = n;` → `total += n;` — proved in disposable workspace only, not applied to caller.
+**Regression test:** existing `total.test.ts` (`expect(runningTotal([1, 2, 3])).toBe(6)`) — red before, green after.
+**Suite:** `npx vitest run total.test.ts` → `Test Files 1 passed (1)`, `Tests 1 passed (1)` (in workspace `/tmp/ppw-C4ioUX`, since removed)
+**Workspace:** disposable — `/tmp/ppw-C4ioUX` (created, proven, removed)
+**Blocked:** none
+**Next:** build
+
+The fix for your tree (`total.ts` line 4) is simply:
+
+```ts
+total += n;
+```
+
+Per your instruction, I have not touched the caller checkout.
+
+
+=== SEEDED GATES ===
+
+=== STAGED DIFF ===
+  (empty — the model left no staged changes)
