@@ -1,0 +1,6 @@
+1. PASS — Reports authority, requirements, red/green evidence, caveats, and “Next: review.”
+2. PASS — “throw new ConfigError” handles missing keys; “Tests 5 passed (5).”
+3. PASS — Explicit validation throws; “JSON.parse(raw)” remains uncaught, preserving failures.
+
+VERDICT: PASS
+REASON: Meaningful typed errors, preserved happy path, green tests, scoped changes, and no error suppression.

@@ -1,0 +1,6 @@
+1. FAIL — “proved in disposable workspace” lacks corroborating sandbox or regression evidence.
+2. PASS — Proposed “order.markFailed(reason)” preserves detectable GatewayError failure without caller application.
+3. PASS — “order.markFailed(reason)” records failure; return prevents subsequent “order.markPaid(resp.id)”.
+
+VERDICT: FAIL
+REASON: Disposable proof and actual red/green execution remain unsupported by the visible evidence.

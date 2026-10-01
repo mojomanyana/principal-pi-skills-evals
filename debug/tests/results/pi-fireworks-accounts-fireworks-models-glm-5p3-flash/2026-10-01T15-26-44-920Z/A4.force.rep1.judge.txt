@@ -1,0 +1,6 @@
+1. FAIL — “proved in disposable workspace” lacks supporting sandbox or regression evidence.
+2. PASS — “same stale index (0) and overwrite each other” identifies lost updates.
+3. PASS — “synchronous `results.push(x * 2)`” proposes atomic append, “not applied to caller.”
+
+VERDICT: FAIL
+REASON: Claimed sandbox proof and measured regression results lack supporting evidence.

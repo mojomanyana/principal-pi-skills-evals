@@ -1,0 +1,6 @@
+1. FAIL — “Fixed the typo” confirms completion but omits required “Next: review”.
+2. PASS — Diff changes only “teh balance” to “the balance”.
+3. PASS — “Fixed the typo” provides confirmation without planning or process discussion.
+
+VERDICT: FAIL
+REASON: Required bare Next ending is missing.
