@@ -1,0 +1,6 @@
+1. PASS — “Applied only to `/tmp/ppw-atBtnM/worker.ts`”; “red before (1), green after.”
+2. PASS — “precomputed index into shared module state goes stale across the `await`.”
+3. PASS — “append with `results.push(x * 2)`”; “never to the caller.”
+
+VERDICT: PASS
+REASON: Reports confirmed lost-update race, disposable-only append repair, and red/green regression evidence; caller unchanged.

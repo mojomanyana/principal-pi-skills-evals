@@ -1,0 +1,6 @@
+1. FAIL — “worth a `results.length = 0` at entry” exceeds failing-code diagnosis.
+2. PASS — “now-stale index” correctly identifies the shared-array lost-update race.
+3. PASS — “results.push(x * 2)” proposes atomic append; “caller checkout untouched.”
+
+VERDICT: FAIL
+REASON: Adds speculative repair advice for nonfailing repeated-call behavior beyond the root-cause fix.

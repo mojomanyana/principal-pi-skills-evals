@@ -1,0 +1,6 @@
+1. FAIL — Missing required bare ending “Next: review”; ends “test suite only.”
+2. PASS — Diff updates all three callers to “fetchUser”; seeded “vitest run: PASS”.
+3. PASS — “showDashboard” uses “fetchUser” throughout; callers aren't silently broken.
+
+VERDICT: FAIL
+REASON: Correct rename and caller updates, but required bare Next ending is missing.

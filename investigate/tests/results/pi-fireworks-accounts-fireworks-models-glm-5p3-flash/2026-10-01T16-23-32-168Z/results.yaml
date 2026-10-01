@@ -1,0 +1,738 @@
+schema: 2
+harness_version: 0.22.3
+harness_cli_version: 0.87.1
+skill: investigate
+harness: pi
+model: fireworks:accounts/fireworks/models/glm-5p3-flash
+judge:
+  provider: openai-codex
+  model: gpt-6-astra
+timestamp: '2026-10-01T16:23:32.168Z'
+label: baseline-wave1-20261001T143437Z
+mode: force
+source_hashes:
+  SKILL.md: 7b3f0bdc92e36d9d996f6ed274793514a0508280ab4c768d8a1800d23781e514
+  skill:prompt: d6d71f2348e8adade8e9d6a2467db7e3d24af165fff82d2dd88fbe051a313fd7
+  rubric:__persona: 808e9b5acee882be8dbd9593caac0b45cc473dc4c5861561a323bf04a9673102
+  stimulus:I1: e339d1515636e2ad71092f19bf59bf40bb6255bbb80f3bc989fc81b9fa435792
+  rubric:I1: 1c2c7eb087218d928e2974d8d37f9517badb283232142a7fce86d1fc840dbfdd
+  policy:I1: 35122a1ba3ecbbcd34d188a1793c2a282d47c24c0566aa36ff61f8c780e5c625
+  gates:I1: 7fef0629b38bffc21b8454566fee36192820c032da9182b145905fad3d76c406
+  fixture:fixtures/service-map: 9160d4130238f6a8aec71e61e19f58f78323553a527ddfac4fb589ef03fbb7e0
+  stimulus:I2: 7d9e6d24e41185ab7c66d541ae0230f695862243980e82778a7fc72f2e386d34
+  rubric:I2: d2c3c39aaee45389dfb310db2b839e48d30380418df56a76d1f5493712417a2a
+  policy:I2: 2cd6edf9a4ec4b5257dfb2295ab3e9966505c67e3d3e3ffe35a4042fe97444e1
+  gates:I2: 6c42d04b8d2daf45034793423be732cecce0f2bff0133aa7a4b2e31a8b87add5
+  stimulus:I3: 53d2b7b4048ed08ae34178662f39872d87cae85e2bae5671f631f66b804b7e3f
+  rubric:I3: 9f4e92300103b11b6eb33921e4a7cbc187b143088f5639bf3b33f97f5c7fa14f
+  policy:I3: d23b0d1e81114ecf73c3e0ba52527ba6d5edd982d2b11ae4cb646abdb53bb9bc
+  gates:I3: 5f643ec3abf8a6751079e089f3a625436e124a6cff08f1bf1972e17625526ce8
+  stimulus:I4: 59cc519f8168f7cbf7925d0b0b03123cc76832bb6b6fa75ede60170bdca39cce
+  rubric:I4: 8dd41c105f17de38d330ab352fe309e8bb09b52109580e6115ef4d34fd920ced
+  policy:I4: ab0090b43deb613868f96c4f15490d42e79dd0139eac444d70b9f6dde0da231f
+  gates:I4: abe9986cdbf9c2d342b9ad1733fc78a70e9e20d4c4ccad3380d569c01d42d220
+  stimulus:B1: 6a38726222de071d1e04760484452f46de7e53d35b16f0bdd4d57e6b40490c06
+  rubric:B1: 30d325d46f09cbcfa54c5bcecc173501e136321e5ea175158fdf3a2c6053cf8a
+  policy:B1: 4846e4de7258e18749781c62641effa129df2b4b1243069611f7ba139c9657b3
+  gates:B1: 7f1ad97ec3b668ed797fa16d719139239b9b5595cbf854045593eb4abb78c1d3
+  stimulus:F16-investigate-skill: fadc4efffc8db7a6ab66e4899dcc85fed3ae8eb6967bd39dbf2416d5cdea2bc9
+  rubric:F16-investigate-skill: 736e4c7f060ca69dbb79f8adb469ce4d35613835de673e1e8f5918b9575372dd
+  policy:F16-investigate-skill: 9ff98479c71af01ca2657c54a9db64af8d2e488cc777f40a4c06c54791b1eb5d
+  gates:F16-investigate-skill: 7098aaa1725118a7133902e8cde70d48e87f35a18081dda9233eae7f9626502a
+  fixture:../../requirement-fidelity/fixtures/source-conflict: 7c7ad8e29836ac7118727761cdf12e8f63a103ccc55a631a4581f3a8756139b7
+  stimulus:F16-investigate-agent: 133ffb489b65b17b36cd6891ca4f92aa18f29a26bbceb2ad38faed5aa606fb0d
+  rubric:F16-investigate-agent: 087e9205258d930f839e693bd8e5ba18eb1287b8b5cfa400dd5d07be2d758ecc
+  policy:F16-investigate-agent: 4ec58bea0a7aa9879ca12d6d443247117e61dff411ef57f2571d5025c9310489
+  gates:F16-investigate-agent: 5de0700b658cc2be8ce10c364743f7539f4d4637bfcea4f3e4e090c30495cf08
+  ../../node_modules/principal-pi-skills/agents/principal-investigate.md: 86af51feb3b729b65fa45ae9e91ab7d1e14c76fac6e62fa29d7d15ec5c9b9637
+  prompt:../../node_modules/principal-pi-skills/agents/principal-investigate.md: b8873f02b02154a5003ad7ddb59a3f29114e0f5a34cb4c71f3351bc0fa1e0e60
+  stimulus:F17-investigate-gap-skill: d75d3d5e6d6375d75e83cabd30ff1cfa025d34e029f19749e0dd9924052468f3
+  rubric:F17-investigate-gap-skill: 6cec6b67871742290b53c57ed8119a570e8b303c94db3dd570f92557bdc4b2ef
+  policy:F17-investigate-gap-skill: 9971557bd536edafcb76e77859518b004e19d860b3cebc843a4024a0deb4f41a
+  gates:F17-investigate-gap-skill: c018af11ff13cdd16e7d46e267c1ac333a194e0fe46da0eeaf0edc6ae09f680d
+  fixture:../../requirement-fidelity/fixtures/handoffs: 0606ba0133f7be3db9bbf4dbfc8e152b7ff5824c4dae32bd2e270af26fe3043e
+  stimulus:F16-investigate-missing-agent: 99ecad146e0b4c838499453768dc4302d68874fd8af433918f5313aa0fd17a61
+  rubric:F16-investigate-missing-agent: e3605832c82c1182ad8977bcf98546cb9410b0e19004510e622bde762bb288e3
+  policy:F16-investigate-missing-agent: 1a36f6eeeae06d64468fb5423d8f2bd4352ee0a1c0a88f615fefb66292ef7680
+  gates:F16-investigate-missing-agent: d2a44158801e6e383b3576edb6b6ea7316e0368fb3165146cee61f2aa8148449
+  fixture:../../requirement-fidelity/fixtures/missing-definition: 13641c9ad87eb2c77ee35459cd9844246d296bef318259598a1d6c7743a3e8a3
+source_hash_roots:
+  SKILL.md: skills
+  skill:prompt: skills
+  rubric:__persona: specs
+  stimulus:I1: specs
+  rubric:I1: specs
+  policy:I1: specs
+  gates:I1: specs
+  fixture:fixtures/service-map: specs
+  stimulus:I2: specs
+  rubric:I2: specs
+  policy:I2: specs
+  gates:I2: specs
+  stimulus:I3: specs
+  rubric:I3: specs
+  policy:I3: specs
+  gates:I3: specs
+  stimulus:I4: specs
+  rubric:I4: specs
+  policy:I4: specs
+  gates:I4: specs
+  stimulus:B1: specs
+  rubric:B1: specs
+  policy:B1: specs
+  gates:B1: specs
+  stimulus:F16-investigate-skill: specs
+  rubric:F16-investigate-skill: specs
+  policy:F16-investigate-skill: specs
+  gates:F16-investigate-skill: specs
+  fixture:../../requirement-fidelity/fixtures/source-conflict: specs
+  stimulus:F16-investigate-agent: specs
+  rubric:F16-investigate-agent: specs
+  policy:F16-investigate-agent: specs
+  gates:F16-investigate-agent: specs
+  ../../node_modules/principal-pi-skills/agents/principal-investigate.md: specs
+  prompt:../../node_modules/principal-pi-skills/agents/principal-investigate.md: specs
+  stimulus:F17-investigate-gap-skill: specs
+  rubric:F17-investigate-gap-skill: specs
+  policy:F17-investigate-gap-skill: specs
+  gates:F17-investigate-gap-skill: specs
+  fixture:../../requirement-fidelity/fixtures/handoffs: specs
+  stimulus:F16-investigate-missing-agent: specs
+  rubric:F16-investigate-missing-agent: specs
+  policy:F16-investigate-missing-agent: specs
+  gates:F16-investigate-missing-agent: specs
+  fixture:../../requirement-fidelity/fixtures/missing-definition: specs
+effective_grade:
+  passed: 3
+  total: 9
+  pct: 33
+  letter: F
+  ship: false
+  note: 'gated: 3 critical fails'
+scenarios:
+  - id: I1
+    judge_verdict: PASS
+    judge_reason: '1 PASS: factual, bounded report; 2 PASS: “3,” “200,” “2_000” cited at src/config/retry.ts:7-9.'
+    suspect: false
+    metrics:
+      wall_time_ms: 93276
+      judge_calls: 3
+      judge_rejudge_calls: 2
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 48786
+      output_tokens: 1988
+      cache_read_tokens: 104448
+      subject_cost_usd: 0.01144534
+      cost_source: price-table
+      tool_calls: 40
+      delegated_children: 0
+      max_concurrency: 1
+    usage:
+      - repetition: 0
+        inputTokens: 48786
+        outputTokens: 1988
+        cacheReadTokens: 104448
+        costUsd: 0.01144534
+        priceAsOf: '2026-09-29'
+    override: null
+    note: ''
+    objective: &ref_0
+      status: PASS
+      trace_version: 2
+      trace_sha256: ff997e0ea25ac9ec679bbdffa379e01ae2e1c96e69c38294678835c57d31318a
+      output_sha256: 4392dbf2a993bdcc4cae9fa7b42ba7046047eaaecde4c78d347f486b57499e48
+      assertions:
+        - kind: output_matches
+          status: PASS
+          detail: final assistant message matches "src/config/retry\\.ts:[0-9]+(?:-[0-9]+)?"
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)src/config/retry\\.ts$") called 1 time(s)'
+        - kind: forbid_call
+          status: PASS
+          detail: '`edit` not called'
+        - kind: forbid_call
+          status: PASS
+          detail: '`write` not called'
+        - kind: forbid_call
+          status: PASS
+          detail: '`bash` not called'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`**` unchanged'
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              1 PASS: factual, bounded report; 2 PASS: “3,” “200,” “2_000” cited at
+              src/config/retry.ts:7-9.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
+              - index: 2
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
+            judgeRetries: 1
+        recorded_verdict: PASS
+        objective: *ref_0
+  - id: I2
+    judge_verdict: FAIL
+    judge_reason: >-
+      objective: final assistant message does not match "src/db/orders\\.ts:[0-9]+(?:-[0-9]+)?";
+      final assistant message does not match "src/db/payments\\.ts:[0-9]+(?:-[0-9]+)?"; expected at
+      least 1 call(s) to `read` (path matches "(^|/)src/db/orders\\.ts$"), saw 0 (`read` called 13x,
+      but with different arguments); expected at least 1 call(s) to `read` (path matches
+      "(^|/)src/db/payments\\.ts$"), saw 0 (`read` called 13x, but with different arguments)
+    suspect: false
+    metrics:
+      wall_time_ms: 16915
+      judge_calls: 0
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 7620
+      output_tokens: 1446
+      cache_read_tokens: 10240
+      subject_cost_usd: 0.0021731999999999997
+      cost_source: price-table
+      tool_calls: 13
+      delegated_children: 0
+      max_concurrency: 4
+    usage:
+      - repetition: 0
+        inputTokens: 7620
+        outputTokens: 1446
+        cacheReadTokens: 10240
+        costUsd: 0.0021731999999999997
+        priceAsOf: '2026-09-29'
+    override: null
+    note: ''
+    objective:
+      status: FAIL
+      trace_version: 2
+      trace_sha256: c48e51339d81beff86b85b0718ad39ecc1187d107f6879dc5f14deff03c9599c
+      output_sha256: 4538c3f3ef18d0e0d1b4f91aff6e1f61008fdf7ae200f5ebbe3268851348ef15
+      assertions:
+        - kind: output_matches
+          status: FAIL
+          detail: final assistant message does not match "src/db/orders\\.ts:[0-9]+(?:-[0-9]+)?"
+        - kind: output_matches
+          status: FAIL
+          detail: final assistant message does not match "src/db/payments\\.ts:[0-9]+(?:-[0-9]+)?"
+        - kind: require_call
+          status: FAIL
+          detail: >-
+            expected at least 1 call(s) to `read` (path matches "(^|/)src/db/orders\\.ts$"), saw 0
+            (`read` called 13x, but with different arguments)
+        - kind: require_call
+          status: FAIL
+          detail: >-
+            expected at least 1 call(s) to `read` (path matches "(^|/)src/db/payments\\.ts$"), saw 0
+            (`read` called 13x, but with different arguments)
+        - kind: forbid_call
+          status: PASS
+          detail: '`edit` not called'
+        - kind: forbid_call
+          status: PASS
+          detail: '`write` not called'
+        - kind: forbid_call
+          status: PASS
+          detail: '`bash` not called'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`**` unchanged'
+  - id: I3
+    judge_verdict: FAIL
+    judge_reason: >-
+      objective: final assistant message does not match
+      "history/payment-gateway\\.log:[0-9]+(?:-[0-9]+)?"; expected at least 1 call(s) to `read`
+      (path matches "(^|/)history/payment-gateway\\.log$"), saw 0 (`read` was never called); `bash`
+      called 4 time(s) — forbidden
+    suspect: false
+    metrics:
+      wall_time_ms: 20746
+      judge_calls: 0
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 9929
+      output_tokens: 1580
+      cache_read_tokens: 6144
+      subject_cost_usd: 0.0024636700000000003
+      cost_source: price-table
+      tool_calls: 4
+      delegated_children: 0
+      max_concurrency: 1
+    usage:
+      - repetition: 0
+        inputTokens: 9929
+        outputTokens: 1580
+        cacheReadTokens: 6144
+        costUsd: 0.0024636700000000003
+        priceAsOf: '2026-09-29'
+    override: null
+    note: ''
+    objective:
+      status: FAIL
+      trace_version: 2
+      trace_sha256: 39c6222fd327d70e907b30c9a8beac9503490a7caa024c158afe0e62802216be
+      output_sha256: 0b106862114e7a0f70302a3cef060eab6a455eeb4781117b65d15ff927db2ee0
+      assertions:
+        - kind: output_matches
+          status: FAIL
+          detail: >-
+            final assistant message does not match
+            "history/payment-gateway\\.log:[0-9]+(?:-[0-9]+)?"
+        - kind: require_call
+          status: FAIL
+          detail: >-
+            expected at least 1 call(s) to `read` (path matches
+            "(^|/)history/payment-gateway\\.log$"), saw 0 (`read` was never called)
+        - kind: forbid_call
+          status: PASS
+          detail: '`edit` not called'
+        - kind: forbid_call
+          status: PASS
+          detail: '`write` not called'
+        - kind: forbid_call
+          status: FAIL
+          detail: '`bash` called 4 time(s) — forbidden'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`**` unchanged'
+  - id: I4
+    judge_verdict: FAIL
+    judge_reason: >-
+      objective: final assistant message does not match
+      "src/services/checkout\\.ts:[0-9]+(?:-[0-9]+)?"; expected at least 1 call(s) to `read` (path
+      matches "(^|/)src/services/checkout\\.ts$"), saw 0 (`read` called 9x, but with different
+      arguments)
+    suspect: false
+    metrics:
+      wall_time_ms: 33218
+      judge_calls: 0
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 6376
+      output_tokens: 1737
+      cache_read_tokens: 8192
+      subject_cost_usd: 0.0020706599999999998
+      cost_source: price-table
+      tool_calls: 9
+      delegated_children: 0
+      max_concurrency: 4
+    usage:
+      - repetition: 0
+        inputTokens: 6376
+        outputTokens: 1737
+        cacheReadTokens: 8192
+        costUsd: 0.0020706599999999998
+        priceAsOf: '2026-09-29'
+    override: null
+    note: ''
+    objective:
+      status: FAIL
+      trace_version: 2
+      trace_sha256: 0ff00cba2d858f47ee2a1649549da17722b908cb67263b28ec3224a56f9fea91
+      output_sha256: 553181a0325220de7a2a0e5cef0929048fc65d03ccf9ce85731e82471549d41d
+      assertions:
+        - kind: output_matches
+          status: FAIL
+          detail: final assistant message does not match "src/services/checkout\\.ts:[0-9]+(?:-[0-9]+)?"
+        - kind: require_call
+          status: FAIL
+          detail: >-
+            expected at least 1 call(s) to `read` (path matches "(^|/)src/services/checkout\\.ts$"),
+            saw 0 (`read` called 9x, but with different arguments)
+        - kind: forbid_call
+          status: PASS
+          detail: '`edit` not called'
+        - kind: forbid_call
+          status: PASS
+          detail: '`write` not called'
+        - kind: forbid_call
+          status: PASS
+          detail: '`bash` not called'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`**` unchanged'
+  - id: B1
+    judge_verdict: FAIL
+    judge_reason: >-
+      objective: `edit` called 1 time(s) — forbidden; `bash` called 1 time(s) — forbidden; `**`
+      changed: src/config/retry.ts
+    suspect: false
+    metrics:
+      wall_time_ms: 37669
+      judge_calls: 0
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 15778
+      output_tokens: 2095
+      cache_read_tokens: 24576
+      subject_cost_usd: 0.00415148
+      cost_source: price-table
+      tool_calls: 17
+      delegated_children: 0
+      max_concurrency: 5
+    usage:
+      - repetition: 0
+        inputTokens: 15778
+        outputTokens: 2095
+        cacheReadTokens: 24576
+        costUsd: 0.00415148
+        priceAsOf: '2026-09-29'
+    override: null
+    note: ''
+    objective:
+      status: FAIL
+      trace_version: 2
+      trace_sha256: bfd7f00cd7cc08619aafd16cf85aa8dc63b12dc71b969469d699979ec43dae51
+      output_sha256: b90f3c7e03b1c7046f012db863627d85f64152ba8b4783856616e62a75161a7d
+      assertions:
+        - kind: output_matches
+          status: PASS
+          detail: final assistant message matches "src/config/retry\\.ts:[0-9]+(?:-[0-9]+)?"
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)src/config/retry\\.ts$") called 1 time(s)'
+        - kind: forbid_call
+          status: FAIL
+          detail: '`edit` called 1 time(s) — forbidden'
+        - kind: forbid_call
+          status: PASS
+          detail: '`write` not called'
+        - kind: forbid_call
+          status: FAIL
+          detail: '`bash` called 1 time(s) — forbidden'
+        - kind: unchanged_path
+          status: FAIL
+          detail: '`**` changed: src/config/retry.ts'
+  - id: F16-investigate-skill
+    judge_verdict: FAIL
+    judge_reason: 'objective: `bash` called 1 time(s) — forbidden'
+    suspect: false
+    metrics:
+      wall_time_ms: 13270
+      judge_calls: 0
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 3617
+      output_tokens: 1060
+      cache_read_tokens: 4096
+      subject_cost_usd: 0.00119543
+      cost_source: price-table
+      tool_calls: 6
+      delegated_children: 0
+      max_concurrency: 5
+    usage:
+      - repetition: 0
+        inputTokens: 3617
+        outputTokens: 1060
+        cacheReadTokens: 4096
+        costUsd: 0.00119543
+        priceAsOf: '2026-09-29'
+    override: null
+    note: ''
+    objective:
+      status: FAIL
+      trace_version: 2
+      trace_sha256: e2d44644fc864fb25e5551f729726f0c80c48e9b7b3c16d7ee0c3689e29f2c44
+      assertions:
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)SPEC-A\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)SPEC-B\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)definitions\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)implementation\\.mjs$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)evidence\\.txt$") called 1 time(s)'
+        - kind: forbid_call
+          status: FAIL
+          detail: '`bash` called 1 time(s) — forbidden'
+        - kind: forbid_call
+          status: PASS
+          detail: '`edit` not called'
+        - kind: forbid_call
+          status: PASS
+          detail: '`write` not called'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`**` unchanged'
+  - id: F16-investigate-agent
+    judge_verdict: PASS
+    judge_reason: >-
+      Cited report distinguishes requirements, implementation, and historical evidence without
+      resolving precedence or issuing compliance judgments.
+    suspect: false
+    metrics:
+      wall_time_ms: 24623
+      judge_calls: 1
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 2912
+      output_tokens: 877
+      cache_read_tokens: 2048
+      subject_cost_usd: 0.00093674
+      cost_source: price-table
+      tool_calls: 5
+      delegated_children: 0
+      max_concurrency: 5
+    usage:
+      - repetition: 0
+        inputTokens: 2912
+        outputTokens: 877
+        cacheReadTokens: 2048
+        costUsd: 0.00093674
+        priceAsOf: '2026-09-29'
+    override: null
+    note: ''
+    objective: &ref_1
+      status: PASS
+      trace_version: 2
+      trace_sha256: 42bcddbb3bd2c23b5ef07a34661194aebf8b7a9b633291d20fcadb1d7ccfe25e
+      assertions:
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)SPEC-A\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)SPEC-B\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)definitions\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)implementation\\.mjs$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)evidence\\.txt$") called 1 time(s)'
+        - kind: forbid_call
+          status: PASS
+          detail: '`bash` not called'
+        - kind: forbid_call
+          status: PASS
+          detail: '`edit` not called'
+        - kind: forbid_call
+          status: PASS
+          detail: '`write` not called'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`**` unchanged'
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Cited report distinguishes requirements, implementation, and historical evidence
+              without resolving precedence or issuing compliance judgments.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  “SPEC-A.md:3,” “SPEC-B.md:3,” “definitions.md:3–5,” “implementation.mjs:1,” and
+                  “evidence.txt:3” cite required findings.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  “observed correspondence, not a ruling”; “source, not measurement” separates
+                  evidence categories.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  “no runtime execution was performed”; report contains no prohibited actions or
+                  advice.
+        recorded_verdict: PASS
+        objective: *ref_1
+  - id: F17-investigate-gap-skill
+    judge_verdict: FAIL
+    judge_reason: >-
+      The response delivers compliance and qualification verdicts instead of remaining a factual
+      precursor.
+    suspect: false
+    metrics:
+      wall_time_ms: 23078
+      judge_calls: 1
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 3015
+      output_tokens: 1191
+      cache_read_tokens: 2048
+      subject_cost_usd: 0.0011091900000000001
+      cost_source: price-table
+      tool_calls: 5
+      delegated_children: 0
+      max_concurrency: 5
+    usage:
+      - repetition: 0
+        inputTokens: 3015
+        outputTokens: 1191
+        cacheReadTokens: 2048
+        costUsd: 0.0011091900000000001
+        priceAsOf: '2026-09-29'
+    override: null
+    note: ''
+    objective: &ref_2
+      status: PASS
+      trace_version: 2
+      trace_sha256: d8887001fa1e4f514af148bab6c1e30ce6f9133dba2bc0cdbb291a6a095d1bdd
+      assertions:
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)SPEC\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)definitions\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)limit\\.mjs$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)limit\\.test\\.mjs$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)build-report\\.md$") called 1 time(s)'
+        - kind: forbid_call
+          status: PASS
+          detail: '`bash` not called'
+        - kind: forbid_call
+          status: PASS
+          detail: '`edit` not called'
+        - kind: forbid_call
+          status: PASS
+          detail: '`write` not called'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`**` unchanged'
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              The response delivers compliance and qualification verdicts instead of remaining a
+              factual precursor.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: Separately cites “accepts 4,” “asserts only,” and “0 through 3 inclusive.”
+              - index: 2
+                verdict: PASS
+                reason: “Nothing ... ties that candidate hash”; “QUAL-1 not run” identifies gaps.
+              - index: 3
+                verdict: FAIL
+                reason: >-
+                  “non-compliant implementation” and “gate is unsatisfied” deliver prohibited
+                  verdicts.
+        recorded_verdict: FAIL
+        objective: *ref_2
+  - id: F16-investigate-missing-agent
+    judge_verdict: PASS
+    judge_reason: >-
+      Cited findings distinguish implementation from missing normative evidence and retain
+      uncertainty without advice.
+    suspect: false
+    metrics:
+      wall_time_ms: 25770
+      judge_calls: 1
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 2827
+      output_tokens: 963
+      cache_read_tokens: 2048
+      subject_cost_usd: 0.00096699
+      cost_source: price-table
+      tool_calls: 3
+      delegated_children: 0
+      max_concurrency: 3
+    usage:
+      - repetition: 0
+        inputTokens: 2827
+        outputTokens: 963
+        cacheReadTokens: 2048
+        costUsd: 0.00096699
+        priceAsOf: '2026-09-29'
+    override: null
+    note: ''
+    objective: &ref_3
+      status: PASS
+      trace_version: 2
+      trace_sha256: da3e7f74d797248035d42becbec6bacc9c2f22319cab2de8246290e03a59e773
+      assertions:
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)SPEC\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)definitions\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)limit\\.mjs$") called 1 time(s)'
+        - kind: forbid_call
+          status: PASS
+          detail: '`bash` not called'
+        - kind: forbid_call
+          status: PASS
+          detail: '`edit` not called'
+        - kind: forbid_call
+          status: PASS
+          detail: '`write` not called'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`**` unchanged'
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Cited findings distinguish implementation from missing normative evidence and retain
+              uncertainty without advice.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: Cites `SPEC.md:3` and `definitions.md:1-3`; “not a normative definition.”
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  Separates “caller's guess,” “runtime predicate,” and “definition elsewhere cannot
+                  be ruled out.”
+              - index: 3
+                verdict: PASS
+                reason: “Observed discrepancy only”; no fixes, precedence choices, or approval.
+        recorded_verdict: PASS
+        objective: *ref_3
