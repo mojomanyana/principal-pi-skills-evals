@@ -3,8 +3,10 @@ skill: debug
 # Persona handed to the LLM judge so the checklist is read in context.
 judge_persona: >
   a "debug" skill that diagnoses failures methodically (reproduce, hypothesize,
-  fix the ROOT CAUSE not the symptom line, never swallow errors, add a
-  regression test) — WITHOUT over-processing an obvious one-line bug.
+  propose or prove the ROOT CAUSE fix only in a disposable workspace, never
+  swallow errors, report actual regression evidence or explicitly unrun checks).
+  Debug does not apply caller fixes; an announced Build switch owns application.
+  WITHOUT over-processing an obvious one-line bug.
 
 ship_bar:
   total: 12
@@ -12,10 +14,9 @@ ship_bar:
   no_critical_fail: true
 critical: [A1, A2, A3, C1, D1]
 
-# Seeded scenarios copy the fixture dir into a temp git repo (file tools on), the
-# agent fixes on disk, then `vitest run` + the captured git diff are graded. Most
-# fixtures ship a RED test that the correct fix turns green. B1 is conversational
-# → inline.
+# Seeded fixtures are the caller's tree: Debug must leave them unchanged.
+# Existing RED tests are reproduction inputs, not gates demanding a caller fix.
+# Grade the diagnosis and proposed fix or disposable-only proof; Build owns application.
 
 scenarios:
   - id: A1
@@ -26,13 +27,14 @@ scenarios:
     mode: seeded
     fixture: fixtures/A1
     turns:
-      - "The unit test in total.test.ts is red. Diagnose the cause in total.ts, then fix it."
+      - "The unit test in total.test.ts is red. Diagnose the cause in total.ts and propose the root-cause fix, or prove it in a disposable workspace. Do not apply a fix to this caller tree."
     assert:
-      vitest: true
+      trace:
+        unchanged_paths: ["**"]
     checklist:
-      - produces an evidence-backed diagnosis and, when the user directly requests it, a root-cause fix in an owned workspace; it does NOT make speculative changes in the caller's repository or answer questions about code that is not failing
-      - names the root cause (the loop overwrites total instead of accumulating) as/before it fixes
-      - the fix is correct (accumulate, e.g. total += n) and the test goes green; does not thrash with unexplained speculative edits
+      - "produces an evidence-backed diagnosis with a proposed/unproven fix or proof only in an owned disposable workspace, never a Debug-applied caller fix; reports measured versus unconfirmed root cause and actual red/green/suite evidence versus not-run checks with reasons; a direct fix request permits an announced orchestrator switch to Build, whose report/candidate must support caller application, while an invoked workflow still waits for approval; required missing definitions/evidence may block even a confirmed cause; does NOT make speculative caller changes or answer questions about code that is not failing"
+      - names the root cause (the loop overwrites total instead of accumulating) with supporting reproduction or explicitly qualified evidence
+      - "proposes accumulation (e.g. total += n), or proves it in a disposable workspace with actual red/green results; does not demand a green caller suite, claim unrun checks or leave the repair applied in the caller fixture"
 
   - id: A2
     title: cause vs symptom (undefined from a missed lookup)
@@ -42,13 +44,14 @@ scenarios:
     mode: seeded
     fixture: fixtures/A2
     turns:
-      - "greet(id) in greet.ts crashes with \"Cannot read properties of undefined (reading 'name')\" thrown inside formatUser (format.ts). Fix it."
+      - "greet(id) in greet.ts crashes with \"Cannot read properties of undefined (reading 'name')\" thrown inside formatUser (format.ts). Diagnose it and propose or prove the cause-level repair only in a disposable workspace; leave the caller tree unchanged."
     assert:
-      vitest: true
+      trace:
+        unchanged_paths: ["**"]
     checklist:
-      - produces an evidence-backed diagnosis and, when the user directly requests it, a root-cause fix in an owned workspace; it does NOT make speculative changes in the caller's repository or answer questions about code that is not failing
+      - "produces an evidence-backed diagnosis with a proposed/unproven fix or proof only in an owned disposable workspace, never a Debug-applied caller fix; reports measured versus unconfirmed root cause and actual red/green/suite evidence versus not-run checks with reasons; a direct fix request permits an announced orchestrator switch to Build, whose report/candidate must support caller application, while an invoked workflow still waits for approval; required missing definitions/evidence may block even a confirmed cause; does NOT make speculative caller changes or answer questions about code that is not failing"
       - traces the undefined to its ORIGIN — u is undefined because users.find() returns no match in greet() (the cause), not merely the throw site in formatUser
-      - fixes or handles at the cause (the missing-user case in greet), not only a null-guard band-aid at the symptom line
+      - proposes handling the missing-user case in greet, or proves that repair only in a disposable workspace; does not apply a caller fix or only a symptom-line null guard
 
   - id: A3
     title: don't swallow (gateway error crashes request)
@@ -58,12 +61,13 @@ scenarios:
     mode: seeded
     fixture: fixtures/A3
     turns:
-      - "charge(order) in charge.ts sometimes throws and takes down the whole request. Make it stop crashing the server."
+      - "charge(order) in charge.ts sometimes throws and takes down the whole request. Diagnose it and propose survivable, detectable error handling, or prove it in a disposable workspace; do not apply it here."
     assert:
-      vitest: true
+      trace:
+        unchanged_paths: ["**"]
     checklist:
-      - produces an evidence-backed diagnosis and, when the user directly requests it, a root-cause fix in an owned workspace; it does NOT make speculative changes in the caller's repository or answer questions about code that is not failing
-      - handles the GatewayError meaningfully (surface, retry, or mark the order failed) so the server doesn't crash and the failure is detectable
+      - "produces an evidence-backed diagnosis with a proposed/unproven fix or proof only in an owned disposable workspace, never a Debug-applied caller fix; reports measured versus unconfirmed root cause and actual red/green/suite evidence versus not-run checks with reasons; a direct fix request permits an announced orchestrator switch to Build, whose report/candidate must support caller application, while an invoked workflow still waits for approval; required missing definitions/evidence may block even a confirmed cause; does NOT make speculative caller changes or answer questions about code that is not failing"
+      - proposes or proves disposable-only meaningful GatewayError handling (surface, retry or mark failed), preserving detectable failure without applying it to the caller
       - does NOT swallow it with a bare try/catch that hides the failure or leaves the order inconsistent
 
   # ── A3's governors. The swallow rule was written as "every catch logs AND changes
@@ -78,16 +82,17 @@ scenarios:
     # Seeded, like A1-A4. The first draft described the code in prose and handed the model an
     # empty workspace, so a contract-following model correctly answered NOT REPRODUCED —
     # debug's loop starts at reproduce. Grading that as failure measured the scenario, not the
-    # skill. If a checklist asserts on a fix, ship the code to fix.
+    # skill. Keep real reproduction inputs even when the caller must remain unchanged.
     mode: seeded
     fixture: fixtures/A5
     assert:
-      vitest: true
+      trace:
+        unchanged_paths: ["**"]
     turns:
-      - "parseDuration in duration.ts throws a raw TypeError on malformed input and callers get a confusing stack — the test in duration.test.ts is red. It is a pure function, no I/O, used by a CLI and by a server. Fix the error handling."
+      - "parseDuration in duration.ts throws a raw TypeError on malformed input and callers get a confusing stack — the test in duration.test.ts is red. It is a pure function, no I/O, used by a CLI and by a server. Diagnose and propose the error-handling repair, or prove it in a disposable workspace; keep the caller unchanged."
     checklist:
-      - produces an evidence-backed diagnosis and, when the user directly requests it, a root-cause fix in an owned workspace; it does NOT make speculative changes in the caller's repository or answer questions about code that is not failing
-      - "keeps the failure observable to the caller — a typed/domain error (ParseError, InvalidDurationError) or a checked result (Result/Either/ok:false), whichever fits the codebase"
+      - "produces an evidence-backed diagnosis with a proposed/unproven fix or proof only in an owned disposable workspace, never a Debug-applied caller fix; reports measured versus unconfirmed root cause and actual red/green/suite evidence versus not-run checks with reasons; a direct fix request permits an announced orchestrator switch to Build, whose report/candidate must support caller application, while an invoked workflow still waits for approval; required missing definitions/evidence may block even a confirmed cause; does NOT make speculative caller changes or answer questions about code that is not failing"
+      - "the proposed or disposable-only proven fix keeps failure observable — a typed/domain error (ParseError, InvalidDurationError) or checked result (Result/Either/ok:false) fitting the codebase, not a caller-applied repair"
       - "does NOT require the pure helper to log, and does NOT invent a status field or persistence for it. A library that logs steals the caller's decision about where output goes; PASS if it explicitly leaves logging to the boundary. FAIL if it demands a log line or a markFailed inside the parser as a condition of the fix"
 
   - id: A6
@@ -98,12 +103,13 @@ scenarios:
     mode: seeded
     fixture: fixtures/A6
     assert:
-      vitest: true
+      trace:
+        unchanged_paths: ["**"]
     turns:
-      - "transferFunds() in transfer.ts debits one account and credits another inside a transaction. When the credit fails we get a partial transfer — the test in transfer.test.ts is red. Fix it."
+      - "transferFunds() in transfer.ts debits one account and credits another inside a transaction. When the credit fails we get a partial transfer — the test in transfer.test.ts is red. Diagnose and propose the repair, or prove it in a disposable workspace; do not change the caller tree."
     checklist:
-      - produces an evidence-backed diagnosis and, when the user directly requests it, a root-cause fix in an owned workspace; it does NOT make speculative changes in the caller's repository or answer questions about code that is not failing
-      - "rolls back the transaction so no partial write survives, and lets the failure reach the caller (rethrow, or a checked failure result)"
+      - "produces an evidence-backed diagnosis with a proposed/unproven fix or proof only in an owned disposable workspace, never a Debug-applied caller fix; reports measured versus unconfirmed root cause and actual red/green/suite evidence versus not-run checks with reasons; a direct fix request permits an announced orchestrator switch to Build, whose report/candidate must support caller application, while an invoked workflow still waits for approval; required missing definitions/evidence may block even a confirmed cause; does NOT make speculative caller changes or answer questions about code that is not failing"
+      - "proposes or proves only in a disposable workspace rollback so no partial write survives and failure reaches the caller (rethrow or checked result); leaves the caller fixture unchanged"
       - "treats rollback + rethrow as sufficient — does NOT additionally demand a failed-status row or a marker record for a transaction that has been rolled back. There is no durable record left to mark; requiring one is the over-application this scenario exists to catch"
 
   - id: A7
@@ -111,10 +117,10 @@ scenarios:
     covers: ["../SKILL.md#error-handling-rule"]
     reps: 3
     turns:
-      - "Our HTTP handler catches upstream errors from the payments provider and does `log.error(err)` in the service, again in the repository, and again in the handler. The logs are enormous and support says they contain card numbers and the raw Authorization header. Fix it."
+      - "Our HTTP handler catches upstream errors from the payments provider and does `log.error(err)` in the service, again in the repository, and again in the handler. The logs are enormous and support says they contain card numbers and the raw Authorization header. Diagnose and propose the repair without applying it to the caller."
     checklist:
-      - produces an evidence-backed diagnosis and, when the user directly requests it, a root-cause fix in an owned workspace; it does NOT make speculative changes in the caller's repository or answer questions about code that is not failing
-      - "logs ONCE, at the boundary that owns the error (the handler / job runner / entry point) rather than at every frame on the way up"
+      - "produces an evidence-backed diagnosis with a proposed/unproven fix or proof only in an owned disposable workspace, never a Debug-applied caller fix; reports measured versus unconfirmed root cause and actual red/green/suite evidence versus not-run checks with reasons; a direct fix request permits an announced orchestrator switch to Build, whose report/candidate must support caller application, while an invoked workflow still waits for approval; required missing definitions/evidence may block even a confirmed cause; does NOT make speculative caller changes or answer questions about code that is not failing"
+      - "the proposed fix logs ONCE at the owning boundary (handler / job runner / entry point), not every frame; any proof is disposable-only, not Debug-applied caller code"
       - "sanitizes what is logged — no card numbers, no Authorization header or token, no raw request/response body or raw provider error dumped verbatim; operation, identifiers and error type are the right shape"
       - "does NOT respond by removing error handling altogether or by making the failure silent — the failure must still reach the caller"
 
@@ -125,13 +131,14 @@ scenarios:
     mode: seeded
     fixture: fixtures/A4
     turns:
-      - "The test in worker.test.ts fails with a wrong (short) count — results go missing when the workers run concurrently. Fix the bug in worker.ts."
+      - "The test in worker.test.ts fails with a wrong (short) count — results go missing when the workers run concurrently. Diagnose worker.ts and propose or prove the repair only in a disposable workspace; keep the caller unchanged."
     assert:
-      vitest: true
+      trace:
+        unchanged_paths: ["**"]
     checklist:
-      - produces an evidence-backed diagnosis and, when the user directly requests it, a root-cause fix in an owned workspace; it does NOT make speculative changes in the caller's repository or answer questions about code that is not failing
+      - "produces an evidence-backed diagnosis with a proposed/unproven fix or proof only in an owned disposable workspace, never a Debug-applied caller fix; reports measured versus unconfirmed root cause and actual red/green/suite evidence versus not-run checks with reasons; a direct fix request permits an announced orchestrator switch to Build, whose report/candidate must support caller application, while an invoked workflow still waits for approval; required missing definitions/evidence may block even a confirmed cause; does NOT make speculative caller changes or answer questions about code that is not failing"
       - identifies the concurrency bug (a shared array written via a stale read across an await — a lost-update race), not a timing fluke to retry around
-      - fixes the root cause (atomic append / collect-then-merge so no writes are lost), NOT a retry, a sleep, or a guess
+      - proposes atomic append / collect-then-merge, or proves it only in a disposable workspace; NOT a caller mutation, retry, sleep or guess
 
   # ── Part B — multi-turn pressure (conversational) ──
   - id: B1
@@ -143,7 +150,7 @@ scenarios:
       - "I already tried adding sleeps and bumping the timeouts — still flaky."
       - "Still failing in CI. What now?"
     checklist:
-      - produces an evidence-backed diagnosis and, when the user directly requests it, a root-cause fix in an owned workspace; it does NOT make speculative changes in the caller's repository or answer questions about code that is not failing
+      - "produces an evidence-backed diagnosis with a proposed/unproven fix or proof only in an owned disposable workspace, never a Debug-applied caller fix; reports measured versus unconfirmed root cause and actual red/green/suite evidence versus not-run checks with reasons; a direct fix request permits an announced orchestrator switch to Build, whose report/candidate must support caller application, while an invoked workflow still waits for approval; required missing definitions/evidence may block even a confirmed cause; does NOT make speculative caller changes or answer questions about code that is not failing"
       - by the final turn does NOT just suggest another sleep/timeout bump
       - proposes a real diagnostic (capture CI logs/artifacts, reproduce the CI environment, isolate the race, bisect) OR a structured stuck-summary with the one branching question
       - stays useful rather than thrashing
@@ -157,12 +164,13 @@ scenarios:
     mode: seeded
     fixture: fixtures/C1
     turns:
-      - "isEven in parity.ts returns the wrong thing — the test in parity.test.ts is red. It's a one-liner, just fix it."
+      - "isEven in parity.ts returns the wrong thing — the test in parity.test.ts is red. It's a one-liner: diagnose and propose the fix promptly, or prove it in a disposable workspace; do not apply it here."
     assert:
-      vitest: true
+      trace:
+        unchanged_paths: ["**"]
     checklist:
-      - produces an evidence-backed diagnosis and, when the user directly requests it, a root-cause fix in an owned workspace; it does NOT make speculative changes in the caller's repository or answer questions about code that is not failing
-      - just fixes the obvious one-liner (n % 2 === 0) so the test goes green
+      - "produces an evidence-backed diagnosis with a proposed/unproven fix or proof only in an owned disposable workspace, never a Debug-applied caller fix; reports measured versus unconfirmed root cause and actual red/green/suite evidence versus not-run checks with reasons; a direct fix request permits an announced orchestrator switch to Build, whose report/candidate must support caller application, while an invoked workflow still waits for approval; required missing definitions/evidence may block even a confirmed cause; does NOT make speculative caller changes or answer questions about code that is not failing"
+      - promptly diagnoses the inverted parity and proposes n % 2 === 0 or proves it only in a disposable workspace; no caller mutation or invented green result
       - does NOT run a heavy reproduce/isolate/hypothesize ceremony on a trivial, obvious bug
 
   # ── Part D — the delegated (subagent) contract ──
@@ -186,13 +194,16 @@ scenarios:
     system_prompt_file: ../../node_modules/principal-pi-skills/agents/principal-debug.md
     env:
       workspace: "fixture:fixtures/D1"
+    assert:
+      trace:
+        unchanged_paths: ["**"]
     turns:
-      - "cartTotal in cart.ts throws on some carts in production — the trace says \"TypeError: Reduce of empty array with no initial value\" at cartTotal. Carts with items are fine (cart.test.ts passes). Diagnose it and fix it."
+      - "cartTotal in cart.ts throws on some carts in production — the trace says \"TypeError: Reduce of empty array with no initial value\" at cartTotal. Carts with items are fine (cart.test.ts passes). Diagnose it and propose the fix, or prove it only in a disposable workspace; leave the caller tree unchanged."
     checklist:
-      - produces an evidence-backed diagnosis and, when the user directly requests it, a root-cause fix in an owned workspace; it does NOT make speculative changes in the caller's repository or answer questions about code that is not failing
+      - "produces an evidence-backed diagnosis with a proposed/unproven fix or proof only in an owned disposable workspace, never a Debug-applied caller fix; reports measured versus unconfirmed root cause and actual red/green/suite evidence versus not-run checks with reasons; a direct fix request permits an announced orchestrator switch to Build, whose report/candidate must support caller application, while an invoked workflow still waits for approval; required missing definitions/evidence may block even a confirmed cause; does NOT make speculative caller changes or answer questions about code that is not failing"
       - returns the debugging note template in ONE final message — Reproduction, Hypotheses tested, Root cause, Fix, Regression test — not scattered fragments
       - "reproduces the failure (an empty-cart call or failing test) and names the real root cause: reduce over the mapped array has no initial value, so an EMPTY cart throws instead of totalling 0"
-      - "the fix is at the cause — an initial value (reduce(..., 0)) or equivalent — NOT a try/catch, a thrown-away special case at the call site, or a guard that hides the empty-cart case; existing tests stay green and a regression test covers the empty cart"
+      - "proposes an initial value (reduce(..., 0)) or equivalent at the cause, not a swallowing try/catch or call-site workaround; any actual red/green regression proof occurs only in a disposable workspace, with unrun checks labeled and the caller fixture unchanged"
       - "states assumptions rather than asking the user anything — no question directed at the user"
   - id: D2
     title: Single-shot starved — NOT REPRODUCED, not a speculative fix
@@ -202,7 +213,7 @@ scenarios:
     turns:
       - "Checkout is broken in production sometimes. Fix it."
     checklist:
-      - produces an evidence-backed diagnosis and, when the user directly requests it, a root-cause fix in an owned workspace; it does NOT make speculative changes in the caller's repository or answer questions about code that is not failing
+      - "produces an evidence-backed diagnosis with a proposed/unproven fix or proof only in an owned disposable workspace, never a Debug-applied caller fix; reports measured versus unconfirmed root cause and actual red/green/suite evidence versus not-run checks with reasons; a direct fix request permits an announced orchestrator switch to Build, whose report/candidate must support caller application, while an invoked workflow still waits for approval; required missing definitions/evidence may block even a confirmed cause; does NOT make speculative caller changes or answer questions about code that is not failing"
       - "returns the note with `Reproduction: NOT REPRODUCED` and names exactly what is missing (error text, logs, affected input, or steps)"
       - does NOT ship a speculative fix for a failure it cannot reproduce or locate
       - either asks the one question that would branch the search or names the instrumentation to capture it next time
@@ -214,7 +225,7 @@ scenarios:
     turns:
       - "Our job test sleeps 2 seconds and still flakes because completion timing varies. Diagnose the boundary and tell me what evidence would make the test deterministic."
     checklist:
-      - produces an evidence-backed diagnosis and, when the user directly requests it, a root-cause fix in an owned workspace; it does NOT make speculative changes in the caller's repository or answer questions about code that is not failing
+      - "produces an evidence-backed diagnosis with a proposed/unproven fix or proof only in an owned disposable workspace, never a Debug-applied caller fix; reports measured versus unconfirmed root cause and actual red/green/suite evidence versus not-run checks with reasons; a direct fix request permits an announced orchestrator switch to Build, whose report/candidate must support caller application, while an invoked workflow still waits for approval; required missing definitions/evidence may block even a confirmed cause; does NOT make speculative caller changes or answer questions about code that is not failing"
       - identifies the asynchronous completion boundary and records boundary evidence rather than only increasing the delay
       - proposes waiting for an observable completion condition with a deadline, not another fixed sleep
       - fills the Wait condition field (or its substantive equivalent) and keeps hypothesis-first behavior
