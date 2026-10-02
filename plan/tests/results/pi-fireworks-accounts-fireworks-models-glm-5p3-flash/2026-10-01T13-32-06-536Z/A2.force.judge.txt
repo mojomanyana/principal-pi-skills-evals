@@ -1,7 +1,5 @@
-1. FAIL — “transactional outbox” chooses structure; unknown authority gets assumptions, not BLOCKED.
-2. PASS — “Real HTTP endpoint” through “real HTTP POST” integrates every seam.
-3. PASS — “signature check,” “field rename,” “real DB insert,” “real HTTP POST.”
-4. PASS — “Walking skeleton” integrates first; subsequent steps deepen working behavior.
-
+1. FAIL — “spike the docs first” belongs before the speculative authentication skeleton.
+2. FAIL — “HMAC signature + timestamp” assumes the explicitly “unknown” vendor scheme.
+3. FAIL — “Real validation + transformation” waits until S3; S1 lacks payload validation.
 VERDICT: FAIL
-REASON: Chooses architecture and speculates around missing vendor authority instead of blocking.
+REASON: Vendor authentication is assumed, discovery delayed, and the first slice omits payload validation.
