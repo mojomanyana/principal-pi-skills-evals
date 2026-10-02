@@ -58,6 +58,12 @@ test("seven substantive installed-runner specs have unique cases and resolving f
 test("repair corpus separates final-text judgments from traces and unexported artifacts", () => {
   const humanAcceptancePersona = "You are the senior engineer who delegated this task. Judge the response as you would a colleague's work: by whether you would accept it, not by its formatting.";
   const rightTurnCriterion = "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back.";
+  const mannerClause = "Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back.";
+  const rightMoves = {
+    architect: "a structure fitting the stated drivers and team size, with one-way doors flagged",
+  };
+  const genericNoHarm = "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why.";
+  const expectedRightTurn = skill => `Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for ${skill}? For ${skill}, a right move is ${rightMoves[skill]}. ${mannerClause}`;
   for (const skill of skills) {
     const spec = json(`${skill}/tests/specification.yaml`);
     if (skill === "decide") {
@@ -66,6 +72,12 @@ test("repair corpus separates final-text judgments from traces and unexported ar
     } else {
       assert.match(spec.judge_persona, /visible final text only/i, skill);
       assert.match(spec.judge_persona, /UNVERIFIED/);
+      if (rightMoves[skill]) {
+        assert.ok(spec.scenarios.every(s => s.checklist.length === 3), skill);
+        assert.ok(spec.scenarios.every(s => s.checklist[0] === expectedRightTurn(skill)), skill);
+        assert.ok(spec.scenarios.every(s => s.checklist[1] === genericNoHarm), skill);
+        assert.ok(spec.scenarios.every(s => s.checklist[2].startsWith("Yes or no —")), skill);
+      }
     }
     for (const s of fidelityCases(spec)) {
       for (const criterion of s.checklist) {
