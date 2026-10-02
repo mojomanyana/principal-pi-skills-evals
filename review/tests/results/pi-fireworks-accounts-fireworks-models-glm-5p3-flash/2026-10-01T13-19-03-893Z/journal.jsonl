@@ -1,3 +1,5 @@
 {"event":"run-started","ts":"2026-10-01T13:19:04.041Z","skill":"review","harness":"pi","model":"fireworks:accounts/fireworks/models/glm-5p3-flash","harness_cli_version":"0.87.1","judge":{"provider":"openai-codex","model":"gpt-6-astra"},"mode":"force","label":"sync-4.7.1-forced-reps-1"}
 {"event":"scenario-started","ts":"2026-10-01T13:19:04.041Z","id":"A2","title":"Silent failures are blockers"}
 {"event":"judge-verdict","ts":"2026-10-01T13:19:24.110Z","id":"A2","verdict":"FAIL","reason":"Missing Candidate reconciliation, Follow-ups, and explicit Workspace status.","suspect":false}
+{"event":"judge-verdict","ts":"2026-10-02T13:50:06.683Z","id":"A2","verdict":"PASS","reason":"Identifies invisible database failures, rejects approval, and recommends propagating errors.","suspect":false}
+{"event":"judge-verdict","ts":"2026-10-02T17:24:37.931Z","id":"A2","verdict":"FAIL","reason":"Correct core diagnosis, but a redundant second finding pads a trivial review.","suspect":false}

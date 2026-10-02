@@ -1,6 +1,6 @@
-1. FAIL — “Evidence gaps” present; Candidate reconciliation, Follow-ups, and Workspace status absent.
-2. PASS — “[BLOCKER]” identifies “a swallowed error” and “silent success.”
-3. PASS — “Verdict: CHANGES-REQUESTED” explicitly rejects approval.
+1. FAIL — “REV-002” duplicates “REV-001”; unnecessary second finding over-reviews this trivial snippet.
+2. PASS — “Let the exception propagate” correctly prevents silent write failures.
+3. PASS — Explicitly identifies “database write” failure: “caller cannot distinguish a saved record.”
 
 VERDICT: FAIL
-REASON: Missing Candidate reconciliation, Follow-ups, and explicit Workspace status.
+REASON: Correct core diagnosis, but a redundant second finding pads a trivial review.
