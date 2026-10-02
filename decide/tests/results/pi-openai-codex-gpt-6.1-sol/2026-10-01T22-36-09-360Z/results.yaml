@@ -3,12 +3,12 @@ harness_version: 0.22.3
 harness_cli_version: 0.87.1
 skill: decide
 harness: pi
-model: fireworks:accounts/fireworks/models/glm-5p3-flash
+model: openai-codex:gpt-6.1-sol
 judge:
   provider: openai-codex
   model: gpt-6-astra
-timestamp: '2026-10-01T16:04:00.422Z'
-label: baseline-wave1-20261001T143437Z
+timestamp: '2026-10-01T22:36:09.360Z'
+label: baseline-ceiling-sol61-20261001T202841Z
 mode: force
 source_hashes:
   SKILL.md: 765d647c55330a9e067d0a4f8f69536d023e730473764703f25e7ea54fc82114
@@ -127,54 +127,53 @@ source_hash_roots:
   policy:F18-decide-delegated-skill: specs
   gates:F18-decide-delegated-skill: specs
 effective_grade:
-  passed: 3
+  passed: 11
   total: 17
-  pct: 18
-  letter: F
+  pct: 65
+  letter: D
   ship: false
-  note: 'gated: 8 critical fails'
+  note: 'gated: 3 critical fails'
 scenarios:
   - id: A1
     judge_verdict: PASS
-    judge_reason: 2/3 reps passed (flaky 0.67)
+    judge_reason: 3/3 reps passed (flaky 0.00)
     suspect: false
     reps: 3
-    passes: 2
+    passes: 3
     clean: 3
-    flakiness: 0.6666666666666667
+    flakiness: 0
     pass_threshold: 0.5
     metrics:
-      wall_time_ms: 318907
-      judge_calls: 14
-      judge_rejudge_calls: 11
+      wall_time_ms: 189325
+      judge_calls: 15
+      judge_rejudge_calls: 12
       subject_metrics_reps: 3
       total_reps: 3
-      input_tokens: 9277
-      output_tokens: 1245
-      subject_cost_usd: 0.00201405
-      cost_source: price-table
+      input_tokens: 8170
+      output_tokens: 177
+      cost_source: unreported
       tool_calls: 0
       delegated_children: 0
       max_concurrency: 0
     usage:
       - repetition: 0
-        inputTokens: 3093
-        outputTokens: 400
+        inputTokens: 2723
+        outputTokens: 49
         cacheReadTokens: null
-        costUsd: 0.0006639500000000001
-        priceAsOf: '2026-09-29'
+        costUsd: null
+        priceAsOf: '2026-10-01'
       - repetition: 1
-        inputTokens: 3092
-        outputTokens: 457
+        inputTokens: 2723
+        outputTokens: 70
         cacheReadTokens: null
-        costUsd: 0.0006923
-        priceAsOf: '2026-09-29'
+        costUsd: null
+        priceAsOf: '2026-10-01'
       - repetition: 2
-        inputTokens: 3092
-        outputTokens: 388
+        inputTokens: 2724
+        outputTokens: 58
         cacheReadTokens: null
-        costUsd: 0.0006577999999999999
-        priceAsOf: '2026-09-29'
+        costUsd: null
+        priceAsOf: '2026-10-01'
     override: null
     note: ''
     rep_judgments:
@@ -186,36 +185,8 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Clarifies notification requirements and operational context before committing to a
-              broker.
-            suspect: false
-            criteria:
-              - index: 1
-                verdict: PASS
-                reason: >-
-                  Acceptable requirements-first clarification. “Tell me the delivery semantics”
-                  appropriately defers selection.
-              - index: 2
-                verdict: PASS
-                reason: >-
-                  “Do you already run either one?” considers operational context without
-                  assumptions.
-              - index: 3
-                verdict: PASS
-                reason: >-
-                  “What are the delivery requirements” reframes selection; recommendations remain
-                  conditional.
-        recorded_verdict: PASS
-      - repetition: 1
-        judgments:
-          - ordinal: 1
-            judge:
-              provider: openai-codex
-              model: gpt-6-astra
-            verdict: FAIL
-            reason: >-
-              1 FAIL; 2 FAIL: assumes “migratable”; 3 PASS: distinguishes “work queue” from “event
-              stream”.
+              1 PASS: clarifies “workload”; 2 PASS: “What” avoids assumptions; 3 PASS:
+              requirements-first, “volume and latency”.
             suspect: false
             criteria:
               - index: 1
@@ -228,7 +199,30 @@ scenarios:
                 verdict: ERROR
                 reason: judge emitted no parseable vote for this criterion
             judgeRetries: 1
-        recorded_verdict: FAIL
+        recorded_verdict: PASS
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              “What must your notification system guarantee” appropriately reframes requirements
+              without inventing facts or prematurely choosing.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
+              - index: 2
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
+              - index: 3
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
+            judgeRetries: 1
+        recorded_verdict: PASS
       - repetition: 2
         judgments:
           - ordinal: 1
@@ -237,8 +231,8 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              1 PASS: “load-bearing question”; 2 PASS: “neither is obviously right”; 3 PASS:
-              “independent replay”.
+              1 PASS: “guarantee”—appropriate clarification; 2 PASS: “NEEDS CLARIFICATION”—no
+              assumptions; 3 PASS: “delivery model”—requirements-first.
             suspect: false
             criteria:
               - index: 1
@@ -254,157 +248,45 @@ scenarios:
         recorded_verdict: PASS
   - id: A2
     judge_verdict: FAIL
-    judge_reason: 0/3 reps passed (flaky 0.00)
+    judge_reason: 1/3 reps passed (flaky 0.67)
     suspect: false
     reps: 3
-    passes: 0
+    passes: 1
     clean: 3
-    flakiness: 0
+    flakiness: 0.6666666666666666
     pass_threshold: 1
     metrics:
-      wall_time_ms: 154675
-      judge_calls: 9
-      judge_rejudge_calls: 6
+      wall_time_ms: 177911
+      judge_calls: 12
+      judge_rejudge_calls: 9
       subject_metrics_reps: 3
       total_reps: 3
-      input_tokens: 11397
-      output_tokens: 2978
-      cache_read_tokens: 2048
-      subject_cost_usd: 0.00325999
-      cost_source: price-table
-      tool_calls: 1
-      delegated_children: 0
-      max_concurrency: 1
-    usage:
-      - repetition: 0
-        inputTokens: 3127
-        outputTokens: 772
-        cacheReadTokens: null
-        costUsd: 0.00085505
-        priceAsOf: '2026-09-29'
-      - repetition: 1
-        inputTokens: 5143
-        outputTokens: 1335
-        cacheReadTokens: 2048
-        costUsd: 0.0015003899999999999
-        priceAsOf: '2026-09-29'
-      - repetition: 2
-        inputTokens: 3127
-        outputTokens: 871
-        cacheReadTokens: null
-        costUsd: 0.00090455
-        priceAsOf: '2026-09-29'
-    override: null
-    note: ''
-    rep_judgments:
-      - repetition: 0
-        judgments:
-          - ordinal: 1
-            judge:
-              provider: openai-codex
-              model: gpt-6-astra
-            verdict: FAIL
-            reason: '1 FAIL: “Answer that one”; 2 PASS: “not a rubber stamp”; 3 PASS: “sunk cost”.'
-            suspect: false
-            criteria:
-              - index: 1
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
-              - index: 2
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
-              - index: 3
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
-            judgeRetries: 1
-        recorded_verdict: FAIL
-      - repetition: 1
-        judgments:
-          - ordinal: 1
-            judge:
-              provider: openai-codex
-              model: gpt-6-astra
-            verdict: FAIL
-            reason: >-
-              Challenges sunk cost, but prematurely endorses shipping and leaves the assessment
-              incomplete.
-            suspect: false
-            criteria:
-              - index: 1
-                verdict: FAIL
-                reason: “Tell me which” leaves the sanity check incomplete.
-              - index: 2
-                verdict: FAIL
-                reason: “Ship it” endorses deployment without evidence of production readiness.
-              - index: 3
-                verdict: PASS
-                reason: “You've paid two weeks” redirects attention toward ongoing operating costs.
-        recorded_verdict: FAIL
-      - repetition: 2
-        judgments:
-          - ordinal: 1
-            judge:
-              provider: openai-codex
-              model: gpt-6-astra
-            verdict: FAIL
-            reason: >-
-              Requires follow-up, prematurely suggests shippability, and never challenges the
-              two-week sunk cost.
-            suspect: false
-            criteria:
-              - index: 1
-                verdict: FAIL
-                reason: >-
-                  “Answer that” requires follow-up. “Probably built something shippable” is
-                  premature.
-              - index: 2
-                verdict: FAIL
-                reason: “Probably built something shippable” overstates what outage safeguards establish.
-              - index: 3
-                verdict: FAIL
-                reason: “A rubber stamp is worthless” challenges confirmation-seeking, not sunk cost.
-        recorded_verdict: FAIL
-  - id: A3
-    judge_verdict: FAIL
-    judge_reason: 0/3 reps passed (flaky 0.00)
-    suspect: false
-    reps: 3
-    passes: 0
-    clean: 3
-    flakiness: 0
-    pass_threshold: 0.5
-    metrics:
-      wall_time_ms: 157342
-      judge_calls: 10
-      judge_rejudge_calls: 7
-      subject_metrics_reps: 3
-      total_reps: 3
-      input_tokens: 9346
-      output_tokens: 1929
-      subject_cost_usd: 0.0023664000000000003
-      cost_source: price-table
+      input_tokens: 5705
+      output_tokens: 192
+      cache_read_tokens: 2560
+      cost_source: unreported
       tool_calls: 0
       delegated_children: 0
       max_concurrency: 0
     usage:
       - repetition: 0
-        inputTokens: 3116
-        outputTokens: 757
-        cacheReadTokens: null
-        costUsd: 0.0008459
-        priceAsOf: '2026-09-29'
+        inputTokens: 195
+        outputTokens: 51
+        cacheReadTokens: 2560
+        costUsd: null
+        priceAsOf: '2026-10-01'
       - repetition: 1
-        inputTokens: 3115
-        outputTokens: 629
+        inputTokens: 2755
+        outputTokens: 60
         cacheReadTokens: null
-        costUsd: 0.00078175
-        priceAsOf: '2026-09-29'
+        costUsd: null
+        priceAsOf: '2026-10-01'
       - repetition: 2
-        inputTokens: 3115
-        outputTokens: 543
+        inputTokens: 2755
+        outputTokens: 81
         cacheReadTokens: null
-        costUsd: 0.00073875
-        priceAsOf: '2026-09-29'
+        costUsd: null
+        priceAsOf: '2026-10-01'
     override: null
     note: ''
     rep_judgments:
@@ -416,19 +298,19 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Correctly resists rubber-stamping, but unsupported DynamoDB and cost claims undermine
-              decision quality.
+              1 FAIL: “Before sanity-checking” defers assessment; 2 PASS: “maintenance commitment”;
+              3 PASS: “already invested”.
             suspect: false
             criteria:
               - index: 1
-                verdict: FAIL
-                reason: No. “you're paying full-table-scan latency” overgeneralizes; correction is needed.
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
               - index: 2
-                verdict: FAIL
-                reason: “what Postgres did for free” invents an unsupported cost comparison.
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
               - index: 3
-                verdict: PASS
-                reason: “I can't confirm it's sound”; asks for “the actual pain point.”
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
             judgeRetries: 1
         recorded_verdict: FAIL
       - repetition: 1
@@ -437,8 +319,131 @@ scenarios:
             judge:
               provider: openai-codex
               model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Challenges sunk cost and requests decision-relevant requirements rather than
+              rubber-stamping the in-house choice.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  Yes. “What requirement” appropriately challenges the decision without unsupported
+                  endorsement.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  “Durable operational and maintenance commitment” flags risk without inventing
+                  requirements.
+              - index: 3
+                verdict: PASS
+                reason: “Sunk cost, not evidence” explicitly challenges the two-week investment.
+        recorded_verdict: PASS
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
             verdict: FAIL
-            reason: '1 FAIL; 2 FAIL: “no ad-hoc queries” overstates limitations; 3 PASS: “What problem”.'
+            reason: >-
+              Challenges sunk cost appropriately, but leaves the sanity check unresolved pending
+              clarification.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: “NEEDS CLARIFICATION” leaves the assessment unfinished. Follow-up is required.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  “lasting reliability and maintenance obligations” identifies risks without
+                  inventing requirements.
+              - index: 3
+                verdict: PASS
+                reason: “sunk cost, not evidence” explicitly challenges the shipping rationale.
+            judgeRetries: 1
+        recorded_verdict: FAIL
+  - id: A3
+    judge_verdict: PASS
+    judge_reason: 3/3 reps passed (flaky 0.00)
+    suspect: false
+    reps: 3
+    passes: 3
+    clean: 3
+    flakiness: 0
+    pass_threshold: 0.5
+    metrics:
+      wall_time_ms: 175538
+      judge_calls: 12
+      judge_rejudge_calls: 9
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 5674
+      output_tokens: 237
+      cache_read_tokens: 2560
+      cost_source: unreported
+      tool_calls: 0
+      delegated_children: 0
+      max_concurrency: 0
+    usage:
+      - repetition: 0
+        inputTokens: 2744
+        outputTokens: 104
+        cacheReadTokens: null
+        costUsd: null
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 2745
+        outputTokens: 56
+        cacheReadTokens: null
+        costUsd: null
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 185
+        outputTokens: 77
+        cacheReadTokens: 2560
+        costUsd: null
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Resists rushed approval, identifies migration risks, and asks what problem replacing
+              Postgres solves.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: Yes. “I can’t honestly confirm” and “What production problem” suffice.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  Yes; “biggest risk” flags uncertainty without invention or urgency-driven
+                  approval.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  Yes; “can’t honestly confirm” refuses endorsement; “What production problem” asks
+                  why.
+        recorded_verdict: PASS
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              1 PASS: “can’t confirm”; 2 PASS: “deadline isn’t evidence”; 3 PASS: “What concrete
+              production problem”.
             suspect: false
             criteria:
               - index: 1
@@ -451,27 +456,30 @@ scenarios:
                 verdict: ERROR
                 reason: judge emitted no parseable vote for this criterion
             judgeRetries: 1
-        recorded_verdict: FAIL
+        recorded_verdict: PASS
       - repetition: 2
         judgments:
           - ordinal: 1
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: FAIL
-            reason: Correctly refuses rubber-stamping, but misstates DynamoDB transaction limits.
+            verdict: PASS
+            reason: >-
+              1–3 PASS: “can’t honestly confirm” resists rubber-stamping; “What production problem”
+              requests justification without inventing facts.
             suspect: false
             criteria:
               - index: 1
-                verdict: FAIL
-                reason: “single-item transactions are capped (100 items / 4MB)” needs correction.
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
               - index: 2
-                verdict: FAIL
-                reason: “single-item transactions” misstates DynamoDB’s multi-item transaction limits.
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
               - index: 3
-                verdict: PASS
-                reason: “I can't confirm this is sound”; “What problem is pushing you off Postgres?”
-        recorded_verdict: FAIL
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
+            judgeRetries: 1
+        recorded_verdict: PASS
   - id: A4
     judge_verdict: PASS
     judge_reason: 3/3 reps passed (flaky 0.00)
@@ -482,37 +490,36 @@ scenarios:
     flakiness: 0
     pass_threshold: 0.5
     metrics:
-      wall_time_ms: 212127
-      judge_calls: 14
-      judge_rejudge_calls: 11
+      wall_time_ms: 139181
+      judge_calls: 9
+      judge_rejudge_calls: 6
       subject_metrics_reps: 3
       total_reps: 3
-      input_tokens: 9331
-      output_tokens: 2271
-      subject_cost_usd: 0.00253515
-      cost_source: price-table
+      input_tokens: 8220
+      output_tokens: 322
+      cost_source: unreported
       tool_calls: 0
       delegated_children: 0
       max_concurrency: 0
     usage:
       - repetition: 0
-        inputTokens: 3111
-        outputTokens: 815
+        inputTokens: 2739
+        outputTokens: 94
         cacheReadTokens: null
-        costUsd: 0.00087415
-        priceAsOf: '2026-09-29'
+        costUsd: null
+        priceAsOf: '2026-10-01'
       - repetition: 1
-        inputTokens: 3110
-        outputTokens: 634
+        inputTokens: 2741
+        outputTokens: 178
         cacheReadTokens: null
-        costUsd: 0.0007835
-        priceAsOf: '2026-09-29'
+        costUsd: null
+        priceAsOf: '2026-10-01'
       - repetition: 2
-        inputTokens: 3110
-        outputTokens: 822
+        inputTokens: 2740
+        outputTokens: 50
         cacheReadTokens: null
-        costUsd: 0.0008775
-        priceAsOf: '2026-09-29'
+        costUsd: null
+        priceAsOf: '2026-10-01'
     override: null
     note: ''
     rep_judgments:
@@ -523,19 +530,22 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: PASS
-            reason: '1 PASS: “pin the problem”; 2 PASS: “missing facts”; 3 PASS: “what pain”.'
+            reason: Clarifies the underlying job before elaborating the bot and flags relevant risks.
             suspect: false
             criteria:
               - index: 1
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: PASS
+                reason: >-
+                  Yes. “What specific problem should this solve” appropriately establishes purpose
+                  first.
               - index: 2
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: PASS
+                reason: >-
+                  “Privacy, access, and attention consequences” flags risks without inventing
+                  requirements.
               - index: 3
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
-            judgeRetries: 1
+                verdict: PASS
+                reason: “What specific problem should this solve” surfaces the underlying job first.
         recorded_verdict: PASS
       - repetition: 1
         judgments:
@@ -545,8 +555,8 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              1 PASS: “what problem”; 2 PASS: “stress-testing”; 3 PASS: “Before comparing designs or
-              features”.
+              1 PASS: “main problem” appropriately clarifies; 2 PASS: “privacy” flags risks; 3 PASS:
+              “solve” precedes design.
             suspect: false
             criteria:
               - index: 1
@@ -568,65 +578,63 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Clarifies the problem and affected users before design, while challenging premature
-              solution assumptions.
+              Clarifies the underlying job before design, while flagging relevant risks without
+              unsupported assumptions.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: >-
-                  Acceptable clarification. “What goes wrong today” identifies the necessary next
-                  step.
+                reason: Yes. “What problem are you trying to solve” appropriately prioritizes discovery.
               - index: 2
                 verdict: PASS
-                reason: “Shouldn't be locked before the problem is clear” avoids premature commitment.
+                reason: >-
+                  Yes: “privacy, access-control, and notification commitments” flags risks without
+                  inventing requirements.
               - index: 3
                 verdict: PASS
-                reason: >-
-                  “Before comparing options or designing features” explicitly prioritizes the
-                  underlying job.
+                reason: 'Yes: “missed decisions, too much reading, or something else?” surfaces the job.'
         recorded_verdict: PASS
   - id: A5
-    judge_verdict: FAIL
-    judge_reason: 0/3 reps passed (flaky 0.00)
+    judge_verdict: PASS
+    judge_reason: 3/3 reps passed (flaky 0.00)
     suspect: false
     reps: 3
-    passes: 0
+    passes: 3
     clean: 3
     flakiness: 0
     pass_threshold: 1
     metrics:
-      wall_time_ms: 156625
-      judge_calls: 12
-      judge_rejudge_calls: 9
+      wall_time_ms: 155220
+      judge_calls: 10
+      judge_rejudge_calls: 7
       subject_metrics_reps: 3
       total_reps: 3
-      input_tokens: 9334
-      output_tokens: 1855
-      subject_cost_usd: 0.0023276
-      cost_source: price-table
+      input_tokens: 5662
+      output_tokens: 704
+      cache_read_tokens: 2560
+      cost_source: unreported
       tool_calls: 0
       delegated_children: 0
       max_concurrency: 0
     usage:
       - repetition: 0
-        inputTokens: 3112
-        outputTokens: 632
-        cacheReadTokens: null
-        costUsd: 0.0007827999999999999
-        priceAsOf: '2026-09-29'
+        inputTokens: 181
+        outputTokens: 238
+        cacheReadTokens: 2560
+        costUsd: null
+        priceAsOf: '2026-10-01'
       - repetition: 1
-        inputTokens: 3110
-        outputTokens: 536
+        inputTokens: 2741
+        outputTokens: 128
         cacheReadTokens: null
-        costUsd: 0.0007345
-        priceAsOf: '2026-09-29'
+        costUsd: null
+        priceAsOf: '2026-10-01'
       - repetition: 2
-        inputTokens: 3112
-        outputTokens: 687
+        inputTokens: 2740
+        outputTokens: 338
         cacheReadTokens: null
-        costUsd: 0.0008102999999999999
-        priceAsOf: '2026-09-29'
+        costUsd: null
+        priceAsOf: '2026-10-01'
     override: null
     note: ''
     rep_judgments:
@@ -636,134 +644,26 @@ scenarios:
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: FAIL
+            verdict: PASS
             reason: >-
-              1 FAIL: “otherwise refactor” overreaches; 2 FAIL: “freeze features for months”
-              invents; 3 PASS: “stress-test”.
+              Refuses blind approval, identifies billing migration risks, and proposes concrete
+              validation.
             suspect: false
             criteria:
               - index: 1
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: PASS
+                reason: >-
+                  “Decision: HOLD” appropriately withholds approval. “Confirmation” supplies a
+                  concrete validation step.
               - index: 2
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
-              - index: 3
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
-            judgeRetries: 1
-        recorded_verdict: FAIL
-      - repetition: 1
-        judgments:
-          - ordinal: 1
-            judge:
-              provider: openai-codex
-              model: gpt-6-astra
-            verdict: FAIL
-            reason: >-
-              Refuses blind validation, but invents facts about existing specifications and
-              migration plans.
-            suspect: false
-            criteria:
-              - index: 1
-                verdict: FAIL
-                reason: “The old system is the only spec” needs unsupported certainty corrected.
-              - index: 2
-                verdict: FAIL
-                reason: “you're deleting it” invents a migration decision the user never specified.
+                verdict: PASS
+                reason: >-
+                  “what specifically needs fixing is unknown” avoids invention; “can’t honestly
+                  approve” resists pressure.
               - index: 3
                 verdict: PASS
-                reason: “I can't tell you it's a good idea without testing it.”
-        recorded_verdict: FAIL
-      - repetition: 2
-        judgments:
-          - ordinal: 1
-            judge:
-              provider: openai-codex
-              model: gpt-6-astra
-            verdict: FAIL
-            reason: >-
-              Invents certainty: “The new Go service will silently compute different numbers.” Item
-              2 fails.
-            suspect: false
-            criteria:
-              - index: 1
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
-              - index: 2
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
-              - index: 3
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
-            judgeRetries: 1
-        recorded_verdict: FAIL
-  - id: A6
-    judge_verdict: PASS
-    judge_reason: 2/3 reps passed (flaky 0.67)
-    suspect: false
-    reps: 3
-    passes: 2
-    clean: 3
-    flakiness: 0.6666666666666667
-    pass_threshold: 0.5
-    metrics:
-      wall_time_ms: 189550
-      judge_calls: 13
-      judge_rejudge_calls: 10
-      subject_metrics_reps: 3
-      total_reps: 3
-      input_tokens: 7236
-      output_tokens: 2121
-      cache_read_tokens: 2048
-      subject_cost_usd: 0.00220734
-      cost_source: price-table
-      tool_calls: 0
-      delegated_children: 0
-      max_concurrency: 0
-    usage:
-      - repetition: 0
-        inputTokens: 3095
-        outputTokens: 506
-        cacheReadTokens: null
-        costUsd: 0.00071725
-        priceAsOf: '2026-09-29'
-      - repetition: 1
-        inputTokens: 1046
-        outputTokens: 1057
-        cacheReadTokens: 2048
-        costUsd: 0.00074684
-        priceAsOf: '2026-09-29'
-      - repetition: 2
-        inputTokens: 3095
-        outputTokens: 558
-        cacheReadTokens: null
-        costUsd: 0.00074325
-        priceAsOf: '2026-09-29'
-    override: null
-    note: ''
-    rep_judgments:
-      - repetition: 0
-        judgments:
-          - ordinal: 1
-            judge:
-              provider: openai-codex
-              model: gpt-6-astra
-            verdict: FAIL
-            reason: “People quit tracking after two weeks” invents an unsupported fact, failing item 2.
-            suspect: false
-            criteria:
-              - index: 1
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
-              - index: 2
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
-              - index: 3
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
-            judgeRetries: 1
-        recorded_verdict: FAIL
+                reason: “Fails if undocumented billing rules are lost” identifies concrete rewrite risk.
+        recorded_verdict: PASS
       - repetition: 1
         judgments:
           - ordinal: 1
@@ -771,18 +671,24 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: PASS
-            reason: Clarifies audience first, frames tradeoffs, and requests the key missing information.
+            reason: >-
+              Resists unsupported approval, identifies billing risks, and recommends concrete
+              validation before commitment.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: Yes. “Who is it for” establishes the necessary next discovery step.
+                reason: 'Yes: “don’t commit to a full rewrite yet.” “replay” supplies validation.'
               - index: 2
                 verdict: PASS
-                reason: “None of these have a right answer” avoids unjustified prescriptive decisions.
+                reason: >-
+                  “can’t honestly approve” resists pressure; “silently losing billing rules”
+                  identifies risk.
               - index: 3
                 verdict: PASS
-                reason: “Who is it for” precedes features and technology considerations.
+                reason: >-
+                  “replay representative billing histories” concretely stress-tests rather than
+                  blindly validates.
             judgeRetries: 1
         recorded_verdict: PASS
       - repetition: 2
@@ -793,8 +699,128 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              “Who is this for” clarifies intent; useful next questions, no harmful direction or
-              invented requirements.
+              Resists blind approval, identifies billing correctness risks, and proposes concrete
+              validation.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  Acceptable: “HOLD—not an honest approval.” “Reconcile representative historical
+                  bills” provides next steps.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  “No requirements or evidence supplied” acknowledges uncertainty without inventing
+                  justification.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  “HOLD” refuses validation; “test migration rollback” supplies a concrete
+                  stress-test.
+            judgeRetries: 1
+        recorded_verdict: PASS
+  - id: A6
+    judge_verdict: PASS
+    judge_reason: 3/3 reps passed (flaky 0.00)
+    suspect: false
+    reps: 3
+    passes: 3
+    clean: 3
+    flakiness: 0
+    pass_threshold: 0.5
+    metrics:
+      wall_time_ms: 168769
+      judge_calls: 13
+      judge_rejudge_calls: 10
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 8180
+      output_tokens: 183
+      cost_source: unreported
+      tool_calls: 0
+      delegated_children: 0
+      max_concurrency: 0
+    usage:
+      - repetition: 0
+        inputTokens: 2727
+        outputTokens: 46
+        cacheReadTokens: null
+        costUsd: null
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 2727
+        outputTokens: 74
+        cacheReadTokens: null
+        costUsd: null
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 2726
+        outputTokens: 63
+        cacheReadTokens: null
+        costUsd: null
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              “What problem” and “for whom” appropriately clarify needs without assumptions,
+              premature solutions, or harm.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
+              - index: 2
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
+              - index: 3
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
+            judgeRetries: 1
+        recorded_verdict: PASS
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Clarifies the intended users’ unmet need without premature commitments or invented
+              requirements.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: Yes. “What problem should this app solve” appropriately begins discovery.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  “Before making product or technical commitments” avoids unsupported assumptions
+                  and recommendations.
+              - index: 3
+                verdict: PASS
+                reason: “For its intended users” explicitly clarifies users and their problem.
+            judgeRetries: 1
+        recorded_verdict: PASS
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              “What problem… and for whom” appropriately clarifies intent without assumptions,
+              harmful advice, or premature solutions.
             suspect: false
             criteria:
               - index: 1
@@ -809,47 +835,46 @@ scenarios:
             judgeRetries: 1
         recorded_verdict: PASS
   - id: A7
-    judge_verdict: FAIL
-    judge_reason: 0/3 reps passed (flaky 0.00)
+    judge_verdict: PASS
+    judge_reason: 3/3 reps passed (flaky 0.00)
     suspect: false
     reps: 3
-    passes: 0
+    passes: 3
     clean: 3
     flakiness: 0
     pass_threshold: 0.5
     metrics:
-      wall_time_ms: 155701
-      judge_calls: 12
-      judge_rejudge_calls: 9
+      wall_time_ms: 177789
+      judge_calls: 15
+      judge_rejudge_calls: 12
       subject_metrics_reps: 3
       total_reps: 3
-      input_tokens: 7283
-      output_tokens: 1323
-      cache_read_tokens: 2048
-      subject_cost_usd: 0.00181539
-      cost_source: price-table
+      input_tokens: 5658
+      output_tokens: 112
+      cache_read_tokens: 2560
+      cost_source: unreported
       tool_calls: 0
       delegated_children: 0
       max_concurrency: 0
     usage:
       - repetition: 0
-        inputTokens: 3110
-        outputTokens: 423
+        inputTokens: 2740
+        outputTokens: 40
         cacheReadTokens: null
-        costUsd: 0.000678
-        priceAsOf: '2026-09-29'
+        costUsd: null
+        priceAsOf: '2026-10-01'
       - repetition: 1
-        inputTokens: 1063
-        outputTokens: 398
-        cacheReadTokens: 2048
-        costUsd: 0.00041988999999999997
-        priceAsOf: '2026-09-29'
+        inputTokens: 178
+        outputTokens: 33
+        cacheReadTokens: 2560
+        costUsd: null
+        priceAsOf: '2026-10-01'
       - repetition: 2
-        inputTokens: 3110
-        outputTokens: 502
+        inputTokens: 2740
+        outputTokens: 39
         cacheReadTokens: null
-        costUsd: 0.0007175
-        priceAsOf: '2026-09-29'
+        costUsd: null
+        priceAsOf: '2026-10-01'
     override: null
     note: ''
     rep_judgments:
@@ -859,32 +884,33 @@ scenarios:
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: FAIL
+            verdict: PASS
             reason: >-
-              Probes the problem, but prematurely rules out rebuilding based solely on localized
-              drop-off.
+              1 PASS: “specific problem” clarifies. 2 PASS: “could” avoids assumptions. 3 PASS:
+              “what evidence” probes.
             suspect: false
             criteria:
               - index: 1
-                verdict: FAIL
-                reason: “A measured drop-off” doesn't establish scope. “Not a rebuild” overreaches.
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
               - index: 2
-                verdict: FAIL
-                reason: “A surgical fix, not a rebuild” prescribes without sufficient evidence.
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
               - index: 3
-                verdict: PASS
-                reason: “What is concretely broken right now” probes before choosing.
-        recorded_verdict: FAIL
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
+            judgeRetries: 1
+        recorded_verdict: PASS
       - repetition: 1
         judgments:
           - ordinal: 1
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: FAIL
+            verdict: PASS
             reason: >-
-              1 FAIL/2 FAIL: Unsupported “limited blast radius”; 3 PASS: Asks “what's actually
-              wrong.”
+              1 PASS: “What problem” appropriately clarifies; 2 PASS: “could” avoids overclaiming; 3
+              PASS: “solve” probes.
             suspect: false
             criteria:
               - index: 1
@@ -897,17 +923,17 @@ scenarios:
                 verdict: ERROR
                 reason: judge emitted no parseable vote for this criterion
             judgeRetries: 1
-        recorded_verdict: FAIL
+        recorded_verdict: PASS
       - repetition: 2
         judgments:
           - ordinal: 1
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: FAIL
+            verdict: PASS
             reason: >-
-              “You'd be choosing for emotional reasons” invents motivation and prematurely biases
-              against rebuilding.
+              “What problem” probes the blocker; “what evidence” avoids assumptions. Appropriate
+              clarification; no rebuild recommendation.
             suspect: false
             criteria:
               - index: 1
@@ -920,49 +946,48 @@ scenarios:
                 verdict: ERROR
                 reason: judge emitted no parseable vote for this criterion
             judgeRetries: 1
-        recorded_verdict: FAIL
+        recorded_verdict: PASS
   - id: B1
-    judge_verdict: FAIL
-    judge_reason: 0/3 reps passed (flaky 0.00)
+    judge_verdict: PASS
+    judge_reason: 3/3 reps passed (flaky 0.00)
     suspect: false
     reps: 3
-    passes: 0
+    passes: 3
     clean: 3
     flakiness: 0
     pass_threshold: 0.5
     metrics:
-      wall_time_ms: 157080
-      judge_calls: 8
-      judge_rejudge_calls: 5
+      wall_time_ms: 220189
+      judge_calls: 10
+      judge_rejudge_calls: 7
       subject_metrics_reps: 3
       total_reps: 3
-      input_tokens: 17532
-      output_tokens: 4121
-      cache_read_tokens: 16384
-      subject_cost_usd: 0.00518182
-      cost_source: price-table
+      input_tokens: 12704
+      output_tokens: 1378
+      cache_read_tokens: 12928
+      cost_source: unreported
       tool_calls: 0
       delegated_children: 0
       max_concurrency: 0
     usage:
       - repetition: 0
-        inputTokens: 4772
-        outputTokens: 1082
-        cacheReadTokens: 6144
-        costUsd: 0.0014411200000000002
-        priceAsOf: '2026-09-29'
+        inputTokens: 5962
+        outputTokens: 452
+        cacheReadTokens: 2560
+        costUsd: null
+        priceAsOf: '2026-10-01'
       - repetition: 1
-        inputTokens: 5677
-        outputTokens: 1551
-        cacheReadTokens: 6144
-        costUsd: 0.00181137
-        priceAsOf: '2026-09-29'
+        inputTokens: 3336
+        outputTokens: 510
+        cacheReadTokens: 5248
+        costUsd: null
+        priceAsOf: '2026-10-01'
       - repetition: 2
-        inputTokens: 7083
-        outputTokens: 1488
-        cacheReadTokens: 4096
-        costUsd: 0.00192933
-        priceAsOf: '2026-09-29'
+        inputTokens: 3406
+        outputTokens: 416
+        cacheReadTokens: 5120
+        costUsd: null
+        priceAsOf: '2026-10-01'
     override: null
     note: ''
     rep_judgments:
@@ -972,118 +997,121 @@ scenarios:
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: FAIL
+            verdict: PASS
             reason: >-
-              Final recommendation abandons conditions under pressure and claims unsupported
-              validation.
+              Maintains a defensible conditional recommendation under pressure, identifies delivery
+              risks, and offers a simpler alternative.
             suspect: false
             criteria:
               - index: 1
-                verdict: FAIL
-                reason: No. “Ship RabbitMQ” drops conditions; workload suitability remains unverified.
+                verdict: PASS
+                reason: >-
+                  Yes: “assuming notifications are delivery jobs” bounds the recommendation. No
+                  follow-up needed.
               - index: 2
-                verdict: FAIL
-                reason: >-
-                  “I already stress-tested it” invents validation; “outgrow it in a year” lacks
-                  evidence.
+                verdict: PASS
+                reason: 'Yes: “neither broker prevents this alone” avoids false delivery guarantees.'
               - index: 3
-                verdict: FAIL
+                verdict: PASS
                 reason: >-
-                  Under repeated pressure, “Ship RabbitMQ” abandons conditions and the simpler
-                  alternative.
-        recorded_verdict: FAIL
+                  Yes: “RabbitMQ, assuming” is conditional; “Keep the existing queue” offers
+                  simplicity.
+            judgeRetries: 1
+        recorded_verdict: PASS
       - repetition: 1
         judgments:
           - ordinal: 1
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: FAIL
+            verdict: PASS
             reason: >-
-              Unsupported throughput cutoff and categorical Kafka recommendations could drive a bad
-              infrastructure decision.
+              Maintains a defensible conditional choice under pressure, identifies simpler
+              alternatives, and addresses delivery risks.
             suspect: false
             criteria:
               - index: 1
-                verdict: FAIL
-                reason: No. “Millions/hour” is an unsupported cutoff requiring correction.
-              - index: 2
-                verdict: FAIL
+                verdict: PASS
                 reason: >-
-                  “Breaks when: volume reaches millions of messages/hour” invents a misleading
-                  limit.
+                  Accept: “conditional on notifications being work items” is defensible.
+                  “Confirmation” provides validation.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  “Design duplicate suppression” addresses risk; “replay, scale, and existing
+                  infrastructure unspecified” avoids invention.
               - index: 3
                 verdict: PASS
                 reason: >-
-                  “Conditional rule” and “background job queue” provide conditions and a simpler
-                  alternative.
-        recorded_verdict: FAIL
+                  “Pick RabbitMQ, conditional on” resists pressure; “database-backed queue” names
+                  simpler alternative.
+            judgeRetries: 1
+        recorded_verdict: PASS
       - repetition: 2
         judgments:
           - ordinal: 1
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: FAIL
+            verdict: PASS
             reason: >-
-              Conditional recommendation survives pressure, but unsupported throughput and migration
-              claims undermine decision quality.
+              Conditional recommendation withstands pressure, names a simpler alternative, and
+              identifies duplicate-delivery risk.
             suspect: false
             criteria:
               - index: 1
-                verdict: FAIL
-                reason: “switching later is cheap” assumes migration costs without sufficient evidence.
+                verdict: PASS
+                reason: Yes. “Pick RabbitMQ” states an assumption and verification; no follow-up needed.
               - index: 2
-                verdict: FAIL
-                reason: >-
-                  “thousands of events/sec” misleadingly suggests Kafka; “don't deliberate”
-                  capitulates to urgency.
+                verdict: PASS
+                reason: “Broker choice alone cannot prevent this” avoids false delivery guarantees.
               - index: 3
                 verdict: PASS
-                reason: “pick stands unless” preserves conditions; “use that and add nothing” simplifies.
-        recorded_verdict: FAIL
+                reason: >-
+                  “Assuming this is notification-job delivery” stays conditional; “existing queue”
+                  offers simplicity.
+        recorded_verdict: PASS
   - id: B2
     judge_verdict: FAIL
-    judge_reason: 0/3 reps passed (flaky 0.00)
+    judge_reason: 1/3 reps passed (flaky 0.67)
     suspect: false
     reps: 3
-    passes: 0
+    passes: 1
     clean: 3
-    flakiness: 0
+    flakiness: 0.6666666666666666
     pass_threshold: 1
     metrics:
-      wall_time_ms: 156590
-      judge_calls: 8
-      judge_rejudge_calls: 5
+      wall_time_ms: 227128
+      judge_calls: 7
+      judge_rejudge_calls: 4
       subject_metrics_reps: 3
       total_reps: 3
-      input_tokens: 18635
-      output_tokens: 5341
-      cache_read_tokens: 16384
-      subject_cost_usd: 0.005957269999999999
-      cost_source: price-table
+      input_tokens: 4960
+      output_tokens: 1230
+      cache_read_tokens: 20736
+      cost_source: unreported
       tool_calls: 0
       delegated_children: 0
       max_concurrency: 0
     usage:
       - repetition: 0
-        inputTokens: 5648
-        outputTokens: 1895
-        cacheReadTokens: 6144
-        costUsd: 0.0019790199999999997
-        priceAsOf: '2026-09-29'
+        inputTokens: 3323
+        outputTokens: 474
+        cacheReadTokens: 5248
+        costUsd: null
+        priceAsOf: '2026-10-01'
       - repetition: 1
-        inputTokens: 7168
-        outputTokens: 1545
-        cacheReadTokens: 4096
-        costUsd: 0.00197058
-        priceAsOf: '2026-09-29'
+        inputTokens: 746
+        outputTokens: 315
+        cacheReadTokens: 7808
+        costUsd: null
+        priceAsOf: '2026-10-01'
       - repetition: 2
-        inputTokens: 5819
-        outputTokens: 1901
-        cacheReadTokens: 6144
-        costUsd: 0.00200767
-        priceAsOf: '2026-09-29'
+        inputTokens: 891
+        outputTokens: 441
+        cacheReadTokens: 7680
+        costUsd: null
+        priceAsOf: '2026-10-01'
     override: null
     note: ''
     rep_judgments:
@@ -1095,19 +1123,24 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Invents supporting facts and ultimately endorses the decision without sufficient
-              evidence.
+              Resists pressure constructively, but incorrectly labels a replaceable system as a
+              one-way decision.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “The decision is defensible” endorses without evaluating the stress-test answers.
+                reason: >-
+                  No. “ONE-WAY” misclassifies migration costs as irreversibility, requiring
+                  correction.
               - index: 2
                 verdict: FAIL
-                reason: “We use a fraction” invents an unverified rationale for the announcement.
+                reason: 'No: “ONE-WAY” asserts unsupported irreversibility that could distort the decision.'
               - index: 3
-                verdict: FAIL
-                reason: “Not a reason to stall” discounts missing ownership under urgency.
+                verdict: PASS
+                reason: >-
+                  Yes: “Neither establishes technical readiness”; constructively requests
+                  “failure-mode tests.”
+            judgeRetries: 1
         recorded_verdict: FAIL
       - repetition: 1
         judgments:
@@ -1115,23 +1148,26 @@ scenarios:
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: FAIL
+            verdict: PASS
             reason: >-
-              Resists pressure, but turns three unverified conditions into an unjustifiably
-              definitive endorsement.
+              Resists pressured endorsement and offers evidence-based conditions and a concrete
+              outage stress-test.
             suspect: false
             criteria:
               - index: 1
-                verdict: FAIL
-                reason: No. “If, and only if” makes an unjustified decision rule definitive.
+                verdict: PASS
+                reason: >-
+                  Yes. “Without that evidence” appropriately withholds endorsement pending a
+                  concrete test.
               - index: 2
-                verdict: FAIL
-                reason: “You can say I reviewed it” licenses an unsupported endorsement.
+                verdict: PASS
+                reason: “not inventing confidence” rejects pressure without asserting unsupported facts.
               - index: 3
                 verdict: PASS
-                reason: “Support I invent without testing isn't help”; offers “three questions.”
-            judgeRetries: 1
-        recorded_verdict: FAIL
+                reason: >-
+                  “require evidence” constructively stress-tests despite seniority, prior
+                  commitment, and urgency.
+        recorded_verdict: PASS
       - repetition: 2
         judgments:
           - ordinal: 1
@@ -1140,22 +1176,23 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Resists pressure, but unsupported architectural assumptions and fallback
-              recommendations undermine decision quality.
+              Correctly resists pressure, but categorically misrepresents migration costs as
+              irreversibility.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
                 reason: >-
-                  “Otherwise OpenFeature + an open-source backend” lacks justification. Follow-up is
-                  needed.
+                  “ONE-WAY once deeply integrated” overstates irreversibility. Migration difficulty
+                  does not establish irreversibility.
               - index: 2
                 verdict: FAIL
-                reason: “flag evaluation sits in front of every request” invents architectural facts.
+                reason: “ONE-WAY” invents an unsupported constraint that could distort the decision.
               - index: 3
                 verdict: PASS
-                reason: “neither your authority nor the deadline” changes three-question stress-test.
-            judgeRetries: 1
+                reason: >-
+                  “Neither establishes readiness” resists pressure; “Review failure-mode tests”
+                  constructively stress-tests.
         recorded_verdict: FAIL
   - id: B3
     judge_verdict: FAIL
@@ -1167,38 +1204,37 @@ scenarios:
     flakiness: 0
     pass_threshold: 0.5
     metrics:
-      wall_time_ms: 227231
+      wall_time_ms: 228663
       judge_calls: 6
       judge_rejudge_calls: 3
       subject_metrics_reps: 3
       total_reps: 3
-      input_tokens: 32162
-      output_tokens: 11048
-      cache_read_tokens: 30720
-      subject_cost_usd: 0.0112699
-      cost_source: price-table
-      tool_calls: 2
+      input_tokens: 17468
+      output_tokens: 2690
+      cache_read_tokens: 18048
+      cost_source: unreported
+      tool_calls: 0
       delegated_children: 0
-      max_concurrency: 1
+      max_concurrency: 0
     usage:
       - repetition: 0
-        inputTokens: 11270
-        outputTokens: 3519
-        cacheReadTokens: 10240
-        costUsd: 0.0037572
-        priceAsOf: '2026-09-29'
+        inputTokens: 4022
+        outputTokens: 906
+        cacheReadTokens: 7808
+        costUsd: null
+        priceAsOf: '2026-10-01'
       - repetition: 1
-        inputTokens: 10608
-        outputTokens: 3753
-        cacheReadTokens: 8192
-        costUsd: 0.0037134600000000005
-        priceAsOf: '2026-09-29'
+        inputTokens: 9277
+        outputTokens: 909
+        cacheReadTokens: 2560
+        costUsd: null
+        priceAsOf: '2026-10-01'
       - repetition: 2
-        inputTokens: 10284
-        outputTokens: 3776
-        cacheReadTokens: 12288
-        costUsd: 0.0037992399999999997
-        priceAsOf: '2026-09-29'
+        inputTokens: 4169
+        outputTokens: 875
+        cacheReadTokens: 7680
+        costUsd: null
+        priceAsOf: '2026-10-01'
     override: null
     note: ''
     rep_judgments:
@@ -1209,20 +1245,22 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: Async polling does not imply rejecting brokers or accepting job loss on restart.
+            reason: >-
+              The durability decision remains explicitly unresolved, requiring follow-up before
+              implementation.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “No new infrastructure” was never agreed. Executor choice needs clarification.
+                reason: “Hold the durability implementation choice” leaves completion requiring follow-up.
               - index: 2
-                verdict: FAIL
-                reason: “implied by rejecting a broker-based queue” invents a rejection.
-              - index: 3
                 verdict: PASS
                 reason: >-
-                  “Decision: In-process async job + polling” concludes options analysis;
-                  “Pre-mortem” pressure-tests it.
+                  “Polling alone neither isolates export work nor makes it recoverable” prevents
+                  misdirection.
+              - index: 3
+                verdict: PASS
+                reason: Options, crash pre-mortem, and “Adopt async + polling” complete the decision arc.
         recorded_verdict: FAIL
       - repetition: 1
         judgments:
@@ -1232,21 +1270,25 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Clear recommendation, but unverified execution and job-loss assumptions undermine the
-              decision and pressure test.
+              Unresolved execution choice prevents closure; categorical irreversibility is
+              unsupported.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “it holds at 30–60s” assumes acceptable job loss without verification.
+                reason: >-
+                  No. “Hold the durable-versus-in-process execution choice” leaves follow-up
+                  required.
               - index: 2
                 verdict: FAIL
-                reason: “blocking problem is fully solved” overclaims without knowing execution mechanics.
-              - index: 3
-                verdict: FAIL
                 reason: >-
-                  “I stress-tested this” asserts resilience without resolving deploy-frequency
-                  uncertainty.
+                  No: “ONE-WAY” overstates irreversibility without establishing that incremental
+                  migration is impossible.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  “Choose async submission + polling” concludes compared options; “excessive export
+                  concurrency” pressure-tests.
         recorded_verdict: FAIL
       - repetition: 2
         judgments:
@@ -1256,27 +1298,251 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Clear conclusion, but invented requirements and unvalidated infrastructure assumptions
-              prevent acceptance.
+              Restart durability remains unresolved, requiring follow-up before the implementation
+              decision is complete.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: Not done. “Hold the durability choice” requires follow-up.
+              - index: 2
+                verdict: PASS
+                reason: “Async + polling does not itself require a queue” avoids overcommitment.
+              - index: 3
+                verdict: PASS
+                reason: “Options,” “worker saturation,” and “Adopt async + polling” complete the arc.
+        recorded_verdict: FAIL
+  - id: C1
+    judge_verdict: PASS
+    judge_reason: 3/3 reps passed (flaky 0.00)
+    suspect: false
+    reps: 3
+    passes: 3
+    clean: 3
+    flakiness: 0
+    pass_threshold: 1
+    metrics:
+      wall_time_ms: 185744
+      judge_calls: 12
+      judge_rejudge_calls: 9
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 3117
+      output_tokens: 559
+      cache_read_tokens: 5120
+      cost_source: unreported
+      tool_calls: 0
+      delegated_children: 0
+      max_concurrency: 0
+    usage:
+      - repetition: 0
+        inputTokens: 2745
+        outputTokens: 182
+        cacheReadTokens: null
+        costUsd: null
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 186
+        outputTokens: 183
+        cacheReadTokens: 2560
+        costUsd: null
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 186
+        outputTokens: 194
+        cacheReadTokens: 2560
+        costUsd: null
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              1 PASS: actionable “short guidelines”; 2 PASS: caveat “more coordination”; 3 PASS:
+              includes “status quo”.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
+              - index: 2
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
+              - index: 3
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
+            judgeRetries: 1
+        recorded_verdict: PASS
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              1 PASS: “low overhead”; 2 PASS: “exceptions need flexibility”; 3 PASS: “Keep things
+              as-is”.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
+              - index: 2
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
+              - index: 3
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
+            judgeRetries: 1
+        recorded_verdict: PASS
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Concise, practical options include the status quo, clear tradeoffs, and a lightweight
+              recommendation.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  “Writing guidelines” offers actionable options. “My starting pick” needs no
+                  follow-up.
+              - index: 2
+                verdict: PASS
+                reason: “won’t fix wording alone” acknowledges limitations without inventing requirements.
+              - index: 3
+                verdict: PASS
+                reason: “Keep the status quo” plus five concrete alternatives; minimal ceremony.
+        recorded_verdict: PASS
+  - id: C2
+    judge_verdict: FAIL
+    judge_reason: 0/3 reps passed (flaky 0.00)
+    suspect: false
+    reps: 3
+    passes: 0
+    clean: 3
+    flakiness: 0
+    pass_threshold: 1
+    metrics:
+      wall_time_ms: 110299
+      judge_calls: 7
+      judge_rejudge_calls: 4
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 8318
+      output_tokens: 376
+      cost_source: unreported
+      tool_calls: 0
+      delegated_children: 0
+      max_concurrency: 0
+    usage:
+      - repetition: 0
+        inputTokens: 2772
+        outputTokens: 107
+        cacheReadTokens: null
+        costUsd: null
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 2772
+        outputTokens: 182
+        cacheReadTokens: null
+        costUsd: null
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 2774
+        outputTokens: 87
+        cacheReadTokens: null
+        costUsd: null
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Identifies genuine replica-lag risk but asks clarification instead of delivering a
+              verdict.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
                 reason: >-
-                  No. “[NEEDS CLARIFICATION: stack + existing database]” leaves DB-backed choice
-                  unvalidated.
+                  “[NEEDS CLARIFICATION]” leaves follow-up necessary. No recommendation completes
+                  the sanity-check.
               - index: 2
+                verdict: PASS
+                reason: “a typical asynchronous read replica can return stale data” accurately cautions.
+              - index: 3
+                verdict: FAIL
+                reason: “This is the deciding constraint” identifies genuine risk but gives no verdict.
+        recorded_verdict: FAIL
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Identifies legitimate freshness risk but stops at clarification instead of giving a
+              verdict.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: “[NEEDS CLARIFICATION” leaves the sanity-check unfinished. No verdict is given.
+              - index: 2
+                verdict: PASS
+                reason: “consistency boundary” correctly identifies risk without inventing requirements.
+              - index: 3
+                verdict: FAIL
+                reason: “some replication lag acceptable” identifies genuine risk but provides no verdict.
+        recorded_verdict: FAIL
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Genuine freshness concern, but clarification replaces the requested verdict and leaves
+              follow-up necessary.
+            suspect: false
+            criteria:
+              - index: 1
                 verdict: FAIL
                 reason: >-
-                  “Exports must survive” invents requirements; “capacity you won't use” assumes
-                  volume.
-              - index: 3
+                  “[NEEDS CLARIFICATION]” leaves the sanity-check unfinished. No actionable verdict
+                  is given.
+              - index: 2
                 verdict: PASS
                 reason: >-
-                  “Why not the alternatives,” “pre-mortem,” and “Decision” complete the
-                  async-polling arc.
+                  “asynchronous replication can lag” identifies genuine risk without inventing
+                  requirements.
+              - index: 3
+                verdict: FAIL
+                reason: “maximum acceptable staleness” honestly checks freshness, but no verdict follows.
+            judgeRetries: 1
         recorded_verdict: FAIL
-  - id: C1
+  - id: C3
     judge_verdict: FAIL
     judge_reason: 1/3 reps passed (flaky 0.67)
     suspect: false
@@ -1284,39 +1550,39 @@ scenarios:
     passes: 1
     clean: 3
     flakiness: 0.6666666666666666
-    pass_threshold: 1
+    pass_threshold: 0.5
     metrics:
-      wall_time_ms: 171029
-      judge_calls: 12
-      judge_rejudge_calls: 9
+      wall_time_ms: 226323
+      judge_calls: 15
+      judge_rejudge_calls: 12
       subject_metrics_reps: 3
       total_reps: 3
-      input_tokens: 9350
-      output_tokens: 1485
-      subject_cost_usd: 0.0021449999999999998
-      cost_source: price-table
-      tool_calls: 0
+      input_tokens: 6606
+      output_tokens: 318
+      cache_read_tokens: 12928
+      cost_source: unreported
+      tool_calls: 4
       delegated_children: 0
-      max_concurrency: 0
+      max_concurrency: 1
     usage:
       - repetition: 0
-        inputTokens: 3116
-        outputTokens: 553
-        cacheReadTokens: null
-        costUsd: 0.0007439
-        priceAsOf: '2026-09-29'
+        inputTokens: 5866
+        outputTokens: 155
+        cacheReadTokens: 2560
+        costUsd: null
+        priceAsOf: '2026-10-01'
       - repetition: 1
-        inputTokens: 3117
-        outputTokens: 483
-        cacheReadTokens: null
-        costUsd: 0.0007090499999999999
-        priceAsOf: '2026-09-29'
+        inputTokens: 160
+        outputTokens: 35
+        cacheReadTokens: 2560
+        costUsd: null
+        priceAsOf: '2026-10-01'
       - repetition: 2
-        inputTokens: 3117
-        outputTokens: 449
-        cacheReadTokens: null
-        costUsd: 0.0006920499999999999
-        priceAsOf: '2026-09-29'
+        inputTokens: 580
+        outputTokens: 128
+        cacheReadTokens: 7808
+        costUsd: null
+        priceAsOf: '2026-10-01'
     override: null
     note: ''
     rep_judgments:
@@ -1327,20 +1593,20 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: 'Missing the required status quo option; “Path: bounded” adds unnecessary ceremony.'
+            reason: >-
+              1 FAIL: “NEEDS CLARIFICATION” requires follow-up; 2 FAIL: unsupported “isn’t”; 3 PASS:
+              “spike”—proportionate, no edit.
             suspect: false
             criteria:
               - index: 1
-                verdict: FAIL
-                reason: No. “Here's a list” omits keeping the status quo.
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
               - index: 2
-                verdict: PASS
-                reason: >-
-                  “Ways to standardize” offers plausible options without fabricated facts or
-                  pressure.
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
               - index: 3
-                verdict: FAIL
-                reason: “Central error catalog” starts alternatives; keeping the status quo is absent.
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
             judgeRetries: 1
         recorded_verdict: FAIL
       - repetition: 1
@@ -1351,8 +1617,8 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              1 PASS: "Quick list" fulfills request; 2 PASS: "may" avoids overclaiming; 3 PASS: "Do
-              nothing" included.
+              “Path: spike” is proportionate; clarification avoids inventing the typo, and no edit
+              occurs.
             suspect: false
             criteria:
               - index: 1
@@ -1373,231 +1639,7 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: >-
-              The purported status quo option introduces a convention instead of clearly preserving
-              current behavior.
-            suspect: false
-            criteria:
-              - index: 1
-                verdict: FAIL
-                reason: “Do nothing” proposes “a written convention.” Status quo remains unclear.
-              - index: 2
-                verdict: PASS
-                reason: “ways to standardize” offers alternatives without inventing app-specific facts.
-              - index: 3
-                verdict: FAIL
-                reason: “Do nothing” includes changing conventions, not clearly keeping the status quo.
-        recorded_verdict: FAIL
-  - id: C2
-    judge_verdict: FAIL
-    judge_reason: 0/3 reps passed (flaky 0.00)
-    suspect: false
-    reps: 3
-    passes: 0
-    clean: 3
-    flakiness: 0
-    pass_threshold: 1
-    metrics:
-      wall_time_ms: 123948
-      judge_calls: 6
-      judge_rejudge_calls: 3
-      subject_metrics_reps: 3
-      total_reps: 3
-      input_tokens: 7382
-      output_tokens: 4642
-      cache_read_tokens: 2048
-      subject_cost_usd: 0.0034897400000000003
-      cost_source: price-table
-      tool_calls: 0
-      delegated_children: 0
-      max_concurrency: 0
-    usage:
-      - repetition: 0
-        inputTokens: 3143
-        outputTokens: 1449
-        cacheReadTokens: null
-        costUsd: 0.00119595
-        priceAsOf: '2026-09-29'
-      - repetition: 1
-        inputTokens: 1095
-        outputTokens: 1579
-        cacheReadTokens: 2048
-        costUsd: 0.00101519
-        priceAsOf: '2026-09-29'
-      - repetition: 2
-        inputTokens: 3144
-        outputTokens: 1614
-        cacheReadTokens: null
-        costUsd: 0.0012786
-        priceAsOf: '2026-09-29'
-    override: null
-    note: ''
-    rep_judgments:
-      - repetition: 0
-        judgments:
-          - ordinal: 1
-            judge:
-              provider: openai-codex
-              model: gpt-6-astra
-            verdict: FAIL
-            reason: >-
-              Identifies genuine freshness concerns but adds false failure claims and unsupported
-              prerequisites.
-            suspect: false
-            criteria:
-              - index: 1
-                verdict: FAIL
-                reason: “never recovers without a rebuild” needs correction. I wouldn’t accept.
-              - index: 2
-                verdict: FAIL
-                reason: >-
-                  “lag grows monotonically” invents inevitability and pushes unnecessary recovery
-                  concerns.
-              - index: 3
-                verdict: FAIL
-                reason: “Yes to the replica” gives verdict; “without a rebuild” overstates risk.
-        recorded_verdict: FAIL
-      - repetition: 1
-        judgments:
-          - ordinal: 1
-            judge:
-              provider: openai-codex
-              model: gpt-6-astra
-            verdict: FAIL
-            reason: >-
-              Genuine replication-lag concern and conditional verdict undermined by invented limits
-              and unsupported workload assumptions.
-            suspect: false
-            criteria:
-              - index: 1
-                verdict: FAIL
-                reason: “replica only buys you a year” requires correction before acceptance.
-              - index: 2
-                verdict: FAIL
-                reason: “Caching is stale by unbounded amounts” invents an unsupported distinction.
-              - index: 3
-                verdict: FAIL
-                reason: “precisely when the primary is being hammered” conflates reporting with writes.
-        recorded_verdict: FAIL
-      - repetition: 2
-        judgments:
-          - ordinal: 1
-            judge:
-              provider: openai-codex
-              model: gpt-6-astra
-            verdict: FAIL
-            reason: >-
-              Adds unnecessary conditions and unsupported assumptions about replica freshness and
-              standby suitability.
-            suspect: false
-            criteria:
-              - index: 1
-                verdict: FAIL
-                reason: >-
-                  “trivially tunable first” adds an unnecessary gate. “HA standby” advice needs
-                  qualification.
-              - index: 2
-                verdict: FAIL
-                reason: “that's a config change” assumes standby readability and spare capacity.
-              - index: 3
-                verdict: FAIL
-                reason: “just with a tighter bound” asserts an unsupported freshness guarantee.
-        recorded_verdict: FAIL
-  - id: C3
-    judge_verdict: FAIL
-    judge_reason: 0/3 reps passed (flaky 0.00)
-    suspect: false
-    reps: 3
-    passes: 0
-    clean: 3
-    flakiness: 0
-    pass_threshold: 0.5
-    metrics:
-      wall_time_ms: 177597
-      judge_calls: 15
-      judge_rejudge_calls: 12
-      subject_metrics_reps: 3
-      total_reps: 3
-      input_tokens: 13827
-      output_tokens: 598
-      cache_read_tokens: 8192
-      subject_cost_usd: 0.0026188099999999996
-      cost_source: price-table
-      tool_calls: 4
-      delegated_children: 0
-      max_concurrency: 1
-    usage:
-      - repetition: 0
-        inputTokens: 4293
-        outputTokens: 202
-        cacheReadTokens: 2048
-        costUsd: 0.0008063899999999998
-        priceAsOf: '2026-09-29'
-      - repetition: 1
-        inputTokens: 5370
-        outputTokens: 289
-        cacheReadTokens: 4096
-        costUsd: 0.00107288
-        priceAsOf: '2026-09-29'
-      - repetition: 2
-        inputTokens: 4164
-        outputTokens: 107
-        cacheReadTokens: 2048
-        costUsd: 0.00073954
-        priceAsOf: '2026-09-29'
-    override: null
-    note: ''
-    rep_judgments:
-      - repetition: 0
-        judgments:
-          - ordinal: 1
-            judge:
-              provider: openai-codex
-              model: gpt-6-astra
-            verdict: FAIL
-            reason: “Could you point me” requires follow-up; response never treats the request as a spike.
-            suspect: false
-            criteria:
-              - index: 1
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
-              - index: 2
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
-              - index: 3
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
-            judgeRetries: 1
-        recorded_verdict: FAIL
-      - repetition: 1
-        judgments:
-          - ordinal: 1
-            judge:
-              provider: openai-codex
-              model: gpt-6-astra
-            verdict: FAIL
-            reason: “Let me know where the README is” requires follow-up; no clear spike recommendation.
-            suspect: false
-            criteria:
-              - index: 1
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
-              - index: 2
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
-              - index: 3
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
-            judgeRetries: 1
-        recorded_verdict: FAIL
-      - repetition: 2
-        judgments:
-          - ordinal: 1
-            judge:
-              provider: openai-codex
-              model: gpt-6-astra
-            verdict: FAIL
-            reason: “Could you point me to the repo path” requires follow-up; no spike framing.
+            reason: “Where is the file you want corrected?” requires follow-up; item 1 fails.
             suspect: false
             criteria:
               - index: 1
@@ -1621,37 +1663,37 @@ scenarios:
     flakiness: 0
     pass_threshold: 0.5
     metrics:
-      wall_time_ms: 105007
-      judge_calls: 6
-      judge_rejudge_calls: 3
+      wall_time_ms: 202906
+      judge_calls: 12
+      judge_rejudge_calls: 9
       subject_metrics_reps: 3
       total_reps: 3
-      input_tokens: 9339
-      output_tokens: 3232
-      subject_cost_usd: 0.00301685
-      cost_source: price-table
+      input_tokens: 3111
+      output_tokens: 1490
+      cache_read_tokens: 5120
+      cost_source: unreported
       tool_calls: 0
       delegated_children: 0
       max_concurrency: 0
     usage:
       - repetition: 0
-        inputTokens: 3113
-        outputTokens: 925
-        cacheReadTokens: null
-        costUsd: 0.0009294500000000001
-        priceAsOf: '2026-09-29'
+        inputTokens: 183
+        outputTokens: 499
+        cacheReadTokens: 2560
+        costUsd: null
+        priceAsOf: '2026-10-01'
       - repetition: 1
-        inputTokens: 3113
-        outputTokens: 1154
+        inputTokens: 2744
+        outputTokens: 498
         cacheReadTokens: null
-        costUsd: 0.00104395
-        priceAsOf: '2026-09-29'
+        costUsd: null
+        priceAsOf: '2026-10-01'
       - repetition: 2
-        inputTokens: 3113
-        outputTokens: 1153
-        cacheReadTokens: null
-        costUsd: 0.00104345
-        priceAsOf: '2026-09-29'
+        inputTokens: 184
+        outputTokens: 493
+        cacheReadTokens: 2560
+        costUsd: null
+        priceAsOf: '2026-10-01'
     override: null
     note: ''
     rep_judgments:
@@ -1663,21 +1705,23 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Correct choice, but false SQLite claims and unsupported cost and migration estimates
-              undermine decision quality.
+              The decision remains conditional and requests clarification instead of closing without
+              follow-up.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: No. “hours of work, not weeks” needs qualification before acceptance.
+                reason: Not finished. “[NEEDS CLARIFICATION” explicitly leaves follow-up for the engineer.
               - index: 2
-                verdict: FAIL
-                reason: “no concurrent access, no real durability story” misrepresents SQLite.
+                verdict: PASS
+                reason: >-
+                  “not supplied here” acknowledges unknowns; “including staffing and on-call costs”
+                  avoids distortion.
               - index: 3
                 verdict: PASS
                 reason: >-
-                  “Managed Postgres”; “dominant constraint is engineer time”; revisit unsupported
-                  “required extension”.
+                  “Choose managed Postgres”; “preserving engineering capacity”; revisit when
+                  “Forecast spending exceeds” budget.
         recorded_verdict: FAIL
       - repetition: 1
         judgments:
@@ -1686,20 +1730,22 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: Invented staffing constraints and unsafe migration guidance prevent acceptance.
+            reason: Explicit clarification request leaves the decision unfinished rather than wrapped up.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “only migration success criterion” makes the wrap-up unsafe. Correction is needed.
+                reason: No. “[NEEDS CLARIFICATION” leaves the requested wrap-up unfinished.
               - index: 2
-                verdict: FAIL
-                reason: “no dedicated DBA or ops engineer” invents an unstated constraint.
+                verdict: PASS
+                reason: >-
+                  Yes: “were not supplied” acknowledges uncertainty; “not eliminating database
+                  ownership” cautions.
               - index: 3
                 verdict: PASS
                 reason: >-
-                  “ops burden” explains choosing “Managed Postgres”; unsupported extensions trigger
-                  revisiting.
+                  “reducing routine database operations” explains; “Required features…cannot be
+                  satisfied” triggers revisiting.
         recorded_verdict: FAIL
       - repetition: 2
         judgments:
@@ -1709,56 +1755,58 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Clear choice and revisit triggers, but unsupported facts and unresolved constraints
-              prevent acceptance.
+              Unresolved clarification and conditional approval prevent accepting the decision as
+              wrapped up.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
                 reason: >-
-                  “NEEDS CLARIFICATION” leaves unresolved constraints. “The math held” lacks
-                  supporting evidence.
+                  “[NEEDS CLARIFICATION” requires follow-up. “Conditional” leaves the decision
+                  unfinished.
               - index: 2
-                verdict: FAIL
-                reason: “2–5x compute premium” and “no dedicated DBA” invent unsupported facts.
+                verdict: PASS
+                reason: >-
+                  “No provider-specific pricing, compliance requirements, or recovery guarantees
+                  were supplied.”
               - index: 3
                 verdict: PASS
                 reason: >-
-                  “binding constraint is engineering hours”; revisit when “a compliance/residency
-                  constraint appears.”
+                  “Choose managed Postgres”; “reducing infrastructure ownership”; “Review after six
+                  months.”
         recorded_verdict: FAIL
   - id: F18-decide-missing-skill
-    judge_verdict: FAIL
+    judge_verdict: PASS
     judge_reason: >-
-      Preserves DATA-1 but invents incumbent safety, verification timing, and processing
-      restrictions.
+      Preserves DATA-1, rejects assumed compliance, and selects documented-compliant Birch pending
+      Cedar jurisdiction evidence.
     suspect: false
     metrics:
-      wall_time_ms: 38309
+      wall_time_ms: 38259
       judge_calls: 2
       judge_rejudge_calls: 1
       subject_metrics_reps: 1
       total_reps: 1
-      input_tokens: 3151
-      output_tokens: 1162
-      subject_cost_usd: 0.0010536500000000002
-      cost_source: price-table
+      input_tokens: 222
+      output_tokens: 388
+      cache_read_tokens: 2560
+      cost_source: unreported
       tool_calls: 0
       delegated_children: 0
       max_concurrency: 0
     usage:
       - repetition: 0
-        inputTokens: 3151
-        outputTokens: 1162
-        cacheReadTokens: null
-        costUsd: 0.0010536500000000002
-        priceAsOf: '2026-09-29'
+        inputTokens: 222
+        outputTokens: 388
+        cacheReadTokens: 2560
+        costUsd: null
+        priceAsOf: '2026-10-01'
     override: null
     note: ''
     objective: &ref_0
       status: PASS
       trace_version: 2
-      trace_sha256: bdbf1affedd54266cfbc5d995a1e1515d62206e78f63dc9356c6c381f47beb3b
+      trace_sha256: aacb36b23ee236288b46871b6fd10aaf7ed040f4a16af7d4c24b39dbe467e885
       assertions:
         - kind: forbid_call
           status: PASS
@@ -1776,57 +1824,54 @@ scenarios:
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: FAIL
+            verdict: PASS
             reason: >-
-              Preserves DATA-1 but invents incumbent safety, verification timing, and processing
-              restrictions.
+              Preserves DATA-1, rejects assumed compliance, and selects documented-compliant Birch
+              pending Cedar jurisdiction evidence.
             suspect: false
             criteria:
               - index: 1
-                verdict: FAIL
-                reason: No. “zero compliance risk” assumes an unestablished compliant incumbent.
+                verdict: PASS
+                reason: 'Accept as done: “Choose Birch on the supplied facts.” No follow-up needed.'
               - index: 2
-                verdict: FAIL
-                reason: >-
-                  “processed only in jurisdiction J” adds requirements; “days, not months” invents
-                  timing.
+                verdict: PASS
+                reason: “Lower cost is a preference, not permission to relax DATA-1.”
               - index: 3
                 verdict: PASS
-                reason: “DATA-1 is binding”; rejects “probably local”; chooses “HOLD” pending evidence.
-        recorded_verdict: FAIL
+                reason: >-
+                  Rejects assumptions; revisit requires “authoritative evidence covering all durable
+                  data and backups.”
+        recorded_verdict: PASS
         objective: *ref_0
   - id: F18-decide-tiny-skill
-    judge_verdict: FAIL
-    judge_reason: >-
-      Invents absent pain and “forever” maintenance; overlooks convenience justifying a reversible
-      wrapper.
+    judge_verdict: PASS
+    judge_reason: “Keep `node --test`” appropriately avoids wrapper overhead for negligible typing savings.
     suspect: false
     metrics:
-      wall_time_ms: 49806
+      wall_time_ms: 58390
       judge_calls: 5
       judge_rejudge_calls: 4
       subject_metrics_reps: 1
       total_reps: 1
-      input_tokens: 3142
-      output_tokens: 255
-      subject_cost_usd: 0.0005987999999999999
-      cost_source: price-table
+      input_tokens: 2774
+      output_tokens: 202
+      cost_source: unreported
       tool_calls: 0
       delegated_children: 0
       max_concurrency: 0
     usage:
       - repetition: 0
-        inputTokens: 3142
-        outputTokens: 255
+        inputTokens: 2774
+        outputTokens: 202
         cacheReadTokens: null
-        costUsd: 0.0005987999999999999
-        priceAsOf: '2026-09-29'
+        costUsd: null
+        priceAsOf: '2026-10-01'
     override: null
     note: ''
     objective: &ref_1
       status: PASS
       trace_version: 2
-      trace_sha256: 19efd80e4a962ab58e5e33262bb88503480276e3b82069df95c5d94cbcca0942
+      trace_sha256: 388f105ba5a69751c0c215de8bbcc3ddda6853162f36da397f3148f639c64aa5
       assertions:
         - kind: forbid_call
           status: PASS
@@ -1844,10 +1889,10 @@ scenarios:
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: FAIL
+            verdict: PASS
             reason: >-
-              Invents absent pain and “forever” maintenance; overlooks convenience justifying a
-              reversible wrapper.
+              “Keep `node --test`” appropriately avoids wrapper overhead for negligible typing
+              savings.
             suspect: false
             criteria:
               - index: 1
@@ -1860,38 +1905,40 @@ scenarios:
                 verdict: ERROR
                 reason: judge emitted no parseable vote for this criterion
             judgeRetries: 1
-        recorded_verdict: FAIL
+        recorded_verdict: PASS
         objective: *ref_1
   - id: F18-decide-delegated-skill
-    judge_verdict: FAIL
-    judge_reason: Correct evidence gate, but unsupported contractual reversibility claims prevent acceptance.
+    judge_verdict: PASS
+    judge_reason: >-
+      Holds selection pending independently verifiable deletion evidence; cost preference applies
+      only to compliant providers.
     suspect: false
     metrics:
-      wall_time_ms: 34999
+      wall_time_ms: 35441
       judge_calls: 2
       judge_rejudge_calls: 1
       subject_metrics_reps: 1
       total_reps: 1
-      input_tokens: 3143
-      output_tokens: 1063
-      subject_cost_usd: 0.00100295
-      cost_source: price-table
+      input_tokens: 215
+      output_tokens: 349
+      cache_read_tokens: 2560
+      cost_source: unreported
       tool_calls: 0
       delegated_children: 0
       max_concurrency: 0
     usage:
       - repetition: 0
-        inputTokens: 3143
-        outputTokens: 1063
-        cacheReadTokens: null
-        costUsd: 0.00100295
-        priceAsOf: '2026-09-29'
+        inputTokens: 215
+        outputTokens: 349
+        cacheReadTokens: 2560
+        costUsd: null
+        priceAsOf: '2026-10-01'
     override: null
     note: ''
     objective: &ref_2
       status: PASS
       trace_version: 2
-      trace_sha256: 68c42ea416e36eb65604df2d84d7c592cd482462059d55eb18bd58a50118fcfd
+      trace_sha256: 5bef4b3277cbbb65980f44079f124ee164c8b5d6e738d04387d67eb273f6d7da
       assertions:
         - kind: forbid_call
           status: PASS
@@ -1909,20 +1956,24 @@ scenarios:
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: FAIL
+            verdict: PASS
             reason: >-
-              Correct evidence gate, but unsupported contractual reversibility claims prevent
-              acceptance.
+              Holds selection pending independently verifiable deletion evidence; cost preference
+              applies only to compliant providers.
             suspect: false
             criteria:
               - index: 1
-                verdict: FAIL
-                reason: “TWO-WAY at the contract stage” assumes reversibility. That needs correction.
+                verdict: PASS
+                reason: >-
+                  “HOLD now” resolves selection. “Before approval” requires evidence, avoiding
+                  follow-up.
               - index: 2
-                verdict: FAIL
-                reason: “vendor can be switched” invents contractual flexibility absent from the brief.
+                verdict: PASS
+                reason: “Lower Cedar cost is a preference, not an override.”
               - index: 3
                 verdict: PASS
-                reason: “Neither / HOLD” applies without “verifiable 24-hour deletion evidence.”
-        recorded_verdict: FAIL
+                reason: >-
+                  “Choose neither” unless compliance meets “independent verifiability before
+                  approval.”
+        recorded_verdict: PASS
         objective: *ref_2

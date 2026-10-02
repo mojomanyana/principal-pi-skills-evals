@@ -56,10 +56,14 @@ test("seven substantive installed-runner specs have unique cases and resolving f
 });
 
 test("repair corpus separates final-text judgments from traces and unexported artifacts", () => {
+  const humanAcceptancePersona = "You are the senior engineer who delegated this task. Judge the response as you would a colleague's work: by whether you would accept it, not by its formatting.";
   for (const skill of skills) {
     const spec = json(`${skill}/tests/specification.yaml`);
-    assert.match(spec.judge_persona, /visible final text only/i, skill);
-    assert.match(spec.judge_persona, /UNVERIFIED/);
+    if (skill === "decide") assert.equal(spec.judge_persona, humanAcceptancePersona);
+    else {
+      assert.match(spec.judge_persona, /visible final text only/i, skill);
+      assert.match(spec.judge_persona, /UNVERIFIED/);
+    }
     for (const s of fidelityCases(spec)) {
       for (const criterion of s.checklist) {
         assert.doesNotMatch(criterion, /^(Read |Actually read |Independently read |Inspect available |Watch a real |Exercise parseCount |Use actual disposable|The complete saved artifact must)/, s.id);
