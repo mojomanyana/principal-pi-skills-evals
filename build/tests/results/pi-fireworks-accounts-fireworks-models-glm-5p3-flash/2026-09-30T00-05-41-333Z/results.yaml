@@ -1,5 +1,5 @@
 schema: 2
-harness_version: 0.21.0
+harness_version: 0.22.3
 harness_cli_version: 0.87.1
 skill: build
 harness: pi
@@ -14,9 +14,9 @@ partial: true
 source_hashes:
   SKILL.md: 09811b2cb6b4aea274f2a012413db3bd53892815eebf7e82eda9d8bb0e83aaae
   skill:prompt: da7be1e4e82b14ca18566ed937e17c9651235283f899ee2f46a208b1d62502a1
-  rubric:__persona: 4bd262db127a857bd45293cbc6fa960b7a58f75f2e30f3934d713e6fd1b8e72c
+  rubric:__persona: 5955ff28072324bdb0313ed70790e4ad8ac92bc51cd85bb135c9549abb1e2c05
   stimulus:A1: f603129d33cfbdc2791c63d4addf5d8c35ccf31ed01458a372ee4702609e4405
-  rubric:A1: fd26e53151849831cfbb8865a62f27165b9dcf429c1475c82e65343445d86d33
+  rubric:A1: ad12fcffeb2dc7add109ef20f1ede14bec4418cb90f495713f69b3fd12502280
   policy:A1: 5c02de06cf52726a720b313386100cee906ba590da05b29d9f326ffa8f01e3b7
   gates:A1: 02a668e62165649327b5665bea57ce59bcc4041d054fbdbc6b1aae97c3590470
   post/A1.test.ts: d8e0a865511ff4cd7d3b560ff9af11a21ace942a5986eb89a467b3115c23d9b8
@@ -41,12 +41,12 @@ effective_grade:
 scenarios:
   - id: A1
     judge_verdict: FAIL
-    judge_reason: staged diff missing "expect("
+    judge_reason: Withdrawal permits overdrafts and lacks a passing refusal test.
     suspect: false
     metrics:
-      wall_time_ms: 17838
-      judge_calls: 0
-      judge_rejudge_calls: 0
+      wall_time_ms: 39235
+      judge_calls: 2
+      judge_rejudge_calls: 2
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 5580
@@ -66,3 +66,24 @@ scenarios:
         priceAsOf: '2026-09-29'
     override: null
     note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: Withdrawal permits overdrafts and lacks a passing refusal test.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: “this.balance -= amount” permits overdrafts; no withdrawal tests added.
+              - index: 2
+                verdict: FAIL
+                reason: “expected -50 to be 100” demonstrates harmful balance mutation.
+              - index: 3
+                verdict: FAIL
+                reason: “refuses an overdraft and leaves the balance unchanged” failed.
+        recorded_verdict: FAIL

@@ -2,3 +2,6 @@
 {"event":"scenario-started","ts":"2026-10-01T13:17:08.814Z","id":"A1","title":"regression test + correct impl"}
 {"event":"gate-result","ts":"2026-10-01T13:17:31.746Z","id":"A1","ok":false,"detail":"post_test \"post/A1.test.ts\" failed (exit 1)"}
 {"event":"judge-verdict","ts":"2026-10-01T13:17:31.746Z","id":"A1","verdict":"FAIL","reason":"post_test \"post/A1.test.ts\" failed (exit 1)","suspect":false}
+{"event":"judge-verdict","ts":"2026-10-02T11:49:25.980Z","id":"A1","verdict":"FAIL","reason":"Withdraw allows overdrafts; no passing test covers refusing withdrawals exceeding the balance.","suspect":false}
+{"event":"judge-verdict","ts":"2026-10-02T15:22:30.130Z","id":"A1","verdict":"FAIL","reason":"1:FAIL “-=” permits overdrafts; 2:FAIL “-50” balance; 3:FAIL “withdraw decreases the balance” omits refusal.","suspect":false}
+{"event":"judge-verdict","ts":"2026-10-02T17:55:13.051Z","id":"A1","verdict":"FAIL","reason":"Withdraw permits overdrafts; the added test covers only a successful withdrawal.","suspect":false}

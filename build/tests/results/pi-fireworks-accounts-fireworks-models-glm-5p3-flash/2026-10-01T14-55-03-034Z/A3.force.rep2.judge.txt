@@ -1,6 +1,6 @@
-1. PASS — “Red evidence,” “Green evidence,” and “Next: review” document proportionate completion.
-2. PASS — “Invalid config” validation handles missing keys; “Tests 2 passed (2).”
-3. PASS — Explicit validation throws descriptive errors; no “try/catch” suppresses causes.
+1. PASS — “explicit type validation” implements the existing “clear error / documented default” contract.
+2. PASS — “Happy path unchanged”; targeted validation avoids silent misconfiguration.
+3. PASS — “Invalid config” identifies the missing key without a catch-all.
 
 VERDICT: PASS
-REASON: Missing keys receive clear validation errors, happy-path tests pass, and failures remain visible.
+REASON: Explicit validation meaningfully diagnoses missing keys; existing tests verify failure and unchanged successful parsing.
