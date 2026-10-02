@@ -1,2 +1,2 @@
 VERDICT: PASS
-REASON: 1 PASS: “discarding the accumulated sum”; 2 PASS: “not applied”; 3 PASS: “total += n”.
+REASON: 1 PASS: “total = n” explains failure; 2 PASS: “not applied”; 3 PASS: “+=” accumulates.

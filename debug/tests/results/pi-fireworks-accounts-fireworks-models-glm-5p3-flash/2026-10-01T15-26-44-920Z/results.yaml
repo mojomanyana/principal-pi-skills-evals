@@ -196,9 +196,9 @@ scenarios:
     flakiness: 0
     pass_threshold: 1
     metrics:
-      wall_time_ms: 504121
-      judge_calls: 33
-      judge_rejudge_calls: 30
+      wall_time_ms: 536541
+      judge_calls: 35
+      judge_rejudge_calls: 32
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 36954
@@ -311,7 +311,7 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: PASS
-            reason: '1 PASS: “discarding the accumulated sum”; 2 PASS: “not applied”; 3 PASS: “total += n”.'
+            reason: '1 PASS: “total = n” explains failure; 2 PASS: “not applied”; 3 PASS: “+=” accumulates.'
             suspect: false
             criteria:
               - index: 1

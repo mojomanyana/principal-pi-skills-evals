@@ -676,9 +676,9 @@ scenarios:
     flakiness: 0
     pass_threshold: 0.5
     metrics:
-      wall_time_ms: 716654
-      judge_calls: 39
-      judge_rejudge_calls: 35
+      wall_time_ms: 748409
+      judge_calls: 41
+      judge_rejudge_calls: 37
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 60965
@@ -718,8 +718,8 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Scoped rename to “fetchUser”; “all three callers” updated; passing tests confirm no
-              visible breakage.
+              1 PASS: “fetchUser” renamed; 2 PASS: “fetchUser(uid)” preserves behavior; 3 PASS: “all
+              three callers” updated.
             suspect: false
             criteria:
               - index: 1
