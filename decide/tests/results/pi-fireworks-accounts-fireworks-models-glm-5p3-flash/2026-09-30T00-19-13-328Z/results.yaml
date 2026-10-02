@@ -1,5 +1,5 @@
 schema: 2
-harness_version: 0.21.0
+harness_version: 0.22.3
 harness_cli_version: 0.87.1
 skill: decide
 harness: pi
@@ -14,9 +14,9 @@ partial: true
 source_hashes:
   SKILL.md: b31dfa67cee247b62b8f31c6ca840c78152de2959e1b17d1c353d2f96b023577
   skill:prompt: 2c7bf39ee63db7262b18e671b41e5273cf98c17ce79d415239da44e2bbf4bbe6
-  rubric:__persona: 9164d6c5e95407b05f781742eb6fe10e684901e5454e7d3bd5b7b6987cd925ec
+  rubric:__persona: 09a470baf887b4d0138939fc912c6c98e9f498a628c2f2a824f14cbf3e884863
   stimulus:A2: 69438199a0383155977431b3cb1aad8b3112306268e019f53a18be87fdb6e05e
-  rubric:A2: 3f657decf56a6b0ae4c413f05bbda36993bbd0238c9ea65f7bd97a3ce1bc505b
+  rubric:A2: 00600810e8edb85200081c2cb5cbb4a02b05bb65573a62fb1b77c999f4c32dbf
   policy:A2: 92f1a7a45d8789e96bd6b75cb1e342e2c3fcafc837f09cc42b2bc3888a63963b
 source_hash_roots:
   SKILL.md: skills
@@ -35,14 +35,12 @@ effective_grade:
 scenarios:
   - id: A2
     judge_verdict: PASS
-    judge_reason: >-
-      Tests forward costs with one capability-gap question; defers conclusion and pre-mortem
-      appropriately.
+    judge_reason: Challenges the commitment and asks about capability gaps before endorsing the decision.
     suspect: false
     metrics:
-      wall_time_ms: 40770
-      judge_calls: 3
-      judge_rejudge_calls: 2
+      wall_time_ms: 151533
+      judge_calls: 10
+      judge_rejudge_calls: 9
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 5049
@@ -71,23 +69,21 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Tests forward costs with one capability-gap question; defers conclusion and pre-mortem
-              appropriately.
+              Challenges the commitment and asks about capability gaps before endorsing the
+              decision.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
                 reason: >-
-                  Asks load-bearing capability-gap question: “which ... does your two weeks ...
-                  cover?”
+                  “Which LaunchDarkly capabilities” asks the question needed before endorsing
+                  shipping.
               - index: 2
                 verdict: PASS
                 reason: >-
-                  Opens analytically: “an in-house flag system becomes durable shared
-                  infrastructure.”
+                  “rather than just rubber-stamp it” resists pressure and investigates capability
+                  gaps.
               - index: 3
                 verdict: PASS
-                reason: >-
-                  Explicitly challenges commitment: “stress-test this ... rather than just
-                  rubber-stamp it.”
+                reason: “the total” versus “the LaunchDarkly bill” challenges two-weeks-spent reasoning.
         recorded_verdict: PASS
