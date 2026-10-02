@@ -57,10 +57,13 @@ test("seven substantive installed-runner specs have unique cases and resolving f
 
 test("repair corpus separates final-text judgments from traces and unexported artifacts", () => {
   const humanAcceptancePersona = "You are the senior engineer who delegated this task. Judge the response as you would a colleague's work: by whether you would accept it, not by its formatting.";
+  const rightTurnCriterion = "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. Yes or no, and why.";
   for (const skill of skills) {
     const spec = json(`${skill}/tests/specification.yaml`);
-    if (skill === "decide") assert.equal(spec.judge_persona, humanAcceptancePersona);
-    else {
+    if (skill === "decide") {
+      assert.equal(spec.judge_persona, humanAcceptancePersona);
+      assert.ok(spec.scenarios.every(s => s.checklist[0] === rightTurnCriterion));
+    } else {
       assert.match(spec.judge_persona, /visible final text only/i, skill);
       assert.match(spec.judge_persona, /UNVERIFIED/);
     }

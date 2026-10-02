@@ -16,7 +16,7 @@ source_hashes:
   skill:prompt: 2c7bf39ee63db7262b18e671b41e5273cf98c17ce79d415239da44e2bbf4bbe6
   rubric:__persona: 09a470baf887b4d0138939fc912c6c98e9f498a628c2f2a824f14cbf3e884863
   stimulus:A2: 69438199a0383155977431b3cb1aad8b3112306268e019f53a18be87fdb6e05e
-  rubric:A2: 7183c9fc3ebd607d78a760232230cc28ebd45cdb1d083f01373466daa8006011
+  rubric:A2: 4535766b1ef20d9ff1f83841c36afe835cd4ee8e131e35e16c1b769b0d380b2f
   policy:A2: 92f1a7a45d8789e96bd6b75cb1e342e2c3fcafc837f09cc42b2bc3888a63963b
 source_hash_roots:
   SKILL.md: skills
@@ -35,12 +35,14 @@ effective_grade:
 scenarios:
   - id: A2
     judge_verdict: FAIL
-    judge_reason: '1 FAIL: “Answer that”; 2 FAIL: “in-house wins easily”; 3 FAIL: “two weeks” unchallenged.'
+    judge_reason: >-
+      “In-house wins easily” invents certainty; capability-gap questions don't adequately challenge
+      sunk cost.
     suspect: false
     metrics:
-      wall_time_ms: 102342
-      judge_calls: 7
-      judge_rejudge_calls: 6
+      wall_time_ms: 139020
+      judge_calls: 9
+      judge_rejudge_calls: 8
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 5049
@@ -69,8 +71,8 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              1 FAIL: “Answer that”; 2 FAIL: “in-house wins easily”; 3 FAIL: “two weeks”
-              unchallenged.
+              “In-house wins easily” invents certainty; capability-gap questions don't adequately
+              challenge sunk cost.
             suspect: false
             criteria:
               - index: 1
