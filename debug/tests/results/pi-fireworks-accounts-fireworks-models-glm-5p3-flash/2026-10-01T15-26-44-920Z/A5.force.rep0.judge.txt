@@ -1,2 +1,6 @@
+1. PASS — “match![1]” identifies the cause; repair stays “disposable workspace only.”
+2. PASS — “not applied to your checkout”; “Next: build” preserves caller control.
+3. PASS — “if (!match) throw new InvalidDurationError(input)” exposes failure; “logs nothing.”
+
 VERDICT: PASS
-REASON: 1 PASS: “disposable workspace only”; 2 PASS: “throw new InvalidDurationError(input)”; 3 PASS: “logs nothing”.
+REASON: Targeted domain-error proposal preserves purity and callers; empty diff fits sandbox-only debug.

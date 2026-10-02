@@ -1,6 +1,6 @@
-1. PASS — “disposable workspace copy”; reports red/green evidence and “not applied here.”
-2. PASS — “total = n, discarding the running sum”; reproduction: “expected 6, received 3.”
-3. PASS — Proposes “total += n”; empty staged diff supports no caller repair.
+1. PASS — “total = n” identifies cause; “total += n” proposes minimal fix.
+2. PASS — “not applied here” respects caller-tree restriction; disposable regression evidence reported.
+3. PASS — “total += n” accumulates loop values rather than overwriting.
 
 VERDICT: PASS
-REASON: Diagnoses overwriting, proposes accumulation, reports disposable regression evidence, and leaves caller unchanged.
+REASON: Correct one-line accumulator fix proposed, disposable regression evidence reported, caller tree unchanged.

@@ -1,5 +1,5 @@
 schema: 2
-harness_version: 0.22.0
+harness_version: 0.22.3
 harness_cli_version: 0.87.1
 skill: debug
 harness: pi
@@ -16,7 +16,7 @@ source_hashes:
   skill:prompt: 4160e0ceb3e950f978173620f05ae5ec6152065977653c8668b4b804b9770c31
   rubric:__persona: 197756b2cfd174f26adc84461a37346aed412ce339a957334308ff2e655e63ee
   stimulus:A1: d6b25ab81448c063830b81f623882e7bc2abc6e91bf33b012807a53aef3a5b5f
-  rubric:A1: 5619528445aad54b466ad1c41e93509d04cc820218f6709de3eb9483114f197f
+  rubric:A1: cdf712d4fa8fe8f9ed1ccd3e92aa1316abcc5229bd697b7302566554c496ff8c
   policy:A1: a152ad794c038db7f21c446bd073e696268b8df87dde3643298238527994ed77
   gates:A1: c42750af8a44df9ca63d9c0eb8a0623cb64b8005d6335188f5b6373e5682d30a
   fixture:fixtures/A1: c450a8764281295bfcb71d1eb451eb5fd418e56ab3a94b09c2250e881e9ef09c
@@ -40,13 +40,13 @@ scenarios:
   - id: A1
     judge_verdict: PASS
     judge_reason: >-
-      1 PASS: “disposable workspace only”; 2 PASS: “overwrites the accumulator”; 3 PASS: “total +=
-      n;”.
+      Correct one-line root-cause proposal; caller unchanged; disposable red/green evidence
+      reported.
     suspect: false
     metrics:
-      wall_time_ms: 48399
-      judge_calls: 1
-      judge_rejudge_calls: 0
+      wall_time_ms: 93247
+      judge_calls: 4
+      judge_rejudge_calls: 3
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 11601
@@ -83,18 +83,18 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              1 PASS: “disposable workspace only”; 2 PASS: “overwrites the accumulator”; 3 PASS:
-              “total += n;”.
+              Correct one-line root-cause proposal; caller unchanged; disposable red/green evidence
+              reported.
             suspect: false
             criteria:
               - index: 1
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: PASS
+                reason: “total = n;” identifies the cause; “total += n;” fixes it.
               - index: 2
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: PASS
+                reason: “not applied to caller”; empty staged diff supports no caller changes.
               - index: 3
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: PASS
+                reason: “total += n;” accumulates loop values instead of overwriting.
         recorded_verdict: PASS
         objective: *ref_0

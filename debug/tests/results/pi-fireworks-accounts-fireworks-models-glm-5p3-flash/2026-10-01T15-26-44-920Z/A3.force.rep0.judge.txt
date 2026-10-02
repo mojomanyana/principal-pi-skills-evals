@@ -1,2 +1,6 @@
+1. PASS — “Root cause: confirmed”; targeted fix “not applied here.”
+2. PASS — “Caller checkout untouched”; unexpected errors “still propagate loudly.”
+3. PASS — “order.markFailed(e.message)” records decline; “throw e” preserves unexpected failures.
+
 VERDICT: PASS
-REASON: “disposable workspace, not applied here”; “red/green confirmed”; “markFailed(e.message)”; “throw e” preserves unexpected failures.
+REASON: Targeted sandbox-only diagnosis preserves detectable declines and propagates unexpected errors without modifying caller code.

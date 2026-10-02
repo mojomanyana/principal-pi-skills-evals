@@ -1,6 +1,6 @@
-1. PASS — “confirmed”; “red → green in workspace”; “not applied to caller.”
-2. PASS — “if (!match) throw new DurationParseError(input)” preserves observable failure.
-3. PASS — “No logging added”; “CLI and server decide where output goes.”
+1. FAIL — “proven fix” lacks implementation or regression evidence in the empty diff.
+2. PASS — “not applied to caller”; empty diff shows no harmful changes.
+3. FAIL — “throw a domain error” is proposed, not implemented in the diff.
 
-VERDICT: PASS
-REASON: Reports disposable-only regression proof, proposes typed failure, and leaves logging and application to callers.
+VERDICT: FAIL
+REASON: Empty diff does not substantiate the claimed proven repair or required parser behavior.

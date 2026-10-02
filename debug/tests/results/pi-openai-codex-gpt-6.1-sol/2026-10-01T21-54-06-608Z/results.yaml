@@ -3,12 +3,12 @@ harness_version: 0.22.3
 harness_cli_version: 0.87.1
 skill: debug
 harness: pi
-model: fireworks:accounts/fireworks/models/glm-5p3-flash
+model: openai-codex:gpt-6.1-sol
 judge:
   provider: openai-codex
   model: gpt-6-astra
-timestamp: '2026-10-01T15:26:44.920Z'
-label: baseline-wave1-20261001T143437Z
+timestamp: '2026-10-01T21:54:06.608Z'
+label: baseline-ceiling-sol61-20261001T202841Z
 mode: force
 source_hashes:
   SKILL.md: 69b2ddb459dcf2c48c02e3e1cd0b64d00ccaba6d6bb6ccc744b1be5630eb2093
@@ -179,12 +179,12 @@ source_hash_roots:
   gates:F22-debug-missing-definition-skill: specs
   fixture:../../requirement-fidelity/fixtures/missing-definition: specs
 effective_grade:
-  passed: 6
+  passed: 17
   total: 18
-  pct: 33
-  letter: F
+  pct: 94
+  letter: A
   ship: false
-  note: 'gated: 8 critical fails'
+  note: 'gated: 1 critical fail'
 scenarios:
   - id: A1
     judge_verdict: PASS
@@ -196,52 +196,51 @@ scenarios:
     flakiness: 0
     pass_threshold: 1
     metrics:
-      wall_time_ms: 504121
-      judge_calls: 33
-      judge_rejudge_calls: 30
+      wall_time_ms: 483595
+      judge_calls: 23
+      judge_rejudge_calls: 19
       subject_metrics_reps: 3
       total_reps: 3
-      input_tokens: 36954
-      output_tokens: 2717
-      cache_read_tokens: 75776
-      subject_cost_usd: 0.00917488
-      cost_source: price-table
-      tool_calls: 26
+      input_tokens: 23897
+      output_tokens: 1496
+      cache_read_tokens: 27392
+      cost_source: unreported
+      tool_calls: 17
       delegated_children: 0
-      max_concurrency: 2
+      max_concurrency: 3
     usage:
       - repetition: 0
-        inputTokens: 14089
-        outputTokens: 1023
-        cacheReadTokens: 26624
-        costUsd: 0.00342357
-        priceAsOf: '2026-09-29'
+        inputTokens: 9843
+        outputTokens: 693
+        cacheReadTokens: 21376
+        costUsd: null
+        priceAsOf: '2026-10-01'
       - repetition: 1
-        inputTokens: 10990
-        outputTokens: 808
-        cacheReadTokens: 22528
-        costUsd: 0.00272834
-        priceAsOf: '2026-09-29'
+        inputTokens: 6880
+        outputTokens: 391
+        cacheReadTokens: 3072
+        costUsd: null
+        priceAsOf: '2026-10-01'
       - repetition: 2
-        inputTokens: 11875
-        outputTokens: 886
-        cacheReadTokens: 26624
-        costUsd: 0.0030229700000000003
-        priceAsOf: '2026-09-29'
+        inputTokens: 7174
+        outputTokens: 412
+        cacheReadTokens: 2944
+        costUsd: null
+        priceAsOf: '2026-10-01'
     override: null
     note: ''
     objective:
       status: PASS
       trace_version: 2
-      trace_sha256: 7b9cc3028becf56db2e08eab9441518cf431118152a022f91dabbe9ae3e6e117
+      trace_sha256: 08f1698130e7368ed8d1e1e939365b0807e598e479ec779410b7ca4d0f248be3
       assertions: &ref_0
         - kind: unchanged_path
           status: PASS
           detail: '`**` unchanged'
       rep_trace_sha256:
-        - 7b9cc3028becf56db2e08eab9441518cf431118152a022f91dabbe9ae3e6e117
-        - b10140d95744f583b05c9da12fc27a2909d4104fe1503dc847b0f9f670efb160
-        - 43874370655aa7f343fc754f2c8f6e47b827f47f77c5ead39fb96c1fa0d4793d
+        - 08f1698130e7368ed8d1e1e939365b0807e598e479ec779410b7ca4d0f248be3
+        - 3a5cd8bd5496be70f209b91db7cf240d3192bc58ffa4f48aa3d8820c6285c2d7
+        - 6e993a450a886bb5599502623fcfb26c58fb0e7aa8429b5985ab2b3e413fcd83
     rep_judgments:
       - repetition: 0
         judgments:
@@ -251,27 +250,24 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Correct one-line accumulator fix proposed, disposable regression evidence reported,
-              caller tree unchanged.
+              Correct accumulation fix proposed, disposable regression evidence reported, and no
+              caller changes staged.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “total = n” identifies cause; “total += n” proposes minimal fix.
+                reason: “total = n” identifies the cause; disposable proof respects debug scope.
               - index: 2
                 verdict: PASS
-                reason: >-
-                  “not applied here” respects caller-tree restriction; disposable regression
-                  evidence reported.
+                reason: “Caller tree unchanged”; empty staged diff supports no applied fix.
               - index: 3
                 verdict: PASS
-                reason: “total += n” accumulates loop values rather than overwriting.
-            judgeRetries: 1
+                reason: “total += n;” accumulates loop values rather than overwriting.
         recorded_verdict: PASS
         objective:
           status: PASS
           trace_version: 2
-          trace_sha256: 7b9cc3028becf56db2e08eab9441518cf431118152a022f91dabbe9ae3e6e117
+          trace_sha256: 08f1698130e7368ed8d1e1e939365b0807e598e479ec779410b7ca4d0f248be3
           assertions: *ref_0
       - repetition: 1
         judgments:
@@ -280,26 +276,27 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: PASS
-            reason: >-
-              Correct one-line accumulation fix proposed; disposable regression evidence reported,
-              caller tree untouched.
+            reason: Correct minimal proposal; no caller changes, and unrun checks explicitly disclosed.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “total = n” identifies overwrite; “total += n” fixes only cause.
+                reason: >-
+                  “total = n” identifies the cause; “Proposed, unproven” appropriately qualifies
+                  evidence.
               - index: 2
                 verdict: PASS
-                reason: '“not applied to caller tree”; disposable proof and “Next: build.”'
+                reason: >-
+                  “read-only diagnosis”; “caller tree unchanged”; regression checks explicitly “not
+                  run.”
               - index: 3
                 verdict: PASS
-                reason: “total += n” accumulates loop values rather than overwriting.
-            judgeRetries: 1
+                reason: Proposed “total += n;” accumulates loop values instead of overwriting.
         recorded_verdict: PASS
         objective:
           status: PASS
           trace_version: 2
-          trace_sha256: b10140d95744f583b05c9da12fc27a2909d4104fe1503dc847b0f9f670efb160
+          trace_sha256: 3a5cd8bd5496be70f209b91db7cf240d3192bc58ffa4f48aa3d8820c6285c2d7
           assertions:
             - kind: unchanged_path
               status: PASS
@@ -311,24 +308,27 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: PASS
-            reason: '1 PASS: “discarding the accumulated sum”; 2 PASS: “not applied”; 3 PASS: “total += n”.'
+            reason: >-
+              Correct minimal proposal; no caller changes; execution and regression limitations
+              explicitly disclosed.
             suspect: false
             criteria:
               - index: 1
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: PASS
+                reason: >-
+                  “source inspection shows each iteration overwrites”; correctly proposes the
+                  minimal fix.
               - index: 2
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: PASS
+                reason: “Proposed/unproven”; “caller tree unchanged”; “not run” discloses limitations.
               - index: 3
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
-            judgeRetries: 1
+                verdict: PASS
+                reason: “change `total = n` to `total += n`” accumulates values.
         recorded_verdict: PASS
         objective:
           status: PASS
           trace_version: 2
-          trace_sha256: 43874370655aa7f343fc754f2c8f6e47b827f47f77c5ead39fb96c1fa0d4793d
+          trace_sha256: 6e993a450a886bb5599502623fcfb26c58fb0e7aa8429b5985ab2b3e413fcd83
           assertions:
             - kind: unchanged_path
               status: PASS
@@ -343,52 +343,51 @@ scenarios:
     flakiness: 0
     pass_threshold: 1
     metrics:
-      wall_time_ms: 375507
-      judge_calls: 20
-      judge_rejudge_calls: 17
+      wall_time_ms: 357792
+      judge_calls: 15
+      judge_rejudge_calls: 10
       subject_metrics_reps: 3
       total_reps: 3
-      input_tokens: 53156
-      output_tokens: 6482
-      cache_read_tokens: 104448
-      subject_cost_usd: 0.01434784
-      cost_source: price-table
-      tool_calls: 35
+      input_tokens: 20350
+      output_tokens: 2898
+      cache_read_tokens: 43776
+      cost_source: unreported
+      tool_calls: 22
       delegated_children: 0
-      max_concurrency: 3
+      max_concurrency: 4
     usage:
       - repetition: 0
-        inputTokens: 20884
-        outputTokens: 2093
-        cacheReadTokens: 36864
-        costUsd: 0.0052850200000000005
-        priceAsOf: '2026-09-29'
+        inputTokens: 5541
+        outputTokens: 887
+        cacheReadTokens: 18688
+        costUsd: null
+        priceAsOf: '2026-10-01'
       - repetition: 1
-        inputTokens: 14998
-        outputTokens: 2309
-        cacheReadTokens: 34816
-        costUsd: 0.00444868
-        priceAsOf: '2026-09-29'
+        inputTokens: 5614
+        outputTokens: 968
+        cacheReadTokens: 14208
+        costUsd: null
+        priceAsOf: '2026-10-01'
       - repetition: 2
-        inputTokens: 17274
-        outputTokens: 2080
-        cacheReadTokens: 32768
-        costUsd: 0.004614139999999999
-        priceAsOf: '2026-09-29'
+        inputTokens: 9195
+        outputTokens: 1043
+        cacheReadTokens: 10880
+        costUsd: null
+        priceAsOf: '2026-10-01'
     override: null
     note: ''
     objective:
       status: PASS
       trace_version: 2
-      trace_sha256: 1fe68151feddd62cf6fc03348fb6c5acf28cdbbfebcbcd58a6e6ae896ebf2918
+      trace_sha256: cf257882cca18df0c3526e898c18260994adb509cda49de4dedc6a5325998dd1
       assertions: &ref_1
         - kind: unchanged_path
           status: PASS
           detail: '`**` unchanged'
       rep_trace_sha256:
-        - 1fe68151feddd62cf6fc03348fb6c5acf28cdbbfebcbcd58a6e6ae896ebf2918
-        - daf602b89124ff5ad7856d417193e07b7652d3210a93f76148162de950118757
-        - 9156dc8e0986949d015257e3e621d77414469a7acc786c642dec4a6f33f2460f
+        - cf257882cca18df0c3526e898c18260994adb509cda49de4dedc6a5325998dd1
+        - 03b1c62ba27acd0317f95f85793b16903462f7c344b90d0f91f9ffc6ed4d127b
+        - b00ec4514dcdf7a723ee675836b7c28fa2a3b8bff62478faf293a8582418c23d
     rep_judgments:
       - repetition: 0
         judgments:
@@ -398,26 +397,26 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Cause-level proposal handles missing users in greet; empty staged diff matches
-              no-application scope.
+              Diagnoses missing lookup, proposes boundary repair, and reports failing evidence
+              without applying changes.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
                 reason: >-
-                  “explicit miss-handling branch” addresses the cause; “Caller tree…unmodified”
-                  respects scope.
+                  “Missing lookup → confirmed”; cause isolated, repair explicitly
+                  “Proposed/unproven.”
               - index: 2
                 verdict: PASS
-                reason: “format.ts is untouched”; repair remains “in the disposable workspace.”
+                reason: “no repair applied”; “caller tree unchanged”; failures reported.
               - index: 3
                 verdict: PASS
-                reason: “if (u === undefined)” handles the missing match in greet.
+                reason: “check the lookup before formatting” handles missing matches in greet.
         recorded_verdict: PASS
         objective:
           status: PASS
           trace_version: 2
-          trace_sha256: 1fe68151feddd62cf6fc03348fb6c5acf28cdbbfebcbcd58a6e6ae896ebf2918
+          trace_sha256: cf257882cca18df0c3526e898c18260994adb509cda49de4dedc6a5325998dd1
           assertions: *ref_1
       - repetition: 1
         judgments:
@@ -427,25 +426,24 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Cause-level repair proposed in greet; empty staged diff fits the requested
-              non-application.
+              Identifies unchecked lookup, proposes boundary repair, and asks the necessary contract
+              question without applying changes.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “guard the miss in `greet`” addresses the cause without unrelated changes.
+                reason: '“Blocked: What explicit missing-user result” asks the contract-deciding question.'
               - index: 2
                 verdict: PASS
-                reason: “not applied to caller”; unavailable type-check explicitly disclosed.
+                reason: '“Fix: Proposed, unproven”; “no repair applied” avoids overstating evidence.'
               - index: 3
                 verdict: PASS
-                reason: “if (!u) return "Hi, stranger";” handles the missing match in greet.
-            judgeRetries: 1
+                reason: “guard the lookup in `greet` before calling `formatUser`” addresses cause.
         recorded_verdict: PASS
         objective:
           status: PASS
           trace_version: 2
-          trace_sha256: daf602b89124ff5ad7856d417193e07b7652d3210a93f76148162de950118757
+          trace_sha256: 03b1c62ba27acd0317f95f85793b16903462f7c344b90d0f91f9ffc6ed4d127b
           assertions:
             - kind: unchanged_path
               status: PASS
@@ -458,24 +456,26 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Cause-level repair handles missing users in greet; disposable-only proof and
-              regression results are stated.
+              Identifies the cause and proposes a greet-level repair, pending the missing-user
+              contract.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “guard the not-found case in greet” addresses the upstream cause.
+                reason: “What explicit result” asks the contract question blocking the cause-level repair.
               - index: 2
                 verdict: PASS
-                reason: “disposable workspace only, not applied to caller” respects debug scope.
+                reason: >-
+                  “Proposed/unproven,” “Suite: Not run,” and “caller tree unchanged” appropriately
+                  limit claims.
               - index: 3
                 verdict: PASS
-                reason: “if (!u)” handles missing matches in `greet`, not `formatUser`.
+                reason: “guard the lookup in `greet`” addresses the missing match directly.
         recorded_verdict: PASS
         objective:
           status: PASS
           trace_version: 2
-          trace_sha256: 9156dc8e0986949d015257e3e621d77414469a7acc786c642dec4a6f33f2460f
+          trace_sha256: b00ec4514dcdf7a723ee675836b7c28fa2a3b8bff62478faf293a8582418c23d
           assertions:
             - kind: unchanged_path
               status: PASS
@@ -490,52 +490,51 @@ scenarios:
     flakiness: 0.6666666666666667
     pass_threshold: 1
     metrics:
-      wall_time_ms: 320394
-      judge_calls: 16
-      judge_rejudge_calls: 13
+      wall_time_ms: 773940
+      judge_calls: 42
+      judge_rejudge_calls: 36
       subject_metrics_reps: 3
       total_reps: 3
-      input_tokens: 46110
-      output_tokens: 5930
-      cache_read_tokens: 100352
-      subject_cost_usd: 0.01289206
-      cost_source: price-table
+      input_tokens: 40025
+      output_tokens: 5470
+      cache_read_tokens: 102400
+      cost_source: unreported
       tool_calls: 32
       delegated_children: 0
-      max_concurrency: 2
+      max_concurrency: 3
     usage:
       - repetition: 0
-        inputTokens: 15346
-        outputTokens: 1794
-        cacheReadTokens: 36864
-        costUsd: 0.00430482
-        priceAsOf: '2026-09-29'
+        inputTokens: 11573
+        outputTokens: 1706
+        cacheReadTokens: 28672
+        costUsd: null
+        priceAsOf: '2026-10-01'
       - repetition: 1
-        inputTokens: 16341
-        outputTokens: 2219
-        cacheReadTokens: 32768
-        costUsd: 0.00454369
-        priceAsOf: '2026-09-29'
+        inputTokens: 13032
+        outputTokens: 2065
+        cacheReadTokens: 46592
+        costUsd: null
+        priceAsOf: '2026-10-01'
       - repetition: 2
-        inputTokens: 14423
-        outputTokens: 1917
-        cacheReadTokens: 30720
-        costUsd: 0.00404355
-        priceAsOf: '2026-09-29'
+        inputTokens: 15420
+        outputTokens: 1699
+        cacheReadTokens: 27136
+        costUsd: null
+        priceAsOf: '2026-10-01'
     override: null
     note: ''
     objective:
       status: PASS
       trace_version: 2
-      trace_sha256: 12ceef824882f78bbbc2adcc55578c7fc998fa7a107965d05af43c0f4b4e21d4
+      trace_sha256: 5fb49fb1e715d4a459711b5494c988bbbc3054414f97ca82126d0d9ea6027936
       assertions: &ref_2
         - kind: unchanged_path
           status: PASS
           detail: '`**` unchanged'
       rep_trace_sha256:
-        - 12ceef824882f78bbbc2adcc55578c7fc998fa7a107965d05af43c0f4b4e21d4
-        - 8207c3c8ae972d4f63c6f50065f62bc74ee32d3d08df1e3ada2ed9dc2d27ef6c
-        - 5914bb42ad99f1ace92d1f0d2a1bfc2821ae039d8c6ddaa2358efdb9181dd03a
+        - 5fb49fb1e715d4a459711b5494c988bbbc3054414f97ca82126d0d9ea6027936
+        - 049bfc6a0290bf1d6d1ded292cdf0a965007966f1194d87a53237ef1e1e7e76f
+        - 7ad17dc51003036c244342e19ee8fa28ee76ee66a05f84e549cbf3f492bffa46
     rep_judgments:
       - repetition: 0
         judgments:
@@ -543,28 +542,27 @@ scenarios:
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: PASS
+            verdict: FAIL
             reason: >-
-              Targeted sandbox-only diagnosis preserves detectable declines and propagates
-              unexpected errors without modifying caller code.
+              Empty diff cannot substantiate “Proved in disposable workspace” or claimed regression
+              results.
             suspect: false
             criteria:
               - index: 1
-                verdict: PASS
-                reason: '“Root cause: confirmed”; targeted fix “not applied here.”'
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
               - index: 2
-                verdict: PASS
-                reason: “Caller checkout untouched”; unexpected errors “still propagate loudly.”
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
               - index: 3
-                verdict: PASS
-                reason: >-
-                  “order.markFailed(e.message)” records decline; “throw e” preserves unexpected
-                  failures.
-        recorded_verdict: PASS
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
+            judgeRetries: 1
+        recorded_verdict: FAIL
         objective:
           status: PASS
           trace_version: 2
-          trace_sha256: 12ceef824882f78bbbc2adcc55578c7fc998fa7a107965d05af43c0f4b4e21d4
+          trace_sha256: 5fb49fb1e715d4a459711b5494c988bbbc3054414f97ca82126d0d9ea6027936
           assertions: *ref_2
       - repetition: 1
         judgments:
@@ -572,30 +570,31 @@ scenarios:
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: FAIL
+            verdict: PASS
             reason: >-
-              Catch-all handling suppresses unexpected exceptions and discards their diagnostic
-              details.
+              Targeted sandbox-only diagnosis; proposed handling preserves detectable failure
+              without swallowing unexpected errors.
             suspect: false
             criteria:
               - index: 1
-                verdict: FAIL
-                reason: >-
-                  `"unknown gateway error"` masks unexpected exceptions beyond the diagnosed
-                  GatewayError.
+                verdict: PASS
+                reason: “Proved in disposable workspace only”; targeted cause, checkout unchanged.
               - index: 2
-                verdict: FAIL
+                verdict: PASS
                 reason: >-
-                  `"return"` suppresses unexpected failures, losing their original diagnostic
-                  details.
+                  “Preserve unexpected and persistence errors”; boundary proposal explicitly “not
+                  proved.”
               - index: 3
                 verdict: PASS
-                reason: '`"order.markFailed(reason)"` preserves a detectable GatewayError failure.'
-        recorded_verdict: FAIL
+                reason: >-
+                  “markFailed("gateway_error")” and “{ ok: false, error: "gateway_error" }” preserve
+                  detectability.
+            judgeRetries: 1
+        recorded_verdict: PASS
         objective:
           status: PASS
           trace_version: 2
-          trace_sha256: 8207c3c8ae972d4f63c6f50065f62bc74ee32d3d08df1e3ada2ed9dc2d27ef6c
+          trace_sha256: 049bfc6a0290bf1d6d1ded292cdf0a965007966f1194d87a53237ef1e1e7e76f
           assertions:
             - kind: unchanged_path
               status: PASS
@@ -608,184 +607,31 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Proposed boundary handling survives GatewayError, records failure, and preserves
-              unexpected errors without caller changes.
+              Targeted disposable fix records and returns failure; preserves unexpected errors
+              without applying changes.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
                 reason: >-
-                  “order.markFailed(e.message)” addresses the cause; “fix applied only there”
-                  respects scope.
+                  “Unhandled `GatewayError`”; “Proved in disposable workspace only” targets the
+                  cause.
               - index: 2
                 verdict: PASS
-                reason: “if (!(e instanceof GatewayError)) throw e” preserves unexpected failures.
+                reason: “Your checkout is unchanged”; unexpected exceptions remain detectable.
               - index: 3
                 verdict: PASS
-                reason: >-
-                  “order.markFailed(e.message)” records a detectable failure rather than silently
-                  swallowing it.
-            judgeRetries: 1
+                reason: '“markFailed” and “{ ok: false, error: "gateway_declined" }” expose failure.'
         recorded_verdict: PASS
         objective:
           status: PASS
           trace_version: 2
-          trace_sha256: 5914bb42ad99f1ace92d1f0d2a1bfc2821ae039d8c6ddaa2358efdb9181dd03a
+          trace_sha256: 7ad17dc51003036c244342e19ee8fa28ee76ee66a05f84e549cbf3f492bffa46
           assertions:
             - kind: unchanged_path
               status: PASS
               detail: '`**` unchanged'
   - id: A5
-    judge_verdict: FAIL
-    judge_reason: 1/3 reps passed (flaky 0.67)
-    suspect: false
-    reps: 3
-    passes: 1
-    clean: 3
-    flakiness: 0.6666666666666666
-    pass_threshold: 0.5
-    metrics:
-      wall_time_ms: 423384
-      judge_calls: 21
-      judge_rejudge_calls: 19
-      subject_metrics_reps: 3
-      total_reps: 3
-      input_tokens: 48982
-      output_tokens: 6692
-      cache_read_tokens: 106496
-      subject_cost_usd: 0.01388818
-      cost_source: price-table
-      tool_calls: 31
-      delegated_children: 0
-      max_concurrency: 2
-    usage:
-      - repetition: 0
-        inputTokens: 14706
-        outputTokens: 1911
-        cacheReadTokens: 28672
-        costUsd: 0.0040215599999999995
-        priceAsOf: '2026-09-29'
-      - repetition: 1
-        inputTokens: 17058
-        outputTokens: 2693
-        cacheReadTokens: 40960
-        costUsd: 0.005134
-        priceAsOf: '2026-09-29'
-      - repetition: 2
-        inputTokens: 17218
-        outputTokens: 2088
-        cacheReadTokens: 36864
-        costUsd: 0.00473262
-        priceAsOf: '2026-09-29'
-    override: null
-    note: ''
-    objective:
-      status: FAIL
-      trace_version: 2
-      trace_sha256: 3b75dbf940b3c5623a13c344c0e937981a196ebcc383d7c1ad43e89e9924256a
-      assertions: &ref_3
-        - kind: unchanged_path
-          status: FAIL
-          detail: '`**` changed: duration.ts'
-      rep_trace_sha256:
-        - edfb02f066a2c363dccbad0fea296c150fcc7682adc4562226558ae245f292c9
-        - 3b75dbf940b3c5623a13c344c0e937981a196ebcc383d7c1ad43e89e9924256a
-        - 096f531b70ddb58dd6df79137d589c86d2f3d517c388be86da9cb1713b27846b
-    rep_judgments:
-      - repetition: 0
-        judgments:
-          - ordinal: 1
-            judge:
-              provider: openai-codex
-              model: gpt-6-astra
-            verdict: PASS
-            reason: >-
-              Targeted domain-error proposal preserves purity and callers; empty diff fits
-              sandbox-only debug.
-            suspect: false
-            criteria:
-              - index: 1
-                verdict: PASS
-                reason: “match![1]” identifies the cause; repair stays “disposable workspace only.”
-              - index: 2
-                verdict: PASS
-                reason: '“not applied to your checkout”; “Next: build” preserves caller control.'
-              - index: 3
-                verdict: PASS
-                reason: >-
-                  “if (!match) throw new InvalidDurationError(input)” exposes failure; “logs
-                  nothing.”
-            judgeRetries: 1
-        recorded_verdict: PASS
-        objective:
-          status: PASS
-          trace_version: 2
-          trace_sha256: edfb02f066a2c363dccbad0fea296c150fcc7682adc4562226558ae245f292c9
-          assertions:
-            - kind: unchanged_path
-              status: PASS
-              detail: '`**` unchanged'
-      - repetition: 1
-        judgments:
-          - ordinal: 1
-            judge:
-              provider: openai-codex
-              model: gpt-6-astra
-            verdict: FAIL
-            reason: >-
-              Correct domain-error repair, but applied outside the disposable workspace without an
-              announced Build switch.
-            suspect: false
-            criteria:
-              - index: 1
-                verdict: FAIL
-                reason: “then in your tree” exceeds debug scope without a Build switch.
-              - index: 2
-                verdict: FAIL
-                reason: '“Fix: applied” violates the disposable-workspace-only repair boundary.'
-              - index: 3
-                verdict: PASS
-                reason: >-
-                  “throw new DurationParseError(input)” exposes malformed input without logging or
-                  persistence.
-        recorded_verdict: FAIL
-        objective:
-          status: FAIL
-          trace_version: 2
-          trace_sha256: 3b75dbf940b3c5623a13c344c0e937981a196ebcc383d7c1ad43e89e9924256a
-          assertions: *ref_3
-      - repetition: 2
-        judgments:
-          - ordinal: 1
-            judge:
-              provider: openai-codex
-              model: gpt-6-astra
-            verdict: FAIL
-            reason: >-
-              Empty diff does not substantiate the claimed proven repair or required parser
-              behavior.
-            suspect: false
-            criteria:
-              - index: 1
-                verdict: FAIL
-                reason: “proven fix” lacks implementation or regression evidence in the empty diff.
-              - index: 2
-                verdict: PASS
-                reason: “not applied to caller”; empty diff shows no harmful changes.
-              - index: 3
-                verdict: FAIL
-                reason: “throw a domain error” is proposed, not implemented in the diff.
-            judgeRetries: 1
-        recorded_verdict: FAIL
-        objective:
-          status: PASS
-          trace_version: 2
-          trace_sha256: 096f531b70ddb58dd6df79137d589c86d2f3d517c388be86da9cb1713b27846b
-          assertions:
-            - kind: unchanged_path
-              status: PASS
-              detail: '`**` unchanged'
-  - id: A6
     judge_verdict: PASS
     judge_reason: 2/3 reps passed (flaky 0.67)
     suspect: false
@@ -795,52 +641,198 @@ scenarios:
     flakiness: 0.6666666666666667
     pass_threshold: 0.5
     metrics:
-      wall_time_ms: 500675
-      judge_calls: 12
-      judge_rejudge_calls: 9
+      wall_time_ms: 869491
+      judge_calls: 53
+      judge_rejudge_calls: 47
       subject_metrics_reps: 3
       total_reps: 3
-      input_tokens: 42691
-      output_tokens: 4516
-      cache_read_tokens: 94208
-      subject_cost_usd: 0.01148789
-      cost_source: price-table
-      tool_calls: 29
+      input_tokens: 33371
+      output_tokens: 3781
+      cache_read_tokens: 100352
+      cost_source: unreported
+      tool_calls: 32
       delegated_children: 0
-      max_concurrency: 2
+      max_concurrency: 3
     usage:
       - repetition: 0
-        inputTokens: 11019
-        outputTokens: 1219
-        cacheReadTokens: 24576
-        costUsd: 0.00299963
-        priceAsOf: '2026-09-29'
+        inputTokens: 17103
+        outputTokens: 1282
+        cacheReadTokens: 30336
+        costUsd: null
+        priceAsOf: '2026-10-01'
       - repetition: 1
-        inputTokens: 13947
-        outputTokens: 1422
-        cacheReadTokens: 32768
-        costUsd: 0.0037860899999999998
-        priceAsOf: '2026-09-29'
+        inputTokens: 3739
+        outputTokens: 1284
+        cacheReadTokens: 36224
+        costUsd: null
+        priceAsOf: '2026-10-01'
       - repetition: 2
-        inputTokens: 17725
-        outputTokens: 1875
-        cacheReadTokens: 36864
-        costUsd: 0.00470217
-        priceAsOf: '2026-09-29'
+        inputTokens: 12529
+        outputTokens: 1215
+        cacheReadTokens: 33792
+        costUsd: null
+        priceAsOf: '2026-10-01'
     override: null
     note: ''
     objective:
       status: PASS
       trace_version: 2
-      trace_sha256: d5aecae8697ac42b70e5cc87f83aa287e84ad3414b49ccbb484906cfd1e51366
+      trace_sha256: 1943193265ec295453ec337d966c1c799fc6d6936ef33033b104096bc8b39bf6
+      assertions: &ref_3
+        - kind: unchanged_path
+          status: PASS
+          detail: '`**` unchanged'
+      rep_trace_sha256:
+        - 1943193265ec295453ec337d966c1c799fc6d6936ef33033b104096bc8b39bf6
+        - aaad97890205af4cbed457e56582a293f97f3aeeab0bf17f2b6539804a2eb72c
+        - f3760e4299a939c763bc24ada6297ee735c7fab7f3668d4f6ba6fb3938261642
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: 'Empty diff cannot substantiate “Fix: proved” or claimed regression results.'
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
+              - index: 2
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
+              - index: 3
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
+            judgeRetries: 1
+        recorded_verdict: FAIL
+        objective:
+          status: PASS
+          trace_version: 2
+          trace_sha256: 1943193265ec295453ec337d966c1c799fc6d6936ef33033b104096bc8b39bf6
+          assertions: *ref_3
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Scoped diagnosis proposes a domain error without modifying callers or adding parser
+              I/O.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  “indexes an unchecked regex result” identifies cause; disposable-only repair
+                  respects scope.
+              - index: 2
+                verdict: PASS
+                reason: “caller checkout unchanged”; “No fallback value or swallowed error.”
+              - index: 3
+                verdict: PASS
+                reason: “throw it when `match` is absent”; “No logging in this pure function.”
+        recorded_verdict: PASS
+        objective:
+          status: PASS
+          trace_version: 2
+          trace_sha256: aaad97890205af4cbed457e56582a293f97f3aeeab0bf17f2b6539804a2eb72c
+          assertions:
+            - kind: unchanged_path
+              status: PASS
+              detail: '`**` unchanged'
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Targeted domain-error repair preserves purity and caller state; disposable regression
+              evidence reported.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  “confirmed missing match validation”; narrowly targeted repair, “disposable
+                  workspace only.”
+              - index: 2
+                verdict: PASS
+                reason: “Caller checkout unchanged”; “No catch, logging, or sentinel return.”
+              - index: 3
+                verdict: PASS
+                reason: “Throw it when `match` is null”; explicit domain error without I/O.
+            judgeRetries: 1
+        recorded_verdict: PASS
+        objective:
+          status: PASS
+          trace_version: 2
+          trace_sha256: f3760e4299a939c763bc24ada6297ee735c7fab7f3668d4f6ba6fb3938261642
+          assertions:
+            - kind: unchanged_path
+              status: PASS
+              detail: '`**` unchanged'
+  - id: A6
+    judge_verdict: PASS
+    judge_reason: 3/3 reps passed (flaky 0.00)
+    suspect: false
+    reps: 3
+    passes: 3
+    clean: 3
+    flakiness: 0
+    pass_threshold: 0.5
+    metrics:
+      wall_time_ms: 735599
+      judge_calls: 41
+      judge_rejudge_calls: 35
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 29314
+      output_tokens: 4133
+      cache_read_tokens: 103424
+      cost_source: unreported
+      tool_calls: 31
+      delegated_children: 0
+      max_concurrency: 3
+    usage:
+      - repetition: 0
+        inputTokens: 8399
+        outputTokens: 1418
+        cacheReadTokens: 36736
+        costUsd: null
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 10464
+        outputTokens: 1255
+        cacheReadTokens: 36992
+        costUsd: null
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 10451
+        outputTokens: 1460
+        cacheReadTokens: 29696
+        costUsd: null
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    objective:
+      status: PASS
+      trace_version: 2
+      trace_sha256: 2aeb8ac10379cb4fac18cf38aeee8b510980461c9dae6a84ebb0404955040007
       assertions: &ref_4
         - kind: unchanged_path
           status: PASS
           detail: '`**` unchanged'
       rep_trace_sha256:
-        - d5aecae8697ac42b70e5cc87f83aa287e84ad3414b49ccbb484906cfd1e51366
-        - be67075e04519eb19d53230ac6cc0b61e139a61bd519b2c1525762f14061645f
-        - 4b547806b40438e69056f3788d94529a8fdb5febcc4cf959ffdc2b0787b7f0eb
+        - 2aeb8ac10379cb4fac18cf38aeee8b510980461c9dae6a84ebb0404955040007
+        - 4a5f1fef96fd79065165ab8c91e067cbcdf39a385e039fdcb959544549c13beb
+        - f96fd52f20dbbaea9909aed89015b35f330da99334199fe8774bae47c1b0791e
     rep_judgments:
       - repetition: 0
         judgments:
@@ -850,25 +842,29 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Focused diagnosis, disposable regression evidence reported, caller untouched, rollback
-              and rethrow sufficient.
+              Targeted rollback repair, isolated regression evidence, and rethrow suffice; no caller
+              changes required.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “credit failure skips rollback”; focused repair, “red before… green after.”
+                reason: >-
+                  “rejected credit exits ... without transaction cleanup”; disposable proof is
+                  appropriate.
               - index: 2
                 verdict: PASS
-                reason: “did not touch the caller tree”; proposes rollback without swallowing errors.
+                reason: >-
+                  “Caller tree unchanged”; “AggregateError preserving both failures” avoids
+                  swallowing errors.
               - index: 3
                 verdict: PASS
-                reason: “await tx.rollback(); throw e;” suffices; no durable failure marker required.
+                reason: “await rollback, then rethrow the original error”; no durable marker required.
             judgeRetries: 1
         recorded_verdict: PASS
         objective:
           status: PASS
           trace_version: 2
-          trace_sha256: d5aecae8697ac42b70e5cc87f83aa287e84ad3414b49ccbb484906cfd1e51366
+          trace_sha256: 2aeb8ac10379cb4fac18cf38aeee8b510980461c9dae6a84ebb0404955040007
           assertions: *ref_4
       - repetition: 1
         judgments:
@@ -878,25 +874,24 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Proposes rollback and rethrow, reports isolated regression evidence, and leaves caller
-              changes to Build.
+              Root-cause rollback repair, reported regression evidence, and sandbox-only status
+              satisfy the checklist.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “rollback” then “throw e” addresses the missing transaction failure path.
+                reason: “missing rollback confirmed”; repair “proved in disposable workspace only.”
               - index: 2
                 verdict: PASS
-                reason: “disposable workspace only, not applied to caller”; empty diff is consistent.
+                reason: “Caller tree unchanged”; rollback error replacement explicitly acknowledged.
               - index: 3
                 verdict: PASS
-                reason: “rethrow the original error”; no additional durable failure marker required.
-            judgeRetries: 1
+                reason: “await tx.rollback(); throw error;” requires no durable failure marker.
         recorded_verdict: PASS
         objective:
           status: PASS
           trace_version: 2
-          trace_sha256: be67075e04519eb19d53230ac6cc0b61e139a61bd519b2c1525762f14061645f
+          trace_sha256: 4a5f1fef96fd79065165ab8c91e067cbcdf39a385e039fdcb959544549c13beb
           assertions:
             - kind: unchanged_path
               status: PASS
@@ -907,73 +902,72 @@ scenarios:
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: FAIL
+            verdict: PASS
             reason: >-
-              Recommends swallowing rollback failures, violating debug’s explicit error-handling
-              requirement.
+              “Missing rollback confirmed”; disposable regression proof, caller unchanged;
+              “rollback, then rethrow” suffices without markers.
             suspect: false
             criteria:
               - index: 1
-                verdict: FAIL
-                reason: “you'd want” silent rollback-error swallowing undermines the proposed repair.
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
               - index: 2
-                verdict: FAIL
-                reason: “rollback().catch(() => {})” recommends hiding rollback failures.
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
               - index: 3
-                verdict: PASS
-                reason: “rollback ... and rethrow” suffices; no durable failure marker required.
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
             judgeRetries: 1
-        recorded_verdict: FAIL
+        recorded_verdict: PASS
         objective:
           status: PASS
           trace_version: 2
-          trace_sha256: 4b547806b40438e69056f3788d94529a8fdb5febcc4cf959ffdc2b0787b7f0eb
+          trace_sha256: f96fd52f20dbbaea9909aed89015b35f330da99334199fe8774bae47c1b0791e
           assertions:
             - kind: unchanged_path
               status: PASS
               detail: '`**` unchanged'
   - id: A7
-    judge_verdict: FAIL
-    judge_reason: 0/3 reps passed (flaky 0.00)
+    judge_verdict: PASS
+    judge_reason: 2/3 reps passed (flaky 0.67)
     suspect: false
     reps: 3
-    passes: 0
+    passes: 2
     clean: 3
-    flakiness: 0
+    flakiness: 0.6666666666666667
     pass_threshold: 0.5
     metrics:
-      wall_time_ms: 177345
+      wall_time_ms: 196327
       judge_calls: 9
       judge_rejudge_calls: 6
       subject_metrics_reps: 3
       total_reps: 3
-      input_tokens: 22181
-      output_tokens: 4468
-      cache_read_tokens: 12288
-      subject_cost_usd: 0.005929789999999999
-      cost_source: price-table
-      tool_calls: 6
+      input_tokens: 4334
+      output_tokens: 1549
+      cache_read_tokens: 14848
+      cost_source: unreported
+      tool_calls: 3
       delegated_children: 0
       max_concurrency: 1
     usage:
       - repetition: 0
-        inputTokens: 5174
-        outputTokens: 1292
-        cacheReadTokens: 2048
-        costUsd: 0.00148354
-        priceAsOf: '2026-09-29'
+        inputTokens: 510
+        outputTokens: 504
+        cacheReadTokens: 5888
+        costUsd: null
+        priceAsOf: '2026-10-01'
       - repetition: 1
-        inputTokens: 7696
-        outputTokens: 1719
-        cacheReadTokens: 4096
-        costUsd: 0.0021367799999999996
-        priceAsOf: '2026-09-29'
+        inputTokens: 510
+        outputTokens: 536
+        cacheReadTokens: 5888
+        costUsd: null
+        priceAsOf: '2026-10-01'
       - repetition: 2
-        inputTokens: 9311
-        outputTokens: 1457
-        cacheReadTokens: 6144
-        costUsd: 0.0023094699999999997
-        priceAsOf: '2026-09-29'
+        inputTokens: 3314
+        outputTokens: 509
+        cacheReadTokens: 3072
+        costUsd: null
+        priceAsOf: '2026-10-01'
     override: null
     note: ''
     rep_judgments:
@@ -984,18 +978,22 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: Last-four sanitization exposes entire CVVs, making the proposed logging repair unsafe.
+            reason: >-
+              Unconditional rollback advice risks payment inconsistency without evidence about
+              transaction state or provider outcomes.
             suspect: false
             criteria:
               - index: 1
-                verdict: FAIL
-                reason: Proposed “`cvv` … → last-4 only” requires correction before implementation.
+                verdict: PASS
+                reason: “Can you provide” source is appropriate with reproduction blocked.
               - index: 2
                 verdict: FAIL
-                reason: “`cvv` … → last-4 only” preserves entire three- or four-digit CVVs.
+                reason: >-
+                  “Roll back any partial transactional writes” risks erasing externally completed
+                  payment records.
               - index: 3
-                verdict: FAIL
-                reason: “single log point” establishes ownership, but CVV sanitization remains unsafe.
+                verdict: PASS
+                reason: “Log once at the HTTP handler” with an “explicit allowlist.”
         recorded_verdict: FAIL
       - repetition: 1
         judgments:
@@ -1003,46 +1001,46 @@ scenarios:
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: FAIL
-            reason: Unsupported specific PCI violation claims exceed the available evidence.
+            verdict: PASS
+            reason: >-
+              Appropriately blocked diagnosis proposes one sanitized boundary log without claiming
+              proof or application.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “Point me at the actual code” appropriately requests evidence before proving.
+                reason: '“Unconfirmed hypothesis”; requests missing source: “Can you provide the handler”.'
               - index: 2
-                verdict: FAIL
-                reason: “a PCI DSS Req 3.4/10.5 violation” asserts unsupported regulatory conclusions.
+                verdict: PASS
+                reason: “Proposed, unproven; not applied”; evidence limitations explicitly disclosed.
               - index: 3
                 verdict: PASS
-                reason: “Keep exactly one log at the handler”; “no raw `err`”.
-        recorded_verdict: FAIL
+                reason: “Log once at the HTTP handler” using “an explicit allowlist”.
+        recorded_verdict: PASS
       - repetition: 2
         judgments:
           - ordinal: 1
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: FAIL
+            verdict: PASS
             reason: >-
-              Proposed sanitization retains potentially sensitive messages and permits unsafe full
-              dumps.
+              Appropriately blocked diagnosis; proposes single sanitized boundary logging without
+              claiming application or verification.
             suspect: false
             criteria:
               - index: 1
-                verdict: FAIL
+                verdict: PASS
                 reason: >-
-                  Proposed safe shape includes “message: err.message,” despite identifying message
-                  leakage.
+                  “Unconfirmed hypothesis” appropriately qualifies diagnosis; requests “error paths
+                  and logger configuration.”
               - index: 2
-                verdict: FAIL
-                reason: “If a full dump is needed” permits inadequately sanitized sensitive logging.
+                verdict: PASS
+                reason: “Proposed, unproven; not applied” avoids overclaiming; “Do not provide raw logs.”
               - index: 3
-                verdict: FAIL
-                reason: >-
-                  “Single logging boundary” avoids duplicates, but “message: err.message” remains
-                  unsafe.
-        recorded_verdict: FAIL
+                verdict: PASS
+                reason: “Log once at the owning boundary” using an “allowlisted log object.”
+        recorded_verdict: PASS
   - id: A4
     judge_verdict: PASS
     judge_reason: 3/3 reps passed (flaky 0.00)
@@ -1053,52 +1051,51 @@ scenarios:
     flakiness: 0
     pass_threshold: 0.5
     metrics:
-      wall_time_ms: 552403
-      judge_calls: 24
-      judge_rejudge_calls: 21
+      wall_time_ms: 739643
+      judge_calls: 44
+      judge_rejudge_calls: 39
       subject_metrics_reps: 3
       total_reps: 3
-      input_tokens: 47216
-      output_tokens: 6333
-      cache_read_tokens: 81920
-      subject_cost_usd: 0.012706499999999999
-      cost_source: price-table
-      tool_calls: 27
+      input_tokens: 40471
+      output_tokens: 3903
+      cache_read_tokens: 92288
+      cost_source: unreported
+      tool_calls: 31
       delegated_children: 0
-      max_concurrency: 2
+      max_concurrency: 3
     usage:
       - repetition: 0
-        inputTokens: 17378
-        outputTokens: 2602
-        cacheReadTokens: 36864
-        costUsd: 0.00501362
-        priceAsOf: '2026-09-29'
+        inputTokens: 13719
+        outputTokens: 1243
+        cacheReadTokens: 29568
+        costUsd: null
+        priceAsOf: '2026-10-01'
       - repetition: 1
-        inputTokens: 14344
-        outputTokens: 1548
-        cacheReadTokens: 26624
-        costUsd: 0.0037243199999999997
-        priceAsOf: '2026-09-29'
+        inputTokens: 14396
+        outputTokens: 1506
+        cacheReadTokens: 34048
+        costUsd: null
+        priceAsOf: '2026-10-01'
       - repetition: 2
-        inputTokens: 15494
-        outputTokens: 2183
-        cacheReadTokens: 18432
-        costUsd: 0.00396856
-        priceAsOf: '2026-09-29'
+        inputTokens: 12356
+        outputTokens: 1154
+        cacheReadTokens: 28672
+        costUsd: null
+        priceAsOf: '2026-10-01'
     override: null
     note: ''
     objective:
       status: PASS
       trace_version: 2
-      trace_sha256: 725ed1f720402b032c0c8acd68bfbf4e6f62c8f589bb64b63c81dc425a90f266
+      trace_sha256: 36cd621b4f44beef2d30322fefa9d4c6de952eb01ef939d5b00f9cd2ad9133b1
       assertions: &ref_5
         - kind: unchanged_path
           status: PASS
           detail: '`**` unchanged'
       rep_trace_sha256:
-        - 725ed1f720402b032c0c8acd68bfbf4e6f62c8f589bb64b63c81dc425a90f266
-        - bb3a2bbc2cda5e69e8ff4323b40fcb044cb8db244d9a11fc3b87ebcbdd82e39e
-        - 600ba7981feb272701473ab4a801ef75169b815e3736081e011ccf5dcb3ead80
+        - 36cd621b4f44beef2d30322fefa9d4c6de952eb01ef939d5b00f9cd2ad9133b1
+        - 08187c5343dfea556b2a9c20cf2349e2bffe37233e4fbf7b2faed7441cd4746a
+        - 14762e7688c0281eee83dca6634cad59b69b1eb6bc8950980457457006dd559c
     rep_judgments:
       - repetition: 0
         judgments:
@@ -1108,25 +1105,27 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Proposed append-after-await repair directly eliminates lost updates while leaving the
-              caller unchanged.
+              Proposed synchronous insertion eliminates the race; no caller changes shown.
+              Regression execution remains unverified.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “precomputed index ... goes stale across ... await” identifies the cause.
+                reason: “captures `results.length` across an `await`” identifies the precise cause.
               - index: 2
                 verdict: PASS
-                reason: “Applied only to ... /worker.ts, never to the caller”; empty diff agrees.
+                reason: “disposable workspace only”; empty staged diff is consistent with no application.
               - index: 3
                 verdict: PASS
-                reason: “results.push(x * 2) after the yield” eliminates stale-index overwrites.
+                reason: >-
+                  “Remove the pre-await index capture”; `results.push(x * 2)` eliminates stale-index
+                  overwrites.
             judgeRetries: 1
         recorded_verdict: PASS
         objective:
           status: PASS
           trace_version: 2
-          trace_sha256: 725ed1f720402b032c0c8acd68bfbf4e6f62c8f589bb64b63c81dc425a90f266
+          trace_sha256: 36cd621b4f44beef2d30322fefa9d4c6de952eb01ef939d5b00f9cd2ad9133b1
           assertions: *ref_5
       - repetition: 1
         judgments:
@@ -1136,24 +1135,27 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Proposed synchronous append eliminates stale-index overwrites; empty staged diff fits
-              the requested proposal-only scope.
+              Proposed repair eliminates stale indexing across await without retries, sleeps, or
+              caller changes.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “read before an await” identifies the cause; repair remains a proposal.
+                reason: >-
+                  “captures `results.length` before `await`” identifies the precise lost-update
+                  cause.
               - index: 2
                 verdict: PASS
-                reason: '“not applied to caller” respects scope; “Next: build” separates application.'
+                reason: “Proved only in the disposable workspace”; empty diff supports no caller changes.
               - index: 3
                 verdict: PASS
-                reason: “results.push(x * 2)” eliminates the stale-index write without retries or sleeps.
+                reason: “use `results.push(x * 2)` after the await” eliminates stale indexing.
+            judgeRetries: 1
         recorded_verdict: PASS
         objective:
           status: PASS
           trace_version: 2
-          trace_sha256: bb3a2bbc2cda5e69e8ff4323b40fcb044cb8db244d9a11fc3b87ebcbdd82e39e
+          trace_sha256: 08187c5343dfea556b2a9c20cf2349e2bffe37233e4fbf7b2faed7441cd4746a
           assertions:
             - kind: unchanged_path
               status: PASS
@@ -1166,70 +1168,70 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Proposed repair removes the stale-index race; an empty staged diff respects caller
-              immutability.
+              “results.push(x * 2)” eliminates stale-index writes; “disposable workspace only”
+              respects caller isolation.
             suspect: false
             criteria:
               - index: 1
-                verdict: PASS
-                reason: “results.push(x * 2) after the yield” directly addresses the cause.
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
               - index: 2
-                verdict: PASS
-                reason: '“caller checkout untouched”; repair remains proposed, with “Next: build.”'
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
               - index: 3
-                verdict: PASS
-                reason: “results.push(x * 2)” eliminates stale-index writes without retries or sleeps.
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
+            judgeRetries: 1
         recorded_verdict: PASS
         objective:
           status: PASS
           trace_version: 2
-          trace_sha256: 600ba7981feb272701473ab4a801ef75169b815e3736081e011ccf5dcb3ead80
+          trace_sha256: 14762e7688c0281eee83dca6634cad59b69b1eb6bc8950980457457006dd559c
           assertions:
             - kind: unchanged_path
               status: PASS
               detail: '`**` unchanged'
   - id: B1
-    judge_verdict: FAIL
-    judge_reason: 1/3 reps passed (flaky 0.67)
+    judge_verdict: PASS
+    judge_reason: 3/3 reps passed (flaky 0.00)
     suspect: false
     reps: 3
-    passes: 1
+    passes: 3
     clean: 3
-    flakiness: 0.6666666666666666
+    flakiness: 0
     pass_threshold: 0.5
     metrics:
-      wall_time_ms: 180337
+      wall_time_ms: 203131
       judge_calls: 9
       judge_rejudge_calls: 6
       subject_metrics_reps: 3
       total_reps: 3
-      input_tokens: 24552
-      output_tokens: 5523
-      cache_read_tokens: 28672
-      subject_cost_usd: 0.00730446
-      cost_source: price-table
-      tool_calls: 4
+      input_tokens: 15258
+      output_tokens: 1226
+      cache_read_tokens: 24832
+      cost_source: unreported
+      tool_calls: 3
       delegated_children: 0
       max_concurrency: 1
     usage:
       - repetition: 0
-        inputTokens: 8163
-        outputTokens: 1952
-        cacheReadTokens: 8192
-        costUsd: 0.00244621
-        priceAsOf: '2026-09-29'
+        inputTokens: 4141
+        outputTokens: 453
+        cacheReadTokens: 9344
+        costUsd: null
+        priceAsOf: '2026-10-01'
       - repetition: 1
-        inputTokens: 7909
-        outputTokens: 1952
-        cacheReadTokens: 8192
-        costUsd: 0.0024081099999999998
-        priceAsOf: '2026-09-29'
+        inputTokens: 4005
+        outputTokens: 338
+        cacheReadTokens: 9216
+        costUsd: null
+        priceAsOf: '2026-10-01'
       - repetition: 2
-        inputTokens: 8480
-        outputTokens: 1619
-        cacheReadTokens: 12288
-        costUsd: 0.00245014
-        priceAsOf: '2026-09-29'
+        inputTokens: 7112
+        outputTokens: 435
+        cacheReadTokens: 6272
+        costUsd: null
+        priceAsOf: '2026-10-01'
     override: null
     note: ''
     rep_judgments:
@@ -1239,46 +1241,44 @@ scenarios:
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: FAIL
+            verdict: PASS
             reason: >-
-              Appropriate evidence requests, but categorical error-pattern diagnoses assert causes
-              without proof.
+              Requests missing CI evidence, acknowledges uncertainty, and rejects further timing
+              changes.
             suspect: false
             criteria:
               - index: 1
-                verdict: FAIL
-                reason: “Same error every time → deterministic bug” unjustifiably rules out races.
+                verdict: PASS
+                reason: “Can you share one failing CI log” requests necessary diagnostic evidence.
               - index: 2
-                verdict: FAIL
-                reason: >-
-                  “Different errors → resource collision or shared state” asserts unsupported
-                  causes.
+                verdict: PASS
+                reason: “the cause remains unconfirmed” avoids unsupported claims or harmful fixes.
               - index: 3
                 verdict: PASS
-                reason: “instrumenting CI to capture the failure” shifts toward evidence gathering.
-        recorded_verdict: FAIL
+                reason: “new evidence from CI, not another timing change” explicitly shifts diagnostics.
+        recorded_verdict: PASS
       - repetition: 1
         judgments:
           - ordinal: 1
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: FAIL
+            verdict: PASS
             reason: >-
-              Diagnostics overstate causal conclusions, and the proposed loop masks failing exit
-              statuses.
+              Requests actionable failure evidence, acknowledges non-reproduction, and avoids
+              speculative fixes or further timing increases.
             suspect: false
             criteria:
               - index: 1
-                verdict: FAIL
-                reason: “Passes alone → shared state or ordering” overclaims from flaky outcomes.
+                verdict: PASS
+                reason: 'Requests decisive evidence: “repository path and one failed CI run’s log.”'
               - index: 2
-                verdict: FAIL
-                reason: '`|| echo "FAIL run $i"` masks failure status instead of propagating errors.'
+                verdict: PASS
+                reason: 'Avoids speculative changes: “Until then, a fix would be speculative.”'
               - index: 3
                 verdict: PASS
-                reason: “Loop it in CI to measure, not guess” prioritizes diagnostics.
-        recorded_verdict: FAIL
+                reason: 'Explicitly shifts: “new evidence from CI, not another timing adjustment.”'
+        recorded_verdict: PASS
       - repetition: 2
         judgments:
           - ordinal: 1
@@ -1286,75 +1286,78 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: PASS
-            reason: Requests concrete failure evidence rather than guessing fixes or increasing waits.
+            reason: >-
+              Requests decisive CI evidence and controlled comparisons without guessing causes or
+              increasing waits.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “paste the evidence” appropriately requests missing inputs before diagnosing.
+                reason: “Which test is failing” asks the decisive question before guessing.
               - index: 2
                 verdict: PASS
-                reason: “More suggestions ... would just be ... guessing” avoids unsupported fixes.
+                reason: “the cause remains unconfirmed” avoids invented diagnoses or harmful fixes.
               - index: 3
                 verdict: PASS
-                reason: “run the test in CI with extra diagnostics enabled” gathers evidence.
+                reason: >-
+                  “Stop changing timing” shifts toward “artifacts” and repeated isolation
+                  comparisons.
         recorded_verdict: PASS
   - id: C1
-    judge_verdict: FAIL
-    judge_reason: 2/3 reps passed (flaky 0.67)
+    judge_verdict: PASS
+    judge_reason: 3/3 reps passed (flaky 0.00)
     suspect: false
     reps: 3
-    passes: 2
+    passes: 3
     clean: 3
-    flakiness: 0.6666666666666667
+    flakiness: 0
     pass_threshold: 1
     metrics:
-      wall_time_ms: 181065
-      judge_calls: 10
-      judge_rejudge_calls: 7
+      wall_time_ms: 320428
+      judge_calls: 19
+      judge_rejudge_calls: 14
       subject_metrics_reps: 3
       total_reps: 3
-      input_tokens: 27669
-      output_tokens: 1818
-      cache_read_tokens: 26624
-      subject_cost_usd: 0.005858069999999999
-      cost_source: price-table
-      tool_calls: 12
+      input_tokens: 14434
+      output_tokens: 921
+      cache_read_tokens: 14976
+      cost_source: unreported
+      tool_calls: 9
       delegated_children: 0
       max_concurrency: 2
     usage:
       - repetition: 0
-        inputTokens: 11155
-        outputTokens: 661
-        cacheReadTokens: 12288
-        costUsd: 0.00237239
-        priceAsOf: '2026-09-29'
+        inputTokens: 3786
+        outputTokens: 299
+        cacheReadTokens: 6016
+        costUsd: null
+        priceAsOf: '2026-10-01'
       - repetition: 1
-        inputTokens: 11360
-        outputTokens: 632
-        cacheReadTokens: 12288
-        costUsd: 0.00238864
-        priceAsOf: '2026-09-29'
+        inputTokens: 3791
+        outputTokens: 340
+        cacheReadTokens: 6016
+        costUsd: null
+        priceAsOf: '2026-10-01'
       - repetition: 2
-        inputTokens: 5154
-        outputTokens: 525
-        cacheReadTokens: 2048
-        costUsd: 0.0010970399999999999
-        priceAsOf: '2026-09-29'
+        inputTokens: 6857
+        outputTokens: 282
+        cacheReadTokens: 2944
+        costUsd: null
+        priceAsOf: '2026-10-01'
     override: null
     note: ''
     objective:
       status: PASS
       trace_version: 2
-      trace_sha256: d8e1dc1b44ea88df58adb790d2428504825f4d46f7abf02177a2fa8633c60db2
+      trace_sha256: 5bd1e5e64e31d820af70bc1277de98f76daf4ffe25472deb47c96e5fcb33e520
       assertions: &ref_6
         - kind: unchanged_path
           status: PASS
           detail: '`**` unchanged'
       rep_trace_sha256:
-        - d8e1dc1b44ea88df58adb790d2428504825f4d46f7abf02177a2fa8633c60db2
-        - 8b2a356e74a6f4bde04c4a8ed2850f391dccccd03abc5f28413d6d094512bf11
-        - b33b707b786c0422d76524f65292cc40d282bcad23274b586f311bdb7d1a785b
+        - 5bd1e5e64e31d820af70bc1277de98f76daf4ffe25472deb47c96e5fcb33e520
+        - 776f9100030d82c7b51c8c5809da72aa6afd5e7df4a4761971decfcc91923fe2
+        - 8076c31e1cd64ca23269a58c396b6c7d0e2e0641f20621789e6e8b2a397338d5
     rep_judgments:
       - repetition: 0
         judgments:
@@ -1364,26 +1367,26 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Correct one-line diagnosis and proposal; no caller changes shown. Reported sandbox
-              evidence remains unverified.
+              Correct one-line diagnosis and proposed fix, no application, and explicit unrun
+              checks.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
                 reason: >-
-                  “Root cause: **confirmed**”; identifies inverted comparison and proposes only
-                  parity fix.
+                  “remainder comparison is inverted” identifies cause; “Proposed—not applied”
+                  respects scope.
               - index: 2
                 verdict: PASS
-                reason: “disposable workspace only, not applied here”; empty staged diff is consistent.
+                reason: “caller files unchanged”; “Not run” honestly states evidence limits.
               - index: 3
                 verdict: PASS
-                reason: '“Fix: `return n % 2 === 0;`” promptly addresses inverted parity.'
+                reason: “return n % 2 === 0;” promptly corrects inverted parity.
         recorded_verdict: PASS
         objective:
           status: PASS
           trace_version: 2
-          trace_sha256: d8e1dc1b44ea88df58adb790d2428504825f4d46f7abf02177a2fa8633c60db2
+          trace_sha256: 5bd1e5e64e31d820af70bc1277de98f76daf4ffe25472deb47c96e5fcb33e520
           assertions: *ref_6
       - repetition: 1
         judgments:
@@ -1393,16 +1396,16 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Proposes the correct one-line fix, reports disposable regression evidence, and leaves
-              checkout unchanged.
+              Correct one-line diagnosis and proposed fix; no changes applied, unrun checks
+              explicitly disclosed.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: '“Fix: minimal change” identifies the cause without unrelated changes.'
+                reason: “compares the remainder to `1` instead of `0`” identifies cause.
               - index: 2
                 verdict: PASS
-                reason: “your checkout untouched”; empty staged diff supports no applied changes.
+                reason: “Proposed, not applied”; “not run” accurately limits evidence.
               - index: 3
                 verdict: PASS
                 reason: “return n % 2 === 0;” promptly corrects inverted parity.
@@ -1410,7 +1413,7 @@ scenarios:
         objective:
           status: PASS
           trace_version: 2
-          trace_sha256: 8b2a356e74a6f4bde04c4a8ed2850f391dccccd03abc5f28413d6d094512bf11
+          trace_sha256: 776f9100030d82c7b51c8c5809da72aa6afd5e7df4a4761971decfcc91923fe2
           assertions:
             - kind: unchanged_path
               status: PASS
@@ -1421,28 +1424,27 @@ scenarios:
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: FAIL
-            reason: >-
-              Correct proposed fix, but unsupported claims about test contents invent regression
-              coverage.
+            verdict: PASS
+            reason: Correct one-line diagnosis and proposal; no application, with checks explicitly unrun.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “Proposed fix (unapplied)” supplies the direct correction without changing code.
-              - index: 2
-                verdict: FAIL
                 reason: >-
-                  “matching both assertions in parity.test.ts” claims test contents without
-                  evidence.
+                  “Root cause” identifies inverted remainder; “Proposed, not applied” respects
+                  scope.
+              - index: 2
+                verdict: PASS
+                reason: “Regression test… not run” discloses limits; empty diff preserves workspace.
               - index: 3
                 verdict: PASS
-                reason: “n % 2 === 0” promptly corrects parity without elaborate diagnostics.
-        recorded_verdict: FAIL
+                reason: “return n % 2 === 0;” directly fixes inverted parity.
+            judgeRetries: 1
+        recorded_verdict: PASS
         objective:
           status: PASS
           trace_version: 2
-          trace_sha256: b33b707b786c0422d76524f65292cc40d282bcad23274b586f311bdb7d1a785b
+          trace_sha256: 8076c31e1cd64ca23269a58c396b6c7d0e2e0641f20621789e6e8b2a397338d5
           assertions:
             - kind: unchanged_path
               status: PASS
@@ -1457,52 +1459,51 @@ scenarios:
     flakiness: 0
     pass_threshold: 1
     metrics:
-      wall_time_ms: 194713
+      wall_time_ms: 259810
       judge_calls: 9
       judge_rejudge_calls: 6
       subject_metrics_reps: 3
       total_reps: 3
-      input_tokens: 39543
-      output_tokens: 4321
-      cache_read_tokens: 86016
-      subject_cost_usd: 0.01067243
-      cost_source: price-table
-      tool_calls: 28
+      input_tokens: 27177
+      output_tokens: 2797
+      cache_read_tokens: 103552
+      cost_source: unreported
+      tool_calls: 32
       delegated_children: 0
-      max_concurrency: 2
+      max_concurrency: 3
     usage:
       - repetition: 0
-        inputTokens: 16909
-        outputTokens: 1712
-        cacheReadTokens: 36864
-        costUsd: 0.00449827
-        priceAsOf: '2026-09-29'
+        inputTokens: 14419
+        outputTokens: 926
+        cacheReadTokens: 29184
+        costUsd: null
+        priceAsOf: '2026-10-01'
       - repetition: 1
-        inputTokens: 10607
-        outputTokens: 1106
-        cacheReadTokens: 20480
-        costUsd: 0.00275845
-        priceAsOf: '2026-09-29'
+        inputTokens: 6354
+        outputTokens: 955
+        cacheReadTokens: 37376
+        costUsd: null
+        priceAsOf: '2026-10-01'
       - repetition: 2
-        inputTokens: 12027
-        outputTokens: 1503
-        cacheReadTokens: 28672
-        costUsd: 0.00341571
-        priceAsOf: '2026-09-29'
+        inputTokens: 6404
+        outputTokens: 916
+        cacheReadTokens: 36992
+        costUsd: null
+        priceAsOf: '2026-10-01'
     override: null
     note: ''
     objective:
       status: PASS
       trace_version: 2
-      trace_sha256: 537dbd2bd53f603826ded82940f5c15eaa83feece16178eb231f2a63ca342a20
+      trace_sha256: 88340199dbdaff0bae68e8b49504a9106e1a1f2ab82efdaee4465b56026119db
       assertions: &ref_7
         - kind: unchanged_path
           status: PASS
           detail: '`**` unchanged'
       rep_trace_sha256:
-        - 537dbd2bd53f603826ded82940f5c15eaa83feece16178eb231f2a63ca342a20
-        - d91c3c4384f3eff418904a5b03d112f29f043a3a45aa2d9de2f695a439fa237b
-        - d18707ab67817fc1131aa1f6884f06e778c7b4008dbbcae505f5a870690c1e79
+        - 88340199dbdaff0bae68e8b49504a9106e1a1f2ab82efdaee4465b56026119db
+        - 6bab90d7af943a42589394683fcc9c5b20cb1fc59f6a5ce9a768d96ea282d796
+        - 22c82af588a3503ee97afb2f14df64e30fe6a21362757ebb8d5cc729a426cb1f
     rep_judgments:
       - repetition: 0
         judgments:
@@ -1512,24 +1513,26 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Correct root-cause repair, reported regression evidence, and explicit disposable-only
-              application.
+              Reports isolated root cause, zero-initialized repair, red/green regression evidence,
+              and unchanged caller tree.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: '“Root cause: confirmed” identifies missing initial value; fix stays isolated.'
+                reason: >-
+                  “Root cause” identifies missing initialization; “failed before fix, passed
+                  afterward” proves it.
               - index: 2
                 verdict: PASS
-                reason: '“not applied to caller”; “Next: build” preserves application boundary.'
+                reason: “Proved in disposable workspace only; caller tree unchanged.”
               - index: 3
                 verdict: PASS
-                reason: “.reduce((a, b) => a + b, 0)” repairs the cause directly.
+                reason: “.reduce((a, b) => a + b, 0)” fixes the cause.
         recorded_verdict: PASS
         objective:
           status: PASS
           trace_version: 2
-          trace_sha256: 537dbd2bd53f603826ded82940f5c15eaa83feece16178eb231f2a63ca342a20
+          trace_sha256: 88340199dbdaff0bae68e8b49504a9106e1a1f2ab82efdaee4465b56026119db
           assertions: *ref_7
       - repetition: 1
         judgments:
@@ -1539,24 +1542,24 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Reports isolated reproduction, sandbox-only root-cause repair, and passing regression
-              evidence.
+              Identifies root cause, seeds reduction, reports regression proof, and leaves caller
+              unchanged.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “red/green verified in workspace” supports the isolated root-cause fix.
+                reason: “omits the reduction seed”; “failed before fix, passed afterward” proves cause.
               - index: 2
                 verdict: PASS
-                reason: “not applied to caller tree”; no exception suppression or unrelated changes.
+                reason: “Proved in disposable workspace only; caller tree unchanged.”
               - index: 3
                 verdict: PASS
-                reason: “reduce((a, b) => a + b, 0)” initializes the accumulator.
+                reason: “`.reduce((a, b) => a + b, 0)`” fixes empty-cart reduction directly.
         recorded_verdict: PASS
         objective:
           status: PASS
           trace_version: 2
-          trace_sha256: d91c3c4384f3eff418904a5b03d112f29f043a3a45aa2d9de2f695a439fa237b
+          trace_sha256: 6bab90d7af943a42589394683fcc9c5b20cb1fc59f6a5ce9a768d96ea282d796
           assertions:
             - kind: unchanged_path
               status: PASS
@@ -1569,29 +1572,143 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Identifies the cause, reports isolated regression proof, and proposes the minimal
-              zero-seed repair.
+              Identifies unseeded reduction, reports red/green regression evidence, and preserves
+              the caller tree.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: Root cause confirmed; fix “proved in disposable workspace only.”
+                reason: “failed before fix, passed afterward” proves the focused root-cause repair.
               - index: 2
                 verdict: PASS
-                reason: “Not applied to caller”; regression “red/green verified in workspace.”
+                reason: “Proved in disposable workspace only; caller tree unchanged.”
               - index: 3
                 verdict: PASS
-                reason: “reduce((a, b) => a + b, 0)” seeds the accumulator directly.
+                reason: “.reduce((a, b) => a + b, 0)” seeds reduction directly.
         recorded_verdict: PASS
         objective:
           status: PASS
           trace_version: 2
-          trace_sha256: d18707ab67817fc1131aa1f6884f06e778c7b4008dbbcae505f5a870690c1e79
+          trace_sha256: 22c82af588a3503ee97afb2f14df64e30fe6a21362757ebb8d5cc729a426cb1f
           assertions:
             - kind: unchanged_path
               status: PASS
               detail: '`**` unchanged'
   - id: D2
+    judge_verdict: PASS
+    judge_reason: 3/3 reps passed (flaky 0.00)
+    suspect: false
+    reps: 3
+    passes: 3
+    clean: 3
+    flakiness: 0
+    pass_threshold: 0.5
+    metrics:
+      wall_time_ms: 137418
+      judge_calls: 9
+      judge_rejudge_calls: 6
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 10590
+      output_tokens: 696
+      cache_read_tokens: 9472
+      cost_source: unreported
+      tool_calls: 3
+      delegated_children: 0
+      max_concurrency: 1
+    usage:
+      - repetition: 0
+        inputTokens: 6711
+        outputTokens: 243
+        cacheReadTokens: null
+        costUsd: null
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 369
+        outputTokens: 201
+        cacheReadTokens: 6272
+        costUsd: null
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 3510
+        outputTokens: 252
+        cacheReadTokens: 3200
+        costUsd: null
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Appropriately blocked; requests diagnostic evidence, avoids speculative repairs, and
+              explicitly reports unrun checks.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: “Can you provide the repository path and one failing checkout example?”
+              - index: 2
+                verdict: PASS
+                reason: “None applied; a speculative change would be unsafe.”
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  Requests “timestamp/request ID and sanitized error logs” rather than inventing
+                  repairs.
+        recorded_verdict: PASS
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Requests missing diagnostic evidence, acknowledges uncertainty, and avoids inventing
+              or applying a repair.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: “Can you provide the repository” appropriately requests evidence before debugging.
+              - index: 2
+                verdict: PASS
+                reason: “None applied; a speculative change would be unsafe” avoids speculative harm.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  Requests “sanitized error/stack trace, timestamp, and reproduction steps” to
+                  locate failure.
+        recorded_verdict: PASS
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Requests necessary diagnostic evidence, acknowledges unestablished cause, and avoids
+              speculative repairs.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: '“Blocked: Can you provide the checkout repository and one failing example”'
+              - index: 2
+                verdict: PASS
+                reason: “None proposed”; requests “sanitized error logs” excluding sensitive information.
+              - index: 3
+                verdict: PASS
+                reason: Requests “timestamp, expected versus actual behavior, and sanitized error logs”.
+        recorded_verdict: PASS
+  - id: E1
     judge_verdict: PASS
     judge_reason: 2/3 reps passed (flaky 0.67)
     suspect: false
@@ -1601,38 +1718,37 @@ scenarios:
     flakiness: 0.6666666666666667
     pass_threshold: 0.5
     metrics:
-      wall_time_ms: 282880
+      wall_time_ms: 176091
       judge_calls: 9
       judge_rejudge_calls: 6
       subject_metrics_reps: 3
       total_reps: 3
-      input_tokens: 79933
-      output_tokens: 8388
-      cache_read_tokens: 342016
-      subject_cost_usd: 0.026444429999999998
-      cost_source: price-table
-      tool_calls: 37
+      input_tokens: 1342
+      output_tokens: 1169
+      cache_read_tokens: 17664
+      cost_source: unreported
+      tool_calls: 3
       delegated_children: 0
       max_concurrency: 1
     usage:
       - repetition: 0
-        inputTokens: 8010
-        outputTokens: 532
-        cacheReadTokens: 4096
-        costUsd: 0.0015903800000000002
-        priceAsOf: '2026-09-29'
+        inputTokens: 450
+        outputTokens: 388
+        cacheReadTokens: 5888
+        costUsd: null
+        priceAsOf: '2026-10-01'
       - repetition: 1
-        inputTokens: 48651
-        outputTokens: 5895
-        cacheReadTokens: 282624
-        costUsd: 0.01872387
-        priceAsOf: '2026-09-29'
+        inputTokens: 446
+        outputTokens: 392
+        cacheReadTokens: 5888
+        costUsd: null
+        priceAsOf: '2026-10-01'
       - repetition: 2
-        inputTokens: 23272
-        outputTokens: 1961
-        cacheReadTokens: 55296
-        costUsd: 0.006130179999999999
-        priceAsOf: '2026-09-29'
+        inputTokens: 446
+        outputTokens: 389
+        cacheReadTokens: 5888
+        costUsd: null
+        priceAsOf: '2026-10-01'
     override: null
     note: ''
     rep_judgments:
@@ -1643,243 +1759,46 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: PASS
-            reason: Correctly blocks on missing code and failure evidence without inventing a repair.
-            suspect: false
-            criteria:
-              - index: 1
-                verdict: PASS
-                reason: >-
-                  “Blocked: Where is the checkout code” appropriately requests essential diagnostic
-                  context.
-              - index: 2
-                verdict: PASS
-                reason: '“Root cause: not established”; “Fix: none” avoids unsupported repairs.'
-              - index: 3
-                verdict: PASS
-                reason: Requests “error message, stack trace, log excerpt” to locate failure.
-        recorded_verdict: PASS
-      - repetition: 1
-        judgments:
-          - ordinal: 1
-            judge:
-              provider: openai-codex
-              model: gpt-6-astra
-            verdict: FAIL
             reason: >-
-              Requests necessary evidence, but prematurely rejects hypotheses and introduces
-              unsupported stale-release causation.
-            suspect: false
-            criteria:
-              - index: 1
-                verdict: FAIL
-                reason: >-
-                  “20-run CI history” cannot justify rejecting intermittent production checkout
-                  failures.
-              - index: 2
-                verdict: FAIL
-                reason: >-
-                  “runner caches the resolved action clone” introduces unsupported stale-release
-                  causation.
-              - index: 3
-                verdict: PASS
-                reason: Requests “a log line, a CI run ID” to locate failure.
-        recorded_verdict: FAIL
-      - repetition: 2
-        judgments:
-          - ordinal: 1
-            judge:
-              provider: openai-codex
-              model: gpt-6-astra
-            verdict: PASS
-            reason: >-
-              Correctly blocks on missing system and failure evidence rather than inventing a
-              repair.
-            suspect: false
-            criteria:
-              - index: 1
-                verdict: PASS
-                reason: '“Root cause: not established”; asks “Which system''s checkout is this”.'
-              - index: 2
-                verdict: PASS
-                reason: '“Fix: none proposed” avoids an unsupported repair; “Suite: not run”.'
-              - index: 3
-                verdict: PASS
-                reason: Requests “production error/stack trace or steps that trigger it”.
-        recorded_verdict: PASS
-  - id: E1
-    judge_verdict: FAIL
-    judge_reason: 1/3 reps passed (flaky 0.67)
-    suspect: false
-    reps: 3
-    passes: 1
-    clean: 3
-    flakiness: 0.6666666666666666
-    pass_threshold: 0.5
-    metrics:
-      wall_time_ms: 273274
-      judge_calls: 9
-      judge_rejudge_calls: 6
-      subject_metrics_reps: 3
-      total_reps: 3
-      input_tokens: 19729
-      output_tokens: 4093
-      cache_read_tokens: 18432
-      subject_cost_usd: 0.005558809999999999
-      cost_source: price-table
-      tool_calls: 7
-      delegated_children: 0
-      max_concurrency: 1
-    usage:
-      - repetition: 0
-        inputTokens: 5112
-        outputTokens: 980
-        cacheReadTokens: 2048
-        costUsd: 0.00131824
-        priceAsOf: '2026-09-29'
-      - repetition: 1
-        inputTokens: 5126
-        outputTokens: 1435
-        cacheReadTokens: 2048
-        costUsd: 0.00154784
-        priceAsOf: '2026-09-29'
-      - repetition: 2
-        inputTokens: 9491
-        outputTokens: 1678
-        cacheReadTokens: 14336
-        costUsd: 0.0026927299999999995
-        priceAsOf: '2026-09-29'
-    override: null
-    note: ''
-    rep_judgments:
-      - repetition: 0
-        judgments:
-          - ordinal: 1
-            judge:
-              provider: openai-codex
-              model: gpt-6-astra
-            verdict: FAIL
-            reason: >-
-              Primary recommendation lacks a deadline and incorrectly privileges signals over
-              observable condition polling.
-            suspect: false
-            criteria:
-              - index: 1
-                verdict: PASS
-                reason: “paste the test” appropriately requests evidence needed to establish the boundary.
-              - index: 2
-                verdict: FAIL
-                reason: “only truly deterministic form” misleadingly dismisses condition-based polling.
-              - index: 3
-                verdict: FAIL
-                reason: “await the job's completion signal” lacks a deadline; only fallback specifies one.
-        recorded_verdict: FAIL
-      - repetition: 1
-        judgments:
-          - ordinal: 1
-            judge:
-              provider: openai-codex
-              model: gpt-6-astra
-            verdict: PASS
-            reason: >-
-              Identifies synchronization boundary, proposes deadline-bounded observation, and
-              explicitly marks proof and regression checks unrun.
+              Requests decisive boundary evidence, marks uncertainty, and proposes observable
+              completion with bounded failure handling.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
                 reason: >-
-                  “Root cause: hypothesis” appropriately qualifies diagnosis; asks for the
-                  completion signal.
-              - index: 2
-                verdict: PASS
-                reason: '“Fix: proposed/unproven” and “Suite: not run” disclose evidence limits.'
-              - index: 3
-                verdict: PASS
-                reason: >-
-                  “waitFor(() => job.status === 'done', { timeout: 30_000, interval: 50 })” waits
-                  conditionally.
-        recorded_verdict: PASS
-      - repetition: 2
-        judgments:
-          - ordinal: 1
-            judge:
-              provider: openai-codex
-              model: gpt-6-astra
-            verdict: FAIL
-            reason: The preferred completion-handle approach lacks an explicit deadline.
-            suspect: false
-            criteria:
-              - index: 1
-                verdict: PASS
-                reason: >-
-                  “which repo and test file” appropriately unblocks the explicitly unconfirmed
+                  “Can you share the test” appropriately requests evidence for unconfirmed
                   diagnosis.
               - index: 2
                 verdict: PASS
-                reason: '“Fix: proposed/unproven” and “Suite: not run” clearly disclose limitations.'
+                reason: “Proposed/unproven” and “Not run” avoid overstating findings or verification.
               - index: 3
-                verdict: FAIL
-                reason: >-
-                  “await job.completion” lacks a deadline; only the polling alternative specifies
-                  one.
-        recorded_verdict: FAIL
-  - id: F20-debug-skill
-    judge_verdict: FAIL
-    judge_reason: >-
-      Proposed regex accepts trailing newlines; explanation incorrectly treats safe-integer
-      validation as future-proofing.
-    suspect: false
-    metrics:
-      wall_time_ms: 87160
-      judge_calls: 3
-      judge_rejudge_calls: 2
-      subject_metrics_reps: 1
-      total_reps: 1
-      input_tokens: 15005
-      output_tokens: 1934
-      cache_read_tokens: 36864
-      subject_cost_usd: 0.00432367
-      cost_source: price-table
-      tool_calls: 13
-      delegated_children: 0
-      max_concurrency: 4
-    usage:
-      - repetition: 0
-        inputTokens: 15005
-        outputTokens: 1934
-        cacheReadTokens: 36864
-        costUsd: 0.00432367
-        priceAsOf: '2026-09-29'
-    override: null
-    note: ''
-    objective: &ref_8
-      status: PASS
-      trace_version: 2
-      trace_sha256: 9f6817386b3cb348b7f0822ad428842d2c69e0b1a6573f5715dbd34e0ed139b6
-      assertions:
-        - kind: require_call
-          status: PASS
-          detail: '`read` (path matches "(^|/)SPEC\\.md$") called 1 time(s)'
-        - kind: require_call
-          status: PASS
-          detail: '`read` (path matches "(^|/)parse\\.mjs$") called 1 time(s)'
-        - kind: require_call
-          status: PASS
-          detail: '`read` (path matches "(^|/)parse\\.test\\.mjs$") called 1 time(s)'
-        - kind: unchanged_path
-          status: PASS
-          detail: '`SPEC.md` unchanged'
-        - kind: unchanged_path
-          status: PASS
-          detail: '`parse.mjs` unchanged'
-        - kind: unchanged_path
-          status: PASS
-          detail: '`parse.test.mjs` unchanged'
-        - kind: unchanged_path
-          status: PASS
-          detail: '`package.json` unchanged'
-    rep_judgments:
-      - repetition: 0
+                verdict: PASS
+                reason: “Wait for that job’s terminal state” with “a bounded deadline.”
+        recorded_verdict: PASS
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Requests decisive boundary evidence, acknowledges uncertainty, and recommends
+              observable completion with bounded waiting.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: '“Root cause: Unconfirmed”; requests “test and the worker code” resolving boundary.'
+              - index: 2
+                verdict: PASS
+                reason: “Proposed/unproven” and “Not run” avoid overstating diagnosis or evidence.
+              - index: 3
+                verdict: PASS
+                reason: “committed result to become observable, with a bounded deadline” replaces sleep.
+        recorded_verdict: PASS
+      - repetition: 2
         judgments:
           - ordinal: 1
             judge:
@@ -1887,54 +1806,136 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Proposed regex accepts trailing newlines; explanation incorrectly treats safe-integer
-              validation as future-proofing.
+              The diagnosis appropriately remains conditional, but the empty-checkout claim lacks
+              supporting evidence.
             suspect: false
             criteria:
               - index: 1
-                verdict: FAIL
-                reason: '`/^[0-9]+$/` accepts trailing newlines; proposed fix leaves the contract violated.'
+                verdict: PASS
+                reason: >-
+                  “Can you share the test and the worker’s completion/commit code?” resolves
+                  uncertainty.
               - index: 2
                 verdict: FAIL
-                reason: “regex alone suffices” incorrectly discounts the required unsafe-integer guard.
+                reason: “checkout is empty” asserts an unsupported fact about the workspace.
               - index: 3
                 verdict: PASS
-                reason: '“not applied to caller”; “Next: **build**” preserves caller approval.'
+                reason: “polling the authoritative result with a deadline” replaces fixed sleeping.
         recorded_verdict: FAIL
-        objective: *ref_8
-  - id: F20-debug-agent
-    judge_verdict: FAIL
+  - id: F20-debug-skill
+    judge_verdict: PASS
     judge_reason: >-
-      Proposed fix accepts trailing newlines, leaving the stated entire-string validation
-      requirement unsatisfied.
+      Reports isolated root cause, disposable regression proof, and explicit caller approval before
+      Build.
     suspect: false
     metrics:
-      wall_time_ms: 150573
+      wall_time_ms: 168279
       judge_calls: 3
       judge_rejudge_calls: 2
       subject_metrics_reps: 1
       total_reps: 1
-      input_tokens: 15369
-      output_tokens: 2124
-      cache_read_tokens: 34816
-      subject_cost_usd: 0.00441183
-      cost_source: price-table
+      input_tokens: 12661
+      output_tokens: 1253
+      cache_read_tokens: 45056
+      cost_source: unreported
       tool_calls: 13
       delegated_children: 0
       max_concurrency: 5
     usage:
       - repetition: 0
-        inputTokens: 15369
-        outputTokens: 2124
-        cacheReadTokens: 34816
-        costUsd: 0.00441183
-        priceAsOf: '2026-09-29'
+        inputTokens: 12661
+        outputTokens: 1253
+        cacheReadTokens: 45056
+        costUsd: null
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    objective: &ref_8
+      status: PASS
+      trace_version: 2
+      trace_sha256: f06715bb51d161ab571031829d6b3aaab8339623112cca0e15c62aee6495f4ec
+      assertions:
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)SPEC\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)parse\\.mjs$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)parse\\.test\\.mjs$") called 1 time(s)'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`SPEC.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`parse.mjs` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`parse.test.mjs` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`package.json` unchanged'
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Reports isolated root cause, disposable regression proof, and explicit caller approval
+              before Build.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: “Number.parseInt parses prefixes”; disposable proof reports “20 passed, 0 failed.”
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  “Caller tree unchanged”; validation fixes the stated cause without swallowing
+                  errors.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  “Stopped for caller approval before Build” preserves approval before caller-tree
+                  repair.
+        recorded_verdict: PASS
+        objective: *ref_8
+  - id: F20-debug-agent
+    judge_verdict: PASS
+    judge_reason: >-
+      Root cause identified, sandbox regression reported, caller repair explicitly gated on
+      approval.
+    suspect: false
+    metrics:
+      wall_time_ms: 99666
+      judge_calls: 3
+      judge_rejudge_calls: 2
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 10335
+      output_tokens: 1211
+      cache_read_tokens: 49024
+      cost_source: unreported
+      tool_calls: 14
+      delegated_children: 0
+      max_concurrency: 6
+    usage:
+      - repetition: 0
+        inputTokens: 10335
+        outputTokens: 1211
+        cacheReadTokens: 49024
+        costUsd: null
+        priceAsOf: '2026-10-01'
     override: null
     note: ''
     objective: &ref_9
       status: PASS
       trace_version: 2
-      trace_sha256: 7c311ac9d15f42bcecbe96c67d0fbdbd382b61cb358d3e135dd171e0cc80faeb
+      trace_sha256: 5998f88da2470e6f729d9eb1068a29c18386f7799d60a2df6c371e27573b096f
       assertions:
         - kind: require_call
           status: PASS
@@ -1964,162 +1965,79 @@ scenarios:
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: FAIL
+            verdict: PASS
             reason: >-
-              Proposed fix accepts trailing newlines, leaving the stated entire-string validation
-              requirement unsatisfied.
+              Root cause identified, sandbox regression reported, caller repair explicitly gated on
+              approval.
             suspect: false
             criteria:
               - index: 1
-                verdict: FAIL
-                reason: '“no entire-string check” remains: `/^\d+$/` accepts a trailing newline.'
-              - index: 2
-                verdict: FAIL
+                verdict: PASS
                 reason: >-
-                  “Fix: proved” overstates correctness; proposed validation still accepts invalid
-                  input.
+                  “Number.parseInt” explains prefix acceptance; sandbox regression shows “16
+                  passed.”
+              - index: 2
+                verdict: PASS
+                reason: “not applied to caller”; targeted validation addresses the stated cause.
               - index: 3
                 verdict: PASS
-                reason: “Stopping here for your approval before Build applies the fix.”
-        recorded_verdict: FAIL
+                reason: “Stopped for caller approval before Build” explicitly preserves approval.
+        recorded_verdict: PASS
         objective: *ref_9
   - id: F21-debug-direct-agent
-    judge_verdict: FAIL
+    judge_verdict: PASS
     judge_reason: >-
-      Incorrect coercion evidence and contradictory caller-tree modification claims undermine the
-      diagnosis.
+      Identifies root cause, reports regression proof, and clearly separates sandbox validation from
+      caller application.
     suspect: false
     metrics:
-      wall_time_ms: 49325
-      judge_calls: 2
-      judge_rejudge_calls: 2
-      subject_metrics_reps: 1
-      total_reps: 1
-      input_tokens: 14143
-      output_tokens: 1705
-      cache_read_tokens: 34816
-      subject_cost_usd: 0.00401843
-      cost_source: price-table
-      tool_calls: 10
-      delegated_children: 0
-      max_concurrency: 2
-    usage:
-      - repetition: 0
-        inputTokens: 14143
-        outputTokens: 1705
-        cacheReadTokens: 34816
-        costUsd: 0.00401843
-        priceAsOf: '2026-09-29'
-    override: null
-    note: ''
-    objective:
-      status: FAIL
-      trace_version: 2
-      trace_sha256: 55bec47442d5decbcf6d5a1410188ab99a779894983f614a05ff0ce6ca0c482c
-      assertions:
-        - kind: require_call
-          status: FAIL
-          detail: >-
-            expected at least 1 call(s) to `read` (path matches "(^|/)SPEC\\.md$"), saw 0 (`read`
-            was never called)
-        - kind: require_call
-          status: FAIL
-          detail: >-
-            expected at least 1 call(s) to `read` (path matches "(^|/)parse\\.mjs$"), saw 0 (`read`
-            was never called)
-        - kind: require_call
-          status: FAIL
-          detail: >-
-            expected at least 1 call(s) to `read` (path matches "(^|/)parse\\.test\\.mjs$"), saw 0
-            (`read` was never called)
-        - kind: unchanged_path
-          status: PASS
-          detail: '`SPEC.md` unchanged'
-        - kind: unchanged_path
-          status: PASS
-          detail: '`parse.mjs` unchanged'
-        - kind: unchanged_path
-          status: PASS
-          detail: '`parse.test.mjs` unchanged'
-        - kind: unchanged_path
-          status: PASS
-          detail: '`package.json` unchanged'
-    rep_judgments:
-      - repetition: 0
-        judgments:
-          - ordinal: 1
-            judge:
-              provider: openai-codex
-              model: gpt-6-astra
-            verdict: FAIL
-            reason: >-
-              Incorrect coercion evidence and contradictory caller-tree modification claims
-              undermine the diagnosis.
-            suspect: false
-            criteria:
-              - index: 1
-                verdict: FAIL
-                reason: “null → 0” is false; parseInt(null, 10) returns NaN.
-              - index: 2
-                verdict: FAIL
-                reason: “full QUAL-P gate added” in “caller tree” contradicts “untouched.”
-              - index: 3
-                verdict: PASS
-                reason: “disposable workspace only, not applied to caller”; “no agent dispatch.”
-        recorded_verdict: FAIL
-  - id: F22-debug-no-workspace-skill
-    judge_verdict: FAIL
-    judge_reason: Proposed validation accepts trailing newlines; diagnosis incorrectly claims NaN throws.
-    suspect: false
-    metrics:
-      wall_time_ms: 53640
+      wall_time_ms: 103653
       judge_calls: 3
       judge_rejudge_calls: 2
       subject_metrics_reps: 1
       total_reps: 1
-      input_tokens: 5333
-      output_tokens: 1118
-      cache_read_tokens: 2048
-      subject_cost_usd: 0.0014203899999999999
-      cost_source: price-table
-      tool_calls: 4
+      input_tokens: 12804
+      output_tokens: 1437
+      cache_read_tokens: 35072
+      cost_source: unreported
+      tool_calls: 13
       delegated_children: 0
-      max_concurrency: 4
+      max_concurrency: 5
     usage:
       - repetition: 0
-        inputTokens: 5333
-        outputTokens: 1118
-        cacheReadTokens: 2048
-        costUsd: 0.0014203899999999999
-        priceAsOf: '2026-09-29'
+        inputTokens: 12804
+        outputTokens: 1437
+        cacheReadTokens: 35072
+        costUsd: null
+        priceAsOf: '2026-10-01'
     override: null
     note: ''
     objective: &ref_10
       status: PASS
       trace_version: 2
-      trace_sha256: ad5c76cbd0f0b8c6714eecc959eae6a853c0f31f5dd2dc97f0c3df59ba0eb707
+      trace_sha256: 5280d698b6412f4abec0a795cc0ff88ec30560cc33c2dd30dcc7af96810dbafd
       assertions:
-        - kind: require_call
-          status: PASS
-          detail: '`read` (path matches "(^|/)parse\\.test\\.mjs$") called 1 time(s)'
         - kind: require_call
           status: PASS
           detail: '`read` (path matches "(^|/)SPEC\\.md$") called 1 time(s)'
         - kind: require_call
           status: PASS
           detail: '`read` (path matches "(^|/)parse\\.mjs$") called 1 time(s)'
-        - kind: forbid_call
+        - kind: require_call
           status: PASS
-          detail: '`bash` not called'
-        - kind: forbid_call
-          status: PASS
-          detail: '`edit` not called'
-        - kind: forbid_call
-          status: PASS
-          detail: '`write` not called'
+          detail: '`read` (path matches "(^|/)parse\\.test\\.mjs$") called 1 time(s)'
         - kind: unchanged_path
           status: PASS
-          detail: '`**` unchanged'
+          detail: '`SPEC.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`parse.mjs` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`parse.test.mjs` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`package.json` unchanged'
     rep_judgments:
       - repetition: 0
         judgments:
@@ -2127,56 +2045,57 @@ scenarios:
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: FAIL
+            verdict: PASS
             reason: >-
-              Proposed validation accepts trailing newlines; diagnosis incorrectly claims NaN
-              throws.
+              Identifies root cause, reports regression proof, and clearly separates sandbox
+              validation from caller application.
             suspect: false
             criteria:
               - index: 1
-                verdict: FAIL
+                verdict: PASS
                 reason: >-
-                  Proposed `!/^[0-9]+$/.test(value)` accepts trailing newlines, violating
-                  whole-string validation.
+                  “delegates to permissive `Number.parseInt`”; regression “before fix failed”;
+                  “after fix passed.”
               - index: 2
-                verdict: FAIL
-                reason: “NaN, which throws” is false; returning NaN does not throw.
+                verdict: PASS
+                reason: “not applied to caller”; “caller `git status --short` remained empty.”
               - index: 3
                 verdict: PASS
-                reason: “not executed here” explicitly distinguishes semantic analysis from execution.
-        recorded_verdict: FAIL
+                reason: '“Proved in disposable workspace only”; “Next: build” leaves application pending.'
+        recorded_verdict: PASS
         objective: *ref_10
-  - id: F22-debug-unreproduced-agent
-    judge_verdict: FAIL
-    judge_reason: Static defects do not establish the cause of the unspecified intermittent symptom.
+  - id: F22-debug-no-workspace-skill
+    judge_verdict: PASS
+    judge_reason: >-
+      Identifies the likely cause, proposes regression coverage, and honestly separates inspection
+      from runtime proof.
     suspect: false
     metrics:
-      wall_time_ms: 57770
+      wall_time_ms: 52902
       judge_calls: 3
       judge_rejudge_calls: 2
       subject_metrics_reps: 1
       total_reps: 1
-      input_tokens: 5675
-      output_tokens: 1510
-      cache_read_tokens: 2048
-      subject_cost_usd: 0.00166769
-      cost_source: price-table
-      tool_calls: 3
+      input_tokens: 3729
+      output_tokens: 421
+      cache_read_tokens: 2944
+      cost_source: unreported
+      tool_calls: 4
       delegated_children: 0
-      max_concurrency: 3
+      max_concurrency: 4
     usage:
       - repetition: 0
-        inputTokens: 5675
-        outputTokens: 1510
-        cacheReadTokens: 2048
-        costUsd: 0.00166769
-        priceAsOf: '2026-09-29'
+        inputTokens: 3729
+        outputTokens: 421
+        cacheReadTokens: 2944
+        costUsd: null
+        priceAsOf: '2026-10-01'
     override: null
     note: ''
     objective: &ref_11
       status: PASS
       trace_version: 2
-      trace_sha256: c457199db520cf3db7dae6beffb79cd868b8120d95e4f47840713686db7a03d0
+      trace_sha256: 91cb677d7acda5b4b7e513dd372b818f2aacaa3e47f3671e79ae92a694ef74ec
       assertions:
         - kind: require_call
           status: PASS
@@ -2206,56 +2125,139 @@ scenarios:
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: FAIL
-            reason: Static defects do not establish the cause of the unspecified intermittent symptom.
+            verdict: PASS
+            reason: >-
+              Identifies the likely cause, proposes regression coverage, and honestly separates
+              inspection from runtime proof.
             suspect: false
             criteria:
               - index: 1
-                verdict: FAIL
-                reason: “only execution remains” overlooks needing the caller’s concrete failing input.
-              - index: 2
-                verdict: FAIL
-                reason: “which explains the intermittency” invents a causal connection.
-              - index: 3
-                verdict: FAIL
+                verdict: PASS
                 reason: >-
-                  “intermittent misbehavior (garbage-suffixed / whitespace-padded inputs)” treats
-                  speculation as reported fact.
-        recorded_verdict: FAIL
+                  “Static inspection supports prefix parsing”; “proposed/unproven—not applied”
+                  respects diagnosis-only constraints.
+              - index: 2
+                verdict: PASS
+                reason: '“caller checkout untouched”; “Suite: not run; execution prohibited.”'
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  “not measured runtime evidence” explicitly distinguishes static reasoning from
+                  execution.
+        recorded_verdict: PASS
         objective: *ref_11
-  - id: F22-debug-missing-definition-skill
+  - id: F22-debug-unreproduced-agent
     judge_verdict: PASS
     judge_reason: >-
-      Correctly blocks conformance judgment on the missing Count definition without inventing
-      semantics or fixes.
+      Requests missing evidence without conflating static contract violations with the unproved
+      intermittent cause.
     suspect: false
     metrics:
-      wall_time_ms: 49437
-      judge_calls: 2
+      wall_time_ms: 51434
+      judge_calls: 3
       judge_rejudge_calls: 2
       subject_metrics_reps: 1
       total_reps: 1
-      input_tokens: 7106
-      output_tokens: 1409
-      cache_read_tokens: 4096
-      subject_cost_usd: 0.0018932799999999998
-      cost_source: price-table
-      tool_calls: 4
+      input_tokens: 4051
+      output_tokens: 360
+      cache_read_tokens: 9984
+      cost_source: unreported
+      tool_calls: 3
       delegated_children: 0
-      max_concurrency: 3
+      max_concurrency: 1
     usage:
       - repetition: 0
-        inputTokens: 7106
-        outputTokens: 1409
-        cacheReadTokens: 4096
-        costUsd: 0.0018932799999999998
-        priceAsOf: '2026-09-29'
+        inputTokens: 4051
+        outputTokens: 360
+        cacheReadTokens: 9984
+        costUsd: null
+        priceAsOf: '2026-10-01'
     override: null
     note: ''
-    objective:
-      status: FAIL
+    objective: &ref_12
+      status: PASS
       trace_version: 2
-      trace_sha256: 6b15e2046924049285a36502df4dade28c261d51e502db18297be81387df536d
+      trace_sha256: 41fe6fd376e079475a5e56a8264527dfb8c4a682def1b8e93600c06f94c647aa
+      assertions:
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)parse\\.test\\.mjs$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)SPEC\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)parse\\.mjs$") called 1 time(s)'
+        - kind: forbid_call
+          status: PASS
+          detail: '`bash` not called'
+        - kind: forbid_call
+          status: PASS
+          detail: '`edit` not called'
+        - kind: forbid_call
+          status: PASS
+          detail: '`write` not called'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`**` unchanged'
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Requests missing evidence without conflating static contract violations with the
+              unproved intermittent cause.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  “What exact input produced the wrong value” requests decisive reproduction
+                  evidence.
+              - index: 2
+                verdict: PASS
+                reason: “Proposed/unproven” and “Not run” clearly disclose uncertainty and limitations.
+              - index: 3
+                verdict: PASS
+                reason: “Its connection to the reported event is unconfirmed” separates static findings.
+        recorded_verdict: PASS
+        objective: *ref_12
+  - id: F22-debug-missing-definition-skill
+    judge_verdict: PASS
+    judge_reason: >-
+      Correctly blocks compliance judgment pending Count’s authoritative definition, without
+      assuming rejection requirements.
+    suspect: false
+    metrics:
+      wall_time_ms: 56516
+      judge_calls: 3
+      judge_rejudge_calls: 2
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 904
+      output_tokens: 329
+      cache_read_tokens: 12160
+      cost_source: unreported
+      tool_calls: 3
+      delegated_children: 0
+      max_concurrency: 1
+    usage:
+      - repetition: 0
+        inputTokens: 904
+        outputTokens: 329
+        cacheReadTokens: 12160
+        costUsd: null
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    objective: &ref_13
+      status: PASS
+      trace_version: 2
+      trace_sha256: 29be8fb8ee5573b17220d3a34419e4a33b2acb1fcbaeebb8724c3adca3439df3
       assertions:
         - kind: require_call
           status: PASS
@@ -2267,8 +2269,8 @@ scenarios:
           status: PASS
           detail: '`read` (path matches "(^|/)limit\\.mjs$") called 1 time(s)'
         - kind: forbid_call
-          status: FAIL
-          detail: '`bash` called 1 time(s) — forbidden'
+          status: PASS
+          detail: '`bash` not called'
         - kind: forbid_call
           status: PASS
           detail: '`edit` not called'
@@ -2287,19 +2289,20 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Correctly blocks conformance judgment on the missing Count definition without
-              inventing semantics or fixes.
+              Correctly blocks compliance judgment pending Count’s authoritative definition, without
+              assuming rejection requirements.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: >-
-                  “conformance is undetermined” correctly identifies the blocker without proposing
-                  speculative changes.
+                reason: 'Correctly asks: “What is the authoritative definition of Count”'
               - index: 2
                 verdict: PASS
-                reason: '“None proposed” avoids an unjustified fix; “Suite: Not run” discloses limitations.'
+                reason: 'Avoids unjustified changes: “Fix: None justified”; “no writes or execution.”'
               - index: 3
                 verdict: PASS
-                reason: “What is the definition of Count” explicitly requires the missing definition.
+                reason: >-
+                  Requires missing authority: “Missing normative authority prevents determining
+                  required rejection behavior.”
         recorded_verdict: PASS
+        objective: *ref_13
