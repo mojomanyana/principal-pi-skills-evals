@@ -1,5 +1,5 @@
 schema: 2
-harness_version: 0.21.0
+harness_version: 0.22.3
 harness_cli_version: 0.87.1
 skill: plan
 harness: pi
@@ -14,9 +14,9 @@ partial: true
 source_hashes:
   SKILL.md: 46ddc9465b1ff5a58d5211465110a0cd637b878d8f3b4d1543ccbb2714e4a968
   skill:prompt: 44758d60c15605ab19046dbf164714eeb1e399ba85091ba1dcb94e90343aa1c1
-  rubric:__persona: 283d8509ecb10818338fd09d0ae1d385064fc66b4cef7d3ae0398aae30bd4613
+  rubric:__persona: 5d291a75187228c129fe75dbcad8ea0f503141aedf09b070c71014b8684bd679
   stimulus:A2: 56b7ce56dc412a505b6468cfb445c72922c44874813d8237dbab301a83a4d7fe
-  rubric:A2: 47607cc2c35b964040a0948ecfe8d3359a06ef76dabdd9c858f2f38f5203b809
+  rubric:A2: 5b5ef41db1d86ba740bf7ee6f67f7af5ae4e0fe05582569b837d3b30e87c5a86
   policy:A2: e0d5bd1c01e7e08c6cb8b619efe05f8e8c3ab25862cda63a219f61c4b95b4683
 source_hash_roots:
   SKILL.md: skills
@@ -34,13 +34,15 @@ effective_grade:
   note: partial run (--only) — not scored
 scenarios:
   - id: A2
-    judge_verdict: PASS
-    judge_reason: Concrete, dependency-ordered slices begin with all five real seams, then deepen functionality.
+    judge_verdict: FAIL
+    judge_reason: >-
+      Skeleton fakes required seams; deferred contract discovery and premature duplicate
+      acknowledgment risk lost notifications.
     suspect: false
     metrics:
-      wall_time_ms: 53967
-      judge_calls: 2
-      judge_rejudge_calls: 1
+      wall_time_ms: 97334
+      judge_calls: 5
+      judge_rejudge_calls: 4
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 6099
@@ -67,26 +69,21 @@ scenarios:
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: PASS
+            verdict: FAIL
             reason: >-
-              Concrete, dependency-ordered slices begin with all five real seams, then deepen
-              functionality.
+              Skeleton fakes required seams; deferred contract discovery and premature duplicate
+              acknowledgment risk lost notifications.
             suspect: false
             criteria:
               - index: 1
-                verdict: PASS
-                reason: Ordered “Steps” specify “Files,” “Change,” “Test,” and “Ripples.”
+                verdict: FAIL
+                reason: >-
+                  “Vendor contract spike” follows skeleton; foundational delivery semantics remain
+                  unresolved.
               - index: 2
-                verdict: PASS
-                reason: >-
-                  “Walking skeleton” includes receive, signature check, persist, “transform
-                  (pass-through),” and publish.
+                verdict: FAIL
+                reason: “on conflict return the same 202” can silently abandon failed notifications.
               - index: 3
-                verdict: PASS
-                reason: >-
-                  “verify HMAC,” “insert raw payload,” “transform (pass-through),” and “real notify
-                  publish.”
-              - index: 4
-                verdict: PASS
-                reason: “thinnest real path through all five seams” integrates immediately.
-        recorded_verdict: PASS
+                verdict: FAIL
+                reason: “pass-through” transformation and “fake queue” don't exercise all real seams.
+        recorded_verdict: FAIL

@@ -1,5 +1,5 @@
 schema: 2
-harness_version: 0.22.0
+harness_version: 0.22.3
 harness_cli_version: 0.87.1
 skill: build
 harness: pi
@@ -16,7 +16,7 @@ source_hashes:
   skill:prompt: 2f61683bcf2e3edf5067a8ba682f25b66b0b9d73a4002f9fafa74d51f0f7b267
   rubric:__persona: 5955ff28072324bdb0313ed70790e4ad8ac92bc51cd85bb135c9549abb1e2c05
   stimulus:A1: f603129d33cfbdc2791c63d4addf5d8c35ccf31ed01458a372ee4702609e4405
-  rubric:A1: 56f06112f91cfcb850ebc7490a90be3006c3eca5ab05a021f371d56ade31adb8
+  rubric:A1: ad12fcffeb2dc7add109ef20f1ede14bec4418cb90f495713f69b3fd12502280
   policy:A1: a152ad794c038db7f21c446bd073e696268b8df87dde3643298238527994ed77
   gates:A1: 02a668e62165649327b5665bea57ce59bcc4041d054fbdbc6b1aae97c3590470
   post/A1.test.ts: d8e0a865511ff4cd7d3b560ff9af11a21ace942a5986eb89a467b3115c23d9b8
@@ -42,13 +42,13 @@ scenarios:
   - id: A1
     judge_verdict: PASS
     judge_reason: >-
-      Scoped implementation rejects overdrafts, passing tests cover withdrawals, and reporting is
-      proportionate.
+      Scoped implementation deducts withdrawals, rejects overdrafts, and includes a passing refusal
+      test.
     suspect: false
     metrics:
-      wall_time_ms: 45807
-      judge_calls: 1
-      judge_rejudge_calls: 0
+      wall_time_ms: 82231
+      judge_calls: 4
+      judge_rejudge_calls: 3
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 8910
@@ -77,19 +77,20 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Scoped implementation rejects overdrafts, passing tests cover withdrawals, and
-              reporting is proportionate.
+              Scoped implementation deducts withdrawals, rejects overdrafts, and includes a passing
+              refusal test.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
                 reason: >-
-                  “Requirements,” “Tests,” “Verified,” “Follow-ups” provide proportionate reporting;
-                  “Next: review” concludes.
+                  “withdraw(amount: number): void” implements the requested method with passing
+                  tests.
               - index: 2
                 verdict: PASS
-                reason: “withdraw throws on overdraft” is added; “Tests 3 passed (3).”
+                reason: “if (amount > this.balance)” prevents overdrafts; changes remain scoped.
               - index: 3
                 verdict: PASS
-                reason: “if (amount > this.balance)” throws; otherwise “this.balance -= amount.”
+                reason: “withdraw throws on overdraft” tests refusal; “Tests 3 passed”.
+            judgeRetries: 1
         recorded_verdict: PASS

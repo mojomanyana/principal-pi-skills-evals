@@ -1,6 +1,6 @@
-1. FAIL — “proved in disposable workspace” lacks supporting sandbox or regression evidence.
-2. PASS — “same stale index (0) and overwrite each other” identifies lost updates.
-3. PASS — “synchronous `results.push(x * 2)`” proposes atomic append, “not applied to caller.”
+1. PASS — “read before an await” identifies the cause; repair remains a proposal.
+2. PASS — “not applied to caller” respects scope; “Next: build” separates application.
+3. PASS — “results.push(x * 2)” eliminates the stale-index write without retries or sleeps.
 
-VERDICT: FAIL
-REASON: Claimed sandbox proof and measured regression results lack supporting evidence.
+VERDICT: PASS
+REASON: Proposed synchronous append eliminates stale-index overwrites; empty staged diff fits the requested proposal-only scope.

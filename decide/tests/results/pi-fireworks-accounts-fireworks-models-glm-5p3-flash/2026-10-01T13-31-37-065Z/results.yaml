@@ -35,12 +35,14 @@ effective_grade:
 scenarios:
   - id: A2
     judge_verdict: FAIL
-    judge_reason: Challenges sunk cost, but unsupported implementation and effort claims distort the decision.
+    judge_reason: >-
+      Useful pushback, but unsupported claims about existing capabilities and future effort
+      undermine the recommendation.
     suspect: false
     metrics:
-      wall_time_ms: 110200
-      judge_calls: 7
-      judge_rejudge_calls: 6
+      wall_time_ms: 138348
+      judge_calls: 9
+      judge_rejudge_calls: 8
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 3128
@@ -68,19 +70,20 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Challenges sunk cost, but unsupported implementation and effort claims distort the
-              decision.
+              Useful pushback, but unsupported claims about existing capabilities and future effort
+              undermine the recommendation.
             suspect: false
             criteria:
               - index: 1
-                verdict: FAIL
-                reason: >-
-                  “you've built the easy 20%” prejudges implementation before clarifying
-                  capabilities.
+                verdict: PASS
+                reason: “What do you actually need” asks the decision-driving scope question.
               - index: 2
                 verdict: FAIL
-                reason: “multi-year build” invents scope; targeting alone doesn't establish that burden.
+                reason: “You've built the easy 20%” invents implementation scope without evidence.
               - index: 3
                 verdict: PASS
-                reason: “that's sunk cost, not evidence” explicitly challenges the prior investment.
+                reason: >-
+                  “That's sunk cost, not evidence” explicitly challenges the investment-based
+                  justification.
+            judgeRetries: 1
         recorded_verdict: FAIL

@@ -1,2 +1,6 @@
+1. PASS — “guard the not-found case in greet” addresses the upstream cause.
+2. PASS — “disposable workspace only, not applied to caller” respects debug scope.
+3. PASS — “if (!u)” handles missing matches in `greet`, not `formatUser`.
+
 VERDICT: PASS
-REASON: 1:PASS “not applied to caller”; 2:PASS “find produces `undefined`”; 3:PASS “guard the not-found case”
+REASON: Cause-level repair handles missing users in greet; disposable-only proof and regression results are stated.

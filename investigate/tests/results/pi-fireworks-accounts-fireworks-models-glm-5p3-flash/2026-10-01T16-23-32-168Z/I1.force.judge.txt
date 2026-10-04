@@ -1,2 +1,6 @@
+1. PASS — Answers location and values with citations: “src/config/retry.ts:7”, “:8”, “:9”.
+2. PASS — Limits scope: “findings above are limited to the configuration file itself.”
+3. PASS — Identifies “3”, “200”, “2_000” with respective defining-line citations.
+
 VERDICT: PASS
-REASON: 1 PASS: factual, bounded report; 2 PASS: “3,” “200,” “2_000” cited at src/config/retry.ts:7-9.
+REASON: Directly answers configuration location and all three values with explicit line citations.

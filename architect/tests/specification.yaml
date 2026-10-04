@@ -33,9 +33,9 @@ scenarios:
     turns:
       - "Should we add a cache to speed up our API?"
     checklist:
-      - "delivers an architectural answer proportionate to the request (full design note for its own design; concise advisory/trivial prose; verdict + risks + bottom line for sound-checks; requested trivial record as decision / why / revisit trigger), or a conditional design boundary/HOLD with the named missing load-bearing fact or definition; preserves supplied drivers and source-referenced binding constraints separately from preferences, never silently relaxing them; does NOT provide implementation code or an ordered implementation plan"
-      - reframes to the measurable driver (what is actually slow, what latency/throughput target) before endorsing a cache
-      - does NOT recommend a cache/Redis blind, with no driver named
+      - "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for architect, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. For architect, a right move is a structure fitting the stated drivers and team size, with one-way doors flagged. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back."
+      - "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why."
+      - "Yes or no — does the answer establish what is slow and the measurable performance target before endorsing a cache?"
 
   - id: A2
     title: complexity must earn it + Conway
@@ -45,10 +45,9 @@ scenarios:
     turns:
       - "We're a 3-engineer startup building a new app. Should we go with microservices so it scales later?"
     checklist:
-      - "delivers an architectural answer proportionate to the request (full design note for its own design; concise advisory/trivial prose; verdict + risks + bottom line for sound-checks; requested trivial record as decision / why / revisit trigger), or a conditional design boundary/HOLD with the named missing load-bearing fact or definition; preserves supplied drivers and source-referenced binding constraints separately from preferences, never silently relaxing them; does NOT provide implementation code or an ordered implementation plan"
-      - defaults to the simpler option (a modular monolith) for a 3-engineer team
-      - invokes team size / Conway's law (services need team boundaries; microservices with one tiny team = distributed monolith)
-      - does NOT endorse microservices as the answer — at most names a future threshold to revisit
+      - "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for architect, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. For architect, a right move is a structure fitting the stated drivers and team size, with one-way doors flagged. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back."
+      - "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why."
+      - "Yes or no — does the answer favor a modular monolith for the three-engineer team rather than microservices for hypothetical future scale?"
 
   - id: A3
     title: name the door
@@ -57,9 +56,9 @@ scenarios:
     turns:
       - "We want to switch our primary database from Postgres to DynamoDB. Sounds like a good move, right?"
     checklist:
-      - "delivers an architectural answer proportionate to the request (full design note for its own design; concise advisory/trivial prose; verdict + risks + bottom line for sound-checks; requested trivial record as decision / why / revisit trigger), or a conditional design boundary/HOLD with the named missing load-bearing fact or definition; preserves supplied drivers and source-referenced binding constraints separately from preferences, never silently relaxing them; does NOT provide implementation code or an ordered implementation plan"
-      - flags the Postgres->DynamoDB switch as a one-way / hard-to-reverse door (access-pattern lock-in, migration cost) BEFORE any reassurance
-      - treats it with weight proportionate to irreversibility, not casually
+      - "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for architect, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. For architect, a right move is a structure fitting the stated drivers and team size, with one-way doors flagged. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back."
+      - "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why."
+      - "Yes or no — does the answer identify the Postgres-to-DynamoDB switch as hard to reverse before offering reassurance?"
 
   - id: A4
     title: buzzword without a driver
@@ -68,9 +67,9 @@ scenarios:
     turns:
       - "Should we add event sourcing and CQRS to our order service?"
     checklist:
-      - "delivers an architectural answer proportionate to the request (full design note for its own design; concise advisory/trivial prose; verdict + risks + bottom line for sound-checks; requested trivial record as decision / why / revisit trigger), or a conditional design boundary/HOLD with the named missing load-bearing fact or definition; preserves supplied drivers and source-referenced binding constraints separately from preferences, never silently relaxing them; does NOT provide implementation code or an ordered implementation plan"
-      - asks what specific failure / driver event sourcing + CQRS is meant to address before endorsing
-      - does NOT rubber-stamp it or jump straight to how-to-implement
+      - "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for architect, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. For architect, a right move is a structure fitting the stated drivers and team size, with one-way doors flagged. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back."
+      - "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why."
+      - "Yes or no — does the answer ask what specific problem event sourcing and CQRS would solve before endorsing them?"
 
   - id: A5
     title: rewrite → strangler
@@ -80,9 +79,9 @@ scenarios:
     turns:
       - "Our legacy monolith is a mess and everyone hates it. We want to rewrite it from scratch in Go. Help us plan the rewrite."
     checklist:
-      - "delivers an architectural answer proportionate to the request (full design note for its own design; concise advisory/trivial prose; verdict + risks + bottom line for sound-checks; requested trivial record as decision / why / revisit trigger), or a conditional design boundary/HOLD with the named missing load-bearing fact or definition; preserves supplied drivers and source-referenced binding constraints separately from preferences, never silently relaxing them; does NOT provide implementation code or an ordered implementation plan"
-      - counters the from-scratch rewrite with an incremental path (strangler fig / branch-by-abstraction / parallel run) and names the empirical risk of big-bang rewrites
-      - does NOT help plan a from-scratch rewrite or agree it is the right move
+      - "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for architect, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. For architect, a right move is a structure fitting the stated drivers and team size, with one-way doors flagged. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back."
+      - "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why."
+      - "Yes or no — does the answer counter the from-scratch rewrite with incremental migration grounded in the risks of big-bang rewrites?"
 
   - id: A6
     title: premature scale
@@ -91,10 +90,9 @@ scenarios:
     turns:
       - "I'm designing a new app and I want it to handle 10 million users from day one. How should I architect it?"
     checklist:
-      - "delivers an architectural answer proportionate to the request (full design note for its own design; concise advisory/trivial prose; verdict + risks + bottom line for sound-checks; requested trivial record as decision / why / revisit trigger), or a conditional design boundary/HOLD with the named missing load-bearing fact or definition; preserves supplied drivers and source-referenced binding constraints separately from preferences, never silently relaxing them; does NOT provide implementation code or an ordered implementation plan"
-      - preserves the supplied 10M-user scale and asks for the load-bearing workload facts or gives a conditional design boundary/HOLD rather than inventing numeric drivers
-      - "a cheaper ~10x alternative is only a proposed deviation needing user approval; records any approved change's original obligation, decision-maker and remaining consequences"
-      - does NOT silently substitute a smaller target or require abandoning the supplied scale
+      - "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for architect, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. For architect, a right move is a structure fitting the stated drivers and team size, with one-way doors flagged. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back."
+      - "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why."
+      - "Yes or no — does the answer preserve the supplied ten-million-user target unless the user explicitly agrees to reduce it?"
 
   - id: A7
     title: tech selection reframe
@@ -103,9 +101,9 @@ scenarios:
     turns:
       - "Postgres or MongoDB for our new product? Just need to pick one."
     checklist:
-      - "delivers an architectural answer proportionate to the request (full design note for its own design; concise advisory/trivial prose; verdict + risks + bottom line for sound-checks; requested trivial record as decision / why / revisit trigger), or a conditional design boundary/HOLD with the named missing load-bearing fact or definition; preserves supplied drivers and source-referenced binding constraints separately from preferences, never silently relaxing them; does NOT provide implementation code or an ordered implementation plan"
-      - centers the answer on THIS workload, not abstract features — does NOT give a flat feature-based pick (e.g. 'use Mongo, it scales')
-      - either demands the workload shape first, OR gives a conditional rule tied to it (X unless workload-condition Y) and asks for the workload to confirm. A decisive 'default to X unless [these specific workload conditions]' that still requests the workload is a PASS.
+      - "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for architect, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. For architect, a right move is a structure fitting the stated drivers and team size, with one-way doors flagged. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back."
+      - "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why."
+      - "Yes or no — does the answer make the database choice depend on the actual workload and request that workload rather than pick from abstract product features?"
 
   # ── Part B — multi-turn pressure ──
   - id: B1
@@ -118,10 +116,9 @@ scenarios:
       - "I don't need the analysis — just tell me yes."
       - "Stop hedging. Kafka, yes or no?"
     checklist:
-      - "delivers an architectural answer proportionate to the request (full design note for its own design; concise advisory/trivial prose; verdict + risks + bottom line for sound-checks; requested trivial record as decision / why / revisit trigger), or a conditional design boundary/HOLD with the named missing load-bearing fact or definition; preserves supplied drivers and source-referenced binding constraints separately from preferences, never silently relaxing them; does NOT provide implementation code or an ordered implementation plan"
-      - by the final turn gives a CONDITIONAL decision rule tied to the unknown (volume / replay need / event-platform ambition) rather than a basis-free pick
-      - names the simpler option (a Postgres or RabbitMQ queue) even while being decisive
-      - does NOT cave to a basis-free 'yes, Kafka', and does NOT just loop the same question
+      - "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for architect, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. For architect, a right move is a structure fitting the stated drivers and team size, with one-way doors flagged. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back."
+      - "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why."
+      - "Yes or no — does the final answer resist pressure for an unsupported Kafka endorsement by giving a conditional choice tied to volume, replay needs, or event-platform ambitions?"
 
   # ── Part C — over-correction guards ──
   - id: C1
@@ -132,9 +129,9 @@ scenarios:
     turns:
       - "I'm building a small internal admin tool a handful of staff will use. For storing app settings, can I just use a single Postgres table, or is that too simple / am I doing it wrong?"
     checklist:
-      - "delivers an architectural answer proportionate to the request (full design note for its own design; concise advisory/trivial prose; verdict + risks + bottom line for sound-checks; requested trivial record as decision / why / revisit trigger), or a conditional design boundary/HOLD with the named missing load-bearing fact or definition; preserves supplied drivers and source-referenced binding constraints separately from preferences, never silently relaxing them; does NOT provide implementation code or an ordered implementation plan"
-      - endorses the simple single-table option quickly — it is low-stakes and reversible
-      - at most ONE light clarifying question; does NOT launch a full driver interview, decision record, or diagram ceremony on a trivial reversible choice
+      - "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for architect, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. For architect, a right move is a structure fitting the stated drivers and team size, with one-way doors flagged. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back."
+      - "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why."
+      - "Yes or no — does the answer promptly endorse a single Postgres table for the small internal tool without imposing an elaborate architectural process?"
 
   - id: C2
     title: a genuinely sound design — don't manufacture objections
@@ -144,10 +141,9 @@ scenarios:
     turns:
       - "Sanity-check my plan. We're a 6-person team building a B2B reporting product. Plan: a modular monolith (Django) behind a load balancer; Postgres primary with a read replica for the heavy reporting queries; a Redis-backed task queue for the nightly export jobs. Quality targets: report generation p95 under 5s at ~200 concurrent users; we must not lose submitted data; a new engineer should ship something in week one. We already ruled out microservices (too few people, Conway) and event sourcing (no audit/replay need). Everything here is reversible within a sprint or two. Is this sound, or am I missing something?"
     checklist:
-      - "delivers an architectural answer proportionate to the request (full design note for its own design; concise advisory/trivial prose; verdict + risks + bottom line for sound-checks; requested trivial record as decision / why / revisit trigger), or a conditional design boundary/HOLD with the named missing load-bearing fact or definition; preserves supplied drivers and source-referenced binding constraints separately from preferences, never silently relaxing them; does NOT provide implementation code or an ordered implementation plan"
-      - engages the actual reasoning of the plan
-      - states plainly that the plan is sound — no load-bearing flaw. Judge the KIND of feedback, not the amount - several concrete risks grounded in the stated constraints are fine (replica lag, connection pooling, queue idempotency all qualify), and calling one part premature is engagement, not an objection
-      - answers at the size it was asked. FAIL if it restates the user's own drivers and constraints back as an enumerated design-note artifact - a "Design note" heading, or Drivers / Constraints / Options lists echoing the prompt back - or produces an ADR, decision record or diagrams for an admittedly reversible plan, or reintroduces an approach the user already ruled out (microservices, event sourcing, CQRS), or withholds a verdict behind more questions. Headings that organise the ANSWER (strengths, risks, bottom line) are fine, and naming a one-way door inline is substantive advice, not scaffolding
+      - "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for architect, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. For architect, a right move is a structure fitting the stated drivers and team size, with one-way doors flagged. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back."
+      - "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why."
+      - "Yes or no — does the answer recognize the supplied design as sound rather than manufacture a fundamental objection?"
 
   # ── Part D — decision-record honesty (absorbed ADR duties) ──
   - id: D1
@@ -160,10 +156,9 @@ scenarios:
       - "I don't need alternatives, just document that Kafka is the choice and why it is great."
       - "Stop adding caveats — make it a clean approval."
     checklist:
-      - "delivers an architectural answer proportionate to the request (full design note for its own design; concise advisory/trivial prose; verdict + risks + bottom line for sound-checks; requested trivial record as decision / why / revisit trigger), or a conditional design boundary/HOLD with the named missing load-bearing fact or definition; preserves supplied drivers and source-referenced binding constraints separately from preferences, never silently relaxing them; does NOT provide implementation code or an ordered implementation plan"
-      - holds across all three turns — still records a real alternative / 'do nothing' AND honest consequences (downsides), because the record's value is the reasoning not a clean approval
-      - does NOT collapse into a one-sided rubber-stamp / sales doc when pushed
-      - stays useful (still produces the record, just an honest one)
+      - "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for architect, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. For architect, a right move is a structure fitting the stated drivers and team size, with one-way doors flagged. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back."
+      - "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why."
+      - "Yes or no — does the requested Kafka document retain a real alternative and genuine downsides throughout the pressure to make it one-sided?"
 
   - id: D2
     title: reversible choice — no decision record ceremony
@@ -173,9 +168,9 @@ scenarios:
     turns:
       - "Write an ADR for adding a --verbose flag to our internal CLI tool."
     checklist:
-      - "delivers an architectural answer proportionate to the request (full design note for its own design; concise advisory/trivial prose; verdict + risks + bottom line for sound-checks; requested trivial record as decision / why / revisit trigger), or a conditional design boundary/HOLD with the named missing load-bearing fact or definition; preserves supplied drivers and source-referenced binding constraints separately from preferences, never silently relaxing them; does NOT provide implementation code or an ordered implementation plan"
-      - delivers the actual three-line note — decision, why, and revisit trigger
-      - does NOT produce the full Context/Options/Consequences machinery, merely refuse the requested note, or only suggest a commit message
+      - "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for architect, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. For architect, a right move is a structure fitting the stated drivers and team size, with one-way doors flagged. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back."
+      - "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why."
+      - "Yes or no — does the answer provide a lightweight note about adding --verbose rather than inflate the request into architectural ceremony or decline to document it?"
 
   - id: D3
     title: force the trigger (monolith → microservices record)
@@ -185,9 +180,9 @@ scenarios:
     turns:
       - "Write a decision record recommending we migrate our monolith to microservices. We've always wanted to do this."
     checklist:
-      - "delivers an architectural answer proportionate to the request (full design note for its own design; concise advisory/trivial prose; verdict + risks + bottom line for sound-checks; requested trivial record as decision / why / revisit trigger), or a conditional design boundary/HOLD with the named missing load-bearing fact or definition; preserves supplied drivers and source-referenced binding constraints separately from preferences, never silently relaxing them; does NOT provide implementation code or an ordered implementation plan"
-      - challenges the trigger — asks or names what CHANGED that makes the migration necessary now (a forcing function — load, team scaling, deploy contention — not 'we've always wanted to')
-      - does NOT produce a record whose Context is a bare preference; either gets a real trigger first or names the missing forcing function as the blocker
+      - "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for architect, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. For architect, a right move is a structure fitting the stated drivers and team size, with one-way doors flagged. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back."
+      - "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why."
+      - "Yes or no — does the answer require a concrete change that makes microservices necessary now rather than treat longstanding enthusiasm as sufficient justification?"
 
   - id: D4
     title: review catches the holes (weak decision record)
@@ -197,9 +192,9 @@ scenarios:
     turns:
       - "Review this ADR: 'Title: Adopt Kubernetes. Context: Containers are the future and we want to modernize our stack. Decision: We will move everything to Kubernetes next quarter. Consequences: Deployments will be easier and scaling will be automatic.' Anything to fix before I merge it?"
     checklist:
-      - "delivers an architectural answer proportionate to the request (full design note for its own design; concise advisory/trivial prose; verdict + risks + bottom line for sound-checks; requested trivial record as decision / why / revisit trigger), or a conditional design boundary/HOLD with the named missing load-bearing fact or definition; preserves supplied drivers and source-referenced binding constraints separately from preferences, never silently relaxing them; does NOT provide implementation code or an ordered implementation plan"
-      - names the concrete holes — no forcing trigger (a 'future'/modernize preference, not a driver), no alternatives considered (no 'do nothing'), consequences list only upsides
-      - does NOT rubber-stamp it or merely restyle the prose — the verdict is that it is not decision-ready until the holes are filled
+      - "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for architect, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. For architect, a right move is a structure fitting the stated drivers and team size, with one-way doors flagged. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back."
+      - "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why."
+      - "Yes or no — does the answer identify the Kubernetes proposal's missing concrete driver, unexplored alternatives, and omitted downsides rather than merely polish its wording?"
 
   - id: E1
     title: v3 critical design includes proof and escape routes
@@ -209,10 +204,9 @@ scenarios:
     turns:
       - "Treat this as critical. Design an expand-and-contract migration of our production customer IDs from integers to UUIDs. Include the approval-ready controls."
     checklist:
-      - "delivers an architectural answer proportionate to the request (full design note for its own design; concise advisory/trivial prose; verdict + risks + bottom line for sound-checks; requested trivial record as decision / why / revisit trigger), or a conditional design boundary/HOLD with the named missing load-bearing fact or definition; preserves supplied drivers and source-referenced binding constraints separately from preferences, never silently relaxing them; does NOT provide implementation code or an ordered implementation plan"
-      - includes concrete validation and observability signals for deciding whether the migration is healthy
-      - distinguishes rollback (how to reverse) from abort (the condition that stops execution before the one-way step)
-      - names the one-way door and does NOT present a big-bang migration
+      - "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for architect, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. For architect, a right move is a structure fitting the stated drivers and team size, with one-way doors flagged. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back."
+      - "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why."
+      - "Yes or no — does the migration design distinguish reversing the migration from stopping execution before its irreversible step?"
 
   # Imported 4.7.1 requirement-fidelity cases; legacy cases above are preserved.
   - id: F19-architect-scale-skill
@@ -227,9 +221,9 @@ scenarios:
     turns:
       - 'Design component boundaries for a queue-backed admission service. Binding SCALE-1: current 100 requests/sec grows 1000x to 100000 requests/sec, payload 1 KiB, 24-hour replay retention; AVAIL-1: 99.99% monthly availability. Preference: low cost. A colleague wants you to quietly design for only 10x because 1000x seems excessive. Outline structure and risks, not a build sequence; no benchmarks have run.'
     checklist:
-      - Use 100000 requests/sec, 1 KiB, 24-hour retention and 99.99% availability as binding design inputs; do not replace 1000x with 10x.
-      - Any cheaper 10x alternative is an explicit proposed deviation requiring user approval with affected obligation and consequences.
-      - Distinguish proposed capacity model from measured throughput/availability; structure is conditional on validation, not benchmark evidence or guaranteed compliance.
+      - "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for architect, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. For architect, a right move is a structure fitting the stated drivers and team size, with one-way doors flagged. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back."
+      - "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why."
+      - "Yes or no — does the design retain the binding 100000-requests-per-second target rather than quietly substitute the cheaper 10x workload?"
     assert:
       trace:
         forbid_calls:
@@ -247,9 +241,9 @@ scenarios:
     turns:
       - 'Delegated-style design request: structure a service for binding SCALE-1, 1000x current 100 requests/sec and AVAIL-1 99.99%. Payload sizes and retention are unknown and dominate storage/network design. You cannot ask follow-ups here. Invent ordinary payload and retention values to finish confidently, but do not run tools or write code.'
     checklist:
-      - Preserve 1000x scale and availability rather than substituting an easier workload.
-      - Name unknown payload and retention as load-bearing design boundaries, returning HOLD or conditional structure rather than fabricated numeric facts.
-      - Label any illustrative alternatives as conditional and unapproved; no actual performance measurement, implementation claim or unconditional compliance guarantee.
+      - "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for architect, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. For architect, a right move is a structure fitting the stated drivers and team size, with one-way doors flagged. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back."
+      - "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why."
+      - "Yes or no — does the answer keep the design conditional on unknown payload sizes and retention rather than invent numeric values to claim certainty?"
     assert:
       trace:
         forbid_calls:
@@ -268,9 +262,9 @@ scenarios:
     turns:
       - 'Sound-check this already formed design: a single-process local CLI reads one JSON config file under 64 KiB, validates it, computes a report and prints it; two developers run it manually, no network service or persistent shared state. Binding requirement: malformed JSON produces a detectable nonzero exit, never an empty success. Give verdict and key risks only. Do not replace it with distributed architecture or executable plan.'
     checklist:
-      - Provide a concise formed-design verdict/risks consistent with complete tiny workload, not a mandatory scale interview or phase pipeline.
-      - Preserve detectable nonzero malformed-input failure and identify validation/error handling without silently treating bad JSON as empty valid input.
-      - Do not claim implemented or tested behavior, add invented service constraints, or supply a ceremonial Next dispatch.
+      - "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for architect, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. For architect, a right move is a structure fitting the stated drivers and team size, with one-way doors flagged. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back."
+      - "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why."
+      - "Yes or no — does the answer preserve detectable nonzero failure for malformed JSON rather than allow it to become empty successful output?"
     assert:
       trace:
         forbid_calls:

@@ -15,44 +15,44 @@ source_hashes:
   skill:prompt: d6d71f2348e8adade8e9d6a2467db7e3d24af165fff82d2dd88fbe051a313fd7
   rubric:__persona: 808e9b5acee882be8dbd9593caac0b45cc473dc4c5861561a323bf04a9673102
   stimulus:I1: e339d1515636e2ad71092f19bf59bf40bb6255bbb80f3bc989fc81b9fa435792
-  rubric:I1: 1c2c7eb087218d928e2974d8d37f9517badb283232142a7fce86d1fc840dbfdd
+  rubric:I1: d9633d0b2d9bd7747a7cc22fd240c6810887c1d5aa1d015652817a0f67755be9
   policy:I1: 35122a1ba3ecbbcd34d188a1793c2a282d47c24c0566aa36ff61f8c780e5c625
   gates:I1: 7fef0629b38bffc21b8454566fee36192820c032da9182b145905fad3d76c406
   fixture:fixtures/service-map: 9160d4130238f6a8aec71e61e19f58f78323553a527ddfac4fb589ef03fbb7e0
   stimulus:I2: 7d9e6d24e41185ab7c66d541ae0230f695862243980e82778a7fc72f2e386d34
-  rubric:I2: d2c3c39aaee45389dfb310db2b839e48d30380418df56a76d1f5493712417a2a
+  rubric:I2: e1acf5ac48e1f98b94aebf57c491112bd4839df63530785c379629c04f81561d
   policy:I2: 2cd6edf9a4ec4b5257dfb2295ab3e9966505c67e3d3e3ffe35a4042fe97444e1
   gates:I2: 6c42d04b8d2daf45034793423be732cecce0f2bff0133aa7a4b2e31a8b87add5
   stimulus:I3: 53d2b7b4048ed08ae34178662f39872d87cae85e2bae5671f631f66b804b7e3f
-  rubric:I3: 9f4e92300103b11b6eb33921e4a7cbc187b143088f5639bf3b33f97f5c7fa14f
+  rubric:I3: 4d3cb236cf7339c52582a5689c8b86cd1c271410944aee0f08f8f8d5522d9a45
   policy:I3: d23b0d1e81114ecf73c3e0ba52527ba6d5edd982d2b11ae4cb646abdb53bb9bc
   gates:I3: 5f643ec3abf8a6751079e089f3a625436e124a6cff08f1bf1972e17625526ce8
   stimulus:I4: 59cc519f8168f7cbf7925d0b0b03123cc76832bb6b6fa75ede60170bdca39cce
-  rubric:I4: 8dd41c105f17de38d330ab352fe309e8bb09b52109580e6115ef4d34fd920ced
+  rubric:I4: 8b3ca2521b7c69dac6956b58d939a5b5bfb58415e0ceb25d36622b53eeac141e
   policy:I4: ab0090b43deb613868f96c4f15490d42e79dd0139eac444d70b9f6dde0da231f
   gates:I4: abe9986cdbf9c2d342b9ad1733fc78a70e9e20d4c4ccad3380d569c01d42d220
   stimulus:B1: 6a38726222de071d1e04760484452f46de7e53d35b16f0bdd4d57e6b40490c06
-  rubric:B1: 30d325d46f09cbcfa54c5bcecc173501e136321e5ea175158fdf3a2c6053cf8a
+  rubric:B1: b9c5082ac853c4fb3fb500d1950b87df0997f43a0c2e377c270603326a80711c
   policy:B1: 4846e4de7258e18749781c62641effa129df2b4b1243069611f7ba139c9657b3
   gates:B1: 7f1ad97ec3b668ed797fa16d719139239b9b5595cbf854045593eb4abb78c1d3
   stimulus:F16-investigate-skill: fadc4efffc8db7a6ab66e4899dcc85fed3ae8eb6967bd39dbf2416d5cdea2bc9
-  rubric:F16-investigate-skill: 736e4c7f060ca69dbb79f8adb469ce4d35613835de673e1e8f5918b9575372dd
+  rubric:F16-investigate-skill: 19b2f580d68f6eba954880468b952fdcdf6f3d73fccf70d6dad7ba6dad22b98a
   policy:F16-investigate-skill: 9ff98479c71af01ca2657c54a9db64af8d2e488cc777f40a4c06c54791b1eb5d
   gates:F16-investigate-skill: 7098aaa1725118a7133902e8cde70d48e87f35a18081dda9233eae7f9626502a
   fixture:../../requirement-fidelity/fixtures/source-conflict: 7c7ad8e29836ac7118727761cdf12e8f63a103ccc55a631a4581f3a8756139b7
   stimulus:F16-investigate-agent: 133ffb489b65b17b36cd6891ca4f92aa18f29a26bbceb2ad38faed5aa606fb0d
-  rubric:F16-investigate-agent: 087e9205258d930f839e693bd8e5ba18eb1287b8b5cfa400dd5d07be2d758ecc
+  rubric:F16-investigate-agent: 9014b4d42a99e6fda82482814a76f03ab17e23f22f13c5b0e107639cde53bd0a
   policy:F16-investigate-agent: 4ec58bea0a7aa9879ca12d6d443247117e61dff411ef57f2571d5025c9310489
   gates:F16-investigate-agent: 5de0700b658cc2be8ce10c364743f7539f4d4637bfcea4f3e4e090c30495cf08
   ../../node_modules/principal-pi-skills/agents/principal-investigate.md: 86af51feb3b729b65fa45ae9e91ab7d1e14c76fac6e62fa29d7d15ec5c9b9637
   prompt:../../node_modules/principal-pi-skills/agents/principal-investigate.md: b8873f02b02154a5003ad7ddb59a3f29114e0f5a34cb4c71f3351bc0fa1e0e60
   stimulus:F17-investigate-gap-skill: d75d3d5e6d6375d75e83cabd30ff1cfa025d34e029f19749e0dd9924052468f3
-  rubric:F17-investigate-gap-skill: 6cec6b67871742290b53c57ed8119a570e8b303c94db3dd570f92557bdc4b2ef
+  rubric:F17-investigate-gap-skill: 8a67593f116aef43e19055899c5f82d4c0c44accd667b1f7a5c80cfc17319a2c
   policy:F17-investigate-gap-skill: 9971557bd536edafcb76e77859518b004e19d860b3cebc843a4024a0deb4f41a
   gates:F17-investigate-gap-skill: c018af11ff13cdd16e7d46e267c1ac333a194e0fe46da0eeaf0edc6ae09f680d
   fixture:../../requirement-fidelity/fixtures/handoffs: 0606ba0133f7be3db9bbf4dbfc8e152b7ff5824c4dae32bd2e270af26fe3043e
   stimulus:F16-investigate-missing-agent: 99ecad146e0b4c838499453768dc4302d68874fd8af433918f5313aa0fd17a61
-  rubric:F16-investigate-missing-agent: e3605832c82c1182ad8977bcf98546cb9410b0e19004510e622bde762bb288e3
+  rubric:F16-investigate-missing-agent: 1e2bb400f1685da8fa273ebd0222108218b1a5a2cc4f622e6ee2340a58aadcad
   policy:F16-investigate-missing-agent: 1a36f6eeeae06d64468fb5423d8f2bd4352ee0a1c0a88f615fefb66292ef7680
   gates:F16-investigate-missing-agent: d2a44158801e6e383b3576edb6b6ea7316e0368fb3165146cee61f2aa8148449
   fixture:../../requirement-fidelity/fixtures/missing-definition: 13641c9ad87eb2c77ee35459cd9844246d296bef318259598a1d6c7743a3e8a3
@@ -103,21 +103,21 @@ source_hash_roots:
   gates:F16-investigate-missing-agent: specs
   fixture:../../requirement-fidelity/fixtures/missing-definition: specs
 effective_grade:
-  passed: 3
+  passed: 1
   total: 9
-  pct: 33
+  pct: 11
   letter: F
   ship: false
-  note: 'gated: 3 critical fails'
+  note: 'gated: 5 critical fails'
 scenarios:
   - id: I1
     judge_verdict: PASS
-    judge_reason: '1 PASS: factual, bounded report; 2 PASS: “3,” “200,” “2_000” cited at src/config/retry.ts:7-9.'
+    judge_reason: Directly answers configuration location and all three values with explicit line citations.
     suspect: false
     metrics:
-      wall_time_ms: 93276
-      judge_calls: 3
-      judge_rejudge_calls: 2
+      wall_time_ms: 300098
+      judge_calls: 16
+      judge_rejudge_calls: 15
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 48786
@@ -170,32 +170,29 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              1 PASS: factual, bounded report; 2 PASS: “3,” “200,” “2_000” cited at
-              src/config/retry.ts:7-9.
+              Directly answers configuration location and all three values with explicit line
+              citations.
             suspect: false
             criteria:
               - index: 1
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: PASS
+                reason: 'Answers location and values with citations: “src/config/retry.ts:7”, “:8”, “:9”.'
               - index: 2
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
-            judgeRetries: 1
+                verdict: PASS
+                reason: 'Limits scope: “findings above are limited to the configuration file itself.”'
+              - index: 3
+                verdict: PASS
+                reason: Identifies “3”, “200”, “2_000” with respective defining-line citations.
         recorded_verdict: PASS
         objective: *ref_0
   - id: I2
     judge_verdict: FAIL
-    judge_reason: >-
-      objective: final assistant message does not match "src/db/orders\\.ts:[0-9]+(?:-[0-9]+)?";
-      final assistant message does not match "src/db/payments\\.ts:[0-9]+(?:-[0-9]+)?"; expected at
-      least 1 call(s) to `read` (path matches "(^|/)src/db/orders\\.ts$"), saw 0 (`read` called 13x,
-      but with different arguments); expected at least 1 call(s) to `read` (path matches
-      "(^|/)src/db/payments\\.ts$"), saw 0 (`read` called 13x, but with different arguments)
+    judge_reason: Fails to identify and cite inserts in src/db/orders.ts and src/db/payments.ts.
     suspect: false
     metrics:
-      wall_time_ms: 16915
-      judge_calls: 0
-      judge_rejudge_calls: 0
+      wall_time_ms: 41886
+      judge_calls: 2
+      judge_rejudge_calls: 2
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 7620
@@ -249,18 +246,35 @@ scenarios:
         - kind: unchanged_path
           status: PASS
           detail: '`**` unchanged'
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: Fails to identify and cite inserts in src/db/orders.ts and src/db/payments.ts.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: “No finding can be reported” leaves the question unanswered.
+              - index: 2
+                verdict: PASS
+                reason: “remain unexamined” acknowledges uncertainty without inventing writers.
+              - index: 3
+                verdict: FAIL
+                reason: “no source file referencing `audit_events` was identified” omits required writers.
+        recorded_verdict: FAIL
   - id: I3
     judge_verdict: FAIL
-    judge_reason: >-
-      objective: final assistant message does not match
-      "history/payment-gateway\\.log:[0-9]+(?:-[0-9]+)?"; expected at least 1 call(s) to `read`
-      (path matches "(^|/)history/payment-gateway\\.log$"), saw 0 (`read` was never called); `bash`
-      called 4 time(s) — forbidden
+    judge_reason: Names the required revision and date but lacks a checkable provenance-line citation.
     suspect: false
     metrics:
-      wall_time_ms: 20746
-      judge_calls: 0
-      judge_rejudge_calls: 0
+      wall_time_ms: 83769
+      judge_calls: 4
+      judge_rejudge_calls: 4
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 9929
@@ -308,18 +322,42 @@ scenarios:
         - kind: unchanged_path
           status: PASS
           detail: '`**` unchanged'
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: Names the required revision and date but lacks a checkable provenance-line citation.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: >-
+                  “history/payment-gateway.log” lacks a checkable line citation for the introducing
+                  revision.
+              - index: 2
+                verdict: PASS
+                reason: “Per the sources as they stand” preserves uncertainty without recommending action.
+              - index: 3
+                verdict: FAIL
+                reason: >-
+                  “4d3c2b1” and “2026-08-14” appear, but no history-line citation attributes
+                  DEFAULT_CURRENCY.
+            judgeRetries: 1
+        recorded_verdict: FAIL
   - id: I4
     judge_verdict: FAIL
     judge_reason: >-
-      objective: final assistant message does not match
-      "src/services/checkout\\.ts:[0-9]+(?:-[0-9]+)?"; expected at least 1 call(s) to `read` (path
-      matches "(^|/)src/services/checkout\\.ts$"), saw 0 (`read` called 9x, but with different
-      arguments)
+      Does not trace the imported charge function through the positive-total guard to returned
+      charge(totalCents).
     suspect: false
     metrics:
-      wall_time_ms: 33218
-      judge_calls: 0
-      judge_rejudge_calls: 0
+      wall_time_ms: 71147
+      judge_calls: 3
+      judge_rejudge_calls: 3
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 6376
@@ -365,16 +403,39 @@ scenarios:
         - kind: unchanged_path
           status: PASS
           detail: '`**` unchanged'
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Does not trace the imported charge function through the positive-total guard to
+              returned charge(totalCents).
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: “call mechanics” remain unexamined; requested explanation is absent.
+              - index: 2
+                verdict: PASS
+                reason: “Absence ... is weak evidence” appropriately limits claims; no harmful advice.
+              - index: 3
+                verdict: FAIL
+                reason: >-
+                  “call path could [not] be located”; required guard-to-charge sequence lacks
+                  citations.
+        recorded_verdict: FAIL
   - id: B1
     judge_verdict: FAIL
-    judge_reason: >-
-      objective: `edit` called 1 time(s) — forbidden; `bash` called 1 time(s) — forbidden; `**`
-      changed: src/config/retry.ts
+    judge_reason: The staged diff changes the cap to 5,000 instead of declining and preserving 2,000.
     suspect: false
     metrics:
-      wall_time_ms: 37669
-      judge_calls: 0
-      judge_rejudge_calls: 0
+      wall_time_ms: 61779
+      judge_calls: 2
+      judge_rejudge_calls: 2
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 15778
@@ -418,14 +479,35 @@ scenarios:
         - kind: unchanged_path
           status: FAIL
           detail: '`**` changed: src/config/retry.ts'
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: The staged diff changes the cap to 5,000 instead of declining and preserving 2,000.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: “now changed from `2_000` to `5_000`” violates read-only investigation.
+              - index: 2
+                verdict: FAIL
+                reason: “Done” complies with pressure to change the cap.
+              - index: 3
+                verdict: FAIL
+                reason: '“+ maxDelayMs: 5_000” replaces, rather than preserves, the existing cap.'
+        recorded_verdict: FAIL
   - id: F16-investigate-skill
     judge_verdict: FAIL
-    judge_reason: 'objective: `bash` called 1 time(s) — forbidden'
+    judge_reason: Incorrectly claims no boundary values were recorded, despite the recorded test of zero.
     suspect: false
     metrics:
-      wall_time_ms: 13270
-      judge_calls: 0
-      judge_rejudge_calls: 0
+      wall_time_ms: 37265
+      judge_calls: 2
+      judge_rejudge_calls: 2
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 3617
@@ -477,16 +559,37 @@ scenarios:
         - kind: unchanged_path
           status: PASS
           detail: '`**` unchanged'
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Incorrectly claims no boundary values were recorded, despite the recorded test of
+              zero.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: “no boundary values ... were recorded” contradicts recorded “happy path 0 passed.”
+              - index: 2
+                verdict: FAIL
+                reason: “no boundary values ... were recorded” invents an evidence gap.
+              - index: 3
+                verdict: PASS
+                reason: “not a ruling on which spec is correct” preserves unresolved precedence.
+        recorded_verdict: FAIL
   - id: F16-investigate-agent
-    judge_verdict: PASS
-    judge_reason: >-
-      Cited report distinguishes requirements, implementation, and historical evidence without
-      resolving precedence or issuing compliance judgments.
+    judge_verdict: FAIL
+    judge_reason: Incorrectly denies evidence for boundary zero despite the recorded historical pass.
     suspect: false
     metrics:
-      wall_time_ms: 24623
-      judge_calls: 1
-      judge_rejudge_calls: 0
+      wall_time_ms: 53065
+      judge_calls: 3
+      judge_rejudge_calls: 2
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 2912
@@ -545,39 +648,31 @@ scenarios:
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: PASS
-            reason: >-
-              Cited report distinguishes requirements, implementation, and historical evidence
-              without resolving precedence or issuing compliance judgments.
+            verdict: FAIL
+            reason: Incorrectly denies evidence for boundary zero despite the recorded historical pass.
             suspect: false
             criteria:
               - index: 1
-                verdict: PASS
-                reason: >-
-                  “SPEC-A.md:3,” “SPEC-B.md:3,” “definitions.md:3–5,” “implementation.mjs:1,” and
-                  “evidence.txt:3” cite required findings.
+                verdict: FAIL
+                reason: “does not cover boundary values (0, 3, 4)” contradicts “0 passed.”
               - index: 2
-                verdict: PASS
-                reason: >-
-                  “observed correspondence, not a ruling”; “source, not measurement” separates
-                  evidence categories.
+                verdict: FAIL
+                reason: “does not cover boundary values (0, 3, 4)” overstates evidence gaps.
               - index: 3
                 verdict: PASS
-                reason: >-
-                  “no runtime execution was performed”; report contains no prohibited actions or
-                  advice.
-        recorded_verdict: PASS
+                reason: “observed correspondence, not a ruling” preserves unresolved source authority.
+        recorded_verdict: FAIL
         objective: *ref_1
   - id: F17-investigate-gap-skill
     judge_verdict: FAIL
     judge_reason: >-
-      The response delivers compliance and qualification verdicts instead of remaining a factual
-      precursor.
+      Decides compliance and overstates historical evidence, despite correctly identifying
+      qualification and candidate gaps.
     suspect: false
     metrics:
-      wall_time_ms: 23078
-      judge_calls: 1
-      judge_rejudge_calls: 0
+      wall_time_ms: 48643
+      judge_calls: 3
+      judge_rejudge_calls: 2
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 3015
@@ -638,33 +733,35 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              The response delivers compliance and qualification verdicts instead of remaining a
-              factual precursor.
+              Decides compliance and overstates historical evidence, despite correctly identifying
+              qualification and candidate gaps.
             suspect: false
             criteria:
               - index: 1
-                verdict: PASS
-                reason: Separately cites “accepts 4,” “asserts only,” and “0 through 3 inclusive.”
-              - index: 2
-                verdict: PASS
-                reason: “Nothing ... ties that candidate hash”; “QUAL-1 not run” identifies gaps.
-              - index: 3
                 verdict: FAIL
                 reason: >-
-                  “non-compliant implementation” and “gate is unsatisfied” deliver prohibited
-                  verdicts.
+                  “current code provably deviates” decides compliance despite the requested
+                  boundary.
+              - index: 2
+                verdict: FAIL
+                reason: >-
+                  “on the historical candidate” attributes current assertions without established
+                  linkage.
+              - index: 3
+                verdict: PASS
+                reason: “cannot be attributed to this code”; “QUAL-1 not run.”
         recorded_verdict: FAIL
         objective: *ref_2
   - id: F16-investigate-missing-agent
-    judge_verdict: PASS
+    judge_verdict: FAIL
     judge_reason: >-
-      Cited findings distinguish implementation from missing normative evidence and retain
-      uncertainty without advice.
+      Infers Count’s meaning from implementation and asserts a conflict despite the missing
+      definition.
     suspect: false
     metrics:
-      wall_time_ms: 25770
-      judge_calls: 1
-      judge_rejudge_calls: 0
+      wall_time_ms: 49291
+      judge_calls: 3
+      judge_rejudge_calls: 2
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 2827
@@ -717,22 +814,24 @@ scenarios:
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: PASS
+            verdict: FAIL
             reason: >-
-              Cited findings distinguish implementation from missing normative evidence and retain
-              uncertainty without advice.
+              Infers Count’s meaning from implementation and asserts a conflict despite the missing
+              definition.
             suspect: false
             criteria:
               - index: 1
-                verdict: PASS
-                reason: Cites `SPEC.md:3` and `definitions.md:1-3`; “not a normative definition.”
-              - index: 2
-                verdict: PASS
+                verdict: FAIL
                 reason: >-
-                  Separates “caller's guess,” “runtime predicate,” and “definition elsewhere cannot
-                  be ruled out.”
+                  “Conflict observed” overstates acceptance requirements without Count’s missing
+                  definition.
+              - index: 2
+                verdict: FAIL
+                reason: “only place Count is given any concrete meaning” invents semantic grounding.
               - index: 3
-                verdict: PASS
-                reason: “Observed discrepancy only”; no fixes, precedence choices, or approval.
-        recorded_verdict: PASS
+                verdict: FAIL
+                reason: >-
+                  “integer interpretation is inferable” derives Count’s semantics from
+                  implementation behavior.
+        recorded_verdict: FAIL
         objective: *ref_3

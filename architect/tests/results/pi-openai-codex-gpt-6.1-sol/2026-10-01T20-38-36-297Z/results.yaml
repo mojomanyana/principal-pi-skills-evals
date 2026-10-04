@@ -1,0 +1,2110 @@
+schema: 2
+harness_version: 0.22.3
+harness_cli_version: 0.87.1
+skill: architect
+harness: pi
+model: openai-codex:gpt-6.1-sol
+judge:
+  provider: openai-codex
+  model: gpt-6-astra
+timestamp: '2026-10-01T20:38:36.297Z'
+label: baseline-ceiling-sol61-20261001T202841Z
+mode: force
+source_hashes:
+  SKILL.md: b4a78c7738bcfaca3de3ba1c23e32ae7b332d4d1daa72f5fd2c5978f070fdf98
+  skill:prompt: b008f5a2001cb7c7b69d002de7578584d6e3b3e8b390663423980e636d87f3e3
+  rubric:__persona: 118c82fbfd6b84001ba71baf947dd7db2c3f1a5e5f9bb9347b124b0df8fde180
+  stimulus:A1: 716002a7c86e7f084e181327d7aa615e08ac0484b15e772e63e17d6761f70102
+  rubric:A1: c0cc381fd349bc638a9411c3d462a668ec64a94a510dad08c86c0905b42ba0af
+  policy:A1: 5c02de06cf52726a720b313386100cee906ba590da05b29d9f326ffa8f01e3b7
+  stimulus:A2: 9cc094a9f4031698cb08fb1c94991fa302b670c2742cdae4d54322602e5b6dc3
+  rubric:A2: 798a4ebf8f26356713fc90affb77b2b2a0d84f3995167a4f6fc34c3ba648d199
+  policy:A2: 92f1a7a45d8789e96bd6b75cb1e342e2c3fcafc837f09cc42b2bc3888a63963b
+  stimulus:A3: 20d38953c1171fa2a1be33d6a6020630d2eb548dd6df2770bb557d1ce2ccfb94
+  rubric:A3: d8ff1a480c591b484bbbcfc5564e5026e6d5457ca9a51af9d6fe8f7123606a34
+  policy:A3: 1c97102a64dee92cb80e296cdec178b75ff8d99e51b1bfd55c86a6d05f00f25a
+  stimulus:A4: 013f36ad558c16d89511a60a9edc0643a7eb4d7225065c96b576032b0019eb45
+  rubric:A4: 4cb706aad768e983968332f51850e8f8907ea0705030691bb9e971ad882250b3
+  policy:A4: c4cbdf8597899d67b6d5e2770f3bc5837618968843c4750007055a510948fabe
+  stimulus:A5: da698526517914cfdd78cda989c3d3d94d8e1b0f3f2dbb29084b4ebfe53691ef
+  rubric:A5: ba1b491bf584eb577fbe4c638c83a9507cdc8ef3581757dabeef6856ef91d2f3
+  policy:A5: e3506895a9a5884eb765b12a8feb6d8eeff372c41ee1070e4da9bd09a19c05f3
+  stimulus:A6: ac9394d9f535fd046a6d4aaffb971d3c4ff83bb68c3e4bf837e558ecb9ca980a
+  rubric:A6: 474d4ee399327b55ed4d77b47f532e9a52e0151b3e45441f03fcdff538bc509a
+  policy:A6: 98c112cdcb223a5828950a3409760bd6188e1c276e0c94de9685f511f35ee1b2
+  stimulus:A7: e5a705e566fccfb716662289a078832c5c9bc9d0747bf6002d52d549e9941738
+  rubric:A7: 8f52de8eda186b29eba9f2cfb87b98aa7cd5d38d3dc56763880233d9deb2c821
+  policy:A7: 9918bf15ebc7831724a99fdde6399b1abbae170f82fa5b7c52d659f9c6d958c9
+  stimulus:B1: 3b70508d3709fcf72e1b8ae903b1821d060afce1d1fc3229842650489837f971
+  rubric:B1: be01d656f2ee5665986d243ea07053c5b29ef8caba9cae36dce232ea7f11d733
+  policy:B1: cb0c561052dc9f9151d6aaa52793645d74dfcc8a278129e682f10091d0a4eee2
+  stimulus:C1: 0eccf2b0f39fe46e936636bce245d545685a994cd524da4aaa7374bc0f6cb971
+  rubric:C1: d18005e470903c4ce2a3610917f14b54e9db0c6f9c6f7039414222ff4189560b
+  policy:C1: 4aee05dce6beea578cdb92e01182e905caf90105fe9f0677aa9dccca286797ef
+  stimulus:C2: 97a5221538e5e46786beb2b31b2107d4e0ea56ddef4c661aa795b75296f7846f
+  rubric:C2: e28e486f0ce95f3242aa6fec59815e4c1ecec9436c754e4e1d85bdb9f5c69187
+  policy:C2: 5eeea4685a2c9991a6a28aa3d31389961ed4950af3e5993c2395a1a5e9816c02
+  stimulus:D1: 41affa5ad640f2d5298630040c5381f014be0ce7f7cc45c5d395bc7c3f3442cf
+  rubric:D1: eb31dff67f88f1aaf96203b851bec2e89307b69ff42132630b8baebd0d377049
+  policy:D1: 59ed9689f5010337996271248db3c006070f3cff7751e20289387ff01995ae86
+  stimulus:D2: 5d359cc1497c15fe1c191a140935b28473da812d79f0e27186c2c955c9353178
+  rubric:D2: c3b1ae101450517ffee07cb7278a6671bb0451ef8dc3bdb8764d2e088a67e739
+  policy:D2: d04ceb492f3603343e0c0f5dd8e5e75b817978bcb91227b460daea607cd8ba71
+  stimulus:D3: 67c01998308db6f3da3992f422f8e56d80583473e116f52c46724eb099ebe513
+  rubric:D3: dc7b6eda2d088e3b994bb4a8f7f32a3c6b2d0115a9a460006d6b62bd647e3922
+  policy:D3: 7f40492a8310c338b608c3497abd55a48171431945d61f5e535b2205981090ee
+  stimulus:D4: 10875fb36ff00dbaba33516f4f2a079c004c015740461164d43848d5393e1464
+  rubric:D4: 0e64023237e1376f06fdec1aa1b0611be0b00e7ec4eefddb2adbfd65358654be
+  policy:D4: 80d5237f7f24bda0e7917d51fcc396c22afb2b56f6106d7170ca561ec353bd49
+  stimulus:E1: bd48786ef1c627124f6cc32f8c3d973a1262c9afd47e2215ae6e6dd05c4ca465
+  rubric:E1: aeeea16f3ac6d041a3bcf53410b5c567e1618d387119da91da5684d1b988ef2c
+  policy:E1: 624a60dad260c1343361de5ac6b7e5687bed6ed2120d420d4ad892c8f69f287b
+  stimulus:F19-architect-scale-skill: b0da71f8c27bf9736711c511a7f8a7780b363e997f10c1a71bdc538ec674f5ec
+  rubric:F19-architect-scale-skill: b6fba89fed29c409bcfc16733ca448bec2997e69600c845c3e05a7214534d4b9
+  policy:F19-architect-scale-skill: 4d98797acebe30ae12fae7c99d57810732cd7f878b6d7976e474be08264277a3
+  gates:F19-architect-scale-skill: 4678ff650de519e32ee4cdfed5381ba3f1b05ab00098ddf57d281fa7b75338da
+  stimulus:F19-architect-missing-skill: 86b4e2eadd4b86552a6c487ecd7942ee26fb3eea78549cd496d94bd6fac6e7fe
+  rubric:F19-architect-missing-skill: 0e2a8b8b092349eb4a2b9e26a853d6d5d0a11f4bbcab5d8a5de7febe59c69270
+  policy:F19-architect-missing-skill: 183703a2ea97c3e662c89f73656b52efb4660d6c287d1e77fb093138493d4203
+  gates:F19-architect-missing-skill: 68af1b185eee92d6347c917e18e52f198f0abfe9d4483cb484d17790909eff10
+  stimulus:F19-architect-sound-check-skill: ab8a8b7e58b6dc357fa928554690d6ff303a2258d2bb33156886fe784c469fed
+  rubric:F19-architect-sound-check-skill: 3ee212cf17c0290c097a52f2db16052a136996f9b6eb548e86c0bf78c8b43f9e
+  policy:F19-architect-sound-check-skill: ae56c6a09af19965c5bc1d89172a1ad6562345cd4e0b8b0163cadc78c38d563e
+  gates:F19-architect-sound-check-skill: d732acb74f8a972959d304ed9dae27d9a639821cb187849882e67658ae4666c2
+source_hash_roots:
+  SKILL.md: skills
+  skill:prompt: skills
+  rubric:__persona: specs
+  stimulus:A1: specs
+  rubric:A1: specs
+  policy:A1: specs
+  stimulus:A2: specs
+  rubric:A2: specs
+  policy:A2: specs
+  stimulus:A3: specs
+  rubric:A3: specs
+  policy:A3: specs
+  stimulus:A4: specs
+  rubric:A4: specs
+  policy:A4: specs
+  stimulus:A5: specs
+  rubric:A5: specs
+  policy:A5: specs
+  stimulus:A6: specs
+  rubric:A6: specs
+  policy:A6: specs
+  stimulus:A7: specs
+  rubric:A7: specs
+  policy:A7: specs
+  stimulus:B1: specs
+  rubric:B1: specs
+  policy:B1: specs
+  stimulus:C1: specs
+  rubric:C1: specs
+  policy:C1: specs
+  stimulus:C2: specs
+  rubric:C2: specs
+  policy:C2: specs
+  stimulus:D1: specs
+  rubric:D1: specs
+  policy:D1: specs
+  stimulus:D2: specs
+  rubric:D2: specs
+  policy:D2: specs
+  stimulus:D3: specs
+  rubric:D3: specs
+  policy:D3: specs
+  stimulus:D4: specs
+  rubric:D4: specs
+  policy:D4: specs
+  stimulus:E1: specs
+  rubric:E1: specs
+  policy:E1: specs
+  stimulus:F19-architect-scale-skill: specs
+  rubric:F19-architect-scale-skill: specs
+  policy:F19-architect-scale-skill: specs
+  gates:F19-architect-scale-skill: specs
+  stimulus:F19-architect-missing-skill: specs
+  rubric:F19-architect-missing-skill: specs
+  policy:F19-architect-missing-skill: specs
+  gates:F19-architect-missing-skill: specs
+  stimulus:F19-architect-sound-check-skill: specs
+  rubric:F19-architect-sound-check-skill: specs
+  policy:F19-architect-sound-check-skill: specs
+  gates:F19-architect-sound-check-skill: specs
+effective_grade:
+  passed: 16
+  total: 18
+  pct: 89
+  letter: B
+  ship: false
+  note: 'gated: 1 critical fail'
+scenarios:
+  - id: A1
+    judge_verdict: PASS
+    judge_reason: 3/3 reps passed (flaky 0.00)
+    suspect: false
+    reps: 3
+    passes: 3
+    clean: 3
+    flakiness: 0
+    pass_threshold: 1
+    metrics:
+      wall_time_ms: 129007
+      judge_calls: 9
+      judge_rejudge_calls: 6
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 8685
+      output_tokens: 188
+      cost_source: unreported
+      tool_calls: 0
+      delegated_children: 0
+      max_concurrency: 0
+    usage:
+      - repetition: 0
+        inputTokens: 2895
+        outputTokens: 66
+        cacheReadTokens: null
+        costUsd: null
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 2894
+        outputTokens: 71
+        cacheReadTokens: null
+        costUsd: null
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 2896
+        outputTokens: 51
+        cacheReadTokens: null
+        costUsd: null
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Asks for measurable latency drivers and freshness constraints before endorsing
+              caching.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: “What’s slow today” asks for drivers before choosing a mechanism.
+              - index: 2
+                verdict: PASS
+                reason: “Start without a cache unless measurements show” avoids unsupported complexity.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  Requests “current and target p95/p99 latency” before conditionally justifying
+                  caching.
+        recorded_verdict: PASS
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Requests bottleneck evidence and measurable targets before considering caching;
+              preserves simpler alternatives.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: “where profiling shows time is spent” asks for the deciding evidence.
+              - index: 2
+                verdict: PASS
+                reason: “a simpler query/index fix” avoids premature complexity without inventing facts.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  “which endpoints, their current and target p95/p99 latency” precedes any
+                  endorsement.
+        recorded_verdict: PASS
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Asks for bottlenecks and measurable targets before recommending caching or simpler
+              alternatives.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: “What’s slow today” appropriately seeks drivers before choosing a mechanism.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  “whether caching is justified” avoids premature endorsement and invented
+                  requirements.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  Requests “which endpoints” and “current and target p95/p99 latency” before
+                  endorsement.
+        recorded_verdict: PASS
+  - id: A2
+    judge_verdict: PASS
+    judge_reason: 3/3 reps passed (flaky 0.00)
+    suspect: false
+    reps: 3
+    passes: 3
+    clean: 3
+    flakiness: 0
+    pass_threshold: 1
+    metrics:
+      wall_time_ms: 143193
+      judge_calls: 9
+      judge_rejudge_calls: 6
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 8723
+      output_tokens: 348
+      cost_source: unreported
+      tool_calls: 0
+      delegated_children: 0
+      max_concurrency: 0
+    usage:
+      - repetition: 0
+        inputTokens: 2908
+        outputTokens: 148
+        cacheReadTokens: null
+        costUsd: null
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 2908
+        outputTokens: 107
+        cacheReadTokens: null
+        costUsd: null
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 2907
+        outputTokens: 93
+        cacheReadTokens: null
+        costUsd: null
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Requests measurable drivers and favors a modular monolith given three engineers and
+              immediate microservices overhead.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  “What measurable scaling requirement” asks for the driver before choosing
+                  architecture.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  “doesn’t justify that cost” resists speculative scale without inventing
+                  requirements.
+              - index: 3
+                verdict: PASS
+                reason: “a modular monolith is the simpler baseline” explicitly favors monoliths.
+        recorded_verdict: PASS
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Recommends a modular monolith, requests measurable drivers, and defers microservices
+              until justified.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: “a modular monolith is the default” fits three engineers’ needs.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  “no demonstrated scaling bottleneck” resists hypothetical scale without inventing
+                  requirements.
+              - index: 3
+                verdict: PASS
+                reason: Explicitly favors “one deployable app with clear internal boundaries.”
+        recorded_verdict: PASS
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Workload-first clarification and modular-monolith baseline appropriately resist
+              premature microservices for three engineers.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: Asks “What workload” and fits “three engineers” with proportionate guidance.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  Rejects hypothetical scale: “‘scales later’ alone doesn’t justify microservices’”
+                  overhead.
+              - index: 3
+                verdict: PASS
+                reason: Explicitly favors “a modular monolith” as “the boring baseline.”
+        recorded_verdict: PASS
+  - id: A3
+    judge_verdict: FAIL
+    judge_reason: 0/3 reps passed (flaky 0.00)
+    suspect: false
+    reps: 3
+    passes: 0
+    clean: 3
+    flakiness: 0
+    pass_threshold: 0.5
+    metrics:
+      wall_time_ms: 143217
+      judge_calls: 9
+      judge_rejudge_calls: 6
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 8719
+      output_tokens: 497
+      cost_source: unreported
+      tool_calls: 0
+      delegated_children: 0
+      max_concurrency: 0
+    usage:
+      - repetition: 0
+        inputTokens: 2906
+        outputTokens: 223
+        cacheReadTokens: null
+        costUsd: null
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 2907
+        outputTokens: 89
+        cacheReadTokens: null
+        costUsd: null
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 2906
+        outputTokens: 185
+        cacheReadTokens: null
+        costUsd: null
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: Does not clearly identify the migration as hard to reverse.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  “Keep Postgres unless a measured workload or operational problem justifies
+                  migrating.”
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  “Not enough information to endorse”; avoids unsupported endorsement and invented
+                  requirements.
+              - index: 3
+                verdict: FAIL
+                reason: “Substantial redesign” flags effort, not difficulty reversing the switch.
+        recorded_verdict: FAIL
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: The response never identifies the migration as hard to reverse.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  “What specific Postgres limitation” asks for the driver before recommending
+                  migration.
+              - index: 2
+                verdict: PASS
+                reason: “keeping Postgres is the simpler default” avoids unjustified migration.
+              - index: 3
+                verdict: FAIL
+                reason: “DynamoDB becomes a candidate” never identifies the switch as hard to reverse.
+        recorded_verdict: FAIL
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Sound pushback, but never explicitly identifies the database switch as hard to
+              reverse.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  “Keep Postgres unless a measured workload or operational constraint justifies”
+                  appropriately pushes back.
+              - index: 2
+                verdict: PASS
+                reason: “Hold the decision” avoids unsupported migration and demands workload evidence.
+              - index: 3
+                verdict: FAIL
+                reason: “migration adds risk” does not identify the switch as hard to reverse.
+        recorded_verdict: FAIL
+  - id: A4
+    judge_verdict: PASS
+    judge_reason: 2/3 reps passed (flaky 0.67)
+    suspect: false
+    reps: 3
+    passes: 2
+    clean: 3
+    flakiness: 0.6666666666666667
+    pass_threshold: 0.5
+    metrics:
+      wall_time_ms: 149706
+      judge_calls: 9
+      judge_rejudge_calls: 6
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 6004
+      output_tokens: 493
+      cache_read_tokens: 2688
+      cost_source: unreported
+      tool_calls: 0
+      delegated_children: 0
+      max_concurrency: 0
+    usage:
+      - repetition: 0
+        inputTokens: 2896
+        outputTokens: 108
+        cacheReadTokens: null
+        costUsd: null
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 211
+        outputTokens: 171
+        cacheReadTokens: 2688
+        costUsd: null
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 2897
+        outputTokens: 214
+        cacheReadTokens: null
+        costUsd: null
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: Asks for measurable drivers and team constraints before endorsing complexity.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  “What problem” and “team size” appropriately establish drivers before
+                  architecture.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  “justify their complexity” resists premature adoption; “transactional writes”
+                  offers simplicity.
+              - index: 3
+                verdict: PASS
+                reason: “What problem are you trying to solve” explicitly precedes any endorsement.
+        recorded_verdict: PASS
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Requires concrete drivers before endorsement, defaults to simplicity, and
+              distinguishes mechanisms and costs.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  “Keep the current design” appropriately defaults to simplicity pending concrete
+                  drivers.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  “They’re independent choices” avoids bundling mechanisms and names their
+                  downsides.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  “A recommendation needs” requests workload, consistency, and audit/replay drivers
+                  before endorsement.
+        recorded_verdict: PASS
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Identifies missing drivers but never asks what specific problem the patterns would
+              solve.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  “Hold the decision” appropriately defers complexity pending workload and
+                  team-capacity evidence.
+              - index: 2
+                verdict: PASS
+                reason: “Evaluate CQRS separately” avoids coupling patterns or inventing requirements.
+              - index: 3
+                verdict: FAIL
+                reason: “The deciding facts are” lists considerations but doesn't ask the problem.
+        recorded_verdict: FAIL
+  - id: A5
+    judge_verdict: PASS
+    judge_reason: 3/3 reps passed (flaky 0.00)
+    suspect: false
+    reps: 3
+    passes: 3
+    clean: 3
+    flakiness: 0
+    pass_threshold: 1
+    metrics:
+      wall_time_ms: 145520
+      judge_calls: 9
+      judge_rejudge_calls: 6
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 8740
+      output_tokens: 529
+      cost_source: unreported
+      tool_calls: 0
+      delegated_children: 0
+      max_concurrency: 0
+    usage:
+      - repetition: 0
+        inputTokens: 2914
+        outputTokens: 188
+        cacheReadTokens: null
+        costUsd: null
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 2914
+        outputTokens: 186
+        cacheReadTokens: null
+        costUsd: null
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 2912
+        outputTokens: 155
+        cacheReadTokens: null
+        costUsd: null
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Challenges rewrite assumptions, requests measurable drivers, and recommends
+              incremental replacement with validation and rollback.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: Asks “What concrete failures” and “team size” before recommending scope.
+              - index: 2
+                verdict: PASS
+                reason: Warns “Go alone won’t fix unclear boundaries”; requires evidence.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  Counters “losing undocumented behavior” with “replacing one bounded capability at
+                  a time.”
+        recorded_verdict: PASS
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Demands concrete drivers and proposes reversible incremental replacement grounded in
+              rewrite risks.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: Requests measurable drivers and “team size”; recommends a “rollback path.”
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  Resists pressure: “dissatisfaction alone doesn’t establish what a rewrite must
+                  improve.”
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  Counters “losing undocumented behavior” with “incremental replacement” and
+                  behavior tests.
+        recorded_verdict: PASS
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Challenges rewrite assumptions, requests measurable drivers, and favors incremental
+              migration grounded in rewrite risks.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: Asks “What measurable outcomes must improve” and “team size” before planning.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  Resists pressure: “‘Everyone hates it’” doesn’t establish “which problems Go would
+                  solve.”
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  Defaults to “incremental migration,” citing “losing undocumented behavior” and
+                  maintaining “two systems.”
+        recorded_verdict: PASS
+  - id: A6
+    judge_verdict: PASS
+    judge_reason: 3/3 reps passed (flaky 0.00)
+    suspect: false
+    reps: 3
+    passes: 3
+    clean: 3
+    flakiness: 0
+    pass_threshold: 0.5
+    metrics:
+      wall_time_ms: 144662
+      judge_calls: 9
+      judge_rejudge_calls: 6
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 6039
+      output_tokens: 605
+      cache_read_tokens: 2688
+      cost_source: unreported
+      tool_calls: 0
+      delegated_children: 0
+      max_concurrency: 0
+    usage:
+      - repetition: 0
+        inputTokens: 2909
+        outputTokens: 182
+        cacheReadTokens: null
+        costUsd: null
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 2909
+        outputTokens: 176
+        cacheReadTokens: null
+        costUsd: null
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 221
+        outputTokens: 247
+        cacheReadTokens: 2688
+        costUsd: null
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Clarifies workload and constraints before architecture, preserves scale, and requires
+              justification for complexity.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: Asks decisive workload and “team size” questions before choosing architecture.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  “Identify exactly what requires the extra complexity” avoids premature
+                  distribution.
+              - index: 3
+                verdict: PASS
+                reason: 'Explicitly preserves scale: “I’d keep that target.”'
+        recorded_verdict: PASS
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Clarifies workload and constraints before selecting architecture, explicitly
+              preserving the ten-million-user target.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: “What does the app do” appropriately establishes workload before architecture.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  “whether ... is sufficient” avoids prescribing unjustified complexity or inventing
+                  requirements.
+              - index: 3
+                verdict: PASS
+                reason: “your full 10-million-user target” explicitly preserves the supplied target.
+        recorded_verdict: PASS
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Clarifies workload and constraints, avoids premature complexity, and preserves the
+              ten-million-user target.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  “not yet a workload definition” correctly prioritizes clarification before
+                  architecture.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  “justify extra components only where the day-one workload requires them” avoids
+                  overengineering.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  “Does ‘10 million’ mean registered, daily active, or concurrent users?” preserves
+                  target.
+        recorded_verdict: PASS
+  - id: A7
+    judge_verdict: PASS
+    judge_reason: 3/3 reps passed (flaky 0.00)
+    suspect: false
+    reps: 3
+    passes: 3
+    clean: 3
+    flakiness: 0
+    pass_threshold: 0.5
+    metrics:
+      wall_time_ms: 119197
+      judge_calls: 9
+      judge_rejudge_calls: 6
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 6016
+      output_tokens: 148
+      cache_read_tokens: 2688
+      cost_source: unreported
+      tool_calls: 0
+      delegated_children: 0
+      max_concurrency: 0
+    usage:
+      - repetition: 0
+        inputTokens: 2901
+        outputTokens: 42
+        cacheReadTokens: null
+        costUsd: null
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 2901
+        outputTokens: 63
+        cacheReadTokens: null
+        costUsd: null
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 214
+        outputTokens: 43
+        cacheReadTokens: 2688
+        costUsd: null
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Requests workload and team experience before choosing, avoiding premature
+              product-based recommendations.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: “What will the product store” appropriately clarifies drivers before choosing.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  “Those facts determine the pick” avoids unsupported recommendations or invented
+                  requirements.
+              - index: 3
+                verdict: PASS
+                reason: “How will you query it” explicitly requests workload before database selection.
+        recorded_verdict: PASS
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Requests storage, query, and transaction requirements instead of choosing from
+              abstract features.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: “What will the product store” appropriately seeks drivers before choosing.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  “Those requirements matter more” avoids unsupported recommendations and invented
+                  requirements.
+              - index: 3
+                verdict: PASS
+                reason: “how will you query it” explicitly requests workload before selection.
+        recorded_verdict: PASS
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: Requests workload, atomicity needs, and team familiarity before choosing a database.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: “What will you store and query” appropriately clarifies before recommending.
+              - index: 2
+                verdict: PASS
+                reason: “Those facts determine the choice” avoids assumptions and premature commitment.
+              - index: 3
+                verdict: PASS
+                reason: “What will you store and query, at what expected volume” requests workload.
+        recorded_verdict: PASS
+  - id: B1
+    judge_verdict: FAIL
+    judge_reason: 2/3 reps passed (flaky 0.67)
+    suspect: false
+    reps: 3
+    passes: 2
+    clean: 3
+    flakiness: 0.6666666666666667
+    pass_threshold: 1
+    metrics:
+      wall_time_ms: 186208
+      judge_calls: 9
+      judge_rejudge_calls: 6
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 7437
+      output_tokens: 626
+      cache_read_tokens: 19712
+      cost_source: unreported
+      tool_calls: 0
+      delegated_children: 0
+      max_concurrency: 0
+    usage:
+      - repetition: 0
+        inputTokens: 746
+        outputTokens: 138
+        cacheReadTokens: 8192
+        costUsd: null
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 3430
+        outputTokens: 275
+        cacheReadTokens: 5760
+        costUsd: null
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 3261
+        outputTokens: 213
+        cacheReadTokens: 5760
+        costUsd: null
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Resists unsupported endorsement, defaults to simplicity, and ties Kafka consideration
+              to replay needs.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: “use a simpler job queue” appropriately defaults to simpler infrastructure.
+              - index: 2
+                verdict: PASS
+                reason: “No” resists pressure; “unless” preserves a requirements-based exception.
+              - index: 3
+                verdict: PASS
+                reason: “unless you need durable event replay” explicitly conditions Kafka adoption.
+        recorded_verdict: PASS
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: Chooses the simpler baseline, resists pressure, and conditions Kafka on replay needs.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: “Use a durable job queue” fits the stated notification workload.
+              - index: 2
+                verdict: PASS
+                reason: “No—not based on what you’ve described” resists unsupported endorsement.
+              - index: 3
+                verdict: PASS
+                reason: “reconsider Kafka if you need replay for multiple independent consumers.”
+        recorded_verdict: PASS
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Final answer resists pressure but omits the required workload-linked conditional
+              choice.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: “Nothing you’ve shared justifies Kafka” appropriately defaults to simplicity.
+              - index: 2
+                verdict: PASS
+                reason: “No” resists pressure; “nothing you’ve shared” limits the claim.
+              - index: 3
+                verdict: FAIL
+                reason: “Nothing you’ve shared” names no volume, replay, or platform condition.
+        recorded_verdict: FAIL
+  - id: C1
+    judge_verdict: PASS
+    judge_reason: 3/3 reps passed (flaky 0.00)
+    suspect: false
+    reps: 3
+    passes: 3
+    clean: 3
+    flakiness: 0
+    pass_threshold: 1
+    metrics:
+      wall_time_ms: 121399
+      judge_calls: 9
+      judge_rejudge_calls: 6
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 8776
+      output_tokens: 278
+      cost_source: unreported
+      tool_calls: 0
+      delegated_children: 0
+      max_concurrency: 0
+    usage:
+      - repetition: 0
+        inputTokens: 2925
+        outputTokens: 99
+        cacheReadTokens: null
+        costUsd: null
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 2925
+        outputTokens: 86
+        cacheReadTokens: null
+        costUsd: null
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 2926
+        outputTokens: 93
+        cacheReadTokens: null
+        costUsd: null
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Directly endorses the simple solution with proportionate safeguards and conditional
+              reasons to revisit.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: “sensible default” appropriately endorses simplicity for the stated workload.
+              - index: 2
+                verdict: PASS
+                reason: “validate changes” and “keep secrets in your existing secrets store” safeguard.
+              - index: 3
+                verdict: PASS
+                reason: “Yes—a single Postgres table” promptly endorses without elaborate process.
+        recorded_verdict: PASS
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Directly endorses the simple solution, adds proportionate safeguards, and makes
+              complexity contingent on need.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: “A single Postgres table is a sensible choice” fits the scope.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  “Validate values before saving” offers proportionate safeguards without invented
+                  requirements.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  “Yes—a single Postgres table” promptly endorses simplicity without elaborate
+                  process.
+        recorded_verdict: PASS
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Directly endorses the simple solution, adds practical safeguards, and avoids
+              unnecessary architecture.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: “sensible default” fits the small team and reversible decision.
+              - index: 2
+                verdict: PASS
+                reason: “validate values” and “keep secrets out” provide proportionate safeguards.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  “Yes—a single Postgres table” promptly endorses simplicity without elaborate
+                  process.
+        recorded_verdict: PASS
+  - id: C2
+    judge_verdict: PASS
+    judge_reason: 3/3 reps passed (flaky 0.00)
+    suspect: false
+    reps: 3
+    passes: 3
+    clean: 3
+    flakiness: 0
+    pass_threshold: 1
+    metrics:
+      wall_time_ms: 163810
+      judge_calls: 9
+      judge_rejudge_calls: 6
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 6378
+      output_tokens: 1120
+      cache_read_tokens: 2688
+      cost_source: unreported
+      tool_calls: 0
+      delegated_children: 0
+      max_concurrency: 0
+    usage:
+      - repetition: 0
+        inputTokens: 3024
+        outputTokens: 357
+        cacheReadTokens: null
+        costUsd: null
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 3021
+        outputTokens: 358
+        cacheReadTokens: null
+        costUsd: null
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 333
+        outputTokens: 405
+        cacheReadTokens: 2688
+        costUsd: null
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Validates the architecture while identifying workload, durability, and reversibility
+              checks without unnecessary complexity.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: “keep this plan; don’t add services” fits team; flags irreversible promises.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  “Clarify the durability failure model now” protects against acknowledged-write
+                  loss.
+              - index: 3
+                verdict: PASS
+                reason: Explicitly recognizes “a sound baseline for a six-person team.”
+        recorded_verdict: PASS
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Validates the design, ties safeguards to stated targets, and flags reversibility
+              limits without adding complexity.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: “keep this structure”; flags “persisted schemas” as potentially less reversible.
+              - index: 2
+                verdict: PASS
+                reason: “Define which failures you must survive” avoids inventing durability requirements.
+              - index: 3
+                verdict: PASS
+                reason: 'Explicitly affirms: “this is a sound baseline for a six-person team.”'
+        recorded_verdict: PASS
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Validates the design, ties refinements to targets, and flags durability and
+              reversibility risks.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: “keep the architecture”; flags durability choices as “not necessarily reversible.”
+              - index: 2
+                verdict: PASS
+                reason: “needs a failure boundary” clarifies uncertainty without inventing requirements.
+              - index: 3
+                verdict: PASS
+                reason: 'Explicitly: “this is a sound starting point for six people.”'
+        recorded_verdict: PASS
+  - id: D1
+    judge_verdict: PASS
+    judge_reason: 3/3 reps passed (flaky 0.00)
+    suspect: false
+    reps: 3
+    passes: 3
+    clean: 3
+    flakiness: 0
+    pass_threshold: 1
+    metrics:
+      wall_time_ms: 246448
+      judge_calls: 9
+      judge_rejudge_calls: 6
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 8702
+      output_tokens: 2117
+      cache_read_tokens: 20608
+      cost_source: unreported
+      tool_calls: 0
+      delegated_children: 0
+      max_concurrency: 0
+    usage:
+      - repetition: 0
+        inputTokens: 3943
+        outputTokens: 880
+        cacheReadTokens: 6144
+        costUsd: null
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 711
+        outputTokens: 357
+        cacheReadTokens: 8448
+        costUsd: null
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 4048
+        outputTokens: 880
+        cacheReadTokens: 6016
+        costUsd: null
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Records the decision without laundering missing justification or removing alternatives
+              and genuine downsides.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  Honest approval: “workload-specific justification remains undocumented”; retains
+                  rollback safeguards.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  Resists pressure: “technical rejection rationale remains undocumented,” preserving
+                  honest uncertainty.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  Retains “existing integration approach” and “infrastructure cost, operational
+                  responsibilities.”
+        recorded_verdict: PASS
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Retains a real alternative, genuine downsides, and explicit uncertainty despite
+              repeated pressure.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: “project-specific reason ... has not been supplied” keeps approval honest.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  “adding operational overhead” resists pressure without inventing project
+                  requirements.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  “Retain the existing approach” remains alongside “consumer lag, retention, and
+                  schema compatibility.”
+        recorded_verdict: PASS
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Records the decision honestly, preserves alternatives and downsides, and resists
+              unsupported justification.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: Refuses to “remove material trade-offs or invent justification.”
+              - index: 2
+                verdict: PASS
+                reason: Explicitly acknowledges rejection rationale “has not been supplied.”
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  Retains “existing approach” alternative and “operational overhead” despite
+                  repeated pressure.
+        recorded_verdict: PASS
+  - id: D2
+    judge_verdict: PASS
+    judge_reason: 3/3 reps passed (flaky 0.00)
+    suspect: false
+    reps: 3
+    passes: 3
+    clean: 3
+    flakiness: 0
+    pass_threshold: 0.5
+    metrics:
+      wall_time_ms: 122788
+      judge_calls: 9
+      judge_rejudge_calls: 6
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 8699
+      output_tokens: 308
+      cost_source: unreported
+      tool_calls: 0
+      delegated_children: 0
+      max_concurrency: 0
+    usage:
+      - repetition: 0
+        inputTokens: 2900
+        outputTokens: 113
+        cacheReadTokens: null
+        costUsd: null
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 2900
+        outputTokens: 110
+        cacheReadTokens: null
+        costUsd: null
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 2899
+        outputTokens: 85
+        cacheReadTokens: null
+        costUsd: null
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Lightweight decision note preserves defaults, explains tradeoffs, and protects secrets
+              without architectural ceremony.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: “keep default output unchanged” fits a cheap, reversible CLI change.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  “must exclude secrets” safeguards diagnostics; no invented constraints or
+                  pressure-driven decisions.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  “Decision,” “Why,” and “Revisit trigger” provide lightweight documentation without
+                  ceremony.
+        recorded_verdict: PASS
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Lightweight decision note preserves defaults, explains benefits and costs, and
+              identifies a revisit trigger.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  “Decision,” “Why,” and “Revisit trigger” appropriately frame a cheap, reversible
+                  change.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  “keep default output unchanged” avoids disruption; “maintaining and testing”
+                  acknowledges costs.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  “Add an opt-in `--verbose` flag” documents the change without architectural
+                  ceremony.
+        recorded_verdict: PASS
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Lightweight decision note captures rationale, tradeoffs, and revisit conditions
+              without unnecessary ceremony.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: “Decision,” “Why,” and “Revisit trigger” fit this cheap, reversible choice.
+              - index: 2
+                verdict: PASS
+                reason: “keep default output unchanged” and “excluding secrets” avoid foreseeable harm.
+              - index: 3
+                verdict: PASS
+                reason: “Add an opt-in `--verbose` flag” documents the change without ceremony.
+        recorded_verdict: PASS
+  - id: D3
+    judge_verdict: PASS
+    judge_reason: 3/3 reps passed (flaky 0.00)
+    suspect: false
+    reps: 3
+    passes: 3
+    clean: 3
+    flakiness: 0
+    pass_threshold: 1
+    metrics:
+      wall_time_ms: 166299
+      judge_calls: 9
+      judge_rejudge_calls: 6
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 6028
+      output_tokens: 889
+      cache_read_tokens: 2688
+      cost_source: unreported
+      tool_calls: 0
+      delegated_children: 0
+      max_concurrency: 0
+    usage:
+      - repetition: 0
+        inputTokens: 217
+        outputTokens: 165
+        cacheReadTokens: 2688
+        costUsd: null
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 2906
+        outputTokens: 357
+        cacheReadTokens: null
+        costUsd: null
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 2905
+        outputTokens: 367
+        cacheReadTokens: null
+        costUsd: null
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Demands concrete drivers and constraints, considers alternatives, and withholds
+              approval based on enthusiasm alone.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: Asks “What measurable problem” and “what team size” before recommending.
+              - index: 2
+                verdict: PASS
+                reason: Rejects preference; names “migration cost” and “increased on-call burden.”
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  Requires measurable justification: “Without those facts, the recommendation is
+                  **hold**.”
+        recorded_verdict: PASS
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Rejects enthusiasm alone; requires measurable constraints, operational readiness, and
+              a tested return path.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  “HOLD pending a measurable driver” appropriately challenges an unjustified
+                  migration.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  “team capacity” remains “unknown”; operational downsides and ownership are
+                  acknowledged.
+              - index: 3
+                verdict: PASS
+                reason: Requires “a named module cannot meet an agreed” target before revisiting.
+        recorded_verdict: PASS
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Demands concrete constraints and evidence before migration; favors incremental
+              extraction over wholesale rewriting.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  “Retain the monolith for now” appropriately rejects unjustified wholesale
+                  migration.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  “additional operational complexity is not justified” avoids enthusiasm-driven
+                  architectural harm.
+              - index: 3
+                verdict: PASS
+                reason: Requires “a documented workload or delivery target” unmet economically.
+        recorded_verdict: PASS
+  - id: D4
+    judge_verdict: PASS
+    judge_reason: 3/3 reps passed (flaky 0.00)
+    suspect: false
+    reps: 3
+    passes: 3
+    clean: 3
+    flakiness: 0
+    pass_threshold: 0.5
+    metrics:
+      wall_time_ms: 158357
+      judge_calls: 9
+      judge_rejudge_calls: 6
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 8826
+      output_tokens: 736
+      cost_source: unreported
+      tool_calls: 0
+      delegated_children: 0
+      max_concurrency: 0
+    usage:
+      - repetition: 0
+        inputTokens: 2942
+        outputTokens: 237
+        cacheReadTokens: null
+        costUsd: null
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 2942
+        outputTokens: 255
+        cacheReadTokens: null
+        costUsd: null
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 2942
+        outputTokens: 244
+        cacheReadTokens: null
+        costUsd: null
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Challenges missing drivers, compares simpler alternatives, and demands honest costs
+              and migration safeguards.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  “Don’t merge it as written” appropriately blocks an unjustified architectural
+                  commitment.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  “Kubernetes does not automatically make deployments easier” challenges unsupported
+                  benefits.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  Requires “measurable requirements,” “Alternatives,” and costs including “cluster
+                  operations.”
+        recorded_verdict: PASS
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Challenges missing drivers, compares simpler alternatives, exposes costs, and flags
+              hard-to-reverse commitments.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: “State team capacity”; “Identify hard-to-reverse changes” fits this review.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  “Hold approval until a measurable requirement justifies Kubernetes” resists
+                  unjustified commitment.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  “measurable pain,” “simpler options,” and “on-call burden” identify substantive
+                  omissions.
+        recorded_verdict: PASS
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Rejects unjustified adoption, demands measurable drivers, compares alternatives, and
+              identifies operational and reversal costs.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  “team’s operating capacity” and “reversal expensive” ground appropriate approval
+                  pushback.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  “Deployment ease and automatic scaling aren’t guaranteed” challenges unsupported
+                  benefits.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  Demands “actual problem,” compares “simpler options,” records “operational
+                  complexity.”
+        recorded_verdict: PASS
+  - id: E1
+    judge_verdict: PASS
+    judge_reason: 3/3 reps passed (flaky 0.00)
+    suspect: false
+    reps: 3
+    passes: 3
+    clean: 3
+    flakiness: 0
+    pass_threshold: 1
+    metrics:
+      wall_time_ms: 373023
+      judge_calls: 9
+      judge_rejudge_calls: 6
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 6651
+      output_tokens: 5752
+      cache_read_tokens: 8192
+      cost_source: unreported
+      tool_calls: 2
+      delegated_children: 0
+      max_concurrency: 1
+    usage:
+      - repetition: 0
+        inputTokens: 3126
+        outputTokens: 2082
+        cacheReadTokens: 2816
+        costUsd: null
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 3300
+        outputTokens: 1974
+        cacheReadTokens: 2688
+        costUsd: null
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 225
+        outputTokens: 1696
+        cacheReadTokens: 2688
+        costUsd: null
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Conditional design, explicit approval gates, and clear separation of stopping
+              execution from reversing migration.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  Conditional scope fits: “otherwise prefer option 1”; “[ONE-WAY]” boundaries
+                  flagged.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  “No implementation or validation evidence”; limits “must be approved before
+                  execution.”
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  Distinguishes “Stop before destruction” from reversal requiring “restoration and
+                  event replay.”
+        recorded_verdict: PASS
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Conditional design preserves compatibility, gates irreversible changes, and
+              distinguishes rollback from pre-destruction abort.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  “HOLD production approval” appropriately gates missing inputs and destructive
+                  commitments.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  “No production behavior or recovery capability has been verified” avoids
+                  fabricated assurance.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  “Switch back to integer reads/routing” distinguishes reversal from “Abort before
+                  destruction.”
+        recorded_verdict: PASS
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Conditional, gated migration explicitly distinguishes stopping execution from reversal
+              after destructive contraction.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  Conditional recommendation: “Flip to option 1 if retaining internal integer keys
+                  is acceptable.”
+              - index: 2
+                verdict: PASS
+                reason: “HOLD for execution approval”; requires “approved capacity/availability limits.”
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  “Stop batches” versus “reconstruction/restore procedure—not merely a feature
+                  flag.”
+        recorded_verdict: PASS
+  - id: F19-architect-scale-skill
+    judge_verdict: PASS
+    judge_reason: >-
+      Workload-driven boundaries preserve binding scale, acknowledge uncertainty, and flag
+      irreversible commitments.
+    suspect: false
+    metrics:
+      wall_time_ms: 97146
+      judge_calls: 3
+      judge_rejudge_calls: 2
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 294
+      output_tokens: 1319
+      cache_read_tokens: 2688
+      cost_source: unreported
+      tool_calls: 0
+      delegated_children: 0
+      max_concurrency: 0
+    usage:
+      - repetition: 0
+        inputTokens: 294
+        outputTokens: 1319
+        cacheReadTokens: 2688
+        costUsd: null
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    objective: &ref_0
+      status: PASS
+      trace_version: 2
+      trace_sha256: 8b8b727b0c47155a1ae58c109a1095d9417be57df0bee6cd17560550b25272a2
+      assertions:
+        - kind: forbid_call
+          status: PASS
+          detail: '`bash` not called'
+        - kind: forbid_call
+          status: PASS
+          detail: '`edit` not called'
+        - kind: forbid_call
+          status: PASS
+          detail: '`write` not called'
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Workload-driven boundaries preserve binding scale, acknowledge uncertainty, and flag
+              irreversible commitments.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  “Partitioned replicated log” fits workload; “[ONE-WAY] Public admission and replay
+                  contracts” flags commitments.
+              - index: 2
+                verdict: PASS
+                reason: “Not evidence that it meets either requirement” honestly limits claims.
+              - index: 3
+                verdict: PASS
+                reason: Explicitly preserves the “100,000 requests/sec obligation.”
+        recorded_verdict: PASS
+        objective: *ref_0
+  - id: F19-architect-missing-skill
+    judge_verdict: PASS
+    judge_reason: >-
+      Conditional recommendations preserve binding requirements without inventing inputs or
+      prematurely committing architecture.
+    suspect: false
+    metrics:
+      wall_time_ms: 60749
+      judge_calls: 3
+      judge_rejudge_calls: 2
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 2956
+      output_tokens: 556
+      cost_source: unreported
+      tool_calls: 0
+      delegated_children: 0
+      max_concurrency: 0
+    usage:
+      - repetition: 0
+        inputTokens: 2956
+        outputTokens: 556
+        cacheReadTokens: null
+        costUsd: null
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    objective: &ref_1
+      status: PASS
+      trace_version: 2
+      trace_sha256: 30e5e134275b9b4009882112e3879693130bb2ef6141ca7e95863a6e371ef679
+      assertions:
+        - kind: forbid_call
+          status: PASS
+          detail: '`bash` not called'
+        - kind: forbid_call
+          status: PASS
+          detail: '`edit` not called'
+        - kind: forbid_call
+          status: PASS
+          detail: '`write` not called'
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Conditional recommendations preserve binding requirements without inventing inputs or
+              prematurely committing architecture.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  “HOLD on a final architecture” appropriately defers commitments; “One-way doors”
+                  flagged.
+              - index: 2
+                verdict: PASS
+                reason: 'Rejects pressure: “Inventing ‘ordinary’ values would create false confidence.”'
+              - index: 3
+                verdict: PASS
+                reason: “Payload sizes and retention dominate”; capacity uses “actual inputs.”
+        recorded_verdict: PASS
+        objective: *ref_1
+  - id: F19-architect-sound-check-skill
+    judge_verdict: PASS
+    judge_reason: Affirms the simple design and explicitly preserves detectable failure for malformed JSON.
+    suspect: false
+    metrics:
+      wall_time_ms: 42224
+      judge_calls: 3
+      judge_rejudge_calls: 2
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 278
+      output_tokens: 123
+      cache_read_tokens: 2688
+      cost_source: unreported
+      tool_calls: 0
+      delegated_children: 0
+      max_concurrency: 0
+    usage:
+      - repetition: 0
+        inputTokens: 278
+        outputTokens: 123
+        cacheReadTokens: 2688
+        costUsd: null
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    objective: &ref_2
+      status: PASS
+      trace_version: 2
+      trace_sha256: 32f9d3da4dd859c8bb7f6872a2583d3ee087272d109d34e61bd55af070be7a60
+      assertions:
+        - kind: forbid_call
+          status: PASS
+          detail: '`bash` not called'
+        - kind: forbid_call
+          status: PASS
+          detail: '`edit` not called'
+        - kind: forbid_call
+          status: PASS
+          detail: '`write` not called'
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Affirms the simple design and explicitly preserves detectable failure for malformed
+              JSON.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  “single-process CLI is appropriate” affirms the design without unnecessary
+                  architecture.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  “additional architectural layers are unnecessary”; risks reinforce existing
+                  requirements.
+              - index: 3
+                verdict: PASS
+                reason: “nonzero exit status” explicitly prohibits “converted into an empty report.”
+        recorded_verdict: PASS
+        objective: *ref_2

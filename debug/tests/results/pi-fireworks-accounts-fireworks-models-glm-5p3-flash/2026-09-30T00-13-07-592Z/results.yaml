@@ -1,5 +1,5 @@
 schema: 2
-harness_version: 0.21.0
+harness_version: 0.22.3
 harness_cli_version: 0.87.1
 skill: debug
 harness: pi
@@ -14,9 +14,9 @@ partial: true
 source_hashes:
   SKILL.md: e48b9daeefcb9ec07a259c825e7a860726716cb042c46dacd546ed5ff780dece
   skill:prompt: d29d9907dddb9ff6c2249bcd135619916aa6748dbe901a892b7d74e9c8c0dff9
-  rubric:__persona: 84760bc1e73f37403c07fcdf7279442c90174b26601ea51acbf627f2e6f843de
+  rubric:__persona: 197756b2cfd174f26adc84461a37346aed412ce339a957334308ff2e655e63ee
   stimulus:A1: e64dc025c2147038b2fbb6250a67251d43d2e892b0806c53c5d7e4bcca4f4f4e
-  rubric:A1: 45a5260a128f0f02adb361de2918b4ccbeca94257580015b2e3ee311bf418c7c
+  rubric:A1: cdf712d4fa8fe8f9ed1ccd3e92aa1316abcc5229bd697b7302566554c496ff8c
   policy:A1: 5c02de06cf52726a720b313386100cee906ba590da05b29d9f326ffa8f01e3b7
   fixture:fixtures/A1: c450a8764281295bfcb71d1eb451eb5fd418e56ab3a94b09c2250e881e9ef09c
 source_hash_roots:
@@ -36,13 +36,13 @@ effective_grade:
   note: partial run (--only) — not scored
 scenarios:
   - id: A1
-    judge_verdict: PASS
-    judge_reason: '1 PASS: “total = n”; 2 PASS: “overwriting”; 3 PASS: “total += n”, “passed”.'
+    judge_verdict: FAIL
+    judge_reason: Correct repair, but Debug applied it without an announced Build switch.
     suspect: false
     metrics:
-      wall_time_ms: 27365
-      judge_calls: 1
-      judge_rejudge_calls: 0
+      wall_time_ms: 52204
+      judge_calls: 3
+      judge_rejudge_calls: 2
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 6897
@@ -69,17 +69,17 @@ scenarios:
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: PASS
-            reason: '1 PASS: “total = n”; 2 PASS: “overwriting”; 3 PASS: “total += n”, “passed”.'
+            verdict: FAIL
+            reason: Correct repair, but Debug applied it without an announced Build switch.
             suspect: false
             criteria:
               - index: 1
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: FAIL
+                reason: “Fixed and green” applies repair without an announced Build switch.
               - index: 2
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: PASS
+                reason: “total += n” correctly repairs accumulation without unrelated changes.
               - index: 3
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
-        recorded_verdict: PASS
+                verdict: PASS
+                reason: “total += n” accumulates loop values rather than overwriting.
+        recorded_verdict: FAIL

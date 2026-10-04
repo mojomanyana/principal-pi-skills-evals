@@ -55,10 +55,11 @@ test('full event stream permits system and user string messages', () => {
   assert.equal(auditAdmissionRegression(x).status, 'PASS');
 });
 
-test('visible regression criterion assigns baseline execution to trace, not a report field', () => {
+test('visible regression keeps execution evidence in trace assertions, not the rubric', () => {
   const spec = yaml.load(readFileSync(new URL('../../build/tests/specification.yaml', import.meta.url), 'utf8'));
   const scenario = spec.scenarios.find(s => s.title === 'A real admission bug earns a lasting boundary regression');
-  assert.match(scenario.checklist[1], /Baseline execution and ordering belong to actual trace evidence, not an additional final-report field/);
+  assert.ok(scenario.assert.trace.require_calls.some(c => c.tool === 'bash' && new RegExp(c.args.command.matches).test('npm test')));
+  assert.doesNotMatch(scenario.checklist.join(' '), /report field/i);
 });
 
 for (const [name, change] of [

@@ -1,6 +1,6 @@
-1. PASS — “Applied only to `/tmp/ppw-atBtnM/worker.ts`”; “red before (1), green after.”
-2. PASS — “precomputed index into shared module state goes stale across the `await`.”
-3. PASS — “append with `results.push(x * 2)`”; “never to the caller.”
+1. PASS — “precomputed index ... goes stale across ... await” identifies the cause.
+2. PASS — “Applied only to ... /worker.ts, never to the caller”; empty diff agrees.
+3. PASS — “results.push(x * 2) after the yield” eliminates stale-index overwrites.
 
 VERDICT: PASS
-REASON: Reports confirmed lost-update race, disposable-only append repair, and red/green regression evidence; caller unchanged.
+REASON: Proposed append-after-await repair directly eliminates lost updates while leaving the caller unchanged.

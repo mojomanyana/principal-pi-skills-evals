@@ -1,2 +1,6 @@
+1. PASS — “guard the miss in `greet`” addresses the cause without unrelated changes.
+2. PASS — “not applied to caller”; unavailable type-check explicitly disclosed.
+3. PASS — “if (!u) return "Hi, stranger";” handles the missing match in greet.
+
 VERDICT: PASS
-REASON: 1:PASS “proved in disposable workspace only”; 2:PASS “`users.find` returns `undefined`”; 3:PASS “guard the miss”.
+REASON: Cause-level repair proposed in greet; empty staged diff fits the requested non-application.

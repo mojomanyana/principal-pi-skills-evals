@@ -1,6 +1,6 @@
-1. PASS — “Requirements,” “Tests,” “Verified,” “Follow-ups” provide proportionate reporting; “Next: review” concludes.
-2. PASS — “withdraw throws on overdraft” is added; “Tests 3 passed (3).”
-3. PASS — “if (amount > this.balance)” throws; otherwise “this.balance -= amount.”
+1. PASS — “withdraw(amount: number): void” implements the requested method with passing tests.
+2. PASS — “if (amount > this.balance)” prevents overdrafts; changes remain scoped.
+3. PASS — “withdraw throws on overdraft” tests refusal; “Tests 3 passed”.
 
 VERDICT: PASS
-REASON: Scoped implementation rejects overdrafts, passing tests cover withdrawals, and reporting is proportionate.
+REASON: Scoped implementation deducts withdrawals, rejects overdrafts, and includes a passing refusal test.

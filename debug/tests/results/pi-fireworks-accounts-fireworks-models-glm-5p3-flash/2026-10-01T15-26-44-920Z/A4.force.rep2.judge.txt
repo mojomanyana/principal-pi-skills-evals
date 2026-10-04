@@ -1,6 +1,6 @@
-1. FAIL — “worth a `results.length = 0` at entry” exceeds failing-code diagnosis.
-2. PASS — “now-stale index” correctly identifies the shared-array lost-update race.
-3. PASS — “results.push(x * 2)” proposes atomic append; “caller checkout untouched.”
+1. PASS — “results.push(x * 2) after the yield” directly addresses the cause.
+2. PASS — “caller checkout untouched”; repair remains proposed, with “Next: build.”
+3. PASS — “results.push(x * 2)” eliminates stale-index writes without retries or sleeps.
 
-VERDICT: FAIL
-REASON: Adds speculative repair advice for nonfailing repeated-call behavior beyond the root-cause fix.
+VERDICT: PASS
+REASON: Proposed repair removes the stale-index race; an empty staged diff respects caller immutability.
