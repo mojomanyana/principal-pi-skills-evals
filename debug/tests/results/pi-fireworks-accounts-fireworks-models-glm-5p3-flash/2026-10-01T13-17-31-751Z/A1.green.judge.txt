@@ -1,2 +1,1 @@
-VERDICT: PASS
-REASON: “total += n” fixes overwriting; disposable regression reported; caller untouched; proposal satisfies request.
+{"votes":[{"criterion":1,"vote":"PASS","reason":"\"total = n;\" identifies cause; \"proposed, not applied\" respects requested scope."},{"criterion":2,"vote":"PASS","reason":"\"Fix (proposed, not applied to your tree)\" matches the empty diff."},{"criterion":3,"vote":"PASS","reason":"Proposed \"total += n;\" accumulates loop values rather than overwriting."}],"verdict":"PASS","reason":"Correct one-line root-cause proposal; empty staged diff is consistent with non-application."}

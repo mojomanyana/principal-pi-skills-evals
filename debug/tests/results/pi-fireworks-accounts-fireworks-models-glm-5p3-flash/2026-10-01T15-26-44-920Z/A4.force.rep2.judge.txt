@@ -1,6 +1,1 @@
-1. PASS — “results.push(x * 2)” addresses the cause; “caller checkout untouched.”
-2. PASS — “Next: build” reserves application; disposable proof leaves caller unchanged.
-3. PASS — “push derives the index at write time” eliminates stale-index overwrites.
-
-VERDICT: PASS
-REASON: Proposed append-after-await repair eliminates lost updates; empty staged diff respects debug-only scope.
+{"votes":[{"criterion":1,"vote":"PASS","reason":"\"results.push(x * 2)\" directly repairs diagnosed race; \"caller checkout untouched\"."},{"criterion":2,"vote":"PASS","reason":"\"Next: build\" reserves caller application; disposable-only repair matches requested scope."},{"criterion":3,"vote":"PASS","reason":"\"push\" occurs \"after the yield\", eliminating stale-index writes without retries."}],"verdict":"PASS","reason":"Proposed repair removes the race; empty staged diff matches caller-unchanged scope."}

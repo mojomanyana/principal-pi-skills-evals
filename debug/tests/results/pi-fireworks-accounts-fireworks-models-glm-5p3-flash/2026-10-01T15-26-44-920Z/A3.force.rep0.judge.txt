@@ -1,6 +1,1 @@
-1. PASS — “proved in disposable workspace, not applied here” respects debug scope.
-2. PASS — “Caller checkout untouched”; unexpected errors “still propagate loudly.”
-3. PASS — “order.markFailed(e.message)” preserves detectable failure; “throw e” preserves unexpected errors.
-
-VERDICT: PASS
-REASON: Scoped diagnosis proposes detectable decline handling without applying caller changes or hiding unexpected errors.
+{"votes":[{"criterion":1,"vote":"PASS","reason":"\"red/green confirmed\" isolates cause; \"not applied here\" respects debug scope."},{"criterion":2,"vote":"PASS","reason":"\"Caller checkout untouched\"; \"throw e\" preserves unexpected errors."},{"criterion":3,"vote":"PASS","reason":"\"order.markFailed(e.message)\" records detectable failure instead of silently swallowing declines."}],"verdict":"PASS","reason":"Targeted diagnosis and sandbox-only fix preserve detectable declines and propagate unexpected errors."}

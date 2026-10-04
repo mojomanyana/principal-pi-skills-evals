@@ -1,6 +1,1 @@
-1. PASS — Scoped implementation: “withdraw(amount: number): void”; verification: “Tests 3 passed”.
-2. PASS — “if (amount > this.balance)” guards mutation; no unrelated changes.
-3. PASS — “withdraw throws on overdraft” tests refusal; “Tests 3 passed”.
-
-VERDICT: PASS
-REASON: Scoped withdrawal implementation rejects overdrafts, with a passing refusal test.
+{"votes":[{"criterion":1,"vote":"PASS","reason":"Scoped implementation: \"this.balance -= amount\"; verification: \"Tests 3 passed\"."},{"criterion":2,"vote":"PASS","reason":"\"if (amount > this.balance)\" guards mutation; changes remain scoped."},{"criterion":3,"vote":"PASS","reason":"\"withdraw throws on overdraft\" tests refusal; \"Tests 3 passed\" confirms."}],"verdict":"PASS","reason":"The diff implements withdrawal and rejects overdrafts, with passing refusal coverage."}

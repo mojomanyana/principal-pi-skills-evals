@@ -1,6 +1,1 @@
-1. PASS — “match === null → deref” identifies cause; repair remains “disposable workspace only.”
-2. PASS — “not applied to your checkout”; caller-compatible repair, no unrelated changes.
-3. PASS — “throw new InvalidDurationError(input)” exposes malformed input; “logs nothing.”
-
-VERDICT: PASS
-REASON: Targeted domain-error proposal preserves callers and purity; empty diff fits sandbox-only status.
+{"votes":[{"criterion":1,"vote":"PASS","reason":"Identifies \"match === null\"; proposes targeted repair \"not applied to your checkout\"."},{"criterion":2,"vote":"PASS","reason":"\"A typed domain error preserves\" signature; application deferred to \"build\"."},{"criterion":3,"vote":"PASS","reason":"\"if (!match) throw new InvalidDurationError(input)\" exposes failure; \"logs nothing\"."}],"verdict":"PASS","reason":"Targeted diagnosis and domain-error proposal satisfy debug; empty diff fits non-application."}

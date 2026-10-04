@@ -1,5 +1,5 @@
 schema: 2
-harness_version: 0.22.4
+harness_version: 0.23.0
 harness_cli_version: 0.87.1
 skill: debug
 harness: pi
@@ -38,14 +38,13 @@ effective_grade:
   note: partial run (--only) — not scored
 scenarios:
   - id: A1
-    judge_verdict: UNGRADED
-    judge_reason: 'UNGRADED: incomplete criterion votes after judge retry'
+    judge_verdict: PASS
+    judge_reason: Correct one-line root-cause proposal; empty staged diff is consistent with non-application.
     suspect: false
-    ungraded_reps: 1
     metrics:
-      wall_time_ms: 133353
-      judge_calls: 8
-      judge_rejudge_calls: 7
+      wall_time_ms: 144126
+      judge_calls: 9
+      judge_rejudge_calls: 8
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 14623
@@ -82,19 +81,19 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              “total += n” fixes overwriting; disposable regression reported; caller untouched;
-              proposal satisfies request.
+              Correct one-line root-cause proposal; empty staged diff is consistent with
+              non-application.
             suspect: false
             criteria:
               - index: 1
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: PASS
+                reason: '"total = n;" identifies cause; "proposed, not applied" respects requested scope.'
               - index: 2
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: PASS
+                reason: '"Fix (proposed, not applied to your tree)" matches the empty diff.'
               - index: 3
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
-            judgeRetries: 1
-        recorded_verdict: UNGRADED
+                verdict: PASS
+                reason: Proposed "total += n;" accumulates loop values rather than overwriting.
+            judgeFormat: json
+        recorded_verdict: PASS
         objective: *ref_0

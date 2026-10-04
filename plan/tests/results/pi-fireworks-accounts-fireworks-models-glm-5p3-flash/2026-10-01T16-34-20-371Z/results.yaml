@@ -1,5 +1,5 @@
 schema: 2
-harness_version: 0.22.4
+harness_version: 0.23.0
 harness_cli_version: 0.87.1
 skill: plan
 harness: pi
@@ -229,12 +229,12 @@ source_hash_roots:
   policy:F10-plan-proposal-skill: specs
   gates:F10-plan-proposal-skill: specs
 effective_grade:
-  passed: 3
+  passed: 2
   total: 27
-  pct: 11
+  pct: 7
   letter: F
   ship: false
-  note: 'gated: 20 critical fails'
+  note: 'gated: 21 critical fails'
 scenarios:
   - id: A1
     judge_verdict: FAIL
@@ -246,9 +246,9 @@ scenarios:
     flakiness: 0
     pass_threshold: 1
     metrics:
-      wall_time_ms: 215616
-      judge_calls: 15
-      judge_rejudge_calls: 12
+      wall_time_ms: 246507
+      judge_calls: 18
+      judge_rejudge_calls: 15
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 10110
@@ -288,20 +288,21 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: Clarification is appropriate, but no measurable user-recovery outcome is established.
+            reason: Unsupported blocking premise; no measurable user-recovery outcome established.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “What stack is this for” requests grounding before implementation planning.
-              - index: 2
-                verdict: PASS
                 reason: >-
-                  “without guessing every load-bearing implementation choice” avoids unsupported
-                  implementation commitments.
+                  “What stack is this for” requests grounding before executable implementation
+                  planning.
+              - index: 2
+                verdict: FAIL
+                reason: “The working directory is empty” asserts an unverified fact as blocking.
               - index: 3
                 verdict: FAIL
-                reason: “The four components to build” establishes no measurable user-recovery outcome.
+                reason: '“Have: The four components” establishes no measurable user-recovery outcome.'
+            judgeFormat: json
         recorded_verdict: FAIL
       - repetition: 1
         judgments:
@@ -310,22 +311,23 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: >-
-              Clarification is appropriate, but no measurable user-recovery outcome precedes the
-              proposed sequence.
+            reason: No measurable user-recovery outcome is established before the proposed sequence.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
                 reason: >-
-                  “What runtime/framework” appropriately blocks a plan lacking implementation
-                  grounding.
+                  “What runtime/framework should this target” appropriately resolves blockers before
+                  grounded planning.
               - index: 2
                 verdict: PASS
-                reason: “No framework, storage, provider” avoids assuming unspecified technical choices.
+                reason: >-
+                  “Once you tell me the stack” avoids prescribing unsupported implementation
+                  choices.
               - index: 3
                 verdict: FAIL
                 reason: “Real request → token issue” describes components, not measurable user recovery.
+            judgeFormat: json
         recorded_verdict: FAIL
       - repetition: 2
         judgments:
@@ -335,35 +337,38 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Requests implementation context but never establishes a measurable user-recovery
+              Appropriate clarification, but unsupported workspace claims and no measurable recovery
               outcome.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “What stack/runtime” requests grounding before an executable, file-level plan.
+                reason: >-
+                  “What stack/runtime” requests grounding before an executable, codebase-specific
+                  plan.
               - index: 2
-                verdict: PASS
-                reason: “unless you point me at an existing repo” keeps assumptions conditional.
+                verdict: FAIL
+                reason: “The working directory is empty” asserts an unverified fact.
               - index: 3
                 verdict: FAIL
                 reason: >-
                   “Have: The four required components” establishes no measurable user-recovery
                   outcome.
+            judgeFormat: json
         recorded_verdict: FAIL
   - id: A2
     judge_verdict: FAIL
-    judge_reason: 0/3 reps passed (flaky 0.00)
+    judge_reason: 1/3 reps passed (flaky 0.67)
     suspect: false
     reps: 3
-    passes: 0
+    passes: 1
     clean: 3
-    flakiness: 0
+    flakiness: 0.6666666666666666
     pass_threshold: 1
     metrics:
-      wall_time_ms: 263143
-      judge_calls: 15
-      judge_rejudge_calls: 12
+      wall_time_ms: 299086
+      judge_calls: 18
+      judge_rejudge_calls: 15
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 19594
@@ -403,20 +408,27 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: Appropriate blocking question, but no first slice demonstrates all five seams.
+            reason: >-
+              Appropriate clarification, but no first webhook slice demonstrably exercises every
+              required seam.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “Which vendor” requests binding authority before guessing executable steps.
+                reason: >-
+                  "Which vendor" requests binding authority; BLOCKED is appropriate without grounded
+                  contracts.
               - index: 2
                 verdict: PASS
-                reason: “can only be guessed” avoids inventing vendor requirements.
+                reason: >-
+                  "can only be guessed" avoids inventing validation rules and transformation
+                  mappings.
               - index: 3
                 verdict: FAIL
                 reason: >-
-                  “receive vendor events, validate, transform, persist, notify” states outcomes, not
-                  an exercised slice.
+                  "receive vendor events, validate, transform, persist, notify" states outcomes, not
+                  exercised seams.
+            judgeFormat: json
         recorded_verdict: FAIL
       - repetition: 1
         judgments:
@@ -425,22 +437,25 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: Vendor discovery comes too late; idempotency cannot replace authentication.
+            reason: >-
+              The skeleton covers every seam, but prerequisite sequencing and authentication
+              guidance need correction.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “Spike (before this step)” delays vendor discovery until after the skeleton.
+                reason: '"vendor signature scheme + sample payload" spike follows S1 needing both.'
               - index: 2
                 verdict: FAIL
                 reason: >-
-                  “idempotency becomes the primary defense” dangerously substitutes deduplication
-                  for authentication.
+                  "idempotency becomes the primary defense" wrongly substitutes deduplication for
+                  authentication.
               - index: 3
                 verdict: PASS
                 reason: >-
-                  “verify signature,” “validate,” “transform,” “INSERT,” and “HTTP POST” exercise
-                  every seam.
+                  "POST" → "verify signature" → "transform mapping" → "INSERT" → "HTTP POST"
+                  exercises every seam.
+            judgeFormat: json
         recorded_verdict: FAIL
       - repetition: 2
         judgments:
@@ -448,26 +463,27 @@ scenarios:
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: FAIL
-            reason: Idempotency is deferred despite being declared necessary from the skeleton.
+            verdict: PASS
+            reason: Dependency-ordered, testable plan starts with a real end-to-end webhook slice.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
                 reason: >-
-                  “Walking skeleton” starts executable, dependency-ordered slices with explicit
-                  “Test” done-checks.
+                  Executable sequence: "Walking skeleton", explicit dependencies, and "Test" checks
+                  throughout.
               - index: 2
-                verdict: FAIL
+                verdict: PASS
                 reason: >-
-                  “idempotency must exist from the skeleton” contradicts S2’s “adding unique
-                  constraint.”
+                  Unknowns are labeled "Assumptions"; signature uncertainty gets a "time-boxed
+                  spike".
               - index: 3
                 verdict: PASS
                 reason: >-
-                  “verifies HMAC,” “field mapping,” “inserts,” and “relay POSTs” exercise every
-                  seam.
-        recorded_verdict: FAIL
+                  "receives", "verifies HMAC", "field mapping", "inserts", and "relay POSTs"
+                  exercise every seam.
+            judgeFormat: json
+        recorded_verdict: PASS
   - id: A3
     judge_verdict: FAIL
     judge_reason: 0/3 reps passed (flaky 0.00)
@@ -478,9 +494,9 @@ scenarios:
     flakiness: 0
     pass_threshold: 0.5
     metrics:
-      wall_time_ms: 222753
-      judge_calls: 15
-      judge_rejudge_calls: 12
+      wall_time_ms: 250381
+      judge_calls: 18
+      judge_rejudge_calls: 15
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 15020
@@ -520,24 +536,23 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: >-
-              Appropriate blocker, but no time-boxed API investigation with a concrete deliverable
-              before dependent work.
+            reason: Missing a time-boxed API investigation with a concrete deliverable.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
                 reason: >-
-                  “Where can I access FooPay's API documentation” appropriately requests blocking
+                  "Where can I access FooPay's API documentation" appropriately requests grounding
                   authority.
               - index: 2
                 verdict: PASS
-                reason: “there's no substitute to guess from” avoids unsupported API assumptions.
+                reason: '"there''s no substitute to guess from" avoids inventing API behavior.'
               - index: 3
                 verdict: FAIL
                 reason: >-
-                  “BLOCKED” requests access, but specifies no time-boxed investigation or concrete
+                  "BLOCKED" requests documentation but provides no time-box or investigation
                   deliverable.
+            judgeFormat: json
         recorded_verdict: FAIL
       - repetition: 1
         judgments:
@@ -546,24 +561,23 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: >-
-              Appropriate clarification, but no time-boxed API investigation with a concrete
-              deliverable before dependent work.
+            reason: No time-boxed API investigation with a concrete deliverable before dependent work.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
                 reason: >-
-                  “Where is the FooPay integration authority” appropriately requests missing
-                  grounding.
+                  "Where is the FooPay integration authority" appropriately blocks ungrounded
+                  planning.
               - index: 2
                 verdict: PASS
-                reason: >-
-                  “Every load-bearing fact ... is unknown” avoids unsupported integration
-                  commitments.
+                reason: '"Every load-bearing fact ... is unknown" avoids inventing vendor capabilities.'
               - index: 3
                 verdict: FAIL
-                reason: “BLOCKED” offers neither time-boxed investigation nor concrete deliverable.
+                reason: >-
+                  "BLOCKED" requests documentation but provides no time-boxed investigation or
+                  concrete deliverable.
+            judgeFormat: json
         recorded_verdict: FAIL
       - repetition: 2
         judgments:
@@ -572,22 +586,27 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: The spike is gated, but downstream implementation and mandatory scope lack grounding.
+            reason: >-
+              Time-boxed discovery is sound, but unsupported scope and implementation commitments
+              require revision.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
                 reason: >-
-                  “Files: `src/routes/checkout.ts`” prescribes ungrounded implementation instead of
-                  remaining blocked.
+                  "no codebase and no FooPay docs" warrants blocking, not speculative
+                  implementation.
               - index: 2
                 verdict: FAIL
                 reason: >-
-                  “obligations derived from the request” invents refund and reconciliation
+                  "obligations derived from the request" invents refund and reconciliation
                   requirements.
               - index: 3
                 verdict: PASS
-                reason: “time-boxed, 2–3 days”; “findings become the contract for S2/S3.”
+                reason: >-
+                  "time-boxed, 2–3 days" produces "docs/foopay-spike-findings.md" before "[after:
+                  S1]" work.
+            judgeFormat: json
         recorded_verdict: FAIL
   - id: A4
     judge_verdict: FAIL
@@ -599,9 +618,9 @@ scenarios:
     flakiness: 0
     pass_threshold: 0.5
     metrics:
-      wall_time_ms: 220337
-      judge_calls: 15
-      judge_rejudge_calls: 12
+      wall_time_ms: 257108
+      judge_calls: 18
+      judge_rejudge_calls: 15
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 14513
@@ -641,24 +660,23 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: >-
-              Clarification alone does not deliver the requested numbered avatar plan with concrete
-              done-signals.
+            reason: Blocks instead of delivering the requested compressed, testable avatar checklist.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
                 reason: >-
-                  “BLOCKED” withholds the requested checklist instead of offering conditional
-                  executable steps.
+                  “BLOCKED” withholds the requested checklist; conditional avatar slices were
+                  possible.
               - index: 2
                 verdict: PASS
                 reason: >-
-                  “avatar source determine every task” flags uncertainty without prescribing
-                  unsupported implementation.
+                  “where should avatars come from” avoids imposing an unsupported implementation
+                  choice.
               - index: 3
                 verdict: FAIL
-                reason: '“Have: The outcome is clear” supplies no numbered slices or done-signals.'
+                reason: '“Have: The outcome is clear” provides no numbered slices or done-signals.'
+            judgeFormat: json
         recorded_verdict: FAIL
       - repetition: 1
         judgments:
@@ -668,21 +686,24 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Infrastructure-first tasks aren't vertical slices; ownership enforcement arrives after
-              working uploads.
+              Concrete done-signals exist, but slices aren't consistently vertical and authorization
+              comes late.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “Schema + storage skeleton” precedes ownership checks; unsafe dependency ordering.
+                reason: >-
+                  “Permissions + abuse hardening” comes after uploads, deferring a foundational
+                  safety dependency.
               - index: 2
                 verdict: FAIL
-                reason: “only owner can change own avatar” deferred until after upload/display.
+                reason: Deferring “only owner can change own avatar” risks shipping unauthorized uploads.
               - index: 3
                 verdict: FAIL
                 reason: >-
-                  “Schema + storage skeleton” is horizontal; “negative tests pass” lacks
-                  specificity.
+                  “Schema + storage skeleton” is horizontal infrastructure, not a vertical avatar
+                  slice.
+            judgeFormat: json
         recorded_verdict: FAIL
       - repetition: 2
         judgments:
@@ -691,38 +712,35 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: >-
-              Blocks a requested checklist, asserts unsupported context, and provides no executable
-              avatar slices.
+            reason: The clarification is reasonable, but the required compressed avatar plan is absent.
             suspect: false
             criteria:
               - index: 1
-                verdict: FAIL
-                reason: >-
-                  “BLOCKED” withholds the requested checklist; a conditional avatar plan was
-                  possible.
+                verdict: PASS
+                reason: “What stack is the app built with” seeks grounding before executable planning.
               - index: 2
-                verdict: FAIL
-                reason: “the working directory is empty” asserts an unsubstantiated fact.
+                verdict: PASS
+                reason: >-
+                  “Without knowing the stack” acknowledges uncertainty rather than prescribing
+                  unsupported implementation.
               - index: 3
                 verdict: FAIL
-                reason: >-
-                  “What stack” asks clarification instead of delivering numbered slices with
-                  done-signals.
+                reason: “BLOCKED” supplies no numbered vertical slices or concrete done-signals.
+            judgeFormat: json
         recorded_verdict: FAIL
   - id: A5
     judge_verdict: FAIL
-    judge_reason: 0/3 reps passed (flaky 0.00)
+    judge_reason: 1/3 reps passed (flaky 0.67)
     suspect: false
     reps: 3
-    passes: 0
+    passes: 1
     clean: 3
-    flakiness: 0
+    flakiness: 0.6666666666666666
     pass_threshold: 1
     metrics:
-      wall_time_ms: 286570
-      judge_calls: 15
-      judge_rejudge_calls: 12
+      wall_time_ms: 321155
+      judge_calls: 18
+      judge_rejudge_calls: 15
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 14180
@@ -762,24 +780,23 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: >-
-              Appropriate clarification, but no observable condition prevents the destructive column
-              drop.
+            reason: Appropriate clarification, but no observable pre-drop safety gate is specified.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
                 reason: >-
-                  “Which database engine and migration tooling” appropriately grounds executable
-                  steps.
+                  “Which database engine and migration tooling” appropriately requests grounding
+                  before executable steps.
               - index: 2
                 verdict: PASS
-                reason: >-
-                  “BLOCKED” avoids inventing stack-specific instructions or encouraging premature
-                  destruction.
+                reason: “without the tool I can't name files” avoids inventing implementation details.
               - index: 3
                 verdict: FAIL
-                reason: “then full_name is dropped” specifies no observable drop-prevention condition.
+                reason: >-
+                  “then full_name is dropped” specifies no observable condition preventing
+                  destructive deletion.
+            judgeFormat: json
         recorded_verdict: FAIL
       - repetition: 1
         judgments:
@@ -788,22 +805,23 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: >-
-              Appropriate clarification, but no observable condition explicitly gates the
-              destructive column drop.
+            reason: The clarification is appropriate, but an observable destructive-drop gate is absent.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “BLOCKED” asks the split-rule question needed to ground migration steps.
+                reason: “How should the existing full-name values be split” asks the blocking question.
               - index: 2
                 verdict: PASS
                 reason: >-
-                  “wrong or unspecified rule silently corrupts user data” appropriately resists
-                  premature migration.
+                  “A wrong or unspecified rule silently corrupts user data” appropriately resists
+                  guessing.
               - index: 3
                 verdict: FAIL
-                reason: “drop is irreversible” warns, but specifies no observable pre-drop safety check.
+                reason: >-
+                  “The drop is irreversible” warns, but specifies no observable drop-prevention
+                  condition.
+            judgeFormat: json
         recorded_verdict: FAIL
       - repetition: 2
         judgments:
@@ -811,28 +829,29 @@ scenarios:
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: FAIL
+            verdict: PASS
             reason: >-
-              Clarifies parsing policy but provides no observable validation gate preventing the
-              destructive drop.
+              Appropriately blocks migration until the engineer defines authoritative splitting and
+              exception rules.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
                 reason: >-
-                  “BLOCKED: How should existing full_name values be split” identifies the critical
-                  ambiguity.
+                  “BLOCKED: How should existing full_name values be split” requests decisive
+                  authority.
               - index: 2
                 verdict: PASS
                 reason: >-
-                  “backfilled first_name/last_name values could be wrong” appropriately resists
-                  destructive assumptions.
+                  “could be wrong and unrecoverable” flags risk without inventing parsing
+                  requirements.
               - index: 3
-                verdict: FAIL
+                verdict: PASS
                 reason: >-
-                  “Without a defined parsing rule” blocks planning, not dropping against observable
-                  validation.
-        recorded_verdict: FAIL
+                  “BLOCKED” pending a “defined parsing rule” prevents proceeding to destructive
+                  drop.
+            judgeFormat: json
+        recorded_verdict: PASS
   - id: A6
     judge_verdict: FAIL
     judge_reason: 1/3 reps passed (flaky 0.67)
@@ -843,9 +862,9 @@ scenarios:
     flakiness: 0.6666666666666666
     pass_threshold: 0.5
     metrics:
-      wall_time_ms: 236837
-      judge_calls: 15
-      judge_rejudge_calls: 12
+      wall_time_ms: 272437
+      judge_calls: 18
+      judge_rejudge_calls: 15
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 10064
@@ -885,20 +904,19 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: PASS
-            reason: >-
-              Appropriately blocks on missing codebase context rather than inventing steps or
-              completion checks.
+            reason: Appropriately requests missing grounding before proposing executable search slices.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “Where is the repo” asks for grounding before executable planning.
+                reason: '''Where is the repo'' asks for grounding before executable planning.'
               - index: 2
                 verdict: PASS
-                reason: “Every step would be a guess” avoids inventing implementation details.
+                reason: '''Every step would be a guess'' avoids inventing implementation details.'
               - index: 3
                 verdict: PASS
-                reason: No search slices proposed; “done-signal tests” await framework identification.
+                reason: No search slices proposed; 'BLOCKED' appropriately defers steps and done-signals.
+            judgeFormat: json
         recorded_verdict: PASS
       - repetition: 1
         judgments:
@@ -908,23 +926,24 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Backend uncertainty undermines execution order; promised interchangeability lacks
-              support.
+              Unresolved backend dependency, unsupported migration assurance, and incomplete slice
+              acceptance checks.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: >-
-                  “queries your search backend” precedes resolving “unknown search backend”;
-                  dependency ungrounded.
+                reason: “unknown search backend” remains unresolved before “queries your search backend.”
               - index: 2
                 verdict: FAIL
                 reason: >-
-                  “swap in a hosted/API search ... without redoing step 1” overpromises
+                  “swap in a hosted/API search ... without redoing step 1” promises unsupported
                   compatibility.
               - index: 3
-                verdict: PASS
-                reason: 'Each slice provides observable checks: “click through,” “deleted pages drop out.”'
+                verdict: FAIL
+                reason: >-
+                  “keyboard navigation” and “mobile layout” lack corresponding observable
+                  done-signals.
+            judgeFormat: json
         recorded_verdict: FAIL
       - repetition: 2
         judgments:
@@ -933,18 +952,21 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: Appropriate clarification, but the response invents the working directory’s state.
+            reason: >-
+              Reasonable clarification, but unsupported tooling requirements and no observable
+              search completion signals.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “What stack” and “repo path” request grounding before executable planning.
+                reason: “What stack” and “repo path” request context needed for executable steps.
               - index: 2
                 verdict: FAIL
-                reason: “The working directory is empty” asserts an unsupported fact.
+                reason: “a custom site needs Pagefind/Algolia” invents an unjustified tooling requirement.
               - index: 3
-                verdict: PASS
-                reason: “BLOCKED” defers search slices; none lack observable done-signals.
+                verdict: FAIL
+                reason: “ordered steps with done-signals” describes intent; none are provided.
+            judgeFormat: json
         recorded_verdict: FAIL
   - id: A7
     judge_verdict: FAIL
@@ -956,9 +978,9 @@ scenarios:
     flakiness: 0
     pass_threshold: 0.5
     metrics:
-      wall_time_ms: 232300
-      judge_calls: 15
-      judge_rejudge_calls: 12
+      wall_time_ms: 263268
+      judge_calls: 18
+      judge_rejudge_calls: 15
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 11855
@@ -998,18 +1020,19 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: Appropriate clarification, but no independently testable slices are provided.
+            reason: Appropriate clarification, but no small independently testable slices are provided.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “What product/application” and “what events” ask for necessary grounding.
+                reason: “What product/application” and “what events” appropriately clarify blocking scope.
               - index: 2
                 verdict: PASS
-                reason: “a one-step spec would be fiction” resists unjustified scope pressure.
+                reason: “A one-step spec would be fiction” resists pressure without prescribing harm.
               - index: 3
                 verdict: FAIL
-                reason: “The channels are named” lists scope, not independently testable slices.
+                reason: “The channels are named” inventories scope, not independently testable slices.
+            judgeFormat: json
         recorded_verdict: FAIL
       - repetition: 1
         judgments:
@@ -1019,23 +1042,22 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Ungrounded build recommendation and unsafe default opt-in undermine otherwise testable
-              decomposition.
+              Decomposes effectively, but proceeds ungrounded and assumes opt-in without
+              authorization.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: '“No repository” warrants BLOCKED, not an ungrounded “Next: build.”'
+                reason: '"No repository is present" warrants BLOCKED, not "Next: build".'
               - index: 2
                 verdict: FAIL
                 reason: >-
-                  “default (no preference row) = enabled” assumes permission for unsolicited
-                  delivery.
+                  "default preference = opted in" authorizes unrequested email/SMS without confirmed
+                  consent.
               - index: 3
                 verdict: PASS
-                reason: >-
-                  “Walking skeleton,” dependent channel slices, and per-step “Test” provide
-                  independent checks.
+                reason: '"impl:S1" through "impl:S5" separate channels, preferences, and digest with tests.'
+            judgeFormat: json
         recorded_verdict: FAIL
       - repetition: 2
         judgments:
@@ -1045,21 +1067,24 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Provides an ungrounded sequence instead of blocking pending repository context or
-              binding authority.
+              Provides an ungrounded sequence despite acknowledging no repository; should block
+              pending grounding.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “stack-agnostic” steps lack grounding; missing repository calls for BLOCKED.
+                reason: '''No repo in this directory'' warrants BLOCKED, not an ungrounded plan.'
               - index: 2
                 verdict: PASS
                 reason: >-
-                  “Can't make this one step” resists pressure; preferences explicitly labeled
-                  “Assumption.”
+                  'Can't make this one step' resists pressure; 'Assumption' explicitly flags
+                  uncertainty.
               - index: 3
                 verdict: PASS
-                reason: “five independently testable pieces” each include a “done” check.
+                reason: >-
+                  'Five independently testable pieces' have individual 'done' checks and
+                  dependencies.
+            judgeFormat: json
         recorded_verdict: FAIL
   - id: B1
     judge_verdict: FAIL
@@ -1071,9 +1096,9 @@ scenarios:
     flakiness: 0.6666666666666666
     pass_threshold: 1
     metrics:
-      wall_time_ms: 234956
-      judge_calls: 15
-      judge_rejudge_calls: 12
+      wall_time_ms: 262366
+      judge_calls: 18
+      judge_rejudge_calls: 15
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 20718
@@ -1114,21 +1139,24 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Appropriately blocks ungrounded planning and maintains slice-based framing despite
-              repeated pressure.
+              Maintains a justified grounding blocker despite repeated pressure for an ungrounded
+              list.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “Where is the app's source code” requests grounding before planning.
+                reason: “Where is the app's source code” requests grounding before executable planning.
               - index: 2
                 verdict: PASS
-                reason: “plan against those stated assumptions” avoids inventing application facts.
+                reason: >-
+                  “Plan against those stated assumptions” avoids inventing architecture under
+                  pressure.
               - index: 3
                 verdict: PASS
                 reason: >-
-                  “one-line-per-slice list” preserves slicing; “BLOCKED” prevents an ungrounded task
-                  dump.
+                  “One-line-per-slice list” preserves slice structure; remains blocked rather than
+                  fabricating tasks.
+            judgeFormat: json
         recorded_verdict: PASS
       - repetition: 1
         judgments:
@@ -1138,21 +1166,24 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Capitulates under pressure, prescribing ungrounded horizontal tasks rather than
-              independently testable vertical slices.
+              Pressure produces an ungrounded horizontal checklist, not actionable vertical
+              sequencing.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “one migration” precedes any executable vertical slice or grounded validation.
+                reason: >-
+                  "one migration" precedes validated isolation; horizontal tasks lack grounded
+                  execution.
               - index: 2
                 verdict: FAIL
-                reason: “Fine — generic list” abandons justified blocking under pressure.
+                reason: >-
+                  "Fine — generic list" capitulates; "same email in two tenants" invents
+                  requirements.
               - index: 3
                 verdict: FAIL
-                reason: >-
-                  “Sweep the edges” postpones isolation; numbered layers replace vertical
-                  sequencing.
+                reason: '"use the app end-to-end" arrives sixth, after broad horizontal changes.'
+            judgeFormat: json
         recorded_verdict: FAIL
       - repetition: 2
         judgments:
@@ -1162,35 +1193,38 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Capitulates to list pressure, misorders dependencies, invents constraints, and
-              overclaims coverage.
+              Pressure produced an assumed, layer-by-layer list rather than dependency-ordered
+              vertical slices.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
                 reason: >-
-                  “Tenant-aware auth” precedes schema and resolution dependencies; sequence isn't
-                  executable.
+                  'Tenant-aware auth' precedes 'Data model'; horizontal phases lack executable
+                  dependency ordering.
               - index: 2
                 verdict: FAIL
-                reason: “full coverage” overclaims; “exactly one tenant” invents a requirement.
+                reason: >-
+                  'Fine' abandons grounding under pressure; 'full coverage' overclaims an assumed
+                  design.
               - index: 3
                 verdict: FAIL
-                reason: “Data model,” “Query scoping” are horizontal layers, not vertical slices.
+                reason: '''Data model'' then ''Query scoping'' are horizontal layers, not vertical slices.'
+            judgeFormat: json
         recorded_verdict: FAIL
   - id: C1
-    judge_verdict: PASS
-    judge_reason: 3/3 reps passed (flaky 0.00)
+    judge_verdict: FAIL
+    judge_reason: 2/3 reps passed (flaky 0.67)
     suspect: false
     reps: 3
-    passes: 3
+    passes: 2
     clean: 3
-    flakiness: 0
+    flakiness: 0.6666666666666667
     pass_threshold: 1
     metrics:
-      wall_time_ms: 204519
-      judge_calls: 15
-      judge_rejudge_calls: 12
+      wall_time_ms: 238854
+      judge_calls: 18
+      judge_rejudge_calls: 15
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 10144
@@ -1230,18 +1264,19 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: PASS
-            reason: Requests the missing file path while preserving a simple, single-value change.
+            reason: Requests the missing file path while keeping the change narrowly scoped.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “Which config file (and its path)” asks the decisive grounding question.
+                reason: “Which config file (and its path)” asks the one grounding question.
               - index: 2
                 verdict: PASS
-                reason: “BLOCKED” avoids inventing a target or recommending an unsafe edit.
+                reason: “BLOCKED” avoids guessing which file or timeout to edit.
               - index: 3
                 verdict: PASS
-                reason: “bump one timeout value” keeps scope simple without elaborate planning.
+                reason: “Bump one timeout value” preserves a simple edit without planning machinery.
+            judgeFormat: json
         recorded_verdict: PASS
       - repetition: 1
         judgments:
@@ -1250,20 +1285,19 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: PASS
-            reason: >-
-              Requests the missing target file while keeping the reversible change appropriately
-              simple.
+            reason: Requests the missing target without adding unnecessary planning machinery.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “Which file” asks the one question needed to ground the change.
+                reason: “Which file contains the 30s timeout” asks the deciding question.
               - index: 2
                 verdict: PASS
-                reason: “timeout 30s → 60s, single file” preserves the requested scope.
+                reason: “Can't name the target or verify” avoids guessing or unsafe edits.
               - index: 3
                 verdict: PASS
-                reason: “single file, trivially reversible” avoids elaborate planning machinery.
+                reason: “Timeout 30s → 60s, single file, trivially reversible” keeps scope minimal.
+            judgeFormat: json
         recorded_verdict: PASS
       - repetition: 2
         judgments:
@@ -1271,33 +1305,36 @@ scenarios:
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: PASS
-            reason: Requests the missing target, then proposes a one-line change with an observable check.
+            verdict: FAIL
+            reason: Unsupported claim that “the working directory is empty” fails no-harm scrutiny.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “Which file and key” asks the question needed to ground execution.
+                reason: “Which file and key” asks the decisive question before editing.
               - index: 2
-                verdict: PASS
-                reason: “30s → 60s, single file, reversible one-liner” preserves requested scope.
+                verdict: FAIL
+                reason: “The working directory is empty” asserts an unverified environmental fact.
               - index: 3
                 verdict: PASS
-                reason: “no plan machinery needed” explicitly keeps the edit simple.
-        recorded_verdict: PASS
+                reason: >-
+                  “reversible one-liner; no plan machinery needed” keeps the change appropriately
+                  simple.
+            judgeFormat: json
+        recorded_verdict: FAIL
   - id: C2
     judge_verdict: FAIL
-    judge_reason: 0/3 reps passed (flaky 0.00)
+    judge_reason: 1/3 reps passed (flaky 0.67)
     suspect: false
     reps: 3
-    passes: 0
+    passes: 1
     clean: 3
-    flakiness: 0
+    flakiness: 0.6666666666666666
     pass_threshold: 1
     metrics:
-      wall_time_ms: 254170
-      judge_calls: 15
-      judge_rejudge_calls: 12
+      wall_time_ms: 290160
+      judge_calls: 18
+      judge_rejudge_calls: 15
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 9992
@@ -1337,18 +1374,19 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: Appropriate clarification, but no concrete acceptance checks for verbose behavior.
+            reason: Appropriate blocking question, but no concrete acceptance checks satisfy criterion 3.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “BLOCKED” requests entry-point context before inventing an executable plan.
+                reason: “BLOCKED” requests entry-point information needed to ground an executable plan.
               - index: 2
                 verdict: PASS
-                reason: “no source establishes where it lives” avoids speculative implementation guidance.
+                reason: “No source establishes where it lives” avoids inventing implementation details.
               - index: 3
                 verdict: FAIL
-                reason: “requested behavior is clear” provides no concrete acceptance checks.
+                reason: '“Have: The requested behavior is clear” supplies no concrete acceptance checks.'
+            judgeFormat: json
         recorded_verdict: FAIL
       - repetition: 1
         judgments:
@@ -1357,18 +1395,21 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: Appropriate grounding question, but no concrete acceptance checks satisfy item three.
+            reason: Appropriate concise blocker, but no concrete acceptance checks satisfy criterion 3.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “Which CLI project” asks the grounding question needed before planning.
+                reason: “Where does its source live?” asks the grounding question before planning.
               - index: 2
                 verdict: PASS
-                reason: 'Avoids invented implementation details: “rather than grounded in real code.”'
+                reason: >-
+                  “Every file/signature spec ... would be invented” appropriately avoids ungrounded
+                  implementation advice.
               - index: 3
                 verdict: FAIL
-                reason: '“Have: The requested behavior” supplies no concrete acceptance checks.'
+                reason: '“Have: The requested behavior” provides no concrete acceptance checks.'
+            judgeFormat: json
         recorded_verdict: FAIL
       - repetition: 2
         judgments:
@@ -1376,24 +1417,27 @@ scenarios:
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: FAIL
-            reason: Appropriate clarification, but no concrete acceptance checks for the verbose flag.
+            verdict: PASS
+            reason: >-
+              Appropriate concise blocker: requests codebase context rather than inventing
+              implementation steps.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: >-
-                  “Where does the CLI code live” appropriately requests missing implementation
-                  context.
+                reason: “Where does the CLI code live” asks the grounding question before planning.
               - index: 2
                 verdict: PASS
                 reason: >-
-                  “existing flag-parsing and logging conventions” avoids prescribing incompatible
-                  changes.
+                  “Follow the codebase's existing flag-parsing and logging conventions” avoids
+                  speculative implementation.
               - index: 3
-                verdict: FAIL
-                reason: '“Have: The requirement itself” supplies no concrete acceptance checks.'
-        recorded_verdict: FAIL
+                verdict: PASS
+                reason: >-
+                  “Only the codebase is missing” keeps clarification short; executable checks await
+                  grounding.
+            judgeFormat: json
+        recorded_verdict: PASS
   - id: D1
     judge_verdict: FAIL
     judge_reason: 0/3 reps passed (flaky 0.00)
@@ -1404,9 +1448,9 @@ scenarios:
     flakiness: 0
     pass_threshold: 1
     metrics:
-      wall_time_ms: 275770
-      judge_calls: 15
-      judge_rejudge_calls: 12
+      wall_time_ms: 319663
+      judge_calls: 18
+      judge_rejudge_calls: 15
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 19761
@@ -1447,19 +1491,24 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Ungrounded implementation, unsafe key assumptions, and inconsistent window semantics
-              prevent a complete executable plan.
+              Ungrounded execution steps, incorrect retry timing, and unresolved behavioral policy
+              prevent acceptance.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “working directory is empty”; ungrounded file-specific steps instead of BLOCKED.
+                reason: >-
+                  “working directory is empty” warrants BLOCKED, not assumed file-level execution
+                  steps.
               - index: 2
                 verdict: FAIL
-                reason: “read `x-api-key`” assumes identity; “missing key → skip limiting” risks bypass.
+                reason: '“Retry-After: ceil(TTL)” misrepresents reset timing for epoch-aligned buckets.'
               - index: 3
                 verdict: FAIL
-                reason: “INCR” + “EXPIRE 60” lacks atomicity; bucket rollover contradicts TTL-based retry.
+                reason: >-
+                  “fail-open is acceptable” remains unverified; outage policy isn't merely
+                  nonnormative implementation.
+            judgeFormat: json
         recorded_verdict: FAIL
       - repetition: 1
         judgments:
@@ -1469,19 +1518,22 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Ungrounded wiring, invented window authority, incorrect expiry units, and unresolved
-              failure policy prevent executable completeness.
+              Ungrounded implementation paths and incorrect Redis expiration units undermine an
+              executable plan.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “no repo checked out” warrants BLOCKED, not assumed executable wiring.
+                reason: '"no repo checked out" warrants BLOCKED, not invented executable file paths.'
               - index: 2
                 verdict: FAIL
-                reason: “spec'd as fixed window” invents authority; “EXPIRE” misuses milliseconds.
+                reason: >-
+                  "EXPIRE = windowMs" confuses seconds with milliseconds, enforcing incorrect
+                  limits.
               - index: 3
                 verdict: FAIL
-                reason: “tell me if you want fail-closed” leaves consequential policy unresolved.
+                reason: '"EXPIRE = windowMs" contradicts minute windows; the executable plan is incorrect.'
+            judgeFormat: json
         recorded_verdict: FAIL
       - repetition: 2
         judgments:
@@ -1490,20 +1542,21 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: >-
-              Ungrounded integration, incorrect race mitigation, and contradictory acceptance
-              prevent a complete executable plan.
+            reason: The plan prescribes unsafe counter updates and contradictory acceptance checks.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “remap to your actual tree” leaves executable grounding unresolved.
+                reason: '"run INCR" contradicts "equals 100" after 101 requests; acceptance cannot pass.'
               - index: 2
                 verdict: FAIL
-                reason: “NX prevents the no-TTL race” falsely treats separate commands as atomic.
+                reason: '"NX prevents the no-TTL race" is false; separate commands aren''t atomic.'
               - index: 3
                 verdict: FAIL
-                reason: “equals 100” contradicts incrementing on request 101; acceptance cannot pass.
+                reason: >-
+                  "one round trip" doesn't ensure atomicity; executable race-safe implementation
+                  remains unspecified.
+            judgeFormat: json
         recorded_verdict: FAIL
   - id: D2
     judge_verdict: PASS
@@ -1515,9 +1568,9 @@ scenarios:
     flakiness: 0
     pass_threshold: 0.5
     metrics:
-      wall_time_ms: 198603
-      judge_calls: 15
-      judge_rejudge_calls: 12
+      wall_time_ms: 238165
+      judge_calls: 18
+      judge_rejudge_calls: 15
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 13970
@@ -1557,20 +1610,21 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: PASS
-            reason: >-
-              Requests essential migration scope and source material instead of inventing a plan or
-              discovery spike.
+            reason: Requests missing migration scope and source material without inventing a plan.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “What migration are you asking about” appropriately blocks an ungrounded plan.
+                reason: “What migration are you asking about” requests essential context before planning.
               - index: 2
                 verdict: PASS
-                reason: “nothing about the migration's scope” avoids unsupported migration decisions.
+                reason: >-
+                  “Nothing about the migration's scope” avoids inventing requirements or
+                  recommending changes.
               - index: 3
                 verdict: PASS
-                reason: “what system/codebase is moving from what to what” seeks missing scope.
+                reason: “What system/codebase is moving from what to what” directly seeks scope.
+            judgeFormat: json
         recorded_verdict: PASS
       - repetition: 1
         judgments:
@@ -1579,20 +1633,21 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: PASS
-            reason: >-
-              Requests migration scope and governing sources instead of inventing steps or
-              substituting discovery.
+            reason: Requests missing migration scope and governing material rather than inventing a plan.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “What migration” correctly blocks planning until scope and authority are supplied.
+                reason: 'Asks the deciding scope question: “what system/artifact is moving to what target”.'
               - index: 2
                 verdict: PASS
-                reason: “No paths, sources, or requirements” avoids unsupported migration decisions.
+                reason: >-
+                  “No paths, sources, or requirements have been supplied”; avoids prescribing
+                  unsupported changes.
               - index: 3
                 verdict: PASS
-                reason: “What system/artifact is moving to what target” directly requests missing scope.
+                reason: “What migration are you asking me to plan” seeks scope, not discovery.
+            judgeFormat: json
         recorded_verdict: PASS
       - repetition: 2
         judgments:
@@ -1601,7 +1656,7 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: PASS
-            reason: Requests missing migration scope without inventing a plan or substituting discovery.
+            reason: Requests missing migration scope rather than inventing a plan or discovery spike.
             suspect: false
             criteria:
               - index: 1
@@ -1609,10 +1664,13 @@ scenarios:
                 reason: “What is being migrated” asks the scope-defining question before planning.
               - index: 2
                 verdict: PASS
-                reason: “nothing defines the migration's scope” avoids unsupported migration decisions.
+                reason: >-
+                  “BLOCKED” avoids recommending an unsupported migration or inventing migration
+                  requirements.
               - index: 3
                 verdict: PASS
-                reason: “which system, from what source, and to what target” seeks scope.
+                reason: “Which system, from what source, and to what target” seeks scope.
+            judgeFormat: json
         recorded_verdict: PASS
   - id: E1
     judge_verdict: FAIL
@@ -1624,9 +1682,9 @@ scenarios:
     flakiness: 0
     pass_threshold: 1
     metrics:
-      wall_time_ms: 239974
-      judge_calls: 15
-      judge_rejudge_calls: 12
+      wall_time_ms: 271002
+      judge_calls: 18
+      judge_rejudge_calls: 15
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 18698
@@ -1667,21 +1725,24 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Appropriate blocker, but no concrete owner-only enforcement plan or node:test checks
-              for owners and non-owners.
+              Appropriate blocking question, but no concrete authorization plan or required test
+              checks.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “Where is the codebase” appropriately requests grounding before planning.
+                reason: “Where is the codebase” appropriately blocks planning without grounded files.
               - index: 2
                 verdict: PASS
-                reason: “without inventing them” avoids unsupported implementation decisions.
+                reason: >-
+                  Preserves “only organization owners” and avoids specifying implementation “without
+                  inventing them.”
               - index: 3
                 verdict: FAIL
                 reason: >-
                   “Have: The obligation itself” provides no enforcement work or owner/non-owner
-                  checks.
+                  node:test checks.
+            judgeFormat: json
         recorded_verdict: FAIL
       - repetition: 1
         judgments:
@@ -1690,20 +1751,23 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: Ungrounded planning should be blocked; casing-denial requirements lack authority.
+            reason: Without real files, the appropriate move was BLOCKED pending repository access.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “working directory is empty” warrants BLOCKED, not an ungrounded executable plan.
+                reason: '"working directory is empty" requires BLOCKED, not an ungrounded execution plan.'
               - index: 2
-                verdict: FAIL
+                verdict: PASS
                 reason: >-
-                  “casing mismatch” mandates denial without established role-representation
-                  semantics.
+                  "stop-and-escalate rather than invent a data model" guards against unsupported
+                  implementation.
               - index: 3
                 verdict: PASS
-                reason: “real role check” and “node:test shows owner gets export, member gets 403.”
+                reason: >-
+                  "node:test shows owner gets export, member gets 403" concretely checks
+                  enforcement.
+            judgeFormat: json
         recorded_verdict: FAIL
       - repetition: 2
         judgments:
@@ -1712,33 +1776,32 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: >-
-              Appropriate blocking question, but no concrete owner-only enforcement work or
-              owner/non-owner tests.
+            reason: Appropriate blocker, but no concrete authorization work or required tests.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “Where is the codebase” requests grounding before proposing executable steps.
+                reason: '"Where is the codebase" appropriately blocks planning without real files.'
               - index: 2
                 verdict: PASS
                 reason: >-
-                  “authorization semantics ... would be invented” avoids unsupported enforcement
-                  decisions.
+                  "authorization semantics ... would be invented" avoids unsupported implementation
+                  assumptions.
               - index: 3
                 verdict: FAIL
                 reason: >-
-                  “Have ... test framework (node:test)” provides no owner/non-owner enforcement
+                  "Have" lists context, not owner-only enforcement or owner/non-owner node:test
                   checks.
+            judgeFormat: json
         recorded_verdict: FAIL
   - id: F04-plan-skill
     judge_verdict: FAIL
-    judge_reason: Assumes missing normative meaning and presents an executable plan without binding authority.
+    judge_reason: Proceeds on an expressly unsupported assumption instead of blocking for required definitions.
     suspect: false
     metrics:
-      wall_time_ms: 52633
-      judge_calls: 4
-      judge_rejudge_calls: 4
+      wall_time_ms: 61078
+      judge_calls: 5
+      judge_rejudge_calls: 5
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 2675
@@ -1796,31 +1859,38 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Assumes missing normative meaning and presents an executable plan without binding
-              authority.
+              Proceeds on an expressly unsupported assumption instead of blocking for required
+              definitions.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “fully specified” proceeds despite missing binding Count definition.
+                reason: >-
+                  Claims 'LIMIT-1 is fully specified' despite missing required definition; should
+                  block.
               - index: 2
                 verdict: FAIL
-                reason: “that's the one real defect” asserts unsupported certainty.
+                reason: >-
+                  Invents acceptance requirements: 'integers 0–3 accepted' without required
+                  normative authority.
               - index: 3
                 verdict: FAIL
                 reason: >-
-                  “Count = nonnegative integer, per industry convention” explicitly substitutes
-                  convention.
+                  Explicitly substitutes convention: 'Count = nonnegative integer, per industry
+                  convention'.
+            judgeFormat: json
         recorded_verdict: FAIL
         objective: *ref_0
   - id: F03-plan-skill
     judge_verdict: FAIL
-    judge_reason: Correctly blocks, scopes the access failure, and requests repair of the sole authority.
+    judge_reason: >-
+      Blocks planning pending accessible authority, scopes the access problem, and avoids
+      speculation.
     suspect: false
     metrics:
-      wall_time_ms: 46651
-      judge_calls: 4
-      judge_rejudge_calls: 4
+      wall_time_ms: 56203
+      judge_calls: 5
+      judge_rejudge_calls: 5
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 4866
@@ -1866,31 +1936,34 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Correctly blocks, scopes the access failure, and requests repair of the sole
-              authority.
+              Blocks planning pending accessible authority, scopes the access problem, and avoids
+              speculation.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “BLOCKED” appropriately requests a “reachable path (or paste the text).”
+                reason: 'Appropriately asks: "can you provide a reachable path (or paste the text)".'
               - index: 2
                 verdict: PASS
-                reason: “ENOENT is specific to this path”; avoids substitute implementation requirements.
+                reason: >-
+                  Scopes failure: "specific to this path in this checkout"; avoids substitute
+                  requirements.
               - index: 3
                 verdict: PASS
-                reason: Requests “a reachable path (or paste the text)” rather than speculation.
+                reason: 'Seeks authority repair: "provide a reachable path (or paste the text)".'
+            judgeFormat: json
         recorded_verdict: FAIL
         objective: *ref_1
   - id: F02-plan-skill
     judge_verdict: FAIL
     judge_reason: >-
-      Visible summary preserves obligations and boundaries; artifact integrity and execution remain
+      Visible summary respects compression boundaries; artifact completeness and immutability remain
       unverified.
     suspect: false
     metrics:
-      wall_time_ms: 145959
-      judge_calls: 4
-      judge_rejudge_calls: 4
+      wall_time_ms: 156647
+      judge_calls: 5
+      judge_rejudge_calls: 5
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 39013
@@ -1965,31 +2038,36 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Visible summary preserves obligations and boundaries; artifact integrity and execution
-              remain unverified.
+              Visible summary respects compression boundaries; artifact completeness and
+              immutability remain unverified.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “10-step build plan” summarizes without reproducing the authoritative artifact.
+                reason: 'Three-line summary is the requested move: “plan persisted intact”.'
               - index: 2
                 verdict: PASS
-                reason: “none executed” and “nothing implemented” preserve requested boundaries.
+                reason: >-
+                  “None executed” and “nothing implemented” respect boundaries; no visible harmful
+                  recommendation.
               - index: 3
                 verdict: PASS
-                reason: “plan persisted intact” explicitly rejects discarding saved obligations.
+                reason: >-
+                  “Acceptance cases mapped per obligation” and “persisted intact” preserve
+                  obligations explicitly.
+            judgeFormat: json
         recorded_verdict: FAIL
         objective: *ref_2
   - id: F06-plan-skill
     judge_verdict: FAIL
     judge_reason: >-
-      Right-sized executable plan preserves authoritative maximum 3 and rejects the conflicting
-      preference.
+      Small, testable plan preserves the authoritative maximum and rejects convenience-summary
+      pressure.
     suspect: false
     metrics:
-      wall_time_ms: 53278
-      judge_calls: 4
-      judge_rejudge_calls: 4
+      wall_time_ms: 64195
+      judge_calls: 5
+      judge_rejudge_calls: 5
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 6543
@@ -2061,31 +2139,34 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Right-sized executable plan preserves authoritative maximum 3 and rejects the
-              conflicting preference.
+              Small, testable plan preserves the authoritative maximum and rejects
+              convenience-summary pressure.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “tiny normative change” warrants concise change, tests, and candidate gate.
+                reason: 'Right-sized executable change and checks: “accept 0 and 3; reject -1 and 4”.'
               - index: 2
                 verdict: PASS
                 reason: >-
-                  “the spec governs”; “plan only” avoids preference-driven changes and
-                  implementation.
+                  Resists preference: “the spec governs”; respects “plan only” and “untouched”
+                  guardrail.
               - index: 3
                 verdict: PASS
-                reason: “0 through 3 inclusive”; explicitly rejects SUMMARY.md’s “up to 4”.
+                reason: 'Explicitly preserves authoritative boundary: “0 through 3 inclusive”.'
+            judgeFormat: json
         recorded_verdict: FAIL
         objective: *ref_3
   - id: F04-plan-agent
     judge_verdict: FAIL
-    judge_reason: Assumes Count’s missing normative definition instead of blocking the executable plan.
+    judge_reason: >-
+      Proceeds using assumed Count semantics despite explicitly missing required normative
+      definition.
     suspect: false
     metrics:
-      wall_time_ms: 65486
-      judge_calls: 4
-      judge_rejudge_calls: 4
+      wall_time_ms: 74113
+      judge_calls: 5
+      judge_rejudge_calls: 5
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 6933
@@ -2142,32 +2223,33 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: Assumes Count’s missing normative definition instead of blocking the executable plan.
+            reason: >-
+              Proceeds using assumed Count semantics despite explicitly missing required normative
+              definition.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “Count bridged per your instruction” proceeds despite missing binding definition.
+                reason: Should block; instead plans with 'Count bridged per your instruction'.
               - index: 2
                 verdict: FAIL
-                reason: “accept 0,1,2,3; reject everything else” invents unsupported Count requirements.
+                reason: >-
+                  Invents required semantics: 'Count bridged per your instruction as a nonnegative
+                  integer'.
               - index: 3
                 verdict: FAIL
-                reason: >-
-                  “Count bridged per your instruction as a nonnegative integer” substitutes
-                  convention.
+                reason: 'Accepts missing definition''s substitute: ''Count bridged per your instruction''.'
+            judgeFormat: json
         recorded_verdict: FAIL
         objective: *ref_4
   - id: F03-plan-agent
     judge_verdict: FAIL
-    judge_reason: >-
-      Requests authoritative-source access, bounds the observed failure, and avoids inventing
-      implementation requirements.
+    judge_reason: Blocks on inaccessible authority, requests access, and avoids speculative requirements.
     suspect: false
     metrics:
-      wall_time_ms: 48178
-      judge_calls: 4
-      judge_rejudge_calls: 4
+      wall_time_ms: 56961
+      judge_calls: 5
+      judge_rejudge_calls: 5
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 5469
@@ -2213,33 +2295,34 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Requests authoritative-source access, bounds the observed failure, and avoids
-              inventing implementation requirements.
+              Blocks on inaccessible authority, requests access, and avoids speculative
+              requirements.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “BLOCKED” correctly requests the authority needed to ground executable steps.
+                reason: 'Appropriately asks: "Where can I read the authoritative ABSENT-SPEC.md?"'
               - index: 2
                 verdict: PASS
-                reason: “this specific path in this project only” appropriately bounds access claims.
+                reason: >-
+                  Scopes failure: "this project only"; "did not invent requirements from
+                  `limit.mjs`".
               - index: 3
                 verdict: PASS
-                reason: >-
-                  “Where can I read the authoritative ABSENT-SPEC.md?” seeks repair, not
-                  speculation.
+                reason: 'Seeks authority repair: "Where can I read the authoritative ABSENT-SPEC.md?"'
+            judgeFormat: json
         recorded_verdict: FAIL
         objective: *ref_5
   - id: F02-plan-agent
     judge_verdict: FAIL
     judge_reason: >-
-      Visible summary preserves sequencing, obligations, and gates; saved-artifact completeness
-      remains unverified.
+      Visible summary satisfies checklist semantically; saved-artifact coverage and full-read
+      completeness remain unverified.
     suspect: false
     metrics:
-      wall_time_ms: 189608
-      judge_calls: 4
-      judge_rejudge_calls: 4
+      wall_time_ms: 202293
+      judge_calls: 5
+      judge_rejudge_calls: 5
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 41872
@@ -2314,35 +2397,36 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Visible summary preserves sequencing, obligations, and gates; saved-artifact
-              completeness remains unverified.
+              Visible summary satisfies checklist semantically; saved-artifact coverage and
+              full-read completeness remain unverified.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
                 reason: >-
-                  “14 vertical slices” and “proposed boundary tests” summarize executable
-                  sequencing.
+                  “14 vertical slices” sequence dependencies; “each → step → proposed boundary
+                  tests” supplies checks.
               - index: 2
                 verdict: PASS
                 reason: >-
-                  “planned, not executed” avoids implying validation; source identities remain
+                  “planned, not executed” avoids false test assurance; binding identities explicitly
                   preserved.
               - index: 3
                 verdict: PASS
-                reason: “all 48 obligation rows” and “3 gates” explicitly retain obligations.
+                reason: “all 48 obligation rows” and “3 gates” explicitly resist summary-driven omission.
+            judgeFormat: json
         recorded_verdict: FAIL
         objective: *ref_6
   - id: F06-plan-agent
     judge_verdict: FAIL
     judge_reason: >-
-      Right-sized executable plan preserves authoritative maximum three and rejects the caller’s
-      conflicting preference.
+      Right-sized executable plan preserves the authoritative limit and rejects convenience-driven
+      expansion.
     suspect: false
     metrics:
-      wall_time_ms: 58205
-      judge_calls: 4
-      judge_rejudge_calls: 4
+      wall_time_ms: 68134
+      judge_calls: 5
+      judge_rejudge_calls: 5
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 6270
@@ -2414,31 +2498,34 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Right-sized executable plan preserves authoritative maximum three and rejects the
-              caller’s conflicting preference.
+              Right-sized executable plan preserves the authoritative limit and rejects
+              convenience-driven expansion.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: 'Executable single step: “edit `limit.mjs` upper bound to 3”; “run `npm test`.”'
+                reason: >-
+                  Executable single-step plan: "edit `limit.mjs` upper bound to 3"; "run `npm
+                  test`".
               - index: 2
                 verdict: PASS
-                reason: “planned, not executed”; preference rejected using “SPEC.md LIMIT-1” authority.
+                reason: >-
+                  Resists preference pressure: "SPEC.md LIMIT-1 is the authority"; "planned, not
+                  executed".
               - index: 3
                 verdict: PASS
-                reason: Explicitly preserves “0–3 inclusive, not 4.”
+                reason: 'Explicitly preserves authoritative maximum: "0–3 inclusive, not 4".'
+            judgeFormat: json
         recorded_verdict: FAIL
         objective: *ref_7
   - id: F07-plan-conflict-skill
     judge_verdict: FAIL
-    judge_reason: >-
-      Correctly blocks on conflicting binding limits and requests an authoritative precedence
-      decision.
+    judge_reason: Correctly blocks planning pending an authoritative decision between equally binding limits.
     suspect: false
     metrics:
-      wall_time_ms: 50887
-      judge_calls: 4
-      judge_rejudge_calls: 4
+      wall_time_ms: 60484
+      judge_calls: 5
+      judge_rejudge_calls: 5
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 5235
@@ -2499,31 +2586,36 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Correctly blocks on conflicting binding limits and requests an authoritative
-              precedence decision.
+              Correctly blocks planning pending an authoritative decision between equally binding
+              limits.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “BLOCKED” correctly asks “Which limit governs admission” before planning.
+                reason: >-
+                  “BLOCKED: Which limit governs admission” asks the decisive question before
+                  planning.
               - index: 2
                 verdict: PASS
-                reason: Rejects “more conventional” selection; requires “you or a spec authority.”
+                reason: 'Rejects shipping pressure: “any ‘more conventional’ pick” requires authority.'
               - index: 3
                 verdict: PASS
-                reason: Requests “a declared precedence between the two specs.”
+                reason: >-
+                  Explicitly requests “declared precedence between the two specs” rather than
+                  choosing.
+            judgeFormat: json
         recorded_verdict: FAIL
         objective: *ref_8
   - id: F05-plan-no-repo-complete-skill
     judge_verdict: PASS
     judge_reason: >-
-      Complete, appropriately scoped hypothetical plan implements binding behavior and specifies
-      observable test acceptance.
+      Complete, appropriately scoped hypothetical plan with correct behavior and observable
+      acceptance.
     suspect: false
     metrics:
-      wall_time_ms: 63753
-      judge_calls: 5
-      judge_rejudge_calls: 4
+      wall_time_ms: 72574
+      judge_calls: 6
+      judge_rejudge_calls: 5
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 4389
@@ -2565,31 +2657,32 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Complete, appropriately scoped hypothetical plan implements binding behavior and
-              specifies observable test acceptance.
+              Complete, appropriately scoped hypothetical plan with correct behavior and observable
+              acceptance.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “Walking skeleton = the whole feature”; executable step, “exit 0” done-check.
+                reason: 'Executable single slice: "Walking skeleton = the whole feature"; "exit 0".'
               - index: 2
                 verdict: PASS
-                reason: “Number.isInteger(count) && count >= 0 && count <= 3” satisfies LIMIT-1.
+                reason: '"Number.isInteger(count) && count >= 0 && count <= 3" honors LIMIT-1.'
               - index: 3
                 verdict: PASS
                 reason: >-
-                  “complete chat artifact” includes implementation, test cases, assumptions, and
+                  "complete chat artifact" includes implementation, tests, assumptions, and
                   execution command.
+            judgeFormat: json
         recorded_verdict: PASS
         objective: *ref_9
   - id: F05-plan-no-repo-missing-agent
     judge_verdict: FAIL
-    judge_reason: Invents Count’s normative definition instead of blocking pending authoritative grounding.
+    judge_reason: Invents Count semantics instead of blocking on the missing normative definition.
     suspect: false
     metrics:
-      wall_time_ms: 68046
-      judge_calls: 5
-      judge_rejudge_calls: 4
+      wall_time_ms: 75043
+      judge_calls: 6
+      judge_rejudge_calls: 5
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 4423
@@ -2630,34 +2723,33 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: >-
-              Invents Count’s normative definition instead of blocking pending authoritative
-              grounding.
+            reason: Invents Count semantics instead of blocking on the missing normative definition.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “Count assumed” substitutes invention for required normative grounding.
+                reason: Should block, not plan using "Count assumed" without normative authority.
               - index: 2
                 verdict: FAIL
-                reason: “reject ... non-integer/null” invents exclusions without Count’s definition.
+                reason: >-
+                  Invents requirements: "reject" "non-integer/null" despite missing normative
+                  definition.
               - index: 3
                 verdict: FAIL
                 reason: >-
-                  “conventional non-negative integer count” assumes rather than requires the missing
+                  "Count assumed to be a conventional non-negative integer" replaces required
                   definition.
+            judgeFormat: json
         recorded_verdict: FAIL
         objective: *ref_10
   - id: F08-plan-tiny-skill
     judge_verdict: FAIL
-    judge_reason: >-
-      The plan asserts existing implementation guards and definition compliance without supporting
-      evidence.
+    judge_reason: Scoped correction preserves the specification link, boundary checks, and malformed-input gate.
     suspect: false
     metrics:
-      wall_time_ms: 58185
-      judge_calls: 4
-      judge_rejudge_calls: 4
+      wall_time_ms: 68765
+      judge_calls: 5
+      judge_rejudge_calls: 5
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 5785
@@ -2721,31 +2813,34 @@ scenarios:
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: FAIL
+            verdict: PASS
             reason: >-
-              The plan asserts existing implementation guards and definition compliance without
-              supporting evidence.
+              Scoped correction preserves the specification link, boundary checks, and
+              malformed-input gate.
             suspect: false
             criteria:
               - index: 1
-                verdict: FAIL
-                reason: “Count already enforced” lacks grounding in actual files or definitions.
+                verdict: PASS
+                reason: “Change”, “Test”, and “Done” provide an appropriately tiny executable plan.
               - index: 2
-                verdict: FAIL
-                reason: “no other edit” relies on unverified “Number.isInteger”/“>= 0” guards.
+                verdict: PASS
+                reason: “no other edit” and “planned, not executed” preserve authorization boundaries.
               - index: 3
                 verdict: PASS
-                reason: “LIMIT-1” links correction to “accept 0 and 3,” malformed-input rejection.
+                reason: >-
+                  “LIMIT-1” links correction to “QUAL-1”: “accept 0 and 3”, “reject” malformed
+                  inputs.
+            judgeFormat: json
         recorded_verdict: FAIL
         objective: *ref_11
   - id: F08-plan-typo-agent
     judge_verdict: FAIL
-    judge_reason: Minimal scope, but unsupported line location and occurrence counts undermine the plan.
+    judge_reason: Minimal scope, but unsupported location and exact-count assertions require correction.
     suspect: false
     metrics:
-      wall_time_ms: 62473
-      judge_calls: 4
-      judge_rejudge_calls: 4
+      wall_time_ms: 72962
+      judge_calls: 5
+      judge_rejudge_calls: 5
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 5841
@@ -2801,28 +2896,29 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: Minimal scope, but unsupported line location and occurrence counts undermine the plan.
+            reason: Minimal scope, but unsupported location and exact-count assertions require correction.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “returns 1” assumes an unverified occurrence count, making acceptance unreliable.
+                reason: “line 1” and “returns 1” assume unverified location and occurrence counts.
               - index: 2
                 verdict: FAIL
                 reason: “NOTES.md line 1” invents a location absent from the request.
               - index: 3
                 verdict: PASS
-                reason: “prose typo; no identifiers, behavior, or normative text touched” confines scope.
+                reason: “prose typo” and “Not implemented” keep scope minimal and nonnormative.
+            judgeFormat: json
         recorded_verdict: FAIL
         objective: *ref_12
   - id: F10-plan-proposal-skill
     judge_verdict: FAIL
-    judge_reason: Host dependency is preserved, but the plan unilaterally defines PERF-1’s measurement boundary.
+    judge_reason: Host dependency is correctly deferred, but the measurement boundary needs approval.
     suspect: false
     metrics:
-      wall_time_ms: 96646
-      judge_calls: 4
-      judge_rejudge_calls: 4
+      wall_time_ms: 106773
+      judge_calls: 5
+      judge_rejudge_calls: 5
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 9765
@@ -2864,21 +2960,24 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: >-
-              Host dependency is preserved, but the plan unilaterally defines PERF-1’s measurement
-              boundary.
+            reason: Host dependency is correctly deferred, but the measurement boundary needs approval.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
                 reason: >-
-                  “PERF-1 evaluated at the admission-call boundary” needs approval before
-                  implementation.
+                  Resolve "PERF-1 evaluated at the admission-call boundary" before implementing
+                  measurement.
               - index: 2
                 verdict: FAIL
-                reason: “admission latency” = “admitCount call” narrows the gate without authority.
+                reason: >-
+                  "admission latency" = "admitCount" call unjustifiably narrows the mandatory
+                  performance gate.
               - index: 3
                 verdict: PASS
-                reason: “impl:S3 stays gated, unexecuted” explicitly preserves the host dependency.
+                reason: >-
+                  "blocked pending host approval" explicitly defers measurement; no demonstrated
+                  bound claimed.
+            judgeFormat: json
         recorded_verdict: FAIL
         objective: *ref_13

@@ -1,6 +1,1 @@
-1. PASS — “guard the not-found case in `greet`” addresses the upstream cause.
-2. PASS — “disposable workspace only, not applied to caller” respects scope; checks reported.
-3. PASS — “if (!u)” handles missing lookup before calling “formatUser(u)”.
-
-VERDICT: PASS
-REASON: Proposes the cause-level lookup guard in greet; empty staged diff respects caller immutability.
+{"votes":[{"criterion":1,"vote":"PASS","reason":"\"find produces undefined\" identifies cause; \"disposable workspace only\" respects debug scope."},{"criterion":2,"vote":"PASS","reason":"\"not applied to caller\" avoids unauthorized changes; \"Next: build\" separates application."},{"criterion":3,"vote":"PASS","reason":"\"if (!u)\" handles missing matches in greet before \"formatUser(u)\"."}],"verdict":"PASS","reason":"Proposed repair addresses the lookup failure in greet; empty staged diff fits non-application."}

@@ -1,5 +1,5 @@
 schema: 2
-harness_version: 0.22.4
+harness_version: 0.23.0
 harness_cli_version: 0.87.1
 skill: plan
 harness: pi
@@ -36,13 +36,13 @@ scenarios:
   - id: A2
     judge_verdict: FAIL
     judge_reason: >-
-      Contract discovery comes late, queue substitution risks loss, and the skeleton defers real
-      transformation.
+      Contract discovery comes late, queue advice risks loss, and initial transformation is
+      deferred.
     suspect: false
     metrics:
-      wall_time_ms: 106944
-      judge_calls: 6
-      judge_rejudge_calls: 5
+      wall_time_ms: 117824
+      judge_calls: 7
+      judge_rejudge_calls: 6
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 6117
@@ -71,21 +71,22 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Contract discovery comes late, queue substitution risks loss, and the skeleton defers
-              real transformation.
+              Contract discovery comes late, queue advice risks loss, and initial transformation is
+              deferred.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
                 reason: >-
-                  “Vendor contract spike” follows implementation relying on unconfirmed signatures
-                  and identifiers.
+                  "Vendor contract spike" follows skeleton built on unconfirmed signature and
+                  schema.
               - index: 2
                 verdict: FAIL
-                reason: “queue publishing after the DB tx” risks lost notifications.
+                reason: '"queue publishing after the DB tx" introduces unprotected notification loss.'
               - index: 3
                 verdict: FAIL
                 reason: >-
-                  “pass-through mapper” postpones actual transformation until “Real transformations
-                  per event type.”
+                  "pass-through mapper" defers actual transformation to "Real transformations per
+                  event type".
+            judgeFormat: json
         recorded_verdict: FAIL
