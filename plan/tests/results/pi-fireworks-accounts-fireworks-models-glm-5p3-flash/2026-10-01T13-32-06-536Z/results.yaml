@@ -1,5 +1,5 @@
 schema: 2
-harness_version: 0.22.3
+harness_version: 0.22.4
 harness_cli_version: 0.87.1
 skill: plan
 harness: pi
@@ -35,12 +35,12 @@ effective_grade:
 scenarios:
   - id: A2
     judge_verdict: FAIL
-    judge_reason: First slice omits payload validation; vendor authentication is assumed before discovery.
+    judge_reason: Vendor assumptions precede discovery, and the first slice omits payload validation.
     suspect: false
     metrics:
-      wall_time_ms: 86401
-      judge_calls: 5
-      judge_rejudge_calls: 4
+      wall_time_ms: 99281
+      judge_calls: 6
+      judge_rejudge_calls: 5
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 5094
@@ -68,20 +68,18 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: >-
-              First slice omits payload validation; vendor authentication is assumed before
-              discovery.
+            reason: Vendor assumptions precede discovery, and the first slice omits payload validation.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “spike the docs first” belongs before S1’s guessed signature implementation.
+                reason: “spike the docs first” belongs before the vendor-dependent walking skeleton.
               - index: 2
                 verdict: FAIL
-                reason: >-
-                  “vendor's actual scheme (HMAC signature + timestamp check)” invents unconfirmed
-                  requirements.
+                reason: “HMAC signature + timestamp check per their docs” invents unverified requirements.
               - index: 3
                 verdict: FAIL
-                reason: “Real validation + transformation” waits until S3; S1 lacks payload validation.
+                reason: >-
+                  S1 checks signatures but defers payload validation to “Real validation +
+                  transformation.”
         recorded_verdict: FAIL

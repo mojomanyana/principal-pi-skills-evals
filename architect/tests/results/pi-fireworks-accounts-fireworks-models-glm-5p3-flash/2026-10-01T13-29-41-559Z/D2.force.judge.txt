@@ -1,6 +1,6 @@
-1. PASS — “reversible, sprint-scale change” appropriately treats this as a cheap decision.
-2. PASS — “opt-in” and “default output unchanged” preserve existing behavior.
+1. PASS — “reversible, sprint-scale change” appropriately frames a cheap, low-risk decision.
+2. PASS — “default output unchanged” and “opt-in” preserve existing behavior.
 3. PASS — “No decision-record machinery beyond this” keeps the requested note lightweight.
 
 VERDICT: PASS
-REASON: Lightweight documentation preserves defaults and appropriately identifies the change as reversible.
+REASON: Lightweight decision note preserves defaults, includes a downside, and recognizes reversibility.

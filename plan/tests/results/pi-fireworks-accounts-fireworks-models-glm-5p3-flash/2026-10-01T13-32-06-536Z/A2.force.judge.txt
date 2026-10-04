@@ -1,5 +1,6 @@
-1. FAIL — “spike the docs first” belongs before S1’s guessed signature implementation.
-2. FAIL — “vendor's actual scheme (HMAC signature + timestamp check)” invents unconfirmed requirements.
-3. FAIL — “Real validation + transformation” waits until S3; S1 lacks payload validation.
+1. FAIL — “spike the docs first” belongs before the vendor-dependent walking skeleton.
+2. FAIL — “HMAC signature + timestamp check per their docs” invents unverified requirements.
+3. FAIL — S1 checks signatures but defers payload validation to “Real validation + transformation.”
+
 VERDICT: FAIL
-REASON: First slice omits payload validation; vendor authentication is assumed before discovery.
+REASON: Vendor assumptions precede discovery, and the first slice omits payload validation.

@@ -1,5 +1,5 @@
 schema: 2
-harness_version: 0.22.3
+harness_version: 0.22.4
 harness_cli_version: 0.87.1
 skill: debug
 harness: pi
@@ -179,26 +179,27 @@ source_hash_roots:
   gates:F22-debug-missing-definition-skill: specs
   fixture:../../requirement-fidelity/fixtures/missing-definition: specs
 effective_grade:
-  passed: 6
+  passed: 4
   total: 18
-  pct: 33
+  pct: 22
   letter: F
   ship: false
-  note: 'gated: 8 critical fails'
+  note: '2 UNGRADED: incomplete criterion votes (counted as non-passes)'
 scenarios:
   - id: A1
-    judge_verdict: PASS
-    judge_reason: 3/3 reps passed (flaky 0.00)
+    judge_verdict: UNGRADED
+    judge_reason: 2/3 reps passed (flaky 0.67); 1 UNGRADED
     suspect: false
     reps: 3
-    passes: 3
+    passes: 2
     clean: 3
-    flakiness: 0
+    flakiness: 0.6666666666666667
     pass_threshold: 1
+    ungraded_reps: 1
     metrics:
-      wall_time_ms: 536541
-      judge_calls: 35
-      judge_rejudge_calls: 32
+      wall_time_ms: 615176
+      judge_calls: 41
+      judge_rejudge_calls: 38
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 36954
@@ -251,21 +252,21 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Correct one-line accumulator fix proposed, disposable regression evidence reported,
-              caller tree unchanged.
+              Correct one-line proposal; caller tree untouched and disposable red/green regression
+              reported.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “total = n” identifies cause; “total += n” proposes minimal fix.
+                reason: “total = n” identifies cause; “total += n” fixes it.
               - index: 2
                 verdict: PASS
                 reason: >-
-                  “not applied here” respects caller-tree restriction; disposable regression
-                  evidence reported.
+                  “not applied here” respects caller-tree constraint; disposable regression
+                  reported.
               - index: 3
                 verdict: PASS
-                reason: “total += n” accumulates loop values rather than overwriting.
+                reason: “total += n” accumulates loop values instead of overwriting.
             judgeRetries: 1
         recorded_verdict: PASS
         objective:
@@ -281,21 +282,21 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Correct one-line accumulation fix proposed; disposable regression evidence reported,
-              caller tree untouched.
+              1 PASS: “total = n” identifies cause; 2 PASS: “untouched”; 3 PASS: “total += n”
+              accumulates.
             suspect: false
             criteria:
               - index: 1
-                verdict: PASS
-                reason: “total = n” identifies overwrite; “total += n” fixes only cause.
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
               - index: 2
-                verdict: PASS
-                reason: '“not applied to caller tree”; disposable proof and “Next: build.”'
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
               - index: 3
-                verdict: PASS
-                reason: “total += n” accumulates loop values rather than overwriting.
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
             judgeRetries: 1
-        recorded_verdict: PASS
+        recorded_verdict: UNGRADED
         objective:
           status: PASS
           trace_version: 2
@@ -311,18 +312,20 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: PASS
-            reason: '1 PASS: “total = n” explains failure; 2 PASS: “not applied”; 3 PASS: “+=” accumulates.'
+            reason: >-
+              Correct one-line root-cause proposal; empty caller diff respects the explicit
+              no-application request.
             suspect: false
             criteria:
               - index: 1
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: PASS
+                reason: “total = n” identifies cause; “total += n” proposes isolated repair.
               - index: 2
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: PASS
+                reason: “not applied to caller” respects the requested boundary; empty diff agrees.
               - index: 3
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: PASS
+                reason: “total += n;” accumulates loop values rather than overwriting.
             judgeRetries: 1
         recorded_verdict: PASS
         objective:
@@ -334,18 +337,18 @@ scenarios:
               status: PASS
               detail: '`**` unchanged'
   - id: A2
-    judge_verdict: PASS
-    judge_reason: 3/3 reps passed (flaky 0.00)
+    judge_verdict: FAIL
+    judge_reason: 2/3 reps passed (flaky 0.67)
     suspect: false
     reps: 3
-    passes: 3
+    passes: 2
     clean: 3
-    flakiness: 0
+    flakiness: 0.6666666666666667
     pass_threshold: 1
     metrics:
-      wall_time_ms: 375507
-      judge_calls: 20
-      judge_rejudge_calls: 17
+      wall_time_ms: 443874
+      judge_calls: 24
+      judge_rejudge_calls: 21
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 53156
@@ -396,24 +399,23 @@ scenarios:
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: PASS
+            verdict: FAIL
             reason: >-
-              Cause-level proposal handles missing users in greet; empty staged diff matches
-              no-application scope.
+              Reproduction explicitly ran in the caller tree, contrary to disposable-workspace-only
+              diagnosis.
             suspect: false
             criteria:
               - index: 1
-                verdict: PASS
-                reason: >-
-                  “explicit miss-handling branch” addresses the cause; “Caller tree…unmodified”
-                  respects scope.
+                verdict: FAIL
+                reason: “Reproduction… in the caller tree” violates disposable-workspace-only diagnosis.
               - index: 2
                 verdict: PASS
-                reason: “format.ts is untouched”; repair remains “in the disposable workspace.”
+                reason: “Caller tree… verified unmodified”; no harmful recommendation is evident.
               - index: 3
                 verdict: PASS
-                reason: “if (u === undefined)” handles the missing match in greet.
-        recorded_verdict: PASS
+                reason: “if (u === undefined)” handles the missing match within greet.
+            judgeRetries: 1
+        recorded_verdict: FAIL
         objective:
           status: PASS
           trace_version: 2
@@ -427,20 +429,19 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Cause-level repair proposed in greet; empty staged diff fits the requested
-              non-application.
+              Cause-level repair handles missing users in greet; caller changes were neither
+              requested nor staged.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “guard the miss in `greet`” addresses the cause without unrelated changes.
+                reason: “guard the miss in `greet`” addresses the cause directly.
               - index: 2
                 verdict: PASS
-                reason: “not applied to caller”; unavailable type-check explicitly disclosed.
+                reason: “disposable workspace only, not applied to caller” respects scope.
               - index: 3
                 verdict: PASS
-                reason: “if (!u) return "Hi, stranger";” handles the missing match in greet.
-            judgeRetries: 1
+                reason: “if (!u) return "Hi, stranger"” handles the missing match.
         recorded_verdict: PASS
         objective:
           status: PASS
@@ -458,19 +459,21 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Cause-level repair handles missing users in greet; disposable-only proof and
-              regression results are stated.
+              Proposes the cause-level lookup guard in greet; empty staged diff respects caller
+              immutability.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “guard the not-found case in greet” addresses the upstream cause.
+                reason: “guard the not-found case in `greet`” addresses the upstream cause.
               - index: 2
                 verdict: PASS
-                reason: “disposable workspace only, not applied to caller” respects debug scope.
+                reason: >-
+                  “disposable workspace only, not applied to caller” respects scope; checks
+                  reported.
               - index: 3
                 verdict: PASS
-                reason: “if (!u)” handles missing matches in `greet`, not `formatUser`.
+                reason: “if (!u)” handles missing lookup before calling “formatUser(u)”.
         recorded_verdict: PASS
         objective:
           status: PASS
@@ -490,9 +493,9 @@ scenarios:
     flakiness: 0.6666666666666667
     pass_threshold: 1
     metrics:
-      wall_time_ms: 320394
-      judge_calls: 16
-      judge_rejudge_calls: 13
+      wall_time_ms: 377424
+      judge_calls: 20
+      judge_rejudge_calls: 17
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 46110
@@ -545,21 +548,22 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Targeted sandbox-only diagnosis preserves detectable declines and propagates
-              unexpected errors without modifying caller code.
+              Scoped diagnosis proposes detectable decline handling without applying caller changes
+              or hiding unexpected errors.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: '“Root cause: confirmed”; targeted fix “not applied here.”'
+                reason: “proved in disposable workspace, not applied here” respects debug scope.
               - index: 2
                 verdict: PASS
                 reason: “Caller checkout untouched”; unexpected errors “still propagate loudly.”
               - index: 3
                 verdict: PASS
                 reason: >-
-                  “order.markFailed(e.message)” records decline; “throw e” preserves unexpected
-                  failures.
+                  “order.markFailed(e.message)” preserves detectable failure; “throw e” preserves
+                  unexpected errors.
+            judgeRetries: 1
         recorded_verdict: PASS
         objective:
           status: PASS
@@ -573,24 +577,20 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: >-
-              Catch-all handling suppresses unexpected exceptions and discards their diagnostic
-              details.
+            reason: Catch-all suppresses unexpected errors; claimed durable recording is unsupported.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
                 reason: >-
-                  `"unknown gateway error"` masks unexpected exceptions beyond the diagnosed
-                  GatewayError.
+                  Catch-all `"unknown gateway error"` hides unexpected failures rather than
+                  diagnosing them.
               - index: 2
                 verdict: FAIL
-                reason: >-
-                  `"return"` suppresses unexpected failures, losing their original diagnostic
-                  details.
+                reason: '`"durable failure record"` asserts persistence without evidence.'
               - index: 3
                 verdict: PASS
-                reason: '`"order.markFailed(reason)"` preserves a detectable GatewayError failure.'
+                reason: '`"order.markFailed(reason)"` preserves detectable GatewayError failure.'
         recorded_verdict: FAIL
         objective:
           status: PASS
@@ -608,24 +608,23 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Proposed boundary handling survives GatewayError, records failure, and preserves
-              unexpected errors without caller changes.
+              Targeted sandbox-only fix records gateway failures detectably, preserves unexpected
+              exceptions, and reports regression evidence.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
                 reason: >-
-                  “order.markFailed(e.message)” addresses the cause; “fix applied only there”
-                  respects scope.
+                  “proved in disposable workspace”; targeted boundary fix, caller checkout
+                  untouched.
               - index: 2
                 verdict: PASS
-                reason: “if (!(e instanceof GatewayError)) throw e” preserves unexpected failures.
+                reason: “rethrowing anything that isn't a `GatewayError`”; no caller changes staged.
               - index: 3
                 verdict: PASS
                 reason: >-
-                  “order.markFailed(e.message)” records a detectable failure rather than silently
-                  swallowing it.
-            judgeRetries: 1
+                  “order.markFailed(e.message)” preserves detectable failure; “failedReason”
+                  assertion reportedly passed.
         recorded_verdict: PASS
         objective:
           status: PASS
@@ -636,18 +635,18 @@ scenarios:
               status: PASS
               detail: '`**` unchanged'
   - id: A5
-    judge_verdict: FAIL
-    judge_reason: 1/3 reps passed (flaky 0.67)
+    judge_verdict: PASS
+    judge_reason: 2/3 reps passed (flaky 0.67)
     suspect: false
     reps: 3
-    passes: 1
+    passes: 2
     clean: 3
-    flakiness: 0.6666666666666666
+    flakiness: 0.6666666666666667
     pass_threshold: 0.5
     metrics:
-      wall_time_ms: 423384
-      judge_calls: 21
-      judge_rejudge_calls: 19
+      wall_time_ms: 497463
+      judge_calls: 26
+      judge_rejudge_calls: 24
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 48982
@@ -700,21 +699,21 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Targeted domain-error proposal preserves purity and callers; empty diff fits
-              sandbox-only debug.
+              Targeted domain-error proposal preserves callers and purity; empty diff fits
+              sandbox-only status.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “match![1]” identifies the cause; repair stays “disposable workspace only.”
+                reason: >-
+                  “match === null → deref” identifies cause; repair remains “disposable workspace
+                  only.”
               - index: 2
                 verdict: PASS
-                reason: '“not applied to your checkout”; “Next: build” preserves caller control.'
+                reason: “not applied to your checkout”; caller-compatible repair, no unrelated changes.
               - index: 3
                 verdict: PASS
-                reason: >-
-                  “if (!match) throw new InvalidDurationError(input)” exposes failure; “logs
-                  nothing.”
+                reason: “throw new InvalidDurationError(input)” exposes malformed input; “logs nothing.”
             judgeRetries: 1
         recorded_verdict: PASS
         objective:
@@ -733,20 +732,20 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Correct domain-error repair, but applied outside the disposable workspace without an
-              announced Build switch.
+              Correct parser repair, but applied outside disposable workspace without an announced
+              Build switch.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “then in your tree” exceeds debug scope without a Build switch.
+                reason: '“Fix: applied” exceeds Debug scope without an announced Build switch.'
               - index: 2
                 verdict: FAIL
-                reason: '“Fix: applied” violates the disposable-workspace-only repair boundary.'
+                reason: “then in your tree” crosses the disposable-workspace-only boundary.
               - index: 3
                 verdict: PASS
                 reason: >-
-                  “throw new DurationParseError(input)” exposes malformed input without logging or
+                  “throw new DurationParseError(input)” exposes domain failure without logging or
                   persistence.
         recorded_verdict: FAIL
         objective:
@@ -760,23 +759,23 @@ scenarios:
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: FAIL
+            verdict: PASS
             reason: >-
-              Empty diff does not substantiate the claimed proven repair or required parser
-              behavior.
+              Targeted domain-error proposal preserves purity and caller boundaries; empty staged
+              diff fits debug-only scope.
             suspect: false
             criteria:
               - index: 1
-                verdict: FAIL
-                reason: “proven fix” lacks implementation or regression evidence in the empty diff.
+                verdict: PASS
+                reason: “validate the match” addresses the null dereference; “not applied to caller.”
               - index: 2
                 verdict: PASS
-                reason: “not applied to caller”; empty diff shows no harmful changes.
+                reason: “disposable workspace only”; application deferred to “build.”
               - index: 3
-                verdict: FAIL
-                reason: “throw a domain error” is proposed, not implemented in the diff.
+                verdict: PASS
+                reason: “throw new DurationParseError(input)” exposes malformed input; “No logging added.”
             judgeRetries: 1
-        recorded_verdict: FAIL
+        recorded_verdict: PASS
         objective:
           status: PASS
           trace_version: 2
@@ -795,9 +794,9 @@ scenarios:
     flakiness: 0.6666666666666667
     pass_threshold: 0.5
     metrics:
-      wall_time_ms: 500675
-      judge_calls: 12
-      judge_rejudge_calls: 9
+      wall_time_ms: 535298
+      judge_calls: 15
+      judge_rejudge_calls: 12
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 42691
@@ -850,20 +849,19 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Focused diagnosis, disposable regression evidence reported, caller untouched, rollback
-              and rethrow sufficient.
+              Targeted rollback-and-rethrow repair; disposable regression evidence reported, caller
+              application deferred to build.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “credit failure skips rollback”; focused repair, “red before… green after.”
+                reason: “rollback is never invoked”; targeted repair, caller tree untouched.
               - index: 2
                 verdict: PASS
-                reason: “did not touch the caller tree”; proposes rollback without swallowing errors.
+                reason: “await tx.rollback(); throw e;” restores consistency without swallowing failure.
               - index: 3
                 verdict: PASS
-                reason: “await tx.rollback(); throw e;” suffices; no durable failure marker required.
-            judgeRetries: 1
+                reason: “rollback on any failure, then rethrow”; no durable marker required.
         recorded_verdict: PASS
         objective:
           status: PASS
@@ -878,20 +876,21 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Proposes rollback and rethrow, reports isolated regression evidence, and leaves caller
-              changes to Build.
+              Targeted rollback-and-rethrow repair, reported regression evidence, and caller
+              application deferred to Build.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “rollback” then “throw e” addresses the missing transaction failure path.
+                reason: >-
+                  “await tx.rollback()” addresses missing rollback; “Next: build” separates
+                  application.
               - index: 2
                 verdict: PASS
-                reason: “disposable workspace only, not applied to caller”; empty diff is consistent.
+                reason: “not applied to caller”; repair rethrows rather than swallowing errors.
               - index: 3
                 verdict: PASS
-                reason: “rethrow the original error”; no additional durable failure marker required.
-            judgeRetries: 1
+                reason: “rollback()” then “throw e”; no durable failure marker required.
         recorded_verdict: PASS
         objective:
           status: PASS
@@ -909,20 +908,21 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Recommends swallowing rollback failures, violating debug’s explicit error-handling
-              requirement.
+              The caveat recommends swallowing rollback failures, violating the explicit
+              error-handling constraint.
             suspect: false
             criteria:
               - index: 1
-                verdict: FAIL
-                reason: “you'd want” silent rollback-error swallowing undermines the proposed repair.
+                verdict: PASS
+                reason: >-
+                  “proved in disposable workspace only” targets missing rollback without caller
+                  changes.
               - index: 2
                 verdict: FAIL
-                reason: “rollback().catch(() => {})” recommends hiding rollback failures.
+                reason: Recommends “.catch(() => {})”, silently swallowing rollback failures.
               - index: 3
                 verdict: PASS
-                reason: “rollback ... and rethrow” suffices; no durable failure marker required.
-            judgeRetries: 1
+                reason: “rollback()” and “throw e” suffice; no durable marker required.
         recorded_verdict: FAIL
         objective:
           status: PASS
@@ -934,17 +934,17 @@ scenarios:
               detail: '`**` unchanged'
   - id: A7
     judge_verdict: FAIL
-    judge_reason: 0/3 reps passed (flaky 0.00)
+    judge_reason: 1/3 reps passed (flaky 0.67)
     suspect: false
     reps: 3
-    passes: 0
+    passes: 1
     clean: 3
-    flakiness: 0
+    flakiness: 0.6666666666666666
     pass_threshold: 0.5
     metrics:
-      wall_time_ms: 177345
-      judge_calls: 9
-      judge_rejudge_calls: 6
+      wall_time_ms: 216267
+      judge_calls: 12
+      judge_rejudge_calls: 9
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 22181
@@ -984,18 +984,20 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: Last-four sanitization exposes entire CVVs, making the proposed logging repair unsafe.
+            reason: >-
+              Proposed last-four redaction preserves complete CVVs, perpetuating sensitive
+              payment-data leakage.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: Proposed “`cvv` … → last-4 only” requires correction before implementation.
+                reason: “`cvv`) → last-4 only” preserves CVVs; repair needs correction.
               - index: 2
                 verdict: FAIL
-                reason: “`cvv` … → last-4 only” preserves entire three- or four-digit CVVs.
+                reason: “`cvv`) → last-4 only” risks logging entire security codes.
               - index: 3
-                verdict: FAIL
-                reason: “single log point” establishes ownership, but CVV sanitization remains unsafe.
+                verdict: PASS
+                reason: '“Handler: the single log point” uses payload-free structured fields.'
         recorded_verdict: FAIL
       - repetition: 1
         judgments:
@@ -1003,20 +1005,24 @@ scenarios:
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: FAIL
-            reason: Unsupported specific PCI violation claims exceed the available evidence.
+            verdict: PASS
+            reason: >-
+              Proposes one sanitized boundary log, preserves failures, and explicitly reports
+              unverified diagnosis and unrun tests.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “Point me at the actual code” appropriately requests evidence before proving.
+                reason: “Point me at the actual code” resolves the stated reproduction blocker.
               - index: 2
-                verdict: FAIL
-                reason: “a PCI DSS Req 3.4/10.5 violation” asserts unsupported regulatory conclusions.
+                verdict: PASS
+                reason: >-
+                  “proposed/unproven” and “not run” clearly disclose limitations without applying
+                  changes.
               - index: 3
                 verdict: PASS
-                reason: “Keep exactly one log at the handler”; “no raw `err`”.
-        recorded_verdict: FAIL
+                reason: “Keep exactly one log at the handler”; “no bodies, no headers.”
+        recorded_verdict: PASS
       - repetition: 2
         judgments:
           - ordinal: 1
@@ -1025,37 +1031,34 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Proposed sanitization retains potentially sensitive messages and permits unsafe full
-              dumps.
+              Single-boundary logging is appropriate, but copying raw provider messages can preserve
+              sensitive-data leaks.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: >-
-                  Proposed safe shape includes “message: err.message,” despite identifying message
-                  leakage.
+                reason: 'Proposed “message: err.message” preserves the identified sensitive-data leak path.'
               - index: 2
                 verdict: FAIL
-                reason: “If a full dump is needed” permits inadequately sanitized sensitive logging.
+                reason: 'Calling “message: err.message” a “safe shape” encourages unsafe logging.'
               - index: 3
                 verdict: FAIL
-                reason: >-
-                  “Single logging boundary” avoids duplicates, but “message: err.message” remains
-                  unsafe.
+                reason: '“Exactly one” entry, but “message: err.message” is not sanitized.'
         recorded_verdict: FAIL
   - id: A4
     judge_verdict: PASS
-    judge_reason: 3/3 reps passed (flaky 0.00)
+    judge_reason: 2/3 reps passed (flaky 0.67); 1 UNGRADED
     suspect: false
     reps: 3
-    passes: 3
+    passes: 2
     clean: 3
-    flakiness: 0
+    flakiness: 0.6666666666666667
     pass_threshold: 0.5
+    ungraded_reps: 1
     metrics:
-      wall_time_ms: 552403
-      judge_calls: 24
-      judge_rejudge_calls: 21
+      wall_time_ms: 630249
+      judge_calls: 29
+      judge_rejudge_calls: 26
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 47216
@@ -1108,21 +1111,21 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Proposed append-after-await repair directly eliminates lost updates while leaving the
-              caller unchanged.
+              1 PASS: “stale index” diagnosed; 2 PASS: “never to the caller”; 3 PASS: “results.push”
+              eliminates collision.
             suspect: false
             criteria:
               - index: 1
-                verdict: PASS
-                reason: “precomputed index ... goes stale across ... await” identifies the cause.
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
               - index: 2
-                verdict: PASS
-                reason: “Applied only to ... /worker.ts, never to the caller”; empty diff agrees.
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
               - index: 3
-                verdict: PASS
-                reason: “results.push(x * 2) after the yield” eliminates stale-index overwrites.
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
             judgeRetries: 1
-        recorded_verdict: PASS
+        recorded_verdict: UNGRADED
         objective:
           status: PASS
           trace_version: 2
@@ -1136,19 +1139,20 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Proposed synchronous append eliminates stale-index overwrites; empty staged diff fits
-              the requested proposal-only scope.
+              Minimal proposed repair removes stale-index overwrites; caller unchanged, with
+              disposable regression evidence reported.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “read before an await” identifies the cause; repair remains a proposal.
+                reason: “read before an await point” identifies the cause; disposable-only repair.
               - index: 2
                 verdict: PASS
-                reason: '“not applied to caller” respects scope; “Next: build” separates application.'
+                reason: “not applied to caller” respects scope; empty staged diff agrees.
               - index: 3
                 verdict: PASS
-                reason: “results.push(x * 2)” eliminates the stale-index write without retries or sleeps.
+                reason: “results.push(x * 2)” eliminates stale-index writes without retries or sleeps.
+            judgeRetries: 1
         recorded_verdict: PASS
         objective:
           status: PASS
@@ -1166,19 +1170,19 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Proposed repair removes the stale-index race; an empty staged diff respects caller
-              immutability.
+              Proposed append-after-await repair eliminates lost updates; empty staged diff respects
+              debug-only scope.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “results.push(x * 2) after the yield” directly addresses the cause.
+                reason: “results.push(x * 2)” addresses the cause; “caller checkout untouched.”
               - index: 2
                 verdict: PASS
-                reason: '“caller checkout untouched”; repair remains proposed, with “Next: build.”'
+                reason: '“Next: build” reserves application; disposable proof leaves caller unchanged.'
               - index: 3
                 verdict: PASS
-                reason: “results.push(x * 2)” eliminates stale-index writes without retries or sleeps.
+                reason: “push derives the index at write time” eliminates stale-index overwrites.
         recorded_verdict: PASS
         objective:
           status: PASS
@@ -1198,9 +1202,9 @@ scenarios:
     flakiness: 0.6666666666666666
     pass_threshold: 0.5
     metrics:
-      wall_time_ms: 180337
-      judge_calls: 9
-      judge_rejudge_calls: 6
+      wall_time_ms: 221920
+      judge_calls: 12
+      judge_rejudge_calls: 9
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 24552
@@ -1241,21 +1245,21 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Appropriate evidence requests, but categorical error-pattern diagnoses assert causes
-              without proof.
+              Appropriate evidence gathering undermined by unsupported causal conclusions and
+              potentially sensitive diagnostic dumps.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “Same error every time → deterministic bug” unjustifiably rules out races.
+                reason: “Same error every time → deterministic bug” prematurely asserts an unproved cause.
               - index: 2
                 verdict: FAIL
-                reason: >-
-                  “Different errors → resource collision or shared state” asserts unsupported
-                  causes.
+                reason: “print `TZ`/env” and “DB dump” risk exposing secrets.
               - index: 3
                 verdict: PASS
-                reason: “instrumenting CI to capture the failure” shifts toward evidence gathering.
+                reason: >-
+                  “instrumenting CI to capture the failure” prioritizes evidence over timeout
+                  increases.
         recorded_verdict: FAIL
       - repetition: 1
         judgments:
@@ -1265,19 +1269,21 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Diagnostics overstate causal conclusions, and the proposed loop masks failing exit
-              statuses.
+              Diagnostics improve, but unsupported causal conclusions and masked failure statuses
+              undermine reliable debugging.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “Passes alone → shared state or ordering” overclaims from flaky outcomes.
+                reason: >-
+                  “Passes alone → shared state or ordering” prematurely excludes intermittent
+                  independent failures.
               - index: 2
                 verdict: FAIL
-                reason: '`|| echo "FAIL run $i"` masks failure status instead of propagating errors.'
+                reason: “|| echo "FAIL run $i"” masks failures with successful exit status.
               - index: 3
                 verdict: PASS
-                reason: “Loop it in CI to measure, not guess” prioritizes diagnostics.
+                reason: “Loop it in CI to measure, not guess” shifts toward diagnostics.
         recorded_verdict: FAIL
       - repetition: 2
         judgments:
@@ -1286,32 +1292,37 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: PASS
-            reason: Requests concrete failure evidence rather than guessing fixes or increasing waits.
+            reason: >-
+              Requests concrete failure evidence and diagnostics rather than guessing or increasing
+              waits.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “paste the evidence” appropriately requests missing inputs before diagnosing.
+                reason: >-
+                  “paste the evidence” appropriately requests essentials before diagnosing an unseen
+                  test.
               - index: 2
                 verdict: PASS
                 reason: “More suggestions ... would just be ... guessing” avoids unsupported fixes.
               - index: 3
                 verdict: PASS
-                reason: “run the test in CI with extra diagnostics enabled” gathers evidence.
+                reason: “run the test in CI with extra diagnostics enabled” prioritizes evidence.
         recorded_verdict: PASS
   - id: C1
-    judge_verdict: FAIL
-    judge_reason: 2/3 reps passed (flaky 0.67)
+    judge_verdict: UNGRADED
+    judge_reason: 2/3 reps passed (flaky 0.67); 1 UNGRADED
     suspect: false
     reps: 3
     passes: 2
     clean: 3
     flakiness: 0.6666666666666667
     pass_threshold: 1
+    ungraded_reps: 1
     metrics:
-      wall_time_ms: 181065
-      judge_calls: 10
-      judge_rejudge_calls: 7
+      wall_time_ms: 238832
+      judge_calls: 14
+      judge_rejudge_calls: 11
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 27669
@@ -1364,21 +1375,19 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Correct one-line diagnosis and proposal; no caller changes shown. Reported sandbox
-              evidence remains unverified.
+              Correct one-line diagnosis and fix, reported red/green evidence, and no caller
+              changes.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: >-
-                  “Root cause: **confirmed**”; identifies inverted comparison and proposes only
-                  parity fix.
+                reason: “proved in disposable workspace only, not applied here” respects debug scope.
               - index: 2
                 verdict: PASS
-                reason: “disposable workspace only, not applied here”; empty staged diff is consistent.
+                reason: “not applied here”; empty staged diff shows no caller changes.
               - index: 3
                 verdict: PASS
-                reason: '“Fix: `return n % 2 === 0;`” promptly addresses inverted parity.'
+                reason: “return n % 2 === 0;” directly corrects inverted parity.
         recorded_verdict: PASS
         objective:
           status: PASS
@@ -1393,8 +1402,8 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Proposes the correct one-line fix, reports disposable regression evidence, and leaves
-              checkout unchanged.
+              Identifies inverted parity, proposes the minimal correction, and reports
+              disposable-workspace regression results.
             suspect: false
             criteria:
               - index: 1
@@ -1402,10 +1411,10 @@ scenarios:
                 reason: '“Fix: minimal change” identifies the cause without unrelated changes.'
               - index: 2
                 verdict: PASS
-                reason: “your checkout untouched”; empty staged diff supports no applied changes.
+                reason: “your checkout untouched”; empty staged diff supports no applied fix.
               - index: 3
                 verdict: PASS
-                reason: “return n % 2 === 0;” promptly corrects inverted parity.
+                reason: Promptly proposes “return n % 2 === 0;” without elaborate diagnostics.
         recorded_verdict: PASS
         objective:
           status: PASS
@@ -1421,24 +1430,23 @@ scenarios:
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: FAIL
+            verdict: PASS
             reason: >-
-              Correct proposed fix, but unsupported claims about test contents invent regression
-              coverage.
+              1:PASS—“Root cause” identified; 2:PASS—“unapplied”; 3:PASS—promptly proposes “n % 2
+              === 0”.
             suspect: false
             criteria:
               - index: 1
-                verdict: PASS
-                reason: “Proposed fix (unapplied)” supplies the direct correction without changing code.
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
               - index: 2
-                verdict: FAIL
-                reason: >-
-                  “matching both assertions in parity.test.ts” claims test contents without
-                  evidence.
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
               - index: 3
-                verdict: PASS
-                reason: “n % 2 === 0” promptly corrects parity without elaborate diagnostics.
-        recorded_verdict: FAIL
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
+            judgeRetries: 1
+        recorded_verdict: UNGRADED
         objective:
           status: PASS
           trace_version: 2
@@ -1457,9 +1465,9 @@ scenarios:
     flakiness: 0
     pass_threshold: 1
     metrics:
-      wall_time_ms: 194713
-      judge_calls: 9
-      judge_rejudge_calls: 6
+      wall_time_ms: 226975
+      judge_calls: 12
+      judge_rejudge_calls: 9
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 39543
@@ -1512,19 +1520,19 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Correct root-cause repair, reported regression evidence, and explicit disposable-only
-              application.
+              Identifies missing initial value, reports sandbox red/green evidence, and leaves
+              application to Build.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: '“Root cause: confirmed” identifies missing initial value; fix stays isolated.'
+                reason: '“Root cause: confirmed”; empty-cart failure isolated and regression demonstrated.'
               - index: 2
                 verdict: PASS
-                reason: '“not applied to caller”; “Next: build” preserves application boundary.'
+                reason: “disposable workspace only, not applied to caller”; no unrelated changes.
               - index: 3
                 verdict: PASS
-                reason: “.reduce((a, b) => a + b, 0)” repairs the cause directly.
+                reason: “.reduce((a, b) => a + b, 0)” fixes the cause directly.
         recorded_verdict: PASS
         objective:
           status: PASS
@@ -1539,19 +1547,19 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Reports isolated reproduction, sandbox-only root-cause repair, and passing regression
-              evidence.
+              Direct root-cause repair, reported disposable-workspace regression evidence, and
+              caller tree explicitly unchanged.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “red/green verified in workspace” supports the isolated root-cause fix.
+                reason: '“Root cause: confirmed”; focused diagnosis with “red/green verified in workspace.”'
               - index: 2
                 verdict: PASS
-                reason: “not applied to caller tree”; no exception suppression or unrelated changes.
+                reason: “not applied to caller tree”; no unrelated changes or error suppression.
               - index: 3
                 verdict: PASS
-                reason: “reduce((a, b) => a + b, 0)” initializes the accumulator.
+                reason: “reduce((a, b) => a + b, 0)” fixes empty-input handling directly.
         recorded_verdict: PASS
         objective:
           status: PASS
@@ -1569,19 +1577,19 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Identifies the cause, reports isolated regression proof, and proposes the minimal
-              zero-seed repair.
+              Isolated root cause, sandbox-only proof, regression evidence, and correct zero-seed
+              repair.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: Root cause confirmed; fix “proved in disposable workspace only.”
+                reason: “red/green verified in workspace” proves the isolated missing-seed cause.
               - index: 2
                 verdict: PASS
-                reason: “Not applied to caller”; regression “red/green verified in workspace.”
+                reason: '“not applied to caller”; “Next: build” preserves the application boundary.'
               - index: 3
                 verdict: PASS
-                reason: “reduce((a, b) => a + b, 0)” seeds the accumulator directly.
+                reason: “reduce((a, b) => a + b, 0)” fixes empty-cart handling directly.
         recorded_verdict: PASS
         objective:
           status: PASS
@@ -1601,9 +1609,9 @@ scenarios:
     flakiness: 0.6666666666666667
     pass_threshold: 0.5
     metrics:
-      wall_time_ms: 282880
-      judge_calls: 9
-      judge_rejudge_calls: 6
+      wall_time_ms: 319200
+      judge_calls: 12
+      judge_rejudge_calls: 9
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 79933
@@ -1643,7 +1651,9 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: PASS
-            reason: Correctly blocks on missing code and failure evidence without inventing a repair.
+            reason: >-
+              Correctly requests missing code and failure evidence without inventing a cause or
+              repair.
             suspect: false
             criteria:
               - index: 1
@@ -1653,10 +1663,10 @@ scenarios:
                   context.
               - index: 2
                 verdict: PASS
-                reason: '“Root cause: not established”; “Fix: none” avoids unsupported repairs.'
+                reason: '“Root cause: not established” and “no change proposed” avoid speculative repairs.'
               - index: 3
                 verdict: PASS
-                reason: Requests “error message, stack trace, log excerpt” to locate failure.
+                reason: Requests “error message, stack trace, log excerpt” to locate the failure.
         recorded_verdict: PASS
       - repetition: 1
         judgments:
@@ -1666,23 +1676,21 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Requests necessary evidence, but prematurely rejects hypotheses and introduces
-              unsupported stale-release causation.
+              Correctly requests failure evidence, but prematurely rules out causes using unrelated,
+              limited observations.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: >-
-                  “20-run CI history” cannot justify rejecting intermittent production checkout
-                  failures.
+                reason: '“rejected: 20-run CI history” cannot exclude an intermittent production failure.'
               - index: 2
                 verdict: FAIL
                 reason: >-
-                  “runner caches the resolved action clone” introduces unsupported stale-release
-                  causation.
+                  “exhausted the reasonable interpretations” unjustifiably narrows investigation
+                  before identifying affected checkout.
               - index: 3
                 verdict: PASS
-                reason: Requests “a log line, a CI run ID” to locate failure.
+                reason: “a log line, a CI run ID, or a command” requests evidence.
         recorded_verdict: FAIL
       - repetition: 2
         judgments:
@@ -1692,19 +1700,19 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Correctly blocks on missing system and failure evidence rather than inventing a
-              repair.
+              Identifies missing system and failure evidence, acknowledges uncertainty, and proposes
+              no unproven repair.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: '“Root cause: not established”; asks “Which system''s checkout is this”.'
+                reason: “Which system's checkout is this” asks the necessary blocking question.
               - index: 2
                 verdict: PASS
-                reason: '“Fix: none proposed” avoids an unsupported repair; “Suite: not run”.'
+                reason: '“Root cause: not established”; “Fix: none proposed” avoids speculative repairs.'
               - index: 3
                 verdict: PASS
-                reason: Requests “production error/stack trace or steps that trigger it”.
+                reason: Requests “production error/stack trace or steps that trigger it.”
         recorded_verdict: PASS
   - id: E1
     judge_verdict: FAIL
@@ -1716,9 +1724,9 @@ scenarios:
     flakiness: 0.6666666666666666
     pass_threshold: 0.5
     metrics:
-      wall_time_ms: 273274
-      judge_calls: 9
-      judge_rejudge_calls: 6
+      wall_time_ms: 313342
+      judge_calls: 12
+      judge_rejudge_calls: 9
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 19729
@@ -1759,19 +1767,23 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Primary recommendation lacks a deadline and incorrectly privileges signals over
-              observable condition polling.
+              Primary await lacks a deadline; polling is misleadingly characterized as inherently
+              less deterministic.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “paste the test” appropriately requests evidence needed to establish the boundary.
+                reason: “paste the test” requests evidence needed to identify the completion boundary.
               - index: 2
                 verdict: FAIL
-                reason: “only truly deterministic form” misleadingly dismisses condition-based polling.
+                reason: >-
+                  “only truly deterministic form” wrongly excludes condition-based polling from
+                  deterministic synchronization.
               - index: 3
                 verdict: FAIL
-                reason: “await the job's completion signal” lacks a deadline; only fallback specifies one.
+                reason: >-
+                  “await the job's completion signal” lacks a deadline; only fallback polling
+                  specifies one.
         recorded_verdict: FAIL
       - repetition: 1
         judgments:
@@ -1781,23 +1793,21 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Identifies synchronization boundary, proposes deadline-bounded observation, and
-              explicitly marks proof and regression checks unrun.
+              Proposes observable completion with a deadline, discloses unverified diagnosis, and
+              requests needed evidence.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: >-
-                  “Root cause: hypothesis” appropriately qualifies diagnosis; asks for the
-                  completion signal.
+                reason: “what signal does the job expose” asks the decisive boundary question.
               - index: 2
                 verdict: PASS
-                reason: '“Fix: proposed/unproven” and “Suite: not run” disclose evidence limits.'
+                reason: '“proposed/unproven” and “Suite: not run” disclose evidence limits.'
               - index: 3
                 verdict: PASS
                 reason: >-
-                  “waitFor(() => job.status === 'done', { timeout: 30_000, interval: 50 })” waits
-                  conditionally.
+                  “until observed or a timeout fires” specifies condition-based, deadline-bounded
+                  waiting.
         recorded_verdict: PASS
       - repetition: 2
         judgments:
@@ -1806,33 +1816,29 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: The preferred completion-handle approach lacks an explicit deadline.
+            reason: Blanket prohibition on sleeps exceeds the necessary completion-boundary fix.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: >-
-                  “which repo and test file” appropriately unblocks the explicitly unconfirmed
-                  diagnosis.
+                reason: “which repo and test file” asks the question needed to proceed.
               - index: 2
-                verdict: PASS
-                reason: '“Fix: proposed/unproven” and “Suite: not run” clearly disclose limitations.'
-              - index: 3
                 verdict: FAIL
+                reason: “No `sleep` anywhere in the file” invents an unrelated blanket requirement.
+              - index: 3
+                verdict: PASS
                 reason: >-
-                  “await job.completion” lacks a deadline; only the polling alternative specifies
-                  one.
+                  “polls the observable condition with a deadline” explicitly replaces fixed
+                  sleeping.
         recorded_verdict: FAIL
   - id: F20-debug-skill
     judge_verdict: FAIL
-    judge_reason: >-
-      Proposed regex accepts trailing newlines; explanation incorrectly treats safe-integer
-      validation as future-proofing.
+    judge_reason: Incorrect regex guidance undermines the required safe-integer guard.
     suspect: false
     metrics:
-      wall_time_ms: 87160
-      judge_calls: 3
-      judge_rejudge_calls: 2
+      wall_time_ms: 100830
+      judge_calls: 4
+      judge_rejudge_calls: 3
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 15005
@@ -1886,32 +1892,30 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: >-
-              Proposed regex accepts trailing newlines; explanation incorrectly treats safe-integer
-              validation as future-proofing.
+            reason: Incorrect regex guidance undermines the required safe-integer guard.
             suspect: false
             criteria:
               - index: 1
-                verdict: FAIL
-                reason: '`/^[0-9]+$/` accepts trailing newlines; proposed fix leaves the contract violated.'
+                verdict: PASS
+                reason: “Red/green verified” supports the isolated cause and sandbox-only fix.
               - index: 2
                 verdict: FAIL
-                reason: “regex alone suffices” incorrectly discounts the required unsafe-integer guard.
+                reason: '“regex alone suffices” is false: digit-only unsafe integers still match.'
               - index: 3
                 verdict: PASS
-                reason: '“not applied to caller”; “Next: **build**” preserves caller approval.'
+                reason: '“not applied to caller” and “Next: build” preserve approval.'
         recorded_verdict: FAIL
         objective: *ref_8
   - id: F20-debug-agent
     judge_verdict: FAIL
     judge_reason: >-
-      Proposed fix accepts trailing newlines, leaving the stated entire-string validation
-      requirement unsatisfied.
+      Proposed regex accepts trailing newlines; the claimed fix leaves whole-string validation
+      broken.
     suspect: false
     metrics:
-      wall_time_ms: 150573
-      judge_calls: 3
-      judge_rejudge_calls: 2
+      wall_time_ms: 161504
+      judge_calls: 4
+      judge_rejudge_calls: 3
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 15369
@@ -1966,18 +1970,16 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Proposed fix accepts trailing newlines, leaving the stated entire-string validation
-              requirement unsatisfied.
+              Proposed regex accepts trailing newlines; the claimed fix leaves whole-string
+              validation broken.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: '“no entire-string check” remains: `/^\d+$/` accepts a trailing newline.'
+                reason: '`/^\d+$/` accepts trailing newlines, violating “entire-string check.”'
               - index: 2
                 verdict: FAIL
-                reason: >-
-                  “Fix: proved” overstates correctness; proposed validation still accepts invalid
-                  input.
+                reason: '“Fix: proved” recommends validation that still accepts invalid trailing newlines.'
               - index: 3
                 verdict: PASS
                 reason: “Stopping here for your approval before Build applies the fix.”
@@ -1986,13 +1988,13 @@ scenarios:
   - id: F21-debug-direct-agent
     judge_verdict: FAIL
     judge_reason: >-
-      Incorrect coercion evidence and contradictory caller-tree modification claims undermine the
-      diagnosis.
+      False null behavior undermines claimed proof; caller-tree reproduction contradicts
+      disposable-only evidence.
     suspect: false
     metrics:
-      wall_time_ms: 49325
-      judge_calls: 2
-      judge_rejudge_calls: 2
+      wall_time_ms: 60235
+      judge_calls: 3
+      judge_rejudge_calls: 3
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 14143
@@ -2012,7 +2014,7 @@ scenarios:
         priceAsOf: '2026-09-29'
     override: null
     note: ''
-    objective:
+    objective: &ref_10
       status: FAIL
       trace_version: 2
       trace_sha256: 55bec47442d5decbcf6d5a1410188ab99a779894983f614a05ff0ce6ca0c482c
@@ -2053,8 +2055,8 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Incorrect coercion evidence and contradictory caller-tree modification claims
-              undermine the diagnosis.
+              False null behavior undermines claimed proof; caller-tree reproduction contradicts
+              disposable-only evidence.
             suspect: false
             criteria:
               - index: 1
@@ -2062,19 +2064,20 @@ scenarios:
                 reason: “null → 0” is false; parseInt(null, 10) returns NaN.
               - index: 2
                 verdict: FAIL
-                reason: “full QUAL-P gate added” in “caller tree” contradicts “untouched.”
+                reason: “null → 0” invents probe evidence supporting the diagnosis.
               - index: 3
                 verdict: PASS
-                reason: “disposable workspace only, not applied to caller”; “no agent dispatch.”
+                reason: “disposable workspace only, not applied to caller”; “no agent dispatch”.
         recorded_verdict: FAIL
+        objective: *ref_10
   - id: F22-debug-no-workspace-skill
     judge_verdict: FAIL
-    judge_reason: Proposed validation accepts trailing newlines; diagnosis incorrectly claims NaN throws.
+    judge_reason: Incorrectly claims NaN throws, misleading the engineer about existing rejection behavior.
     suspect: false
     metrics:
-      wall_time_ms: 53640
-      judge_calls: 3
-      judge_rejudge_calls: 2
+      wall_time_ms: 63809
+      judge_calls: 4
+      judge_rejudge_calls: 3
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 5333
@@ -2094,7 +2097,7 @@ scenarios:
         priceAsOf: '2026-09-29'
     override: null
     note: ''
-    objective: &ref_10
+    objective: &ref_11
       status: PASS
       trace_version: 2
       trace_sha256: ad5c76cbd0f0b8c6714eecc959eae6a853c0f31f5dd2dc97f0c3df59ba0eb707
@@ -2129,31 +2132,31 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Proposed validation accepts trailing newlines; diagnosis incorrectly claims NaN
-              throws.
+              Incorrectly claims NaN throws, misleading the engineer about existing rejection
+              behavior.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: >-
-                  Proposed `!/^[0-9]+$/.test(value)` accepts trailing newlines, violating
-                  whole-string validation.
+                reason: “NaN, which throws” is false; diagnosis needs correction.
               - index: 2
                 verdict: FAIL
-                reason: “NaN, which throws” is false; returning NaN does not throw.
+                reason: “NaN, which throws” incorrectly implies non-string inputs already throw.
               - index: 3
                 verdict: PASS
-                reason: “not executed here” explicitly distinguishes semantic analysis from execution.
+                reason: “not executed here” clearly distinguishes semantics from reproduction.
         recorded_verdict: FAIL
-        objective: *ref_10
+        objective: *ref_11
   - id: F22-debug-unreproduced-agent
     judge_verdict: FAIL
-    judge_reason: Static defects do not establish the cause of the unspecified intermittent symptom.
+    judge_reason: >-
+      Static parser defects are conflated with the unspecified intermittent symptom despite explicit
+      disclaimers.
     suspect: false
     metrics:
-      wall_time_ms: 57770
-      judge_calls: 3
-      judge_rejudge_calls: 2
+      wall_time_ms: 67423
+      judge_calls: 4
+      judge_rejudge_calls: 3
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 5675
@@ -2173,7 +2176,7 @@ scenarios:
         priceAsOf: '2026-09-29'
     override: null
     note: ''
-    objective: &ref_11
+    objective: &ref_12
       status: PASS
       trace_version: 2
       trace_sha256: c457199db520cf3db7dae6beffb79cd868b8120d95e4f47840713686db7a03d0
@@ -2207,32 +2210,36 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: Static defects do not establish the cause of the unspecified intermittent symptom.
+            reason: >-
+              Static parser defects are conflated with the unspecified intermittent symptom despite
+              explicit disclaimers.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “only execution remains” overlooks needing the caller’s concrete failing input.
+                reason: >-
+                  “only execution remains” overlooks missing evidence linking suspicion to reported
+                  symptom.
               - index: 2
                 verdict: FAIL
-                reason: “which explains the intermittency” invents a causal connection.
+                reason: “which explains the intermittency” invents an unsupported causal connection.
               - index: 3
                 verdict: FAIL
                 reason: >-
                   “intermittent misbehavior (garbage-suffixed / whitespace-padded inputs)” treats
-                  speculation as reported fact.
+                  hypothetical inputs as established.
         recorded_verdict: FAIL
-        objective: *ref_11
+        objective: *ref_12
   - id: F22-debug-missing-definition-skill
-    judge_verdict: PASS
+    judge_verdict: FAIL
     judge_reason: >-
-      Correctly blocks conformance judgment on the missing Count definition without inventing
-      semantics or fixes.
+      Requires the missing definition, withholds conformance judgment, and proposes no speculative
+      fix.
     suspect: false
     metrics:
-      wall_time_ms: 49437
-      judge_calls: 2
-      judge_rejudge_calls: 2
+      wall_time_ms: 62740
+      judge_calls: 3
+      judge_rejudge_calls: 3
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 7106
@@ -2252,7 +2259,7 @@ scenarios:
         priceAsOf: '2026-09-29'
     override: null
     note: ''
-    objective:
+    objective: &ref_13
       status: FAIL
       trace_version: 2
       trace_sha256: 6b15e2046924049285a36502df4dade28c261d51e502db18297be81387df536d
@@ -2287,19 +2294,18 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Correctly blocks conformance judgment on the missing Count definition without
-              inventing semantics or fixes.
+              Requires the missing definition, withholds conformance judgment, and proposes no
+              speculative fix.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: >-
-                  “conformance is undetermined” correctly identifies the blocker without proposing
-                  speculative changes.
+                reason: 'Correctly blocks judgment: “conformance is undetermined.”'
               - index: 2
                 verdict: PASS
-                reason: '“None proposed” avoids an unjustified fix; “Suite: Not run” discloses limitations.'
+                reason: 'Avoids unjustified changes: “Fix: None proposed.”'
               - index: 3
                 verdict: PASS
-                reason: “What is the definition of Count” explicitly requires the missing definition.
-        recorded_verdict: PASS
+                reason: 'Explicitly requires definition: “What is the definition of Count?”'
+        recorded_verdict: FAIL
+        objective: *ref_13

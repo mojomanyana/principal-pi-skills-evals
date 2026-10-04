@@ -1,6 +1,6 @@
-1. FAIL — “proven fix” lacks implementation or regression evidence in the empty diff.
-2. PASS — “not applied to caller”; empty diff shows no harmful changes.
-3. FAIL — “throw a domain error” is proposed, not implemented in the diff.
+1. PASS — “validate the match” addresses the null dereference; “not applied to caller.”
+2. PASS — “disposable workspace only”; application deferred to “build.”
+3. PASS — “throw new DurationParseError(input)” exposes malformed input; “No logging added.”
 
-VERDICT: FAIL
-REASON: Empty diff does not substantiate the claimed proven repair or required parser behavior.
+VERDICT: PASS
+REASON: Targeted domain-error proposal preserves purity and caller boundaries; empty staged diff fits debug-only scope.

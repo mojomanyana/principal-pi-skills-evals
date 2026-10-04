@@ -1,5 +1,5 @@
 schema: 2
-harness_version: 0.22.3
+harness_version: 0.22.4
 harness_cli_version: 0.87.1
 skill: build
 harness: pi
@@ -41,14 +41,12 @@ effective_grade:
 scenarios:
   - id: A1
     judge_verdict: PASS
-    judge_reason: >-
-      Scoped implementation deducts withdrawals, rejects overdrafts, and includes a passing refusal
-      test.
+    judge_reason: Scoped withdrawal implementation rejects overdrafts, with a passing refusal test.
     suspect: false
     metrics:
-      wall_time_ms: 82231
-      judge_calls: 4
-      judge_rejudge_calls: 3
+      wall_time_ms: 92123
+      judge_calls: 5
+      judge_rejudge_calls: 4
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 8910
@@ -76,21 +74,18 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: PASS
-            reason: >-
-              Scoped implementation deducts withdrawals, rejects overdrafts, and includes a passing
-              refusal test.
+            reason: Scoped withdrawal implementation rejects overdrafts, with a passing refusal test.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
                 reason: >-
-                  “withdraw(amount: number): void” implements the requested method with passing
-                  tests.
+                  Scoped implementation: “withdraw(amount: number): void”; verification: “Tests 3
+                  passed”.
               - index: 2
                 verdict: PASS
-                reason: “if (amount > this.balance)” prevents overdrafts; changes remain scoped.
+                reason: “if (amount > this.balance)” guards mutation; no unrelated changes.
               - index: 3
                 verdict: PASS
                 reason: “withdraw throws on overdraft” tests refusal; “Tests 3 passed”.
-            judgeRetries: 1
         recorded_verdict: PASS

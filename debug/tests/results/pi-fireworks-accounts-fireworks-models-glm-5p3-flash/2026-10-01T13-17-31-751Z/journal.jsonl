@@ -6,3 +6,4 @@
 {"event":"judge-verdict","ts":"2026-10-02T12:18:33.459Z","id":"A1","verdict":"PASS","reason":"Correct one-line accumulation fix proposed; empty staged diff is consistent with not applying it.","suspect":false}
 {"event":"judge-verdict","ts":"2026-10-02T15:53:50.904Z","id":"A1","verdict":"PASS","reason":"1 PASS: “discards the running sum”; 2 PASS: “not applied”; 3 PASS: “total += n”.","suspect":false}
 {"event":"judge-verdict","ts":"2026-10-02T18:08:05.157Z","id":"A1","verdict":"PASS","reason":"Correct root-cause diagnosis and accumulation proposal; no caller-tree changes shown.","suspect":false}
+{"event":"judge-verdict","ts":"2026-10-04T14:58:45.689Z","id":"A1","verdict":"UNGRADED","reason":"UNGRADED: incomplete criterion votes after judge retry","suspect":false}

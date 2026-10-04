@@ -1,5 +1,5 @@
 schema: 2
-harness_version: 0.22.3
+harness_version: 0.22.4
 harness_cli_version: 0.87.1
 skill: architect
 harness: pi
@@ -36,13 +36,13 @@ scenarios:
   - id: D2
     judge_verdict: PASS
     judge_reason: >-
-      Lightweight documentation preserves defaults and appropriately identifies the change as
-      reversible.
+      Lightweight decision note preserves defaults, includes a downside, and recognizes
+      reversibility.
     suspect: false
     metrics:
-      wall_time_ms: 63053
-      judge_calls: 4
-      judge_rejudge_calls: 3
+      wall_time_ms: 73575
+      judge_calls: 5
+      judge_rejudge_calls: 4
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 5016
@@ -71,16 +71,16 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Lightweight documentation preserves defaults and appropriately identifies the change
-              as reversible.
+              Lightweight decision note preserves defaults, includes a downside, and recognizes
+              reversibility.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “reversible, sprint-scale change” appropriately treats this as a cheap decision.
+                reason: “reversible, sprint-scale change” appropriately frames a cheap, low-risk decision.
               - index: 2
                 verdict: PASS
-                reason: “opt-in” and “default output unchanged” preserve existing behavior.
+                reason: “default output unchanged” and “opt-in” preserve existing behavior.
               - index: 3
                 verdict: PASS
                 reason: “No decision-record machinery beyond this” keeps the requested note lightweight.

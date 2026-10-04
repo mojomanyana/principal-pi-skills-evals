@@ -1,5 +1,5 @@
 schema: 2
-harness_version: 0.22.3
+harness_version: 0.22.4
 harness_cli_version: 0.87.1
 skill: plan
 harness: pi
@@ -36,13 +36,13 @@ scenarios:
   - id: A2
     judge_verdict: FAIL
     judge_reason: >-
-      First slice fakes transformation; premature deduplication can strand notifications after
-      failures.
+      Contract discovery comes late; retry handling risks lost notifications; first slice lacks real
+      transformation.
     suspect: false
     metrics:
-      wall_time_ms: 108143
-      judge_calls: 6
-      judge_rejudge_calls: 5
+      wall_time_ms: 119502
+      judge_calls: 7
+      judge_rejudge_calls: 6
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 6099
@@ -71,21 +71,21 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              First slice fakes transformation; premature deduplication can strand notifications
-              after failures.
+              Contract discovery comes late; retry handling risks lost notifications; first slice
+              lacks real transformation.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: >-
-                  “Vendor contract spike” follows skeleton implementing an unverified signature
-                  scheme.
+                reason: “Vendor contract spike” follows implementation depending on that unknown contract.
               - index: 2
                 verdict: FAIL
-                reason: “on conflict return the same 202” can strand failed notifications.
+                reason: >-
+                  “on conflict return ... 202” loses notifications after post-persistence publish
+                  failures.
               - index: 3
                 verdict: FAIL
                 reason: >-
-                  “primitive transform (pass-through)” fakes transformation; “Real transformation”
-                  comes later.
+                  “primitive transform (pass-through)” defers actual transformation to “Real
+                  transformation.”
         recorded_verdict: FAIL

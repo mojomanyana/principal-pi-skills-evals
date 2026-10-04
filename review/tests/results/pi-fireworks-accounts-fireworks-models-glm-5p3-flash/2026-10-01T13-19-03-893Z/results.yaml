@@ -1,5 +1,5 @@
 schema: 2
-harness_version: 0.22.3
+harness_version: 0.22.4
 harness_cli_version: 0.87.1
 skill: review
 harness: pi
@@ -36,13 +36,13 @@ scenarios:
   - id: A2
     judge_verdict: PASS
     judge_reason: >-
-      Identifies invisible database failures, blocks approval, and recommends propagating
+      Identifies swallowed database failures, requests changes, and recommends propagating
       exceptions.
     suspect: false
     metrics:
-      wall_time_ms: 56394
-      judge_calls: 4
-      judge_rejudge_calls: 3
+      wall_time_ms: 65091
+      judge_calls: 5
+      judge_rejudge_calls: 4
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 3940
@@ -70,19 +70,19 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Identifies invisible database failures, blocks approval, and recommends propagating
+              Identifies swallowed database failures, requests changes, and recommends propagating
               exceptions.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “CHANGES-REQUESTED” correctly prioritizes the swallowed write failure.
+                reason: >-
+                  Correctly requests changes: “caller cannot distinguish a saved record from a lost
+                  one.”
               - index: 2
                 verdict: PASS
-                reason: >-
-                  “Let the exception propagate” removes suppression without weakening error
-                  handling.
+                reason: 'Safe, minimal fix: “Let the exception propagate.”'
               - index: 3
                 verdict: PASS
-                reason: “caller cannot distinguish a saved record from a lost one.”
+                reason: 'Explicitly identifies invisibility: “data loss with no signal.”'
         recorded_verdict: PASS

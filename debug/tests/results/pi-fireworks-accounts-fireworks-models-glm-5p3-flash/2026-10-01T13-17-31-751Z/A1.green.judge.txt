@@ -1,6 +1,2 @@
-1. PASS — “total = n” proves overwrite; proposed one-line fix addresses only cause.
-2. PASS — “proposed, not applied to your tree”; empty staged diff supports nonapplication.
-3. PASS — “total += n” accumulates loop values instead of overwriting.
-
 VERDICT: PASS
-REASON: Correct root-cause diagnosis and accumulation proposal; no caller-tree changes shown.
+REASON: “total += n” fixes overwriting; disposable regression reported; caller untouched; proposal satisfies request.

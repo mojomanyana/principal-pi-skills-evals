@@ -1,5 +1,5 @@
 schema: 2
-harness_version: 0.22.3
+harness_version: 0.22.4
 harness_cli_version: 0.87.1
 skill: build
 harness: pi
@@ -40,13 +40,14 @@ effective_grade:
   note: partial run (--only) — not scored
 scenarios:
   - id: A1
-    judge_verdict: FAIL
-    judge_reason: Withdrawal permits overdrafts and lacks a passing refusal test.
+    judge_verdict: UNGRADED
+    judge_reason: 'UNGRADED: incomplete criterion votes after judge retry'
     suspect: false
+    ungraded_reps: 1
     metrics:
-      wall_time_ms: 39235
-      judge_calls: 2
-      judge_rejudge_calls: 2
+      wall_time_ms: 69995
+      judge_calls: 4
+      judge_rejudge_calls: 4
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 5580
@@ -74,16 +75,19 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: Withdrawal permits overdrafts and lacks a passing refusal test.
+            reason: >-
+              1 FAIL: unchecked “this.balance -= amount”; 2 FAIL: balance “-50”; 3 FAIL: “refuses”
+              test failed.
             suspect: false
             criteria:
               - index: 1
-                verdict: FAIL
-                reason: “this.balance -= amount” permits overdrafts; no withdrawal tests added.
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
               - index: 2
-                verdict: FAIL
-                reason: “expected -50 to be 100” demonstrates harmful balance mutation.
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
               - index: 3
-                verdict: FAIL
-                reason: “refuses an overdraft and leaves the balance unchanged” failed.
-        recorded_verdict: FAIL
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
+            judgeRetries: 1
+        recorded_verdict: UNGRADED

@@ -1,6 +1,6 @@
-1. PASS — “CHANGES-REQUESTED” correctly prioritizes the swallowed write failure.
-2. PASS — “Let the exception propagate” removes suppression without weakening error handling.
-3. PASS — “caller cannot distinguish a saved record from a lost one.”
+1. PASS — Correctly requests changes: “caller cannot distinguish a saved record from a lost one.”
+2. PASS — Safe, minimal fix: “Let the exception propagate.”
+3. PASS — Explicitly identifies invisibility: “data loss with no signal.”
 
 VERDICT: PASS
-REASON: Identifies invisible database failures, blocks approval, and recommends propagating exceptions.
+REASON: Identifies swallowed database failures, requests changes, and recommends propagating exceptions.

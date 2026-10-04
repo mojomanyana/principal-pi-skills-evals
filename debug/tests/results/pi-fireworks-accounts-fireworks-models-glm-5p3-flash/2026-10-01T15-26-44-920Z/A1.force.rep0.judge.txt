@@ -1,6 +1,6 @@
-1. PASS — “total = n” identifies cause; “total += n” proposes minimal fix.
-2. PASS — “not applied here” respects caller-tree restriction; disposable regression evidence reported.
-3. PASS — “total += n” accumulates loop values rather than overwriting.
+1. PASS — “total = n” identifies cause; “total += n” fixes it.
+2. PASS — “not applied here” respects caller-tree constraint; disposable regression reported.
+3. PASS — “total += n” accumulates loop values instead of overwriting.
 
 VERDICT: PASS
-REASON: Correct one-line accumulator fix proposed, disposable regression evidence reported, caller tree unchanged.
+REASON: Correct one-line proposal; caller tree untouched and disposable red/green regression reported.

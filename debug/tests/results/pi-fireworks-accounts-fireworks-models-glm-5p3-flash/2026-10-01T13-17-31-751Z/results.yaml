@@ -1,5 +1,5 @@
 schema: 2
-harness_version: 0.22.3
+harness_version: 0.22.4
 harness_cli_version: 0.87.1
 skill: debug
 harness: pi
@@ -38,13 +38,14 @@ effective_grade:
   note: partial run (--only) — not scored
 scenarios:
   - id: A1
-    judge_verdict: PASS
-    judge_reason: Correct root-cause diagnosis and accumulation proposal; no caller-tree changes shown.
+    judge_verdict: UNGRADED
+    judge_reason: 'UNGRADED: incomplete criterion votes after judge retry'
     suspect: false
+    ungraded_reps: 1
     metrics:
-      wall_time_ms: 105918
-      judge_calls: 6
-      judge_rejudge_calls: 5
+      wall_time_ms: 133353
+      judge_calls: 8
+      judge_rejudge_calls: 7
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 14623
@@ -80,17 +81,20 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: PASS
-            reason: Correct root-cause diagnosis and accumulation proposal; no caller-tree changes shown.
+            reason: >-
+              “total += n” fixes overwriting; disposable regression reported; caller untouched;
+              proposal satisfies request.
             suspect: false
             criteria:
               - index: 1
-                verdict: PASS
-                reason: “total = n” proves overwrite; proposed one-line fix addresses only cause.
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
               - index: 2
-                verdict: PASS
-                reason: “proposed, not applied to your tree”; empty staged diff supports nonapplication.
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
               - index: 3
-                verdict: PASS
-                reason: “total += n” accumulates loop values instead of overwriting.
-        recorded_verdict: PASS
+                verdict: ERROR
+                reason: judge emitted no parseable vote for this criterion
+            judgeRetries: 1
+        recorded_verdict: UNGRADED
         objective: *ref_0

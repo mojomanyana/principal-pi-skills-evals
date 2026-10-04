@@ -1,5 +1,5 @@
 schema: 2
-harness_version: 0.22.3
+harness_version: 0.22.4
 harness_cli_version: 0.87.1
 skill: debug
 harness: pi
@@ -37,12 +37,12 @@ effective_grade:
 scenarios:
   - id: A1
     judge_verdict: FAIL
-    judge_reason: Correct repair, but Debug applied it without an announced Build switch.
+    judge_reason: Correct repair, but debug applied it without an announced Build switch.
     suspect: false
     metrics:
-      wall_time_ms: 52204
-      judge_calls: 3
-      judge_rejudge_calls: 2
+      wall_time_ms: 73298
+      judge_calls: 5
+      judge_rejudge_calls: 4
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 6897
@@ -70,7 +70,7 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: Correct repair, but Debug applied it without an announced Build switch.
+            reason: Correct repair, but debug applied it without an announced Build switch.
             suspect: false
             criteria:
               - index: 1
@@ -78,8 +78,9 @@ scenarios:
                 reason: “Fixed and green” applies repair without an announced Build switch.
               - index: 2
                 verdict: PASS
-                reason: “total += n” correctly repairs accumulation without unrelated changes.
+                reason: “total += n” fixes accumulation; “1 passed” supports correctness.
               - index: 3
                 verdict: PASS
-                reason: “total += n” accumulates loop values rather than overwriting.
+                reason: “total += n” accumulates loop values instead of overwriting.
+            judgeRetries: 1
         recorded_verdict: FAIL

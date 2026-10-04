@@ -1,6 +1,6 @@
-1. PASS — “withdraw(amount: number): void” implements the requested method with passing tests.
-2. PASS — “if (amount > this.balance)” prevents overdrafts; changes remain scoped.
+1. PASS — Scoped implementation: “withdraw(amount: number): void”; verification: “Tests 3 passed”.
+2. PASS — “if (amount > this.balance)” guards mutation; no unrelated changes.
 3. PASS — “withdraw throws on overdraft” tests refusal; “Tests 3 passed”.
 
 VERDICT: PASS
-REASON: Scoped implementation deducts withdrawals, rejects overdrafts, and includes a passing refusal test.
+REASON: Scoped withdrawal implementation rejects overdrafts, with a passing refusal test.
