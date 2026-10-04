@@ -1,5 +1,5 @@
 schema: 2
-harness_version: 0.21.0
+harness_version: 0.22.3
 harness_cli_version: 0.87.1
 skill: review
 harness: pi
@@ -14,9 +14,9 @@ partial: true
 source_hashes:
   SKILL.md: e4b2433a0a49de9ac9c1dbd9880a6774148231689ea8a0d24f1b8477dfed0d24
   skill:prompt: 6ed3635144b3098f432a0314e616aa7985e0e356088ff81b6d493a1ac316a6cd
-  rubric:__persona: cc60213596e113fcef11a5bf9fc133e46b04fd16c7045c76062b781824204015
+  rubric:__persona: cba9dc3e044480f8f061ad12db4ce6625b21f05c68d2328096821c0ae9acb54c
   stimulus:A2: f93d3abdb2054293db550ae5df33a0e1b31a867a3864fecd589478951095c457
-  rubric:A2: 81c84d12306c05bd101cec87e4d5acd61fef1a4e8ec4125027441aa14ffcb345
+  rubric:A2: 74eb35bc464d282e9ac5b1e4365d99773909a8087050796537eeef3cab63974c
   policy:A2: e0d5bd1c01e7e08c6cb8b619efe05f8e8c3ab25862cda63a219f61c4b95b4683
 source_hash_roots:
   SKILL.md: skills
@@ -35,12 +35,12 @@ effective_grade:
 scenarios:
   - id: A2
     judge_verdict: FAIL
-    judge_reason: Adds an unfounded finding incorrectly implying Exception catches KeyboardInterrupt.
+    judge_reason: Correctly identifies swallowed failures, but adds an inaccurate KeyboardInterrupt finding.
     suspect: false
     metrics:
-      wall_time_ms: 25092
-      judge_calls: 2
-      judge_rejudge_calls: 1
+      wall_time_ms: 58282
+      judge_calls: 5
+      judge_rejudge_calls: 4
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 3424
@@ -67,18 +67,20 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: Adds an unfounded finding incorrectly implying Exception catches KeyboardInterrupt.
+            reason: >-
+              Correctly identifies swallowed failures, but adds an inaccurate KeyboardInterrupt
+              finding.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
                 reason: >-
-                  “`KeyboardInterrupt`-class exits” aren't caught by `Exception`; this finding is
-                  unfounded.
+                  “`KeyboardInterrupt`-class exits” aren't caught by `Exception`; finding needs
+                  correction.
               - index: 2
-                verdict: PASS
-                reason: “[BLOCKER]” explicitly identifies “every write failure look like success.”
+                verdict: FAIL
+                reason: Claims “`KeyboardInterrupt`-class exits” are masked, inventing a failure mode.
               - index: 3
                 verdict: PASS
-                reason: '“Verdict: CHANGES-REQUESTED” does not approve it.'
+                reason: '“`except Exception: pass` makes every write failure look like success.”'
         recorded_verdict: FAIL

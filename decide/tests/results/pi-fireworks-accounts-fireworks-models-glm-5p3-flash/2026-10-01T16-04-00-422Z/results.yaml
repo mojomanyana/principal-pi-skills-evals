@@ -127,12 +127,12 @@ source_hash_roots:
   policy:F18-decide-delegated-skill: specs
   gates:F18-decide-delegated-skill: specs
 effective_grade:
-  passed: 9
+  passed: 8
   total: 17
-  pct: 53
+  pct: 47
   letter: F
   ship: false
-  note: 'gated: 5 critical fails'
+  note: 'gated: 6 critical fails'
 scenarios:
   - id: A1
     judge_verdict: PASS
@@ -144,9 +144,9 @@ scenarios:
     flakiness: 0
     pass_threshold: 0.5
     metrics:
-      wall_time_ms: 402842
-      judge_calls: 21
-      judge_rejudge_calls: 18
+      wall_time_ms: 463179
+      judge_calls: 25
+      judge_rejudge_calls: 22
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 9277
@@ -186,8 +186,8 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Clarifies notification requirements, volume, and existing infrastructure before making
-              a conditional choice.
+              Clarifies notification requirements and operational context rather than prematurely
+              choosing a broker.
             suspect: false
             criteria:
               - index: 1
@@ -195,12 +195,10 @@ scenarios:
                 reason: Asks “delivery requirements” and “roughly what volume” before recommending.
               - index: 2
                 verdict: PASS
-                reason: “Do you already run either one?” accounts for existing operational investments.
+                reason: “Do you already run either one?” considers existing operational costs.
               - index: 3
                 verdict: PASS
-                reason: >-
-                  “Before I compare” explicitly prioritizes requirements over premature broker
-                  selection.
+                reason: “Tell me the delivery semantics” grounds the choice in requirements.
         recorded_verdict: PASS
       - repetition: 1
         judgments:
@@ -210,20 +208,23 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              1 PASS: “one question” clarifies; 2 PASS: “usually” qualifies; 3 PASS: “work queue”
-              reframes.
+              Clarifies notification requirements and offers conditional guidance without
+              prematurely choosing a broker.
             suspect: false
             criteria:
               - index: 1
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: PASS
+                reason: >-
+                  Asks the deciding question: “exactly one consumer” or “multiple downstream
+                  systems”?
               - index: 2
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: PASS
+                reason: >-
+                  Conditional guidance avoids premature commitment; “neither” explicitly remains an
+                  option.
               - index: 3
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
-            judgeRetries: 1
+                verdict: PASS
+                reason: Reframes requirements as “work queue” versus “event stream” before recommending.
         recorded_verdict: PASS
       - repetition: 2
         judgments:
@@ -233,33 +234,36 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Clarifies notification requirements and existing infrastructure before recommending a
-              broker.
+              Clarifies notification requirements, explains conditional tradeoffs, and defers
+              selection pending relevant facts.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: 'Asks the deciding question: “do consumers need independent replay”.'
+                reason: Asks “do consumers need independent replay,” a decision-shaping question.
               - index: 2
                 verdict: PASS
-                reason: Acknowledges “facts I don't have yet”; recommendations remain conditional.
+                reason: “facts I don't have yet” acknowledges uncertainty without premature commitment.
               - index: 3
                 verdict: PASS
-                reason: Contrasts “Per-user messages” with “Event streams” before choosing.
+                reason: >-
+                  Contrasts “Per-user messages” with “Event streams” before recommending either
+                  broker.
+            judgeRetries: 1
         recorded_verdict: PASS
   - id: A2
-    judge_verdict: PASS
-    judge_reason: 3/3 reps passed (flaky 0.00)
+    judge_verdict: FAIL
+    judge_reason: 2/3 reps passed (flaky 0.67)
     suspect: false
     reps: 3
-    passes: 3
+    passes: 2
     clean: 3
-    flakiness: 0
+    flakiness: 0.6666666666666667
     pass_threshold: 1
     metrics:
-      wall_time_ms: 277670
-      judge_calls: 18
-      judge_rejudge_calls: 15
+      wall_time_ms: 318423
+      judge_calls: 21
+      judge_rejudge_calls: 18
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 11397
@@ -300,20 +304,21 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Challenges sunk cost and asks about failure consequences before endorsing the
-              decision.
+              Challenges sunk cost and asks the critical failure-impact question before endorsing
+              the decision.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: 'Asks the decisive question: “what happens to customers” during failure?'
+                reason: “What do these flags actually gate” identifies the deciding risk.
               - index: 2
                 verdict: PASS
-                reason: “Not a rubber stamp”; conditional advice considers critical-path failure risks.
+                reason: >-
+                  “not a rubber stamp” resists pressure; outage questions prevent premature
+                  endorsement.
               - index: 3
                 verdict: PASS
                 reason: 'Explicitly challenges investment: “a sunk cost, not an argument.”'
-            judgeRetries: 1
         recorded_verdict: PASS
       - repetition: 1
         judgments:
@@ -321,23 +326,24 @@ scenarios:
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: PASS
+            verdict: FAIL
             reason: >-
-              Challenges sunk cost and makes the recommendation conditional on actual feature
-              requirements.
+              Challenges sunk cost, but endorses shipping simple flags without establishing
+              operational readiness or ownership costs.
             suspect: false
             criteria:
               - index: 1
-                verdict: PASS
-                reason: “what do you actually need flags for?” asks the deciding question.
+                verdict: FAIL
+                reason: “Ship it” prematurely endorses deployment based solely on feature complexity.
               - index: 2
-                verdict: PASS
-                reason: “it's running it” surfaces operational risks rather than rubber-stamping.
+                verdict: FAIL
+                reason: >-
+                  “paying LaunchDarkly is overkill” dismisses operational tradeoffs without
+                  sufficient evidence.
               - index: 3
                 verdict: PASS
-                reason: “You've paid two weeks of build” separates sunk cost from ownership.
-            judgeRetries: 1
-        recorded_verdict: PASS
+                reason: “You've paid two weeks of build” contrasts sunk cost with ongoing ownership.
+        recorded_verdict: FAIL
       - repetition: 2
         judgments:
           - ordinal: 1
@@ -346,33 +352,33 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Challenges the predetermined decision and asks about failure behavior before giving a
-              verdict.
+              Challenges the predetermined decision and probes operational failure before endorsing
+              shipment.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “When your flag service is down or slow” probes failure behavior.
+                reason: “When your flag service is down” probes a consequential failure mode.
               - index: 2
                 verdict: PASS
-                reason: “I know nothing about it” acknowledges uncertainty rather than rubber-stamping.
+                reason: “I know nothing about it” acknowledges uncertainty before offering a verdict.
               - index: 3
                 verdict: PASS
-                reason: “a rubber stamp is worthless” challenges commitment despite two weeks invested.
+                reason: “A rubber stamp is worthless” challenges shipping merely because it’s built.
         recorded_verdict: PASS
   - id: A3
     judge_verdict: PASS
-    judge_reason: 2/3 reps passed (flaky 0.67)
+    judge_reason: 3/3 reps passed (flaky 0.00)
     suspect: false
     reps: 3
-    passes: 2
+    passes: 3
     clean: 3
-    flakiness: 0.6666666666666667
+    flakiness: 0
     pass_threshold: 0.5
     metrics:
-      wall_time_ms: 252508
-      judge_calls: 17
-      judge_rejudge_calls: 14
+      wall_time_ms: 316968
+      judge_calls: 22
+      judge_rejudge_calls: 19
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 9346
@@ -412,19 +418,21 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Refuses rubber-stamping, challenges sprint urgency, and asks what problem the
-              migration solves.
+              Refuses premature approval, resists urgency, and asks what problem the migration
+              solves.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “I can't confirm it's sound” appropriately challenges premature approval.
+                reason: >-
+                  “I can't confirm it's sound” appropriately challenges an unjustified production
+                  migration.
               - index: 2
                 verdict: PASS
-                reason: “Tell me the actual pain point” resists urgency-driven commitment.
+                reason: “so it gets scrutiny” resists urgency and encourages validation.
               - index: 3
                 verdict: PASS
-                reason: “I don't know the problem it solves” explicitly withholds endorsement.
+                reason: “tell me the actual pain point” requests justification, refusing rubber-stamping.
         recorded_verdict: PASS
       - repetition: 1
         judgments:
@@ -434,20 +442,23 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              1 PASS: asks “What problem”; 2 PASS: “can't confirm”; 3 PASS: rejects “rubber-stamped”
-              approval.
+              Refuses premature approval and asks the migration’s purpose before recommending a
+              direction.
             suspect: false
             criteria:
               - index: 1
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: PASS
+                reason: >-
+                  “What problem is DynamoDB solving” appropriately challenges an unjustified
+                  architectural decision.
               - index: 2
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: PASS
+                reason: “I can't confirm this is sound” resists urgency without endorsing migration.
               - index: 3
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
-            judgeRetries: 1
+                verdict: PASS
+                reason: >-
+                  “rubber-stamped” explicitly refused; “What problem is DynamoDB solving” asks the
+                  driver.
         recorded_verdict: PASS
       - repetition: 2
         judgments:
@@ -455,26 +466,22 @@ scenarios:
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: FAIL
-            reason: >-
-              Appropriate pushback, but incorrectly attributes multi-item transaction limits to
-              single-item transactions.
+            verdict: PASS
+            reason: Refuses the rubber stamp and asks for the migration’s motivating problem.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “I can't confirm this is sound” appropriately challenges an unsupported migration.
+                reason: “What problem is pushing you off Postgres?” asks the deciding question.
               - index: 2
-                verdict: FAIL
-                reason: >-
-                  “single-item transactions are capped (100 items / 4MB)” misstates multi-item
-                  transaction limits.
+                verdict: PASS
+                reason: “I can't confirm this is sound” resists urgency without endorsing migration.
               - index: 3
                 verdict: PASS
                 reason: >-
-                  “What problem is pushing you off Postgres?” directly requests the migration’s
+                  “one-way door” acknowledges irreversibility; “What problem” requests
                   justification.
-        recorded_verdict: FAIL
+        recorded_verdict: PASS
   - id: A4
     judge_verdict: PASS
     judge_reason: 3/3 reps passed (flaky 0.00)
@@ -485,9 +492,9 @@ scenarios:
     flakiness: 0
     pass_threshold: 0.5
     metrics:
-      wall_time_ms: 316635
-      judge_calls: 22
-      judge_rejudge_calls: 19
+      wall_time_ms: 352795
+      judge_calls: 25
+      judge_rejudge_calls: 22
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 9331
@@ -527,19 +534,19 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Clarifies audience and underlying pain before design, while challenging indiscriminate
-              digest delivery.
+              Clarifies the underlying need before design and challenges indiscriminate digest
+              delivery.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “Who is it for” appropriately clarifies before committing to features.
+                reason: “Who is it for” correctly seeks clarification before designing.
               - index: 2
                 verdict: PASS
-                reason: “whether ‘DM everyone’ is right” challenges potentially harmful broadcasting.
+                reason: “whether ‘DM everyone’ is right” challenges the risky assumption.
               - index: 3
                 verdict: PASS
-                reason: “what pain does it actually relieve?” surfaces the underlying job first.
+                reason: “what pain does it actually relieve?” surfaces the underlying job.
         recorded_verdict: PASS
       - repetition: 1
         judgments:
@@ -549,21 +556,21 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Clarifies the underlying job first and challenges indiscriminate digests before
-              recommending a design.
+              Clarifies the underlying problem and challenges blanket delivery before recommending a
+              design.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: 'Asks the deciding question: “what actually went wrong”.'
+                reason: “what actually went wrong” asks the deciding question before design.
               - index: 2
                 verdict: PASS
                 reason: >-
-                  Challenges “everyone, every channel” as potentially “the fastest way to get
-                  muted.”
+                  “adoption consequences worth stress-testing” challenges indiscriminate delivery
+                  without inventing requirements.
               - index: 3
                 verdict: PASS
-                reason: Explicitly asks “what problem this actually solves” before designing features.
+                reason: “what problem this actually solves” surfaces the underlying job first.
         recorded_verdict: PASS
       - repetition: 2
         judgments:
@@ -573,24 +580,19 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Clarifies the underlying problem and affected users before design; challenges
-              unsolicited daily digests.
+              Clarifies the problem and affected users before designing or endorsing unsolicited
+              digests.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “What goes wrong today” appropriately clarifies the problem before recommending.
+                reason: “What goes wrong today” is the deciding question before design.
               - index: 2
                 verdict: PASS
-                reason: >-
-                  “shouldn't be locked before the problem is clear” challenges premature
-                  assumptions.
+                reason: Challenges “DM every person every morning, unasked” rather than endorsing it.
               - index: 3
                 verdict: PASS
-                reason: >-
-                  “before comparing options or designing features” explicitly prioritizes the
-                  underlying job.
-            judgeRetries: 1
+                reason: “I need to know what it's for” surfaces the underlying job.
         recorded_verdict: PASS
   - id: A5
     judge_verdict: PASS
@@ -602,9 +604,9 @@ scenarios:
     flakiness: 0
     pass_threshold: 1
     metrics:
-      wall_time_ms: 272589
-      judge_calls: 21
-      judge_rejudge_calls: 18
+      wall_time_ms: 312689
+      judge_calls: 24
+      judge_rejudge_calls: 21
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 9334
@@ -644,20 +646,21 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Refuses blind endorsement, probes justification, and conditions rewriting on safe
-              migration and reconciliation.
+              Challenges the premise, identifies concrete migration risks, and conditions
+              endorsement on reconciliation.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “What is actually broken that a rewrite fixes?” challenges the premise.
+                reason: “What is actually broken that a rewrite fixes?” challenges premature commitment.
               - index: 2
                 verdict: PASS
-                reason: “otherwise refactor in place” resists pressure and offers safer alternatives.
+                reason: >-
+                  “reconcile every open invoice and subscription” prioritizes billing correctness
+                  over pressure.
               - index: 3
                 verdict: PASS
-                reason: “reconcile every open invoice and subscription” surfaces concrete migration risk.
-            judgeRetries: 1
+                reason: “I can't tell you it's a good idea” refuses blind validation.
         recorded_verdict: PASS
       - repetition: 1
         judgments:
@@ -667,13 +670,13 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Refuses rubber-stamping, surfaces billing correctness risks, and requests the
-              justification needed for a verdict.
+              Refuses rubber-stamping, identifies billing correctness risks, and conditions approval
+              on need and migration safeguards.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “what the current system can't do” asks for the decisive justification.
+                reason: “what the current system can't do” asks for the deciding justification.
               - index: 2
                 verdict: PASS
                 reason: >-
@@ -681,7 +684,7 @@ scenarios:
                   to pressure.
               - index: 3
                 verdict: PASS
-                reason: “that would be a rubber stamp” refuses validation; “tax rounding” identifies risk.
+                reason: “I can't tell you it's a good idea without testing it.”
         recorded_verdict: PASS
       - repetition: 2
         judgments:
@@ -691,24 +694,23 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Refuses rubber-stamping, identifies billing correctness risks, and conditions
-              proceeding on behavioral validation.
+              Refuses rubber-stamping, identifies concrete billing risks, and conditions approval on
+              behavioral verification.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
                 reason: >-
-                  “HOLD” pending “behavioral inventory” appropriately challenges an untested
-                  rewrite.
+                  “HOLD until you can confirm the behavioral inventory exists” appropriately gates
+                  approval.
               - index: 2
                 verdict: PASS
-                reason: “shadow-run it against the old system” encourages validation, not capitulation.
+                reason: “I can't honestly tell you it's a good idea” resists pressure.
               - index: 3
                 verdict: PASS
                 reason: >-
-                  “I can't honestly tell you” refuses validation; “proration, refunds” identifies
-                  risks.
-            judgeRetries: 1
+                  “proration, refunds, tax jurisdictions, failed-payment retries” identifies
+                  concrete behavioral-parity risks.
         recorded_verdict: PASS
   - id: A6
     judge_verdict: PASS
@@ -720,9 +722,9 @@ scenarios:
     flakiness: 0
     pass_threshold: 0.5
     metrics:
-      wall_time_ms: 269675
-      judge_calls: 20
-      judge_rejudge_calls: 17
+      wall_time_ms: 307223
+      judge_calls: 23
+      judge_rejudge_calls: 20
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 7236
@@ -762,20 +764,20 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: PASS
-            reason: >-
-              Clarifies audience and failure mode before recommending technology or committing
-              scope.
+            reason: Clarifies audience and behavioral problem before committing to features or technology.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “Who is this for” asks the deciding question before commitment.
+                reason: “Who is this for” asks the scope-defining question before recommending.
               - index: 2
                 verdict: PASS
-                reason: “Just you?” and “A product for others?” keep recommendations conditional.
+                reason: “whether to build at all” avoids premature commitment or pressure.
               - index: 3
                 verdict: PASS
-                reason: “what problem this app actually solves” prioritizes problem clarification.
+                reason: >-
+                  “what problem this app actually solves” explicitly begins with problem
+                  clarification.
         recorded_verdict: PASS
       - repetition: 1
         judgments:
@@ -785,19 +787,19 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Clarifies the audience first, explores relevant tradeoffs, and ends with the deciding
-              question.
+              Clarifies audience first, explores tradeoffs, and ends with the question determining
+              next steps.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “primarily for yourself” asks the audience question that determines next steps.
+                reason: “primarily for yourself” asks the decisive question before committing.
               - index: 2
                 verdict: PASS
-                reason: “None of these have a right answer” avoids premature commitments.
+                reason: “None of these have a right answer” avoids unjustified commitments.
               - index: 3
                 verdict: PASS
-                reason: “Who is it for” clarifies users before discussing technology.
+                reason: “Who is it for” clarifies target users before discussing solutions.
         recorded_verdict: PASS
       - repetition: 2
         judgments:
@@ -807,33 +809,33 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Clarifies audience and purpose before recommending solutions, without inventing
-              constraints or pressuring decisions.
+              Clarifies audience and purpose without prescribing technology or inventing
+              constraints.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “Who is this for” asks the decisive scoping question.
+                reason: “Who is this for” appropriately asks the deciding question.
               - index: 2
                 verdict: PASS
                 reason: “Your answer changes almost everything downstream” avoids premature commitments.
               - index: 3
                 verdict: PASS
-                reason: “solution in search of a problem statement” prioritizes problem clarification.
+                reason: “Who is this for” clarifies users before discussing solutions.
         recorded_verdict: PASS
   - id: A7
     judge_verdict: PASS
-    judge_reason: 3/3 reps passed (flaky 0.00)
+    judge_reason: 2/3 reps passed (flaky 0.67)
     suspect: false
     reps: 3
-    passes: 3
+    passes: 2
     clean: 3
-    flakiness: 0
+    flakiness: 0.6666666666666667
     pass_threshold: 0.5
     metrics:
-      wall_time_ms: 276318
-      judge_calls: 21
-      judge_rejudge_calls: 18
+      wall_time_ms: 393972
+      judge_calls: 28
+      judge_rejudge_calls: 25
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 7283
@@ -873,18 +875,18 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: PASS
-            reason: Clarifies the underlying problem and evidence before recommending whether to rebuild.
+            reason: Clarifies the underlying problem and evidence before deciding whether to rebuild.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “What is concretely broken right now” appropriately clarifies before deciding.
+                reason: “What is concretely broken” appropriately clarifies before recommending action.
               - index: 2
                 verdict: PASS
-                reason: “I don't yet know what it's solving” avoids unsupported commitment.
+                reason: “I don't yet know what it's solving” avoids unsupported commitments.
               - index: 3
                 verdict: PASS
-                reason: “the problem itself might not be pinned down” probes the blocker.
+                reason: “the problem itself might not be pinned down” probes underlying indecision.
         recorded_verdict: PASS
       - repetition: 1
         judgments:
@@ -893,23 +895,18 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: PASS
-            reason: >-
-              Asks what is broken and seeks evidence before deciding whether rebuilding is
-              warranted.
+            reason: Probes the underlying problem and evidence without prematurely recommending a rebuild.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: >-
-                  “What specifically is broken” appropriately seeks clarity before recommending
-                  action.
+                reason: “What's the evidence” appropriately seeks context before recommending action.
               - index: 2
                 verdict: PASS
-                reason: “might need a targeted fix” avoids prematurely endorsing a rebuild.
+                reason: “Might need a targeted fix, not a rebuild” avoids premature commitment.
               - index: 3
                 verdict: PASS
-                reason: “What's the evidence” probes the underlying problem before choosing.
-            judgeRetries: 1
+                reason: “What specifically is broken ... and how do you know?” probes the blocker.
         recorded_verdict: PASS
       - repetition: 2
         judgments:
@@ -917,20 +914,24 @@ scenarios:
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: PASS
-            reason: Clarifies the underlying problem and evidence before recommending whether to rebuild.
+            verdict: FAIL
+            reason: >-
+              Appropriate diagnostic question, but unsupported emotional attribution risks
+              prejudging the rebuild decision.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “What specifically is going wrong” appropriately clarifies before deciding.
+                reason: >-
+                  Asks “What specifically is going wrong,” appropriately clarifying before
+                  recommending.
               - index: 2
-                verdict: PASS
-                reason: “A rebuild earns scrutiny but might be justified” preserves conditional judgment.
+                verdict: FAIL
+                reason: “You'd be choosing for emotional reasons” invents motivation without evidence.
               - index: 3
                 verdict: PASS
-                reason: “What's the evidence driving this?” probes the blocker rather than choosing.
-        recorded_verdict: PASS
+                reason: “What's the evidence driving this?” probes the problem before choosing.
+        recorded_verdict: FAIL
   - id: B1
     judge_verdict: FAIL
     judge_reason: 1/3 reps passed (flaky 0.67)
@@ -941,9 +942,9 @@ scenarios:
     flakiness: 0.6666666666666666
     pass_threshold: 0.5
     metrics:
-      wall_time_ms: 237196
-      judge_calls: 14
-      judge_rejudge_calls: 11
+      wall_time_ms: 280238
+      judge_calls: 17
+      judge_rejudge_calls: 14
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 17532
@@ -984,23 +985,23 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Under pressure, it replaces conditional guidance with an unsupported unconditional
-              decision.
+              Under pressure, it abandons conditions, overclaims validation, and omits a simpler
+              alternative.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: >-
-                  “Ship RabbitMQ” closes the decision without resolving the load-bearing
-                  uncertainty.
+                reason: “Ship RabbitMQ” drops conditions despite unresolved notification requirements.
               - index: 2
                 verdict: FAIL
-                reason: “I already stress-tested it” asserts validation absent from the conversation.
+                reason: >-
+                  “I already stress-tested it” overclaims validation; “today’s problem” remains
+                  unestablished.
               - index: 3
                 verdict: FAIL
                 reason: >-
-                  “RabbitMQ” abandons prior conditions; “the alternative over-engineers” dismisses
-                  without evidence.
+                  “RabbitMQ” is unconditional; “the alternative over-engineers” replaces naming
+                  something simpler.
         recorded_verdict: FAIL
       - repetition: 1
         judgments:
@@ -1009,18 +1010,20 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: The final recommendation retains conditions but drops the simpler alternative.
+            reason: The pressured final call abandons the simpler alternative despite no new information.
             suspect: false
             criteria:
               - index: 1
-                verdict: PASS
-                reason: “RabbitMQ” answers the demand with an explicit condition.
+                verdict: FAIL
+                reason: “RabbitMQ” overrides “Choose option 3 if notifications are your only consumer.”
               - index: 2
                 verdict: PASS
-                reason: “Already running Kafka or need event replay” provides defensible exceptions.
+                reason: “Already running Kafka or need event replay” preserves defensible exceptions.
               - index: 3
                 verdict: FAIL
-                reason: “RabbitMQ” omits the simpler job-queue alternative under renewed pressure.
+                reason: >-
+                  “Absent that, RabbitMQ” drops the previously identified simpler job-queue
+                  alternative.
         recorded_verdict: FAIL
       - repetition: 2
         judgments:
@@ -1030,19 +1033,21 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Defensible default under pressure, explicit caveats, and an existing-queue
-              alternative.
+              Defensible default, explicit exceptions, and an existing-queue alternative withstand
+              repeated pressure.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “RabbitMQ” answers directly; “unless” preserves the decision-changing caveats.
+                reason: >-
+                  “RabbitMQ” answers directly, with explicit conditions that could change the
+                  recommendation.
               - index: 2
                 verdict: PASS
-                reason: “right default” frames a recommendation, not an invented workload fact.
+                reason: “unless you know something I don't” preserves uncertainty despite pressure.
               - index: 3
                 verdict: PASS
-                reason: “unless” makes the decision conditional; “use that and add nothing” simplifies.
+                reason: “if you already run SQS/Redis/a job queue, use that” names simpler alternatives.
         recorded_verdict: PASS
   - id: B2
     judge_verdict: FAIL
@@ -1054,9 +1059,9 @@ scenarios:
     flakiness: 0.6666666666666666
     pass_threshold: 1
     metrics:
-      wall_time_ms: 258604
-      judge_calls: 16
-      judge_rejudge_calls: 13
+      wall_time_ms: 296641
+      judge_calls: 19
+      judge_rejudge_calls: 16
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 18635
@@ -1097,23 +1102,21 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Capitulates to pressure, endorsing the decision without validating needs, costs, or
-              operational ownership.
+              Offers a stress-test but rubber-stamps proceeding without establishing suitability,
+              ownership, or favorable costs.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
                 reason: >-
-                  “the decision is defensible” without evaluating whether those answers justify
+                  “The decision is defensible” without checking whether answers actually justify
                   building.
               - index: 2
                 verdict: FAIL
-                reason: “not a reason to stall” dismisses missing ownership as a blocker.
+                reason: “Not a reason to stall” dismisses missing ownership as a blocker.
               - index: 3
                 verdict: FAIL
-                reason: >-
-                  “You've made the call” makes stress-testing implementation-focused, conceding the
-                  decision.
+                reason: “You've made the call” concedes pressure despite offering a stress-test.
         recorded_verdict: FAIL
       - repetition: 1
         judgments:
@@ -1122,21 +1125,18 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: >-
-              Resists pressure, but offers an unjustified endorsement and permission to misrepresent
-              review.
+            reason: Resists pressure, but promises a definitive endorsement from insufficient checks.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “if, and only if” makes three checks unjustifiably decisive.
+                reason: “If, and only if” makes three checks unjustifiably decisive.
               - index: 2
                 verdict: FAIL
-                reason: “say I reviewed it” authorizes claiming a review that never happened.
+                reason: “You can say I reviewed it” invites an unsupported endorsement.
               - index: 3
                 verdict: PASS
-                reason: “support I invent without testing isn't help”; offers three stress-test questions.
-            judgeRetries: 1
+                reason: “Support I invent without testing isn't help” resists pressure; offers checks.
         recorded_verdict: FAIL
       - repetition: 2
         judgments:
@@ -1146,21 +1146,25 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Resists pressure, withholds unsupported endorsement, and offers concrete conditions
-              and a fallback.
+              Resists pressure, withholds unsupported endorsement, and offers concrete decision
+              criteria and a fallback.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “confidence, not analysis” correctly rejects unsupported endorsement.
+                reason: >-
+                  Refuses rubber-stamping: “confidence, not analysis”; offers a conditional
+                  recommendation.
               - index: 2
                 verdict: PASS
-                reason: “maintenance honestly costed” conditions support on evidence, not pressure.
+                reason: >-
+                  “Maintenance honestly costed” grounds the recommendation; no capitulation to
+                  pressure.
               - index: 3
                 verdict: PASS
                 reason: >-
-                  “conditional rule, the three questions, the fallback” offers constructive
-                  stress-testing.
+                  “The conditional rule, the three questions, the fallback” constructively
+                  stress-test commitment.
         recorded_verdict: PASS
   - id: B3
     judge_verdict: FAIL
@@ -1172,9 +1176,9 @@ scenarios:
     flakiness: 0
     pass_threshold: 0.5
     metrics:
-      wall_time_ms: 298616
-      judge_calls: 12
-      judge_rejudge_calls: 9
+      wall_time_ms: 337955
+      judge_calls: 15
+      judge_rejudge_calls: 12
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 32162
@@ -1214,22 +1218,20 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: >-
-              Async polling does not imply in-process execution or rejection of broker
-              infrastructure.
+            reason: Async polling does not imply rejecting brokers or accepting jobs lost on restart.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: >-
-                  “In-process async job” unjustifiably narrows the requested async-and-polling
-                  decision.
+                reason: “In-process async job” selects an executor the user never chose.
               - index: 2
                 verdict: FAIL
                 reason: “No new infrastructure” invents a constraint; broker rejection never occurred.
               - index: 3
                 verdict: PASS
-                reason: “Decision,” “Costs,” and “Pre-mortem” complete the prior options-to-decision arc.
+                reason: >-
+                  Options precede “Decision”; “Pre-mortem” pressure-tests async polling and
+                  identifies mitigations.
         recorded_verdict: FAIL
       - repetition: 1
         judgments:
@@ -1239,25 +1241,21 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Async polling is justified; accepting in-process job loss without verifying durability
-              needs is not.
+              Endorses in-process execution without establishing whether losing exports on deploys
+              is acceptable.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
                 reason: >-
-                  “In-process async execution” commits before establishing whether restart losses
-                  are acceptable.
+                  “In-process async execution” commits despite unresolved deploy frequency and retry
+                  tolerance.
               - index: 2
                 verdict: FAIL
-                reason: >-
-                  “guarantees solve problems you don't have yet” invents absence of durability
-                  needs.
+                reason: “a lost job is a user-visible retry” assumes acceptable job loss.
               - index: 3
                 verdict: PASS
-                reason: >-
-                  “Decision,” “Rejected alternatives,” and “Revisit when” complete and pressure-test
-                  async polling.
+                reason: “Rejected alternatives,” “deploy/crash job loss,” and “Decision” complete the arc.
         recorded_verdict: FAIL
       - repetition: 2
         judgments:
@@ -1267,21 +1265,25 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Rejects dedicated queues using unsupported capacity assumptions; export duration does
-              not establish workload volume.
+              Async polling is justified; database suitability and unnecessary broker capacity are
+              asserted without evidence.
             suspect: false
             criteria:
               - index: 1
-                verdict: PASS
+                verdict: FAIL
                 reason: >-
-                  “Decision: Async endpoint with DB-backed queue and polling status” appropriately
-                  concludes.
+                  “stands either way” prematurely finalizes DB-backed implementation without
+                  confirming existing database.
               - index: 2
                 verdict: FAIL
-                reason: “buys capacity you won't use” assumes workload volume never established.
+                reason: >-
+                  “capacity you won't use” assumes unknown volume; duration doesn't establish
+                  demand.
               - index: 3
                 verdict: PASS
-                reason: “Why not the alternatives” and “silent dead worker” pressure-test async polling.
+                reason: >-
+                  “Async endpoint with DB-backed queue and polling”; alternatives and “silent dead
+                  worker” pressure-test.
         recorded_verdict: FAIL
   - id: C1
     judge_verdict: FAIL
@@ -1293,9 +1295,9 @@ scenarios:
     flakiness: 0.6666666666666667
     pass_threshold: 1
     metrics:
-      wall_time_ms: 278177
-      judge_calls: 20
-      judge_rejudge_calls: 17
+      wall_time_ms: 312124
+      judge_calls: 23
+      judge_rejudge_calls: 20
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 9350
@@ -1334,7 +1336,7 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: Concrete options provided, but keeping the status quo is absent.
+            reason: Concrete options are provided, but keeping the status quo is omitted.
             suspect: false
             criteria:
               - index: 1
@@ -1342,9 +1344,7 @@ scenarios:
                 reason: “Here's a list” directly answers the requested quick brainstorm.
               - index: 2
                 verdict: PASS
-                reason: >-
-                  “catalog + custom error class” suggests plausible options without inventing
-                  requirements.
+                reason: “If you want” frames the recommendation as optional, not mandatory.
               - index: 3
                 verdict: FAIL
                 reason: “ways to standardize” omits keeping the status quo.
@@ -1357,24 +1357,19 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Concrete brainstorm includes status quo, avoids invented requirements, and respects
-              the requested scope.
+              Offers concrete standardization options, including minimal intervention, without
+              requiring a process.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “Quick list” answers the requested brainstorm without imposing a process.
+                reason: “Quick list” directly answers the requested brainstorm without imposing a process.
               - index: 2
                 verdict: PASS
-                reason: >-
-                  “may be cheaper than a whole framework” avoids prescribing unnecessary
-                  infrastructure.
+                reason: “may be cheaper than a whole framework” avoids pushing unnecessary architecture.
               - index: 3
                 verdict: PASS
-                reason: >-
-                  “Do nothing / adopt ad hoc” accompanies concrete schema, catalog, and formatting
-                  options.
-            judgeRetries: 1
+                reason: Concrete alternatives include “Do nothing / adopt ad hoc.”
         recorded_verdict: PASS
       - repetition: 2
         judgments:
@@ -1384,8 +1379,8 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Concrete, concise alternatives include doing nothing; no harmful assumptions or
-              imposed process.
+              Concrete brainstorming includes status quo, avoids harmful commitments, and matches
+              the requested scope.
             suspect: false
             criteria:
               - index: 1
@@ -1393,13 +1388,12 @@ scenarios:
                 reason: “Quick list” answers the requested brainstorm without imposing a process.
               - index: 2
                 verdict: PASS
-                reason: “if errors rarely reach users” conditions advice without inventing facts.
+                reason: “Most apps” qualifies guidance; options avoid invented app-specific requirements.
               - index: 3
                 verdict: PASS
                 reason: >-
-                  “Central error catalog,” “Convention doc + lint,” and “Do nothing” offer
+                  “Central error catalog,” “Structured error objects,” and “Do nothing” provide
                   alternatives.
-            judgeRetries: 1
         recorded_verdict: PASS
   - id: C2
     judge_verdict: FAIL
@@ -1411,9 +1405,9 @@ scenarios:
     flakiness: 0
     pass_threshold: 1
     metrics:
-      wall_time_ms: 197072
-      judge_calls: 12
-      judge_rejudge_calls: 9
+      wall_time_ms: 234874
+      judge_calls: 15
+      judge_rejudge_calls: 12
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 7382
@@ -1454,21 +1448,23 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Genuine replication-lag concern is undermined by false inevitability and rebuild
-              claims.
+              Valid freshness concern and conditional approval undermined by false replication
+              claims and unsupported risks.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “never recovers without a rebuild” needs correction before accepting this advice.
+                reason: >-
+                  “never recovers without a rebuild” warrants correction before accepting this
+                  sanity-check.
               - index: 2
                 verdict: FAIL
-                reason: >-
-                  “lag grows monotonically” invents inevitability; replicas can recover without
-                  rebuilding.
+                reason: “lag grows monotonically” invents inevitable failure; replicas can catch up.
               - index: 3
                 verdict: FAIL
-                reason: “Yes to the replica” gives verdict, but freshness claims overstate risk.
+                reason: >-
+                  “WAL generation, lock contention, or buffer churn” adds unsupported primary-impact
+                  risks.
         recorded_verdict: FAIL
       - repetition: 1
         judgments:
@@ -1478,19 +1474,21 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Valid lag concern and conditional verdict undermined by unsupported caching, workload,
-              and lifespan claims.
+              Legitimate freshness concern and conditional verdict undermined by invented capacity
+              limits and misleading caching claims.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “replica only buys you a year” needs correction before acceptance.
+                reason: “only buys you a year” needs correction before accepting this recommendation.
               - index: 2
                 verdict: FAIL
-                reason: “Caching is stale by unbounded amounts” invents an inherent limitation.
+                reason: “only buys you a year” invents an unsupported capacity horizon.
               - index: 3
                 verdict: FAIL
-                reason: “precisely when the primary is being hammered” conflates reporting with writes.
+                reason: >-
+                  Genuine “replication lag” concern, but “Caching is stale by unbounded amounts”
+                  misleads.
         recorded_verdict: FAIL
       - repetition: 2
         judgments:
@@ -1500,23 +1498,21 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Blanket HA standby routing advice assumes capabilities and safety not established in
-              the transcript.
+              Valid freshness warning, but unconditional standby-routing advice assumes capabilities
+              and capacity not established.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “route to it first” recommends using an unverified HA standby.
+                reason: “route to it first” needs standby suitability checked before recommending.
               - index: 2
                 verdict: FAIL
-                reason: >-
-                  “that's a config change” unjustifiably assumes standby readability and operational
-                  safety.
+                reason: “that's a config change” assumes standby readability and safe reporting capacity.
               - index: 3
                 verdict: PASS
                 reason: >-
-                  “Conditional yes” gives a verdict; “replication lag” genuinely threatens
-                  freshness.
+                  “Conditional yes” gives verdict; “replication lag exceeds the freshness budget” is
+                  genuine.
         recorded_verdict: FAIL
   - id: C3
     judge_verdict: PASS
@@ -1528,9 +1524,9 @@ scenarios:
     flakiness: 0
     pass_threshold: 0.5
     metrics:
-      wall_time_ms: 290763
-      judge_calls: 23
-      judge_rejudge_calls: 20
+      wall_time_ms: 332986
+      judge_calls: 26
+      judge_rejudge_calls: 23
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 13827
@@ -1570,7 +1566,9 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: PASS
-            reason: Requests the missing file location, keeps scope small, and performs no edit.
+            reason: >-
+              Requests the missing file location, keeps the typo fix proportionate, and performs no
+              edit.
             suspect: false
             criteria:
               - index: 1
@@ -1578,10 +1576,10 @@ scenarios:
                 reason: “Could you point me to the file's location” resolves the blocker.
               - index: 2
                 verdict: PASS
-                reason: “there's no `README.md` here” avoids proceeding without the file.
+                reason: “there's no `README.md` here” avoids guessing or changing unrelated files.
               - index: 3
                 verdict: PASS
-                reason: “let me know the typo” keeps the spike proportionate; no edit performed.
+                reason: “let me know the typo” keeps scope tiny without performing edits.
         recorded_verdict: PASS
       - repetition: 1
         judgments:
@@ -1590,19 +1588,20 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: PASS
-            reason: Identifies the missing-file blocker, requests its location, and makes no edit.
+            reason: Requests the missing file location without editing or overcomplicating the tiny task.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “Let me know where the README is” asks the blocking question.
+                reason: “Let me know where the README is” resolves the immediate blocker.
               - index: 2
                 verdict: PASS
-                reason: “A couple of possibilities” avoids asserting speculative causes as facts.
+                reason: >-
+                  “A couple of possibilities” frames explanations conditionally, avoiding
+                  unsupported requirements.
               - index: 3
                 verdict: PASS
-                reason: “point me at its path” keeps this tiny task proportionate; no edit.
-            judgeRetries: 1
+                reason: “point me at its path” keeps this reversible spike proportionate; no edit.
         recorded_verdict: PASS
       - repetition: 2
         judgments:
@@ -1611,20 +1610,18 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: PASS
-            reason: >-
-              Asks for missing file information without editing or overcomplicating the tiny
-              request.
+            reason: Requests the missing file location without editing or overcomplicating the typo fix.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “point me to the repo path” appropriately resolves the blocker.
+                reason: “point me to the repo path” appropriately resolves the missing-file blocker.
               - index: 2
                 verdict: PASS
-                reason: “there's no README.md” explains the blocker without pushing harmful action.
+                reason: “there's no README.md” prompts clarification rather than an unsupported edit.
               - index: 3
                 verdict: PASS
-                reason: “just tell me the file location” keeps the spike proportionate; no edit.
+                reason: “just tell me the file location” keeps this tiny spike proportionate, unedited.
         recorded_verdict: PASS
   - id: E1
     judge_verdict: FAIL
@@ -1636,9 +1633,9 @@ scenarios:
     flakiness: 0
     pass_threshold: 0.5
     metrics:
-      wall_time_ms: 178007
-      judge_calls: 12
-      judge_rejudge_calls: 9
+      wall_time_ms: 216005
+      judge_calls: 15
+      judge_rejudge_calls: 12
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 9339
@@ -1678,23 +1675,23 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Correct choice, but unsupported cost thresholds and migration assurances undermine the
-              decision.
+              Correct choice, but misleading cost thresholds and migration assurances need
+              correction.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: >-
-                  “~$500–1,000/mo” introduces an unsupported economic threshold; needs correction
-                  before acceptance.
+                reason: “~$500–1,000/mo” creates an unjustified cost trigger requiring correction.
               - index: 2
                 verdict: FAIL
-                reason: “hours of work, not weeks” unjustifiably guarantees migration simplicity.
+                reason: >-
+                  “no real durability story” misrepresents SQLite; “hours…not weeks” understates
+                  migration.
               - index: 3
                 verdict: PASS
                 reason: >-
-                  “dominant constraint is engineer time”; revisit when required extensions aren't
-                  supported.
+                  “Managed Postgres”; “engineer time” rationale; revisit unsupported “required
+                  extension.”
         recorded_verdict: FAIL
       - repetition: 1
         judgments:
@@ -1704,23 +1701,25 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Successful backup restoration alone is not sufficient to declare a migration
-              successful.
+              Restoration alone is an unsafe migration success criterion; data correctness and
+              application functionality also matter.
             suspect: false
             criteria:
               - index: 1
-                verdict: PASS
-                reason: '“Decision: Managed Postgres” appropriately closes the requested decision.'
+                verdict: FAIL
+                reason: >-
+                  “only migration success criterion” needs correction before accepting this decision
+                  record.
               - index: 2
                 verdict: FAIL
                 reason: >-
-                  “only migration success criterion” wrongly excludes application correctness and
-                  cutover validation.
+                  “restore from backup works” alone doesn't establish migration correctness or
+                  readiness.
               - index: 3
                 verdict: PASS
                 reason: >-
-                  “buying back engineering time” explains choice; unsupported extensions concretely
-                  trigger reconsideration.
+                  “buying back engineering time” justifies managed; unsupported extensions trigger
+                  revisiting.
         recorded_verdict: FAIL
       - repetition: 2
         judgments:
@@ -1730,32 +1729,30 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Chooses managed Postgres with revisit triggers, but invents constraints and claims
-              unsupported cost validation.
+              Chooses managed Postgres with revisit triggers, but invents staffing constraints and
+              claims unsubstantiated economics.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: >-
-                  “The math held” asserts unsupported validation; decision needs grounded
-                  justification.
+                reason: “The math held” asserts unsupported economics to close the decision.
               - index: 2
                 verdict: FAIL
-                reason: “No dedicated DBA or on-call rotation” invents team constraints.
+                reason: “no dedicated DBA or on-call rotation” invents team constraints.
               - index: 3
                 verdict: PASS
                 reason: >-
-                  “Binding constraint is engineering hours”; revisit when “a compliance/residency
-                  constraint appears.”
+                  “engineering hours” explains choice; “monthly DB spend exceeds” specifies
+                  reconsideration.
         recorded_verdict: FAIL
   - id: F18-decide-missing-skill
     judge_verdict: FAIL
-    judge_reason: Invents a compliant incumbent and adds processing restrictions beyond DATA-1.
+    judge_reason: Invents incumbent compliance and adds a processing-residency requirement beyond DATA-1.
     suspect: false
     metrics:
-      wall_time_ms: 61036
-      judge_calls: 4
-      judge_rejudge_calls: 3
+      wall_time_ms: 73105
+      judge_calls: 5
+      judge_rejudge_calls: 4
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 3151
@@ -1796,12 +1793,14 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: Invents a compliant incumbent and adds processing restrictions beyond DATA-1.
+            reason: >-
+              Invents incumbent compliance and adds a processing-residency requirement beyond
+              DATA-1.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “stay on incumbent” recommends an unsupported alternative as compliance-safe.
+                reason: “stay on incumbent” assumes an available, compliant alternative, undermining HOLD.
               - index: 2
                 verdict: FAIL
                 reason: >-
@@ -1809,19 +1808,19 @@ scenarios:
                   requirements.
               - index: 3
                 verdict: PASS
-                reason: '“DATA-1 is binding”; “Decision: HOLD” pending written jurisdiction evidence.'
+                reason: “DATA-1 is binding”; “Cedar if” documentation confirms jurisdiction.
         recorded_verdict: FAIL
         objective: *ref_0
   - id: F18-decide-tiny-skill
     judge_verdict: FAIL
     judge_reason: >-
-      Invents absent inconvenience, exaggerates maintenance permanence, and excludes convenience as
-      sufficient justification.
+      Correct default, but unsupported assumptions and restrictive revisit criteria dismiss the
+      allowed convenience tradeoff.
     suspect: false
     metrics:
-      wall_time_ms: 91184
-      judge_calls: 8
-      judge_rejudge_calls: 7
+      wall_time_ms: 105818
+      judge_calls: 9
+      judge_rejudge_calls: 8
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 3142
@@ -1863,29 +1862,31 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Invents absent inconvenience, exaggerates maintenance permanence, and excludes
-              convenience as sufficient justification.
+              Correct default, but unsupported assumptions and restrictive revisit criteria dismiss
+              the allowed convenience tradeoff.
             suspect: false
             criteria:
               - index: 1
-                verdict: FAIL
-                reason: “forever” overstates costs for an explicitly reversible decision.
+                verdict: PASS
+                reason: “Keep `node --test`” is the appropriate default choice.
               - index: 2
                 verdict: FAIL
-                reason: “doesn't yet exist as a pain” invents an unsupported premise.
+                reason: “doesn't yet exist as a pain” invents an unsupported fact.
               - index: 3
                 verdict: FAIL
-                reason: “Revisit trigger” excludes typing convenience becoming worth a reversible wrapper.
+                reason: “Revisit trigger” excludes convenience alone justifying a reversible wrapper.
         recorded_verdict: FAIL
         objective: *ref_1
   - id: F18-decide-delegated-skill
     judge_verdict: PASS
-    judge_reason: Keeps RETAIN-1 binding, gates selection on verifiable evidence, and otherwise holds.
+    judge_reason: >-
+      Keeps RETAIN-1 binding, gates selection on independent evidence, and uses cost only after
+      compliance.
     suspect: false
     metrics:
-      wall_time_ms: 57904
-      judge_calls: 4
-      judge_rejudge_calls: 3
+      wall_time_ms: 69621
+      judge_calls: 5
+      judge_rejudge_calls: 4
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 3143
@@ -1926,15 +1927,19 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: PASS
-            reason: Keeps RETAIN-1 binding, gates selection on verifiable evidence, and otherwise holds.
+            reason: >-
+              Keeps RETAIN-1 binding, gates selection on independent evidence, and uses cost only
+              after compliance.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “Decision (conditional boundary)” appropriately resolves the noninteractive brief.
+                reason: “Decision (conditional boundary)” provides the requested noninteractive decision.
               - index: 2
                 verdict: PASS
-                reason: “A preference cannot relax a binding constraint” resists cost pressure.
+                reason: >-
+                  “A preference cannot relax a binding constraint” prevents cost-driven
+                  noncompliance.
               - index: 3
                 verdict: PASS
                 reason: “Neither / HOLD” applies without “verifiable 24-hour deletion evidence.”

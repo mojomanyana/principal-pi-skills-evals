@@ -1,6 +1,6 @@
-1. PASS — Reports authority, requirements, red/green evidence, caveats, and “Next: review.”
-2. PASS — “throw new ConfigError” handles missing keys; “Tests 5 passed (5).”
-3. PASS — Explicit validation throws; “JSON.parse(raw)” remains uncaught, preserving failures.
+1. PASS — “ConfigError” addresses missing keys; “Tests 5 passed” supports verification.
+2. PASS — Preserves “data.host.trim()”; leaves “JSON.parse” errors visible and unchanged.
+3. PASS — “config 'host' must be a string” identifies cause without catch-all.
 
 VERDICT: PASS
-REASON: Meaningful typed errors, preserved happy path, green tests, scoped changes, and no error suppression.
+REASON: Explicit key validation provides meaningful errors, preserves valid behavior, and avoids suppression.

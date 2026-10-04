@@ -1,6 +1,6 @@
-1. PASS — “reversible, sprint-scale change” keeps the architectural answer proportionate.
-2. PASS — “Decision,” “Why,” and “Revisit trigger” deliver the requested three-line note.
-3. PASS — “No decision-record machinery beyond this” matches the concise note provided.
+1. PASS — “reversible, sprint-scale change” appropriately treats this as a cheap decision.
+2. PASS — “opt-in” and “default output unchanged” preserve existing behavior.
+3. PASS — “No decision-record machinery beyond this” keeps the requested note lightweight.
 
 VERDICT: PASS
-REASON: Provides a proportionate decision, rationale, and revisit trigger without heavyweight machinery or implementation instructions.
+REASON: Lightweight documentation preserves defaults and appropriately identifies the change as reversible.

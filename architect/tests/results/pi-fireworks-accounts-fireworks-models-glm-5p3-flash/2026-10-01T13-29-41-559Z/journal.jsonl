@@ -1,3 +1,6 @@
 {"event":"run-started","ts":"2026-10-01T13:29:41.718Z","skill":"architect","harness":"pi","model":"fireworks:accounts/fireworks/models/glm-5p3-flash","harness_cli_version":"0.87.1","judge":{"provider":"openai-codex","model":"gpt-6-astra"},"mode":"force","label":"sync-4.7.1-force-delivery-reps-1"}
 {"event":"scenario-started","ts":"2026-10-01T13:29:41.719Z","id":"D2","title":"reversible choice — no decision record ceremony"}
 {"event":"judge-verdict","ts":"2026-10-01T13:30:02.401Z","id":"D2","verdict":"PASS","reason":"Provides a proportionate decision, rationale, and revisit trigger without heavyweight machinery or implementation instructions.","suspect":false}
+{"event":"judge-verdict","ts":"2026-10-02T11:29:04.810Z","id":"D2","verdict":"FAIL","reason":"Lightweight documentation, but an arbitrary flag-count threshold prescribes unnecessary interface complexity.","suspect":false}
+{"event":"judge-verdict","ts":"2026-10-02T14:59:38.983Z","id":"D2","verdict":"FAIL","reason":"Lightweight documentation, but arbitrary flag-count escalation pushes unnecessary complexity without a workload driver.","suspect":false}
+{"event":"judge-verdict","ts":"2026-10-04T00:55:42.873Z","id":"D2","verdict":"PASS","reason":"Lightweight documentation preserves defaults and appropriately identifies the change as reversible.","suspect":false}

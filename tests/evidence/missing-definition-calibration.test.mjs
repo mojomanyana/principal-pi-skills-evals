@@ -11,11 +11,13 @@ const json = p => {
 
 test("original missing-definition stimulus and failed mutation traces remain intact", () => {
   const original = json("build/tests/specification.yaml").scenarios.find(s => s.id === "F04-build-missing-agent");
-  // Normalize only repository relocation; preserve the historical stimulus hash.
-  const sourceForm = JSON.stringify(original)
+  // Rubric wording may evolve; preserve every objective field and normalize only repository relocation.
+  const objective = structuredClone(original);
+  delete objective.checklist;
+  const sourceForm = JSON.stringify(objective)
     .replaceAll("../../requirement-fidelity/", "../../evals/requirement-fidelity/")
     .replaceAll("../../node_modules/principal-pi-skills/agents/", "../../agents/");
-  assert.equal(createHash("sha256").update(sourceForm).digest("hex"), "89c4d1c0a9b6fb01b1b10a36be459330eda43aab51138f951cee097997a89f2c");
+  assert.equal(createHash("sha256").update(sourceForm).digest("hex"), "f54cedb3d4f2546943666539794db46a6ba493da013f1dea5ef21f7f3becfc0e");
   const prefix = "requirement-fidelity/evidence/results-at-4.7.1/build/pi-openai-codex-gpt-5.5";
   const first = json(`${prefix}/2026-09-30T10-53-50-949Z/F04-build-missing-agent.force.trace.jsonl`);
   assert.ok(first.changed_paths.includes("limit.mjs"));

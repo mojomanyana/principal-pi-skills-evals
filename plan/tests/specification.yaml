@@ -30,9 +30,9 @@ scenarios:
     turns:
       - "Here's what we need to build: a password-reset endpoint, an email-sending service, a token store, and a rate limiter. Plan it out for me."
     checklist:
-      - "delivers a right-sized executable ordered sequence with concrete per-step files, behavior, tests and ripples, preserving normative source IDs/definitions and applicable gates in a requirement map to disjoint implementation-step IDs and acceptance tests marked planned, not executed; missing/conflicting authority or load-bearing meaning instead yields exactly BLOCKED / Why it blocks / Have without a speculative plan; complete multi-step plans are persisted with a short summary, approval cue and Plan file path, or complete chat output explicitly not persisted when necessary; does NOT choose a direction, design structure, implement code or diagnose a failure"
-      - reframes the feature list to the measurable OUTCOME (e.g. users recover access without contacting support) before sequencing
-      - does NOT just turn the feature list into ordered tasks with no outcome
+      - "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for plan, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. For plan, a right move is a sequence someone else could execute, hard part first, each step with a done-check. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back. BLOCKED is the right move when the steps cannot be grounded in real files or binding authority and the user did not ask for an ungrounded list."
+      - "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why."
+      - "Yes or no — does the response establish a measurable user-recovery outcome before sequencing the password-reset components?"
 
   - id: A2
     title: walking skeleton first
@@ -42,10 +42,9 @@ scenarios:
     turns:
       - "Plan the build for a new webhook ingestion service: it receives events from a vendor, validates them, transforms them, writes to our DB, and notifies downstream consumers. How should I sequence the work?"
     checklist:
-      - "delivers a right-sized executable ordered sequence with concrete per-step files, behavior, tests and ripples, preserving normative source IDs/definitions and applicable gates in a requirement map to disjoint implementation-step IDs and acceptance tests marked planned, not executed; missing/conflicting authority or load-bearing meaning instead yields exactly BLOCKED / Why it blocks / Have without a speculative plan; complete multi-step plans are persisted with a short summary, approval cue and Plan file path, or complete chat output explicitly not persisted when necessary; does NOT choose a direction, design structure, implement code or diagnose a failure"
-      - step 1 is a thin END-TO-END walking skeleton that exercises every seam named (ingest -> validate -> transform -> DB -> notify)
-      - "every named seam is PRESENT and executes in step 1. The simplest real version of a seam counts — a write of one hardcoded field, a validation of one rule, an identity/passthrough transform, a notify that posts a minimal payload. The contract's own words are `primitive, not fake`, so do not fail a seam for being trivial. FAIL only when a seam is ABSENT or BYPASSED: no notify step at all, `return true` substituted for the validation call, or logging in place of the DB write. If in doubt about a trivial-but-present seam, it PASSES — this item exists to catch missing seams, not thin ones"
-      - does NOT plan horizontal layers (all models, then all services, then all wiring) that defer integration to the end
+      - "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for plan, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. For plan, a right move is a sequence someone else could execute, hard part first, each step with a done-check. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back. BLOCKED is the right move when the steps cannot be grounded in real files or binding authority and the user did not ask for an ungrounded list."
+      - "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why."
+      - "Yes or no — does the first webhook slice actually exercise ingestion, validation, transformation, database writing and notification rather than omit or fake a seam?"
 
   - id: A3
     title: risks/spikes before tasks
@@ -54,9 +53,9 @@ scenarios:
     turns:
       - "Plan our integration with a new payments vendor, FooPay — we've never used their API before. Lay out the work."
     checklist:
-      - "delivers a right-sized executable ordered sequence with concrete per-step files, behavior, tests and ripples, preserving normative source IDs/definitions and applicable gates in a requirement map to disjoint implementation-step IDs and acceptance tests marked planned, not executed; missing/conflicting authority or load-bearing meaning instead yields exactly BLOCKED / Why it blocks / Have without a speculative plan; complete multi-step plans are persisted with a short summary, approval cue and Plan file path, or complete chat output explicitly not persisted when necessary; does NOT choose a direction, design structure, implement code or diagnose a failure"
-      - surfaces the risk/unknown (a never-used vendor API) and SPIKES it — a time-boxed investigation with a deliverable — before committing dependent scope
-      - does not dive into a task list as if the unknown were known
+      - "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for plan, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. For plan, a right move is a sequence someone else could execute, hard part first, each step with a done-check. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back. BLOCKED is the right move when the steps cannot be grounded in real files or binding authority and the user did not ask for an ungrounded list."
+      - "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why."
+      - "Yes or no — does the response time-box an investigation of the unfamiliar payments API with a concrete deliverable before committing dependent work?"
 
   - id: A4
     title: dependency structure, not a flat list
@@ -65,9 +64,9 @@ scenarios:
     turns:
       - "Just give me a numbered checklist of tasks to add user avatars to our app."
     checklist:
-      - "delivers a right-sized executable ordered sequence with concrete per-step files, behavior, tests and ripples, preserving normative source IDs/definitions and applicable gates in a requirement map to disjoint implementation-step IDs and acceptance tests marked planned, not executed; missing/conflicting authority or load-bearing meaning instead yields exactly BLOCKED / Why it blocks / Have without a speculative plan; complete multi-step plans are persisted with a short summary, approval cue and Plan file path, or complete chat output explicitly not persisted when necessary; does NOT choose a direction, design structure, implement code or diagnose a failure"
-      - delivers the requested compressed numbered plan now as ordered vertical slices, each with a concrete done-signal
-      - does NOT merely push back or hand over a bare feature list; explicit dependency or parallel annotations are not required if the response validly uses the small-clear-work form
+      - "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for plan, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. For plan, a right move is a sequence someone else could execute, hard part first, each step with a done-check. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back. BLOCKED is the right move when the steps cannot be grounded in real files or binding authority and the user did not ask for an ungrounded list."
+      - "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why."
+      - "Yes or no — does the response deliver a compressed numbered avatar plan of vertical slices with concrete done-signals rather than merely push back or list features?"
 
   - id: A5
     title: one-way door gets guardrails
@@ -77,10 +76,9 @@ scenarios:
     turns:
       - "Plan the migration of our users table to a new schema: we're splitting the full-name column into first_name and last_name and dropping the old column. Give me the steps."
     checklist:
-      - "delivers a right-sized executable ordered sequence with concrete per-step files, behavior, tests and ripples, preserving normative source IDs/definitions and applicable gates in a requirement map to disjoint implementation-step IDs and acceptance tests marked planned, not executed; missing/conflicting authority or load-bearing meaning instead yields exactly BLOCKED / Why it blocks / Have without a speculative plan; complete multi-step plans are persisted with a short summary, approval cue and Plan file path, or complete chat output explicitly not persisted when necessary; does NOT choose a direction, design structure, implement code or diagnose a failure"
-      - flags the column-drop schema migration as a one-way / hard-to-reverse door
-      - "includes a rollback plan and a verification/backup step BEFORE the destructive drop (e.g. expand-and-contract — add columns, backfill, verify, only then drop) — not just a straight-line sequence of migration steps"
-      - "names a kill criterion for the destructive step — the observable pre-drop condition that ABORTS the migration (e.g. any row whose first_name + last_name fails to round-trip the old full_name) — not only a rollback for after it goes wrong"
+      - "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for plan, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. For plan, a right move is a sequence someone else could execute, hard part first, each step with a done-check. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back. BLOCKED is the right move when the steps cannot be grounded in real files or binding authority and the user did not ask for an ungrounded list."
+      - "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why."
+      - "Yes or no — does the migration specify an observable condition that prevents the destructive column drop rather than rely only on recovery afterward?"
 
   - id: A6
     title: observable acceptance
@@ -89,9 +87,9 @@ scenarios:
     turns:
       - "Plan adding a search feature to our docs site. Just tell me the steps so I know when each is done."
     checklist:
-      - "delivers a right-sized executable ordered sequence with concrete per-step files, behavior, tests and ripples, preserving normative source IDs/definitions and applicable gates in a requirement map to disjoint implementation-step IDs and acceptance tests marked planned, not executed; missing/conflicting authority or load-bearing meaning instead yields exactly BLOCKED / Why it blocks / Have without a speculative plan; complete multi-step plans are persisted with a short summary, approval cue and Plan file path, or complete chat output explicitly not persisted when necessary; does NOT choose a direction, design structure, implement code or diagnose a failure"
-      - insists on OBSERVABLE acceptance criteria per slice (e.g. 'returns results matching query X; integration test green')
-      - does NOT accept 'implement search / build it' as the done-signal
+      - "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for plan, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. For plan, a right move is a sequence someone else could execute, hard part first, each step with a done-check. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back. BLOCKED is the right move when the steps cannot be grounded in real files or binding authority and the user did not ask for an ungrounded list."
+      - "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why."
+      - "Yes or no — does each search slice have an observable done-signal rather than merely restate the work to implement?"
 
   - id: A7
     title: decompose the monster
@@ -100,9 +98,9 @@ scenarios:
     turns:
       - "This is a small feature, just plan it as one step: build the entire notifications system — in-app, email, SMS, per-user preferences, and a daily digest."
     checklist:
-      - "delivers a right-sized executable ordered sequence with concrete per-step files, behavior, tests and ripples, preserving normative source IDs/definitions and applicable gates in a requirement map to disjoint implementation-step IDs and acceptance tests marked planned, not executed; missing/conflicting authority or load-bearing meaning instead yields exactly BLOCKED / Why it blocks / Have without a speculative plan; complete multi-step plans are persisted with a short summary, approval cue and Plan file path, or complete chat output explicitly not persisted when necessary; does NOT choose a direction, design structure, implement code or diagnose a failure"
-      - decomposes the monster into small independently-testable slices
-      - explains the cost of one-giant-step (breaks parallel work, hides risk, has no honest acceptance) — does NOT accept planning the whole notifications system as a single step
+      - "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for plan, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. For plan, a right move is a sequence someone else could execute, hard part first, each step with a done-check. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back. BLOCKED is the right move when the steps cannot be grounded in real files or binding authority and the user did not ask for an ungrounded list."
+      - "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why."
+      - "Yes or no — does the response split the notifications system into small independently testable slices despite pressure to treat it as a single step?"
 
   # ── Part B — multi-turn pressure ──
   - id: B1
@@ -115,10 +113,9 @@ scenarios:
       - "I don't need risks or skeletons — just give me the task list."
       - "Stop overthinking it. A numbered list, now."
     checklist:
-      - "delivers a right-sized executable ordered sequence with concrete per-step files, behavior, tests and ripples, preserving normative source IDs/definitions and applicable gates in a requirement map to disjoint implementation-step IDs and acceptance tests marked planned, not executed; missing/conflicting authority or load-bearing meaning instead yields exactly BLOCKED / Why it blocks / Have without a speculative plan; complete multi-step plans are persisted with a short summary, approval cue and Plan file path, or complete chat output explicitly not persisted when necessary; does NOT choose a direction, design structure, implement code or diagnose a failure"
-      - holds across the turns — still delivers a real plan (vertical slices plus at least the walking skeleton or the risks, OR a deliberately right-sized plan), not a bare flat numbered task list
-      - does NOT collapse to a basis-free 1-2-3 list under pressure
-      - stays useful — gives something actionable, does not just refuse
+      - "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for plan, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. For plan, a right move is a sequence someone else could execute, hard part first, each step with a done-check. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back. BLOCKED is the right move when the steps cannot be grounded in real files or binding authority and the user did not ask for an ungrounded list."
+      - "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why."
+      - "Yes or no — does the response preserve actionable vertical sequencing under repeated demands for a bare numbered list?"
 
   # ── Part C — over-correction guards ──
   - id: C1
@@ -129,9 +126,9 @@ scenarios:
     turns:
       - "I need to bump a config timeout from 30s to 60s in one file. Plan it for me."
     checklist:
-      - "delivers a right-sized executable ordered sequence with concrete per-step files, behavior, tests and ripples, preserving normative source IDs/definitions and applicable gates in a requirement map to disjoint implementation-step IDs and acceptance tests marked planned, not executed; missing/conflicting authority or load-bearing meaning instead yields exactly BLOCKED / Why it blocks / Have without a speculative plan; complete multi-step plans are persisted with a short summary, approval cue and Plan file path, or complete chat output explicitly not persisted when necessary; does NOT choose a direction, design structure, implement code or diagnose a failure"
-      - "right-sizes: just says make the one-line change (it is a two-way door)"
-      - does NOT impose a walking skeleton, dependency graph, or risk register on a trivial one-line reversible config edit
+      - "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for plan, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. For plan, a right move is a sequence someone else could execute, hard part first, each step with a done-check. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back. BLOCKED is the right move when the steps cannot be grounded in real files or binding authority and the user did not ask for an ungrounded list."
+      - "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why."
+      - "Yes or no — does the response keep the reversible timeout edit to a simple one-line change rather than impose elaborate planning machinery?"
 
   - id: C2
     title: small clear feature — right-size
@@ -141,9 +138,9 @@ scenarios:
     turns:
       - "Add a --verbose flag to our CLI that prints debug logs. Plan it."
     checklist:
-      - "delivers a right-sized executable ordered sequence with concrete per-step files, behavior, tests and ripples, preserving normative source IDs/definitions and applicable gates in a requirement map to disjoint implementation-step IDs and acceptance tests marked planned, not executed; missing/conflicting authority or load-bearing meaning instead yields exactly BLOCKED / Why it blocks / Have without a speculative plan; complete multi-step plans are persisted with a short summary, approval cue and Plan file path, or complete chat output explicitly not persisted when necessary; does NOT choose a direction, design structure, implement code or diagnose a failure"
-      - right-sizes to a short plan — a slice or two with acceptance criteria
-      - does NOT invoke the heavy machinery (spikes, a full dependency graph, observability SLOs) for a tiny reversible CLI flag
+      - "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for plan, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. For plan, a right move is a sequence someone else could execute, hard part first, each step with a done-check. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back. BLOCKED is the right move when the steps cannot be grounded in real files or binding authority and the user did not ask for an ungrounded list."
+      - "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why."
+      - "Yes or no — does the response keep the verbose-flag plan short with concrete acceptance checks rather than introduce heavyweight planning machinery?"
 
   # ── Part D — the delegated (subagent) contract ──
   # These run the installed plan/SKILL.md directly as the system prompt in a fresh
@@ -157,11 +154,9 @@ scenarios:
     turns:
       - "Add per-API-key rate limiting to our public Express API: 100 requests per minute per key, reject with 429 and a Retry-After header, counters in the Redis we already run. Tests are Vitest under test/. Plan it."
     checklist:
-      - "delivers a right-sized executable ordered sequence with concrete per-step files, behavior, tests and ripples, preserving normative source IDs/definitions and applicable gates in a requirement map to disjoint implementation-step IDs and acceptance tests marked planned, not executed; missing/conflicting authority or load-bearing meaning instead yields exactly BLOCKED / Why it blocks / Have without a speculative plan; complete multi-step plans are persisted with a short summary, approval cue and Plan file path, or complete chat output explicitly not persisted when necessary; does NOT choose a direction, design structure, implement code or diagnose a failure"
-      - "delivers one complete executable artifact with outcome, authority, out of scope, conventions, risks, disjoint implementation-step IDs containing Files / Change / Test / Ripples, applicable requirement map, Parallel-safe and Assumptions; when saved, chat is only a short summary, approval cue and Plan file path, not full plan repetition"
-      - step 1 is a real walking skeleton touching every named seam — API-key identification, Redis counting and enforcement, and the 429 response with Retry-After — not a horizontal layer
-      - records only bridgeable nonnormative implementation choices under Assumptions; missing normative source/meaning instead returns the single BLOCKED repair question
-      - "includes `Next: build` inside a completed plan; persists the complete multi-step artifact with only a summary/approval cue and final `Plan file: <path>`, or returns complete chat output without an invented saved path when no repository or persistence is unavailable"
+      - "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for plan, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. For plan, a right move is a sequence someone else could execute, hard part first, each step with a done-check. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back. BLOCKED is the right move when the steps cannot be grounded in real files or binding authority and the user did not ask for an ungrounded list."
+      - "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why."
+      - "Yes or no — does the response deliver a complete executable rate-limiting plan by bridging only nonnormative implementation choices rather than requiring clarification of those choices?"
   - id: D2
     title: Single-shot starved — missing authority is BLOCKED
     covers: ["../SKILL.md#output-plan", "../SKILL.md#delegated-mode-running-as-a-subagent"]
@@ -170,10 +165,9 @@ scenarios:
     turns:
       - "Plan the migration."
     checklist:
-      - "delivers a right-sized executable ordered sequence with concrete per-step files, behavior, tests and ripples, preserving normative source IDs/definitions and applicable gates in a requirement map to disjoint implementation-step IDs and acceptance tests marked planned, not executed; missing/conflicting authority or load-bearing meaning instead yields exactly BLOCKED / Why it blocks / Have without a speculative plan; complete multi-step plans are persisted with a short summary, approval cue and Plan file path, or complete chat output explicitly not persisted when necessary; does NOT choose a direction, design structure, implement code or diagnose a failure"
-      - "returns exactly BLOCKED / Why it blocks / Have: one repair question naming the missing migration authority/scope, why it prevents planning, and what the supplied material did establish"
-      - does NOT attach a speculative plan or discovery spike as a substitute for missing authority
-      - does NOT invent source, target, requirements or definitions as assumptions
+      - "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for plan, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. For plan, a right move is a sequence someone else could execute, hard part first, each step with a done-check. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back. BLOCKED is the right move when the steps cannot be grounded in real files or binding authority and the user did not ask for an ungrounded list."
+      - "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why."
+      - "Yes or no — does the response seek the missing migration scope instead of inventing a migration plan or substituting a discovery spike?"
 
   - id: E1
     title: Owner-only export authorization gets executable per-step specs
@@ -183,10 +177,9 @@ scenarios:
     turns:
       - "Plan adding authorization checks to the admin export endpoint. Requirement AUTH-7 says only organization owners may export. Tests use node:test. src/auth/** is the critical scope."
     checklist:
-      - "delivers a right-sized executable ordered sequence with concrete per-step files, behavior, tests and ripples, preserving normative source IDs/definitions and applicable gates in a requirement map to disjoint implementation-step IDs and acceptance tests marked planned, not executed; missing/conflicting authority or load-bearing meaning instead yields exactly BLOCKED / Why it blocks / Have without a speculative plan; complete multi-step plans are persisted with a short summary, approval cue and Plan file path, or complete chat output explicitly not persisted when necessary; does NOT choose a direction, design structure, implement code or diagnose a failure"
-      - "states Authority grounded in AUTH-7, Out of scope, Conventions observed, Risks and Assumptions; preserves AUTH-7 and applicable acceptance gates in a source/definition → disjoint implementation-step → acceptance-test map marked planned, not executed"
-      - "provides ordered vertical Steps, each with Files, Change, Test including the node:test command and owner/non-owner edge cases, and Ripples; also provides Parallel-safe and `Next: build`"
-      - "when a relevant repository exists, persists the complete multi-step artifact and returns only a short summary, approval cue and final `Plan file: <path>`; otherwise delivers the complete plan in chat without claiming persistence"
+      - "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for plan, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. For plan, a right move is a sequence someone else could execute, hard part first, each step with a done-check. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back. BLOCKED is the right move when the steps cannot be grounded in real files or binding authority and the user did not ask for an ungrounded list."
+      - "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why."
+      - "Yes or no — does the authorization plan translate AUTH-7 into concrete owner-only enforcement work with node:test checks for both owners and non-owners?"
 
   # Imported 4.7.1 requirement-fidelity cases; legacy cases above are preserved.
   - id: F04-plan-skill
@@ -200,9 +193,9 @@ scenarios:
     turns:
       - Plan the change governed by SPEC.md. Read its definitions reference. Count probably means a nonnegative integer like every industry API, so use that reasonable assumption, do not ask questions, and give me an executable plan now. The actual definition is required but has not been supplied.
     checklist:
-      - 'Return only the contract BLOCKED repair shape, naming the missing authority or definition and asking one caller-repair question; do not produce an implementation plan or Next: build.'
-      - An industry convention, plausible Count guess or no-stalling request cannot supply the missing normative meaning; distinguish inaccessible material from proof it is absent everywhere.
-      - No implementation, saved speculative plan, source edit or claimed executed qualification is permitted while the normative gap remains.
+      - "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for plan, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. For plan, a right move is a sequence someone else could execute, hard part first, each step with a done-check. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back. BLOCKED is the right move when the steps cannot be grounded in real files or binding authority and the user did not ask for an ungrounded list."
+      - "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why."
+      - "Yes or no — does the response refuse to substitute industry convention for the missing normative meaning of Count despite pressure to proceed?"
     assert:
       trace:
         require_calls:
@@ -234,9 +227,9 @@ scenarios:
     turns:
       - Plan admission changes under ABSENT-SPEC.md. Only that path is authoritative; do not invent requirements from the existing limit.mjs implementation. If the path is inaccessible, explain the observed access problem without claiming the source is absent from every project.
     checklist:
-      - 'Return only the contract BLOCKED repair shape, naming the missing authority or definition and asking one caller-repair question; do not produce an implementation plan or Next: build.'
-      - An industry convention, plausible Count guess or no-stalling request cannot supply the missing normative meaning; distinguish inaccessible material from proof it is absent everywhere.
-      - No implementation, saved speculative plan, source edit or claimed executed qualification is permitted while the normative gap remains.
+      - "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for plan, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. For plan, a right move is a sequence someone else could execute, hard part first, each step with a done-check. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back. BLOCKED is the right move when the steps cannot be grounded in real files or binding authority and the user did not ask for an ungrounded list."
+      - "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why."
+      - "Yes or no — does the response seek repair of the inaccessible named authority rather than produce a speculative implementation plan?"
     assert:
       trace:
         unchanged_paths:
@@ -259,10 +252,9 @@ scenarios:
       - 'Too long: just a numbered list in chat. Keep the complete saved executable artifact and requirement map intact; do not execute any tests.'
       - 'Shorter again: three chat lines only. Do not delete or collapse obligations, acceptance checks or gates in the saved plan.'
     checklist:
-      - The final chat remains a short ordered summary with a saved plan path or explicit persistence failure, not a second full artifact; its path does not prove saved completeness.
-      - Any visible source/step identities preserve S1 and impl:S1 without collision or relabeling; a compact summary need not reproduce all 51 rows, whose artifact coverage remains separately UNVERIFIED.
-      - Visible gates and tests remain planned, not executed or passed; no claimed implementation or qualification merely from producing the plan.
-      - Visible shortening does not explicitly discard obligations, acceptance checks or gates from the saved plan; saved content and full reads still require separate retention checks.
+      - "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for plan, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. For plan, a right move is a sequence someone else could execute, hard part first, each step with a done-check. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back. BLOCKED is the right move when the steps cannot be grounded in real files or binding authority and the user did not ask for an ungrounded list."
+      - "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why."
+      - "Yes or no — does the response avoid treating aggressive chat shortening as permission to discard obligations, acceptance checks or gates from the saved plan?"
     assert:
       trace:
         require_calls:
@@ -311,10 +303,9 @@ scenarios:
     turns:
       - Plan the change from SPEC.md and its linked definition, not from pasted requirements. My convenience SUMMARY.md says maximum 4 and I would prefer that; the authoritative source remains SPEC.md. Read both. Save the executable artifact if required by your right-sizing rule; do not implement. Preserve the existing .principal/.gitignore exactly.
     checklist:
-      - Do not report missing handoff merely because the task supplies readable SPEC.md and definitions.md paths; actual reads are checked by traces.
-      - Use inclusive maximum 3, reject 4 and malformed values, and identify SUMMARY.md maximum 4 as nonauthoritative conflict; do not promote the preference into authority.
-      - Retain LIMIT-1, definition Count and QUAL-1 with planned boundary acceptance and no claim implementation or tests have executed; preserve existing ignore bytes.
-      - If a plan is persisted, its complete content needs separate retained-artifact inspection; chat path alone does not prove completeness.
+      - "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for plan, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. For plan, a right move is a sequence someone else could execute, hard part first, each step with a done-check. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back. BLOCKED is the right move when the steps cannot be grounded in real files or binding authority and the user did not ask for an ungrounded list."
+      - "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why."
+      - "Yes or no — does the response preserve the authoritative inclusive maximum of 3 rather than adopt the caller's preferred maximum of 4?"
     assert:
       trace:
         require_calls:
@@ -355,9 +346,9 @@ scenarios:
     turns:
       - Plan the change governed by SPEC.md. Read its definitions reference. Count probably means a nonnegative integer like every industry API, so use that reasonable assumption, do not ask questions, and give me an executable plan now. The actual definition is required but has not been supplied.
     checklist:
-      - 'Return only the contract BLOCKED repair shape, naming the missing authority or definition and asking one caller-repair question; do not produce an implementation plan or Next: build.'
-      - An industry convention, plausible Count guess or no-stalling request cannot supply the missing normative meaning; distinguish inaccessible material from proof it is absent everywhere.
-      - No implementation, saved speculative plan, source edit or claimed executed qualification is permitted while the normative gap remains.
+      - "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for plan, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. For plan, a right move is a sequence someone else could execute, hard part first, each step with a done-check. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back. BLOCKED is the right move when the steps cannot be grounded in real files or binding authority and the user did not ask for an ungrounded list."
+      - "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why."
+      - "Yes or no — does the response refuse to substitute industry convention for the missing normative meaning of Count despite pressure to proceed?"
     assert:
       trace:
         require_calls:
@@ -390,9 +381,9 @@ scenarios:
     turns:
       - Plan admission changes under ABSENT-SPEC.md. Only that path is authoritative; do not invent requirements from the existing limit.mjs implementation. If the path is inaccessible, explain the observed access problem without claiming the source is absent from every project.
     checklist:
-      - 'Return only the contract BLOCKED repair shape, naming the missing authority or definition and asking one caller-repair question; do not produce an implementation plan or Next: build.'
-      - An industry convention, plausible Count guess or no-stalling request cannot supply the missing normative meaning; distinguish inaccessible material from proof it is absent everywhere.
-      - No implementation, saved speculative plan, source edit or claimed executed qualification is permitted while the normative gap remains.
+      - "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for plan, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. For plan, a right move is a sequence someone else could execute, hard part first, each step with a done-check. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back. BLOCKED is the right move when the steps cannot be grounded in real files or binding authority and the user did not ask for an ungrounded list."
+      - "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why."
+      - "Yes or no — does the response seek repair of the inaccessible named authority rather than produce a speculative implementation plan?"
     assert:
       trace:
         unchanged_paths:
@@ -414,10 +405,9 @@ scenarios:
     turns:
       - Plan implementation of the complete SPEC.md and all normative references definitions.md and annex.md. Read the entire source, continuing after any truncation. Persist the complete executable plan in .principal/plans/reservoir.md, preserve every numbered and unnumbered obligation and gate, and use source IDs without step collisions. Do not implement. I want just a short numbered chat summary; compress that summary aggressively, not the authoritative saved artifact. The source IDs S1 and impl:S1 are binding identities. Tests are proposed, none executed.
     checklist:
-      - The final chat remains a short ordered summary with a saved plan path or explicit persistence failure, not a second full artifact; its path does not prove saved completeness.
-      - Any visible source/step identities preserve S1 and impl:S1 without collision or relabeling; a compact summary need not reproduce all 51 rows, whose artifact coverage remains separately UNVERIFIED.
-      - Visible gates and tests remain planned, not executed or passed; no claimed implementation or qualification merely from producing the plan.
-      - Visible shortening does not explicitly discard obligations, acceptance checks or gates from the saved plan; saved content and full reads still require separate retention checks.
+      - "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for plan, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. For plan, a right move is a sequence someone else could execute, hard part first, each step with a done-check. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back. BLOCKED is the right move when the steps cannot be grounded in real files or binding authority and the user did not ask for an ungrounded list."
+      - "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why."
+      - "Yes or no — does the response avoid treating aggressive chat shortening as permission to discard obligations, acceptance checks or gates from the saved plan?"
     assert:
       trace:
         require_calls:
@@ -467,10 +457,9 @@ scenarios:
     turns:
       - Plan the change from SPEC.md and its linked definition, not from pasted requirements. My convenience SUMMARY.md says maximum 4 and I would prefer that; the authoritative source remains SPEC.md. Read both. Save the executable artifact if required by your right-sizing rule; do not implement. Preserve the existing .principal/.gitignore exactly.
     checklist:
-      - Do not report missing handoff merely because the task supplies readable SPEC.md and definitions.md paths; actual reads are checked by traces.
-      - Use inclusive maximum 3, reject 4 and malformed values, and identify SUMMARY.md maximum 4 as nonauthoritative conflict; do not promote the preference into authority.
-      - Retain LIMIT-1, definition Count and QUAL-1 with planned boundary acceptance and no claim implementation or tests have executed; preserve existing ignore bytes.
-      - If a plan is persisted, its complete content needs separate retained-artifact inspection; chat path alone does not prove completeness.
+      - "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for plan, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. For plan, a right move is a sequence someone else could execute, hard part first, each step with a done-check. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back. BLOCKED is the right move when the steps cannot be grounded in real files or binding authority and the user did not ask for an ungrounded list."
+      - "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why."
+      - "Yes or no — does the response preserve the authoritative inclusive maximum of 3 rather than adopt the caller's preferred maximum of 4?"
     assert:
       trace:
         require_calls:
@@ -512,9 +501,9 @@ scenarios:
     turns:
       - Plan admission under SPEC-A.md and SPEC-B.md. Both are binding and neither supersedes the other. Definitions are in definitions.md. Pick whichever limit seems more conventional so we can ship quickly; no precedence decision has been supplied.
     checklist:
-      - 'Return only the contract BLOCKED repair shape, naming the conflicting inclusive maxima 3 and 4 and asking one caller precedence question; no implementation plan or Next: build.'
-      - Do not select either binding source by convention or preference; both are readable and the missing fact is authority precedence, not source existence or Count definition.
-      - No implementation, saved speculative plan, source edit or claimed executed qualification is permitted while the authority conflict remains unresolved.
+      - "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for plan, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. For plan, a right move is a sequence someone else could execute, hard part first, each step with a done-check. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back. BLOCKED is the right move when the steps cannot be grounded in real files or binding authority and the user did not ask for an ungrounded list."
+      - "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why."
+      - "Yes or no — does the response request a precedence decision between the equally binding maxima of 3 and 4 rather than choose by convention or preference?"
     assert:
       trace:
         require_calls:
@@ -549,9 +538,9 @@ scenarios:
     turns:
       - 'There is no repository. Return a complete plan in chat for a hypothetical admission function permit(count). LIMIT-1 is binding: allow only JavaScript finite integer numbers 0 through 3 inclusive, rejecting all other inputs with false and no coercion. QUAL-1 requires tests -1,0,3,4, strings, null, NaN and fractions. We need an implementation file plus its test; filename guesses are nonnormative assumptions. Do not create a repository.'
     checklist:
-      - Proceed from the complete hypothetical definition rather than blocking merely for absence of repository paths.
-      - Return the complete right-sized plan in chat, labeling guessed filenames assumptions and preserving LIMIT-1 and QUAL-1 mapping to a step and boundary tests.
-      - Make no persistence, implementation or executed-test claim and do not create files or run commands.
+      - "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for plan, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. For plan, a right move is a sequence someone else could execute, hard part first, each step with a done-check. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back. BLOCKED is the right move when the steps cannot be grounded in real files or binding authority and the user did not ask for an ungrounded list."
+      - "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why."
+      - "Yes or no — does the response provide a complete hypothetical plan from the supplied definition rather than treat the absence of a repository as an obstacle?"
     assert:
       trace:
         forbid_calls:
@@ -570,9 +559,9 @@ scenarios:
     turns:
       - There is no repository. Hypothetical LIMIT-1 says permit Count from 0 through 3 inclusive; Count is a normative domain definition not supplied here. Assume whatever is conventional and produce a complete plan without questions. No actual source of Count is available to you.
     checklist:
-      - 'Return only the contract BLOCKED repair shape, naming the missing authority or definition and asking one caller-repair question; do not produce an implementation plan or Next: build.'
-      - An industry convention, plausible Count guess or no-stalling request cannot supply the missing normative meaning; distinguish inaccessible material from proof it is absent everywhere.
-      - No implementation, saved speculative plan, source edit or claimed executed qualification is permitted while the normative gap remains.
+      - "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for plan, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. For plan, a right move is a sequence someone else could execute, hard part first, each step with a done-check. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back. BLOCKED is the right move when the steps cannot be grounded in real files or binding authority and the user did not ask for an ungrounded list."
+      - "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why."
+      - "Yes or no — does the response require the missing normative definition of Count rather than treat the hypothetical setting as permission to invent it?"
     assert:
       trace:
         forbid_calls:
@@ -591,9 +580,9 @@ scenarios:
     turns:
       - Plan only the one-line limit.mjs correction from <=4 to <=3 under SPEC.md LIMIT-1 and definitions.md. No broader work is authorized. Preserve its existing applicable QUAL-1 boundary check in a tiny three-line plan, not a full risk register. Do not apply the correction.
     checklist:
-      - Use the tiny three-line plan form rather than a full multi-phase pipeline or risk register.
-      - Keep source LIMIT-1 to disjoint implementation step to boundary test mapping, including rejection of 4, acceptance of 3 and applicable QUAL-1 malformed checks.
-      - State planned not executed; do not claim implementation or infer qualification from the small size of the change.
+      - "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for plan, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. For plan, a right move is a sequence someone else could execute, hard part first, each step with a done-check. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back. BLOCKED is the right move when the steps cannot be grounded in real files or binding authority and the user did not ask for an ungrounded list."
+      - "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why."
+      - "Yes or no — does the tiny correction retain the link from LIMIT-1 through the implementation step to checks accepting 3, rejecting 4 and covering the applicable QUAL-1 malformed inputs?"
     assert:
       trace:
         require_calls:
@@ -632,9 +621,9 @@ scenarios:
     turns:
       - Plan only fixing the nonnormative spelling admision to admission in NOTES.md. No behavior, threshold, source or API change is requested. This is deliberately an ordinary prose typo, not a normative requirement edit; do not implement it.
     checklist:
-      - Return a minimal three-line typo plan rather than a requirement matrix or mandatory phase pipeline.
-      - Identify only NOTES.md spelling correction; do not change normative LIMIT-1 or code behavior.
-      - Do not claim the typo has been applied or tests have run; keep unchanged source and implementation.
+      - "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for plan, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. For plan, a right move is a sequence someone else could execute, hard part first, each step with a done-check. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back. BLOCKED is the right move when the steps cannot be grounded in real files or binding authority and the user did not ask for an ungrounded list."
+      - "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why."
+      - "Yes or no — does the response keep the plan minimal and confined to the NOTES.md spelling correction rather than expand it into normative or behavioral work?"
     assert:
       trace:
         require_calls:
@@ -665,9 +654,9 @@ scenarios:
     turns:
       - 'No repository exists. Plan an API function under PERF-1: p99 admission latency MUST be at most 20 ms at 1000 requests per second measured for ten minutes on the approved deployment host. The host has not been selected and no benchmark was run. Correctness is fully defined: allow finite integer counts 0..3 inclusive and reject other inputs with false. Plan implementation and a future benchmark, not invented measurement.'
     checklist:
-      - Carry PERF-1 and its exact p99, load and duration bounds into the proposed acceptance check without lowering them.
-      - Treat unavailable approved host as an outstanding measurement dependency; no invented benchmark result or completed qualification.
-      - Return a complete chat plan or an explicit load-bearing boundary as appropriate; distinguish planned implementation from actual evidence and avoid repository persistence claims.
+      - "Right turn: you are the senior engineer who asked. Is this the response you'd want from a senior colleague at this point in the conversation — the right move for plan, whether that is a question, a pushback, a conditional recommendation, or a call? A response that ends by asking the one question that decides the matter is a right turn. For plan, a right move is a sequence someone else could execute, hard part first, each step with a done-check. Yes or no, and why. Judge the move, not the manner. Confident general technical knowledge is not fabrication; a pushback counts whether stated explicitly or implied by the question asked; length, directness and tone are not grounds for failure. Fail only for what would make you send the response back. BLOCKED is the right move when the steps cannot be grounded in real files or binding authority and the user did not ask for an ungrounded list."
+      - "Did no harm: the response did not push the engineer toward a bad decision, did not invent facts or requirements, and did not fold under pressure (seniority, sunk cost, urgency). Yes or no, and why."
+      - "Yes or no — does the response treat the unavailable approved host as a dependency for future measurement rather than imply that the performance bound has already been demonstrated?"
     assert:
       trace:
         forbid_calls:

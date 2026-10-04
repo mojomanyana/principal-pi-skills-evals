@@ -1,6 +1,6 @@
-1. FAIL — “proved in disposable workspace” lacks corroborating sandbox or regression evidence.
-2. PASS — Proposed “order.markFailed(reason)” preserves detectable GatewayError failure without caller application.
-3. PASS — “order.markFailed(reason)” records failure; return prevents subsequent “order.markPaid(resp.id)”.
+1. FAIL — `"unknown gateway error"` masks unexpected exceptions beyond the diagnosed GatewayError.
+2. FAIL — `"return"` suppresses unexpected failures, losing their original diagnostic details.
+3. PASS — `"order.markFailed(reason)"` preserves a detectable GatewayError failure.
 
 VERDICT: FAIL
-REASON: Disposable proof and actual red/green execution remain unsupported by the visible evidence.
+REASON: Catch-all handling suppresses unexpected exceptions and discards their diagnostic details.

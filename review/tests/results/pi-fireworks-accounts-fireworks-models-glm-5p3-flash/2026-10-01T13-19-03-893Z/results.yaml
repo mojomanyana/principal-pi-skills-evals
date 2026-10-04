@@ -1,5 +1,5 @@
 schema: 2
-harness_version: 0.22.0
+harness_version: 0.22.3
 harness_cli_version: 0.87.1
 skill: review
 harness: pi
@@ -16,7 +16,7 @@ source_hashes:
   skill:prompt: cbc9a3621e9db9056aec0f9ba254c72f85a930b09355071c5fc9ab06d903be78
   rubric:__persona: cba9dc3e044480f8f061ad12db4ce6625b21f05c68d2328096821c0ae9acb54c
   stimulus:A2: f93d3abdb2054293db550ae5df33a0e1b31a867a3864fecd589478951095c457
-  rubric:A2: 121605d51aa6ed53dc000467bae474a8264494b619a5da477b31afae041cdad0
+  rubric:A2: 74eb35bc464d282e9ac5b1e4365d99773909a8087050796537eeef3cab63974c
   policy:A2: e0d5bd1c01e7e08c6cb8b619efe05f8e8c3ab25862cda63a219f61c4b95b4683
 source_hash_roots:
   SKILL.md: skills
@@ -34,13 +34,15 @@ effective_grade:
   note: partial run (--only) — not scored
 scenarios:
   - id: A2
-    judge_verdict: FAIL
-    judge_reason: Missing Candidate reconciliation, Follow-ups, and explicit Workspace status.
+    judge_verdict: PASS
+    judge_reason: >-
+      Identifies invisible database failures, blocks approval, and recommends propagating
+      exceptions.
     suspect: false
     metrics:
-      wall_time_ms: 20044
-      judge_calls: 1
-      judge_rejudge_calls: 0
+      wall_time_ms: 56394
+      judge_calls: 4
+      judge_rejudge_calls: 3
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 3940
@@ -66,19 +68,21 @@ scenarios:
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: FAIL
-            reason: Missing Candidate reconciliation, Follow-ups, and explicit Workspace status.
+            verdict: PASS
+            reason: >-
+              Identifies invisible database failures, blocks approval, and recommends propagating
+              exceptions.
             suspect: false
             criteria:
               - index: 1
-                verdict: FAIL
-                reason: >-
-                  “Evidence gaps” present; Candidate reconciliation, Follow-ups, and Workspace
-                  status absent.
+                verdict: PASS
+                reason: “CHANGES-REQUESTED” correctly prioritizes the swallowed write failure.
               - index: 2
                 verdict: PASS
-                reason: “[BLOCKER]” identifies “a swallowed error” and “silent success.”
+                reason: >-
+                  “Let the exception propagate” removes suppression without weakening error
+                  handling.
               - index: 3
                 verdict: PASS
-                reason: '“Verdict: CHANGES-REQUESTED” explicitly rejects approval.'
-        recorded_verdict: FAIL
+                reason: “caller cannot distinguish a saved record from a lost one.”
+        recorded_verdict: PASS
