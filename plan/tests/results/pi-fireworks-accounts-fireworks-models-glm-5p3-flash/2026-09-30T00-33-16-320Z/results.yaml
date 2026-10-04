@@ -16,7 +16,7 @@ source_hashes:
   skill:prompt: 44758d60c15605ab19046dbf164714eeb1e399ba85091ba1dcb94e90343aa1c1
   rubric:__persona: 5d291a75187228c129fe75dbcad8ea0f503141aedf09b070c71014b8684bd679
   stimulus:A2: 56b7ce56dc412a505b6468cfb445c72922c44874813d8237dbab301a83a4d7fe
-  rubric:A2: 5b5ef41db1d86ba740bf7ee6f67f7af5ae4e0fe05582569b837d3b30e87c5a86
+  rubric:A2: df5dbc178158c546c00eeabbc31504f8e419bab668d6b209783d495ec3baecd7
   policy:A2: e0d5bd1c01e7e08c6cb8b619efe05f8e8c3ab25862cda63a219f61c4b95b4683
 source_hash_roots:
   SKILL.md: skills
@@ -36,13 +36,13 @@ scenarios:
   - id: A2
     judge_verdict: FAIL
     judge_reason: >-
-      Skeleton fakes required seams; deferred contract discovery and premature duplicate
-      acknowledgment risk lost notifications.
+      First slice fakes transformation; premature deduplication can strand notifications after
+      failures.
     suspect: false
     metrics:
-      wall_time_ms: 97334
-      judge_calls: 5
-      judge_rejudge_calls: 4
+      wall_time_ms: 108143
+      judge_calls: 6
+      judge_rejudge_calls: 5
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 6099
@@ -71,19 +71,21 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Skeleton fakes required seams; deferred contract discovery and premature duplicate
-              acknowledgment risk lost notifications.
+              First slice fakes transformation; premature deduplication can strand notifications
+              after failures.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
                 reason: >-
-                  “Vendor contract spike” follows skeleton; foundational delivery semantics remain
-                  unresolved.
+                  “Vendor contract spike” follows skeleton implementing an unverified signature
+                  scheme.
               - index: 2
                 verdict: FAIL
-                reason: “on conflict return the same 202” can silently abandon failed notifications.
+                reason: “on conflict return the same 202” can strand failed notifications.
               - index: 3
                 verdict: FAIL
-                reason: “pass-through” transformation and “fake queue” don't exercise all real seams.
+                reason: >-
+                  “primitive transform (pass-through)” fakes transformation; “Real transformation”
+                  comes later.
         recorded_verdict: FAIL

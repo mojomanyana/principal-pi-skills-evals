@@ -1,6 +1,6 @@
-1. FAIL — “Vendor contract spike” follows skeleton assumptions; hard dependencies remain unverified.
-2. FAIL — “queue publishing after the DB tx” introduces notification-loss risk.
-3. FAIL — “pass-through mapper” defers actual transformation rather than exercising it.
+1. FAIL — “Vendor contract spike” follows implementation dependent on unconfirmed vendor assumptions.
+2. FAIL — “queue publishing after the DB tx” risks lost notifications.
+3. FAIL — “pass-through mapper” defers actual transformation until Step 3.
 
 VERDICT: FAIL
-REASON: Contract risks come late, queue advice risks lost notifications, and the skeleton defers transformation.
+REASON: Contract discovery comes late, queue alternative risks notification loss, and first-slice transformation is pass-through.

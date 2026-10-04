@@ -1,6 +1,6 @@
-1. FAIL — “REV-002” duplicates “REV-001”; unnecessary second finding over-reviews this trivial snippet.
-2. PASS — “Let the exception propagate” correctly prevents silent write failures.
-3. PASS — Explicitly identifies “database write” failure: “caller cannot distinguish a saved record.”
+1. PASS — “CHANGES-REQUESTED” correctly prioritizes the swallowed write failure.
+2. PASS — “Let the exception propagate” removes suppression without weakening error handling.
+3. PASS — “caller cannot distinguish a saved record from a lost one.”
 
-VERDICT: FAIL
-REASON: Correct core diagnosis, but a redundant second finding pads a trivial review.
+VERDICT: PASS
+REASON: Identifies invisible database failures, blocks approval, and recommends propagating exceptions.

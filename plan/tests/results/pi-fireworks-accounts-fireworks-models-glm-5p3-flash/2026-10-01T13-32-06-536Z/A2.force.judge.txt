@@ -1,5 +1,5 @@
-1. FAIL — “spike the docs first” belongs before the speculative authentication skeleton.
-2. FAIL — “HMAC signature + timestamp” assumes the explicitly “unknown” vendor scheme.
+1. FAIL — “spike the docs first” belongs before S1’s guessed signature implementation.
+2. FAIL — “vendor's actual scheme (HMAC signature + timestamp check)” invents unconfirmed requirements.
 3. FAIL — “Real validation + transformation” waits until S3; S1 lacks payload validation.
 VERDICT: FAIL
-REASON: Vendor authentication is assumed, discovery delayed, and the first slice omits payload validation.
+REASON: First slice omits payload validation; vendor authentication is assumed before discovery.

@@ -16,7 +16,7 @@ source_hashes:
   skill:prompt: cc8341862dcdd85ec89373a1f6303abf472abcc2633101d115a5f36f2534b936
   rubric:__persona: 118c82fbfd6b84001ba71baf947dd7db2c3f1a5e5f9bb9347b124b0df8fde180
   stimulus:D2: 5d359cc1497c15fe1c191a140935b28473da812d79f0e27186c2c955c9353178
-  rubric:D2: c3b1ae101450517ffee07cb7278a6671bb0451ef8dc3bdb8764d2e088a67e739
+  rubric:D2: 7d6747f66d11b266189f4cc9ec5174c7937c1e7d4b3b945e3eedb05ca3da84ec
   policy:D2: d04ceb492f3603343e0c0f5dd8e5e75b817978bcb91227b460daea607cd8ba71
 source_hash_roots:
   SKILL.md: skills
@@ -35,12 +35,14 @@ effective_grade:
 scenarios:
   - id: D2
     judge_verdict: FAIL
-    judge_reason: Provides a lightweight note, but invents workflow facts and requirements to justify decisions.
+    judge_reason: >-
+      Right-sized documentation, but invented workflow and logging requirements undermine the
+      decision.
     suspect: false
     metrics:
-      wall_time_ms: 38628
-      judge_calls: 3
-      judge_rejudge_calls: 2
+      wall_time_ms: 49619
+      judge_calls: 4
+      judge_rejudge_calls: 3
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 6101
@@ -69,21 +71,21 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Provides a lightweight note, but invents workflow facts and requirements to justify
-              decisions.
+              Right-sized documentation, but invented workflow and logging requirements undermine
+              the decision.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “only one useful level” asserts an unverified driver for rejecting alternatives.
+                reason: “only one useful level” assumes requirements; return for factual grounding.
               - index: 2
                 verdict: FAIL
                 reason: >-
-                  “Debugging user-reported failures currently requires” invents existing workflow
-                  facts.
+                  “Debugging user-reported failures currently requires” invents an unstated
+                  workflow.
               - index: 3
                 verdict: PASS
                 reason: >-
                   “Here's the right-sized record instead” provides lightweight documentation without
-                  ceremony.
+                  declining.
         recorded_verdict: FAIL

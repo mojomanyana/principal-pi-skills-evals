@@ -1,6 +1,6 @@
 1. PASS — “short-form ADR” fits a “reversible internal-tool change.”
-2. FAIL — “diagnostic output will be inconsistent across subcommands” invents an unsupported fact.
-3. PASS — “short-form ADR” provides lightweight documentation rather than architectural ceremony.
+2. FAIL — “diagnostic output will be inconsistent” invents an unsupported implementation outcome.
+3. PASS — “short-form ADR” provides lightweight documentation without architectural ceremony.
 
 VERDICT: FAIL
-REASON: Lightweight documentation is appropriate, but the response invents an implementation downside.
+REASON: Lightweight documentation fits, but its asserted implementation downside lacks supporting context.

@@ -16,7 +16,7 @@ source_hashes:
   skill:prompt: b008f5a2001cb7c7b69d002de7578584d6e3b3e8b390663423980e636d87f3e3
   rubric:__persona: 118c82fbfd6b84001ba71baf947dd7db2c3f1a5e5f9bb9347b124b0df8fde180
   stimulus:D2: 5d359cc1497c15fe1c191a140935b28473da812d79f0e27186c2c955c9353178
-  rubric:D2: c3b1ae101450517ffee07cb7278a6671bb0451ef8dc3bdb8764d2e088a67e739
+  rubric:D2: 7d6747f66d11b266189f4cc9ec5174c7937c1e7d4b3b945e3eedb05ca3da84ec
   policy:D2: 0d9b03a5e1651b062c3751a01ff2300af961ccaac1f15b63082215c95a41eabe
 source_hash_roots:
   SKILL.md: skills
@@ -34,15 +34,15 @@ effective_grade:
   note: partial run (--only) — not scored
 scenarios:
   - id: D2
-    judge_verdict: FAIL
+    judge_verdict: PASS
     judge_reason: >-
-      Lightweight documentation, but arbitrary flag-count escalation pushes unnecessary complexity
-      without a workload driver.
+      Lightweight documentation preserves defaults and appropriately identifies the change as
+      reversible.
     suspect: false
     metrics:
-      wall_time_ms: 52513
-      judge_calls: 3
-      judge_rejudge_calls: 2
+      wall_time_ms: 63053
+      judge_calls: 4
+      judge_rejudge_calls: 3
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 5016
@@ -69,21 +69,19 @@ scenarios:
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: FAIL
+            verdict: PASS
             reason: >-
-              Lightweight documentation, but arbitrary flag-count escalation pushes unnecessary
-              complexity without a workload driver.
+              Lightweight documentation preserves defaults and appropriately identifies the change
+              as reversible.
             suspect: false
             criteria:
               - index: 1
-                verdict: FAIL
-                reason: “flags exceed ~5” unjustifiably triggers replacing a simple, reversible flag.
+                verdict: PASS
+                reason: “reversible, sprint-scale change” appropriately treats this as a cheap decision.
               - index: 2
-                verdict: FAIL
-                reason: >-
-                  “switch to `--log-level=<level>`” prescribes complexity without a demonstrated
-                  need.
+                verdict: PASS
+                reason: “opt-in” and “default output unchanged” preserve existing behavior.
               - index: 3
                 verdict: PASS
-                reason: “No decision-record machinery beyond this” keeps the note lightweight.
-        recorded_verdict: FAIL
+                reason: “No decision-record machinery beyond this” keeps the requested note lightweight.
+        recorded_verdict: PASS

@@ -16,7 +16,7 @@ source_hashes:
   skill:prompt: bf6895c8d6367795da5cc65d41f87373825023ee53a7fc06671bf4f071140fda
   rubric:__persona: 5d291a75187228c129fe75dbcad8ea0f503141aedf09b070c71014b8684bd679
   stimulus:A2: 56b7ce56dc412a505b6468cfb445c72922c44874813d8237dbab301a83a4d7fe
-  rubric:A2: 5b5ef41db1d86ba740bf7ee6f67f7af5ae4e0fe05582569b837d3b30e87c5a86
+  rubric:A2: df5dbc178158c546c00eeabbc31504f8e419bab668d6b209783d495ec3baecd7
   policy:A2: e0d5bd1c01e7e08c6cb8b619efe05f8e8c3ab25862cda63a219f61c4b95b4683
 source_hash_roots:
   SKILL.md: skills
@@ -36,13 +36,13 @@ scenarios:
   - id: A2
     judge_verdict: FAIL
     judge_reason: >-
-      Contract risks come late, queue advice risks lost notifications, and the skeleton defers
-      transformation.
+      Contract discovery comes late, queue alternative risks notification loss, and first-slice
+      transformation is pass-through.
     suspect: false
     metrics:
-      wall_time_ms: 76664
-      judge_calls: 4
-      judge_rejudge_calls: 3
+      wall_time_ms: 87842
+      judge_calls: 5
+      judge_rejudge_calls: 4
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 6117
@@ -71,19 +71,19 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Contract risks come late, queue advice risks lost notifications, and the skeleton
-              defers transformation.
+              Contract discovery comes late, queue alternative risks notification loss, and
+              first-slice transformation is pass-through.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
                 reason: >-
-                  “Vendor contract spike” follows skeleton assumptions; hard dependencies remain
-                  unverified.
+                  “Vendor contract spike” follows implementation dependent on unconfirmed vendor
+                  assumptions.
               - index: 2
                 verdict: FAIL
-                reason: “queue publishing after the DB tx” introduces notification-loss risk.
+                reason: “queue publishing after the DB tx” risks lost notifications.
               - index: 3
                 verdict: FAIL
-                reason: “pass-through mapper” defers actual transformation rather than exercising it.
+                reason: “pass-through mapper” defers actual transformation until Step 3.
         recorded_verdict: FAIL

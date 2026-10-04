@@ -1,6 +1,6 @@
-1. FAIL — “flags exceed ~5” unjustifiably triggers replacing a simple, reversible flag.
-2. FAIL — “switch to `--log-level=<level>`” prescribes complexity without a demonstrated need.
-3. PASS — “No decision-record machinery beyond this” keeps the note lightweight.
+1. PASS — “reversible, sprint-scale change” appropriately treats this as a cheap decision.
+2. PASS — “opt-in” and “default output unchanged” preserve existing behavior.
+3. PASS — “No decision-record machinery beyond this” keeps the requested note lightweight.
 
-VERDICT: FAIL
-REASON: Lightweight documentation, but arbitrary flag-count escalation pushes unnecessary complexity without a workload driver.
+VERDICT: PASS
+REASON: Lightweight documentation preserves defaults and appropriately identifies the change as reversible.
