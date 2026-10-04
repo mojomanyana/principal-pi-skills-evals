@@ -1,6 +1,2 @@
-1. PASS — “precomputed index ... goes stale across ... await” identifies the cause.
-2. PASS — “Applied only to ... /worker.ts, never to the caller”; empty diff agrees.
-3. PASS — “results.push(x * 2) after the yield” eliminates stale-index overwrites.
-
 VERDICT: PASS
-REASON: Proposed append-after-await repair directly eliminates lost updates while leaving the caller unchanged.
+REASON: 1 PASS: “stale index” diagnosed; 2 PASS: “never to the caller”; 3 PASS: “results.push” eliminates collision.

@@ -1,5 +1,5 @@
 schema: 2
-harness_version: 0.22.3
+harness_version: 0.22.4
 harness_cli_version: 0.87.1
 skill: architect
 harness: pi
@@ -34,15 +34,15 @@ effective_grade:
   note: partial run (--only) — not scored
 scenarios:
   - id: D2
-    judge_verdict: FAIL
+    judge_verdict: PASS
     judge_reason: >-
-      Lightweight documentation fits, but its asserted implementation downside lacks supporting
-      context.
+      Lightweight documentation fits a reversible CLI change, preserves compatibility, and
+      acknowledges assumptions.
     suspect: false
     metrics:
-      wall_time_ms: 62315
-      judge_calls: 4
-      judge_rejudge_calls: 3
+      wall_time_ms: 72999
+      judge_calls: 5
+      judge_rejudge_calls: 4
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 6152
@@ -69,23 +69,21 @@ scenarios:
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: FAIL
+            verdict: PASS
             reason: >-
-              Lightweight documentation fits, but its asserted implementation downside lacks
-              supporting context.
+              Lightweight documentation fits a reversible CLI change, preserves compatibility, and
+              acknowledges assumptions.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
                 reason: “short-form ADR” fits a “reversible internal-tool change.”
               - index: 2
-                verdict: FAIL
-                reason: >-
-                  “diagnostic output will be inconsistent” invents an unsupported implementation
-                  outcome.
-              - index: 3
                 verdict: PASS
                 reason: >-
-                  “short-form ADR” provides lightweight documentation without architectural
-                  ceremony.
-        recorded_verdict: FAIL
+                  “keeping stdout pipe-able” protects compatibility; “assumption to verify”
+                  acknowledges uncertainty.
+              - index: 3
+                verdict: PASS
+                reason: “short-form ADR” documents “--verbose” without architectural ceremony.
+        recorded_verdict: PASS

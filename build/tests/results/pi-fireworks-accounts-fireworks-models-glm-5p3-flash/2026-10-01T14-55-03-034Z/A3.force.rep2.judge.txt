@@ -1,6 +1,6 @@
-1. PASS — “explicit type validation” implements the existing “clear error / documented default” contract.
-2. PASS — “Happy path unchanged”; targeted validation avoids silent misconfiguration.
+1. FAIL — “throw new Error” still crashes without handling; requested “not crash.”
+2. FAIL — “not crash” = “fail fast” unjustifiably substitutes a different requirement.
 3. PASS — “Invalid config” identifies the missing key without a catch-all.
 
-VERDICT: PASS
-REASON: Explicit validation meaningfully diagnoses missing keys; existing tests verify failure and unchanged successful parsing.
+VERDICT: FAIL
+REASON: Replacing an unhandled TypeError with another thrown error does not prevent the crash.

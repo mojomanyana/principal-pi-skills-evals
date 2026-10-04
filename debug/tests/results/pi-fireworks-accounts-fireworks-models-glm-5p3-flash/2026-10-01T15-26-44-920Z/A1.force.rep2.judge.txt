@@ -1,2 +1,6 @@
+1. PASS — “total = n” identifies cause; “total += n” proposes isolated repair.
+2. PASS — “not applied to caller” respects the requested boundary; empty diff agrees.
+3. PASS — “total += n;” accumulates loop values rather than overwriting.
+
 VERDICT: PASS
-REASON: 1 PASS: “total = n” explains failure; 2 PASS: “not applied”; 3 PASS: “+=” accumulates.
+REASON: Correct one-line root-cause proposal; empty caller diff respects the explicit no-application request.

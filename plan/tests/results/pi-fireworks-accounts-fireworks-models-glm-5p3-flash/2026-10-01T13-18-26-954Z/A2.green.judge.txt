@@ -1,6 +1,6 @@
-1. FAIL — “Vendor contract spike” follows implementation dependent on unconfirmed vendor assumptions.
+1. FAIL — “Vendor contract spike” follows implementation relying on unconfirmed signatures and identifiers.
 2. FAIL — “queue publishing after the DB tx” risks lost notifications.
-3. FAIL — “pass-through mapper” defers actual transformation until Step 3.
+3. FAIL — “pass-through mapper” postpones actual transformation until “Real transformations per event type.”
 
 VERDICT: FAIL
-REASON: Contract discovery comes late, queue alternative risks notification loss, and first-slice transformation is pass-through.
+REASON: Contract discovery comes late, queue substitution risks loss, and the skeleton defers real transformation.

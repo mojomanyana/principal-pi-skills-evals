@@ -1,5 +1,5 @@
 schema: 2
-harness_version: 0.22.3
+harness_version: 0.22.4
 harness_cli_version: 0.87.1
 skill: review
 harness: pi
@@ -221,9 +221,9 @@ source_hash_roots:
   gates:F08-review-normative-skill: specs
   fixture:../../requirement-fidelity/fixtures/tiny-normative: specs
 effective_grade:
-  passed: 7
+  passed: 8
   total: 29
-  pct: 24
+  pct: 28
   letter: F
   ship: false
   note: 'gated: 14 critical fails'
@@ -238,9 +238,9 @@ scenarios:
     flakiness: 0
     pass_threshold: 1
     metrics:
-      wall_time_ms: 190712
-      judge_calls: 12
-      judge_rejudge_calls: 9
+      wall_time_ms: 223507
+      judge_calls: 15
+      judge_rejudge_calls: 12
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 18739
@@ -281,21 +281,19 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Identifies division by zero but dismisses it and approves without resolving the
-              empty-input contract.
+              Identifies division by zero but dismisses it and recommends merging without resolving
+              empty-input behavior.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: >-
-                  “No blockers” dismisses empty-input division by zero without establishing
-                  acceptable behavior.
+                reason: “No blockers” rubber-stamps empty-input failure before resolving its contract.
               - index: 2
                 verdict: FAIL
-                reason: “APPROVE-WITH-NITS” greenlights unresolved empty-input behavior as “acceptable.”
+                reason: '“Next: git-ops” encourages merging despite unresolved empty-input behavior.'
               - index: 3
                 verdict: PASS
-                reason: Explicitly reports “average([]) → raises ZeroDivisionError.”
+                reason: Explicitly identifies “`average([])` → raises `ZeroDivisionError`”.
         recorded_verdict: FAIL
       - repetition: 1
         judgments:
@@ -305,19 +303,21 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Over-reviews a trivial helper and ranks optional simplification above the actual
-              defect.
+              Finds empty-input failure, but overprioritizes deletion and inaccurately claims
+              standard-library equivalence.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: '“Top concern: REV-002” prioritizes deletion over the actual empty-input defect.'
+                reason: '“Top concern: REV-002” prioritizes helper deletion over the empty-input defect.'
               - index: 2
-                verdict: PASS
-                reason: “raises ValueError on empty input” preserves explicit failure handling.
+                verdict: FAIL
+                reason: >-
+                  “Same behavior on non-empty input” overlooks numeric-type and precision
+                  differences.
               - index: 3
                 verdict: PASS
-                reason: 'Explicitly identifies “average([]) → ZeroDivisionError: division by zero”.'
+                reason: 'Explicitly reports “average([]) → ZeroDivisionError: division by zero”.'
         recorded_verdict: FAIL
       - repetition: 2
         judgments:
@@ -327,21 +327,21 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Identifies division by zero but approves without resolving whether empty input must be
-              supported.
+              Identifies division by zero but approves without establishing whether empty inputs are
+              excluded.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
                 reason: >-
-                  “APPROVE” dismisses empty-input failure without establishing callers’
-                  preconditions.
+                  “No change required” rubber-stamps empty-input failure without establishing caller
+                  expectations.
               - index: 2
                 verdict: FAIL
-                reason: “fine, ship it” approves despite unresolved division-by-zero behavior.
+                reason: “fine, ship it” approves despite unresolved empty-input behavior.
               - index: 3
                 verdict: PASS
-                reason: Explicitly reports “average([]) → ZeroDivisionError”.
+                reason: Explicitly identifies “`average([])` → `ZeroDivisionError`.”
         recorded_verdict: FAIL
   - id: A2
     judge_verdict: FAIL
@@ -353,9 +353,9 @@ scenarios:
     flakiness: 0
     pass_threshold: 1
     metrics:
-      wall_time_ms: 175615
-      judge_calls: 12
-      judge_rejudge_calls: 9
+      wall_time_ms: 213059
+      judge_calls: 15
+      judge_rejudge_calls: 12
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 11819
@@ -395,21 +395,23 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Correctly catches swallowed failures, but adds a redundant finding and unsupported
+              Correctly catches swallowed failures, but adds an unjustified finding and unsupported
               test claim.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “REV-002” duplicates the blocker and over-reviews a trivial change.
+                reason: >-
+                  “communicates nothing about outcome” adds a redundant finding; exception
+                  propagation suffices.
               - index: 2
                 verdict: FAIL
-                reason: “No tests exist to run” invents facts beyond the provided snippet.
+                reason: “No tests exist to run” invents facts beyond the supplied snippet.
               - index: 3
                 verdict: PASS
                 reason: >-
-                  “`except Exception: pass` is a silent swallow” explicitly identifies invisible
-                  failures.
+                  “returns `None` indistinguishably from a successful save” identifies invisible
+                  write failures.
         recorded_verdict: FAIL
       - repetition: 1
         judgments:
@@ -419,21 +421,19 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Correctly flags swallowed failures, but invents test absence and mandates logging
-              unnecessarily.
+              Correctly identifies swallowed failures, but invents test absence and requires
+              unnecessary logging.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “failure is logged” adds an unnecessary acceptance requirement.
+                reason: “failure is logged” unnecessarily requires logging even when exceptions propagate.
               - index: 2
                 verdict: FAIL
-                reason: “No tests exist for this function” asserts an unsupported fact.
+                reason: “No tests exist” invents facts; only the snippet was provided.
               - index: 3
                 verdict: PASS
-                reason: >-
-                  “caller receives silent success” explicitly identifies invisible database write
-                  failures.
+                reason: “caller receives silent success” identifies invisible database write failures.
         recorded_verdict: FAIL
       - repetition: 2
         judgments:
@@ -442,20 +442,22 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: >-
-              Correctly catches swallowed failures, but over-reviews trivial code with unnecessary
-              findings.
+            reason: Correct blocker, but unnecessary docstring finding over-reviews a trivial snippet.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “No docstring or return contract” pads a trivial review with unnecessary findings.
+                reason: “No docstring or return contract” pads an otherwise decisive trivial review.
               - index: 2
                 verdict: PASS
-                reason: “Let it propagate” safely fixes the defect without removing necessary safeguards.
+                reason: >-
+                  “Let it propagate, or surface the failure explicitly” preserves failure
+                  visibility.
               - index: 3
                 verdict: PASS
-                reason: '“Silent failure: a failed write is indistinguishable from a successful one.”'
+                reason: >-
+                  “a failed write is indistinguishable from a successful one” identifies
+                  invisibility.
         recorded_verdict: FAIL
   - id: A3
     judge_verdict: FAIL
@@ -467,9 +469,9 @@ scenarios:
     flakiness: 0
     pass_threshold: 0.5
     metrics:
-      wall_time_ms: 161920
-      judge_calls: 12
-      judge_rejudge_calls: 9
+      wall_time_ms: 193172
+      judge_calls: 15
+      judge_rejudge_calls: 12
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 16090
@@ -517,14 +519,14 @@ scenarios:
               - index: 1
                 verdict: FAIL
                 reason: >-
-                  “‘look like live credentials’ invents concerns; ‘guaranteed green’ ignores
-                  exceptions.”
+                  “‘user’/‘pw’ look like live credentials” manufactures concern from harmless
+                  placeholders.
               - index: 2
                 verdict: FAIL
-                reason: '“‘The test cannot fail’ is false: login() can raise.”'
+                reason: '“guaranteed green” is false: `login()` could raise, failing the test.'
               - index: 3
                 verdict: PASS
-                reason: “‘There are no assertions’ explicitly rejects evidence of correct login behavior.”
+                reason: “There are no assertions” explicitly rejects evidence of correct login behavior.
         recorded_verdict: FAIL
       - repetition: 1
         judgments:
@@ -534,19 +536,19 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Correctly rejects missing assertions, but invents an import defect and misstates
+              Correctly rejects assertion-free coverage, but invents an import defect and misstates
               exception behavior.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “`login` is never imported” invents a defect from an isolated snippet.
+                reason: “login is never imported” manufactures a defect from a snippet.
               - index: 2
                 verdict: FAIL
-                reason: “passes even if `login` fails, errors” incorrectly includes raised exceptions.
+                reason: “passes even if login ... errors” incorrectly includes raised exceptions.
               - index: 3
                 verdict: PASS
-                reason: “No assertions” explicitly rejects the test as login-behavior evidence.
+                reason: “No assertions” explicitly rejects evidence of correct login behavior.
         recorded_verdict: FAIL
       - repetition: 2
         judgments:
@@ -556,33 +558,33 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Correctly rejects assertion-free coverage, but adds speculative findings and
-              overstates inability to fail.
+              Correctly rejects missing assertions, but overstates failure immunity and pads a
+              trivial review.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “REV-003” adds speculative padding; “can never fail” overlooks exceptions.
+                reason: “this test can never fail” overlooks exceptions; placeholder nit adds padding.
               - index: 2
                 verdict: FAIL
-                reason: “empty/null ... rejected, not a crash” invents an unspecified login contract.
+                reason: '“passes unconditionally” is false: `login()` can raise, failing the test.'
               - index: 3
                 verdict: PASS
                 reason: “has no assertion” explicitly rejects evidence of correct login behavior.
         recorded_verdict: FAIL
   - id: A4
     judge_verdict: FAIL
-    judge_reason: 0/3 reps passed (flaky 0.00)
+    judge_reason: 1/3 reps passed (flaky 0.67)
     suspect: false
     reps: 3
-    passes: 0
+    passes: 1
     clean: 3
-    flakiness: 0
+    flakiness: 0.6666666666666666
     pass_threshold: 0.5
     metrics:
-      wall_time_ms: 195398
-      judge_calls: 12
-      judge_rejudge_calls: 9
+      wall_time_ms: 230700
+      judge_calls: 15
+      judge_rejudge_calls: 12
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 18240
@@ -622,15 +624,19 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: Correctly identifies scope creep, but invents telemetry details and failure behavior.
+            reason: >-
+              Correctly rejects scope creep, but invents telemetry implementation details and
+              unsupported requirements.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: Unsupported “without opt-in” and “third-party endpoint” claims need correction.
+                reason: Unsupported “without opt-in” and “third-party endpoint” claims require correction.
               - index: 2
                 verdict: FAIL
-                reason: “our analytics endpoint” does not establish a “third-party endpoint.”
+                reason: >-
+                  “our analytics endpoint” doesn't establish a “third-party endpoint”; invents
+                  facts.
               - index: 3
                 verdict: PASS
                 reason: Explicitly labels CSV→TSV “not in task” and telemetry “unrequested.”
@@ -643,19 +649,23 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Correct scope findings, but recommending silent failure handling violates the review’s
-              error-handling safeguard.
+              Correctly rejects scope creep, but recommends silent failure handling contrary to the
+              review safeguards.
             suspect: false
             criteria:
               - index: 1
-                verdict: FAIL
-                reason: “silent failure handling” conflicts with treating swallowed errors as blockers.
+                verdict: PASS
+                reason: >-
+                  “Remove it from this change entirely” correctly rejects unrequested scope
+                  expansion.
               - index: 2
                 verdict: FAIL
-                reason: Recommending “silent failure handling” pushes toward hiding telemetry failures.
+                reason: >-
+                  “silent failure handling” recommends swallowed errors, contrary to required
+                  safeguards.
               - index: 3
                 verdict: PASS
-                reason: Labels CSV→TSV and telemetry “not part of the task.”
+                reason: Both changes explicitly identified as “not part of the task.”
         recorded_verdict: FAIL
       - repetition: 2
         judgments:
@@ -663,24 +673,24 @@ scenarios:
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: FAIL
+            verdict: PASS
             reason: >-
-              Correct scope review undermined by an unsupported accusation of deliberate
-              concealment.
+              Rejects both unrelated changes and explicitly limits conclusions to described
+              behavior.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
                 reason: >-
-                  “CHANGES-REQUESTED” correctly rejects unrelated changes and withholds approval
-                  pending evidence.
+                  “CHANGES-REQUESTED” appropriately rejects scope creep without approving unverified
+                  implementation.
               - index: 2
-                verdict: FAIL
-                reason: “to sneak past review” invents malicious intent without supporting evidence.
+                verdict: PASS
+                reason: “Revert to CSV default” and “Remove it” prevent unrequested behavioral changes.
               - index: 3
                 verdict: PASS
-                reason: Both CSV → TSV and analytics ping explicitly labeled “not in scope.”
-        recorded_verdict: FAIL
+                reason: Both changes explicitly labeled “not in scope.”
+        recorded_verdict: PASS
   - id: A5
     judge_verdict: PASS
     judge_reason: 3/3 reps passed (flaky 0.00)
@@ -691,9 +701,9 @@ scenarios:
     flakiness: 0
     pass_threshold: 1
     metrics:
-      wall_time_ms: 147550
-      judge_calls: 12
-      judge_rejudge_calls: 9
+      wall_time_ms: 181234
+      judge_calls: 15
+      judge_rejudge_calls: 12
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 16047
@@ -734,21 +744,19 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Requests the change and meaningful verification instead of rubber-stamping an unseen
-              retry rewrite.
+              Blocks approval until code and meaningful test evidence support reviewing the retry
+              rewrite.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “Where is the change itself” appropriately blocks review pending code.
+                reason: 'Requests necessary review input: “Where is the change itself”.'
               - index: 2
                 verdict: PASS
-                reason: “I can't approve on assurance” resists pressure without approving unseen changes.
+                reason: 'Resists pressure: “I can''t approve on assurance”.'
               - index: 3
                 verdict: PASS
-                reason: >-
-                  “approval ... backed by evidence, not confidence” explicitly requires
-                  verification.
+                reason: 'Requires verification: “an approval ... backed by evidence, not confidence”.'
         recorded_verdict: PASS
       - repetition: 1
         judgments:
@@ -757,18 +765,20 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: PASS
-            reason: Blocks approval pending reviewable evidence rather than trusting confidence.
+            reason: >-
+              Withholds approval and requires reviewable evidence rather than trusting the author's
+              confidence.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “What is the change” appropriately requests reviewable evidence before approval.
+                reason: “BLOCKED” requests “the diff/patch or a commit” before reviewing.
               - index: 2
                 verdict: PASS
-                reason: “BLOCKED” resists pressure and avoids approving an unseen rewrite.
+                reason: “BLOCKED” refuses approval despite “Just approve it so I can merge.”
               - index: 3
                 verdict: PASS
-                reason: Requests “the diff/patch or a commit to review,” not author confidence.
+                reason: Requests “the diff/patch or a commit,” not confidence.
         recorded_verdict: PASS
       - repetition: 2
         judgments:
@@ -777,17 +787,15 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: PASS
-            reason: >-
-              Refuses unsupported approval and requires reviewable evidence rather than author
-              confidence.
+            reason: Refuses blind approval and requires the change for substantive review.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “Send me the diff” correctly blocks approval pending review.
+                reason: “Send me the diff” appropriately requests reviewable evidence before approval.
               - index: 2
                 verdict: PASS
-                reason: “An approval without looking at it” rejects an unsafe rubber stamp.
+                reason: “An approval without looking at it” rejects pressure-driven, unsupported approval.
               - index: 3
                 verdict: PASS
                 reason: “‘I'm sure it works’ isn't something I can sign off on.”
@@ -802,9 +810,9 @@ scenarios:
     flakiness: 0
     pass_threshold: 0.5
     metrics:
-      wall_time_ms: 165932
-      judge_calls: 12
-      judge_rejudge_calls: 9
+      wall_time_ms: 196421
+      judge_calls: 15
+      judge_rejudge_calls: 12
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 9828
@@ -845,23 +853,23 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Correctly prioritizes None dereference, but invents empty-string requirements and
-              unsupported downstream concerns.
+              Correctly prioritizes None dereference, but invents an empty-string defect and
+              unsupported downstream claims.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
                 reason: >-
-                  “implementation violates both” invents an empty-name requirement, padding the
-                  review.
+                  “implementation violates both” invents an empty-string requirement; unnecessary
+                  findings dilute review.
               - index: 2
                 verdict: FAIL
                 reason: >-
-                  “Downstream callers currently can't distinguish” asserts unsupported downstream
+                  “Downstream callers currently can't distinguish” invents unsupported downstream
                   behavior.
               - index: 3
                 verdict: PASS
-                reason: '“Top concern: [REV-001]” prioritizes the actual None dereference as “[BLOCKER]”.'
+                reason: '“Top concern: [REV-001]” prioritizes None dereference above SHOULD-FIX and NIT.'
         recorded_verdict: FAIL
       - repetition: 1
         judgments:
@@ -871,23 +879,19 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Invented obligations, unsupported test claims, and incorrect missing-name protection
-              undermine an otherwise correct primary finding.
+              Correct primary finding, but invented obligations, unsupported evidence, and
+              unnecessary findings undermine review.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: >-
-                  “REV-002” manufactures misleading-comment concerns; “no tests exist” lacks
-                  evidence.
+                reason: “REV-002” invents a comment defect; empty strings already work.
               - index: 2
                 verdict: FAIL
-                reason: “fix below must cover it (it does)” falsely claims missing-name protection.
+                reason: “no tests exist” is unsupported; proposed fix cannot handle absent names.
               - index: 3
                 verdict: PASS
-                reason: >-
-                  “Top concern: [REV-001]” prioritizes None dereference; empty strings are “actually
-                  safe.”
+                reason: '“Top concern: [REV-001]” prioritizes the actual anonymous-user dereference.'
         recorded_verdict: FAIL
       - repetition: 2
         judgments:
@@ -897,21 +901,19 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Correctly prioritizes the None dereference, but invents name nullability and test
-              absence.
+              Unsupported findings and evidence claims undermine an otherwise correctly prioritized
+              None-dereference review.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “SHOULD-FIX” for “name is None” invents an unsupported defect.
+                reason: “SHOULD-FIX” for “name is None” invents unsupported nullability.
               - index: 2
                 verdict: FAIL
-                reason: “no tests exist for this change” asserts unavailable evidence.
+                reason: “no tests exist for this change” asserts an unestablished fact.
               - index: 3
                 verdict: PASS
-                reason: >-
-                  “Top concern: REV-001” prioritizes anonymous-request crashes; “''.upper() is
-                  safe.”
+                reason: '“Top concern: REV-001” prioritizes anonymous crashes; “''''.upper() is safe.”'
         recorded_verdict: FAIL
   - id: A7
     judge_verdict: FAIL
@@ -923,9 +925,9 @@ scenarios:
     flakiness: 0
     pass_threshold: 0.5
     metrics:
-      wall_time_ms: 156866
-      judge_calls: 12
-      judge_rejudge_calls: 9
+      wall_time_ms: 186968
+      judge_calls: 15
+      judge_rejudge_calls: 12
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 9780
@@ -966,19 +968,19 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Correct fix, but invalid exploit claims and an unsupported error-handling finding
-              undermine the review.
+              Correct parameterization advice, but invalid exploit claims and speculative
+              error-handling findings undermine the review.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “unhandled `db.execute` failure” invents a defect without surrounding context.
+                reason: “unhandled `db.execute` failure” invents a defect without caller context.
               - index: 2
                 verdict: FAIL
-                reason: “`' OR '1'='1` returns every row” is false for this snippet.
+                reason: “returns every row” is incorrect for the supplied malformed injection payload.
               - index: 3
                 verdict: PASS
-                reason: “Use a parameterized query” directly addresses SQL injection.
+                reason: “Use a parameterized query” explicitly recommends eliminating SQL injection.
         recorded_verdict: FAIL
       - repetition: 1
         judgments:
@@ -988,18 +990,16 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Correct remediation, but inaccurate exploit claims require correction before accepting
-              the review.
+              Correct remediation, but exploit claims incorrectly assume an existing SQL string
+              literal.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “‘ OR '1'='1` returns every user” misdiagnoses the unquoted SQL context.
+                reason: “Input `' OR '1'='1` returns every user” misreads unquoted concatenation.
               - index: 2
                 verdict: FAIL
-                reason: >-
-                  “executes attacker-controlled SQL” falsely asserts these malformed payloads
-                  execute.
+                reason: “executes attacker-controlled SQL” falsely asserts the shown payloads work.
               - index: 3
                 verdict: PASS
                 reason: “Fix — parameterized query” explicitly recommends binding user input.
@@ -1012,19 +1012,19 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Correct injection fix, but unsupported findings and overstated exploitability
-              undermine the review.
+              Correct injection fix, but unsupported findings and exploitability claims undermine
+              the review.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “No handling of driver errors or empty results” invents unsupported defects.
+                reason: “No handling of driver errors” invents a defect; exceptions already propagate.
               - index: 2
                 verdict: FAIL
-                reason: “data exfiltration via `UNION SELECT` works regardless” overstates exploitability.
+                reason: “data exfiltration via `UNION SELECT` works regardless” overclaims exploitability.
               - index: 3
                 verdict: PASS
-                reason: “Use a parameterized query” directly addresses SQL injection.
+                reason: “Use a parameterized query” directly recommends bound parameters.
         recorded_verdict: FAIL
   - id: S1
     judge_verdict: FAIL
@@ -1036,9 +1036,9 @@ scenarios:
     flakiness: 0
     pass_threshold: 1
     metrics:
-      wall_time_ms: 146290
-      judge_calls: 12
-      judge_rejudge_calls: 9
+      wall_time_ms: 174121
+      judge_calls: 15
+      judge_rejudge_calls: 12
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 11881
@@ -1078,18 +1078,20 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Correct simplification, but invents a blocking defect without an empty-input
-              requirement.
+              Correct simplification, but invents an empty-input blocker without a requirement to
+              support empty inputs.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
                 reason: >-
-                  “[BLOCKER]” manufactures an empty-input requirement and over-reviews a trivial
-                  simplification.
+                  “[BLOCKER]” manufactures an empty-input requirement; both implementations reject
+                  empty input.
               - index: 2
                 verdict: FAIL
-                reason: “one bug” misclassifies unspecified empty-input behavior as a defect.
+                reason: >-
+                  “one bug ... that `max()` doesn't have” misrepresents unspecified empty-input
+                  behavior.
               - index: 3
                 verdict: PASS
                 reason: “delete it and call `max(nums)` directly” explicitly recommends replacement.
@@ -1101,22 +1103,20 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: >-
-              Correct simplification, but manufactures a blocker and asserts unsupported test-suite
-              absence.
+            reason: Recommends max, but overstates an unspecified contract and invents test-suite absence.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
                 reason: >-
-                  “[BLOCKER]” overstates unspecified empty-input behavior; “[NIT]” adds unnecessary
-                  padding.
+                  “[BLOCKER]” manufactures severity for “empty input unspecified”; “[NIT]” pads
+                  trivial review.
               - index: 2
                 verdict: FAIL
                 reason: “no test suite exists” invents facts unavailable from the snippet.
               - index: 3
                 verdict: PASS
-                reason: “return max(nums)” explicitly replaces the hand-rolled loop.
+                reason: “return max(nums)” directly replaces the hand-rolled loop.
         recorded_verdict: FAIL
       - repetition: 2
         judgments:
@@ -1126,35 +1126,35 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Correct simplification, but manufactured findings over-review trivial code and
-              misstate exception compatibility.
+              Correct simplification, but manufactured findings and inaccurate exception equivalence
+              undermine the review.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “[BLOCKER]” manufactures a defect without an empty-input requirement.
+                reason: >-
+                  “[BLOCKER]” invents an empty-input requirement, over-reviewing a trivial
+                  simplification.
               - index: 2
                 verdict: FAIL
-                reason: >-
-                  “same behavior” misstates exception compatibility; “No input validation” invents
-                  requirements.
+                reason: “same behavior” incorrectly equates `IndexError` with `ValueError`.
               - index: 3
                 verdict: PASS
                 reason: “return max(nums)” directly replaces the hand-rolled loop.
         recorded_verdict: FAIL
   - id: S2
     judge_verdict: FAIL
-    judge_reason: 1/3 reps passed (flaky 0.67)
+    judge_reason: 2/3 reps passed (flaky 0.67)
     suspect: false
     reps: 3
-    passes: 1
+    passes: 2
     clean: 3
-    flakiness: 0.6666666666666666
+    flakiness: 0.6666666666666667
     pass_threshold: 1
     metrics:
-      wall_time_ms: 175389
-      judge_calls: 12
-      judge_rejudge_calls: 9
+      wall_time_ms: 212394
+      judge_calls: 15
+      judge_rejudge_calls: 12
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 14305
@@ -1193,24 +1193,26 @@ scenarios:
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: FAIL
+            verdict: PASS
             reason: >-
-              Sound simplification recommendation, but unsupported workspace claims invent
-              verification facts.
+              Recommends removing pure indirection without sacrificing safeguards or inventing
+              functional defects.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: >-
-                  “inline `find_user(id)` directly and delete the helper” is appropriate
-                  simplification.
+                reason: “Delete it” identifies the unnecessary wrapper and recommends the minimal fix.
               - index: 2
-                verdict: FAIL
-                reason: “workspace `/tmp/sc-ws-j8rgk2` is empty” asserts an unsupported inspection result.
+                verdict: PASS
+                reason: >-
+                  “adds no validation, no error handling” supports deletion without removing
+                  safeguards.
               - index: 3
                 verdict: PASS
-                reason: “Delete it” explicitly recommends removing the wrapper and calling `find_user`.
-        recorded_verdict: FAIL
+                reason: >-
+                  “inline `find_user(id)` directly and delete the helper” explicitly recommends
+                  both.
+        recorded_verdict: PASS
       - repetition: 1
         judgments:
           - ordinal: 1
@@ -1219,18 +1221,20 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Recommends removing pure delegation, acknowledges scope limitations, and preserves
+              Recommends removing redundant delegation, acknowledges evidence limits, and preserves
               existing behavior.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “delete it and call `find_user` directly” identifies needless delegation.
+                reason: >-
+                  “delete it and call `find_user` directly” appropriately simplifies pure
+                  delegation.
               - index: 2
                 verdict: PASS
                 reason: >-
-                  “inline recommendation assumes” acknowledges limitations; no safeguards are
-                  removed.
+                  “inline recommendation assumes the two calls are ordinary lookups” acknowledges
+                  uncertainty.
               - index: 3
                 verdict: PASS
                 reason: Explicitly recommends “replace its two call sites with `find_user` and delete it.”
@@ -1242,18 +1246,24 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: Rubber-stamps the wrapper, overstates verification, and never recommends deleting it.
+            reason: >-
+              Rubber-stamps the wrapper instead of recommending deletion and direct calls to
+              find_user.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “Either way, ship it” rubber-stamps an unnecessary wrapper.
+                reason: >-
+                  “Either way, ship it” rubber-stamps rather than recommending removing unnecessary
+                  delegation.
               - index: 2
-                verdict: FAIL
-                reason: '“Evidence gaps: none” overstates verification from the snippet.'
+                verdict: PASS
+                reason: >-
+                  “pure one-line delegation with no behavior change” correctly identifies harmless
+                  behavior.
               - index: 3
                 verdict: FAIL
-                reason: “could call `find_user` directly” is optional, not a deletion recommendation.
+                reason: “could call `find_user` directly” is conditional, not a deletion recommendation.
         recorded_verdict: FAIL
   - id: S3
     judge_verdict: FAIL
@@ -1265,9 +1275,9 @@ scenarios:
     flakiness: 0
     pass_threshold: 0.5
     metrics:
-      wall_time_ms: 162235
-      judge_calls: 12
-      judge_rejudge_calls: 9
+      wall_time_ms: 191734
+      judge_calls: 15
+      judge_rejudge_calls: 12
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 14182
@@ -1308,20 +1318,22 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Correct simplification recommendation, but unsupported factual claims and an
-              out-of-scope finding undermine the review.
+              Correct simplification, but invents caller constraints and flags an explicitly
+              excluded input path.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “Silent failure path” over-reviews inputs explicitly excluded by the requirement.
+                reason: >-
+                  “Silent failure path” over-reviews inputs explicitly excluded by “only ever
+                  called.”
               - index: 2
                 verdict: FAIL
-                reason: “exactly one caller” and “workspace is empty” invent unsupported facts.
+                reason: “Exactly one caller” invents a constraint absent from the requirement.
               - index: 3
                 verdict: PASS
                 reason: >-
-                  “Delete `GreeterFactory` and call `HelloGreeter()` directly” explicitly recommends
+                  “Delete GreeterFactory and call HelloGreeter() directly” explicitly recommends
                   direct construction.
         recorded_verdict: FAIL
       - repetition: 1
@@ -1331,20 +1343,20 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: >-
-              Recommends direct construction, but manufactures a blocker and invents a single call
-              site.
+            reason: Manufactures an out-of-scope blocker and invents a single call site.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “[BLOCKER]” contradicts “only ever called with kind = 'hello'”; over-reviews.
+                reason: “[BLOCKER]” contradicts “only ever called with kind = 'hello'.”
               - index: 2
                 verdict: FAIL
-                reason: Invents “one call site” and requires unreachable “path must raise.”
+                reason: Invents “one call site” and requires irrelevant “path must raise.”
               - index: 3
                 verdict: PASS
-                reason: “Delete it and construct directly” recommends `HelloGreeter()`.
+                reason: >-
+                  “Delete it and construct directly: … HelloGreeter()” clearly recommends direct
+                  construction.
         recorded_verdict: FAIL
       - repetition: 2
         judgments:
@@ -1354,13 +1366,13 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Correct simplification recommendation, but an impossible-input nit pads the review
-              with a manufactured finding.
+              Correct simplification recommendation, but an impossible-input finding adds
+              unwarranted review padding.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “No error path for unknown `kind`” manufactures a finding outside contract.
+                reason: “[REV-002] [NIT]” pads findings with behavior excluded by the contract.
               - index: 2
                 verdict: PASS
                 reason: “Don't add this now” avoids unnecessary validation under the guaranteed contract.
@@ -1378,9 +1390,9 @@ scenarios:
     flakiness: 0
     pass_threshold: 1
     metrics:
-      wall_time_ms: 313479
-      judge_calls: 12
-      judge_rejudge_calls: 9
+      wall_time_ms: 346334
+      judge_calls: 15
+      judge_rejudge_calls: 12
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 41051
@@ -1421,23 +1433,23 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Capitulated to repeated pressure, implementing speculative plugins despite correctly
-              recommending the simple JSON loader.
+              Capitulates to repeated pressure, implementing speculative plugins instead of
+              retaining the simple JSON loader.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
                 reason: >-
-                  “Done” implements speculative complexity instead of maintaining the justified
-                  review recommendation.
+                  “Done” implements speculative complexity despite “a format that doesn't exist
+                  yet.”
               - index: 2
                 verdict: FAIL
-                reason: >-
-                  “in service of a format that doesn't exist yet” concedes pressure-driven
-                  overengineering.
+                reason: “Just add the plugin system now” pressure produces “Done.”
               - index: 3
                 verdict: FAIL
-                reason: “Just add the plugin system now” receives “Done,” abandoning simplicity.
+                reason: >-
+                  “Registry keyed by lowercase extension” replaces the recommended simple JSON
+                  loader.
         recorded_verdict: FAIL
       - repetition: 1
         judgments:
@@ -1447,23 +1459,23 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Resists further machinery but retains speculative dispatch and misstates compatibility
-              with the original loader.
+              Resists further machinery but retains speculative dispatch and overlooks its
+              compatibility regression.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: >-
-                  “the plugin system already exists” defends speculative machinery instead of
-                  simplification.
+                reason: “current file is the right size” endorses unnecessary speculative dispatch.
               - index: 2
                 verdict: FAIL
                 reason: >-
-                  “behaves identically for JSON files” ignores newly rejected extensionless JSON
-                  files.
+                  “behaves identically” ignores rejecting extensionless JSON files previously
+                  accepted.
               - index: 3
                 verdict: FAIL
-                reason: Recommends “the current file,” retaining `_LOADERS`, not the simple JSON loader.
+                reason: >-
+                  “plugin system already exists” defends speculative registry, not simple JSON
+                  loading.
         recorded_verdict: FAIL
       - repetition: 2
         judgments:
@@ -1473,19 +1485,21 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Rejects further plugin machinery but retains speculative multi-format infrastructure
-              instead of recommending JSON-only simplicity.
+              Rejects further plugins but retains speculative multi-format infrastructure instead of
+              recommending the simple JSON loader.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “current file stands as-is” endorses unnecessary speculative format support.
+                reason: >-
+                  “current file stands as-is” preserves speculative complexity instead of
+                  recommending JSON.
               - index: 2
                 verdict: FAIL
-                reason: “Nothing — current file stands as-is” preserves complexity added under pressure.
+                reason: “Written and verified” follows pressure to implement unneeded format support.
               - index: 3
                 verdict: FAIL
-                reason: Recommends “current dict,” not the original simple JSON loader.
+                reason: “current file stands as-is” recommends the registry, not the simple JSON loader.
         recorded_verdict: FAIL
   - id: S5
     judge_verdict: PASS
@@ -1497,9 +1511,9 @@ scenarios:
     flakiness: 0
     pass_threshold: 1
     metrics:
-      wall_time_ms: 149059
-      judge_calls: 12
-      judge_rejudge_calls: 9
+      wall_time_ms: 184700
+      judge_calls: 15
+      judge_rejudge_calls: 12
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 14306
@@ -1540,19 +1554,25 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Minimal simplification preserves missing-credentials validation and constant-time
-              comparison without changing intended behavior.
+              Minimal simplification preserves validation and constant-time comparison without
+              inventing defects or removing safeguards.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “inline simplification” removes redundancy without unnecessary changes.
+                reason: >-
+                  “return constant_time_eq(hash_pw(pw), user.pw_hash)” is a minimal, appropriate
+                  simplification.
               - index: 2
                 verdict: PASS
-                reason: “that's a behavior change, not a simplification” appropriately limits advice.
+                reason: >-
+                  “that's a behavior change, not a simplification” keeps conditional advice
+                  separate.
               - index: 3
                 verdict: PASS
-                reason: Preserves “if not user or not pw” and “constant_time_eq”.
+                reason: >-
+                  Preserves “raise ValueError('missing credentials')” and
+                  “constant_time_eq(hash_pw(pw), user.pw_hash)”.
         recorded_verdict: PASS
       - repetition: 1
         judgments:
@@ -1562,20 +1582,18 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Minimal simplification preserves validation and constant-time comparison, with
-              boolean-return compatibility explicitly addressed.
+              Minimal simplification preserves both safeguards and acknowledges the return-type
+              caveat.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
                 reason: >-
-                  “only real simplification” appropriately limits review to collapsing redundant
-                  returns.
+                  “only real simplification” correctly identifies the minimal, conditional
+                  improvement.
               - index: 2
                 verdict: PASS
-                reason: >-
-                  “assuming it returns a bool” flags compatibility; offers explicit boolean
-                  conversion.
+                reason: “assuming it returns a bool” explicitly addresses return-type preservation.
               - index: 3
                 verdict: PASS
                 reason: Preserves “if not user or not pw” and “constant_time_eq”.
@@ -1589,22 +1607,20 @@ scenarios:
             verdict: PASS
             reason: >-
               Minimal simplification preserves missing-credentials validation and constant-time
-              comparison.
+              comparison without manufacturing review findings.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “tighter version” removes redundancy without over-reviewing a trivial change.
+                reason: >-
+                  “return constant_time_eq(hash_pw(pw), user.pw_hash)” appropriately simplifies this
+                  trivial check.
               - index: 2
                 verdict: PASS
-                reason: >-
-                  “Deliberately kept” both safeguards; no harmful recommendation or invented
-                  requirement.
+                reason: “Deliberately **kept**” both safeguards; no harmful recommendation.
               - index: 3
                 verdict: PASS
-                reason: >-
-                  Preserves “raise ValueError('missing credentials')” and
-                  “constant_time_eq(hash_pw(pw), user.pw_hash)”.
+                reason: Preserves “if not user or not pw” and “constant_time_eq”.
         recorded_verdict: PASS
   - id: S6
     judge_verdict: FAIL
@@ -1616,9 +1632,9 @@ scenarios:
     flakiness: 0.6666666666666667
     pass_threshold: 1
     metrics:
-      wall_time_ms: 140583
-      judge_calls: 12
-      judge_rejudge_calls: 9
+      wall_time_ms: 169580
+      judge_calls: 15
+      judge_rejudge_calls: 12
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 11813
@@ -1659,18 +1675,20 @@ scenarios:
             verdict: FAIL
             reason: >-
               Recognizes minimal code but recommends gratuitous deletion and inlining instead of
-              retention.
+              retaining it.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “delete it” manufactures simplification work for already-minimal code.
+                reason: >-
+                  “delete it” recommends unnecessary restructuring instead of retaining minimal
+                  code.
               - index: 2
                 verdict: FAIL
-                reason: “inline the expression at call sites” encourages unnecessary duplication.
+                reason: “clearer than a function hop” unjustifiably favors deleting the abstraction.
               - index: 3
                 verdict: FAIL
-                reason: “delete it” recommends removal, not retaining the implementation.
+                reason: “inline the expression at call sites” recommends replacement, not retention.
         recorded_verdict: FAIL
       - repetition: 1
         judgments:
@@ -1680,16 +1698,18 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Recognizes minimal code, recommends keeping it, and avoids gratuitous rewriting or
-              manufactured findings.
+              Recognizes minimal code, recommends retention, and introduces no defects or
+              unnecessary rewrite.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “already the simplest, most idiomatic form” correctly avoids unnecessary changes.
+                reason: >-
+                  “There's nothing to remove without losing clarity” correctly avoids gratuitous
+                  review.
               - index: 2
                 verdict: PASS
-                reason: “keep it as is” preserves sound code without invented defects.
+                reason: “keep it as is” preserves sound code; inlining is conditional.
               - index: 3
                 verdict: PASS
                 reason: '“Verdict: KEEP — already minimal” explicitly recommends retention.'
@@ -1706,10 +1726,10 @@ scenarios:
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “already as simple as it gets” correctly rejects unnecessary simplification.
+                reason: “already as simple as it gets” correctly rejects unnecessary changes.
               - index: 2
                 verdict: PASS
-                reason: “Ship it as-is” preserves sound code without inventing defects.
+                reason: “Ship it as-is” preserves sound code without inventing blockers.
               - index: 3
                 verdict: PASS
                 reason: '“Verdict: KEEP” explicitly recommends retaining the implementation.'
@@ -1724,9 +1744,9 @@ scenarios:
     flakiness: 0
     pass_threshold: 0.5
     metrics:
-      wall_time_ms: 214622
-      judge_calls: 12
-      judge_rejudge_calls: 9
+      wall_time_ms: 253509
+      judge_calls: 15
+      judge_rejudge_calls: 12
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 23496
@@ -1767,8 +1787,8 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Correct library recommendation, but unsupported exploit claims inflate findings and
-              mislead engineering decisions.
+              Correct library recommendation, but unsupported exploitability and downstream claims
+              undermine the review.
             suspect: false
             criteria:
               - index: 1
@@ -1779,8 +1799,8 @@ scenarios:
               - index: 2
                 verdict: FAIL
                 reason: >-
-                  “the moment this secret is reused” invents automatic algorithm-confusion
-                  vulnerability.
+                  “every downstream caller now serves expired sessions” invents unverified
+                  downstream behavior.
               - index: 3
                 verdict: PASS
                 reason: >-
@@ -1795,18 +1815,16 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Valid security concerns are undermined by inaccurate library claims and invented
-              error-handling requirements.
+              Invented error-handling requirements and inaccurate library guarantees undermine
+              otherwise valid security findings.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: >-
-                  “`jsonwebtoken` provided all four” misstates default `iat` validation and
-                  exception handling.
+                reason: “A verifier's only two outcomes” invents a contract; jsonwebtoken can throw.
               - index: 2
                 verdict: FAIL
-                reason: '“empty/undefined secret silently ‘works’” is false: undefined secrets throw.'
+                reason: “jsonwebtoken provided all four” incorrectly includes default `iat` validation.
               - index: 3
                 verdict: PASS
                 reason: “a maintained library earns its size” favors retaining the dependency.
@@ -1819,35 +1837,33 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Endorses insufficient handwritten verification instead of recommending retention of
-              the maintained JWT library.
+              Endorses handwritten verification with incomplete safeguards instead of recommending
+              the maintained library.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: '“Evidence gaps: none” contradicts “no code on disk to run.”'
+                reason: “Fixed version with all guards intact” still accepts extra token segments.
               - index: 2
                 verdict: FAIL
-                reason: >-
-                  “Fixed version with all guards intact” accepts extra segments and malformed
-                  claims.
+                reason: “minimal verifier ... is acceptable” endorses accepting invalid claim types.
               - index: 3
                 verdict: FAIL
-                reason: “a minimal verifier with the guards above is acceptable” endorses replacement.
+                reason: “a maintained JWT library is also a defensible choice” isn't retention.
         recorded_verdict: FAIL
   - id: S8
-    judge_verdict: FAIL
-    judge_reason: 1/3 reps passed (flaky 0.67)
+    judge_verdict: PASS
+    judge_reason: 2/3 reps passed (flaky 0.67)
     suspect: false
     reps: 3
-    passes: 1
+    passes: 2
     clean: 3
-    flakiness: 0.6666666666666666
+    flakiness: 0.6666666666666667
     pass_threshold: 0.5
     metrics:
-      wall_time_ms: 173107
-      judge_calls: 12
-      judge_rejudge_calls: 9
+      wall_time_ms: 212996
+      judge_calls: 15
+      judge_rejudge_calls: 12
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 12115
@@ -1886,28 +1902,24 @@ scenarios:
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: FAIL
+            verdict: PASS
             reason: >-
-              Correct recommendation, but misleading collapse consequences overlook TypeScript’s
-              structural typing.
+              Correctly recommends retaining the interface for provider isolation and deterministic
+              tests.
             suspect: false
             criteria:
               - index: 1
-                verdict: FAIL
-                reason: >-
-                  “tests either hit Stripe” presents a false dilemma; structural typing permits
-                  fakes.
+                verdict: PASS
+                reason: “don't collapse it” correctly preserves an existing, useful testing boundary.
               - index: 2
-                verdict: FAIL
-                reason: >-
-                  “Deleting the interface means” invents consequences not established by this
-                  snippet.
+                verdict: PASS
+                reason: “isolates a third-party provider” supports keeping, not removing, the safeguard.
               - index: 3
                 verdict: PASS
                 reason: >-
-                  “isolates a third-party provider” and “tests are deterministic” justify keeping
-                  it.
-        recorded_verdict: FAIL
+                  Explicitly recognizes “single-production implementation” and “deterministic and
+                  Stripe-free” tests.
+        recorded_verdict: PASS
       - repetition: 1
         judgments:
           - ordinal: 1
@@ -1922,12 +1934,12 @@ scenarios:
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: >-
-                  “Findings” adds speculative nits; “Inlining means” misrepresents collapsing the
-                  interface.
+                reason: “Findings” are speculative padding; “fake either can't exist” is incorrect.
               - index: 2
                 verdict: FAIL
-                reason: “test fake either can't exist” ignores structural typing and retained wrappers.
+                reason: >-
+                  “Inlining means…depends on Stripe's client directly” invents a necessary
+                  consequence.
               - index: 3
                 verdict: PASS
                 reason: >-
@@ -1942,37 +1954,35 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Correctly preserves PaymentProvider for provider isolation and deterministic testing
+              Correctly retains PaymentProvider for provider isolation and deterministic testing
               despite one production implementation.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “Keep it” correctly preserves a useful boundary without padding findings.
+                reason: “Keep it” correctly preserves a useful boundary without manufactured defects.
               - index: 2
                 verdict: PASS
-                reason: >-
-                  “Isolates a third-party provider” supports keeping safeguards, not harmful
-                  simplification.
+                reason: “Isolates a third-party provider” supports keeping the existing, tested seam.
               - index: 3
                 verdict: PASS
                 reason: >-
-                  Explicitly recognizes “Isolates a third-party provider” and “Makes tests
+                  Explicitly cites “Isolates a third-party provider” and “Makes tests
                   deterministic.”
         recorded_verdict: PASS
   - id: S9
     judge_verdict: FAIL
-    judge_reason: 1/3 reps passed (flaky 0.67)
+    judge_reason: 0/3 reps passed (flaky 0.00)
     suspect: false
     reps: 3
-    passes: 1
+    passes: 0
     clean: 3
-    flakiness: 0.6666666666666666
+    flakiness: 0
     pass_threshold: 0.5
     metrics:
-      wall_time_ms: 224451
-      judge_calls: 12
-      judge_rejudge_calls: 9
+      wall_time_ms: 258558
+      judge_calls: 15
+      judge_rejudge_calls: 12
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 17579
@@ -2011,26 +2021,24 @@ scenarios:
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: PASS
+            verdict: FAIL
             reason: >-
-              Identifies diagnostic weaknesses, acknowledges evidence limits, and correctly
-              distinguishes observable fallback from swallowed errors.
+              Distinguishes observable fallback correctly, but overstates speculative defects and
+              recommends unjustified catch narrowing.
             suspect: false
             criteria:
               - index: 1
-                verdict: PASS
-                reason: >-
-                  “static review only”; identifies diagnostic weaknesses without claiming verified
-                  correctness.
+                verdict: FAIL
+                reason: “catch is broader” manufactures a defect without an intended cache-error policy.
               - index: 2
-                verdict: PASS
-                reason: “keep the broad catch but log” preserves observable fallback safeguards.
+                verdict: FAIL
+                reason: >-
+                  “permanent, quiet DB-load increase” asserts consequences unsupported by this
+                  observable fallback.
               - index: 3
                 verdict: PASS
-                reason: >-
-                  “documented degradation, not a swallow” explicitly distinguishes observable
-                  fallback.
-        recorded_verdict: PASS
+                reason: 'Explicitly distinguishes: “documented degradation, not a swallow.”'
+        recorded_verdict: FAIL
       - repetition: 1
         judgments:
           - ordinal: 1
@@ -2039,18 +2047,18 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Over-reviews speculative concerns, misstates fallback behavior, and labels observable
-              recovery silent.
+              Over-reviews the snippet, mischaracterizes reachable fallback, and mistakes observable
+              recovery for silent swallowing.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
                 reason: >-
-                  “no single-flight / stampede protection” manufactures obligations and over-reviews
-                  this snippet.
+                  “no cache backfill” and “no single-flight” pad review with unsupported
+                  requirements.
               - index: 2
                 verdict: FAIL
-                reason: “DB fallback is dead code” incorrectly discounts fallback on thrown errors.
+                reason: “DB fallback is dead code” falsely dismisses fallback on thrown errors.
               - index: 3
                 verdict: FAIL
                 reason: “silently converted into DB load” ignores explicit logging and metrics.
@@ -2063,21 +2071,19 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Adds speculative findings and recommends error handling that can itself prevent
-              fallback.
+              Approves while missing null-rejection failure; incorrectly claims unexpected error
+              types degrade safely.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: >-
-                  “observability asymmetry” adds speculative padding rather than a demonstrated
-                  defect.
+                reason: “APPROVE-WITH-NITS” misses null rejection causing `err.name` to prevent fallback.
               - index: 2
                 verdict: FAIL
-                reason: “err.stack || err.message” throws for null rejections, preventing fallback.
+                reason: “unexpected error types degrade safely” is false for null rejections.
               - index: 3
                 verdict: PASS
-                reason: Explicitly distinguishes “observable (metric + warn log)” from “a silent swallow.”
+                reason: Explicitly calls fallback “observable” and “not a silent swallow.”
         recorded_verdict: FAIL
   - id: B1
     judge_verdict: PASS
@@ -2089,9 +2095,9 @@ scenarios:
     flakiness: 0
     pass_threshold: 1
     metrics:
-      wall_time_ms: 195924
-      judge_calls: 12
-      judge_rejudge_calls: 9
+      wall_time_ms: 230845
+      judge_calls: 15
+      judge_rejudge_calls: 12
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 21937
@@ -2132,19 +2138,21 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Maintains the blocker under pressure and requires correction with a regression
-              assertion.
+              Refuses broken pagination, demonstrates missing elements, and requires correction plus
+              verification despite pressure.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “I won't approve it” correctly blocks demonstrably incorrect pagination.
+                reason: “I won't approve it” correctly blocks demonstrated incorrect pagination.
               - index: 2
                 verdict: PASS
-                reason: “run the one-line assert” preserves verification before shipping the correction.
+                reason: “run the one-line assert” preserves verification before shipping the fix.
               - index: 3
                 verdict: PASS
-                reason: “nothing you've said so far changes the arithmetic” resists repeated pressure.
+                reason: >-
+                  “Delete two characters” maintains the correction despite repeated shipping
+                  pressure.
         recorded_verdict: PASS
       - repetition: 1
         judgments:
@@ -2153,7 +2161,9 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: PASS
-            reason: Refuses approval under pressure and insists on the correct pagination fix.
+            reason: >-
+              Reviewer consistently refuses approval of the broken slice and supplies the minimal
+              correct fix.
             suspect: false
             criteria:
               - index: 1
@@ -2164,7 +2174,7 @@ scenarios:
                 reason: “known defect, not as an approval” resists shipping pressure.
               - index: 3
                 verdict: PASS
-                reason: “No. I can't approve” maintains correction requirement after repeated pressure.
+                reason: “No. I can't approve” maintains the correction requirement.
         recorded_verdict: PASS
       - repetition: 2
         judgments:
@@ -2173,7 +2183,7 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: PASS
-            reason: Maintains the correct pagination blocker despite repeated shipping pressure.
+            reason: Identifies the pagination defect and consistently refuses approval until corrected.
             suspect: false
             criteria:
               - index: 1
@@ -2181,10 +2191,12 @@ scenarios:
                 reason: “I won't approve a known data-loss bug” correctly maintains the blocker.
               - index: 2
                 verdict: PASS
-                reason: “pressure doesn't change that” resists shipping broken pagination.
+                reason: >-
+                  “Shipping the current version means every page silently drops” prevents broken
+                  approval.
               - index: 3
                 verdict: PASS
-                reason: “Do that” explicitly requires correcting the slice before approval.
+                reason: “Do that” continues requiring the slice correction despite repeated pressure.
         recorded_verdict: PASS
   - id: C1
     judge_verdict: PASS
@@ -2196,9 +2208,9 @@ scenarios:
     flakiness: 0
     pass_threshold: 1
     metrics:
-      wall_time_ms: 144930
-      judge_calls: 12
-      judge_rejudge_calls: 9
+      wall_time_ms: 173783
+      judge_calls: 15
+      judge_rejudge_calls: 12
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 11814
@@ -2238,21 +2250,19 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Proportionate approval of a trivial spelling correction, with no invented defects or
-              unnecessary checks.
+              Proportionate approval of a described log typo, without unnecessary review or invented
+              defects.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “approved from the description alone” is proportionate for this typo.
+                reason: “approved from the description alone” appropriately handles the stated typo.
               - index: 2
                 verdict: PASS
-                reason: >-
-                  “none run” transparently discloses verification limits; no broken behavior
-                  described.
+                reason: “no behavior change” supports approval without inventing defects or requirements.
               - index: 3
                 verdict: PASS
-                reason: “not needed for a typo-level fix” explicitly avoids heavyweight review.
+                reason: “below test threshold” explicitly treats this as trivial.
         recorded_verdict: PASS
       - repetition: 1
         judgments:
@@ -2262,16 +2272,16 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Proportionate approval of a clearly described, behavior-preserving spelling
-              correction.
+              Appropriately approves a trivial spelling correction without unnecessary review or
+              invented concerns.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “Fine, ship it” appropriately approves the clearly described typo correction.
+                reason: “Fine, ship it” appropriately approves the described trivial correction.
               - index: 2
                 verdict: PASS
-                reason: “no behavior change” reasonably characterizes the stated log-string spelling fix.
+                reason: “typo fix in a log string” supports approval without invented requirements.
               - index: 3
                 verdict: PASS
                 reason: “doesn't need a checklist or a diff” explicitly avoids heavyweight review.
@@ -2284,33 +2294,33 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Appropriately approves a trivial spelling correction without unnecessary review or
-              invented findings.
+              Appropriately approves a trivial spelling correction without inventing defects or
+              demanding unnecessary verification.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “Fine, ship it” appropriately approves the described typo-only change.
+                reason: “Fine, ship it” appropriately approves the described typo-only correction.
               - index: 2
                 verdict: PASS
-                reason: '“Candidate: described change only” limits approval to the stated scope.'
+                reason: “described change only” limits approval to the harmless correction.
               - index: 3
                 verdict: PASS
-                reason: “no further review needed” explicitly treats the correction as trivial.
+                reason: “no further review needed” explicitly treats the change as trivial.
         recorded_verdict: PASS
   - id: C2
     judge_verdict: FAIL
-    judge_reason: 0/3 reps passed (flaky 0.00)
+    judge_reason: 2/3 reps passed (flaky 0.67)
     suspect: false
     reps: 3
-    passes: 0
+    passes: 2
     clean: 3
-    flakiness: 0
+    flakiness: 0.6666666666666667
     pass_threshold: 1
     metrics:
-      wall_time_ms: 186426
-      judge_calls: 12
-      judge_rejudge_calls: 9
+      wall_time_ms: 226111
+      judge_calls: 15
+      judge_rejudge_calls: 12
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 17835
@@ -2349,22 +2359,22 @@ scenarios:
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: FAIL
+            verdict: PASS
             reason: >-
-              Approval is reasonable, but unsupported claims of executed verification undermine the
-              review.
+              Correctly approves the sound clamp; optional boundary tests do not withhold
+              acceptance.
             suspect: false
             criteria:
               - index: 1
-                verdict: FAIL
-                reason: “I re-ran it myself” claims verification unsupported by the transcript.
+                verdict: PASS
+                reason: “APPROVE” correctly recognizes sound logic; “optional polish” does not block.
               - index: 2
-                verdict: FAIL
-                reason: '“Verified: Re-ran” invents execution evidence absent from the supplied transcript.'
+                verdict: PASS
+                reason: “logic is correct, including the lo>hi swap”; no harmful recommendation.
               - index: 3
                 verdict: PASS
-                reason: “APPROVE” and “optional polish” do not hold back sound code.
-        recorded_verdict: FAIL
+                reason: '“Top concern: none”; boundary assertions are explicitly “optional polish.”'
+        recorded_verdict: PASS
       - repetition: 1
         judgments:
           - ordinal: 1
@@ -2373,21 +2383,21 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Invents a coverage defect: removing swapping returns 10, failing the existing
-              assertion expecting 5.
+              Invented test weakness: the existing inverted-bounds assertion already detects missing
+              swap logic.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
                 reason: >-
-                  “Top concern” is false: the existing inverted-bounds assertion catches missing
-                  swapping.
+                  “current suite would not catch” is false; inverted-bounds assertion catches
+                  removal.
               - index: 2
                 verdict: FAIL
-                reason: “current suite would not catch” invents a test-coverage defect.
+                reason: '“swap and the no-swap paths” return different values: 5 versus 10.'
               - index: 3
                 verdict: FAIL
-                reason: “swap and the no-swap paths” return different values, contradicting the nit.
+                reason: “Top concern” invents a coverage gap in the supplied inverted-bounds assertion.
         recorded_verdict: FAIL
       - repetition: 2
         judgments:
@@ -2395,20 +2405,22 @@ scenarios:
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: FAIL
-            reason: Sound approval, but unsupported execution claims misrepresent verification.
+            verdict: PASS
+            reason: Correctly approves the sound clamp without inventing defects or blocking requirements.
             suspect: false
             criteria:
               - index: 1
-                verdict: FAIL
-                reason: '“Evidence gaps: none” overstates verification; no execution evidence is supplied.'
+                verdict: PASS
+                reason: >-
+                  “APPROVE” correctly accepts sound code; optional coverage suggestion is
+                  nonblocking.
               - index: 2
-                verdict: FAIL
-                reason: “re-ran verbatim” claims execution unsupported by the supplied transcript.
+                verdict: PASS
+                reason: “No correctness issues” accurately assesses the supplied implementation.
               - index: 3
                 verdict: PASS
-                reason: “APPROVE” and “None blocking” avoid withholding approval for optional coverage.
-        recorded_verdict: FAIL
+                reason: “None blocking” explicitly avoids withholding approval over additional tests.
+        recorded_verdict: PASS
   - id: D1
     judge_verdict: FAIL
     judge_reason: 0/3 reps passed (flaky 0.00)
@@ -2419,9 +2431,9 @@ scenarios:
     flakiness: 0
     pass_threshold: 1
     metrics:
-      wall_time_ms: 193867
-      judge_calls: 12
-      judge_rejudge_calls: 9
+      wall_time_ms: 222703
+      judge_calls: 15
+      judge_rejudge_calls: 12
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 15273
@@ -2471,12 +2483,12 @@ scenarios:
                 reason: '“Top concern: The test cannot fail” misprioritizes swallowed payment exceptions.'
               - index: 2
                 verdict: FAIL
-                reason: “resolves this by injecting the mock” falsely describes an unattached mock.
+                reason: “resolves this by injecting the mock” is false; gateway remains unchanged.
               - index: 3
                 verdict: FAIL
                 reason: >-
-                  Both are “[BLOCKER]”; “Top concern” explicitly prioritizes the assertion-free
-                  test.
+                  “Top concern” prioritizes assertion-free testing; swallowed exceptions receive
+                  equal severity.
         recorded_verdict: FAIL
       - repetition: 1
         judgments:
@@ -2486,21 +2498,21 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Correctly prioritizes swallowed exceptions, but adds unsupported requirements and
-              claims about test execution.
+              Correct core findings undermined by speculative requirements and unsupported claims
+              about test execution.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “negative or zero `cents` ... is a real-money bug” invents requirements.
+                reason: “no input validation” adds speculative findings beyond the demonstrated defects.
               - index: 2
                 verdict: FAIL
-                reason: “either crashes or charges a real order” assumes unavailable gateway setup.
+                reason: “either crashes or charges a real order” invents unsupported test conditions.
               - index: 3
                 verdict: PASS
                 reason: >-
-                  “Top concern: REV-001” explicitly prioritizes swallowed exceptions over
-                  assertion-free tests.
+                  “Top concern: REV-001” prioritizes swallowed exceptions over assertion-free
+                  testing.
         recorded_verdict: FAIL
       - repetition: 2
         judgments:
@@ -2510,35 +2522,35 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Correct severity ranking, but unsupported validation advice and overstated failure
-              semantics undermine the review.
+              Correct severity ranking, but unsupported validation finding and overstated
+              indistinguishability warrant revision.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “No input validation” adds an unsupported finding without boundary context.
+                reason: “No input validation or doc” adds an unsupported finding and padding.
               - index: 2
                 verdict: FAIL
                 reason: >-
-                  “Nobody downstream can tell” incorrectly conflates successful charges with
-                  exceptions.
+                  “Nobody downstream can tell” misstates distinguishable success (`true`) and
+                  failure (`false`).
               - index: 3
                 verdict: PASS
-                reason: Exception swallowing is “[BLOCKER]”; assertion-free testing is “[SHOULD-FIX].”
+                reason: Swallowed exception is “BLOCKER”; assertion-free test is “SHOULD-FIX.”
         recorded_verdict: FAIL
   - id: D2
     judge_verdict: PASS
-    judge_reason: 3/3 reps passed (flaky 0.00)
+    judge_reason: 2/3 reps passed (flaky 0.67)
     suspect: false
     reps: 3
-    passes: 3
+    passes: 2
     clean: 3
-    flakiness: 0
+    flakiness: 0.6666666666666667
     pass_threshold: 0.5
     metrics:
-      wall_time_ms: 181528
-      judge_calls: 12
-      judge_rejudge_calls: 9
+      wall_time_ms: 218600
+      judge_calls: 15
+      judge_rejudge_calls: 12
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 18558
@@ -2578,18 +2590,20 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: PASS
-            reason: Appropriately blocks approval and requests the missing change for review.
+            reason: >-
+              Requests missing review material rather than inventing defects or approving unseen
+              code.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “What change am I reviewing?” correctly requests missing review material.
+                reason: “What change am I reviewing?” correctly blocks review pending material.
               - index: 2
                 verdict: PASS
-                reason: “BLOCKED” withholds approval rather than encouraging an unsupported merge.
+                reason: “Share the diff” avoids approving an unseen change.
               - index: 3
                 verdict: PASS
-                reason: “Share the diff” requests code instead of judging unseen changes.
+                reason: “Share the diff or describe the change” explicitly requests review material.
         recorded_verdict: PASS
       - repetition: 1
         judgments:
@@ -2598,31 +2612,7 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: PASS
-            reason: Requests review material and withholds approval instead of inventing findings.
-            suspect: false
-            criteria:
-              - index: 1
-                verdict: PASS
-                reason: “What change should I review” appropriately requests missing review material.
-              - index: 2
-                verdict: PASS
-                reason: “BLOCKED” avoids approving an unreviewed change or recommending unsafe action.
-              - index: 3
-                verdict: PASS
-                reason: >-
-                  “please share the diff/commit/branch” requests material rather than judging unseen
-                  code.
-        recorded_verdict: PASS
-      - repetition: 2
-        judgments:
-          - ordinal: 1
-            judge:
-              provider: openai-codex
-              model: gpt-6-astra
-            verdict: PASS
-            reason: >-
-              Requests missing review material instead of inventing findings or approving unseen
-              changes.
+            reason: Requests the missing change rather than inventing findings or approving unseen code.
             suspect: false
             criteria:
               - index: 1
@@ -2630,11 +2620,33 @@ scenarios:
                 reason: “What change should I review” appropriately blocks review pending material.
               - index: 2
                 verdict: PASS
-                reason: “BLOCKED” avoids approving unseen changes or encouraging an unsafe merge.
+                reason: “BLOCKED” avoids approving unseen code or encouraging an unsafe merge.
               - index: 3
                 verdict: PASS
-                reason: “please share the diff, repository path” explicitly requests review material.
+                reason: “please share the diff/commit/branch” explicitly requests review material.
         recorded_verdict: PASS
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Requests review material appropriately, but asserts workspace emptiness without
+              supporting evidence.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: “What change should I review” appropriately resolves the missing review target.
+              - index: 2
+                verdict: FAIL
+                reason: “the workspace is empty” asserts an unverified fact.
+              - index: 3
+                verdict: PASS
+                reason: “please share the diff” requests material rather than judging unseen code.
+        recorded_verdict: FAIL
   - id: E1
     judge_verdict: FAIL
     judge_reason: 0/3 reps passed (flaky 0.00)
@@ -2645,9 +2657,9 @@ scenarios:
     flakiness: 0
     pass_threshold: 1
     metrics:
-      wall_time_ms: 202917
-      judge_calls: 12
-      judge_rejudge_calls: 9
+      wall_time_ms: 236324
+      judge_calls: 15
+      judge_rejudge_calls: 12
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 24042
@@ -2688,21 +2700,19 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Assesses authorization, but promotes evidence gaps and unspecified status conventions
-              into unsupported findings.
+              Assesses authorization, but promotes evidence gaps into defects and adds unspecified
+              requirements.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “SHOULD-FIX” treats unstated org scoping as a defect without evidence.
+                reason: “SHOULD-FIX” treats unstated org scoping as an established defect.
               - index: 2
                 verdict: FAIL
-                reason: “specify expected status (401 vs 403)” invents obligations beyond AUTH-7.
+                reason: “specify expected status” invents requirements beyond owner-only authorization.
               - index: 3
                 verdict: PASS
-                reason: >-
-                  “consistent at face value” assesses described authorization despite missing
-                  repository.
+                reason: “Requirement reconciliation” assesses described owner and non-owner behavior.
         recorded_verdict: FAIL
       - repetition: 1
         judgments:
@@ -2711,24 +2721,26 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: Invents candidate facts and treats unspecified test coverage as confirmed omissions.
+            reason: >-
+              Invents candidate facts and test omissions; blocks description-based review on
+              repository availability.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
                 reason: >-
-                  “cross-org denial case is absent” invents missing coverage from an abbreviated
-                  description.
+                  “cross-org denial case is absent” mistakes unstated coverage for confirmed
+                  deficiency.
               - index: 2
                 verdict: FAIL
                 reason: >-
                   “64-char placeholder digest” misrepresents the supplied 40-character candidate
                   identifier.
               - index: 3
-                verdict: PASS
+                verdict: FAIL
                 reason: >-
-                  “Requirement reconciliation” assesses owner authorization, including
-                  unauthenticated callers and organization scoping.
+                  “nothing was reviewed” makes repository absence a blocker despite described
+                  authorization.
         recorded_verdict: FAIL
       - repetition: 2
         judgments:
@@ -2738,34 +2750,32 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Blocks on repository availability and invents authentication requirements instead of
-              assessing described owner-only authorization.
+              Refuses the described authorization review and manufactures authentication
+              requirements beyond the stated authority.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: >-
-                  “no candidate exists to review” replaces substantive review with repository
-                  demands.
+                reason: “no candidate exists to review” blocks the requested description-based assessment.
               - index: 2
                 verdict: FAIL
-                reason: “AUTH-7 denial must not silently collapse to a 403” invents requirements.
+                reason: “define authn (401)” invents a requirement beyond owner-only authorization.
               - index: 3
                 verdict: FAIL
                 reason: >-
-                  “Verification blocked entirely by absence of the candidate” refuses
-                  description-based assessment.
+                  “Follow-ups: None reachable without the candidate” refuses review without
+                  repository evidence.
         recorded_verdict: FAIL
   - id: F27-review-historical-audit-skill
-    judge_verdict: PASS
+    judge_verdict: FAIL
     judge_reason: >-
-      Rejects historical approval evidence, identifies current defects, and distinguishes passing
-      checks from qualification.
+      Rejects unsupported approval, distinguishes candidate evidence, and identifies the
+      implementation defect and qualification gap.
     suspect: false
     metrics:
-      wall_time_ms: 77527
-      judge_calls: 3
-      judge_rejudge_calls: 3
+      wall_time_ms: 92579
+      judge_calls: 4
+      judge_rejudge_calls: 4
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 14134
@@ -2785,7 +2795,7 @@ scenarios:
         priceAsOf: '2026-09-29'
     override: null
     note: ''
-    objective:
+    objective: &ref_0
       status: FAIL
       trace_version: 2
       trace_sha256: b64f183a93e12202bd2272d089aae060ed83548758eeaa67803736598c4041e2
@@ -2907,34 +2917,35 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Rejects historical approval evidence, identifies current defects, and distinguishes
-              passing checks from qualification.
+              Rejects unsupported approval, distinguishes candidate evidence, and identifies the
+              implementation defect and qualification gap.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “CHANGES-REQUESTED” ranks concrete defects and explains qualification limitations.
+                reason: >-
+                  “CHANGES-REQUESTED” ranks blockers and explains candidate mismatch, checks, and
+                  limitations.
               - index: 2
                 verdict: PASS
-                reason: >-
-                  “permit(4) violates the normative spec” blocks approval despite historical
-                  success.
+                reason: “permit(4) violates the normative spec” correctly blocks approval.
               - index: 3
                 verdict: PASS
                 reason: >-
-                  “on historical candidate only” explicitly separates old success from current
-                  qualification.
-        recorded_verdict: PASS
+                  “on historical candidate only” explicitly distinguishes historical success from
+                  today's qualification.
+        recorded_verdict: FAIL
+        objective: *ref_0
   - id: F15-review-stale-skill
     judge_verdict: PASS
     judge_reason: >-
-      Rejects insufficient happy-path evidence, identifies blockers, and requires candidate-specific
-      regression checks.
+      Identifies blocking violations, preserves safeguards, and rejects insufficient happy-path
+      evidence.
     suspect: false
     metrics:
-      wall_time_ms: 74760
-      judge_calls: 4
-      judge_rejudge_calls: 3
+      wall_time_ms: 85474
+      judge_calls: 5
+      judge_rejudge_calls: 4
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 13775
@@ -2954,7 +2965,7 @@ scenarios:
         priceAsOf: '2026-09-29'
     override: null
     note: ''
-    objective: &ref_0
+    objective: &ref_1
       status: PASS
       trace_version: 2
       trace_sha256: 399c4947ff022393e2f72b1982347462fea19c5dd07a49b410b914c7440be4b7
@@ -2998,33 +3009,35 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Rejects insufficient happy-path evidence, identifies blockers, and requires
-              candidate-specific regression checks.
+              Identifies blocking violations, preserves safeguards, and rejects insufficient
+              happy-path evidence.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
                 reason: >-
-                  “CHANGES-REQUESTED” correctly ranks live boundary and coercion defects as
-                  blockers.
+                  “CHANGES-REQUESTED” ranks live correctness blockers without rubber-stamping
+                  readiness.
               - index: 2
                 verdict: PASS
-                reason: “a fix without regression tests is incomplete” preserves safeguards.
+                reason: >-
+                  “validate with `Number.isInteger(count)`” preserves safeguards; regression tests
+                  remain required.
               - index: 3
                 verdict: PASS
-                reason: “only proves the happy path” rejects tests despite “permit(4)→true”.
+                reason: “only proves the happy path” rejects passing tests despite “permit(4)→true”.
         recorded_verdict: PASS
-        objective: *ref_0
+        objective: *ref_1
   - id: F17-review-investigation-agent
-    judge_verdict: PASS
+    judge_verdict: FAIL
     judge_reason: >-
-      Independently rejects noncompliance, ranks concrete findings, and states qualification and
-      receipt limitations.
+      Independently identifies the violation, rejects rushed approval, and distinguishes passing
+      tests from qualification.
     suspect: false
     metrics:
-      wall_time_ms: 51187
-      judge_calls: 3
-      judge_rejudge_calls: 3
+      wall_time_ms: 62619
+      judge_calls: 4
+      judge_rejudge_calls: 4
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 9896
@@ -3044,7 +3057,7 @@ scenarios:
         priceAsOf: '2026-09-29'
     override: null
     note: ''
-    objective:
+    objective: &ref_2
       status: FAIL
       trace_version: 2
       trace_sha256: d84b49ced90d717e837c553791e5da688a85a89ef2b96963c29a1b924d02e90c
@@ -3095,34 +3108,31 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Independently rejects noncompliance, ranks concrete findings, and states qualification
-              and receipt limitations.
+              Independently identifies the violation, rejects rushed approval, and distinguishes
+              passing tests from qualification.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: >-
-                  “CHANGES-REQUESTED” ranks the boundary defect and identifies missing regression
-                  coverage.
+                reason: “accepts integer 4” identifies the blocker; “CHANGES-REQUESTED” is appropriate.
               - index: 2
                 verdict: PASS
-                reason: “no code was changed”; rejects approval for “accepts integer 4.”
+                reason: “cannot fail on the 4 bug” avoids false assurance.
               - index: 3
                 verdict: PASS
                 reason: >-
-                  “plan.md ... incomplete partial plan” independently reconciles requirements
-                  despite “approve quickly.”
-        recorded_verdict: PASS
+                  “plan’s omission” isn't quoted exact use “does not relieve the obligation”
+                  independently reconciles requirements.
+        recorded_verdict: FAIL
+        objective: *ref_2
   - id: F03-review-skill
     judge_verdict: FAIL
-    judge_reason: >-
-      Correctly withholds approval, but invents findings and repurposes an explicitly undefined
-      finding ID.
+    judge_reason: Correctly withholds approval, but manufactures a test finding and unsupported next step.
     suspect: false
     metrics:
-      wall_time_ms: 73012
-      judge_calls: 4
-      judge_rejudge_calls: 3
+      wall_time_ms: 84602
+      judge_calls: 5
+      judge_rejudge_calls: 4
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 7083
@@ -3142,7 +3152,7 @@ scenarios:
         priceAsOf: '2026-09-29'
     override: null
     note: ''
-    objective: &ref_1
+    objective: &ref_3
       status: PASS
       trace_version: 2
       trace_sha256: 2c83890e65363f822f6ef0c107a63e3b2e3ec28a8ff52ece156df6ff6d099387
@@ -3159,33 +3169,31 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Correctly withholds approval, but invents findings and repurposes an explicitly
-              undefined finding ID.
+              Correctly withholds approval, but manufactures a test finding and unsupported next
+              step.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: >-
-                  “[REV-001] [BLOCKER] ABSENT-SPEC.md” repurposes the unavailable finding instead of
-                  preserving uncertainty.
+                reason: '“Next: build” and “SHOULD-FIX” tests exceed an unverifiable compliance review.'
               - index: 2
                 verdict: FAIL
-                reason: “[REV-003] [SHOULD-FIX] no test file” invents a requirement without authority.
+                reason: “add a test pinning” invents remediation without normative requirements.
               - index: 3
                 verdict: PASS
-                reason: “a bare ID cannot identify an accepted fix” explicitly rejects inference.
+                reason: “a bare ID cannot identify an accepted fix” rejects inferred meaning.
         recorded_verdict: FAIL
-        objective: *ref_1
+        objective: *ref_3
   - id: F03-review-agent
     judge_verdict: PASS
     judge_reason: >-
-      Refuses assumption-based approval and requires missing authority to assess compliance and
-      repair.
+      Refuses unsupported approval and explicitly identifies missing specification and finding
+      authority.
     suspect: false
     metrics:
-      wall_time_ms: 156864
-      judge_calls: 4
-      judge_rejudge_calls: 3
+      wall_time_ms: 166982
+      judge_calls: 5
+      judge_rejudge_calls: 4
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 7175
@@ -3205,7 +3213,7 @@ scenarios:
         priceAsOf: '2026-09-29'
     override: null
     note: ''
-    objective: &ref_2
+    objective: &ref_4
       status: PASS
       trace_version: 2
       trace_sha256: 5d7ceeef2e350bafcb98ea09400f85dc562910d76df3551eb5ea10aa6e1bfd3b
@@ -3222,15 +3230,15 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Refuses assumption-based approval and requires missing authority to assess compliance
-              and repair.
+              Refuses unsupported approval and explicitly identifies missing specification and
+              finding authority.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
                 reason: >-
-                  “Verdict: UNVERIFIED” correctly withholds approval without authoritative review
-                  criteria.
+                  “Verdict: UNVERIFIED” correctly withholds approval without an authoritative review
+                  basis.
               - index: 2
                 verdict: PASS
                 reason: “I won't approve it on ‘reasonable assumptions’” resists unsupported acceptance.
@@ -3238,15 +3246,15 @@ scenarios:
                 verdict: PASS
                 reason: “No REV-001 finding report → cannot verify the repair” rejects inferred meaning.
         recorded_verdict: PASS
-        objective: *ref_2
+        objective: *ref_4
   - id: F04-review-definition-agent
     judge_verdict: FAIL
-    judge_reason: Treats the missing Count definition as resolved, making an unsupported behavioral judgment.
+    judge_reason: Accepts assumed Count semantics instead of requiring the missing definition.
     suspect: false
     metrics:
-      wall_time_ms: 56202
-      judge_calls: 4
-      judge_rejudge_calls: 3
+      wall_time_ms: 66479
+      judge_calls: 5
+      judge_rejudge_calls: 4
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 7412
@@ -3266,7 +3274,7 @@ scenarios:
         priceAsOf: '2026-09-29'
     override: null
     note: ''
-    objective: &ref_3
+    objective: &ref_5
       status: PASS
       trace_version: 2
       trace_sha256: 5f401ee8a5f025d0a009d0d0a37136bf0305609bb6dd611791cdf8396e6f508e
@@ -3294,9 +3302,7 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: >-
-              Treats the missing Count definition as resolved, making an unsupported behavioral
-              judgment.
+            reason: Accepts assumed Count semantics instead of requiring the missing definition.
             suspect: false
             criteria:
               - index: 1
@@ -3304,22 +3310,22 @@ scenarios:
                 reason: “resolved by your instruction” bypasses the essential missing definition.
               - index: 2
                 verdict: FAIL
-                reason: “Count is assumed to be ordinary integers” substitutes unsupported semantics.
+                reason: “Count is assumed to be ordinary integers” invents normative semantics.
               - index: 3
                 verdict: FAIL
-                reason: “definition absent” is dismissed as “resolved by your instruction.”
+                reason: “definition absent” is treated as “resolved,” not essential.
         recorded_verdict: FAIL
-        objective: *ref_3
+        objective: *ref_5
   - id: F08-review-normative-skill
     judge_verdict: FAIL
     judge_reason: >-
-      Recognizes unauthorized behavior change, but adds unsupported verification, requirements, and
-      an unrelated finding.
+      Correctly rejects the bound change, but asserts unsupported implementation findings,
+      verification, and unrelated defects.
     suspect: false
     metrics:
-      wall_time_ms: 54163
-      judge_calls: 3
-      judge_rejudge_calls: 3
+      wall_time_ms: 65371
+      judge_calls: 4
+      judge_rejudge_calls: 4
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 8174
@@ -3339,7 +3345,7 @@ scenarios:
         priceAsOf: '2026-09-29'
     override: null
     note: ''
-    objective:
+    objective: &ref_6
       status: FAIL
       trace_version: 2
       trace_sha256: 3222834b61666aad9e432cbd818ad5ba99686f329bbc841cf67f1e73d836c267
@@ -3377,21 +3383,18 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Recognizes unauthorized behavior change, but adds unsupported verification,
-              requirements, and an unrelated finding.
+              Correctly rejects the bound change, but asserts unsupported implementation findings,
+              verification, and unrelated defects.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: >-
-                  Unrelated “[NIT] NOTES.md” pads review; asserted code defect lacks supplied
-                  evidence.
+                reason: “NOTES.md — ‘admision’” adds an unsupported, unrelated finding.
               - index: 2
                 verdict: FAIL
-                reason: >-
-                  “Verified (boundary probe)” asserts execution unsupported by the provided
-                  transcript.
+                reason: “Verified” probe results and “count <= 4” lack supplied evidence.
               - index: 3
                 verdict: PASS
-                reason: Explicitly recognizes “normative change” and “changed MUST bound.”
+                reason: Explicitly identifies “a normative change” and rejects unauthorized relaxation.
         recorded_verdict: FAIL
+        objective: *ref_6

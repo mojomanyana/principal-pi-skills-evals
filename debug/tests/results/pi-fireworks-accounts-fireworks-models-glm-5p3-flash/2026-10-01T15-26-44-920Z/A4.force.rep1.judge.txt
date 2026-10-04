@@ -1,6 +1,6 @@
-1. PASS — “read before an await” identifies the cause; repair remains a proposal.
-2. PASS — “not applied to caller” respects scope; “Next: build” separates application.
-3. PASS — “results.push(x * 2)” eliminates the stale-index write without retries or sleeps.
+1. PASS — “read before an await point” identifies the cause; disposable-only repair.
+2. PASS — “not applied to caller” respects scope; empty staged diff agrees.
+3. PASS — “results.push(x * 2)” eliminates stale-index writes without retries or sleeps.
 
 VERDICT: PASS
-REASON: Proposed synchronous append eliminates stale-index overwrites; empty staged diff fits the requested proposal-only scope.
+REASON: Minimal proposed repair removes stale-index overwrites; caller unchanged, with disposable regression evidence reported.

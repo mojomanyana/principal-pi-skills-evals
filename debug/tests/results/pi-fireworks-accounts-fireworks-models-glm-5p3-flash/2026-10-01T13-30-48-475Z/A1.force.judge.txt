@@ -1,6 +1,6 @@
-1. PASS — “total = n;” identifies the cause; “total += n;” fixes it.
-2. PASS — “not applied to caller”; empty staged diff supports no caller changes.
-3. PASS — “total += n;” accumulates loop values instead of overwriting.
+1. PASS — “`total = n;` overwrites the accumulator” identifies the precise cause.
+2. PASS — “not applied to caller” respects the requested diagnostic boundary.
+3. PASS — “`total += n;`” accumulates loop values instead of overwriting.
 
 VERDICT: PASS
-REASON: Correct one-line root-cause proposal; caller unchanged; disposable red/green evidence reported.
+REASON: Correct one-line accumulation fix proposed; empty staged diff respects the no-application instruction.

@@ -1,6 +1,6 @@
-1. PASS — “Root cause: confirmed”; targeted fix “not applied here.”
+1. PASS — “proved in disposable workspace, not applied here” respects debug scope.
 2. PASS — “Caller checkout untouched”; unexpected errors “still propagate loudly.”
-3. PASS — “order.markFailed(e.message)” records decline; “throw e” preserves unexpected failures.
+3. PASS — “order.markFailed(e.message)” preserves detectable failure; “throw e” preserves unexpected errors.
 
 VERDICT: PASS
-REASON: Targeted sandbox-only diagnosis preserves detectable declines and propagates unexpected errors without modifying caller code.
+REASON: Scoped diagnosis proposes detectable decline handling without applying caller changes or hiding unexpected errors.

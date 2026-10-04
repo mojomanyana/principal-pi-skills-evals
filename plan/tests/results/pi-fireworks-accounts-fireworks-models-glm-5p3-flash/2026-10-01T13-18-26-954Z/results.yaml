@@ -1,5 +1,5 @@
 schema: 2
-harness_version: 0.22.3
+harness_version: 0.22.4
 harness_cli_version: 0.87.1
 skill: plan
 harness: pi
@@ -36,13 +36,13 @@ scenarios:
   - id: A2
     judge_verdict: FAIL
     judge_reason: >-
-      Contract discovery comes late, queue alternative risks notification loss, and first-slice
-      transformation is pass-through.
+      Contract discovery comes late, queue substitution risks loss, and the skeleton defers real
+      transformation.
     suspect: false
     metrics:
-      wall_time_ms: 87842
-      judge_calls: 5
-      judge_rejudge_calls: 4
+      wall_time_ms: 106944
+      judge_calls: 6
+      judge_rejudge_calls: 5
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 6117
@@ -71,19 +71,21 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Contract discovery comes late, queue alternative risks notification loss, and
-              first-slice transformation is pass-through.
+              Contract discovery comes late, queue substitution risks loss, and the skeleton defers
+              real transformation.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
                 reason: >-
-                  “Vendor contract spike” follows implementation dependent on unconfirmed vendor
-                  assumptions.
+                  “Vendor contract spike” follows implementation relying on unconfirmed signatures
+                  and identifiers.
               - index: 2
                 verdict: FAIL
                 reason: “queue publishing after the DB tx” risks lost notifications.
               - index: 3
                 verdict: FAIL
-                reason: “pass-through mapper” defers actual transformation until Step 3.
+                reason: >-
+                  “pass-through mapper” postpones actual transformation until “Real transformations
+                  per event type.”
         recorded_verdict: FAIL
