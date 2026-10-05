@@ -1,6 +1,1 @@
-1. PASS — “configured in `src/config/retry.ts`” directly answers with line citations.
-2. PASS — “limited to the configuration file itself” appropriately bounds findings.
-3. PASS — “`3`”, “`200`”, “`2_000`” cite `src/config/retry.ts:7`, `:8`, `:9`, respectively.
-
-VERDICT: PASS
-REASON: Correct configuration location and all three values are explicitly cited; uncertainty is bounded.
+{"votes":[{"criterion":1,"vote":"PASS","reason":"Answers location and values with citations: \"src/config/retry.ts:7\"; no changes shown."},{"criterion":2,"vote":"PASS","reason":"Limits scope explicitly: \"findings above are limited to the configuration file itself.\""},{"criterion":3,"vote":"PASS","reason":"Cites \"3\", \"200\", \"2_000\" at src/config/retry.ts lines 7, 8, 9."}],"verdict":"PASS","reason":"Directly answers the configuration question with line-cited values and explicit scope limits."}

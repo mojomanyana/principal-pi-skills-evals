@@ -1,5 +1,5 @@
 schema: 2
-harness_version: 0.22.4
+harness_version: 0.23.0
 harness_cli_version: 0.87.1
 skill: debug
 harness: pi
@@ -40,13 +40,13 @@ scenarios:
   - id: A1
     judge_verdict: PASS
     judge_reason: >-
-      Correct one-line accumulation fix proposed; empty staged diff respects the no-application
-      instruction.
+      Correct one-line root-cause proposal, reported disposable regression evidence, and no caller
+      changes.
     suspect: false
     metrics:
-      wall_time_ms: 106018
-      judge_calls: 5
-      judge_rejudge_calls: 4
+      wall_time_ms: 115511
+      judge_calls: 6
+      judge_rejudge_calls: 5
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 11601
@@ -83,18 +83,19 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Correct one-line accumulation fix proposed; empty staged diff respects the
-              no-application instruction.
+              Correct one-line root-cause proposal, reported disposable regression evidence, and no
+              caller changes.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “`total = n;` overwrites the accumulator” identifies the precise cause.
+                reason: Identifies overwrite root cause; reports "red before, green after" in isolation.
               - index: 2
                 verdict: PASS
-                reason: “not applied to caller” respects the requested diagnostic boundary.
+                reason: '"Not applied to caller" matches empty staged diff; proposes only accumulation.'
               - index: 3
                 verdict: PASS
-                reason: “`total += n;`” accumulates loop values instead of overwriting.
+                reason: Proposed "total += n;" accumulates loop values instead of overwriting.
+            judgeFormat: json
         recorded_verdict: PASS
         objective: *ref_0

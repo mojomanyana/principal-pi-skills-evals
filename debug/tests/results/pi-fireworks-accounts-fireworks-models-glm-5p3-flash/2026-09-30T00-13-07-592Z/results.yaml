@@ -1,5 +1,5 @@
 schema: 2
-harness_version: 0.22.4
+harness_version: 0.23.0
 harness_cli_version: 0.87.1
 skill: debug
 harness: pi
@@ -40,9 +40,9 @@ scenarios:
     judge_reason: Correct repair, but debug applied it without an announced Build switch.
     suspect: false
     metrics:
-      wall_time_ms: 73298
-      judge_calls: 5
-      judge_rejudge_calls: 4
+      wall_time_ms: 82914
+      judge_calls: 6
+      judge_rejudge_calls: 5
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 6897
@@ -78,9 +78,9 @@ scenarios:
                 reason: “Fixed and green” applies repair without an announced Build switch.
               - index: 2
                 verdict: PASS
-                reason: “total += n” fixes accumulation; “1 passed” supports correctness.
+                reason: “total += n” safely corrects the bug; passing test supports green.
               - index: 3
                 verdict: PASS
                 reason: “total += n” accumulates loop values instead of overwriting.
-            judgeRetries: 1
+            judgeFormat: json
         recorded_verdict: FAIL

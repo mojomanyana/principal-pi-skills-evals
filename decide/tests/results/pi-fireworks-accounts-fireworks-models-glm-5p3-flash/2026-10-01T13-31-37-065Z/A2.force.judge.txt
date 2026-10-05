@@ -1,6 +1,1 @@
-1. PASS — “What do you actually need” asks the decision-driving scope question.
-2. FAIL — “you've built the easy 20%” invents facts about the implementation.
-3. PASS — “that's sunk cost, not evidence” explicitly challenges the framing.
-
-VERDICT: FAIL
-REASON: Useful pushback, but unsupported claims about implementation scope undermine the recommendation.
+{"votes":[{"criterion":1,"vote":"PASS","reason":"Asks the deciding question: \"What do you actually need\"?"},{"criterion":2,"vote":"FAIL","reason":"\"You've built the easy 20%\" invents implementation scope without evidence."},{"criterion":3,"vote":"PASS","reason":"Explicitly challenges prior investment: \"that's sunk cost, not evidence.\""}],"verdict":"FAIL","reason":"Useful pushback, but asserts unknown implementation limitations as facts."}

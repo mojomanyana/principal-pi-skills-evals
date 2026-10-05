@@ -1,2 +1,1 @@
-VERDICT: PASS
-REASON: 1 PASS: “stale index” diagnosed; 2 PASS: “never to the caller”; 3 PASS: “results.push” eliminates collision.
+{"votes":[{"criterion":1,"vote":"PASS","reason":"Diagnoses \"same stale index\"; disposable-only repair appropriately leaves caller unchanged."},{"criterion":2,"vote":"PASS","reason":"\"Applied only to /tmp/ppw-atBtnM/worker.ts\"; empty staged diff supports no caller changes."},{"criterion":3,"vote":"PASS","reason":"Proposed \"results.push(x * 2)\" eliminates stale-index writes without retries or sleeps."}],"verdict":"PASS","reason":"Targeted diagnosis and sandbox-only proposal eliminate the stale-index race; caller application deferred."}

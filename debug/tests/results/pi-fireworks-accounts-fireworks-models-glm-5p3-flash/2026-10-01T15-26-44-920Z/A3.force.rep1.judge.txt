@@ -1,6 +1,1 @@
-1. FAIL — Catch-all `"unknown gateway error"` hides unexpected failures rather than diagnosing them.
-2. FAIL — `"durable failure record"` asserts persistence without evidence.
-3. PASS — `"order.markFailed(reason)"` preserves detectable GatewayError failure.
-
-VERDICT: FAIL
-REASON: Catch-all suppresses unexpected errors; claimed durable recording is unsupported.
+{"votes":[{"criterion":1,"vote":"FAIL","reason":"Catch-all exceeds GatewayError fix; \"unknown gateway error\" discards unexpected exception details."},{"criterion":2,"vote":"FAIL","reason":"\"return\" suppresses unexpected exceptions, replacing their causes with \"unknown gateway error\"."},{"criterion":3,"vote":"PASS","reason":"\"order.markFailed(reason)\" preserves GatewayError's message as detectable failure state."}],"verdict":"FAIL","reason":"GatewayError remains detectable, but catch-all handling masks unrelated exceptions and their causes."}

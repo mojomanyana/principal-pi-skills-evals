@@ -1,5 +1,5 @@
 schema: 2
-harness_version: 0.22.4
+harness_version: 0.23.0
 harness_cli_version: 0.87.1
 skill: architect
 harness: pi
@@ -36,13 +36,13 @@ scenarios:
   - id: D2
     judge_verdict: FAIL
     judge_reason: >-
-      Right-sized documentation, but fabricated workflow facts and constraints undermine the
-      decision rationale.
+      Lightweight documentation fits, but unsupported workload claims fabricate the decision's
+      rationale.
     suspect: false
     metrics:
-      wall_time_ms: 68282
-      judge_calls: 5
-      judge_rejudge_calls: 4
+      wall_time_ms: 79403
+      judge_calls: 6
+      judge_rejudge_calls: 5
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 6101
@@ -71,21 +71,20 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Right-sized documentation, but fabricated workflow facts and constraints undermine the
-              decision rationale.
+              Lightweight documentation fits, but unsupported workload claims fabricate the
+              decision's rationale.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “there's only one useful level” asserts an unestablished workload constraint.
+                reason: Unsupported "only one useful level" makes the decision rationale need correction.
               - index: 2
                 verdict: FAIL
                 reason: >-
-                  “Debugging user-reported failures currently requires” invents the team's current
-                  debugging process.
+                  Invents current debugging practices: "currently requires re-running commands with
+                  ad-hoc logging".
               - index: 3
                 verdict: PASS
-                reason: >-
-                  “Here's the right-sized record instead” provides lightweight documentation without
-                  ceremony.
+                reason: Provides a "right-sized record" and suggests a "commit note".
+            judgeFormat: json
         recorded_verdict: FAIL

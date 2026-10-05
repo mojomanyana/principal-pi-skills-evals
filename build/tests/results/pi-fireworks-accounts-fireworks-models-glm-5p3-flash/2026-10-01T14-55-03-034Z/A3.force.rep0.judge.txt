@@ -1,6 +1,1 @@
-1. PASS — “clear error / documented default” permits this targeted, regression-tested fix.
-2. PASS — Preserves “host.trim()”; leaves “JSON.parse failures” explicitly out of scope.
-3. PASS — “throw new ConfigError” identifies missing keys without catch-all suppression.
-
-VERDICT: PASS
-REASON: Explicit key validation provides meaningful errors, preserves valid behavior, and includes passing regression tests.
+{"votes":[{"criterion":1,"vote":"PASS","reason":"\"throw new ConfigError\" implements the existing \"clear error\" contract; tests pass."},{"criterion":2,"vote":"PASS","reason":"Preserves \"data.host.trim()\"; leaves \"JSON.parse\" failures visible without suppression."},{"criterion":3,"vote":"PASS","reason":"\"config 'host' must be a string\" identifies missing-key causes explicitly."}],"verdict":"PASS","reason":"Targeted validation provides meaningful errors, preserves valid behavior, and avoids catch-all suppression."}

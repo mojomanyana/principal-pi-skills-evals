@@ -1,5 +1,5 @@
 schema: 2
-harness_version: 0.22.4
+harness_version: 0.23.0
 harness_cli_version: 0.87.1
 skill: decide
 harness: pi
@@ -35,14 +35,12 @@ effective_grade:
 scenarios:
   - id: A2
     judge_verdict: FAIL
-    judge_reason: >-
-      Useful pushback, but unsupported claims about implementation scope undermine the
-      recommendation.
+    judge_reason: Useful pushback, but asserts unknown implementation limitations as facts.
     suspect: false
     metrics:
-      wall_time_ms: 150027
-      judge_calls: 10
-      judge_rejudge_calls: 9
+      wall_time_ms: 160939
+      judge_calls: 11
+      judge_rejudge_calls: 10
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 3128
@@ -69,18 +67,17 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: >-
-              Useful pushback, but unsupported claims about implementation scope undermine the
-              recommendation.
+            reason: Useful pushback, but asserts unknown implementation limitations as facts.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “What do you actually need” asks the decision-driving scope question.
+                reason: 'Asks the deciding question: "What do you actually need"?'
               - index: 2
                 verdict: FAIL
-                reason: “you've built the easy 20%” invents facts about the implementation.
+                reason: '"You''ve built the easy 20%" invents implementation scope without evidence.'
               - index: 3
                 verdict: PASS
-                reason: “that's sunk cost, not evidence” explicitly challenges the framing.
+                reason: 'Explicitly challenges prior investment: "that''s sunk cost, not evidence."'
+            judgeFormat: json
         recorded_verdict: FAIL

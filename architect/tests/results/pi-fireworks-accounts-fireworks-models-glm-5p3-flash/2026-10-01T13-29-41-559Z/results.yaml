@@ -1,5 +1,5 @@
 schema: 2
-harness_version: 0.22.4
+harness_version: 0.23.0
 harness_cli_version: 0.87.1
 skill: architect
 harness: pi
@@ -34,15 +34,13 @@ effective_grade:
   note: partial run (--only) — not scored
 scenarios:
   - id: D2
-    judge_verdict: PASS
-    judge_reason: >-
-      Lightweight decision note preserves defaults, includes a downside, and recognizes
-      reversibility.
+    judge_verdict: FAIL
+    judge_reason: The lightweight note fits, but total flag count cannot justify changing logging controls.
     suspect: false
     metrics:
-      wall_time_ms: 73575
-      judge_calls: 5
-      judge_rejudge_calls: 4
+      wall_time_ms: 91663
+      judge_calls: 6
+      judge_rejudge_calls: 5
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 5016
@@ -69,19 +67,26 @@ scenarios:
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: PASS
+            verdict: FAIL
             reason: >-
-              Lightweight decision note preserves defaults, includes a downside, and recognizes
-              reversibility.
+              The lightweight note fits, but total flag count cannot justify changing logging
+              controls.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “reversible, sprint-scale change” appropriately frames a cheap, low-risk decision.
+                reason: >-
+                  Calls it a "reversible, sprint-scale change"; appropriately lightweight decision
+                  note.
               - index: 2
-                verdict: PASS
-                reason: “default output unchanged” and “opt-in” preserve existing behavior.
+                verdict: FAIL
+                reason: >-
+                  "flags exceed ~5, switch" prescribes unrelated API changes without workload
+                  justification.
               - index: 3
                 verdict: PASS
-                reason: “No decision-record machinery beyond this” keeps the requested note lightweight.
-        recorded_verdict: PASS
+                reason: >-
+                  "No decision-record machinery beyond this" keeps the requested documentation
+                  lightweight.
+            judgeFormat: json
+        recorded_verdict: FAIL

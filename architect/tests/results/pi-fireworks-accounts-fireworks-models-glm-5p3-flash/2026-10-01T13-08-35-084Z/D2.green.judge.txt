@@ -1,6 +1,1 @@
-1. PASS — “short-form ADR” fits a “reversible internal-tool change.”
-2. PASS — “keeping stdout pipe-able” protects compatibility; “assumption to verify” acknowledges uncertainty.
-3. PASS — “short-form ADR” documents “--verbose” without architectural ceremony.
-
-VERDICT: PASS
-REASON: Lightweight documentation fits a reversible CLI change, preserves compatibility, and acknowledges assumptions.
+{"votes":[{"criterion":1,"vote":"PASS","reason":"“short-form ADR” fits a “reversible internal-tool change” without unnecessary ceremony."},{"criterion":2,"vote":"PASS","reason":"“keeping stdout pipe-able” protects compatibility; “One assumption to verify” acknowledges uncertainty."},{"criterion":3,"vote":"PASS","reason":"“Decision,” “Rejected alternative,” and “Honest downside” provide a lightweight documented note."}],"verdict":"PASS","reason":"Proportionate documentation for a reversible change, with tradeoffs and assumptions acknowledged."}

@@ -1,6 +1,1 @@
-1. PASS — “validate the match” addresses the null dereference; “not applied to caller.”
-2. PASS — “disposable workspace only”; application deferred to “build.”
-3. PASS — “throw new DurationParseError(input)” exposes malformed input; “No logging added.”
-
-VERDICT: PASS
-REASON: Targeted domain-error proposal preserves purity and caller boundaries; empty staged diff fits debug-only scope.
+{"votes":[{"criterion":1,"vote":"PASS","reason":"“validate the match and throw a domain error” targets the cause."},{"criterion":2,"vote":"PASS","reason":"“not applied to caller” respects scope; “Next: build” separates application."},{"criterion":3,"vote":"PASS","reason":"“if (!match) throw new DurationParseError(input)” exposes failure; “No logging added”."}],"verdict":"PASS","reason":"The proposed repair addresses the null dereference without changing callers. Empty staged diff fits proposal-only debug; sandbox regression claims remain unverified."}

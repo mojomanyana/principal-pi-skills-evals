@@ -1,6 +1,1 @@
-1. PASS — “reversible, sprint-scale change” appropriately frames a cheap, low-risk decision.
-2. PASS — “default output unchanged” and “opt-in” preserve existing behavior.
-3. PASS — “No decision-record machinery beyond this” keeps the requested note lightweight.
-
-VERDICT: PASS
-REASON: Lightweight decision note preserves defaults, includes a downside, and recognizes reversibility.
+{"votes":[{"criterion":1,"vote":"PASS","reason":"Calls it a \"reversible, sprint-scale change\"; appropriately lightweight decision note."},{"criterion":2,"vote":"FAIL","reason":"\"flags exceed ~5, switch\" prescribes unrelated API changes without workload justification."},{"criterion":3,"vote":"PASS","reason":"\"No decision-record machinery beyond this\" keeps the requested documentation lightweight."}],"verdict":"FAIL","reason":"The lightweight note fits, but total flag count cannot justify changing logging controls."}

@@ -1,6 +1,1 @@
-1. PASS — “read before an await point” identifies the cause; disposable-only repair.
-2. PASS — “not applied to caller” respects scope; empty staged diff agrees.
-3. PASS — “results.push(x * 2)” eliminates stale-index writes without retries or sleeps.
-
-VERDICT: PASS
-REASON: Minimal proposed repair removes stale-index overwrites; caller unchanged, with disposable regression evidence reported.
+{"votes":[{"criterion":1,"vote":"PASS","reason":"Identifies \"same stale index (0)\"; proposes minimal repair, \"not applied to caller\"."},{"criterion":2,"vote":"PASS","reason":"\"caller untouched\" matches empty staged diff; \"Next: build\" preserves phase boundary."},{"criterion":3,"vote":"PASS","reason":"\"results.push(x * 2)\" after await eliminates stale-index writes without retries."}],"verdict":"PASS","reason":"Correct minimal proposed repair; empty diff fits debug-only scope. Execution claims remain unverified."}

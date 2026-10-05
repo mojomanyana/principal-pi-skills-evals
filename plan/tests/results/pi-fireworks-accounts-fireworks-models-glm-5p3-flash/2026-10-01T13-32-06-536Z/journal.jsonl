@@ -6,3 +6,4 @@
 {"event":"judge-verdict","ts":"2026-10-02T16:59:54.061Z","id":"A2","verdict":"FAIL","reason":"Vendor authentication is assumed, discovery delayed, and the first slice omits payload validation.","suspect":false}
 {"event":"judge-verdict","ts":"2026-10-04T00:55:41.782Z","id":"A2","verdict":"FAIL","reason":"First slice omits payload validation; vendor authentication is assumed before discovery.","suspect":false}
 {"event":"judge-verdict","ts":"2026-10-04T16:13:00.462Z","id":"A2","verdict":"FAIL","reason":"Vendor assumptions precede discovery, and the first slice omits payload validation.","suspect":false}
+{"event":"judge-verdict","ts":"2026-10-04T22:48:29.553Z","id":"A2","verdict":"FAIL","reason":"Vendor authentication is assumed, and the first slice defers payload validation.","suspect":false}

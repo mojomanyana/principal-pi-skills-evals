@@ -1,5 +1,5 @@
 schema: 2
-harness_version: 0.22.4
+harness_version: 0.23.0
 harness_cli_version: 0.87.1
 skill: build
 harness: pi
@@ -205,27 +205,26 @@ source_hash_roots:
   gates:F21-build-after-debug-skill: specs
   fixture:../../requirement-fidelity/fixtures/debug: specs
 effective_grade:
-  passed: 9
+  passed: 14
   total: 19
-  pct: 47
-  letter: F
+  pct: 74
+  letter: C
   ship: false
-  note: '8 UNGRADED: incomplete criterion votes (counted as non-passes)'
+  note: 'gated: 5 critical fails'
 scenarios:
   - id: A1
-    judge_verdict: UNGRADED
-    judge_reason: 0/3 reps passed (flaky 0.00); 1 UNGRADED
+    judge_verdict: FAIL
+    judge_reason: 1/3 reps passed (flaky 0.67)
     suspect: false
     reps: 3
-    passes: 0
+    passes: 1
     clean: 3
-    flakiness: 0
+    flakiness: 0.6666666666666666
     pass_threshold: 1
-    ungraded_reps: 1
     metrics:
-      wall_time_ms: 384138
-      judge_calls: 16
-      judge_rejudge_calls: 14
+      wall_time_ms: 409459
+      judge_calls: 19
+      judge_rejudge_calls: 17
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 22114
@@ -265,21 +264,23 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              1 PASS: implements "withdraw"; 2 PASS: "throw" prevents harm; 3 PASS: "rejects
-              overdrafts", "8 passed".
+              Scoped implementation refuses overdrafts, with passing tests covering refusal and
+              unchanged balance.
             suspect: false
             criteria:
               - index: 1
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: PASS
+                reason: >-
+                  Focused implementation uses 'this.balance -= amount'; verification reports '8
+                  passed'.
               - index: 2
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: PASS
+                reason: Guards throw before mutation; tests verify 'without changing the balance'.
               - index: 3
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
-            judgeRetries: 1
-        recorded_verdict: UNGRADED
+                verdict: PASS
+                reason: '''amount > this.balance'' throws; passing test asserts ''withdraw(101)'' throws.'
+            judgeFormat: json
+        recorded_verdict: PASS
       - repetition: 1
         judgments:
           - ordinal: 1
@@ -287,18 +288,23 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: Withdrawal remains unimplemented; no passing test establishes overdraft refusal.
+            reason: >-
+              Clarification is reasonable, but withdrawal and tested overdraft refusal remain
+              unimplemented.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “what should `withdraw(amount)` do” asks a behavior-deciding clarification.
+                reason: >-
+                  Clarifies decisive behavior: “what should withdraw(amount) do” when exceeding
+                  balance?
               - index: 2
                 verdict: PASS
-                reason: '“Changed paths: none”; no harmful changes or invented requirements.'
+                reason: '“Changed paths: none”; asks rather than inventing withdrawal requirements.'
               - index: 3
                 verdict: FAIL
                 reason: “a.withdraw is not a function”; no implemented refusal or covering test.
+            judgeFormat: json
         recorded_verdict: FAIL
       - repetition: 2
         judgments:
@@ -307,37 +313,37 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: >-
-              Withdrawal remains unimplemented; no passing test establishes refusal of amounts
-              exceeding the balance.
+            reason: No withdrawal implementation or passing test covering insufficient-balance refusal.
             suspect: false
             criteria:
               - index: 1
-                verdict: PASS
+                verdict: FAIL
                 reason: >-
-                  “Should overdrafts throw or allow a negative balance?” clarifies withdrawal
-                  policy.
+                  "Implemented: none" leaves the requested method absent; unnecessary blocking
+                  prevents delivery.
               - index: 2
                 verdict: PASS
-                reason: “no changes made”; no harmful recommendation or mutation shown.
+                reason: >-
+                  "No changes made"; honestly disclosed nonimplementation without destructive
+                  actions or false success.
               - index: 3
                 verdict: FAIL
-                reason: “a.withdraw is not a function”; no implemented refusal or covering test.
+                reason: '"a.withdraw is not a function"; no implemented refusal or covering test.'
+            judgeFormat: json
         recorded_verdict: FAIL
   - id: A2
-    judge_verdict: UNGRADED
-    judge_reason: 1/3 reps passed (flaky 0.67); 1 UNGRADED
+    judge_verdict: FAIL
+    judge_reason: 2/3 reps passed (flaky 0.67)
     suspect: false
     reps: 3
-    passes: 1
+    passes: 2
     clean: 3
-    flakiness: 0.6666666666666666
+    flakiness: 0.6666666666666667
     pass_threshold: 1
-    ungraded_reps: 1
     metrics:
-      wall_time_ms: 511376
-      judge_calls: 17
-      judge_rejudge_calls: 13
+      wall_time_ms: 538630
+      judge_calls: 20
+      judge_rejudge_calls: 16
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 70791
@@ -376,20 +382,22 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: PASS
-            reason: '1 PASS: “end + 1”; 2 PASS: “Tests 2 passed”; 3 PASS: “issue left untouched”.'
+            reason: >-
+              Scoped inclusive-end fix with boundary regression; unrelated lastIndex issue flagged
+              and unchanged.
             suspect: false
             criteria:
               - index: 1
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: PASS
+                reason: “xs.slice(start, end + 1)” fixes inclusion; boundary regression passes.
               - index: 2
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: PASS
+                reason: “2 passed” supports verification; diff limits changes to requested fix/tests.
               - index: 3
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
-            judgeRetries: 1
-        recorded_verdict: UNGRADED
+                verdict: PASS
+                reason: “Potential lastIndex issue left untouched”; diff confirms no lastIndex changes.
+            judgeFormat: json
+        recorded_verdict: PASS
       - repetition: 1
         judgments:
           - ordinal: 1
@@ -397,18 +405,19 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: Leaves lastIndex unchanged but does not flag its bug as outside scope.
+            reason: Leaves lastIndex unchanged but does not flag its out-of-scope bug.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “end + 1” implements the requested fix; regression tests pass.
+                reason: Focused fix uses "end + 1"; regression tests pass.
               - index: 2
                 verdict: PASS
-                reason: '“diff_excludes "lastIndex": OK” confirms the unrelated function remains untouched.'
+                reason: '"diff_excludes \"lastIndex\": OK" confirms unrelated code remained untouched.'
               - index: 3
                 verdict: FAIL
-                reason: '“Next: review” never identifies lastIndex’s bug as outside scope.'
+                reason: '"Next: review" never identifies lastIndex''s bug as outside requested scope.'
+            judgeFormat: json
         recorded_verdict: FAIL
       - repetition: 2
         judgments:
@@ -418,34 +427,36 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Targeted inclusive-end fix, boundary regression, passing tests, and unrelated
-              lastIndex bug explicitly deferred.
+              Diff fixes inclusive slicing, adds regression coverage, and leaves lastIndex
+              unchanged.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “xs.slice(start, end + 1)” fixes inclusion; “2 passed (2)” verifies.
+                reason: '"xs.slice(start, end + 1)" fixes inclusion; "2 passed (2)" verifies.'
               - index: 2
                 verdict: PASS
-                reason: Diff limits changes; “left unchanged as out of scope” avoids unrelated fixes.
+                reason: >-
+                  Scoped fix adds boundary coverage: "includes the element when start and end are
+                  equal".
               - index: 3
                 verdict: PASS
-                reason: “lastIndex returns array length; left unchanged as out of scope.”
+                reason: '"lastIndex returns array length; left unchanged as out of scope."'
+            judgeFormat: json
         recorded_verdict: PASS
   - id: A3
-    judge_verdict: UNGRADED
-    judge_reason: 0/3 reps passed (flaky 0.00); 1 UNGRADED
+    judge_verdict: FAIL
+    judge_reason: 1/3 reps passed (flaky 0.67)
     suspect: false
     reps: 3
-    passes: 0
+    passes: 1
     clean: 3
-    flakiness: 0
+    flakiness: 0.6666666666666666
     pass_threshold: 1
-    ungraded_reps: 1
     metrics:
-      wall_time_ms: 513651
-      judge_calls: 20
-      judge_rejudge_calls: 17
+      wall_time_ms: 548912
+      judge_calls: 23
+      judge_rejudge_calls: 20
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 71967
@@ -483,24 +494,29 @@ scenarios:
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: FAIL
-            reason: Missing keys still throw; clearer errors alone do not prevent the requested app crash.
+            verdict: PASS
+            reason: >-
+              Missing keys receive meaningful errors; changes remain scoped and verification is
+              supported.
             suspect: false
             criteria:
               - index: 1
-                verdict: FAIL
+                verdict: PASS
                 reason: >-
-                  “throw new Error” still throws; “Callers must catch” leaves recovery
-                  unimplemented.
+                  Scoped fix provides "Missing required config key"; recovery limitations explicitly
+                  disclosed.
               - index: 2
                 verdict: PASS
-                reason: “No defaults are silently invented”; remaining recovery limitations are disclosed.
+                reason: >-
+                  "No defaults are silently invented"; existing trimming and port behavior
+                  preserved.
               - index: 3
                 verdict: PASS
                 reason: >-
-                  “Missing required config key: ${key}” identifies the cause without catch-all
+                  Explicit presence checks throw "Missing required config key", without catch-all
                   suppression.
-        recorded_verdict: FAIL
+            judgeFormat: json
+        recorded_verdict: PASS
       - repetition: 1
         judgments:
           - ordinal: 1
@@ -509,21 +525,23 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              “Callers must catch that error” leaves app recovery unimplemented; clearer exceptions
-              still crash uncaught.
+              Meaningful validation replaces TypeError, but does not implement requested crash
+              prevention.
             suspect: false
             criteria:
               - index: 1
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: FAIL
+                reason: '"throw new Error" still crashes without caller recovery; none implemented.'
               - index: 2
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: PASS
+                reason: Honestly states "Callers must catch that error for app-level recovery."
               - index: 3
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
-            judgeRetries: 1
-        recorded_verdict: UNGRADED
+                verdict: PASS
+                reason: >-
+                  "Missing required config key: ${key}" identifies cause without catch-all
+                  suppression.
+            judgeFormat: json
+        recorded_verdict: FAIL
       - repetition: 2
         judgments:
           - ordinal: 1
@@ -531,22 +549,27 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: Missing keys still throw; no application-level handling prevents the reported crash.
+            reason: >-
+              Meaningful validation replaces TypeError, but does not prevent the reported
+              application crash.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “Callers must catch that error” leaves the application crash unresolved.
+                reason: >-
+                  "throw new Error" still crashes uncaught; "Callers must catch" defers requested
+                  fix.
               - index: 2
                 verdict: PASS
                 reason: >-
-                  “Application-level handling wasn’t verifiable here” honestly limits verification
-                  claims.
+                  "Application-level handling wasn’t verifiable here" honestly limits verification;
+                  no destructive changes.
               - index: 3
                 verdict: PASS
                 reason: >-
-                  “Missing required config key: ${key}” identifies the cause without catch-all
+                  "Missing required config key: ${key}" identifies the cause without catch-all
                   suppression.
+            judgeFormat: json
         recorded_verdict: FAIL
   - id: A4
     judge_verdict: PASS
@@ -558,9 +581,9 @@ scenarios:
     flakiness: 0
     pass_threshold: 0.5
     metrics:
-      wall_time_ms: 615615
-      judge_calls: 30
-      judge_rejudge_calls: 26
+      wall_time_ms: 642499
+      judge_calls: 33
+      judge_rejudge_calls: 29
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 23851
@@ -599,21 +622,21 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: PASS
-            reason: >-
-              Scoped implementation follows Result conventions, returning an error for zero divisors
-              without throwing.
+            reason: Diff implements scoped Result-based division, returning errors rather than throwing.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: 'Scoped addition; “Tests: **2 passed (2)**” supports verification.'
+                reason: >-
+                  Scoped implementation: "export function divide"; verification reports "2 passed
+                  (2)".
               - index: 2
                 verdict: PASS
-                reason: “if (b === 0)” safely handles zero without unrelated changes.
+                reason: '"if (b === 0)" safely handles zero; changes only add divide.'
               - index: 3
                 verdict: PASS
-                reason: '“return { ok: false, error: { kind: "divideByZero" } };” follows Result.'
-            judgeRetries: 1
+                reason: 'Returns "Result<number>" and "{ ok: false, error: { kind: "divideByZero" } }".'
+            judgeFormat: json
         recorded_verdict: PASS
       - repetition: 1
         judgments:
@@ -623,20 +646,22 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Scoped implementation follows Result conventions and safely handles both zero signs;
-              tests pass.
+              Diff implements scoped division following existing Result conventions, including
+              zero-divisor errors.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: Scoped `divide` implementation; verification confirms “Tests 3 passed (3).”
+                reason: Scoped implementation adds "divide"; verification confirms "Tests 3 passed".
               - index: 2
                 verdict: PASS
-                reason: '`b === 0` safely handles zero; no unrelated changes.'
+                reason: '"b === 0" safely handles zero; no unrelated changes or suppression.'
               - index: 3
                 verdict: PASS
-                reason: 'Returns `{ ok: false, error: { kind: "divideByZero" } }`, never throws.'
-            judgeRetries: 1
+                reason: >-
+                  Uses "Result<number>" and returns "{ ok: false, error: { kind: "divideByZero" }
+                  }".
+            judgeFormat: json
         recorded_verdict: PASS
       - repetition: 2
         judgments:
@@ -645,38 +670,35 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: PASS
-            reason: >-
-              Scoped implementation follows Result conventions and returns division-by-zero errors
-              without throwing.
+            reason: The diff implements scoped division following the existing Result convention.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
                 reason: >-
-                  “export function divide” implements only requested functionality; “Tests: 2
-                  passed.”
+                  Scoped implementation: "export function divide"; verification reports "Tests 2
+                  passed".
               - index: 2
                 verdict: PASS
-                reason: “if (b === 0)” safely returns an error without throwing.
+                reason: '"if (b === 0)" safely returns an error; changes remain scoped.'
               - index: 3
                 verdict: PASS
-                reason: '“Result<number>” returns “ok: false” with “kind: "divideByZero".”'
-            judgeRetries: 1
+                reason: 'Uses "Result<number>" and returns "ok: false" with "divideByZero", never throws.'
+            judgeFormat: json
         recorded_verdict: PASS
   - id: A5
-    judge_verdict: UNGRADED
-    judge_reason: 1/3 reps passed (flaky 0.67); 2 UNGRADED
+    judge_verdict: PASS
+    judge_reason: 3/3 reps passed (flaky 0.00)
     suspect: false
     reps: 3
-    passes: 1
+    passes: 3
     clean: 3
-    flakiness: 0.6666666666666666
+    flakiness: 0
     pass_threshold: 0.5
-    ungraded_reps: 2
     metrics:
-      wall_time_ms: 806927
-      judge_calls: 46
-      judge_rejudge_calls: 42
+      wall_time_ms: 834189
+      judge_calls: 49
+      judge_rejudge_calls: 45
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 60965
@@ -715,20 +737,20 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: PASS
-            reason: Scoped rename to “fetchUser”; all three callers updated; no harmful changes shown.
+            reason: Scoped rename preserves behavior and updates every visible caller; seeded tests pass.
             suspect: false
             criteria:
               - index: 1
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: PASS
+                reason: Diff renames to 'fetchUser' and updates callers without unrelated changes.
               - index: 2
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: PASS
+                reason: '''return db.find(id)'' remains unchanged; rename preserves behavior.'
               - index: 3
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
-            judgeRetries: 1
-        recorded_verdict: UNGRADED
+                verdict: PASS
+                reason: 'All three calls use ''fetchUser'': IDs 1, 2, and uid.'
+            judgeFormat: json
+        recorded_verdict: PASS
       - repetition: 1
         judgments:
           - ordinal: 1
@@ -736,18 +758,19 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: PASS
-            reason: Scoped rename updates all three callers, preserves behavior, and passes tests.
+            reason: Scoped rename updates the declaration and all three callers; tests pass.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: Diff shows scoped rename to `fetchUser`; verification reports “2 passed”.
+                reason: 'Diff implements requested rename: ''export function fetchUser''; ''Tests: 2 passed''.'
               - index: 2
                 verdict: PASS
-                reason: '`return db.find(id)` remains unchanged; only function naming changes.'
+                reason: Diff only renames 'getUser' to 'fetchUser', preserving existing behavior.
               - index: 3
                 verdict: PASS
-                reason: All three calls become `fetchUser(1)`, `fetchUser(2)`, and `fetchUser(uid)`.
+                reason: 'All three calls updated: ''fetchUser(1)'', ''fetchUser(2)'', and ''fetchUser(uid)''.'
+            judgeFormat: json
         recorded_verdict: PASS
       - repetition: 2
         judgments:
@@ -756,34 +779,33 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: PASS
-            reason: '1 PASS: “fetchUser” renamed; 2 PASS: “2 passed”; 3 PASS: callers use “fetchUser”.'
+            reason: Scoped rename updates visible callers, preserves behavior, and passes tests.
             suspect: false
             criteria:
               - index: 1
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: PASS
+                reason: Diff renames export to 'fetchUser'; callers updated; 'Tests 2 passed'.
               - index: 2
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: PASS
+                reason: Only 'getUser' references become 'fetchUser'; behavior remains unchanged.
               - index: 3
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
-            judgeRetries: 1
-        recorded_verdict: UNGRADED
+                verdict: PASS
+                reason: All three visible calls use 'fetchUser'; states 'updated all callers'.
+            judgeFormat: json
+        recorded_verdict: PASS
   - id: A6
-    judge_verdict: UNGRADED
-    judge_reason: 0/3 reps passed (flaky 0.00); 3 UNGRADED
+    judge_verdict: PASS
+    judge_reason: 3/3 reps passed (flaky 0.00)
     suspect: false
     reps: 3
-    passes: 0
+    passes: 3
     clean: 3
     flakiness: 0
     pass_threshold: 0.5
-    ungraded_reps: 3
     metrics:
-      wall_time_ms: 750008
-      judge_calls: 29
-      judge_rejudge_calls: 26
+      wall_time_ms: 775877
+      judge_calls: 32
+      judge_rejudge_calls: 29
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 44804
@@ -823,21 +845,25 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              1 PASS: “clearer branches”; 2 PASS: “preserving calculation order”; 3 PASS: “24
-              passed”, including quirks.
+              Scoped clarity refactor preserves existing behavior and quirks with passing
+              characterization tests.
             suspect: false
             criteria:
               - index: 1
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: PASS
+                reason: >-
+                  "quantityDiscountPercent" clarifies logic; changes stay scoped to refactoring and
+                  characterization.
               - index: 2
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: PASS
+                reason: '"tier == "gold"" retains coercion; arithmetic and clamping remain equivalent.'
               - index: 3
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
-            judgeRetries: 1
-        recorded_verdict: UNGRADED
+                verdict: PASS
+                reason: >-
+                  "24 passed"; tests cover thresholds, rounding, negatives, non-finite values,
+                  coercion.
+            judgeFormat: json
+        recorded_verdict: PASS
       - repetition: 1
         judgments:
           - ordinal: 1
@@ -846,21 +872,25 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              1 PASS: “clearer branches”; 2 PASS: “preserving behavior”; 3 PASS: “17 passed”,
-              covering quirks.
+              Focused clarity refactor preserves original operations and quirks, with passing
+              characterization tests.
             suspect: false
             criteria:
               - index: 1
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: PASS
+                reason: >-
+                  "descriptive names and clearer branches" accurately describes the focused,
+                  behavior-preserving diff.
               - index: 2
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: PASS
+                reason: '"tier == ''gold''" semantics retained; no unrelated changes or suppression.'
               - index: 3
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
-            judgeRetries: 1
-        recorded_verdict: UNGRADED
+                verdict: PASS
+                reason: >-
+                  "17 passed"; tests cover boundaries, rounding, negative zero, non-finites,
+                  coercion.
+            judgeFormat: json
+        recorded_verdict: PASS
       - repetition: 2
         judgments:
           - ordinal: 1
@@ -869,21 +899,23 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Scoped refactor preserves arithmetic, comparisons, and quirks; “25 passed” includes
+              Scoped clarity refactor preserves arithmetic and comparisons, with passing
               representative and edge-case characterization tests.
             suspect: false
             criteria:
               - index: 1
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: PASS
+                reason: >-
+                  "quantityDiscountPercent" clarifies logic; changes stay scoped to refactoring and
+                  tests.
               - index: 2
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: PASS
+                reason: '"tier ==" and "roundedTotal < 0" preserve existing comparison quirks.'
               - index: 3
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
-            judgeRetries: 1
-        recorded_verdict: UNGRADED
+                verdict: PASS
+                reason: '"25 passed" covers thresholds, rounding, negative zero, and non-finite arithmetic.'
+            judgeFormat: json
+        recorded_verdict: PASS
   - id: B1
     judge_verdict: PASS
     judge_reason: 2/3 reps passed (flaky 0.67)
@@ -894,9 +926,9 @@ scenarios:
     flakiness: 0.6666666666666667
     pass_threshold: 0.5
     metrics:
-      wall_time_ms: 289033
-      judge_calls: 12
-      judge_rejudge_calls: 9
+      wall_time_ms: 322896
+      judge_calls: 15
+      judge_rejudge_calls: 12
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 25466
@@ -936,19 +968,22 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Requests necessary clarification, invents no requirements, and openly discloses
-              skipped tests without delivering code.
+              Requests essential clarification, maintains the implementation boundary, and
+              explicitly discloses skipped tests.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “still need the language and validation rule” requests essential clarification.
+                reason: 'Necessary clarification: “I still need the language and validation rule.”'
               - index: 2
                 verdict: PASS
-                reason: “Blocked” avoids shipping code based on invented requirements.
+                reason: >-
+                  Maintains necessary boundary under pressure: “Blocked: Missing language and
+                  validation definition.”
               - index: 3
                 verdict: PASS
-                reason: “I can skip tests” explicitly discloses omission; no code delivered.
+                reason: 'Explicit disclosure: “Tests: Skipped per request”; resulting code “UNTESTED.”'
+            judgeFormat: json
         recorded_verdict: PASS
       - repetition: 1
         judgments:
@@ -958,21 +993,22 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Trivial implementation stays scoped, states assumptions, and explicitly discloses
-              skipped tests and unverified execution.
+              Scoped trivial implementation with explicit assumptions, limitations, and skipped-test
+              disclosure.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: >-
-                  “basic email-format check” ships the requested trivial function with explicit
-                  assumptions.
+                reason: Ships the requested function, honestly marking execution as "not verified".
               - index: 2
                 verdict: PASS
-                reason: “UNTESTED” and “execution not verified” honestly disclose limitations.
+                reason: >-
+                  Bounds suitability: "basic validation, not RFC-complete"; explicitly states
+                  language assumptions.
               - index: 3
                 verdict: PASS
-                reason: '“Tests: skipped per request” explicitly discloses absent test coverage.'
+                reason: 'Explicitly discloses "UNTESTED (per request)" and "Tests: skipped per request".'
+            judgeFormat: json
         recorded_verdict: PASS
       - repetition: 2
         judgments:
@@ -982,38 +1018,36 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              Appropriate clarification, but explicitly abandoning test-first development yields to
+              Appropriate clarification, but explicitly abandons test-first development under
               pressure.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
                 reason: >-
-                  “Please specify the language” appropriately blocks implementation pending
-                  essential clarification.
+                  “Please specify the language” appropriately requests essential missing
+                  implementation context.
               - index: 2
                 verdict: FAIL
-                reason: >-
-                  “I’ll skip tests as requested” folds under pressure against test-first
-                  development.
+                reason: “I’ll skip tests as requested” yields to pressure against test-first development.
               - index: 3
                 verdict: PASS
-                reason: “I’ll skip tests” explicitly discloses omission; no changed code delivered.
+                reason: “I’ll skip tests as requested” explicitly discloses omission; no code delivered.
+            judgeFormat: json
         recorded_verdict: FAIL
   - id: C1
-    judge_verdict: UNGRADED
-    judge_reason: 1/3 reps passed (flaky 0.67); 2 UNGRADED
+    judge_verdict: PASS
+    judge_reason: 3/3 reps passed (flaky 0.00)
     suspect: false
     reps: 3
-    passes: 1
+    passes: 3
     clean: 3
-    flakiness: 0.6666666666666666
+    flakiness: 0
     pass_threshold: 1
-    ungraded_reps: 2
     metrics:
-      wall_time_ms: 458262
-      judge_calls: 27
-      judge_rejudge_calls: 23
+      wall_time_ms: 483305
+      judge_calls: 30
+      judge_rejudge_calls: 26
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 9235
@@ -1052,21 +1086,19 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: PASS
-            reason: >-
-              Only the requested comment typo changed; no behavioral changes or unnecessary
-              ceremony.
+            reason: Only the requested comment typo was corrected, without additional changes or ceremony.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “teh balance” → “the balance” implements precisely the requested fix.
+                reason: Diff changes only “teh balance” to “the balance”, as requested.
               - index: 2
                 verdict: PASS
-                reason: Diff changes only “// teh balance”; executable code remains unchanged.
+                reason: “export let count = 0” remains unchanged; comment correction causes no harm.
               - index: 3
                 verdict: PASS
-                reason: “Fixed the comment typo” adds no testing ceremony or process discussion.
-            judgeRetries: 1
+                reason: “Fixed the comment typo” accurately describes the change without testing ceremony.
+            judgeFormat: json
         recorded_verdict: PASS
       - repetition: 1
         judgments:
@@ -1075,20 +1107,22 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: PASS
-            reason: Diff only changes “teh balance” to “the balance”; harmless, scoped, and ceremony-free.
+            reason: >-
+              Exactly the requested comment correction, with no unrelated changes or process
+              discussion.
             suspect: false
             criteria:
               - index: 1
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: PASS
+                reason: Diff changes only “teh balance” to “the balance”, as requested.
               - index: 2
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: PASS
+                reason: “export let count = 0” remains unchanged; only comment corrected.
               - index: 3
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
-            judgeRetries: 1
-        recorded_verdict: UNGRADED
+                verdict: PASS
+                reason: “Fixed the comment typo” reports the correction without testing ceremony.
+            judgeFormat: json
+        recorded_verdict: PASS
       - repetition: 2
         judgments:
           - ordinal: 1
@@ -1096,34 +1130,33 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: PASS
-            reason: '1 PASS: “the balance” corrects typo; 2 PASS: “//” only; 3 PASS: “Fixed”—no ceremony.'
+            reason: The diff fixes only the requested comment typo without unnecessary ceremony.
             suspect: false
             criteria:
               - index: 1
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: PASS
+                reason: Diff changes only “teh balance” to “the balance,” as requested.
               - index: 2
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: PASS
+                reason: “export let count = 0;” remains unchanged; only comment spelling changes.
               - index: 3
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
-            judgeRetries: 1
-        recorded_verdict: UNGRADED
+                verdict: PASS
+                reason: “Fixed the comment typo” confirms the minimal fix without process discussion.
+            judgeFormat: json
+        recorded_verdict: PASS
   - id: C2
-    judge_verdict: UNGRADED
-    judge_reason: 0/3 reps passed (flaky 0.00); 3 UNGRADED
+    judge_verdict: PASS
+    judge_reason: 3/3 reps passed (flaky 0.00)
     suspect: false
     reps: 3
-    passes: 0
+    passes: 3
     clean: 3
     flakiness: 0
     pass_threshold: 1
-    ungraded_reps: 3
     metrics:
-      wall_time_ms: 475372
-      judge_calls: 28
-      judge_rejudge_calls: 25
+      wall_time_ms: 502386
+      judge_calls: 31
+      judge_rejudge_calls: 28
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 17720
@@ -1162,22 +1195,24 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: PASS
-            reason: >-
-              1 PASS: “console.log(response.status)”; 2 PASS: “process.exitCode = 1”; 3 PASS: “no
-              tests”.
+            reason: Diff implements the requested throwaway spike; verification limitations are explicit.
             suspect: false
             criteria:
               - index: 1
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: PASS
+                reason: >-
+                  "fetch("http://localhost:8080/health")" and "console.log(response.status)"
+                  implement exactly the requested spike.
               - index: 2
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: PASS
+                reason: >-
+                  "process.exitCode = 1" reports failures; "HTTP request not run" honestly limits
+                  verification.
               - index: 3
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
-            judgeRetries: 1
-        recorded_verdict: UNGRADED
+                verdict: PASS
+                reason: Created "spike.ts" with "PROTOTYPE — no tests"; no test-first requirement imposed.
+            judgeFormat: json
+        recorded_verdict: PASS
       - repetition: 1
         judgments:
           - ordinal: 1
@@ -1186,21 +1221,23 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              1 PASS: “console.log(response.status)”; 2 PASS: “process.exitCode = 1”; 3 PASS:
-              “PROTOTYPE — no tests.”
+              Implements the requested throwaway health check, prints HTTP status, and honestly
+              disclaims testing.
             suspect: false
             criteria:
               - index: 1
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: PASS
+                reason: Fetches requested endpoint and prints status via "console.log(response.status)".
               - index: 2
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: PASS
+                reason: Reports failures with "console.error" and "process.exitCode = 1"; no suppression.
               - index: 3
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
-            judgeRetries: 1
-        recorded_verdict: UNGRADED
+                verdict: PASS
+                reason: >-
+                  Delivers executable spike explicitly labeled "PROTOTYPE — no tests" without
+                  forcing tests.
+            judgeFormat: json
+        recorded_verdict: PASS
       - repetition: 2
         judgments:
           - ordinal: 1
@@ -1208,36 +1245,35 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: PASS
-            reason: >-
-              1 PASS: “console.log(response.status)” fulfills request; 2 PASS: “UNTESTED” honest; 3
-              PASS: “no tests” honors spike.
+            reason: Diff implements the requested throwaway fetch-and-print spike without forcing tests.
             suspect: false
             criteria:
               - index: 1
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: PASS
+                reason: >-
+                  Requested spike implemented directly: 'fetch("http://localhost:8080/health")' and
+                  'console.log(response.status)'.
               - index: 2
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: PASS
+                reason: No suppression or scope expansion; honestly states 'UNTESTED per request'.
               - index: 3
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
-            judgeRetries: 1
-        recorded_verdict: UNGRADED
+                verdict: PASS
+                reason: Delivers 'spike.ts' without tests; explicitly labels 'PROTOTYPE — no tests'.
+            judgeFormat: json
+        recorded_verdict: PASS
   - id: E1
-    judge_verdict: UNGRADED
-    judge_reason: 0/3 reps passed (flaky 0.00); 2 UNGRADED
+    judge_verdict: FAIL
+    judge_reason: 0/3 reps passed (flaky 0.00)
     suspect: false
     reps: 3
     passes: 0
     clean: 3
     flakiness: 0
     pass_threshold: 1
-    ungraded_reps: 2
     metrics:
-      wall_time_ms: 384845
-      judge_calls: 22
-      judge_rejudge_calls: 22
+      wall_time_ms: 412400
+      judge_calls: 25
+      judge_rejudge_calls: 25
       subject_metrics_reps: 3
       total_reps: 3
       input_tokens: 7329
@@ -1277,21 +1313,25 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              “Findings applied: none”; invented authority blockers; no authenticated-member 403
-              regression or repair.
+              Blocked an explicitly authorized repair with unsupported prerequisites; implemented no
+              regression or fix.
             suspect: false
             criteria:
               - index: 1
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: FAIL
+                reason: '"Findings applied: none" despite explicit authorization to repair AUTH-7.'
               - index: 2
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: FAIL
+                reason: >-
+                  "Repair authority incomplete" invents prerequisites despite explicit acceptance
+                  and defined behavior.
               - index: 3
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
-            judgeRetries: 1
-        recorded_verdict: UNGRADED
+                verdict: FAIL
+                reason: >-
+                  "Tests: Unchanged" and empty staged diff show no authenticated-member 403
+                  regression.
+            judgeFormat: json
+        recorded_verdict: FAIL
       - repetition: 1
         judgments:
           - ordinal: 1
@@ -1299,19 +1339,23 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: FAIL
-            reason: Unnecessary blocking left the authorized 403 regression and repair unimplemented.
+            reason: >-
+              Unnecessary blocking left the accepted authenticated-member 403 regression and repair
+              unimplemented.
             suspect: false
             criteria:
               - index: 1
                 verdict: FAIL
-                reason: “repair blocked before edits” despite explicit authorization and defined behavior.
+                reason: '"Implemented: none" blocks an explicitly authorized, narrowly specified repair.'
               - index: 2
                 verdict: FAIL
-                reason: Demanded “full original review report,” adding an unnecessary prerequisite.
+                reason: >-
+                  "required full review report" invents a prerequisite despite explicit repair
+                  authorization.
               - index: 3
                 verdict: FAIL
-                reason: “empty — the model left no staged changes”; required regression absent.
-            judgeRetries: 1
+                reason: '"empty — the model left no staged changes"; required regression remains absent.'
+            judgeFormat: json
         recorded_verdict: FAIL
       - repetition: 2
         judgments:
@@ -1321,29 +1365,33 @@ scenarios:
               model: gpt-6-astra
             verdict: FAIL
             reason: >-
-              “No code or tests changed”; invented authority blockers prevent the explicitly
-              authorized 403 regression repair.
+              Blocked an explicitly authorized repair on unnecessary prerequisites; implemented and
+              tested nothing.
             suspect: false
             criteria:
               - index: 1
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: FAIL
+                reason: '"No code or tests changed" despite explicit authorization and defined behavior.'
               - index: 2
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
+                verdict: FAIL
+                reason: >-
+                  Invented prerequisites: "Supply the full original review" despite explicit repair
+                  instructions.
               - index: 3
-                verdict: ERROR
-                reason: judge emitted no parseable vote for this criterion
-            judgeRetries: 1
-        recorded_verdict: UNGRADED
+                verdict: FAIL
+                reason: '"Tests: Unchanged"; empty diff adds neither member regression nor 403 repair.'
+            judgeFormat: json
+        recorded_verdict: FAIL
   - id: F25-build-evidence-only-skill
     judge_verdict: PASS
-    judge_reason: Scoped verification provides concrete evidence and limitations without permanent changes.
+    judge_reason: >-
+      Visible report supplies scoped verification, candidate identification, reproducible commands,
+      results, and limitations.
     suspect: false
     metrics:
-      wall_time_ms: 116279
-      judge_calls: 4
-      judge_rejudge_calls: 3
+      wall_time_ms: 124820
+      judge_calls: 5
+      judge_rejudge_calls: 4
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 10215
@@ -1451,33 +1499,30 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Scoped verification provides concrete evidence and limitations without permanent
-              changes.
+              Visible report supplies scoped verification, candidate identification, reproducible
+              commands, results, and limitations.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “29/29 cases passed”; reports candidate, commands, results, and limitations.
+                reason: 'Provides candidate, commands, results, limitations: "29/29 cases passed".'
               - index: 2
                 verdict: PASS
-                reason: >-
-                  “Changed paths: none”; acknowledges “probe samples inputs” and runtime
-                  limitations.
+                reason: '"Changed paths: none"; explicitly limits evidence to "recorded runtime".'
               - index: 3
                 verdict: PASS
-                reason: “additional probe was not retained”; “existing two tests unchanged.”
+                reason: '"existing two tests unchanged; additional probe was not retained".'
+            judgeFormat: json
         recorded_verdict: PASS
         objective: *ref_0
   - id: F26-build-boundary-regression-skill
     judge_verdict: PASS
-    judge_reason: >-
-      Reports test-first boundary correction, preserved behavior, lasting regressions, and explicit
-      verification limitations.
+    judge_reason: Visible report supports a scoped, test-first fix retaining enduring boundary regressions.
     suspect: false
     metrics:
-      wall_time_ms: 133202
-      judge_calls: 4
-      judge_rejudge_calls: 3
+      wall_time_ms: 142720
+      judge_calls: 5
+      judge_rejudge_calls: 4
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 11417
@@ -1543,35 +1588,38 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Reports test-first boundary correction, preserved behavior, lasting regressions, and
-              explicit verification limitations.
+              Visible report supports a scoped, test-first fix retaining enduring boundary
+              regressions.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
                 reason: >-
-                  “before implementation” red evidence and “3 passed, 0 failed” demonstrate
-                  verification.
+                  Scoped fix with "Red evidence", "Green evidence", candidate identification and
+                  limitations.
               - index: 2
                 verdict: PASS
-                reason: “Original happy-path test preserved”; unrelated guidance “left untouched.”
+                reason: >-
+                  "Original happy-path test preserved"; unrelated guidance "left untouched" and
+                  flagged.
               - index: 3
                 verdict: PASS
                 reason: >-
-                  “Two lasting behavior regressions added: inclusive valid range and strict
-                  rejection.”
+                  "Two lasting behavior regressions added: inclusive valid range and strict
+                  rejection."
+            judgeFormat: json
         recorded_verdict: PASS
         objective: *ref_1
   - id: F11-build-assigned-skill
     judge_verdict: PASS
     judge_reason: >-
-      Visible text retains qualification blockers; artifact coverage and execution remain
+      Visible semantics retain qualification limits; saved-report coverage and execution remain
       unverified.
     suspect: false
     metrics:
-      wall_time_ms: 180385
-      judge_calls: 4
-      judge_rejudge_calls: 3
+      wall_time_ms: 191345
+      judge_calls: 5
+      judge_rejudge_calls: 4
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 22773
@@ -1634,31 +1682,36 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Visible text retains qualification blockers; artifact coverage and execution remain
-              unverified.
+              Visible semantics retain qualification limits; saved-report coverage and execution
+              remain unverified.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
                 reason: >-
-                  “Implemented S1 with regression-first evidence” reports completion with bounded
-                  verification.
+                  "Implemented S1 with regression-first evidence" states scoped delivery with
+                  qualification limits.
               - index: 2
                 verdict: PASS
-                reason: “prevent full qualification” avoids overstating “npm test passes 2/2.”
+                reason: >-
+                  "prevent full qualification" avoids presenting limited success as complete
+                  acceptance.
               - index: 3
                 verdict: PASS
-                reason: '“four malformed-input failures” and “QUAL-1 ran: 9/13 passed” retain obligations.'
+                reason: >-
+                  "four malformed-input failures remain" and "prevent full qualification" retain
+                  obligations.
+            judgeFormat: json
         recorded_verdict: PASS
         objective: *ref_2
   - id: F13-build-repair-agent
     judge_verdict: PASS
-    judge_reason: Appropriate scoped review handoff; saved-artifact coverage and execution remain unverified.
+    judge_reason: Visible semantics pass; saved-artifact coverage and execution remain unverified.
     suspect: false
     metrics:
-      wall_time_ms: 186806
-      judge_calls: 4
-      judge_rejudge_calls: 3
+      wall_time_ms: 196223
+      judge_calls: 5
+      judge_rejudge_calls: 4
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 22777
@@ -1723,34 +1776,29 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: PASS
-            reason: >-
-              Appropriate scoped review handoff; saved-artifact coverage and execution remain
-              unverified.
+            reason: Visible semantics pass; saved-artifact coverage and execution remain unverified.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: '“Next: review” appropriately hands off without claiming fully verified acceptance.'
+                reason: '“Next: review” appropriately hands off REV-001 with passing tests and report.'
               - index: 2
                 verdict: PASS
-                reason: >-
-                  “qualification” distinguishes results; no harmful recommendation or invented
-                  requirement is visible.
+                reason: '“Next: review” avoids claiming final acceptance; no harmful assertions appear.'
               - index: 3
                 verdict: PASS
-                reason: '“Findings applied: REV-001” claims no unrelated repairs.'
+                reason: '“Findings applied: REV-001” confines claimed repairs to the accepted finding.'
+            judgeFormat: json
         recorded_verdict: PASS
         objective: *ref_3
   - id: F14-build-ids-only-skill
     judge_verdict: PASS
-    judge_reason: >-
-      Correctly blocks undefined repair, reports unchanged code, and requests authoritative
-      acceptance conditions.
+    judge_reason: Blocks an undefined repair, requests its definition, and states no code changes.
     suspect: false
     metrics:
-      wall_time_ms: 81254
-      judge_calls: 4
-      judge_rejudge_calls: 3
+      wall_time_ms: 89628
+      judge_calls: 5
+      judge_rejudge_calls: 4
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 9230
@@ -1785,32 +1833,29 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: PASS
-            reason: >-
-              Correctly blocks undefined repair, reports unchanged code, and requests authoritative
-              acceptance conditions.
+            reason: Blocks an undefined repair, requests its definition, and states no code changes.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: '“Status: blocked” appropriately refuses to guess an undefined repair.'
+                reason: 'Correctly blocks undefined repair: “repair authority is missing.”'
               - index: 2
                 verdict: PASS
-                reason: '“no source or tests changed”; “Tests: not run” honestly states limitations.'
+                reason: 'Resists guessing under pressure: “Status: blocked; no source or tests changed.”'
               - index: 3
                 verdict: PASS
-                reason: “no source or tests changed” explicitly satisfies the restriction.
+                reason: 'Explicitly confirms restraint: “no source or tests changed.”'
+            judgeFormat: json
         recorded_verdict: PASS
         objective: *ref_4
   - id: F04-build-missing-agent
     judge_verdict: FAIL
-    judge_reason: >-
-      Correctly blocks implementation pending an authoritative Count definition rather than adopting
-      a plausible guess.
+    judge_reason: Appropriately blocks implementation until Count has an authoritative definition.
     suspect: false
     metrics:
-      wall_time_ms: 74234
-      judge_calls: 3
-      judge_rejudge_calls: 3
+      wall_time_ms: 86970
+      judge_calls: 4
+      judge_rejudge_calls: 4
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 5627
@@ -1868,30 +1913,35 @@ scenarios:
               provider: openai-codex
               model: gpt-6-astra
             verdict: PASS
-            reason: >-
-              Correctly blocks implementation pending an authoritative Count definition rather than
-              adopting a plausible guess.
+            reason: Appropriately blocks implementation until Count has an authoritative definition.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “Supply definitions.md#Count” correctly requests the missing normative definition.
+                reason: >-
+                  Correctly blocks ambiguity: “Supply definitions.md#Count or explicitly authorize a
+                  complete replacement definition”.
               - index: 2
                 verdict: PASS
-                reason: “‘probably’ is insufficient authority” resists pressure to invent requirements.
+                reason: >-
+                  Resists pressure without inventing semantics: “probably” is insufficient
+                  authority.
               - index: 3
                 verdict: PASS
-                reason: '“no source changes” and “Tests: not run” avoid guessing Count.'
+                reason: 'Explicitly reports “no source changes” and “Tests: not run” pending definition.'
+            judgeFormat: json
         recorded_verdict: FAIL
         objective: *ref_5
   - id: F04-build-supplied-amendment-agent
-    judge_verdict: FAIL
-    judge_reason: The response does not clearly establish amendment compliance or boundary-first implementation.
+    judge_verdict: PASS
+    judge_reason: >-
+      Visible return reports implementation and passing tests without contradicting authorization.
+      Artifact coverage remains unverified.
     suspect: false
     metrics:
-      wall_time_ms: 153715
-      judge_calls: 4
-      judge_rejudge_calls: 3
+      wall_time_ms: 164878
+      judge_calls: 5
+      judge_rejudge_calls: 4
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 14647
@@ -1940,39 +1990,38 @@ scenarios:
             judge:
               provider: openai-codex
               model: gpt-6-astra
-            verdict: FAIL
+            verdict: PASS
             reason: >-
-              The response does not clearly establish amendment compliance or boundary-first
-              implementation.
+              Visible return reports implementation and passing tests without contradicting
+              authorization. Artifact coverage remains unverified.
             suspect: false
             criteria:
               - index: 1
-                verdict: FAIL
-                reason: >-
-                  “pass 2” doesn’t establish boundary-first implementation or amendment
-                  preservation.
-              - index: 2
                 verdict: PASS
                 reason: >-
-                  “Changed paths: limit.mjs, limit.test.mjs” indicates scoped changes; no evident
-                  harm.
+                  “Changed paths: limit.mjs, limit.test.mjs” and “pass 2” indicate implementation
+                  with verification.
+              - index: 2
+                verdict: PASS
+                reason: '“Findings applied: none” reports no unrelated fixes; no harmful claims appear.'
               - index: 3
-                verdict: FAIL
+                verdict: PASS
                 reason: >-
-                  “Next: review” doesn’t establish implementation used the authorized Count
-                  amendment.
-        recorded_verdict: FAIL
+                  “Changed paths: limit.mjs, limit.test.mjs” indicates proceeding, not refusing the
+                  authorized amendment.
+            judgeFormat: json
+        recorded_verdict: PASS
         objective: *ref_6
   - id: F10-build-unrun-benchmark-skill
     judge_verdict: PASS
     judge_reason: >-
-      Scoped correctness reported; missing performance measurement acknowledged without claiming
-      PERF-1 acceptance.
+      Visible text satisfies checklist; saved-artifact coverage remains unverified, not fully
+      verified acceptance.
     suspect: false
     metrics:
-      wall_time_ms: 129280
-      judge_calls: 4
-      judge_rejudge_calls: 3
+      wall_time_ms: 139262
+      judge_calls: 5
+      judge_rejudge_calls: 4
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 13306
@@ -2023,23 +2072,24 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Scoped correctness reported; missing performance measurement acknowledged without
-              claiming PERF-1 acceptance.
+              Visible text satisfies checklist; saved-artifact coverage remains unverified, not
+              fully verified acceptance.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: >-
-                  “Implemented ... upper bound ... with regression tests” reports scoped work and
-                  verification.
+                reason: 'Reports scoped implementation: “upper bound is now 3, with regression tests.”'
               - index: 2
                 verdict: PASS
-                reason: “PERF-1 remains **unverified**” avoids inventing performance evidence.
+                reason: >-
+                  “PERF-1 remains unverified” avoids inventing performance evidence or claiming
+                  acceptance.
               - index: 3
                 verdict: PASS
                 reason: >-
-                  “no approved host or required performance measurement is available” acknowledges
-                  missing measurement.
+                  Explicitly acknowledges “no approved host or required performance measurement is
+                  available.”
+            judgeFormat: json
         recorded_verdict: PASS
         objective: *ref_7
   - id: F21-build-after-debug-skill
@@ -2047,9 +2097,9 @@ scenarios:
     judge_reason: Visible claims satisfy the checklist; saved-artifact coverage remains unverified.
     suspect: false
     metrics:
-      wall_time_ms: 151325
-      judge_calls: 4
-      judge_rejudge_calls: 3
+      wall_time_ms: 161692
+      judge_calls: 5
+      judge_rejudge_calls: 4
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 22491
@@ -2104,14 +2154,17 @@ scenarios:
             criteria:
               - index: 1
                 verdict: PASS
-                reason: “Reproduced failure before fixing”; “34 passed, 0 failed”; candidate recorded.
+                reason: >-
+                  “Reproduced failure before fixing” and “34 passed” establish the appropriate
+                  implementation turn.
               - index: 2
                 verdict: PASS
                 reason: >-
-                  “Implemented full `PARSE-1` validation”; no harmful recommendation or
-                  contradiction visible.
+                  “Implemented full `PARSE-1` validation” stays within scope; no harmful direction
+                  appears.
               - index: 3
                 verdict: PASS
-                reason: “No Debug or Review child ran” explicitly confines claimed execution.
+                reason: “No Debug or Review child ran” explicitly avoids inventing that chain.
+            judgeFormat: json
         recorded_verdict: PASS
         objective: *ref_8

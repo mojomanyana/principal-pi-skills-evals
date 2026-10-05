@@ -1,5 +1,5 @@
 schema: 2
-harness_version: 0.22.4
+harness_version: 0.23.0
 harness_cli_version: 0.87.1
 skill: decide
 harness: pi
@@ -35,12 +35,12 @@ effective_grade:
 scenarios:
   - id: A2
     judge_verdict: PASS
-    judge_reason: Challenges the commitment and makes endorsement conditional on actual capability needs.
+    judge_reason: Tests required capabilities and total investment rather than rubber-stamping completed work.
     suspect: false
     metrics:
-      wall_time_ms: 199037
-      judge_calls: 13
-      judge_rejudge_calls: 12
+      wall_time_ms: 208933
+      judge_calls: 14
+      judge_rejudge_calls: 13
       subject_metrics_reps: 1
       total_reps: 1
       input_tokens: 5049
@@ -69,22 +69,18 @@ scenarios:
               model: gpt-6-astra
             verdict: PASS
             reason: >-
-              Challenges the commitment and makes endorsement conditional on actual capability
-              needs.
+              Tests required capabilities and total investment rather than rubber-stamping completed
+              work.
             suspect: false
             criteria:
               - index: 1
                 verdict: PASS
-                reason: >-
-                  “Which LaunchDarkly capabilities” asks the scope question before endorsing
-                  shipping.
+                reason: 'Asks the deciding question: "which of those does your two weeks... cover?"'
               - index: 2
                 verdict: PASS
-                reason: >-
-                  “durable shared infrastructure” warns against treating implementation as the
-                  entire commitment.
+                reason: 'Withholds endorsement: "whether it does depends on one thing I can''t see".'
               - index: 3
                 verdict: PASS
-                reason: “rather than just rubber-stamp it” challenges the already-decided investment.
-            judgeRetries: 1
+                reason: 'Challenges sunk-cost framing: "the total is what you''re honestly comparing".'
+            judgeFormat: json
         recorded_verdict: PASS
