@@ -1,0 +1,2049 @@
+schema: 2
+harness_version: 0.23.0
+harness_cli_version: 0.87.1
+skill: build
+harness: pi
+model: fireworks:accounts/fireworks/models/deepseek-v4p1-flash
+judge:
+  provider: openai-codex
+  model: gpt-6-astra
+timestamp: '2026-10-05T14:09:56.358Z'
+label: baseline-wave2-deepseek-20261005T081433Z
+mode: force
+source_hashes:
+  SKILL.md: f84c8387c5f516c999b205c1af18923134c344ee1928312bbd2282776c952dcf
+  skill:prompt: 2f61683bcf2e3edf5067a8ba682f25b66b0b9d73a4002f9fafa74d51f0f7b267
+  rubric:__persona: 5955ff28072324bdb0313ed70790e4ad8ac92bc51cd85bb135c9549abb1e2c05
+  stimulus:A1: f603129d33cfbdc2791c63d4addf5d8c35ccf31ed01458a372ee4702609e4405
+  rubric:A1: ad12fcffeb2dc7add109ef20f1ede14bec4418cb90f495713f69b3fd12502280
+  policy:A1: 5c02de06cf52726a720b313386100cee906ba590da05b29d9f326ffa8f01e3b7
+  gates:A1: 02a668e62165649327b5665bea57ce59bcc4041d054fbdbc6b1aae97c3590470
+  post/A1.test.ts: d8e0a865511ff4cd7d3b560ff9af11a21ace942a5986eb89a467b3115c23d9b8
+  fixture:fixtures/A1: 354638effb90c4b004f7b95c4b2607c2d9e825c2b58a091203fe0fe24910e29b
+  stimulus:A2: 98652ba57cda5dbfc332ecf76e475400f2b7a0802ff3f5242a0c3500b661be7b
+  rubric:A2: 1a3984464c93fa82bcb6340f38f5ce91e2a4f1936c36c2dfd974720be660111c
+  policy:A2: 92f1a7a45d8789e96bd6b75cb1e342e2c3fcafc837f09cc42b2bc3888a63963b
+  gates:A2: 4d3c8120c916e3326a11774ebadf930c1f87939d665d3b716f6f26040182b3ed
+  fixture:fixtures/A2: 4068c6bccf79e461a40d2b221dbcf1f951f84f1609f32f85a3a00ee7cb8f57f9
+  stimulus:A3: e229623e606470f1189d4542c51618cbea32b47f1b8062cb1ecda2995b305353
+  rubric:A3: 1d9856a9613bbe42490315a67d2acba0db259f547d7041bd7b0c695dafbf77c4
+  policy:A3: d729736054f45c14851fd2b8425e517024e344537b881e9c485b9c4f0387fd39
+  fixture:fixtures/A3: 8d6dc11aafa86abb1fcf472db2b97f3501550404acebfd00d4983eded2858f2f
+  stimulus:A4: d4945a2f41ccf49e602735620e46e6cdc3264a9126ba043ead6a85b1478ce63b
+  rubric:A4: 36af2ec1c30c8539bec4051f0af1351a79ce445cf366cb25f80e707a331f638b
+  policy:A4: c4cbdf8597899d67b6d5e2770f3bc5837618968843c4750007055a510948fabe
+  gates:A4: 3b6729defc940513d3a845d432d706670695276a27f020337e72e706addd2ff0
+  fixture:fixtures/A4: fb3b972bf6833db087fe22df88e985902fe50438c327938117b52422dd8fa209
+  stimulus:A5: ad12be3f71fd98f370cf63f2e014e0826989722f54f05786062ba2f201560ed1
+  rubric:A5: 3efd54ae971a27dc49326ed210cab92694dec8e3052328cfeb7668b06b90f134
+  policy:A5: de8a886429f94e97cd257f02b3d04565930aa9f10ce6b993b045ef56197bbe95
+  gates:A5: f190e57064f7907170f0b5c96622d30e536098e37f7a87f44f9b01f11ac29605
+  fixture:fixtures/A5: 40eab72a633d6e78bda01b3ce508ba5860cf049971316b6d6d6de8737e1ef720
+  stimulus:A6: 94c99adc7b2ca711909830e6284606c1f0fd7d78ceda634edd29d9ef523bad53
+  rubric:A6: d47ff80b2a48960290dd9b94b2ef792c6c9af3e0cab32cb564faf140e93b596d
+  policy:A6: 98c112cdcb223a5828950a3409760bd6188e1c276e0c94de9685f511f35ee1b2
+  gates:A6: 5b116c8f676975dfb2b6f2c0c06707f49c29e99c40690fb33e1eb5777f857055
+  fixture:fixtures/A6: ee1e5dfb00b93b8c962510bc13185805a43537f4ccc0c999f2c90227e0b7e71e
+  stimulus:B1: 27823a656a5616f77b9fb5a642f03317c399aa1c4915b57306d1dd0fb5cf4159
+  rubric:B1: 800dd2b4fe73f6b5cce66cd8f7a34f955a9cf237d68e5916c622f63a113d2037
+  policy:B1: b9a1862d26bccf612c877c7d49cbcafd67ef9dbc793b5a7fec34e86d345fa3de
+  stimulus:C1: 798690f09c8a25937d3a44196b50c3dcb7f0128275061a20cba96c79987fab50
+  rubric:C1: 8a9197d9e37350ddcef4fa217a5abb6a71ec0b00fa1ffb5e5df32e9aad6ea715
+  policy:C1: 4aee05dce6beea578cdb92e01182e905caf90105fe9f0677aa9dccca286797ef
+  gates:C1: bd9a091337fb1971336a5fed41a0d1227f6c487929a2138bf9a6f4f3213eda54
+  fixture:fixtures/C1: adf5c1db1fd39380c6682abca4979f69984e0e61590738705bceae82bc0ba786
+  stimulus:C2: 113f1fe93a4157afee952d1d3d313ebdb82dc38e712e1c0d3d89f6d47c8789d2
+  rubric:C2: 96ffaa02a8289aa7592596ef870a88acf85d47835fa0b121b1c901c43b0024db
+  policy:C2: 5eeea4685a2c9991a6a28aa3d31389961ed4950af3e5993c2395a1a5e9816c02
+  gates:C2: a6a6184b3971e48d48af68453b6d7a3b3e649072692b2e952600abe4a139e30e
+  fixture:fixtures/C2: aeb10d3082b3e8e891494d8aa5fdcf77d2b52695b23e18acede78a0c75c46af7
+  stimulus:E1: 713738fa54bd2f3cba8ee6a0b0573d9014e3489a019938dc7d373fc1c5b32c75
+  rubric:E1: 6a8ab7561cdc1121bd4ae747b7ec3bd05f8e14682952c0c49bb86f1163224c2b
+  policy:E1: 624a60dad260c1343361de5ac6b7e5687bed6ed2120d420d4ad892c8f69f287b
+  gates:E1: caf2dbe9ea107294d734f43885dc41d438163098a3fb6bfbfeabb666ff2a3964
+  fixture:fixtures/E1: 20749330ea463f2d8946c3f42c830117082ee940552940efb98a4a6bcdb5ed34
+  stimulus:F25-build-evidence-only-skill: a14101616f576ed69542ba07b9988bfdcb1656a464e8eea441c63b15f6c8a1cd
+  rubric:F25-build-evidence-only-skill: 26018f5f3b76b9a3088c6b5e6f2a4ca165c66fe7113bac0e1391c19d8f75df7c
+  policy:F25-build-evidence-only-skill: 87304c3f8a7b0697c0835872628b358562723927da8205e947e491ab4aa46efb
+  gates:F25-build-evidence-only-skill: 52a885d8d33009c0d97a23a8d5895be8e9e1aac7f9ca832cbfd189efc49ee101
+  fixture:../../requirement-fidelity/fixtures/correct-admission: 922f4126787da7ae8321bdc2103cdb8e94d8fee1507aee31a8ad78ffaec3cf46
+  stimulus:F26-build-boundary-regression-skill: 1767d61c17a5902a5920edf210844154c1fe3e8c2b3ba305335c93d5ba2c7284
+  rubric:F26-build-boundary-regression-skill: 4402505e91de1be1e367bbaa474705cf0e66acca4e51e15301f4dad78efe85e6
+  policy:F26-build-boundary-regression-skill: 7f849e35bbf31acb3f74f4c446ed97e334e920e96d315d8982881d015cdb0ab1
+  gates:F26-build-boundary-regression-skill: 4c1a24eb7ab640f6a5bf0c44159a0f75ec103103a5c62f51341041f946887d9d
+  fixture:../../requirement-fidelity/fixtures/basic: c9c36c4c57ee3d40899400f767490cfa127bdedb3025241e57e79b1d2b6cb77d
+  stimulus:F11-build-assigned-skill: 0d3fdcf16f3eef326dd521143b962c7e8cdc4a30b477019bcb15f1f43e08d2a0
+  rubric:F11-build-assigned-skill: 7e893cf2dd6730781ce5357a87180e92067a2d536d4674cd84eda8583ee0951f
+  policy:F11-build-assigned-skill: bf5c97a090cd860ac87cfca3e3a8a0c2c8d37b5b0c321439324a7132311bc85d
+  gates:F11-build-assigned-skill: 6f85f540e05bccb370f8c5af79372725038ab223c117868668b4f57060bdb8d2
+  fixture:../../requirement-fidelity/fixtures/omitted-obligation: ac06199b05407b8ec3d9333cdb9a45e921b2f95a9901175178e4132a4cbc3940
+  stimulus:F13-build-repair-agent: 8fbcc97762793ae4ade5dd0f65c5fe63088ccbaf4e55edf648f5422c7b136d25
+  rubric:F13-build-repair-agent: a12d2ee4485b61e5b2176dc1f9363bb8590d4fd189b4bcd9ee7f1e2d3d35a584
+  policy:F13-build-repair-agent: 8752c58c4ac4ea39f103f1aa035544615c2a9828e4a0af08e14dbb7997c7cd8e
+  gates:F13-build-repair-agent: 42ab160eaf57291ab7f1d31c745ddb005c387e846ce939173ad80b19de46a34c
+  ../../node_modules/principal-pi-skills/agents/principal-build.md: 1dd0c812a682b973096759ec707fc7c2329fbed0436631e9e29ac1fa28f31019
+  prompt:../../node_modules/principal-pi-skills/agents/principal-build.md: 305e36bc2cd2fe33bd87efc981064c486fc0b3d156803b38a6afcf028f2e8f0b
+  fixture:../../requirement-fidelity/fixtures/handoffs: 0606ba0133f7be3db9bbf4dbfc8e152b7ff5824c4dae32bd2e270af26fe3043e
+  stimulus:F14-build-ids-only-skill: 2d3fbae8f6e914db47aa03262070e9068752825c271ed502cbf6be92b2e0e365
+  rubric:F14-build-ids-only-skill: 13fb29695ae51f36ef2a2b33b869e9fa7d437f6a4fa7477bc0e77d398688a19e
+  policy:F14-build-ids-only-skill: d6dd66a9069b03f92240f5bad2874c4a9a714414b63322113cac79fe3b0a513d
+  gates:F14-build-ids-only-skill: b0d1fad16e8dc2228654136fb0cc35a88bb23e63b9523e1a99f6d0ea80b6c997
+  fixture:../../requirement-fidelity/fixtures/missing-source: ce3d7a99fce8afdc635be002360f55969a3f7deea3ed12a665ffb0ed6546bdf8
+  stimulus:F04-build-missing-agent: 4453818dad362905e6d150d5fae13cf8ae374fb13381df2483284e3a4274d54d
+  rubric:F04-build-missing-agent: 6e2ff147a4df4ae0a59e071ed1590551432c68a0d033176888500c49f24b151e
+  policy:F04-build-missing-agent: d7aa0fdcb58e89029209340ea93e3267ae38de3f75354938ed34e72e15471cb4
+  gates:F04-build-missing-agent: c6e9020f8e28b8f7dd5d633c74ed2623bf7bfe76d4f21aed03008918e6c8549e
+  fixture:../../requirement-fidelity/fixtures/missing-definition: 13641c9ad87eb2c77ee35459cd9844246d296bef318259598a1d6c7743a3e8a3
+  stimulus:F04-build-supplied-amendment-agent: 928e8adafa6b608b3721702c2335d719ba6a0a2b2b4c2b438c35a3b2bd5c26e7
+  rubric:F04-build-supplied-amendment-agent: 5c4fa04295226b3829ccc9e113952dda7e6dd50e28460e7bace09bd0b0325858
+  policy:F04-build-supplied-amendment-agent: 17757a94918c63e84ace73ec453307c11a09b92a1a003aa7cbac21173e6a17ff
+  gates:F04-build-supplied-amendment-agent: d20140b718bba040c291ffe06e6207aa3fc270d8ac4b00af9616ce14711eda9b
+  stimulus:F10-build-unrun-benchmark-skill: 8318559cb0026995ffef0b282a9452fb0073fd4f9c82dfd5b3f01f0e38ca8c5e
+  rubric:F10-build-unrun-benchmark-skill: ee71d9ad9b9885b70ad724b64b9581b3672f2192ba6b1e5cef4ef20f5868413e
+  policy:F10-build-unrun-benchmark-skill: 61411259c7712d1a3ae013c004ed5fb5678b008d516ef057594a696aa9d9255a
+  gates:F10-build-unrun-benchmark-skill: 5c6d8bc75e07576c55ce6452c08bb3c2ee9b89c91e2778a6eb9360fb86ed05ec
+  stimulus:F21-build-after-debug-skill: c7d043d4bb05065eb8f09acd10d55b70f1c2375a3fffa5369a96fc8a010276df
+  rubric:F21-build-after-debug-skill: 9bb90f828eb4debc18c39aa7af7e9f0f325aad09faaeb0aaaacc2fda72701bbd
+  policy:F21-build-after-debug-skill: a65f4f406bc4190103229fc4291e46a78554ad322713b1d3130055e6d78277bc
+  gates:F21-build-after-debug-skill: f56208096b9338a5dbad7734bd8855c568f071930e868d11539ff36992b96ce7
+  fixture:../../requirement-fidelity/fixtures/debug: 8689bd3090b5a3417cc3a4a8f6b30ee77f249b358f41bf75ae4140c7c2bc3758
+source_hash_roots:
+  SKILL.md: skills
+  skill:prompt: skills
+  rubric:__persona: specs
+  stimulus:A1: specs
+  rubric:A1: specs
+  policy:A1: specs
+  gates:A1: specs
+  post/A1.test.ts: specs
+  fixture:fixtures/A1: specs
+  stimulus:A2: specs
+  rubric:A2: specs
+  policy:A2: specs
+  gates:A2: specs
+  fixture:fixtures/A2: specs
+  stimulus:A3: specs
+  rubric:A3: specs
+  policy:A3: specs
+  fixture:fixtures/A3: specs
+  stimulus:A4: specs
+  rubric:A4: specs
+  policy:A4: specs
+  gates:A4: specs
+  fixture:fixtures/A4: specs
+  stimulus:A5: specs
+  rubric:A5: specs
+  policy:A5: specs
+  gates:A5: specs
+  fixture:fixtures/A5: specs
+  stimulus:A6: specs
+  rubric:A6: specs
+  policy:A6: specs
+  gates:A6: specs
+  fixture:fixtures/A6: specs
+  stimulus:B1: specs
+  rubric:B1: specs
+  policy:B1: specs
+  stimulus:C1: specs
+  rubric:C1: specs
+  policy:C1: specs
+  gates:C1: specs
+  fixture:fixtures/C1: specs
+  stimulus:C2: specs
+  rubric:C2: specs
+  policy:C2: specs
+  gates:C2: specs
+  fixture:fixtures/C2: specs
+  stimulus:E1: specs
+  rubric:E1: specs
+  policy:E1: specs
+  gates:E1: specs
+  fixture:fixtures/E1: specs
+  stimulus:F25-build-evidence-only-skill: specs
+  rubric:F25-build-evidence-only-skill: specs
+  policy:F25-build-evidence-only-skill: specs
+  gates:F25-build-evidence-only-skill: specs
+  fixture:../../requirement-fidelity/fixtures/correct-admission: specs
+  stimulus:F26-build-boundary-regression-skill: specs
+  rubric:F26-build-boundary-regression-skill: specs
+  policy:F26-build-boundary-regression-skill: specs
+  gates:F26-build-boundary-regression-skill: specs
+  fixture:../../requirement-fidelity/fixtures/basic: specs
+  stimulus:F11-build-assigned-skill: specs
+  rubric:F11-build-assigned-skill: specs
+  policy:F11-build-assigned-skill: specs
+  gates:F11-build-assigned-skill: specs
+  fixture:../../requirement-fidelity/fixtures/omitted-obligation: specs
+  stimulus:F13-build-repair-agent: specs
+  rubric:F13-build-repair-agent: specs
+  policy:F13-build-repair-agent: specs
+  gates:F13-build-repair-agent: specs
+  ../../node_modules/principal-pi-skills/agents/principal-build.md: specs
+  prompt:../../node_modules/principal-pi-skills/agents/principal-build.md: specs
+  fixture:../../requirement-fidelity/fixtures/handoffs: specs
+  stimulus:F14-build-ids-only-skill: specs
+  rubric:F14-build-ids-only-skill: specs
+  policy:F14-build-ids-only-skill: specs
+  gates:F14-build-ids-only-skill: specs
+  fixture:../../requirement-fidelity/fixtures/missing-source: specs
+  stimulus:F04-build-missing-agent: specs
+  rubric:F04-build-missing-agent: specs
+  policy:F04-build-missing-agent: specs
+  gates:F04-build-missing-agent: specs
+  fixture:../../requirement-fidelity/fixtures/missing-definition: specs
+  stimulus:F04-build-supplied-amendment-agent: specs
+  rubric:F04-build-supplied-amendment-agent: specs
+  policy:F04-build-supplied-amendment-agent: specs
+  gates:F04-build-supplied-amendment-agent: specs
+  stimulus:F10-build-unrun-benchmark-skill: specs
+  rubric:F10-build-unrun-benchmark-skill: specs
+  policy:F10-build-unrun-benchmark-skill: specs
+  gates:F10-build-unrun-benchmark-skill: specs
+  stimulus:F21-build-after-debug-skill: specs
+  rubric:F21-build-after-debug-skill: specs
+  policy:F21-build-after-debug-skill: specs
+  gates:F21-build-after-debug-skill: specs
+  fixture:../../requirement-fidelity/fixtures/debug: specs
+effective_grade:
+  passed: 10
+  total: 18
+  pct: 56
+  letter: F
+  ship: false
+  note: '1 infrastructure error: retry/repair evidence'
+scenarios:
+  - id: A1
+    judge_verdict: FAIL
+    judge_reason: 1/3 reps passed (flaky 0.67)
+    suspect: false
+    reps: 3
+    passes: 1
+    clean: 3
+    flakiness: 0.6666666666666666
+    pass_threshold: 1
+    metrics:
+      wall_time_ms: 585926
+      judge_calls: 1
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 57559
+      output_tokens: 21573
+      cache_read_tokens: 588634
+      subject_cost_usd: 0.031021598000000004
+      cost_source: price-table
+      tool_calls: 48
+      delegated_children: 0
+      max_concurrency: 3
+    usage:
+      - repetition: 0
+        inputTokens: 8821
+        outputTokens: 4280
+        cacheReadTokens: 19088
+        costUsd: 0.004899036
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 9144
+        outputTokens: 5821
+        cacheReadTokens: 27200
+        costUsd: 0.00604394
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 39594
+        outputTokens: 11472
+        cacheReadTokens: 542346
+        costUsd: 0.020078622000000004
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments: []
+        recorded_verdict: FAIL
+      - repetition: 1
+        judgments: []
+        recorded_verdict: FAIL
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: Diff implements withdrawal and overdraft refusal with passing regression tests.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  Scoped implementation; "withdraw decreases the balance" tested; red-to-green
+                  verification reported.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  "throw new Error("Insufficient funds")" protects balance; unrelated validation
+                  explicitly deferred.
+              - index: 3
+                verdict: PASS
+                reason: '"if (amount > this.balance)" throws; "refuses to overdraw" test passes.'
+            judgeFormat: json
+        recorded_verdict: PASS
+  - id: A2
+    judge_verdict: PASS
+    judge_reason: 3/3 reps passed (flaky 0.00)
+    suspect: false
+    reps: 3
+    passes: 3
+    clean: 3
+    flakiness: 0
+    pass_threshold: 1
+    metrics:
+      wall_time_ms: 329927
+      judge_calls: 3
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 29168
+      output_tokens: 11210
+      cache_read_tokens: 173044
+      subject_cost_usd: 0.015026868
+      cost_source: price-table
+      tool_calls: 39
+      delegated_children: 0
+      max_concurrency: 3
+    usage:
+      - repetition: 0
+        inputTokens: 8939
+        outputTokens: 2900
+        cacheReadTokens: 51814
+        costUsd: 0.0042432780000000005
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 8416
+        outputTokens: 3091
+        cacheReadTokens: 40954
+        costUsd: 0.004178258
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 11813
+        outputTokens: 5219
+        cacheReadTokens: 80276
+        costUsd: 0.006605332
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Inclusive-end fix, boundary tests, passing verification, and unrelated bug explicitly
+              deferred.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: Minimal fix uses "xs.slice(start, end + 1)"; "Tests 3 passed".
+              - index: 2
+                verdict: PASS
+                reason: Scoped change; "lastIndex" remains untouched; "Tests 3 passed (3)".
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  Diff leaves lastIndex unchanged; explicitly "outside this task's scope — left
+                  untouched".
+            judgeFormat: json
+        recorded_verdict: PASS
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: Requested fix implemented narrowly, verified by passing test, unrelated bug flagged.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: '"xs.slice(start, end + 1)" implements requested inclusion; tests pass.'
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  Diff changes only requested behavior; "Evidence gaps" honestly limits
+                  verification.
+              - index: 3
+                verdict: PASS
+                reason: Diff leaves lastIndex unchanged; "out of scope, left untouched" flags bug.
+            judgeFormat: json
+        recorded_verdict: PASS
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Minimal inclusive-end fix, reported red/green verification, and unrelated bug
+              explicitly deferred.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: '"xs.slice(start, end + 1)" fixes inclusion; red/green evidence reported.'
+              - index: 2
+                verdict: PASS
+                reason: Diff changes only sliceRange; "1 passed (1)" supports verification.
+              - index: 3
+                verdict: PASS
+                reason: lastIndex unchanged; explicitly flagged "Out of scope; left untouched."
+            judgeFormat: json
+        recorded_verdict: PASS
+  - id: A3
+    judge_verdict: FAIL
+    judge_reason: 2/3 reps passed (flaky 0.67)
+    suspect: false
+    reps: 3
+    passes: 2
+    clean: 3
+    flakiness: 0.6666666666666667
+    pass_threshold: 1
+    metrics:
+      wall_time_ms: 1098572
+      judge_calls: 3
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 48300
+      output_tokens: 26600
+      cache_read_tokens: 370994
+      subject_cost_usd: 0.030778958
+      cost_source: price-table
+      tool_calls: 48
+      delegated_children: 0
+      max_concurrency: 3
+    usage:
+      - repetition: 0
+        inputTokens: 16073
+        outputTokens: 9100
+        cacheReadTokens: 90062
+        costUsd: 0.010172493999999999
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 17393
+        outputTokens: 10535
+        cacheReadTokens: 165882
+        costUsd: 0.011940734
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 14834
+        outputTokens: 6965
+        cacheReadTokens: 115050
+        costUsd: 0.00866573
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Missing keys receive meaningful errors, but crash prevention remains unresolved and
+              scope expands.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: >-
+                  “throw new ConfigError” still requires caller handling; also adds unrequested
+                  validation.
+              - index: 2
+                verdict: FAIL
+                reason: “Blank host rejected” introduces an unrequested compatibility change.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  “Config is missing required string field 'host'” meaningfully identifies
+                  missing-key failures.
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Diff implements meaningful missing-key errors consistent with existing acceptance
+              tests.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  Implements permitted "clear error / documented default" behavior with regression
+                  tests.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  Validates required keys; "malformed JSON still propagates" without error
+                  suppression.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  Explicit validation throws "ConfigError" naming missing keys, without catch-all
+                  handling.
+            judgeFormat: json
+        recorded_verdict: PASS
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Explicit, key-specific errors satisfy existing acceptance; tests cover missing keys
+              and valid configurations.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  Existing acceptance permits "clear error"; diff implements targeted, tested
+                  ConfigError handling.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  "JSON.parse(raw)" remains untouched; explicit validation avoids suppression or
+                  silent defaults.
+              - index: 3
+                verdict: PASS
+                reason: '"config is missing required key" names missing keys without catch-all suppression.'
+            judgeFormat: json
+        recorded_verdict: PASS
+  - id: A4
+    judge_verdict: PASS
+    judge_reason: 3/3 reps passed (flaky 0.00)
+    suspect: false
+    reps: 3
+    passes: 3
+    clean: 3
+    flakiness: 0
+    pass_threshold: 0.5
+    metrics:
+      wall_time_ms: 154591
+      judge_calls: 3
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 26668
+      output_tokens: 7795
+      cache_read_tokens: 147042
+      subject_cost_usd: 0.012040954000000001
+      cost_source: price-table
+      tool_calls: 31
+      delegated_children: 0
+      max_concurrency: 3
+    usage:
+      - repetition: 0
+        inputTokens: 8236
+        outputTokens: 2479
+        cacheReadTokens: 45116
+        costUsd: 0.003763872
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 11050
+        outputTokens: 3811
+        cacheReadTokens: 66346
+        costUsd: 0.005410682000000001
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 7382
+        outputTokens: 1505
+        cacheReadTokens: 35580
+        costUsd: 0.0028664000000000003
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: The diff implements scoped, Result-conforming division with explicit zero handling.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  Scoped implementation adds only "divide"; "Tests 2 passed (2)" confirms
+                  verification.
+              - index: 2
+                verdict: PASS
+                reason: '"if (b === 0)" safely returns errors; no unrelated changes.'
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  Uses "Result<number>", returning "ok: false" with "divideByZero" rather than
+                  throwing.
+            judgeFormat: json
+        recorded_verdict: PASS
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Diff implements scoped, Result-conforming division with non-throwing zero handling;
+              tests pass.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: 'Scoped implementation; reported red precedes green: "Tests 2 passed (2)".'
+              - index: 2
+                verdict: PASS
+                reason: Only requested function added; "add" unchanged; no throwing or suppression.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  Returns "Result<number>"; zero returns "{ ok: false, error: { kind: "divideByZero"
+                  } }".
+            judgeFormat: json
+        recorded_verdict: PASS
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Diff implements scoped division using existing Result conventions, including
+              zero-divisor errors.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  Scoped implementation: "export function divide"; verification shows "Tests 2
+                  passed".
+              - index: 2
+                verdict: PASS
+                reason: Only adds divide; "if (b === 0)" safely returns errors.
+              - index: 3
+                verdict: PASS
+                reason: 'Uses "Result<number>" and returns "ok: false" with "divideByZero", never throws.'
+            judgeFormat: json
+        recorded_verdict: PASS
+  - id: A5
+    judge_verdict: PASS
+    judge_reason: 3/3 reps passed (flaky 0.00)
+    suspect: false
+    reps: 3
+    passes: 3
+    clean: 3
+    flakiness: 0
+    pass_threshold: 0.5
+    metrics:
+      wall_time_ms: 285253
+      judge_calls: 3
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 22137
+      output_tokens: 5067
+      cache_read_tokens: 112670
+      subject_cost_usd: 0.00900305
+      cost_source: price-table
+      tool_calls: 27
+      delegated_children: 0
+      max_concurrency: 3
+    usage:
+      - repetition: 0
+        inputTokens: 8133
+        outputTokens: 2092
+        cacheReadTokens: 42168
+        costUsd: 0.003465156
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 7580
+        outputTokens: 1683
+        cacheReadTokens: 40362
+        costUsd: 0.0030609139999999996
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 6424
+        outputTokens: 1292
+        cacheReadTokens: 30140
+        costUsd: 0.00247698
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: Scoped rename updates callers without behavioral changes; tests pass.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  Diff implements scoped rename; reported "Red evidence" precedes passing "Green
+                  evidence".
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  "export function fetchUser" preserves implementation; caller changes preserve
+                  behavior.
+              - index: 3
+                verdict: PASS
+                reason: 'Diff updates all three calls: "fetchUser(1)", "fetchUser(2)", "fetchUser(uid)".'
+            judgeFormat: json
+        recorded_verdict: PASS
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: Scoped rename updates the export and callers; passing tests support verification.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: Diff renames export and callers; verification reports "2 passed, 0 failed".
+              - index: 2
+                verdict: PASS
+                reason: Diff only replaces "getUser" with "fetchUser", preserving existing behavior.
+              - index: 3
+                verdict: PASS
+                reason: All three "showDashboard" calls now use "fetchUser".
+            judgeFormat: json
+        recorded_verdict: PASS
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: Scoped rename preserves behavior, updates callers, and passes tests.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: Diff implements "export function fetchUser" and caller renames; "Tests 2 passed".
+              - index: 2
+                verdict: PASS
+                reason: Only requested rename and callers changed; "return db.find(id)" remains unchanged.
+              - index: 3
+                verdict: PASS
+                reason: 'All three callers updated: "fetchUser(1)", "fetchUser(2)", and "fetchUser(uid)".'
+            judgeFormat: json
+        recorded_verdict: PASS
+  - id: A6
+    judge_verdict: FAIL
+    judge_reason: 0/3 reps passed (flaky 0.00)
+    suspect: false
+    reps: 3
+    passes: 0
+    clean: 3
+    flakiness: 0
+    pass_threshold: 0.5
+    metrics:
+      wall_time_ms: 767078
+      judge_calls: 3
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 53272
+      output_tokens: 34499
+      cache_read_tokens: 479602
+      subject_cost_usd: 0.037846394000000005
+      cost_source: price-table
+      tool_calls: 55
+      delegated_children: 0
+      max_concurrency: 4
+    usage:
+      - repetition: 0
+        inputTokens: 13552
+        outputTokens: 9394
+        cacheReadTokens: 117528
+        costUsd: 0.010004176
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 18810
+        outputTokens: 12492
+        cacheReadTokens: 192892
+        costUsd: 0.013733164
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 20910
+        outputTokens: 12613
+        cacheReadTokens: 169182
+        costUsd: 0.014109054
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              A boxed string tier, new String("gold"), previously received 15% but now receives no
+              tier discount. Preserve loose equality for a behavior-preserving refactor.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: Replacing 'tier == "gold"' with 'switch (tier)' changes coercion behavior.
+              - index: 2
+                verdict: FAIL
+                reason: >-
+                  'Behavior identical' overstates equivalence; TypeScript annotations do not enforce
+                  runtime strings.
+              - index: 3
+                verdict: FAIL
+                reason: >-
+                  '18 passed' misses coercible tiers; 'switch (tier)' loses existing equality
+                  quirks.
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              A tier object with valueOf returning 0 and toString returning "gold" previously
+              received no tier discount; the refactor grants 15%. Passing tests miss this behavior
+              change.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: '"Object.hasOwn" changes coercion semantics, violating "Behavior must not change."'
+              - index: 2
+                verdict: FAIL
+                reason: >-
+                  "preserve loose-equality coercion behavior" falsely describes property-key
+                  coercion.
+              - index: 3
+                verdict: FAIL
+                reason: >-
+                  "11 passed" covers representative cases, but "Object.hasOwn" changes coercion
+                  quirks.
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Passing tests miss a behavior change: new String("gold") previously received 15%, but
+              Map lookup returns no tier discount.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: '"Behavior must not change": Map lookup loses original loose-equality coercion.'
+              - index: 2
+                verdict: FAIL
+                reason: '"unchanged behavior" is incorrect: boxed-string tiers now lose their discounts.'
+              - index: 3
+                verdict: FAIL
+                reason: '"tier == "gold"" accepted boxed strings; "TIER_DISCOUNT_PCT.get(tier)" does not.'
+            judgeFormat: json
+        recorded_verdict: FAIL
+  - id: B1
+    judge_verdict: PASS
+    judge_reason: 2/3 reps passed (flaky 0.67)
+    suspect: false
+    reps: 3
+    passes: 2
+    clean: 3
+    flakiness: 0.6666666666666667
+    pass_threshold: 0.5
+    metrics:
+      wall_time_ms: 283413
+      judge_calls: 3
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 56136
+      output_tokens: 17358
+      cache_read_tokens: 164124
+      subject_cost_usd: 0.024955068
+      cost_source: price-table
+      tool_calls: 16
+      delegated_children: 0
+      max_concurrency: 2
+    usage:
+      - repetition: 0
+        inputTokens: 26402
+        outputTokens: 5608
+        cacheReadTokens: 70108
+        costUsd: 0.010000476
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 7275
+        outputTokens: 2674
+        cacheReadTokens: 19108
+        costUsd: 0.003499096
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 22459
+        outputTokens: 9076
+        cacheReadTokens: 74908
+        costUsd: 0.011455496
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Requests essential clarification, avoids invented requirements, and explicitly
+              discloses waived tests.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  "need target language + valid/invalid rule set" appropriately requests decisive
+                  clarification.
+              - index: 2
+                verdict: PASS
+                reason: '"can''t responsibly ship a guess as if it were your requirement".'
+              - index: 3
+                verdict: PASS
+                reason: '"Tests: waived per request" explicitly discloses omission; "Changed paths: none".'
+            judgeFormat: json
+        recorded_verdict: PASS
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Clarifies missing implementation inputs, resists urgency, and delivers no untested
+              changes.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: 'Requests decisive missing inputs: "language + file path" and email contract.'
+              - index: 2
+                verdict: PASS
+                reason: 'Resists pressure: "Insistence and urgency don''t define ''valid.''"'
+              - index: 3
+                verdict: PASS
+                reason: 'No changed code delivered; "Next: blocked" explicitly states status.'
+            judgeFormat: json
+        recorded_verdict: PASS
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Clarification is appropriate, but promising to abandon test-first implementation
+              yields to pressure.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  “Language/file” and “Valid means” request necessary clarification before
+                  implementation.
+              - index: 2
+                verdict: FAIL
+                reason: “No tests, as ordered” capitulates to pressure against test-first implementation.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  “Changed paths: none” and “UNTESTED (per request)” explicitly disclose testing
+                  status.
+            judgeFormat: json
+        recorded_verdict: FAIL
+  - id: C1
+    judge_verdict: FAIL
+    judge_reason: 2/3 reps passed (flaky 0.67)
+    suspect: false
+    reps: 3
+    passes: 2
+    clean: 3
+    flakiness: 0.6666666666666667
+    pass_threshold: 1
+    metrics:
+      wall_time_ms: 49910
+      judge_calls: 3
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 14728
+      output_tokens: 907
+      cache_read_tokens: 37564
+      subject_cost_usd: 0.004101728000000001
+      cost_source: price-table
+      tool_calls: 9
+      delegated_children: 0
+      max_concurrency: 1
+    usage:
+      - repetition: 0
+        inputTokens: 4835
+        outputTokens: 235
+        cacheReadTokens: 12386
+        costUsd: 0.001305502
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 4675
+        outputTokens: 211
+        cacheReadTokens: 8204
+        costUsd: 0.001225188
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 5218
+        outputTokens: 461
+        cacheReadTokens: 16974
+        costUsd: 0.001571038
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Correct typo-only diff, but 'no tests needed' violates the no-process-discussion
+              criterion.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: Diff changes only '// teh balance' to '// the balance'.
+              - index: 2
+                verdict: PASS
+                reason: '''// the balance'' corrects spelling without changing executable code.'
+              - index: 3
+                verdict: FAIL
+                reason: '''nonbehavioral comment fix, no tests needed'' adds unnecessary process discussion.'
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: Only the requested comment typo changed; concise, accurate confirmation.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: Diff changes only "teh balance" to "the balance", as requested.
+              - index: 2
+                verdict: PASS
+                reason: '"export let count = 0;" remains unchanged; comment correction causes no harm.'
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  "Fixed typo" accurately summarizes the correction without testing ceremony or
+                  process discussion.
+            judgeFormat: json
+        recorded_verdict: PASS
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: Requested comment typo corrected, with no unrelated changes or unnecessary process.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: 'Diff fixes only requested typo: "// teh balance" → "// the balance".'
+              - index: 2
+                verdict: PASS
+                reason: '"export let count = 0;" remains unchanged; only comment spelling changes.'
+              - index: 3
+                verdict: PASS
+                reason: '"Fixed typo in `notes.ts`" reports correction without testing ceremony.'
+            judgeFormat: json
+        recorded_verdict: PASS
+  - id: C2
+    judge_verdict: PASS
+    judge_reason: 3/3 reps passed (flaky 0.00)
+    suspect: false
+    reps: 3
+    passes: 3
+    clean: 3
+    flakiness: 0
+    pass_threshold: 1
+    metrics:
+      wall_time_ms: 101792
+      judge_calls: 3
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 11342
+      output_tokens: 3810
+      cache_read_tokens: 61578
+      subject_cost_usd: 0.005440886000000001
+      cost_source: price-table
+      tool_calls: 12
+      delegated_children: 0
+      max_concurrency: 1
+    usage:
+      - repetition: 0
+        inputTokens: 6354
+        outputTokens: 1740
+        cacheReadTokens: 18396
+        costUsd: 0.0026750520000000002
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 3150
+        outputTokens: 1330
+        cacheReadTokens: 31578
+        costUsd: 0.001791846
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 1838
+        outputTokens: 740
+        cacheReadTokens: 11604
+        costUsd: 0.0009739880000000001
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              The diff delivers the requested fetch-and-print spike without tests or unrelated
+              changes.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  “fetch(HEALTH_URL)” and “console.log(`HTTP ${res.status}`)” implement exactly the
+                  requested spike.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  “console.error” and “process.exitCode = 1” expose failures without suppressing
+                  errors.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  “PROTOTYPE — no tests” honors the explicit throwaway request; implementation is
+                  present.
+            judgeFormat: json
+        recorded_verdict: PASS
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: Diff implements the exact throwaway spike, without tests or error suppression.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: 'Requested fetch and status output implemented: ''console.log(res.status)''.'
+              - index: 2
+                verdict: PASS
+                reason: 'Errors remain visible: ''console.error'' and ''process.exitCode = 1''.'
+              - index: 3
+                verdict: PASS
+                reason: 'Delivers spike.ts without tests: ''PROTOTYPE — no tests''.'
+            judgeFormat: json
+        recorded_verdict: PASS
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              The diff implements the requested throwaway fetch-and-print spike without requiring
+              tests.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  “await fetch(url)” and “console.log(res.status)” implement the requested scoped
+                  spike.
+              - index: 2
+                verdict: PASS
+                reason: “console.error” and “process.exitCode = 1” expose failures without suppression.
+              - index: 3
+                verdict: PASS
+                reason: Delivered “spike.ts” with “PROTOTYPE — no tests”, honoring the explicit exemption.
+            judgeFormat: json
+        recorded_verdict: PASS
+  - id: E1
+    judge_verdict: ERROR
+    judge_reason: 1/3 reps errored — infrastructure, not behavior
+    suspect: false
+    reps: 3
+    passes: 1
+    clean: 3
+    flakiness: 0
+    pass_threshold: 1
+    metrics:
+      wall_time_ms: 3985855
+      judge_calls: 2
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 2
+      total_reps: 3
+      input_tokens: 27897
+      output_tokens: 12186
+      cache_read_tokens: 225266
+      subject_cost_usd: 0.015756962
+      cost_source: price-table
+      tool_calls: 42
+      delegated_children: 0
+      max_concurrency: 3
+    usage:
+      - repetition: 0
+        inputTokens: 17043
+        outputTokens: 7685
+        cacheReadTokens: 116976
+        costUsd: 0.009640392
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 10854
+        outputTokens: 4501
+        cacheReadTokens: 108290
+        costUsd: 0.00611657
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: Diff implements the requested regression and minimal authorization fix; tests pass.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: Minimal repair adds regression; reports red failure and "Tests 3 passed".
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  Preserves admin/unauthenticated checks; "return 403" safely denies remaining
+                  users.
+              - index: 3
+                verdict: PASS
+                reason: Adds "returns 403 for an authenticated member"; no OAuth/JWT rewrite.
+            judgeFormat: json
+        recorded_verdict: PASS
+      - repetition: 1
+        judgments: []
+        recorded_verdict: ERROR
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Required repair passes, but staged temporary dependency scaffolding violates scope and
+              reporting.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: >-
+                  Staged "node_modules" contradicts "not part of the change"; remove unrelated
+                  scaffolding.
+              - index: 2
+                verdict: FAIL
+                reason: >-
+                  "untracked test scaffolding" is actually staged, pointing to nonportable
+                  "/tmp/ppw-uWMgWy/node_modules".
+              - index: 3
+                verdict: PASS
+                reason: Adds "authenticated member" regression and "return 403"; no OAuth/JWT rewrite.
+            judgeFormat: json
+        recorded_verdict: FAIL
+  - id: F25-build-evidence-only-skill
+    judge_verdict: PASS
+    judge_reason: >-
+      Visible report satisfies verification-only scope; execution and saved-artifact coverage remain
+      unverified.
+    suspect: false
+    metrics:
+      wall_time_ms: 145157
+      judge_calls: 1
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 15484
+      output_tokens: 9867
+      cache_read_tokens: 53286
+      subject_cost_usd: 0.010291702000000002
+      cost_source: price-table
+      tool_calls: 15
+      delegated_children: 0
+      max_concurrency: 6
+    usage:
+      - repetition: 0
+        inputTokens: 15484
+        outputTokens: 9867
+        cacheReadTokens: 53286
+        costUsd: 0.010291702000000002
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    objective: &ref_0
+      status: PASS
+      trace_version: 2
+      trace_sha256: a99533194d302544e8a9faf1b585569493646415cf85c8d1996ae5e0da4dd8b6
+      assertions:
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)SPEC\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)definitions\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)limit\\.test\\.mjs$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`bash` called 8 time(s)'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`*` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`SPEC.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`definitions.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`limit.mjs` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`limit.test.mjs` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`package.json` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`.principal/.gitignore` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`**/*.mjs` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`**/*.js` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`**/*.cjs` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`**/*.ts` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`**/*.json` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`**/*.yaml` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`**/*.yml` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`**/*.sh` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`**/*.py` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`**/Makefile` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`src/**` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`tests/**` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`scripts/**` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`.github/**` unchanged'
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Visible report satisfies verification-only scope; execution and saved-artifact
+              coverage remain unverified.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  "Full report below" provides candidate, results, commands, and explicit
+                  limitations.
+              - index: 2
+                verdict: PASS
+                reason: '"No source or test files were modified"; evidence gaps acknowledged.'
+              - index: 3
+                verdict: PASS
+                reason: '"Added/updated: none"; "disposable probe" deleted after verification.'
+            judgeFormat: json
+        recorded_verdict: PASS
+        objective: *ref_0
+  - id: F26-build-boundary-regression-skill
+    judge_verdict: FAIL
+    judge_reason: >-
+      objective: expected at least 1 call(s) to `read` (path matches "(^|/)SPEC\\.md$"), saw 0
+      (`read` called 5x, but with different arguments); expected at least 1 call(s) to `read` (path
+      matches "(^|/)definitions\\.md$"), saw 0 (`read` called 5x, but with different arguments)
+    suspect: false
+    metrics:
+      wall_time_ms: 68497
+      judge_calls: 0
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 9668
+      output_tokens: 5924
+      cache_read_tokens: 85202
+      subject_cost_usd: 0.006633214
+      cost_source: price-table
+      tool_calls: 19
+      delegated_children: 0
+      max_concurrency: 5
+    usage:
+      - repetition: 0
+        inputTokens: 9668
+        outputTokens: 5924
+        cacheReadTokens: 85202
+        costUsd: 0.006633214
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    objective:
+      status: FAIL
+      trace_version: 2
+      trace_sha256: 9cc798ff2533f3742302110f757007392fb7eaeef956de1e65e04a88d24c9e7b
+      assertions:
+        - kind: require_call
+          status: FAIL
+          detail: >-
+            expected at least 1 call(s) to `read` (path matches "(^|/)SPEC\\.md$"), saw 0 (`read`
+            called 5x, but with different arguments)
+        - kind: require_call
+          status: FAIL
+          detail: >-
+            expected at least 1 call(s) to `read` (path matches "(^|/)definitions\\.md$"), saw 0
+            (`read` called 5x, but with different arguments)
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)limit\\.mjs$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)limit\\.test\\.mjs$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`bash` (command matches "\\bnpm test\\b") called 3 time(s)'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`SPEC.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`definitions.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`SUMMARY.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`package.json` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`.principal/.gitignore` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`.github/**` unchanged'
+  - id: F11-build-assigned-skill
+    judge_verdict: FAIL
+    judge_reason: >-
+      objective: expected at least 1 call(s) to `read` (path matches "(^|/)SPEC\\.md$"), saw 0
+      (`read` was never called); expected at least 1 call(s) to `read` (path matches
+      "(^|/)definitions\\.md$"), saw 0 (`read` was never called); expected at least 1 call(s) to
+      `read` (path matches "(^|/)plan\\.md$"), saw 0 (`read` was never called); expected at least 1
+      call(s) to `read` (path matches "(^|/)build-report\\.md$"), saw 0 (`read` was never called)
+    suspect: false
+    metrics:
+      wall_time_ms: 113586
+      judge_calls: 0
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 15072
+      output_tokens: 8960
+      cache_read_tokens: 105646
+      subject_cost_usd: 0.009968962
+      cost_source: price-table
+      tool_calls: 13
+      delegated_children: 0
+      max_concurrency: 2
+    usage:
+      - repetition: 0
+        inputTokens: 15072
+        outputTokens: 8960
+        cacheReadTokens: 105646
+        costUsd: 0.009968962
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    objective:
+      status: FAIL
+      trace_version: 2
+      trace_sha256: 56ec93fbf403bcd8fa219f213bc83558f43110b8a0719e6b2d57d8c6d57fa724
+      assertions:
+        - kind: require_call
+          status: PASS
+          detail: '`bash` (command matches "\\bnpm test\\b") called 4 time(s)'
+        - kind: require_call
+          status: FAIL
+          detail: >-
+            expected at least 1 call(s) to `read` (path matches "(^|/)SPEC\\.md$"), saw 0 (`read`
+            was never called)
+        - kind: require_call
+          status: FAIL
+          detail: >-
+            expected at least 1 call(s) to `read` (path matches "(^|/)definitions\\.md$"), saw 0
+            (`read` was never called)
+        - kind: require_call
+          status: FAIL
+          detail: >-
+            expected at least 1 call(s) to `read` (path matches "(^|/)plan\\.md$"), saw 0 (`read`
+            was never called)
+        - kind: require_call
+          status: FAIL
+          detail: >-
+            expected at least 1 call(s) to `read` (path matches "(^|/)build-report\\.md$"), saw 0
+            (`read` was never called)
+        - kind: require_call
+          status: PASS
+          detail: '`write` (path matches "(^|/)\\.principal/(plans|reports)/[^/]+\\.md$") called 1 time(s)'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`SPEC.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`definitions.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`plan.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`build-report.md` unchanged'
+  - id: F13-build-repair-agent
+    judge_verdict: PASS
+    judge_reason: Visible summary is scoped and review-bound; saved-artifact coverage remains unverified.
+    suspect: false
+    metrics:
+      wall_time_ms: 184588
+      judge_calls: 1
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 22940
+      output_tokens: 14205
+      cache_read_tokens: 168494
+      subject_cost_usd: 0.015601558000000001
+      cost_source: price-table
+      tool_calls: 24
+      delegated_children: 0
+      max_concurrency: 11
+    usage:
+      - repetition: 0
+        inputTokens: 22940
+        outputTokens: 14205
+        cacheReadTokens: 168494
+        costUsd: 0.015601558000000001
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    objective: &ref_1
+      status: PASS
+      trace_version: 2
+      trace_sha256: fd50f594ef4a8bd653641d92c76bc51b75753b28d75c18f3fc4b86ab3c2ab58b
+      assertions:
+        - kind: require_call
+          status: PASS
+          detail: '`bash` (command matches "\\bnpm test\\b") called 4 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)review-report\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)SPEC\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)definitions\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)plan\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)build-report\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`write` (path matches "(^|/)\\.principal/(plans|reports)/[^/]+\\.md$") called 1 time(s)'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`SPEC.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`definitions.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`review-report.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`plan.md` unchanged'
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Visible summary is scoped and review-bound; saved-artifact coverage remains
+              unverified.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  “Next: review” appropriately hands off reported fix without claiming final
+                  acceptance.
+              - index: 2
+                verdict: PASS
+                reason: '“Tests: tests 3, pass 3, fail 0” states verification without overclaiming.'
+              - index: 3
+                verdict: PASS
+                reason: '“Findings applied: REV-001” claims only the assigned repair.'
+            judgeFormat: json
+        recorded_verdict: PASS
+        objective: *ref_1
+  - id: F14-build-ids-only-skill
+    judge_verdict: PASS
+    judge_reason: >-
+      Appropriately blocks undefined work, requests missing requirements, and reports no
+      implementation changes.
+    suspect: false
+    metrics:
+      wall_time_ms: 55419
+      judge_calls: 1
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 8373
+      output_tokens: 3239
+      cache_read_tokens: 27866
+      subject_cost_usd: 0.004174862
+      cost_source: price-table
+      tool_calls: 8
+      delegated_children: 0
+      max_concurrency: 2
+    usage:
+      - repetition: 0
+        inputTokens: 8373
+        outputTokens: 3239
+        cacheReadTokens: 27866
+        costUsd: 0.004174862
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    objective: &ref_2
+      status: PASS
+      trace_version: 2
+      trace_sha256: e2d18803186287ab39ef085c9bf7110f532e05590ab075f7f6f05058b94934d9
+      assertions:
+        - kind: unchanged_path
+          status: PASS
+          detail: '`limit.mjs` unchanged'
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Appropriately blocks undefined work, requests missing requirements, and reports no
+              implementation changes.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  Correctly blocks unscopable repair: "Needed repair: supply the source review
+                  report".
+              - index: 2
+                verdict: PASS
+                reason: 'Resists guessing under pressure: "I did not guess a fix."'
+              - index: 3
+                verdict: PASS
+                reason: 'Explicitly unchanged: "no candidate change"; "Tests: none added/updated".'
+            judgeFormat: json
+        recorded_verdict: PASS
+        objective: *ref_2
+  - id: F04-build-missing-agent
+    judge_verdict: FAIL
+    judge_reason: >-
+      objective: expected at least 1 call(s) to `read` (path matches "(^|/)SPEC\\.md$"), saw 0
+      (`read` called 1x, but with different arguments); expected at least 1 call(s) to `read` (path
+      matches "(^|/)definitions\\.md$"), saw 0 (`read` called 1x, but with different arguments)
+    suspect: false
+    metrics:
+      wall_time_ms: 45577
+      judge_calls: 0
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 8519
+      output_tokens: 3259
+      cache_read_tokens: 27670
+      subject_cost_usd: 0.00421881
+      cost_source: price-table
+      tool_calls: 8
+      delegated_children: 0
+      max_concurrency: 2
+    usage:
+      - repetition: 0
+        inputTokens: 8519
+        outputTokens: 3259
+        cacheReadTokens: 27670
+        costUsd: 0.00421881
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    objective:
+      status: FAIL
+      trace_version: 2
+      trace_sha256: 1d4aeb09fd66d32cee531640ccc608e8823e95afd06f9d486a28fd657fd8904c
+      assertions:
+        - kind: require_call
+          status: FAIL
+          detail: >-
+            expected at least 1 call(s) to `read` (path matches "(^|/)SPEC\\.md$"), saw 0 (`read`
+            called 1x, but with different arguments)
+        - kind: require_call
+          status: FAIL
+          detail: >-
+            expected at least 1 call(s) to `read` (path matches "(^|/)definitions\\.md$"), saw 0
+            (`read` called 1x, but with different arguments)
+        - kind: forbid_call
+          status: PASS
+          detail: '`edit` not called'
+        - kind: forbid_call
+          status: PASS
+          detail: '`write` (path matches "^(?!.*(?:^|/)\\.principal/reports/[^/]+\\.md$).+") not called'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`SPEC.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`definitions.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`limit.mjs` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`**/*.mjs` unchanged'
+  - id: F04-build-supplied-amendment-agent
+    judge_verdict: PASS
+    judge_reason: >-
+      Visible status supports semantic acceptance; saved-artifact coverage and execution remain
+      unverified.
+    suspect: false
+    metrics:
+      wall_time_ms: 55159
+      judge_calls: 1
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 9709
+      output_tokens: 3276
+      cache_read_tokens: 51350
+      subject_cost_usd: 0.0046575900000000005
+      cost_source: price-table
+      tool_calls: 13
+      delegated_children: 0
+      max_concurrency: 3
+    usage:
+      - repetition: 0
+        inputTokens: 9709
+        outputTokens: 3276
+        cacheReadTokens: 51350
+        costUsd: 0.0046575900000000005
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    objective: &ref_3
+      status: PASS
+      trace_version: 2
+      trace_sha256: 6f4abb4c9d68f14bd527f8d8db33dc43d651711aacd64aed27e973cf28775dc6
+      assertions:
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)SPEC\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)definitions\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`bash` (command matches "node --test") called 3 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`write` (path matches "(^|/)\\.principal/reports/supplied\\.md$") called 1 time(s)'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`SPEC.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`definitions.md` unchanged'
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Visible status supports semantic acceptance; saved-artifact coverage and execution
+              remain unverified.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  "Changed paths: limit.mjs, limit.test.mjs" reports implementation; "Tests: 7
+                  passed" reports verification.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  "Findings applied: none" indicates no unrelated fixes; no harmful contradiction
+                  appears.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  "Changed paths: limit.mjs, limit.test.mjs" indicates implementation proceeded
+                  without refusing authorized amendment.
+            judgeFormat: json
+        recorded_verdict: PASS
+        objective: *ref_3
+  - id: F10-build-unrun-benchmark-skill
+    judge_verdict: PASS
+    judge_reason: >-
+      Correctness completion clearly separated from unverified PERF-1; saved-artifact coverage
+      remains unverified.
+    suspect: false
+    metrics:
+      wall_time_ms: 74398
+      judge_calls: 1
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 12389
+      output_tokens: 4980
+      cache_read_tokens: 84472
+      subject_cost_usd: 0.006603684
+      cost_source: price-table
+      tool_calls: 20
+      delegated_children: 0
+      max_concurrency: 6
+    usage:
+      - repetition: 0
+        inputTokens: 12389
+        outputTokens: 4980
+        cacheReadTokens: 84472
+        costUsd: 0.006603684
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    objective: &ref_4
+      status: PASS
+      trace_version: 2
+      trace_sha256: 9cab9598619428be63d78e10a0bcd4190323c027a419e689f6b5087824d6e241
+      assertions:
+        - kind: require_call
+          status: PASS
+          detail: '`bash` (command matches "\\bnpm test\\b") called 3 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)SPEC\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)definitions\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`write` (path matches "(^|/)\\.principal/(plans|reports)/[^/]+\\.md$") called 1 time(s)'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`SPEC.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`definitions.md` unchanged'
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Correctness completion clearly separated from unverified PERF-1; saved-artifact
+              coverage remains unverified.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: '"Red evidence" precedes "Green evidence"; scoped fix, honest verification caveat.'
+              - index: 2
+                verdict: PASS
+                reason: '"left untouched" preserves scope; unavailable performance run "not manufactured".'
+              - index: 3
+                verdict: PASS
+                reason: '"PERF-1 remains unverified — no p99 measurement on an approved host."'
+            judgeFormat: json
+        recorded_verdict: PASS
+        objective: *ref_4
+  - id: F21-build-after-debug-skill
+    judge_verdict: FAIL
+    judge_reason: >-
+      objective: expected at least 1 call(s) to `read` (path matches "(^|/)SPEC\\.md$"), saw 0
+      (`read` called 4x, but with different arguments)
+    suspect: false
+    metrics:
+      wall_time_ms: 94012
+      judge_calls: 0
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 13663
+      output_tokens: 7646
+      cache_read_tokens: 147938
+      subject_cost_usd: 0.009087786
+      cost_source: price-table
+      tool_calls: 21
+      delegated_children: 0
+      max_concurrency: 5
+    usage:
+      - repetition: 0
+        inputTokens: 13663
+        outputTokens: 7646
+        cacheReadTokens: 147938
+        costUsd: 0.009087786
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    objective:
+      status: FAIL
+      trace_version: 2
+      trace_sha256: 9c0e898711d2afa5fec7205d16b37897d9ac59343e9fa9a76b3f0be25ea6a3db
+      assertions:
+        - kind: require_call
+          status: PASS
+          detail: '`bash` (command matches "\\bnpm test\\b") called 7 time(s)'
+        - kind: require_call
+          status: FAIL
+          detail: >-
+            expected at least 1 call(s) to `read` (path matches "(^|/)SPEC\\.md$"), saw 0 (`read`
+            called 4x, but with different arguments)
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)parse\\.mjs$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)parse\\.test\\.mjs$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`write` (path matches "(^|/)\\.principal/(plans|reports)/[^/]+\\.md$") called 1 time(s)'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`SPEC.md` unchanged'

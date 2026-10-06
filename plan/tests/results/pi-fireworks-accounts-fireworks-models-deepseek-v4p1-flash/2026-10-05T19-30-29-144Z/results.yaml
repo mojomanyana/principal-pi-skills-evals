@@ -1,0 +1,2671 @@
+schema: 2
+harness_version: 0.23.0
+harness_cli_version: 0.87.1
+skill: plan
+harness: pi
+model: fireworks:accounts/fireworks/models/deepseek-v4p1-flash
+judge:
+  provider: openai-codex
+  model: gpt-6-astra
+timestamp: '2026-10-05T19:30:29.144Z'
+label: baseline-wave2-deepseek-20261005T081433Z
+mode: force
+source_hashes:
+  SKILL.md: 2c555675b84c459f5bff650ff4e63ec496b5a20baf1e9c0d324bca56d8ad2a57
+  skill:prompt: bf6895c8d6367795da5cc65d41f87373825023ee53a7fc06671bf4f071140fda
+  rubric:__persona: 5d291a75187228c129fe75dbcad8ea0f503141aedf09b070c71014b8684bd679
+  stimulus:A1: bb776cd9e2131ec70a0bc2a3bbe2bd92ba1ef1bce8b65a8acd7898f1e5426b44
+  rubric:A1: ecbca1bf9b96f80adf4ba48636a9c39f1651a684bffdd3b383ced4def306b7eb
+  policy:A1: 5c02de06cf52726a720b313386100cee906ba590da05b29d9f326ffa8f01e3b7
+  stimulus:A2: 56b7ce56dc412a505b6468cfb445c72922c44874813d8237dbab301a83a4d7fe
+  rubric:A2: df5dbc178158c546c00eeabbc31504f8e419bab668d6b209783d495ec3baecd7
+  policy:A2: 92f1a7a45d8789e96bd6b75cb1e342e2c3fcafc837f09cc42b2bc3888a63963b
+  stimulus:A3: 3c291361ba5cd7a7e2553fc1086ce606facfa19110b46bd94dc736afaefd6d30
+  rubric:A3: f0c430eb40f9f98a399aa5d17dd47511e31209462f2583f66655f8b638578a88
+  policy:A3: 1c97102a64dee92cb80e296cdec178b75ff8d99e51b1bfd55c86a6d05f00f25a
+  stimulus:A4: 89f45c052fbfe177955032cec52e3beff211b9c1962deabe188a5560a8b84888
+  rubric:A4: 64afba1e8f393f9998aafeacb0b594222999690b44e12af09905e3bbdd68f075
+  policy:A4: c4cbdf8597899d67b6d5e2770f3bc5837618968843c4750007055a510948fabe
+  stimulus:A5: 745862d077f879df3d02d51b48b124b933934245d94f9ad960472707d8efc65d
+  rubric:A5: 6abaa773538aa0e72a7bb71079c6d41dfcf674ddeebc410ae0a399bbc33e0108
+  policy:A5: e3506895a9a5884eb765b12a8feb6d8eeff372c41ee1070e4da9bd09a19c05f3
+  stimulus:A6: 3ffa3075a54a515cf31e4925928f14e348532d11940688c1b24cbbd553994b5b
+  rubric:A6: e7121b8322fcd5555ad2fe6e7a2147d29134c6d3470132b359e19f626c3fdd36
+  policy:A6: 98c112cdcb223a5828950a3409760bd6188e1c276e0c94de9685f511f35ee1b2
+  stimulus:A7: ea363490d79306207441d74c982ff7b2416bb05883a5aa348caa1f31e1d2f82c
+  rubric:A7: 6eaece2197fbafdf4ad0c2cdea0c2b2bf87bc5fc84fa285fa45e967dbc55fd2b
+  policy:A7: 9918bf15ebc7831724a99fdde6399b1abbae170f82fa5b7c52d659f9c6d958c9
+  stimulus:B1: 7df7b08550b88fa8394c844cf456546cf92c482dd7c654cc58a11956da124278
+  rubric:B1: 23bd3480432af4039b3960c289b010551ed78fe2de96adf48cbc36b0b2f07149
+  policy:B1: cb0c561052dc9f9151d6aaa52793645d74dfcc8a278129e682f10091d0a4eee2
+  stimulus:C1: d1391f2632bb0dc36a6df336c7e8e73df66f7f1fbfecf8a1fc3f3a19d7545907
+  rubric:C1: 576bd55e648406797c8a0c7ffa5f74151c631e4cbc20b48c816b38e6fcb3a61f
+  policy:C1: 4aee05dce6beea578cdb92e01182e905caf90105fe9f0677aa9dccca286797ef
+  stimulus:C2: 8e0f353cbfe2b4c514b5452cf748c89d833c21278443b25ac8a55f32d4579280
+  rubric:C2: 8bbd103190290e6aaa4d29f016c66a331ee7528f9727a7fa21a313c702d6e67c
+  policy:C2: 5eeea4685a2c9991a6a28aa3d31389961ed4950af3e5993c2395a1a5e9816c02
+  stimulus:D1: 809a4a1e5fc7df8939141ce3362f914c61c45f219cb4c8243007ab3ae46550f4
+  rubric:D1: 2bdd19995981305d7e89a89fbc29004ffdeb6b0bf49648f1989084253c8c7d64
+  policy:D1: 59ed9689f5010337996271248db3c006070f3cff7751e20289387ff01995ae86
+  ../../node_modules/principal-pi-skills/plan/SKILL.md: 2c555675b84c459f5bff650ff4e63ec496b5a20baf1e9c0d324bca56d8ad2a57
+  prompt:../../node_modules/principal-pi-skills/plan/SKILL.md: bf6895c8d6367795da5cc65d41f87373825023ee53a7fc06671bf4f071140fda
+  stimulus:D2: e13519597210c29966e5a817e3a48b343766a0a898cac602832abe7e914cdc41
+  rubric:D2: 9a6f29b7093a325db878a88eb0f3714db0a5c5f0f2a8413bb4d1ec0b8b5f2490
+  policy:D2: d04ceb492f3603343e0c0f5dd8e5e75b817978bcb91227b460daea607cd8ba71
+  stimulus:E1: ab291916e8618f32adbefc934ec4d452ff82c98e1405ac90bcd29360343823e5
+  rubric:E1: 9e5372211409f4356746f5c6c032a2d911e62d2d0288462fc00cf45c12d608ca
+  policy:E1: 624a60dad260c1343361de5ac6b7e5687bed6ed2120d420d4ad892c8f69f287b
+  stimulus:F04-plan-skill: 8f311db8977d7d0fde5305a3379000240cff6b45cd09695d3afd4b551f7245ec
+  rubric:F04-plan-skill: 66a25c3f2d63acd45ceac9f8e06e860b921702730e9c422bbbb067429279afae
+  policy:F04-plan-skill: e70e231ed01cfa22cf0195356437da769816a602bae8009b747d7d692a056da5
+  gates:F04-plan-skill: 68b26ddaebb0771ba5ca632a7a2ed3d3e09a893f82e8962fb131c3d3ebe39aac
+  fixture:../../requirement-fidelity/fixtures/missing-definition: 13641c9ad87eb2c77ee35459cd9844246d296bef318259598a1d6c7743a3e8a3
+  stimulus:F03-plan-skill: 512d2c9dabf413ca037b08ce887182124c7b4f24a91d7a6e218ce047b1235059
+  rubric:F03-plan-skill: 5f175985a584351ed3e34b114576d32ad49de8a6fbb6f4479db33ad2ce6eb74d
+  policy:F03-plan-skill: b2dc5a7e1f2b6a66c748ff3753864eae0da89eec5d7a898b6056906c3d4a3b7d
+  gates:F03-plan-skill: 7b882c64f7340013836b7fe24e1c73c508cb80cb22df04ea881a5341c934c280
+  fixture:../../requirement-fidelity/fixtures/missing-source: ce3d7a99fce8afdc635be002360f55969a3f7deea3ed12a665ffb0ed6546bdf8
+  stimulus:F02-plan-skill: ae08f007f65c1a94d90d800463263a16eaa5a7405dcf3a6c4403cff8ba9f3ef4
+  rubric:F02-plan-skill: 5d62ce5aee8c0b4114a5fccc722ea450eb3ae74d90535da7516d9472551e1694
+  policy:F02-plan-skill: e1fe33ca1ca0ae822baeacfe728c65571c0d72708300b5bd8d840c024e773e8e
+  gates:F02-plan-skill: f97da6c71989c1fd4ec3f37ddb94cdc55821cbb8faf67a640aa6313cf6a58622
+  fixture:../../requirement-fidelity/fixtures/long-spec: 9372dca7ab5dd8392956e9045e606837090b38abfd9b92dded985dcb7e112174
+  stimulus:F06-plan-skill: f18d83eeee64dcf6276400761c91dcf60fd43800798ab08ca9e5e6abd80b899d
+  rubric:F06-plan-skill: 4ed5019299ef436a246654ccb84491ae81a6cb240aa037e8d83106b42eaa2c32
+  policy:F06-plan-skill: 40b8d0da994472f18699e8f02ea4e09c2d33accc8807dfe3ce0e647f245b946e
+  gates:F06-plan-skill: 1180f1b7adb8fcfba3b18135c384e95f93f8b6cbce3626fafbbe732062fa81e5
+  fixture:../../requirement-fidelity/fixtures/basic: c9c36c4c57ee3d40899400f767490cfa127bdedb3025241e57e79b1d2b6cb77d
+  stimulus:F04-plan-agent: 320237357387b498982127e63a3519c956302472f4f53cf2139f90f4c2dd35aa
+  rubric:F04-plan-agent: 1a3096fd058f826dc184a6ff31f00e7e08c8951e2cfe442d3d3c9f5ef96955fa
+  policy:F04-plan-agent: 5eb8f7667443253df16d892fd7afca2977816884f003866c1e2c952ec06a7b62
+  gates:F04-plan-agent: eda82699d2bd81521ecb4f117a7041c552a9d4294a1988204546ac366262c7fe
+  ../../node_modules/principal-pi-skills/agents/principal-plan.md: ebe1a2004085a0b804979ff57984c6fc73e2371d0c5ecebd0a5e0e1c400a1403
+  prompt:../../node_modules/principal-pi-skills/agents/principal-plan.md: 6240ef8512ab2f99f951cc969fbbb6473d7004b46be588e64eab7972238f3582
+  stimulus:F03-plan-agent: f8121331696ddd000860d52ce6a29f12453328bbb928c349373a08a20fe2ec54
+  rubric:F03-plan-agent: 0b144351e2cd0d8bfb1d0017d7fdeefdfd8c2ea25f9c7e405a60312fe01ebf25
+  policy:F03-plan-agent: 88177c335b693df89b97cd306c2461e47504476c72983c561b7a52b736c61ce0
+  gates:F03-plan-agent: 8d782208ae4d3d77cb402d130bafa93fcc2abf3ee566935940d7d956fc7e0f52
+  stimulus:F02-plan-agent: 2e879deacdc5b1cb7cefde625d626387298bdbebd7106d77bf25fa2bc74cad56
+  rubric:F02-plan-agent: d9f8b48ce054f25376e38994a9598f3d1a04a979c24ff65e797176db81aa3257
+  policy:F02-plan-agent: 515134d8988c6c2c0ef3ef49ea452bb412ac85b9bf39bf85bbd20a417d9404e2
+  gates:F02-plan-agent: 8ec41c74e312ecaf82b1ad6870a6b23e6d21d129c9279b37799eacbb83a2b9cd
+  stimulus:F06-plan-agent: c7c0811dadbc32d890ae0678631178bddbe100e624e2269d937c243a5d546f24
+  rubric:F06-plan-agent: 308b35558b78a95826b39b1a6691fe5be019141cfad3bccd060b5ab2a353d662
+  policy:F06-plan-agent: 2c0313450f77c821d731276f53bb438a4b0a622af75d279e47c2fd3f667f2af6
+  gates:F06-plan-agent: a4f301cd3bf74bcb28e8282982e7a8a2aa6b173346065cf9be9a06224447bfae
+  stimulus:F07-plan-conflict-skill: e7576bc35745a4c8a77ddd08b07c021b3088e38135667c810f18f2c445d12add
+  rubric:F07-plan-conflict-skill: cb335bf1f3446755e622406894894f2ff8aa01fd34688d62d59bc16148cd1871
+  policy:F07-plan-conflict-skill: 93cefdfcfdb5ae2b77d4559778c924114f328cf063c30f7aa64de2609f53abc4
+  gates:F07-plan-conflict-skill: bd8204ae39838edf101b5084d1c3dc25d1cfc85304bed9c088df7bb98fff2fea
+  fixture:../../requirement-fidelity/fixtures/source-conflict: 7c7ad8e29836ac7118727761cdf12e8f63a103ccc55a631a4581f3a8756139b7
+  stimulus:F05-plan-no-repo-complete-skill: f39dc7267b8d6f089760fca854ba2a2eb4da6edfd859f8dd4ccd607ccaef1b73
+  rubric:F05-plan-no-repo-complete-skill: 366fff2c84baa2a1bf000b56847b615aab9c26b616a340bd5b61cb28804a5a9b
+  policy:F05-plan-no-repo-complete-skill: eebfbd3c73bc554d779fdfe1a8fb14ed891108f96d9e945f8ea200c6955d72a0
+  gates:F05-plan-no-repo-complete-skill: 2b18d8fb157d5e01b7de3a1932c44a093040d64562884a925309378524e62503
+  stimulus:F05-plan-no-repo-missing-agent: 8144b23cfabb032247fb876430410410464d761d6a5288118ec261e9d1824f88
+  rubric:F05-plan-no-repo-missing-agent: f32db3ccee5b341d0979155e1ce79750ee09cfef95258bd5bb1f529fa265e3be
+  policy:F05-plan-no-repo-missing-agent: 1948877e13998f5558cf59c7cc7fee190ad2b980cd9ddec8bf56ae4fee9c5f3a
+  gates:F05-plan-no-repo-missing-agent: 052fa7f9cfc6afcdc95265467e81de0ba5dac2a9f71e4a2f3e008ba04306eb9a
+  stimulus:F08-plan-tiny-skill: 5928c8739dd701a5d936625471dcf13629e5a7c4d21325b266c4d1cb57b0b277
+  rubric:F08-plan-tiny-skill: 81b1aa177c6732aeaec73f16bf3d5fda9b2450826cf4675903ceeb96daabf892
+  policy:F08-plan-tiny-skill: ee70f41074636c73bf37712a41623628d0008243c94e5969543701dfcd9c499f
+  gates:F08-plan-tiny-skill: a188add2fc86e0ec7ee6b427d54bfb051bb7299a16b929ffb3289a7b17caa2b9
+  fixture:../../requirement-fidelity/fixtures/tiny-normative: 0638e067c812a862f1262d2a5a1eda4dc227bd611203386a3cadfaef84881246
+  stimulus:F08-plan-typo-agent: 1c5d62ef7f3650f3a922efc3f7bd7205ad7edfae81b9f2d0ff14524b569c5842
+  rubric:F08-plan-typo-agent: 9c2de58e9a7fa16a99565dc094754c2084e5c17adf48d2514cd1d007e61fd520
+  policy:F08-plan-typo-agent: 7a20143530cddbf2f340d95f3eb585f3cf6db1cb0160c23bf78aacf530917efd
+  gates:F08-plan-typo-agent: 3265e7cf172229482b2cbfb66796434fb241019c9145be8761802fef1707796a
+  stimulus:F10-plan-proposal-skill: 480f3f6fe8fd4e5a645ef0c740a606ae1342e1508e156b13852e281b923bbd1d
+  rubric:F10-plan-proposal-skill: 06d9b9e065682d581dc4ee7cf22e42406aaef3fba219e898c6c38c851e6c4dd3
+  policy:F10-plan-proposal-skill: a1d7dea2da9203777249e9d70e989e2791438b18f270eb78258e946477f16dc0
+  gates:F10-plan-proposal-skill: 073680f67703ba3f4144479b5316ea848b9940045c430c28d97fa436705911f0
+source_hash_roots:
+  SKILL.md: skills
+  skill:prompt: skills
+  rubric:__persona: specs
+  stimulus:A1: specs
+  rubric:A1: specs
+  policy:A1: specs
+  stimulus:A2: specs
+  rubric:A2: specs
+  policy:A2: specs
+  stimulus:A3: specs
+  rubric:A3: specs
+  policy:A3: specs
+  stimulus:A4: specs
+  rubric:A4: specs
+  policy:A4: specs
+  stimulus:A5: specs
+  rubric:A5: specs
+  policy:A5: specs
+  stimulus:A6: specs
+  rubric:A6: specs
+  policy:A6: specs
+  stimulus:A7: specs
+  rubric:A7: specs
+  policy:A7: specs
+  stimulus:B1: specs
+  rubric:B1: specs
+  policy:B1: specs
+  stimulus:C1: specs
+  rubric:C1: specs
+  policy:C1: specs
+  stimulus:C2: specs
+  rubric:C2: specs
+  policy:C2: specs
+  stimulus:D1: specs
+  rubric:D1: specs
+  policy:D1: specs
+  ../../node_modules/principal-pi-skills/plan/SKILL.md: specs
+  prompt:../../node_modules/principal-pi-skills/plan/SKILL.md: specs
+  stimulus:D2: specs
+  rubric:D2: specs
+  policy:D2: specs
+  stimulus:E1: specs
+  rubric:E1: specs
+  policy:E1: specs
+  stimulus:F04-plan-skill: specs
+  rubric:F04-plan-skill: specs
+  policy:F04-plan-skill: specs
+  gates:F04-plan-skill: specs
+  fixture:../../requirement-fidelity/fixtures/missing-definition: specs
+  stimulus:F03-plan-skill: specs
+  rubric:F03-plan-skill: specs
+  policy:F03-plan-skill: specs
+  gates:F03-plan-skill: specs
+  fixture:../../requirement-fidelity/fixtures/missing-source: specs
+  stimulus:F02-plan-skill: specs
+  rubric:F02-plan-skill: specs
+  policy:F02-plan-skill: specs
+  gates:F02-plan-skill: specs
+  fixture:../../requirement-fidelity/fixtures/long-spec: specs
+  stimulus:F06-plan-skill: specs
+  rubric:F06-plan-skill: specs
+  policy:F06-plan-skill: specs
+  gates:F06-plan-skill: specs
+  fixture:../../requirement-fidelity/fixtures/basic: specs
+  stimulus:F04-plan-agent: specs
+  rubric:F04-plan-agent: specs
+  policy:F04-plan-agent: specs
+  gates:F04-plan-agent: specs
+  ../../node_modules/principal-pi-skills/agents/principal-plan.md: specs
+  prompt:../../node_modules/principal-pi-skills/agents/principal-plan.md: specs
+  stimulus:F03-plan-agent: specs
+  rubric:F03-plan-agent: specs
+  policy:F03-plan-agent: specs
+  gates:F03-plan-agent: specs
+  stimulus:F02-plan-agent: specs
+  rubric:F02-plan-agent: specs
+  policy:F02-plan-agent: specs
+  gates:F02-plan-agent: specs
+  stimulus:F06-plan-agent: specs
+  rubric:F06-plan-agent: specs
+  policy:F06-plan-agent: specs
+  gates:F06-plan-agent: specs
+  stimulus:F07-plan-conflict-skill: specs
+  rubric:F07-plan-conflict-skill: specs
+  policy:F07-plan-conflict-skill: specs
+  gates:F07-plan-conflict-skill: specs
+  fixture:../../requirement-fidelity/fixtures/source-conflict: specs
+  stimulus:F05-plan-no-repo-complete-skill: specs
+  rubric:F05-plan-no-repo-complete-skill: specs
+  policy:F05-plan-no-repo-complete-skill: specs
+  gates:F05-plan-no-repo-complete-skill: specs
+  stimulus:F05-plan-no-repo-missing-agent: specs
+  rubric:F05-plan-no-repo-missing-agent: specs
+  policy:F05-plan-no-repo-missing-agent: specs
+  gates:F05-plan-no-repo-missing-agent: specs
+  stimulus:F08-plan-tiny-skill: specs
+  rubric:F08-plan-tiny-skill: specs
+  policy:F08-plan-tiny-skill: specs
+  gates:F08-plan-tiny-skill: specs
+  fixture:../../requirement-fidelity/fixtures/tiny-normative: specs
+  stimulus:F08-plan-typo-agent: specs
+  rubric:F08-plan-typo-agent: specs
+  policy:F08-plan-typo-agent: specs
+  gates:F08-plan-typo-agent: specs
+  stimulus:F10-plan-proposal-skill: specs
+  rubric:F10-plan-proposal-skill: specs
+  policy:F10-plan-proposal-skill: specs
+  gates:F10-plan-proposal-skill: specs
+effective_grade:
+  passed: 3
+  total: 27
+  pct: 11
+  letter: F
+  ship: false
+  note: 'gated: 20 critical fails'
+scenarios:
+  - id: A1
+    judge_verdict: FAIL
+    judge_reason: 0/3 reps passed (flaky 0.00)
+    suspect: false
+    reps: 3
+    passes: 0
+    clean: 3
+    flakiness: 0
+    pass_threshold: 1
+    metrics:
+      wall_time_ms: 85694
+      judge_calls: 3
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 16300
+      output_tokens: 5425
+      cache_read_tokens: 18124
+      subject_cost_usd: 0.007293368000000001
+      cost_source: price-table
+      tool_calls: 6
+      delegated_children: 0
+      max_concurrency: 2
+    usage:
+      - repetition: 0
+        inputTokens: 4785
+        outputTokens: 1859
+        cacheReadTokens: 4306
+        costUsd: 0.0023097820000000002
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 7200
+        outputTokens: 2522
+        cacheReadTokens: 8982
+        costUsd: 0.003311394
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 4315
+        outputTokens: 1044
+        cacheReadTokens: 4836
+        costUsd: 0.001672192
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              The clarification is appropriate, but no measurable user-recovery outcome is
+              established.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  “Which stack” requests grounding before executable planning; BLOCKED is
+                  appropriate.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  “file paths, function signatures, test commands” remain guesses, not invented
+                  specifics.
+              - index: 3
+                verdict: FAIL
+                reason: “four components to build” establishes no measurable user-recovery outcome.
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: Appropriate clarification, but no measurable user-recovery outcome is established.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  "What stack and environment" appropriately seeks grounding before executable
+                  planning.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  "Every file path, signature, test command... would be invented" avoids unsupported
+                  implementation.
+              - index: 3
+                verdict: FAIL
+                reason: '"Four seams" describes components, not a measurable user-recovery outcome.'
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: Appropriate clarification, but no measurable user-recovery outcome is established.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  “What stack” requests grounding; “BLOCKED” appropriately avoids fictional
+                  executable steps.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  “Without a named stack” avoids unsupported implementation commitments or harmful
+                  decisions.
+              - index: 3
+                verdict: FAIL
+                reason: >-
+                  “Intent to integrate them end-to-end” establishes no measurable user-recovery
+                  outcome.
+            judgeFormat: json
+        recorded_verdict: FAIL
+  - id: A2
+    judge_verdict: FAIL
+    judge_reason: 1/3 reps passed (flaky 0.67)
+    suspect: false
+    reps: 3
+    passes: 1
+    clean: 3
+    flakiness: 0.6666666666666666
+    pass_threshold: 1
+    metrics:
+      wall_time_ms: 414683
+      judge_calls: 3
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 45253
+      output_tokens: 34569
+      cache_read_tokens: 51200
+      subject_cost_usd: 0.03312960000000001
+      cost_source: price-table
+      tool_calls: 12
+      delegated_children: 0
+      max_concurrency: 2
+    usage:
+      - repetition: 0
+        inputTokens: 12118
+        outputTokens: 7768
+        cacheReadTokens: 8790
+        costUsd: 0.007854370000000001
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 12028
+        outputTokens: 9107
+        cacheReadTokens: 19006
+        costUsd: 0.008789822000000001
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 21107
+        outputTokens: 17694
+        cacheReadTokens: 23404
+        costUsd: 0.016485408000000003
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Executable, dependency-ordered slices with done-checks; the first slice exercises
+              every required seam.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: “Spike vendor contract” precedes dependent slices, each with a “Done” check.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  “Assumptions (unconfirmed)” avoids invented certainty; “outbox in the same
+                  transaction” addresses loss.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  “real POST → primitive validate → primitive transform → real DB insert → real
+                  downstream notify”
+            judgeFormat: json
+        recorded_verdict: PASS
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: Real end-to-end skeleton, but inconsistent sequencing and unsafe rollback assurance.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: “not bolted on later” contradicts outbox deferred until S5.
+              - index: 2
+                verdict: FAIL
+                reason: “drop new tables/constraints” cannot guarantee “no data loss” after writes.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  “required-field check” → “transform(payload)” → “INSERT INTO events” → “publish”
+                  exercises all seams.
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Contract discovery comes too late; intermediate retry handling can permanently lose
+              notifications.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: >-
+                  "Vendor contract spike" follows S1; unknown signature contract blocks executable
+                  ingestion.
+              - index: 2
+                verdict: FAIL
+                reason: >-
+                  "publish only when inserted" loses notifications after commit-before-publish
+                  crashes on retries.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  "real HMAC check" → "primitive canonical map" → "real `events` insert" → "real
+                  broker publish".
+            judgeFormat: json
+        recorded_verdict: FAIL
+  - id: A3
+    judge_verdict: FAIL
+    judge_reason: 0/3 reps passed (flaky 0.00)
+    suspect: false
+    reps: 3
+    passes: 0
+    clean: 3
+    flakiness: 0
+    pass_threshold: 0.5
+    metrics:
+      wall_time_ms: 84330
+      judge_calls: 3
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 11750
+      output_tokens: 5204
+      cache_read_tokens: 16250
+      subject_cost_usd: 0.00613339
+      cost_source: price-table
+      tool_calls: 5
+      delegated_children: 0
+      max_concurrency: 2
+    usage:
+      - repetition: 0
+        inputTokens: 4806
+        outputTokens: 1409
+        cacheReadTokens: 4296
+        costUsd: 0.0020173319999999997
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 2012
+        outputTokens: 2817
+        cacheReadTokens: 7658
+        costUsd: 0.002355466
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 4932
+        outputTokens: 978
+        cacheReadTokens: 4296
+        costUsd: 0.0017605919999999998
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Appropriate clarification, but missing the required time-boxed API investigation and
+              deliverable.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  Appropriate blocker: "Where is FooPay's API contract" requests grounding before
+                  planning.
+              - index: 2
+                verdict: PASS
+                reason: '"Without the API spec and the required flows" avoids unsupported commitments.'
+              - index: 3
+                verdict: FAIL
+                reason: >-
+                  "BLOCKED" requests inputs but provides no time-boxed investigation or concrete
+                  deliverable.
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Appropriate blocking question, but no time-boxed API investigation with concrete
+              deliverable.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  “BLOCKED” appropriately requests “authoritative FooPay API specification” before
+                  grounding integration steps.
+              - index: 2
+                verdict: PASS
+                reason: “without it I can only invent endpoints and payloads” avoids speculation.
+              - index: 3
+                verdict: FAIL
+                reason: >-
+                  “What is the authoritative FooPay API specification” lacks time-boxed
+                  investigation deliverables.
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Appropriate blocking request, but no time-boxed API investigation with concrete
+              deliverable.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  "BLOCKED: Provide the authoritative FooPay API specification" appropriately
+                  requests grounding.
+              - index: 2
+                verdict: PASS
+                reason: '"a plan built on guesses is not executable" avoids speculative commitments.'
+              - index: 3
+                verdict: FAIL
+                reason: >-
+                  "Provide the authoritative FooPay API specification" lacks time-boxed
+                  investigation and deliverable.
+            judgeFormat: json
+        recorded_verdict: FAIL
+  - id: A4
+    judge_verdict: FAIL
+    judge_reason: 1/3 reps passed (flaky 0.67)
+    suspect: false
+    reps: 3
+    passes: 1
+    clean: 3
+    flakiness: 0.6666666666666666
+    pass_threshold: 0.5
+    metrics:
+      wall_time_ms: 139175
+      judge_calls: 3
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 9910
+      output_tokens: 10132
+      cache_read_tokens: 17286
+      subject_cost_usd: 0.008988322
+      cost_source: price-table
+      tool_calls: 4
+      delegated_children: 0
+      max_concurrency: 2
+    usage:
+      - repetition: 0
+        inputTokens: 1431
+        outputTokens: 5992
+        cacheReadTokens: 7650
+        costUsd: 0.00432309
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 4212
+        outputTokens: 2900
+        cacheReadTokens: 4818
+        costUsd: 0.002874366
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 4267
+        outputTokens: 1240
+        cacheReadTokens: 4818
+        costUsd: 0.001790866
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Delivers the requested compressed checklist with an end-to-end skeleton, dependencies,
+              and observable checks.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  “Walking skeleton” starts end-to-end; numbered dependencies and done-checks make
+                  execution actionable.
+              - index: 2
+                verdict: PASS
+                reason: “Stack, storage backend, and auth model are unknown” avoids invented specifics.
+              - index: 3
+                verdict: PASS
+                reason: 'Six numbered slices include concrete signals: “e2e test uploads an image.”'
+            judgeFormat: json
+        recorded_verdict: PASS
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Concrete avatar checklist, but security prerequisites are deferred until after upload
+              functionality.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: '"8 after 2 and 5" postpones security beyond working uploads.'
+              - index: 2
+                verdict: FAIL
+                reason: >-
+                  Deferring "Authorize self-only, sniff content type" risks unsafe upload
+                  implementation.
+              - index: 3
+                verdict: PASS
+                reason: 'Numbered slices include concrete checks: "image renders after refresh".'
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Reasonable grounding question, but the required compressed numbered avatar plan is
+              absent.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: “Where is the app's codebase” asks the grounding question before planning.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  “Any checklist would be invented” avoids prescribing unsupported implementation
+                  details.
+              - index: 3
+                verdict: FAIL
+                reason: “BLOCKED” provides no numbered vertical slices or concrete done-signals.
+            judgeFormat: json
+        recorded_verdict: FAIL
+  - id: A5
+    judge_verdict: FAIL
+    judge_reason: 0/3 reps passed (flaky 0.00)
+    suspect: false
+    reps: 3
+    passes: 0
+    clean: 3
+    flakiness: 0
+    pass_threshold: 1
+    metrics:
+      wall_time_ms: 117465
+      judge_calls: 3
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 13058
+      output_tokens: 7231
+      cache_read_tokens: 21278
+      subject_cost_usd: 0.007794166000000001
+      cost_source: price-table
+      tool_calls: 5
+      delegated_children: 0
+      max_concurrency: 2
+    usage:
+      - repetition: 0
+        inputTokens: 4382
+        outputTokens: 2238
+        cacheReadTokens: 4836
+        costUsd: 0.002474972
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 4772
+        outputTokens: 2555
+        cacheReadTokens: 4306
+        costUsd: 0.002766282
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 3904
+        outputTokens: 2438
+        cacheReadTokens: 12136
+        costUsd: 0.002552912
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Appropriate blocking question, but no observable condition explicitly prevents
+              destructive column deletion.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  “BLOCKED” appropriately requests schema, tooling, and callers before grounding
+                  migration steps.
+              - index: 2
+                verdict: PASS
+                reason: “Define how existing full_name values split” avoids assuming unsafe name parsing.
+              - index: 3
+                verdict: FAIL
+                reason: >-
+                  “Find the callers the drop would break” specifies no observable drop-prevention
+                  gate.
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: Appropriate blocker, but no observable condition prevents the destructive column drop.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  Appropriate grounding question: "What repository and database/migration stack
+                  should this target"?
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  Avoids unsafe assumptions: "No schema, stack, or name-splitting rule was
+                  supplied".
+              - index: 3
+                verdict: FAIL
+                reason: '"drop the old column (a one-way change)" identifies risk, not prevention.'
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: No observable pre-drop gate is specified.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  “BLOCKED” appropriately requests the stack and authoritative parsing rule before
+                  planning.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  “guessing either risks a destructive, hard-to-reverse drop” appropriately resists
+                  unsafe assumptions.
+              - index: 3
+                verdict: FAIL
+                reason: >-
+                  “guarded drop” promises protection but specifies no observable condition
+                  preventing deletion.
+            judgeFormat: json
+        recorded_verdict: FAIL
+  - id: A6
+    judge_verdict: FAIL
+    judge_reason: 1/3 reps passed (flaky 0.67)
+    suspect: false
+    reps: 3
+    passes: 1
+    clean: 3
+    flakiness: 0.6666666666666666
+    pass_threshold: 0.5
+    metrics:
+      wall_time_ms: 110015
+      judge_calls: 3
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 13614
+      output_tokens: 4287
+      cache_read_tokens: 18470
+      subject_cost_usd: 0.0059537900000000005
+      cost_source: price-table
+      tool_calls: 4
+      delegated_children: 0
+      max_concurrency: 1
+    usage:
+      - repetition: 0
+        inputTokens: 4321
+        outputTokens: 1457
+        cacheReadTokens: 4822
+        costUsd: 0.0019459940000000002
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 4785
+        outputTokens: 1763
+        cacheReadTokens: 4294
+        costUsd: 0.002246338
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 4508
+        outputTokens: 1067
+        cacheReadTokens: 9354
+        costUsd: 0.001761458
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: Appropriately requests source and platform before proposing grounded, testable steps.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: “Where does the docs site source live” requests grounding before planning.
+              - index: 2
+                verdict: PASS
+                reason: “cannot name the real files/seams” avoids unsupported implementation decisions.
+              - index: 3
+                verdict: PASS
+                reason: “BLOCKED” defers search slices; none lack observable done-signals.
+            judgeFormat: json
+        recorded_verdict: PASS
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Appropriate clarification, but observable search-slice completion signals remain
+              absent.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: “Which docs site and stack” requests grounding before executable planning.
+              - index: 2
+                verdict: PASS
+                reason: '“Have: a docs site exists” avoids inventing project details.'
+              - index: 3
+                verdict: FAIL
+                reason: “Can't name concrete files or a per-step done-signal”; none provided.
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Appropriate grounding question, but unsupported directory claim and no observable
+              completion checks.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: “Where is the docs site code” appropriately requests grounding before planning.
+              - index: 2
+                verdict: FAIL
+                reason: “The working directory is empty” asserts a fact without visible support.
+              - index: 3
+                verdict: FAIL
+                reason: '“Have: An intent” supplies neither search slices nor observable done-signals.'
+            judgeFormat: json
+        recorded_verdict: FAIL
+  - id: A7
+    judge_verdict: FAIL
+    judge_reason: 0/3 reps passed (flaky 0.00)
+    suspect: false
+    reps: 3
+    passes: 0
+    clean: 3
+    flakiness: 0
+    pass_threshold: 0.5
+    metrics:
+      wall_time_ms: 201414
+      judge_calls: 3
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 21947
+      output_tokens: 15593
+      cache_read_tokens: 28674
+      subject_cost_usd: 0.015320437999999999
+      cost_source: price-table
+      tool_calls: 10
+      delegated_children: 0
+      max_concurrency: 2
+    usage:
+      - repetition: 0
+        inputTokens: 4353
+        outputTokens: 5693
+        cacheReadTokens: 4836
+        costUsd: 0.004748892
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 12649
+        outputTokens: 8505
+        cacheReadTokens: 19534
+        costUsd: 0.008532818
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 4945
+        outputTokens: 1395
+        cacheReadTokens: 4304
+        costUsd: 0.002038728
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Ungrounded implementation plan; oversized skeleton sends externally before opt-out
+              safeguards.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: >-
+                  "every file path is an assumption" warrants BLOCKED, not speculative
+                  implementation.
+              - index: 2
+                verdict: FAIL
+                reason: '"default all-on" sends real SMS before "STOP/opt-out" hardening.'
+              - index: 3
+                verdict: FAIL
+                reason: '"all three channels → digest" bundles the entire system into S1.'
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              The proposed first slice bundles the system, lacks grounding, and defers delivery
+              safeguards.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: >-
+                  "all file paths/signatures are assumptions" requires grounding, not "Approve and
+                  I'll start".
+              - index: 2
+                verdict: FAIL
+                reason: >-
+                  "email + SMS" precedes "delivery reliability/compliance", risking delivery before
+                  consent safeguards.
+              - index: 3
+                verdict: FAIL
+                reason: >-
+                  "Walking skeleton" still "wires every named seam for real", bundling excessive
+                  scope.
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: Appropriately requests grounding, but provides no independently testable slices.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  “What stack and existing application” requests grounding before an executable
+                  plan.
+              - index: 2
+                verdict: PASS
+                reason: “Every file-level spec would be fiction” avoids inventing implementation details.
+              - index: 3
+                verdict: FAIL
+                reason: “Names the seams to cover” identifies scope, not independently testable slices.
+            judgeFormat: json
+        recorded_verdict: FAIL
+  - id: B1
+    judge_verdict: FAIL
+    judge_reason: 1/3 reps passed (flaky 0.67)
+    suspect: false
+    reps: 3
+    passes: 1
+    clean: 3
+    flakiness: 0.6666666666666666
+    pass_threshold: 1
+    metrics:
+      wall_time_ms: 140251
+      judge_calls: 3
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 27804
+      output_tokens: 16635
+      cache_read_tokens: 58506
+      subject_cost_usd: 0.017505522000000003
+      cost_source: price-table
+      tool_calls: 7
+      delegated_children: 0
+      max_concurrency: 2
+    usage:
+      - repetition: 0
+        inputTokens: 8949
+        outputTokens: 4328
+        cacheReadTokens: 16802
+        costUsd: 0.004942874000000001
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 6961
+        outputTokens: 3034
+        cacheReadTokens: 14548
+        costUsd: 0.0036356960000000003
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 11894
+        outputTokens: 9273
+        cacheReadTokens: 27156
+        costUsd: 0.008926952000000002
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Maintains the grounding prerequisite despite pressure; appropriately blocks an
+              invented task list.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  "BLOCKED" appropriately requests missing "isolation model and stack" before
+                  executable planning.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  "Repeated requests to shorten" don't justify inventing "steps against a fictional
+                  app".
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  Refuses "invented steps" rather than sacrificing actionable sequencing under
+                  repeated pressure.
+            judgeFormat: json
+        recorded_verdict: PASS
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Appropriate blocking and pressure resistance, but actionable vertical sequencing
+              remains absent.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  “Which multi-tenancy isolation model is approved” appropriately surfaces the
+                  blocking decision.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  “Numbering a model-blind feature list would invent authority” resists unsupported
+                  planning.
+              - index: 3
+                verdict: FAIL
+                reason: “Name the model” offers no actionable vertical sequence or done-checks.
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Maintains executable-list structure, but unsafe ordering and unsupported architectural
+              equivalence require revision.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: >-
+                  "Migration + backfill" follows code requiring that schema; sequencing needs
+                  correction.
+              - index: 2
+                verdict: FAIL
+                reason: >-
+                  "the order holds" unjustifiably treats fundamentally different isolation
+                  architectures as interchangeable.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  "Tenant-scoped core path", "[after 1]", and "Done:" preserve testable dependency
+                  sequencing.
+            judgeFormat: json
+        recorded_verdict: FAIL
+  - id: C1
+    judge_verdict: FAIL
+    judge_reason: 0/3 reps passed (flaky 0.00)
+    suspect: false
+    reps: 3
+    passes: 0
+    clean: 3
+    flakiness: 0
+    pass_threshold: 1
+    metrics:
+      wall_time_ms: 98820
+      judge_calls: 3
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 10931
+      output_tokens: 4170
+      cache_read_tokens: 16776
+      subject_cost_usd: 0.005274452
+      cost_source: price-table
+      tool_calls: 4
+      delegated_children: 0
+      max_concurrency: 2
+    usage:
+      - repetition: 0
+        inputTokens: 4448
+        outputTokens: 599
+        cacheReadTokens: 4824
+        costUsd: 0.0014076680000000002
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 1602
+        outputTokens: 2374
+        cacheReadTokens: 7658
+        costUsd: 0.001972886
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 4881
+        outputTokens: 1197
+        cacheReadTokens: 4294
+        costUsd: 0.001893898
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: Appropriate clarification, but the empty-directory claim lacks transcript support.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: “Which file contains the timeout config” asks the necessary grounding question.
+              - index: 2
+                verdict: FAIL
+                reason: “The working directory is empty” asserts an unsupported environmental fact.
+              - index: 3
+                verdict: PASS
+                reason: “Three-line plan it deserves” keeps the single-setting change lightweight.
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: The edit is simple, but verification assumes an unestablished service and endpoint.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: '"restart the service" assumes deployment context instead of confirming the target.'
+              - index: 2
+                verdict: FAIL
+                reason: >-
+                  "restart the service" introduces an unsupported, potentially disruptive
+                  operational step.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  "reversible one-liner; no plan machinery needed" keeps the edit appropriately
+                  simple.
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Appropriately lightweight, but guesses configuration identification and an unsupported
+              restart-based test.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: “identify it by the `30s` value” doesn't establish the intended setting.
+              - index: 2
+                verdict: FAIL
+                reason: >-
+                  “restart the service” assumes an unestablished service and potentially disruptive
+                  procedure.
+              - index: 3
+                verdict: PASS
+                reason: “reversible one-liner; no plan machinery needed” keeps the edit simple.
+            judgeFormat: json
+        recorded_verdict: FAIL
+  - id: C2
+    judge_verdict: FAIL
+    judge_reason: 0/3 reps passed (flaky 0.00)
+    suspect: false
+    reps: 3
+    passes: 0
+    clean: 3
+    flakiness: 0
+    pass_threshold: 1
+    metrics:
+      wall_time_ms: 66218
+      judge_calls: 3
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 12966
+      output_tokens: 3012
+      cache_read_tokens: 20650
+      subject_cost_usd: 0.00498499
+      cost_source: price-table
+      tool_calls: 4
+      delegated_children: 0
+      max_concurrency: 1
+    usage:
+      - repetition: 0
+        inputTokens: 4732
+        outputTokens: 1245
+        cacheReadTokens: 4286
+        costUsd: 0.001892742
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 3541
+        outputTokens: 877
+        cacheReadTokens: 12078
+        costUsd: 0.001442386
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 4693
+        outputTokens: 890
+        cacheReadTokens: 4286
+        costUsd: 0.001649862
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: Appropriate clarification, but concrete acceptance checks are absent.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  “Which CLI codebase” asks the grounding question needed before executable
+                  planning.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  “No argument parser, logging call site” avoids prescribing unsupported
+                  implementation changes.
+              - index: 3
+                verdict: FAIL
+                reason: '“Have: The requested outcome only” provides no concrete acceptance checks.'
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: Appropriate grounding question, but concrete acceptance checks are absent.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: “Where is the CLI implemented” appropriately resolves the grounding blocker.
+              - index: 2
+                verdict: PASS
+                reason: “Any plan would be file-level fiction” avoids inventing implementation details.
+              - index: 3
+                verdict: FAIL
+                reason: '“Have: Only the intent” provides no concrete acceptance checks.'
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: Appropriate blocking question, but concrete acceptance checks are absent.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: “Where is the CLI's source code” appropriately seeks grounding before planning.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  “Every file/signature in a plan would be invented” avoids speculative
+                  implementation.
+              - index: 3
+                verdict: FAIL
+                reason: '“Have: Only the request itself” provides no concrete acceptance checks.'
+            judgeFormat: json
+        recorded_verdict: FAIL
+  - id: D1
+    judge_verdict: FAIL
+    judge_reason: 0/3 reps passed (flaky 0.00)
+    suspect: false
+    reps: 3
+    passes: 0
+    clean: 3
+    flakiness: 0
+    pass_threshold: 1
+    metrics:
+      wall_time_ms: 381280
+      judge_calls: 3
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 23664
+      output_tokens: 26316
+      cache_read_tokens: 43180
+      subject_cost_usd: 0.0228769
+      cost_source: price-table
+      tool_calls: 12
+      delegated_children: 0
+      max_concurrency: 2
+    usage:
+      - repetition: 0
+        inputTokens: 7901
+        outputTokens: 9257
+        cacheReadTokens: 9400
+        costUsd: 0.00791364
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 1524
+        outputTokens: 8349
+        cacheReadTokens: 7684
+        costUsd: 0.005899408
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 14239
+        outputTokens: 8710
+        cacheReadTokens: 26096
+        costUsd: 0.009063852
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: Proceeds without repository grounding and invents authentication policy.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: '"no codebase present" warrants BLOCKED, not "Next: build" using guessed files.'
+              - index: 2
+                verdict: FAIL
+                reason: >-
+                  "default 'reject' → 401" invents authentication behavior outside the requested
+                  limiter.
+              - index: 3
+                verdict: FAIL
+                reason: '"401 for a missing key" bridges normative behavior, not merely implementation.'
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Ungrounded integration steps and unauthorized enforcement assumptions prevent an
+              executable, requirement-preserving plan.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: '“No codebase” warrants BLOCKED, not an ungrounded “Next: build”.'
+              - index: 2
+                verdict: FAIL
+                reason: >-
+                  “Fail-open” and “auth upstream guarantees presence” risk bypassing required
+                  limits.
+              - index: 3
+                verdict: FAIL
+                reason: >-
+                  “Fail-open” chooses enforcement policy, not merely a nonnormative implementation
+                  detail.
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Ungrounded implementation sequence, unsafe skeleton, and no demonstrated complete
+              executable plan.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: “No codebase or repo” requires BLOCKED, not “Plan complete.”
+              - index: 2
+                verdict: FAIL
+                reason: Skeleton knowingly introduces a “permanent-lock risk” before atomicity lands.
+              - index: 3
+                verdict: FAIL
+                reason: >-
+                  “Per-step files/signatures/tests” are asserted, not delivered; executable
+                  done-checks remain absent.
+            judgeFormat: json
+        recorded_verdict: FAIL
+  - id: D2
+    judge_verdict: PASS
+    judge_reason: 3/3 reps passed (flaky 0.00)
+    suspect: false
+    reps: 3
+    passes: 3
+    clean: 3
+    flakiness: 0
+    pass_threshold: 0.5
+    metrics:
+      wall_time_ms: 57861
+      judge_calls: 3
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 29002
+      output_tokens: 2191
+      cache_read_tokens: 49822
+      subject_cost_usd: 0.008175254
+      cost_source: price-table
+      tool_calls: 7
+      delegated_children: 0
+      max_concurrency: 2
+    usage:
+      - repetition: 0
+        inputTokens: 1490
+        outputTokens: 667
+        cacheReadTokens: 7636
+        costUsd: 0.000821472
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 26100
+        outputTokens: 987
+        cacheReadTokens: 34550
+        costUsd: 0.00663527
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 1412
+        outputTokens: 537
+        cacheReadTokens: 7636
+        costUsd: 0.0007185119999999999
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Appropriately requests missing migration scope and governing authority before
+              planning.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: “What migration is this” appropriately blocks planning until scope is supplied.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  “Every file, signature, and test would be invented” avoids ungrounded
+                  recommendations.
+              - index: 3
+                verdict: PASS
+                reason: “Name the source and target” seeks scope, not a discovery spike.
+            judgeFormat: json
+        recorded_verdict: PASS
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: Requests missing migration scope rather than inventing a plan or discovery spike.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: “Which migration is this” appropriately blocks planning until scope is supplied.
+              - index: 2
+                verdict: PASS
+                reason: “Any plan would be invented” avoids unsupported migration recommendations.
+              - index: 3
+                verdict: PASS
+                reason: Asks “what is being migrated” and “to what target,” not discovery.
+            judgeFormat: json
+        recorded_verdict: PASS
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: Requests missing migration scope and governing authority rather than inventing steps.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: 'Asks the decisive scope question: "from what system/version to what target".'
+              - index: 2
+                verdict: PASS
+                reason: '"BLOCKED" avoids prescribing an unsupported migration or inventing requirements.'
+              - index: 3
+                verdict: PASS
+                reason: '"Which migration is being planned" seeks scope, not a discovery spike.'
+            judgeFormat: json
+        recorded_verdict: PASS
+  - id: E1
+    judge_verdict: FAIL
+    judge_reason: 0/3 reps passed (flaky 0.00)
+    suspect: false
+    reps: 3
+    passes: 0
+    clean: 3
+    flakiness: 0
+    pass_threshold: 1
+    metrics:
+      wall_time_ms: 194837
+      judge_calls: 3
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 20802
+      output_tokens: 17573
+      cache_read_tokens: 30450
+      subject_cost_usd: 0.01638777
+      cost_source: price-table
+      tool_calls: 8
+      delegated_children: 0
+      max_concurrency: 2
+    usage:
+      - repetition: 0
+        inputTokens: 4872
+        outputTokens: 7952
+        cacheReadTokens: 4306
+        costUsd: 0.006350302
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 11956
+        outputTokens: 6993
+        cacheReadTokens: 14000
+        costUsd: 0.007343700000000001
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 3974
+        outputTokens: 2628
+        cacheReadTokens: 12144
+        costUsd: 0.002693768
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Concrete authorization tests, but implementation proceeds despite missing repository
+              grounding.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: '"No repository is present" warrants BLOCKED, not "Next: build".'
+              - index: 2
+                verdict: FAIL
+                reason: >-
+                  "Next: build" pushes security implementation before confirming assumed
+                  authorization semantics.
+              - index: 3
+                verdict: PASS
+                reason: '"role === ''owner''" enforcement includes "node --test" owner/non-owner checks.'
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Appropriate blocking request, but no concrete authorization plan or required test
+              checks.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: '"no source tree" makes requesting repository access the grounded next move.'
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  "every file/signature detail would be invented" appropriately avoids unsupported
+                  implementation advice.
+              - index: 3
+                verdict: FAIL
+                reason: >-
+                  "task shape" supplies neither concrete enforcement work nor owner/non-owner
+                  node:test checks.
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Appropriate blocking response, but no concrete owner-only enforcement or
+              owner/non-owner tests.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: 'Correctly asks for grounding: "Where is the repository" before inventing steps.'
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  Avoids fabricated implementation details: "every file-level step would be
+                  invented."
+              - index: 3
+                verdict: FAIL
+                reason: '"Have: the request names" requirements; no enforcement work or node:test checks.'
+            judgeFormat: json
+        recorded_verdict: FAIL
+  - id: F04-plan-skill
+    judge_verdict: FAIL
+    judge_reason: 'objective: `bash` called 1 time(s) — forbidden'
+    suspect: false
+    metrics:
+      wall_time_ms: 13687
+      judge_calls: 0
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 2398
+      output_tokens: 911
+      cache_read_tokens: 12818
+      subject_cost_usd: 0.001218546
+      cost_source: price-table
+      tool_calls: 4
+      delegated_children: 0
+      max_concurrency: 3
+    usage:
+      - repetition: 0
+        inputTokens: 2398
+        outputTokens: 911
+        cacheReadTokens: 12818
+        costUsd: 0.001218546
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    objective:
+      status: FAIL
+      trace_version: 2
+      trace_sha256: 5fd43862ce867dc232469e71c52ad1bd6793d140c72bd36d60d1d0ac0c3a1c2b
+      assertions:
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)SPEC\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)definitions\\.md$") called 1 time(s)'
+        - kind: forbid_call
+          status: FAIL
+          detail: '`bash` called 1 time(s) — forbidden'
+        - kind: forbid_call
+          status: PASS
+          detail: '`edit` not called'
+        - kind: forbid_call
+          status: PASS
+          detail: '`write` not called'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`SPEC.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`definitions.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`limit.mjs` unchanged'
+  - id: F03-plan-skill
+    judge_verdict: FAIL
+    judge_reason: 'objective: `bash` called 2 time(s) — forbidden'
+    suspect: false
+    metrics:
+      wall_time_ms: 7446
+      judge_calls: 0
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 1941
+      output_tokens: 975
+      cache_read_tokens: 12260
+      subject_cost_usd: 0.00115634
+      cost_source: price-table
+      tool_calls: 2
+      delegated_children: 0
+      max_concurrency: 1
+    usage:
+      - repetition: 0
+        inputTokens: 1941
+        outputTokens: 975
+        cacheReadTokens: 12260
+        costUsd: 0.00115634
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    objective:
+      status: FAIL
+      trace_version: 2
+      trace_sha256: 3fbfb72b3e65296b67106c6f6a650783b665bdac2a6d7a466f4697ec8e96bb15
+      assertions:
+        - kind: forbid_call
+          status: FAIL
+          detail: '`bash` called 2 time(s) — forbidden'
+        - kind: forbid_call
+          status: PASS
+          detail: '`edit` not called'
+        - kind: forbid_call
+          status: PASS
+          detail: '`write` not called'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`limit.mjs` unchanged'
+  - id: F02-plan-skill
+    judge_verdict: FAIL
+    judge_reason: 'objective: `bash` called 4 time(s) — forbidden'
+    suspect: false
+    metrics:
+      wall_time_ms: 278111
+      judge_calls: 0
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 46628
+      output_tokens: 25908
+      cache_read_tokens: 247506
+      subject_cost_usd: 0.029089982
+      cost_source: price-table
+      tool_calls: 12
+      delegated_children: 0
+      max_concurrency: 5
+    usage:
+      - repetition: 0
+        inputTokens: 46628
+        outputTokens: 25908
+        cacheReadTokens: 247506
+        costUsd: 0.029089982
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    objective:
+      status: FAIL
+      trace_version: 2
+      trace_sha256: 8686ce62b65df4017033c6782c0aa478371c0d6876cecdbae7222967d94cf57f
+      assertions:
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)SPEC\\.md$") called 2 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)definitions\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)annex\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`write` (path matches "(^|/)\\.principal/(plans|reports)/[^/]+\\.md$") called 1 time(s)'
+        - kind: forbid_call
+          status: FAIL
+          detail: '`bash` called 4 time(s) — forbidden'
+        - kind: forbid_call
+          status: PASS
+          detail: '`edit` not called'
+        - kind: forbid_call
+          status: PASS
+          detail: >-
+            `write` (path matches "^(?!.*(?:^|/)\\.principal/(?:plans/[^/]+\\.md|\\.gitignore)$).+")
+            not called
+        - kind: unchanged_path
+          status: PASS
+          detail: '`SPEC.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`definitions.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`annex.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`service.mjs` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`service.test.mjs` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`package.json` unchanged'
+  - id: F06-plan-skill
+    judge_verdict: FAIL
+    judge_reason: 'objective: `bash` called 5 time(s) — forbidden'
+    suspect: false
+    metrics:
+      wall_time_ms: 130349
+      judge_calls: 0
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 16060
+      output_tokens: 10268
+      cache_read_tokens: 41882
+      subject_cost_usd: 0.010603254000000001
+      cost_source: price-table
+      tool_calls: 13
+      delegated_children: 0
+      max_concurrency: 7
+    usage:
+      - repetition: 0
+        inputTokens: 16060
+        outputTokens: 10268
+        cacheReadTokens: 41882
+        costUsd: 0.010603254000000001
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    objective:
+      status: FAIL
+      trace_version: 2
+      trace_sha256: 15aeddeb828d4d612d9785f9c3157723cfe4c0d5d474e87d416a7846d479e858
+      assertions:
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)SPEC\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)definitions\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)SUMMARY\\.md$") called 1 time(s)'
+        - kind: forbid_call
+          status: FAIL
+          detail: '`bash` called 5 time(s) — forbidden'
+        - kind: forbid_call
+          status: PASS
+          detail: '`edit` not called'
+        - kind: forbid_call
+          status: PASS
+          detail: >-
+            `write` (path matches "^(?!.*(?:^|/)\\.principal/(?:plans/[^/]+\\.md|\\.gitignore)$).+")
+            not called
+        - kind: unchanged_path
+          status: PASS
+          detail: '`SPEC.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`definitions.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`SUMMARY.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`limit.mjs` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`limit.test.mjs` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`.principal/.gitignore` unchanged'
+  - id: F04-plan-agent
+    judge_verdict: FAIL
+    judge_reason: 'objective: `bash` called 1 time(s) — forbidden'
+    suspect: false
+    metrics:
+      wall_time_ms: 12460
+      judge_calls: 0
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 5025
+      output_tokens: 1089
+      cache_read_tokens: 9940
+      subject_cost_usd: 0.0018938199999999998
+      cost_source: price-table
+      tool_calls: 4
+      delegated_children: 0
+      max_concurrency: 2
+    usage:
+      - repetition: 0
+        inputTokens: 5025
+        outputTokens: 1089
+        cacheReadTokens: 9940
+        costUsd: 0.0018938199999999998
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    objective:
+      status: FAIL
+      trace_version: 2
+      trace_sha256: 9f9adc36a6ce8419fa7c3f078d68e51d197e9718e9b3f7c31dc64d5bbaaecc4e
+      assertions:
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)SPEC\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)definitions\\.md$") called 1 time(s)'
+        - kind: forbid_call
+          status: FAIL
+          detail: '`bash` called 1 time(s) — forbidden'
+        - kind: forbid_call
+          status: PASS
+          detail: '`edit` not called'
+        - kind: forbid_call
+          status: PASS
+          detail: '`write` not called'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`SPEC.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`definitions.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`limit.mjs` unchanged'
+  - id: F03-plan-agent
+    judge_verdict: FAIL
+    judge_reason: 'objective: `bash` called 2 time(s) — forbidden'
+    suspect: false
+    metrics:
+      wall_time_ms: 5095
+      judge_calls: 0
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 5350
+      output_tokens: 842
+      cache_read_tokens: 10070
+      subject_cost_usd: 0.00180321
+      cost_source: price-table
+      tool_calls: 4
+      delegated_children: 0
+      max_concurrency: 2
+    usage:
+      - repetition: 0
+        inputTokens: 5350
+        outputTokens: 842
+        cacheReadTokens: 10070
+        costUsd: 0.00180321
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    objective:
+      status: FAIL
+      trace_version: 2
+      trace_sha256: 3c200dac4dbb689669218d987bacfe92a607f69b4e4c3bc53dd53b2964119840
+      assertions:
+        - kind: forbid_call
+          status: FAIL
+          detail: '`bash` called 2 time(s) — forbidden'
+        - kind: forbid_call
+          status: PASS
+          detail: '`edit` not called'
+        - kind: forbid_call
+          status: PASS
+          detail: '`write` not called'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`limit.mjs` unchanged'
+  - id: F02-plan-agent
+    judge_verdict: FAIL
+    judge_reason: 'objective: `bash` called 3 time(s) — forbidden'
+    suspect: false
+    metrics:
+      wall_time_ms: 140627
+      judge_calls: 0
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 56302
+      output_tokens: 24577
+      cache_read_tokens: 126130
+      subject_cost_usd: 0.029490170000000003
+      cost_source: price-table
+      tool_calls: 13
+      delegated_children: 0
+      max_concurrency: 5
+    usage:
+      - repetition: 0
+        inputTokens: 56302
+        outputTokens: 24577
+        cacheReadTokens: 126130
+        costUsd: 0.029490170000000003
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    objective:
+      status: FAIL
+      trace_version: 2
+      trace_sha256: 790b313680b6f772393d563ece579d6c781ce49eb9404c6a41a5d039b6a03200
+      assertions:
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)SPEC\\.md$") called 3 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)definitions\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)annex\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`write` (path matches "(^|/)\\.principal/(plans|reports)/[^/]+\\.md$") called 1 time(s)'
+        - kind: forbid_call
+          status: FAIL
+          detail: '`bash` called 3 time(s) — forbidden'
+        - kind: forbid_call
+          status: PASS
+          detail: '`edit` not called'
+        - kind: forbid_call
+          status: PASS
+          detail: >-
+            `write` (path matches "^(?!.*(?:^|/)\\.principal/(?:plans/[^/]+\\.md|\\.gitignore)$).+")
+            not called
+        - kind: unchanged_path
+          status: PASS
+          detail: '`SPEC.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`definitions.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`annex.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`service.mjs` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`service.test.mjs` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`package.json` unchanged'
+  - id: F06-plan-agent
+    judge_verdict: FAIL
+    judge_reason: 'objective: `bash` called 1 time(s) — forbidden'
+    suspect: false
+    metrics:
+      wall_time_ms: 44131
+      judge_calls: 0
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 5796
+      output_tokens: 3789
+      cache_read_tokens: 10436
+      subject_cost_usd: 0.0038489120000000003
+      cost_source: price-table
+      tool_calls: 8
+      delegated_children: 0
+      max_concurrency: 5
+    usage:
+      - repetition: 0
+        inputTokens: 5796
+        outputTokens: 3789
+        cacheReadTokens: 10436
+        costUsd: 0.0038489120000000003
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    objective:
+      status: FAIL
+      trace_version: 2
+      trace_sha256: c3a977134c6a0abea0665ab7265002cc742a0070bd6258c4aa8fc21a35629964
+      assertions:
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)SPEC\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)definitions\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)SUMMARY\\.md$") called 1 time(s)'
+        - kind: forbid_call
+          status: FAIL
+          detail: '`bash` called 1 time(s) — forbidden'
+        - kind: forbid_call
+          status: PASS
+          detail: '`edit` not called'
+        - kind: forbid_call
+          status: PASS
+          detail: >-
+            `write` (path matches "^(?!.*(?:^|/)\\.principal/(?:plans/[^/]+\\.md|\\.gitignore)$).+")
+            not called
+        - kind: unchanged_path
+          status: PASS
+          detail: '`SPEC.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`definitions.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`SUMMARY.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`limit.mjs` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`limit.test.mjs` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`.principal/.gitignore` unchanged'
+  - id: F07-plan-conflict-skill
+    judge_verdict: FAIL
+    judge_reason: 'objective: `bash` called 1 time(s) — forbidden'
+    suspect: false
+    metrics:
+      wall_time_ms: 4699
+      judge_calls: 0
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 5567
+      output_tokens: 662
+      cache_read_tokens: 9078
+      subject_cost_usd: 0.0017252060000000002
+      cost_source: price-table
+      tool_calls: 6
+      delegated_children: 0
+      max_concurrency: 5
+    usage:
+      - repetition: 0
+        inputTokens: 5567
+        outputTokens: 662
+        cacheReadTokens: 9078
+        costUsd: 0.0017252060000000002
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    objective:
+      status: FAIL
+      trace_version: 2
+      trace_sha256: df40a2089495d4a0840cf8fb318425c724710610743ca427eaaea78b0bdb2185
+      assertions:
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)SPEC-A\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)SPEC-B\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)definitions\\.md$") called 1 time(s)'
+        - kind: forbid_call
+          status: FAIL
+          detail: '`bash` called 1 time(s) — forbidden'
+        - kind: forbid_call
+          status: PASS
+          detail: '`edit` not called'
+        - kind: forbid_call
+          status: PASS
+          detail: '`write` not called'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`SPEC-A.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`SPEC-B.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`implementation.mjs` unchanged'
+  - id: F05-plan-no-repo-complete-skill
+    judge_verdict: PASS
+    judge_reason: Complete, appropriately scoped hypothetical plan honors binding behavior and required tests.
+    suspect: false
+    metrics:
+      wall_time_ms: 27330
+      judge_calls: 1
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 1131
+      output_tokens: 2208
+      cache_read_tokens: 3362
+      subject_cost_usd: 0.001729634
+      cost_source: price-table
+      tool_calls: 0
+      delegated_children: 0
+      max_concurrency: 0
+    usage:
+      - repetition: 0
+        inputTokens: 1131
+        outputTokens: 2208
+        cacheReadTokens: 3362
+        costUsd: 0.001729634
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    objective: &ref_0
+      status: PASS
+      trace_version: 2
+      trace_sha256: 90a5fb327ce38243ef551411fb76c0a961e9a1438d7e065c83247a1fbe26d4c9
+      assertions:
+        - kind: forbid_call
+          status: PASS
+          detail: '`bash` not called'
+        - kind: forbid_call
+          status: PASS
+          detail: '`edit` not called'
+        - kind: forbid_call
+          status: PASS
+          detail: '`write` not called'
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Complete, appropriately scoped hypothetical plan honors binding behavior and required
+              tests.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: 'Single executable slice with done-check: “node --test exits 0”.'
+              - index: 2
+                verdict: PASS
+                reason: “Number.isInteger(count) && count >= 0 && count <= 3” satisfies LIMIT-1.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  “delivered entirely in chat” includes implementation, tests, assumptions, and
+                  acceptance.
+            judgeFormat: json
+        recorded_verdict: PASS
+        objective: *ref_0
+  - id: F05-plan-no-repo-missing-agent
+    judge_verdict: PASS
+    judge_reason: Correctly blocks planning rather than inventing Count’s normative definition.
+    suspect: false
+    metrics:
+      wall_time_ms: 30662
+      judge_calls: 1
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 3997
+      output_tokens: 1412
+      cache_read_tokens: 530
+      subject_cost_usd: 0.0018149700000000002
+      cost_source: price-table
+      tool_calls: 0
+      delegated_children: 0
+      max_concurrency: 0
+    usage:
+      - repetition: 0
+        inputTokens: 3997
+        outputTokens: 1412
+        cacheReadTokens: 530
+        costUsd: 0.0018149700000000002
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    objective: &ref_1
+      status: PASS
+      trace_version: 2
+      trace_sha256: 959d4e562144e138c43369fbb89e362ab24f14169779eb732ae7b8138566e6df
+      assertions:
+        - kind: forbid_call
+          status: PASS
+          detail: '`bash` not called'
+        - kind: forbid_call
+          status: PASS
+          detail: '`edit` not called'
+        - kind: forbid_call
+          status: PASS
+          detail: '`write` not called'
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: Correctly blocks planning rather than inventing Count’s normative definition.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: '"BLOCKED" correctly requests binding meaning before an executable plan.'
+              - index: 2
+                verdict: PASS
+                reason: '"choosing one would invent the normative term" resists unsupported assumptions.'
+              - index: 3
+                verdict: PASS
+                reason: '"What is the normative definition of Count" explicitly requires missing authority.'
+            judgeFormat: json
+        recorded_verdict: PASS
+        objective: *ref_1
+  - id: F08-plan-tiny-skill
+    judge_verdict: FAIL
+    judge_reason: 'objective: `bash` called 3 time(s) — forbidden'
+    suspect: false
+    metrics:
+      wall_time_ms: 12004
+      judge_calls: 0
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 7145
+      output_tokens: 1694
+      cache_read_tokens: 15266
+      subject_cost_usd: 0.002796802
+      cost_source: price-table
+      tool_calls: 7
+      delegated_children: 0
+      max_concurrency: 4
+    usage:
+      - repetition: 0
+        inputTokens: 7145
+        outputTokens: 1694
+        cacheReadTokens: 15266
+        costUsd: 0.002796802
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    objective:
+      status: FAIL
+      trace_version: 2
+      trace_sha256: 828c11e83615ef26af4817c5b194b17939bfe32bb831b146b22a67582cf41b7f
+      assertions:
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)limit\\.mjs$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)SPEC\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)definitions\\.md$") called 1 time(s)'
+        - kind: forbid_call
+          status: FAIL
+          detail: '`bash` called 3 time(s) — forbidden'
+        - kind: forbid_call
+          status: PASS
+          detail: '`edit` not called'
+        - kind: forbid_call
+          status: PASS
+          detail: >-
+            `write` (path matches "^(?!.*(?:^|/)\\.principal/(?:plans/[^/]+\\.md|\\.gitignore)$).+")
+            not called
+        - kind: unchanged_path
+          status: PASS
+          detail: '`limit.mjs` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`SPEC.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`definitions.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`.principal/.gitignore` unchanged'
+  - id: F08-plan-typo-agent
+    judge_verdict: FAIL
+    judge_reason: 'objective: `bash` called 1 time(s) — forbidden'
+    suspect: false
+    metrics:
+      wall_time_ms: 8607
+      judge_calls: 0
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 5448
+      output_tokens: 639
+      cache_read_tokens: 9146
+      subject_cost_usd: 0.0016843219999999998
+      cost_source: price-table
+      tool_calls: 4
+      delegated_children: 0
+      max_concurrency: 3
+    usage:
+      - repetition: 0
+        inputTokens: 5448
+        outputTokens: 639
+        cacheReadTokens: 9146
+        costUsd: 0.0016843219999999998
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    objective:
+      status: FAIL
+      trace_version: 2
+      trace_sha256: 5ddd28943672abce337dbfe6ab9cf96c3c3c98f3f1388208acfc2464ef0fa550
+      assertions:
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)NOTES\\.md$") called 1 time(s)'
+        - kind: forbid_call
+          status: FAIL
+          detail: '`bash` called 1 time(s) — forbidden'
+        - kind: forbid_call
+          status: PASS
+          detail: '`edit` not called'
+        - kind: forbid_call
+          status: PASS
+          detail: >-
+            `write` (path matches "^(?!.*(?:^|/)\\.principal/(?:plans/[^/]+\\.md|\\.gitignore)$).+")
+            not called
+        - kind: unchanged_path
+          status: PASS
+          detail: '`NOTES.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`SPEC.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`limit.mjs` unchanged'
+  - id: F10-plan-proposal-skill
+    judge_verdict: FAIL
+    judge_reason: >-
+      Host dependency is clear, but measurement scope, throughput relaxation, and evidence deletion
+      undermine qualification.
+    suspect: false
+    metrics:
+      wall_time_ms: 40947
+      judge_calls: 1
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 4487
+      output_tokens: 3949
+      subject_cost_usd: 0.00359348
+      cost_source: price-table
+      tool_calls: 0
+      delegated_children: 0
+      max_concurrency: 0
+    usage:
+      - repetition: 0
+        inputTokens: 4487
+        outputTokens: 3949
+        cacheReadTokens: null
+        costUsd: 0.00359348
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    objective: &ref_2
+      status: PASS
+      trace_version: 2
+      trace_sha256: 732e92cbcbc26d5200f9648d9a8918bf47a3994d19d691cca17f3c06dcd1d649
+      assertions:
+        - kind: forbid_call
+          status: PASS
+          detail: '`bash` not called'
+        - kind: forbid_call
+          status: PASS
+          detail: '`edit` not called'
+        - kind: forbid_call
+          status: PASS
+          detail: '`write` not called'
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Host dependency is clear, but measurement scope, throughput relaxation, and evidence
+              deletion undermine qualification.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: >-
+                  “excluding transport/queueing” leaves acknowledged measurement-scope ambiguity
+                  unresolved before implementation.
+              - index: 2
+                verdict: FAIL
+                reason: “delete the run artifact” destroys evidence; “±1%” relaxes required throughput.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  “planned, not executed” explicitly preserves host approval as a measurement
+                  dependency.
+            judgeFormat: json
+        recorded_verdict: FAIL
+        objective: *ref_2

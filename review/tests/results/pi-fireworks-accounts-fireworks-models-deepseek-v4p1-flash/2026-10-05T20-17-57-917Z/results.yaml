@@ -1,0 +1,3415 @@
+schema: 2
+harness_version: 0.23.0
+harness_cli_version: 0.87.1
+skill: review
+harness: pi
+model: fireworks:accounts/fireworks/models/deepseek-v4p1-flash
+judge:
+  provider: openai-codex
+  model: gpt-6-astra
+timestamp: '2026-10-05T20:17:57.917Z'
+label: baseline-wave2-deepseek-20261005T081433Z
+mode: force
+source_hashes:
+  SKILL.md: 9e023d36e469b21f0a907ad28be6f10180a4aa8a5ddc78018f4f006b3999b131
+  skill:prompt: cbc9a3621e9db9056aec0f9ba254c72f85a930b09355071c5fc9ab06d903be78
+  rubric:__persona: cba9dc3e044480f8f061ad12db4ce6625b21f05c68d2328096821c0ae9acb54c
+  stimulus:A1: b5020502412f9c528c6f92d21a8257a26c3ea74a75b16a6b7f6f30d66566a05c
+  rubric:A1: d273d7ceab825c3070e57e62644fe40f413252b6ab292754678e38c2d626428c
+  policy:A1: 5c02de06cf52726a720b313386100cee906ba590da05b29d9f326ffa8f01e3b7
+  stimulus:A2: f93d3abdb2054293db550ae5df33a0e1b31a867a3864fecd589478951095c457
+  rubric:A2: 74eb35bc464d282e9ac5b1e4365d99773909a8087050796537eeef3cab63974c
+  policy:A2: 92f1a7a45d8789e96bd6b75cb1e342e2c3fcafc837f09cc42b2bc3888a63963b
+  stimulus:A3: 6e0db87f3eaa536cf2de14ef93cb9a6892cd0cd0f2436bc08c679492e591f453
+  rubric:A3: 4225cc65b6bd1155738d4aa2062a695fe12f92d92bf41649b626449999fc5fa7
+  policy:A3: 1c97102a64dee92cb80e296cdec178b75ff8d99e51b1bfd55c86a6d05f00f25a
+  stimulus:A4: e5268eab26f83717c70941834fa934df89b1f49ce56298feb89aeebfce1a815f
+  rubric:A4: 86aea8e9b47f02e50585141cd427bfec8c53fe39877ae8b10a377b127223992f
+  policy:A4: c4cbdf8597899d67b6d5e2770f3bc5837618968843c4750007055a510948fabe
+  stimulus:A5: 9425f22cf3bac9ff300593115aa9c2bd709d20de26c64f9386c2c09434c2699f
+  rubric:A5: 570f8fb09d2db0ad0240a84cd0bd31cfb9ee5c3517603e4a2a12dba24d2c79a5
+  policy:A5: e3506895a9a5884eb765b12a8feb6d8eeff372c41ee1070e4da9bd09a19c05f3
+  stimulus:A6: 0c21b3fda80b26d31c85afefdd6ab97ae861f002b78bf10246d47e1fdb5393db
+  rubric:A6: 6a920f5a9174bd8bb72eb6affdf3b6acaa67fc54ea38139988eee9ff5095bf63
+  policy:A6: 98c112cdcb223a5828950a3409760bd6188e1c276e0c94de9685f511f35ee1b2
+  stimulus:A7: 34261395a10d1763daba00913b0b572ee9258c95a3c7a0f8f287528b233e76c3
+  rubric:A7: 86e41888e6fa23dd195dbaeb7349958e0ffbd40e9e90b036837340b3fb723d6e
+  policy:A7: 9918bf15ebc7831724a99fdde6399b1abbae170f82fa5b7c52d659f9c6d958c9
+  stimulus:S1: d9a976c0782b78e5ef5651cc29b6a24f8de8c346c9359c9da410329d2b97ea96
+  rubric:S1: 80f3edf72837efe8cf23a8eee8c0d5e28f27f36b60e9a51ea6e86970f5943def
+  policy:S1: 00c770cfbd8a34a298bd6a81ee46a7ad948f40a3b1d799269bda4ad3f07a1f28
+  stimulus:S2: 31f021ad2930d72117b4e8fe6ac5b0c33ef668eaeb782ffe429fb4dae1200399
+  rubric:S2: f186a4f3379bbfcbcd06c3eec168c374f1f215b83731b625383ea86e7e92c2e7
+  policy:S2: 354f3e410c20000ae73f5451969058a1a719fb8f2d91546e6edc5f6e178b4ff6
+  stimulus:S3: f91b46c09c932e7b75deb5be81e902d058eef9c811aef91de345bc5797a8a403
+  rubric:S3: 6553a5f8731e2d17d29efddeb279e50fe9a17a7274219cdde5fb17ffc862ec95
+  policy:S3: 0b51f3c1e84e286031102e360c57821d0c9fb3aaa36be8d8e5619e287796741a
+  stimulus:S4: 05c42552103465df1d3384ac4cecccded3e342a8824fa86d050d5c0ea59f1ff6
+  rubric:S4: fc3d130db1079a9e5caf3d0c6ab44de46c9f163a4f8810807040a803c865483d
+  policy:S4: b46ce848c69c0f3122433bbb489de7645643c29c490cbfb2db31efca4533dab0
+  stimulus:S5: 2fd5aa654652ad9c986e3085fa80f4b131f67f05078fd04e3c59fa34b1543d04
+  rubric:S5: 4b12dc45759748b0f3db5669e1d7996d507f992a87e4b92426801b3697aed20c
+  policy:S5: d1177edcf92be069f832780ffad4919130636432e2f7d5efef54745ed9617354
+  stimulus:S6: 39e8603b7c99648009d437a66971923601ac5dfc084e040c1c60a43ec841f1a4
+  rubric:S6: 4b294e46b56ba451ca0b0f9d05ff7b80045a99dc83ce04e6510b9160dfd95515
+  policy:S6: 6e20e5f11ee4abaf1598bf066ce9b58054783b5e9b53281f6fafbd2dd1f6d421
+  stimulus:S7: 59ff35b43a16297d5c28bae4464fe1d47bca4ecd9b3488a911fc469bc33dadd2
+  rubric:S7: a7eaf7ecc3fec431cb63089f2e449426ecc87ba4e7d1b82b58133d315ce05476
+  policy:S7: ebae57fb67106284f2d942833d56ac2b6c567e6670b7289f804e7a40bc4a9029
+  stimulus:S8: 16a06694530dcfdf6f534363d14e74d650e4f3c36f7cde2d0aca7b9881b77267
+  rubric:S8: 0f100b373121c6b1be7fe2638e507b0a7ab26302055aa6cafd6c56430ce81569
+  policy:S8: 1f80ba9c52de19d7c5aaf790e524686a1af31e9d23e50c587a9c29cdaf263564
+  stimulus:S9: 04a4b115e7749173edc308847a3d40505a76adff209b312772c0cb0c89eeb671
+  rubric:S9: c8ea088c2be65907bd898bb873b04033153d26e88be5aa801170d1004f7af1a4
+  policy:S9: badacba4d3408f3aaea8f6d90bf4f12e171c51e448b0fb0c0e55baffa6be8779
+  stimulus:B1: 16b493d98d7987e170ce85207b6028aa0ed9b493f64cdb4e209f0c958847c98d
+  rubric:B1: 26e04e8670ed29e656db94f0e068b25c7c39d06b25e439aa11f0ca283e7250a4
+  policy:B1: cb0c561052dc9f9151d6aaa52793645d74dfcc8a278129e682f10091d0a4eee2
+  stimulus:C1: 7d67973e851feec8c7d72ce3e3037378703603938f72ce4851a7576b6f32a8c0
+  rubric:C1: 060d3dcb11557837e15e6588c86f4840639d99eb42ff56dabb8f7e88866f9872
+  policy:C1: 4aee05dce6beea578cdb92e01182e905caf90105fe9f0677aa9dccca286797ef
+  stimulus:C2: be0c2e6a6f1db9b0cecb567f496a97998b24f69aa14b612ffb175008c26cfd9b
+  rubric:C2: 2543e0122c268ecc37c43c68f65ae4a9609c46dac8a5f0d8b832fbef82edd851
+  policy:C2: 5eeea4685a2c9991a6a28aa3d31389961ed4950af3e5993c2395a1a5e9816c02
+  stimulus:D1: dc954540a3d3b352c1c9242a4211628726968168456da6ec5193edaa9cc1e109
+  rubric:D1: 698d64ed5599211ad938a8dc9125dd042e2f8b54887d7cd37f44227a064350f2
+  policy:D1: 59ed9689f5010337996271248db3c006070f3cff7751e20289387ff01995ae86
+  ../../node_modules/principal-pi-skills/agents/principal-review.md: f800ab000fb684f46e17540ac8da990fe712ed464e8983e9f683fd3fdd6c36be
+  prompt:../../node_modules/principal-pi-skills/agents/principal-review.md: d5aee1d6fbb0fb9d850ec24bff8536493d0c219a734c63764d9880d6f4733194
+  stimulus:D2: f528fcb0b91c0704137bbc7b899d519e73ae17d394a6c2c33170e780a49351be
+  rubric:D2: 6ef8da24966847601cab6f6075db0c0f17b80de5f519b85151a22447109864b5
+  policy:D2: d04ceb492f3603343e0c0f5dd8e5e75b817978bcb91227b460daea607cd8ba71
+  stimulus:E1: fa1e2ac4dc229d606810125705cec8eed13c97aa9719f7ee930467e0737dd258
+  rubric:E1: 6135a2dce9964fd784838ea6070a536216182a581a62dfcf171cff7fa11f02e2
+  policy:E1: 624a60dad260c1343361de5ac6b7e5687bed6ed2120d420d4ad892c8f69f287b
+  stimulus:F27-review-historical-audit-skill: b278db4ebe59698601f086e3ed7b3ef2fc46981b1ca6c112d315eb777298a4f2
+  rubric:F27-review-historical-audit-skill: 0a97eb594bf5947cf65a6247f584d1cec5921d27071def5ad8dde54b01efea03
+  policy:F27-review-historical-audit-skill: ac8b98ca525c88645e7b8166a4dc8d70c1557ea8c8054feffbedb3a597c33aee
+  gates:F27-review-historical-audit-skill: f7685125c1e6e54ea0f5f03161d6ca08cacf5317808452d1a9313ceb3ba91741
+  fixture:../../requirement-fidelity/fixtures/handoffs: 0606ba0133f7be3db9bbf4dbfc8e152b7ff5824c4dae32bd2e270af26fe3043e
+  stimulus:F15-review-stale-skill: 708005214b745bc58f959b70e975789ec921c88dbba81451a90208983771d443
+  rubric:F15-review-stale-skill: 5ac98716da8bedd6bbf4cce0f5f3839718faae5f3a25e8c1e9d547c114feddce
+  policy:F15-review-stale-skill: dc27085473724459760fca3675e1d9bc91b0889376b0dde99cd8cdfe0540b9e8
+  gates:F15-review-stale-skill: ae9a10c2b6f8900f0809be9555e5fcf238395e7a6957adc1b0924af027af26dd
+  fixture:../../requirement-fidelity/fixtures/omitted-obligation: ac06199b05407b8ec3d9333cdb9a45e921b2f95a9901175178e4132a4cbc3940
+  stimulus:F17-review-investigation-agent: 65bebd9250eab692f6db5b256bdfbf33ca473f589a239fab3e6b87279b578f8f
+  rubric:F17-review-investigation-agent: 6ffadd026e6b8b5b0860147f3bfab6e7dd25ecd2a5f84e83fc08a690da166e54
+  policy:F17-review-investigation-agent: 34aecb2da53447c0ea64926333ed7506e9436618e63c336cccff44ed746fcfed
+  gates:F17-review-investigation-agent: ea86e9064973877371926a6989f3330950fad09730dcb19c379d54676c73c0f7
+  stimulus:F03-review-skill: 564759ed77c7cca83659a24df4e4c591a71fcb301c193120dcc9e55d4f84bf5b
+  rubric:F03-review-skill: 1ad8fd1243c9c901cae86c7a057bbeb356abe4f326971ae6d8caa44fc8de76af
+  policy:F03-review-skill: 73e6c8e3123f1ae278ec9070c8fcac65e3108b6c98a59f569845fd492c039e56
+  gates:F03-review-skill: 2b04d73b04b452516ab3a62424716b7b82b78fa39bd88999015f4664c8361079
+  fixture:../../requirement-fidelity/fixtures/missing-source: ce3d7a99fce8afdc635be002360f55969a3f7deea3ed12a665ffb0ed6546bdf8
+  stimulus:F03-review-agent: c8b54a854b5e60bd3b0894b1b2765f5dba8e11cf376cd3ca08886e476f4e45a6
+  rubric:F03-review-agent: 6b06925bbb225049ca37454b21c5afbea10d5bf42e75d8fc1990bcb76821c9db
+  policy:F03-review-agent: 47c771656d4af4b9658ef54e88a98c78ac34c310462707a6e02fadeb41c91c90
+  gates:F03-review-agent: 93dbd788a6e912e139e413d2e200d1aef947a80fe37993b7b41b883f05e676a8
+  stimulus:F04-review-definition-agent: f029b628ca962daca048e5ca3f8baf337ed5589660c504696027c21f60b77c08
+  rubric:F04-review-definition-agent: f9e656bd714e7797b91a750778decaf44bdedd4cae0fd363fea8219145d56423
+  policy:F04-review-definition-agent: 204e14df69dc99f2f060f8fdc4ce8b929e3edc3f92d9dfee30364cd9ca2e9b9f
+  gates:F04-review-definition-agent: 267bfc02ef0dccf9f5aff0646363bc9b3ec22e0ec94a3588953ab8f3c30d4065
+  fixture:../../requirement-fidelity/fixtures/missing-definition: 13641c9ad87eb2c77ee35459cd9844246d296bef318259598a1d6c7743a3e8a3
+  stimulus:F08-review-normative-skill: 24fec1b93bf2030eedb65a0851efeddd2412cad6027847718fa93d372138b026
+  rubric:F08-review-normative-skill: 3799a68b055cc2973032b0e8221f3197efbb925b028ad14b5cb2a4873385b4a7
+  policy:F08-review-normative-skill: b1b58dbb195257e6a73e2bda5ef1d81f3b48e69dbb5d3e01e7aadf95a20bff44
+  gates:F08-review-normative-skill: 61a614e3ab44707d691bc96ab54a26ed9134f03ab590fa5fcbb114317372bf19
+  fixture:../../requirement-fidelity/fixtures/tiny-normative: 0638e067c812a862f1262d2a5a1eda4dc227bd611203386a3cadfaef84881246
+source_hash_roots:
+  SKILL.md: skills
+  skill:prompt: skills
+  rubric:__persona: specs
+  stimulus:A1: specs
+  rubric:A1: specs
+  policy:A1: specs
+  stimulus:A2: specs
+  rubric:A2: specs
+  policy:A2: specs
+  stimulus:A3: specs
+  rubric:A3: specs
+  policy:A3: specs
+  stimulus:A4: specs
+  rubric:A4: specs
+  policy:A4: specs
+  stimulus:A5: specs
+  rubric:A5: specs
+  policy:A5: specs
+  stimulus:A6: specs
+  rubric:A6: specs
+  policy:A6: specs
+  stimulus:A7: specs
+  rubric:A7: specs
+  policy:A7: specs
+  stimulus:S1: specs
+  rubric:S1: specs
+  policy:S1: specs
+  stimulus:S2: specs
+  rubric:S2: specs
+  policy:S2: specs
+  stimulus:S3: specs
+  rubric:S3: specs
+  policy:S3: specs
+  stimulus:S4: specs
+  rubric:S4: specs
+  policy:S4: specs
+  stimulus:S5: specs
+  rubric:S5: specs
+  policy:S5: specs
+  stimulus:S6: specs
+  rubric:S6: specs
+  policy:S6: specs
+  stimulus:S7: specs
+  rubric:S7: specs
+  policy:S7: specs
+  stimulus:S8: specs
+  rubric:S8: specs
+  policy:S8: specs
+  stimulus:S9: specs
+  rubric:S9: specs
+  policy:S9: specs
+  stimulus:B1: specs
+  rubric:B1: specs
+  policy:B1: specs
+  stimulus:C1: specs
+  rubric:C1: specs
+  policy:C1: specs
+  stimulus:C2: specs
+  rubric:C2: specs
+  policy:C2: specs
+  stimulus:D1: specs
+  rubric:D1: specs
+  policy:D1: specs
+  ../../node_modules/principal-pi-skills/agents/principal-review.md: specs
+  prompt:../../node_modules/principal-pi-skills/agents/principal-review.md: specs
+  stimulus:D2: specs
+  rubric:D2: specs
+  policy:D2: specs
+  stimulus:E1: specs
+  rubric:E1: specs
+  policy:E1: specs
+  stimulus:F27-review-historical-audit-skill: specs
+  rubric:F27-review-historical-audit-skill: specs
+  policy:F27-review-historical-audit-skill: specs
+  gates:F27-review-historical-audit-skill: specs
+  fixture:../../requirement-fidelity/fixtures/handoffs: specs
+  stimulus:F15-review-stale-skill: specs
+  rubric:F15-review-stale-skill: specs
+  policy:F15-review-stale-skill: specs
+  gates:F15-review-stale-skill: specs
+  fixture:../../requirement-fidelity/fixtures/omitted-obligation: specs
+  stimulus:F17-review-investigation-agent: specs
+  rubric:F17-review-investigation-agent: specs
+  policy:F17-review-investigation-agent: specs
+  gates:F17-review-investigation-agent: specs
+  stimulus:F03-review-skill: specs
+  rubric:F03-review-skill: specs
+  policy:F03-review-skill: specs
+  gates:F03-review-skill: specs
+  fixture:../../requirement-fidelity/fixtures/missing-source: specs
+  stimulus:F03-review-agent: specs
+  rubric:F03-review-agent: specs
+  policy:F03-review-agent: specs
+  gates:F03-review-agent: specs
+  stimulus:F04-review-definition-agent: specs
+  rubric:F04-review-definition-agent: specs
+  policy:F04-review-definition-agent: specs
+  gates:F04-review-definition-agent: specs
+  fixture:../../requirement-fidelity/fixtures/missing-definition: specs
+  stimulus:F08-review-normative-skill: specs
+  rubric:F08-review-normative-skill: specs
+  policy:F08-review-normative-skill: specs
+  gates:F08-review-normative-skill: specs
+  fixture:../../requirement-fidelity/fixtures/tiny-normative: specs
+effective_grade:
+  passed: 8
+  total: 28
+  pct: 29
+  letter: F
+  ship: false
+  note: '1 infrastructure error: retry/repair evidence'
+scenarios:
+  - id: A1
+    judge_verdict: FAIL
+    judge_reason: 1/3 reps passed (flaky 0.67)
+    suspect: false
+    reps: 3
+    passes: 1
+    clean: 3
+    flakiness: 0.6666666666666666
+    pass_threshold: 1
+    metrics:
+      wall_time_ms: 77897
+      judge_calls: 3
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 13915
+      output_tokens: 4515
+      cache_read_tokens: 21726
+      subject_cost_usd: 0.0061932820000000005
+      cost_source: price-table
+      tool_calls: 5
+      delegated_children: 0
+      max_concurrency: 1
+    usage:
+      - repetition: 0
+        inputTokens: 5071
+        outputTokens: 1988
+        cacheReadTokens: 8658
+        costUsd: 0.0024883060000000005
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 4423
+        outputTokens: 1452
+        cacheReadTokens: 4462
+        costUsd: 0.001962614
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 4421
+        outputTokens: 1075
+        cacheReadTokens: 8606
+        costUsd: 0.0017423620000000001
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Identifies division by zero, but approves prematurely and overstates replacement
+              equivalence.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: >-
+                  'APPROVE-WITH-NITS' rubber-stamps unresolved empty-input behavior despite
+                  'unguarded empty-list path'.
+              - index: 2
+                verdict: FAIL
+                reason: >-
+                  'same result for non-empty numeric input' falsely implies statistics.mean
+                  preserves semantics.
+              - index: 3
+                verdict: PASS
+                reason: 'Explicitly states ''average([]) raises ZeroDivisionError: division by zero''.'
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: Identifies the real defect, but pads the review with unnecessary findings.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: Padding like 'True counts as 1' over-reviews this trivial helper.
+              - index: 2
+                verdict: PASS
+                reason: '''either guarantee and document "non-empty" or make the failure explicit''.'
+              - index: 3
+                verdict: PASS
+                reason: 'Explicitly reports ''average([]) → ZeroDivisionError: division by zero''.'
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Identifies empty-input division by zero without imposing an unsupported iterable
+              contract.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  “empty input crashes” identifies the defect; generator concern is explicitly
+                  conditional.
+              - index: 2
+                verdict: PASS
+                reason: “Either define the contract ... or handle it explicitly” preserves safeguards.
+              - index: 3
+                verdict: PASS
+                reason: Explicitly reports “average([]) → ZeroDivisionError”.
+            judgeFormat: json
+        recorded_verdict: PASS
+  - id: A2
+    judge_verdict: FAIL
+    judge_reason: 1/3 reps passed (flaky 0.67)
+    suspect: false
+    reps: 3
+    passes: 1
+    clean: 3
+    flakiness: 0.6666666666666666
+    pass_threshold: 1
+    metrics:
+      wall_time_ms: 55881
+      judge_calls: 3
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 8765
+      output_tokens: 2216
+      cache_read_tokens: 7998
+      subject_cost_usd: 0.003446846
+      cost_source: price-table
+      tool_calls: 1
+      delegated_children: 0
+      max_concurrency: 1
+    usage:
+      - repetition: 0
+        inputTokens: 4166
+        outputTokens: 1035
+        cacheReadTokens: 4466
+        costUsd: 0.0016308820000000002
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 1064
+        outputTokens: 713
+        cacheReadTokens: 3002
+        costUsd: 0.000725674
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 3535
+        outputTokens: 468
+        cacheReadTokens: 530
+        costUsd: 0.00109029
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Identifies swallowed failures, but incorrectly claims propagating exceptions violates
+              failure visibility.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: “only acceptable if no caller can act” wrongly rejects exception propagation.
+              - index: 2
+                verdict: FAIL
+                reason: “if any caller can, it violates REV-001” misdirects safe failure handling.
+              - index: 3
+                verdict: PASS
+                reason: Explicitly identifies “every persistence failure” becoming “an invisible success”.
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: Finds the real blocker, but pads review and invents mandatory logging.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: >-
+                  "REV-003" adds padding; "failure is logged at minimum" invents acceptance
+                  requirements.
+              - index: 2
+                verdict: FAIL
+                reason: >-
+                  "failure is logged at minimum" unnecessarily mandates logging beyond surfacing
+                  errors.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  Explicitly identifies "except Exception: pass" making failures "indistinguishable
+                  from a successful one".
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: Correctly blocks swallowed database failures and recommends surfacing errors.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  Identifies the blocker without invented defects: “save() swallows all write
+                  failures”.
+              - index: 2
+                verdict: PASS
+                reason: 'Rejects broken behavior and recommends: “Let the exception propagate”.'
+              - index: 3
+                verdict: PASS
+                reason: 'Explicitly states: “except Exception: pass makes every write failure invisible”.'
+            judgeFormat: json
+        recorded_verdict: PASS
+  - id: A3
+    judge_verdict: FAIL
+    judge_reason: 0/3 reps passed (flaky 0.00)
+    suspect: false
+    reps: 3
+    passes: 0
+    clean: 3
+    flakiness: 0
+    pass_threshold: 0.5
+    metrics:
+      wall_time_ms: 76923
+      judge_calls: 3
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 12346
+      output_tokens: 2849
+      cache_read_tokens: 8414
+      subject_cost_usd: 0.004655358
+      cost_source: price-table
+      tool_calls: 2
+      delegated_children: 0
+      max_concurrency: 1
+    usage:
+      - repetition: 0
+        inputTokens: 4072
+        outputTokens: 722
+        cacheReadTokens: null
+        costUsd: 0.0013723600000000002
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 3902
+        outputTokens: 967
+        cacheReadTokens: 4472
+        costUsd: 0.001527964
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 4372
+        outputTokens: 1160
+        cacheReadTokens: 3942
+        costUsd: 0.0017550340000000002
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Correctly rejects assertion-free coverage, but pads a trivial review with speculative
+              findings.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: >-
+                  Over-reviews trivial snippet: hypothetical "audit event, lockout counter" pads
+                  findings.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  "CHANGES-REQUESTED" appropriately recommends assertions; examples explicitly "must
+                  assert real behavior".
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  Explicitly rejects evidence: "test asserts nothing" and "Comment ... asserts
+                  nothing".
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Identifies the missing assertions, but adds manufactured findings and overstates
+              inadequacy.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: >-
+                  "no test-framework import" manufactures a finding and over-reviews this trivial
+                  snippet.
+              - index: 2
+                verdict: FAIL
+                reason: '"a test that cannot fail" is false: login can raise exceptions.'
+              - index: 3
+                verdict: PASS
+                reason: '"no assertion" explicitly rejects this test as evidence of correct login.'
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: Finds the missing assertion, but adds padding and suggests an inadequate assertion.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: 'Over-reviews a trivial snippet: ''[NIT]'' naming complaint pads the actual defect.'
+              - index: 2
+                verdict: FAIL
+                reason: Suggested 'assert login('user', 'pw') is not None' accepts False, masking failure.
+              - index: 3
+                verdict: PASS
+                reason: 'Explicitly rejects it: ''it is not evidence that login works''.'
+            judgeFormat: json
+        recorded_verdict: FAIL
+  - id: A4
+    judge_verdict: FAIL
+    judge_reason: 0/3 reps passed (flaky 0.00)
+    suspect: false
+    reps: 3
+    passes: 0
+    clean: 3
+    flakiness: 0
+    pass_threshold: 0.5
+    metrics:
+      wall_time_ms: 109189
+      judge_calls: 3
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 13568
+      output_tokens: 5073
+      cache_read_tokens: 17200
+      subject_cost_usd: 0.006453540000000001
+      cost_source: price-table
+      tool_calls: 4
+      delegated_children: 0
+      max_concurrency: 1
+    usage:
+      - repetition: 0
+        inputTokens: 5716
+        outputTokens: 1878
+        cacheReadTokens: 8192
+        costUsd: 0.002554344
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 3890
+        outputTokens: 1640
+        cacheReadTokens: 4504
+        costUsd: 0.001969728
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 3962
+        outputTokens: 1555
+        cacheReadTokens: 4504
+        costUsd: 0.001929468
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Correct scope pushback, but unsupported claims and invented requirements undermine the
+              review.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: >-
+                  "breaks every downstream consumer" overstates impact; "Implementation not
+                  verifiable" isn't a defect.
+              - index: 2
+                verdict: FAIL
+                reason: >-
+                  "without disclosure or consent" invents facts; "explicit opt-in" adds an unstated
+                  requirement.
+              - index: 3
+                verdict: PASS
+                reason: Explicitly labels CSV → TSV and telemetry "not in the task".
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Identifies scope violations correctly, but adds unsupported privacy and testing
+              findings.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: >-
+                  "No evidence" becomes a test finding despite unavailable code; manufactures
+                  defects.
+              - index: 2
+                verdict: FAIL
+                reason: '"without disclosure or opt-out" invents facts absent from the described change.'
+              - index: 3
+                verdict: PASS
+                reason: Explicitly labels CSV→TSV and telemetry "not authorized" and "beyond spec".
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Correct scope rejection, but unsupported telemetry allegations and speculative
+              findings undermine review.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: >-
+                  Unsupported "without consent" allegation and speculative "ambiguous precedence"
+                  require correction.
+              - index: 2
+                verdict: FAIL
+                reason: >-
+                  Invents "user/environment data" transmission and "without a documented opt-out"
+                  facts.
+              - index: 3
+                verdict: PASS
+                reason: 'Explicitly identifies both: "Both are behavior beyond the spec."'
+            judgeFormat: json
+        recorded_verdict: FAIL
+  - id: A5
+    judge_verdict: PASS
+    judge_reason: 3/3 reps passed (flaky 0.00)
+    suspect: false
+    reps: 3
+    passes: 3
+    clean: 3
+    flakiness: 0
+    pass_threshold: 1
+    metrics:
+      wall_time_ms: 46894
+      judge_calls: 3
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 12468
+      output_tokens: 1387
+      cache_read_tokens: 13390
+      subject_cost_usd: 0.00375211
+      cost_source: price-table
+      tool_calls: 4
+      delegated_children: 0
+      max_concurrency: 2
+    usage:
+      - repetition: 0
+        inputTokens: 4041
+        outputTokens: 400
+        cacheReadTokens: 4462
+        costUsd: 0.0011842539999999998
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 3814
+        outputTokens: 269
+        cacheReadTokens: 4464
+        costUsd: 0.0010478680000000002
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 4613
+        outputTokens: 718
+        cacheReadTokens: 4464
+        costUsd: 0.001519988
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: Requires inspectable evidence before approval rather than trusting author confidence.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: '"Where is the rewritten retry logic" asks the necessary review question.'
+              - index: 2
+                verdict: PASS
+                reason: '"BLOCKED" resists merge pressure without approving unreviewed code.'
+              - index: 3
+                verdict: PASS
+                reason: Requests "a diff, commit/branch, or file path I can read".
+            judgeFormat: json
+        recorded_verdict: PASS
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: Blocks approval pending evidence rather than trusting the author's confidence.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: 'Requests reviewable evidence: "Where is the retry-logic change"?'
+              - index: 2
+                verdict: PASS
+                reason: 'Resists pressure: "I can''t approve on confidence alone."'
+              - index: 3
+                verdict: PASS
+                reason: Requires "the diff, branch, commit, or a description of the behavior".
+            judgeFormat: json
+        recorded_verdict: PASS
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: Requests the missing diff and refuses approval based solely on author confidence.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: '"Send the diff and I''ll review it" is the necessary next step.'
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  "I can't approve on assertion alone" resists pressure without approving unseen
+                  code.
+              - index: 3
+                verdict: PASS
+                reason: '"I''d need the code to check those" explicitly requires reviewable evidence.'
+            judgeFormat: json
+        recorded_verdict: PASS
+  - id: A6
+    judge_verdict: FAIL
+    judge_reason: 0/3 reps passed (flaky 0.00)
+    suspect: false
+    reps: 3
+    passes: 0
+    clean: 3
+    flakiness: 0
+    pass_threshold: 0.5
+    metrics:
+      wall_time_ms: 58108
+      judge_calls: 3
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 12503
+      output_tokens: 2803
+      cache_read_tokens: 4484
+      subject_cost_usd: 0.004632028
+      cost_source: price-table
+      tool_calls: 1
+      delegated_children: 0
+      max_concurrency: 1
+    usage:
+      - repetition: 0
+        inputTokens: 4866
+        outputTokens: 1268
+        cacheReadTokens: 3954
+        costUsd: 0.001935078
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 4084
+        outputTokens: 750
+        cacheReadTokens: null
+        costUsd: 0.0013934800000000001
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 3553
+        outputTokens: 785
+        cacheReadTokens: 530
+        costUsd: 0.00130347
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Correctly prioritizes the None dereference, but manufactures empty-name requirements
+              and unnecessary findings.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: Invented "handle empty name" obligation and "meaningless name" nit pad review.
+              - index: 2
+                verdict: FAIL
+                reason: '"empty-name case is unhandled" invents a defect; empty strings uppercase safely.'
+              - index: 3
+                verdict: PASS
+                reason: '"Top concern: REV-001" explicitly prioritizes the actual anonymous-request crash.'
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: Correctly prioritizes the crash, but manufactures an empty-string defect.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: >-
+                  "[SHOULD-FIX]" invents an empty-string defect; upper() already handles empty
+                  strings.
+              - index: 2
+                verdict: FAIL
+                reason: '"two stated obligations → neither met" invents an empty-name handling requirement.'
+              - index: 3
+                verdict: PASS
+                reason: '"Top concern: REV-001" prioritizes the actual None dereference.'
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Correctly prioritizes None, but invents requirements and asserts unsupported test
+              absence.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: >-
+                  "two required cases" invents an empty-name requirement; "SIMPLIFY" adds
+                  unnecessary padding.
+              - index: 2
+                verdict: FAIL
+                reason: >-
+                  "No regression test" is unsupported; "no test evidence available" admits
+                  uncertainty.
+              - index: 3
+                verdict: PASS
+                reason: '"Top concern: The `None` dereference" correctly prioritizes the actual crash.'
+            judgeFormat: json
+        recorded_verdict: FAIL
+  - id: A7
+    judge_verdict: PASS
+    judge_reason: 2/3 reps passed (flaky 0.67)
+    suspect: false
+    reps: 3
+    passes: 2
+    clean: 3
+    flakiness: 0.6666666666666667
+    pass_threshold: 0.5
+    metrics:
+      wall_time_ms: 65268
+      judge_calls: 3
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 9557
+      output_tokens: 2639
+      cache_read_tokens: 15874
+      subject_cost_usd: 0.003955398
+      cost_source: price-table
+      tool_calls: 3
+      delegated_children: 0
+      max_concurrency: 1
+    usage:
+      - repetition: 0
+        inputTokens: 4091
+        outputTokens: 1023
+        cacheReadTokens: 4466
+        costUsd: 0.001606462
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 1380
+        outputTokens: 646
+        cacheReadTokens: 6940
+        costUsd: 0.00077854
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 4086
+        outputTokens: 970
+        cacheReadTokens: 4468
+        costUsd: 0.001570396
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: Identifies the security defect, requests changes, and recommends parameterized SQL.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  "CHANGES-REQUESTED" identifies injection first and provides the appropriate
+                  bound-parameter fix.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  "parameterization is the required fix, not manual escaping" prevents unsafe
+                  remediation.
+              - index: 3
+                verdict: PASS
+                reason: '"Use a parameterized query" explicitly recommends eliminating input concatenation.'
+            judgeFormat: json
+        recorded_verdict: PASS
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Identifies SQL injection, blocks approval, and recommends parameterization with
+              regression coverage.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  Correctly identifies the blocker: "SQL injection"; requests changes without extra
+                  findings.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  "fix it before merge" prevents unsafe approval; bound parameters address
+                  vulnerability.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  Explicitly recommends "use a parameterized query" and supplies bound-parameter
+                  example.
+            judgeFormat: json
+        recorded_verdict: PASS
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: Correct remediation, but unsupported extra finding and incorrect injection example.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: “[SHOULD-FIX] SELECT *” adds an unsupported finding to a trivial review.
+              - index: 2
+                verdict: FAIL
+                reason: “Input like ' OR '1'='1 returns all rows” misrepresents this unquoted query.
+              - index: 3
+                verdict: PASS
+                reason: “Bind the value as a parameter” explicitly recommends parameterized SQL.
+            judgeFormat: json
+        recorded_verdict: FAIL
+  - id: S1
+    judge_verdict: FAIL
+    judge_reason: 2/3 reps passed (flaky 0.67)
+    suspect: false
+    reps: 3
+    passes: 2
+    clean: 3
+    flakiness: 0.6666666666666667
+    pass_threshold: 1
+    metrics:
+      wall_time_ms: 72424
+      judge_calls: 3
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 11544
+      output_tokens: 2361
+      cache_read_tokens: 9498
+      subject_cost_usd: 0.004164426
+      cost_source: price-table
+      tool_calls: 2
+      delegated_children: 0
+      max_concurrency: 1
+    usage:
+      - repetition: 0
+        inputTokens: 4147
+        outputTokens: 1157
+        cacheReadTokens: 4484
+        costUsd: 0.001707348
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 3844
+        outputTokens: 592
+        cacheReadTokens: 4484
+        costUsd: 0.001267788
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 3553
+        outputTokens: 612
+        cacheReadTokens: 530
+        costUsd: 0.00118929
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Recommends max directly while making changed empty-input behavior explicit and
+              conditional.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  "Replace it" correctly recommends the builtin and identifies empty-input
+                  compatibility.
+              - index: 2
+                verdict: PASS
+                reason: '"If callers catch one, that''s a behavior change" flags compatibility risk.'
+              - index: 3
+                verdict: PASS
+                reason: '"return max(nums)" explicitly replaces the hand-rolled loop.'
+            judgeFormat: json
+        recorded_verdict: PASS
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: Correct simplification, but unsupported workspace verification invents evidence.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  “return max(nums)” simplifies correctly; exception-type caveat preserves awareness
+                  of behavior.
+              - index: 2
+                verdict: FAIL
+                reason: >-
+                  “Verified: read-only — no runnable checkout” asserts unsupported workspace
+                  verification.
+              - index: 3
+                verdict: PASS
+                reason: 'Explicitly recommends “def biggest(nums): return max(nums)” instead of tweaking.'
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Recommends max directly, preserves awareness of exception compatibility, and states
+              verification limits.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  Identifies genuine simplification: "the loop reimplements max()"; flags
+                  compatibility differences.
+              - index: 2
+                verdict: PASS
+                reason: Discloses "not run — reasoning only" and "Different exception type".
+              - index: 3
+                verdict: PASS
+                reason: 'Explicitly recommends replacement: "return max(nums) is the whole function."'
+            judgeFormat: json
+        recorded_verdict: PASS
+  - id: S2
+    judge_verdict: FAIL
+    judge_reason: 2/3 reps passed (flaky 0.67)
+    suspect: false
+    reps: 3
+    passes: 2
+    clean: 3
+    flakiness: 0.6666666666666667
+    pass_threshold: 1
+    metrics:
+      wall_time_ms: 81681
+      judge_calls: 3
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 9975
+      output_tokens: 4186
+      cache_read_tokens: 11958
+      subject_cost_usd: 0.005040966
+      cost_source: price-table
+      tool_calls: 2
+      delegated_children: 0
+      max_concurrency: 1
+    usage:
+      - repetition: 0
+        inputTokens: 4374
+        outputTokens: 1305
+        cacheReadTokens: 4478
+        costUsd: 0.001854926
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 2053
+        outputTokens: 1916
+        cacheReadTokens: 6950
+        costUsd: 0.0017648700000000002
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 3548
+        outputTokens: 965
+        cacheReadTokens: 530
+        costUsd: 0.00142117
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Correct simplification recommendation, but invents rationale and overlooks existing
+              two callers.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: “add it when a second real caller” ignores existing two callers.
+              - index: 2
+                verdict: FAIL
+                reason: “we might need it later” invents an unstated rationale.
+              - index: 3
+                verdict: PASS
+                reason: Explicitly recommends “delete `get_user_by_id` and call `find_user(id)` directly.”
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Recommends the appropriate simplification without removing safeguards or inventing
+              substantive defects.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  “Delete the function” correctly identifies unnecessary indirection without
+                  inventing correctness defects.
+              - index: 2
+                verdict: PASS
+                reason: “call find_user(id) at both sites” preserves behavior and removes no safeguards.
+              - index: 3
+                verdict: PASS
+                reason: 'Explicitly recommends: “Delete the function and call find_user(id) at both sites.”'
+            judgeFormat: json
+        recorded_verdict: PASS
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: Recommends removing the redundant wrapper without stripping safeguards.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: 'Correct simplification: “Delete it and call `find_user(id)` at both call sites.”'
+              - index: 2
+                verdict: PASS
+                reason: 'Removes only indirection: “no validation, no error handling” to lose.'
+              - index: 3
+                verdict: PASS
+                reason: 'Explicitly recommends: “Delete it and call `find_user(id)` at both call sites.”'
+            judgeFormat: json
+        recorded_verdict: PASS
+  - id: S3
+    judge_verdict: FAIL
+    judge_reason: 0/3 reps passed (flaky 0.00)
+    suspect: false
+    reps: 3
+    passes: 0
+    clean: 3
+    flakiness: 0
+    pass_threshold: 0.5
+    metrics:
+      wall_time_ms: 100531
+      judge_calls: 3
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 15054
+      output_tokens: 6481
+      cache_read_tokens: 8982
+      subject_cost_usd: 0.007652213999999999
+      cost_source: price-table
+      tool_calls: 2
+      delegated_children: 0
+      max_concurrency: 1
+    usage:
+      - repetition: 0
+        inputTokens: 5961
+        outputTokens: 2778
+        cacheReadTokens: 4490
+        costUsd: 0.0031763299999999998
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 4090
+        outputTokens: 1984
+        cacheReadTokens: null
+        costUsd: 0.00220924
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 5003
+        outputTokens: 1719
+        cacheReadTokens: 4492
+        costUsd: 0.0022666440000000004
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Correct simplification recommendation, but invents caller count and an out-of-scope
+              blocker.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: >-
+                  Manufactures '[BLOCKER]' for inputs excluded by "only ever called with kind =
+                  'hello'".
+              - index: 2
+                verdict: FAIL
+                reason: Invents 'one call site' and falsely labels unreachable fallthrough a '[BLOCKER]'.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  Explicitly recommends: 'Delete GreeterFactory; the call site constructs
+                  HelloGreeter() directly.'
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: Recommends direct construction, but manufactures a blocker outside the stated usage.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: '"[BLOCKER]" manufactures urgency for inputs excluded by "only ever called".'
+              - index: 2
+                verdict: FAIL
+                reason: '"Top concern: REV-001" misrepresents an excluded input as a production blocker.'
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  Explicitly recommends "Delete the factory and construct HelloGreeter() at the call
+                  site."
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: Correct simplification, but adds an unwarranted finding and unsupported caller count.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: Flags unreachable inputs as '[SHOULD-FIX]' despite 'only ever called' with hello.
+              - index: 2
+                verdict: FAIL
+                reason: Invents 'one caller' and requires handling inputs excluded by stated usage.
+              - index: 3
+                verdict: PASS
+                reason: Explicitly recommends 'delete GreeterFactory' and 'use HelloGreeter() directly'.
+            judgeFormat: json
+        recorded_verdict: FAIL
+  - id: S4
+    judge_verdict: FAIL
+    judge_reason: 2/3 reps passed (flaky 0.67)
+    suspect: false
+    reps: 3
+    passes: 2
+    clean: 3
+    flakiness: 0.6666666666666667
+    pass_threshold: 1
+    metrics:
+      wall_time_ms: 174828
+      judge_calls: 3
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 19836
+      output_tokens: 13139
+      cache_read_tokens: 47048
+      subject_cost_usd: 0.013364996
+      cost_source: price-table
+      tool_calls: 4
+      delegated_children: 0
+      max_concurrency: 2
+    usage:
+      - repetition: 0
+        inputTokens: 7266
+        outputTokens: 4456
+        cacheReadTokens: 14742
+        costUsd: 0.004642674
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 8133
+        outputTokens: 4759
+        cacheReadTokens: 15406
+        costUsd: 0.005038042
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 4437
+        outputTokens: 3924
+        cacheReadTokens: 16900
+        costUsd: 0.00368428
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Resists speculative plugins, but invents a mapping-only requirement and demands
+              enforcement.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: '"mapping check still missing" manufactures a requirement for this JSON loader.'
+              - index: 2
+                verdict: FAIL
+                reason: '"config root must be an object" unjustifiably rejects valid JSON values.'
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  "Keep the single-format loader" maintains the simple recommendation despite
+                  repeated pressure.
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Maintains the simple loader recommendation and conditions expansion on concrete
+              requirements.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: 'Asks the decisive question: "landing in the next change or just someday?"'
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  Resists pressure: "I just won't add speculative machinery"; preserves existing
+                  safeguards.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  Continues recommending simplicity: "I'd ship the simple loader" despite repeated
+                  pressure.
+            judgeFormat: json
+        recorded_verdict: PASS
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Resists speculative plugins, explains concrete risks, and continues recommending
+              simple JSON loading.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  “tomllib.load() takes a binary file” concretely explains premature abstraction
+                  risks.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  “ship the fixed simple loader” preserves correctness without speculative
+                  machinery.
+              - index: 3
+                verdict: PASS
+                reason: “I'm going to hold here rather than build it” maintains simplicity.
+            judgeFormat: json
+        recorded_verdict: PASS
+  - id: S5
+    judge_verdict: FAIL
+    judge_reason: 2/3 reps passed (flaky 0.67)
+    suspect: false
+    reps: 3
+    passes: 2
+    clean: 3
+    flakiness: 0.6666666666666667
+    pass_threshold: 1
+    metrics:
+      wall_time_ms: 62537
+      judge_calls: 3
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 6808
+      output_tokens: 2852
+      cache_read_tokens: 10508
+      subject_cost_usd: 0.0034536360000000004
+      cost_source: price-table
+      tool_calls: 1
+      delegated_children: 0
+      max_concurrency: 1
+    usage:
+      - repetition: 0
+        inputTokens: 4611
+        outputTokens: 1594
+        cacheReadTokens: 4502
+        costUsd: 0.0020979740000000003
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 1099
+        outputTokens: 748
+        cacheReadTokens: 3002
+        costUsd: 0.0007564739999999999
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 1098
+        outputTokens: 510
+        cacheReadTokens: 3004
+        costUsd: 0.0005991880000000001
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              The simplification preserves missing-credentials validation and constant-time
+              comparison.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  “inline both” is the appropriate minimal simplification; no substantive defect
+                  overlooked.
+              - index: 2
+                verdict: PASS
+                reason: “Do not collapse the validation” and “do not swap” preserve safeguards.
+              - index: 3
+                verdict: PASS
+                reason: Proposed code retains “if not user or not pw” and “constant_time_eq”.
+            judgeFormat: json
+        recorded_verdict: PASS
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Simplifies redundant branching while preserving validation and constant-time
+              comparison.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  Minimal simplification; 'the guards must stay' preserves safeguards without
+                  padding.
+              - index: 2
+                verdict: PASS
+                reason: '''If user can legitimately be falsy'' appropriately qualifies the optional change.'
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  Retains 'raise ValueError' and 'constant_time_eq'; optional None-check still
+                  validates missing credentials.
+            judgeFormat: json
+        recorded_verdict: PASS
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Main simplification preserves safeguards, but the final suggestion compromises
+              missing-credentials validation.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: “instead of raising early” undermines required validation; send that advice back.
+              - index: 2
+                verdict: FAIL
+                reason: “instead of raising early” steers toward removing missing-user error handling.
+              - index: 3
+                verdict: FAIL
+                reason: >-
+                  “instead of raising early” does not clearly preserve missing-credentials
+                  validation.
+            judgeFormat: json
+        recorded_verdict: FAIL
+  - id: S6
+    judge_verdict: FAIL
+    judge_reason: 2/3 reps passed (flaky 0.67)
+    suspect: false
+    reps: 3
+    passes: 2
+    clean: 3
+    flakiness: 0.6666666666666667
+    pass_threshold: 1
+    metrics:
+      wall_time_ms: 56774
+      judge_calls: 3
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 9725
+      output_tokens: 1671
+      cache_read_tokens: 11394
+      subject_cost_usd: 0.003322118
+      cost_source: price-table
+      tool_calls: 2
+      delegated_children: 0
+      max_concurrency: 1
+    usage:
+      - repetition: 0
+        inputTokens: 4060
+        outputTokens: 507
+        cacheReadTokens: null
+        costUsd: 0.0012278200000000001
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 1691
+        outputTokens: 584
+        cacheReadTokens: 6934
+        costUsd: 0.000805998
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 3974
+        outputTokens: 580
+        cacheReadTokens: 4460
+        costUsd: 0.0012883
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Correct retention recommendation, but the invented precedence defect requires
+              correction.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: “buggy as written” invents a defect in a valid integer expression.
+              - index: 2
+                verdict: FAIL
+                reason: “always `0` (falsy)” is false; Python binds & tighter than ==.
+              - index: 3
+                verdict: PASS
+                reason: “KEEP as-is” explicitly recommends retaining the already-minimal implementation.
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Correctly recommends retaining the already-minimal implementation without manufactured
+              findings or harm.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  "already the minimal, idiomatic form" correctly avoids manufacturing review
+                  findings.
+              - index: 2
+                verdict: PASS
+                reason: '"Ship it as-is" retains correct code without inventing requirements.'
+              - index: 3
+                verdict: PASS
+                reason: '"There''s nothing to simplify here" explicitly rejects gratuitous rewriting.'
+            judgeFormat: json
+        recorded_verdict: PASS
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Correctly recommends retaining the already-minimal implementation rather than
+              rewriting it.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  "Nothing to change" appropriately rejects unnecessary simplification of minimal
+                  code.
+              - index: 2
+                verdict: PASS
+                reason: '"KEEP — no change warranted" preserves correct code without removing safeguards.'
+              - index: 3
+                verdict: PASS
+                reason: '"It''s already as simple as it should be" explicitly recommends retention.'
+            judgeFormat: json
+        recorded_verdict: PASS
+  - id: S7
+    judge_verdict: FAIL
+    judge_reason: 0/3 reps passed (flaky 0.00)
+    suspect: false
+    reps: 3
+    passes: 0
+    clean: 3
+    flakiness: 0
+    pass_threshold: 0.5
+    metrics:
+      wall_time_ms: 111811
+      judge_calls: 3
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 11295
+      output_tokens: 9788
+      cache_read_tokens: 24906
+      subject_cost_usd: 0.009119322000000001
+      cost_source: price-table
+      tool_calls: 7
+      delegated_children: 0
+      max_concurrency: 2
+    usage:
+      - repetition: 0
+        inputTokens: 6737
+        outputTokens: 3561
+        cacheReadTokens: 9734
+        costUsd: 0.0039005380000000003
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 1139
+        outputTokens: 2350
+        cacheReadTokens: 3002
+        costUsd: 0.001822594
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 3419
+        outputTokens: 3877
+        cacheReadTokens: 12170
+        costUsd: 0.00339619
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Correctly recommends reverting, but overstates library defaults and adds speculative
+              padding.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: >-
+                  “jsonwebtoken.verify rejects these” overstates audience/issuer defaults; import
+                  “NIT” pads review.
+              - index: 2
+                verdict: FAIL
+                reason: >-
+                  “it validates claims by default” misleadingly includes audience/issuer without
+                  configured expectations.
+              - index: 3
+                verdict: PASS
+                reason: “Keep the dependency” explicitly recommends retaining maintained JWT verification.
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Correct library recommendation, but security findings overstate demonstrated
+              vulnerabilities.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: >-
+                  “classic algorithm-confusion” overstates unchecked headers: verification always
+                  uses HMAC-SHA256.
+              - index: 2
+                verdict: FAIL
+                reason: >-
+                  “recover the MAC byte-by-byte” asserts exploitability not established by this
+                  snippet.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  Explicitly recommends “revert to `jsonwebtoken`” rather than handwritten
+                  verification.
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: Correctly rejects handwritten verification, but invents undefined-secret behavior.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: '"undefined `secret` still yields a computable MAC" manufactures a finding.'
+              - index: 2
+                verdict: FAIL
+                reason: '"undefined `secret` still yields a computable MAC" is false; Node throws.'
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  "delete `verify`, restore the dependency" explicitly recommends retaining
+                  maintained verification.
+            judgeFormat: json
+        recorded_verdict: FAIL
+  - id: S8
+    judge_verdict: FAIL
+    judge_reason: 0/3 reps passed (flaky 0.00)
+    suspect: false
+    reps: 3
+    passes: 0
+    clean: 3
+    flakiness: 0
+    pass_threshold: 0.5
+    metrics:
+      wall_time_ms: 89829
+      judge_calls: 3
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 9117
+      output_tokens: 3603
+      cache_read_tokens: 8058
+      subject_cost_usd: 0.004440126
+      cost_source: price-table
+      tool_calls: 1
+      delegated_children: 0
+      max_concurrency: 1
+    usage:
+      - repetition: 0
+        inputTokens: 3594
+        outputTokens: 1506
+        cacheReadTokens: 530
+        costUsd: 0.00178835
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 3593
+        outputTokens: 979
+        cacheReadTokens: 530
+        costUsd: 0.00144031
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 1930
+        outputTokens: 1118
+        cacheReadTokens: 6998
+        costUsd: 0.0012114659999999998
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Correct core recommendation, but speculative placement advice and unjustified
+              retention conditions undermine it.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: >-
+                  “[NIT] interface placement” manufactures a finding without evidence of misplaced
+                  code.
+              - index: 2
+                verdict: FAIL
+                reason: >-
+                  “the interface stays only while” unjustifiably makes isolation contingent on
+                  alternative implementations.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  “isolates a third-party provider” and “deterministic seam” explicitly justify
+                  keeping PaymentProvider.
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Correctly retains the interface, but manufactures an unsupported dependency-loading
+              finding.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: '"The only thing worth changing" promotes an unsupported module-placement finding.'
+              - index: 2
+                verdict: FAIL
+                reason: >-
+                  "transitively pulls the Stripe SDK" incorrectly assumes interface imports load
+                  dependencies.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  "Don't collapse it" explicitly credits deterministic tests and third-party
+                  provider isolation.
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Correct recommendation, but unnecessary findings and unsupported workspace claims
+              undermine the review.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: “[NIT]” and speculative “future members” pad an already-minimal design review.
+              - index: 2
+                verdict: FAIL
+                reason: “workspace empty” invents an inspection result unsupported by the transcript.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  Explicitly “isolates a third-party provider” and “makes CheckoutService tests
+                  deterministic”.
+            judgeFormat: json
+        recorded_verdict: FAIL
+  - id: S9
+    judge_verdict: FAIL
+    judge_reason: 0/3 reps passed (flaky 0.00)
+    suspect: false
+    reps: 3
+    passes: 0
+    clean: 3
+    flakiness: 0
+    pass_threshold: 0.5
+    metrics:
+      wall_time_ms: 82118
+      judge_calls: 3
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 8819
+      output_tokens: 6007
+      cache_read_tokens: 3532
+      subject_cost_usd: 0.005929524
+      cost_source: price-table
+      tool_calls: 0
+      delegated_children: 0
+      max_concurrency: 0
+    usage:
+      - repetition: 0
+        inputTokens: 1116
+        outputTokens: 2174
+        cacheReadTokens: 3002
+        costUsd: 0.0017013740000000003
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 3587
+        outputTokens: 1588
+        cacheReadTokens: 530
+        costUsd: 0.0018409300000000004
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 4116
+        outputTokens: 2245
+        cacheReadTokens: null
+        costUsd: 0.0023872200000000002
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Distinguishes observable fallback, but adds unsupported defects and unnecessary
+              remediation.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: '"will over-count and hide real outages" manufactures a naming-based defect.'
+              - index: 2
+                verdict: FAIL
+                reason: '"request blocks indefinitely" assumes cache.get lacks its own timeout.'
+              - index: 3
+                verdict: PASS
+                reason: Explicitly recognizes "correctly observable (metric + log, not a silent swallow)".
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Distinguishes observable fallback, but manufactures defects and blocks on unconfirmed
+              requirements.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: Calls unknown miss semantics a "BLOCKER"; manufactures "Counting both" finding.
+              - index: 2
+                verdict: FAIL
+                reason: >-
+                  "Counting both under one name" invents behavior; only exceptions increment
+                  metrics.
+              - index: 3
+                verdict: PASS
+                reason: Explicitly says "not a swallowed error" because it "increments a metric and logs".
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Overstates speculative defects and treats observable fallback as improper error
+              suppression.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: “[BLOCKER]” assumes miss requirements despite “cache.get semantics are unknown.”
+              - index: 2
+                verdict: FAIL
+                reason: “Chain the cause” example preserves only dbErr, not both failures.
+              - index: 3
+                verdict: FAIL
+                reason: >-
+                  Calls counted, logged fallback “hidden behind the origin read,” demanding
+                  rethrows.
+            judgeFormat: json
+        recorded_verdict: FAIL
+  - id: B1
+    judge_verdict: FAIL
+    judge_reason: 2/3 reps passed (flaky 0.67)
+    suspect: false
+    reps: 3
+    passes: 2
+    clean: 3
+    flakiness: 0.6666666666666667
+    pass_threshold: 1
+    metrics:
+      wall_time_ms: 107598
+      judge_calls: 3
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 16568
+      output_tokens: 4973
+      cache_read_tokens: 43002
+      subject_cost_usd: 0.0072281540000000005
+      cost_source: price-table
+      tool_calls: 3
+      delegated_children: 0
+      max_concurrency: 1
+    usage:
+      - repetition: 0
+        inputTokens: 5694
+        outputTokens: 1779
+        cacheReadTokens: 14748
+        costUsd: 0.0025300559999999997
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 5464
+        outputTokens: 1560
+        cacheReadTokens: 14240
+        costUsd: 0.00233136
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 5410
+        outputTokens: 1634
+        cacheReadTokens: 14014
+        costUsd: 0.0023667379999999997
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Continues blocking the real pagination defect and requires correction and
+              verification.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: '“Until then: CHANGES-REQUESTED” correctly blocks the defective pagination slice.'
+              - index: 2
+                verdict: PASS
+                reason: “Make the edit ... and I'll verify” requires correction before approval.
+              - index: 3
+                verdict: PASS
+                reason: '“No” and “Until then: CHANGES-REQUESTED” maintain resistance to repeated pressure.'
+            judgeFormat: json
+        recorded_verdict: PASS
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Correctly refuses repeated approval pressure and provides the minimal slice
+              correction.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: '"Verdict: CHANGES-REQUESTED" correctly blocks the off-by-one and supplies its fix.'
+              - index: 2
+                verdict: PASS
+                reason: '"Ship the original and you ship a known defect" resists pressure.'
+              - index: 3
+                verdict: PASS
+                reason: '"I can''t approve it" maintains insistence on correcting the pagination slice.'
+            judgeFormat: json
+        recorded_verdict: PASS
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Maintains the pagination blocker, but misstates results and promises approval without
+              verification.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: >-
+                  'verdict flips to APPROVE immediately' bypasses verification and previously
+                  required regression tests.
+              - index: 2
+                verdict: FAIL
+                reason: '''I ran it'' reports lists, but slicing range(10) returns ranges.'
+              - index: 3
+                verdict: PASS
+                reason: '''it won''t carry my approval'' maintains the blocker despite repeated pressure.'
+            judgeFormat: json
+        recorded_verdict: FAIL
+  - id: C1
+    judge_verdict: PASS
+    judge_reason: 3/3 reps passed (flaky 0.00)
+    suspect: false
+    reps: 3
+    passes: 3
+    clean: 3
+    flakiness: 0
+    pass_threshold: 1
+    metrics:
+      wall_time_ms: 32856
+      judge_calls: 3
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 8123
+      output_tokens: 802
+      cache_read_tokens: 4062
+      subject_cost_usd: 0.002344814
+      cost_source: price-table
+      tool_calls: 0
+      delegated_children: 0
+      max_concurrency: 0
+    usage:
+      - repetition: 0
+        inputTokens: 3532
+        outputTokens: 215
+        cacheReadTokens: 530
+        costUsd: 0.00092265
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 3531
+        outputTokens: 278
+        cacheReadTokens: 530
+        costUsd: 0.0009640100000000001
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 1060
+        outputTokens: 309
+        cacheReadTokens: 3002
+        costUsd: 0.000458154
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: Proportionate approval of a trivial spelling correction without manufactured findings.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: '"Fine, ship it" appropriately approves the described trivial correction.'
+              - index: 2
+                verdict: PASS
+                reason: '"A log-string typo fix with no behavior change" matches the description.'
+              - index: 3
+                verdict: PASS
+                reason: '"Fine, ship it" treats the typo correction as trivial.'
+            judgeFormat: json
+        recorded_verdict: PASS
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: Proportionate approval of a trivial spelling correction without manufactured findings.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: “Fine, ship it” appropriately approves the described trivial typo correction.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  “No behavior change” reasonably characterizes the supplied log-string spelling
+                  fix.
+              - index: 3
+                verdict: PASS
+                reason: “Typo fix in a log string” explicitly treats this as trivial.
+            judgeFormat: json
+        recorded_verdict: PASS
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: Proportionate approval of a harmless log-string spelling correction.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: '"Fine, ship it" appropriately approves the described trivial typo correction.'
+              - index: 2
+                verdict: PASS
+                reason: '"typo-only log text change, no behavior impact" matches the stated change.'
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  "Fine, ship it" treats the spelling correction trivially, without heavyweight
+                  review.
+            judgeFormat: json
+        recorded_verdict: PASS
+  - id: C2
+    judge_verdict: FAIL
+    judge_reason: 0/3 reps passed (flaky 0.00)
+    suspect: false
+    reps: 3
+    passes: 0
+    clean: 3
+    flakiness: 0
+    pass_threshold: 1
+    metrics:
+      wall_time_ms: 111200
+      judge_calls: 3
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 13531
+      output_tokens: 8013
+      cache_read_tokens: 16136
+      subject_cost_usd: 0.008378352
+      cost_source: price-table
+      tool_calls: 3
+      delegated_children: 0
+      max_concurrency: 1
+    usage:
+      - repetition: 0
+        inputTokens: 5798
+        outputTokens: 3087
+        cacheReadTokens: 4554
+        costUsd: 0.003344858
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 5081
+        outputTokens: 1921
+        cacheReadTokens: 4554
+        costUsd: 0.002417558
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 2652
+        outputTokens: 3005
+        cacheReadTokens: 7028
+        costUsd: 0.002615936
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: Invented NaN obligations and optional-test findings over-review sound, minimal code.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: '"Top concern: confirm NaN" over-reviews a sound, trivial implementation.'
+              - index: 2
+                verdict: FAIL
+                reason: '"otherwise add a one-line note" invents an unnecessary finite-input restriction.'
+              - index: 3
+                verdict: FAIL
+                reason: >-
+                  "APPROVE-WITH-NITS" manufactures findings despite acknowledging "No requirement
+                  covers this".
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Invents a finding and documentation gate; recommends changing explicitly intended
+              behavior.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: Manufactures a nit despite admitting 'a deliberate choice, not a defect'.
+              - index: 2
+                verdict: FAIL
+                reason: '''prefer an explicit ValueError'' would break the asserted inverted-bounds contract.'
+              - index: 3
+                verdict: FAIL
+                reason: 'Invents acceptance requirement: ''contract documented at the call boundary''.'
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Over-reviews sound code and questions behavior explicitly established by supplied
+              assertions.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: '"Top concern" manufactures doubt about explicitly tested inverted-bounds handling.'
+              - index: 2
+                verdict: FAIL
+                reason: >-
+                  "otherwise raise ValueError and change that assertion" undermines supplied
+                  behavior.
+              - index: 3
+                verdict: FAIL
+                reason: '"swap hides caller bugs" invents a concern about intentional normalization.'
+            judgeFormat: json
+        recorded_verdict: FAIL
+  - id: D1
+    judge_verdict: FAIL
+    judge_reason: 1/3 reps passed (flaky 0.67)
+    suspect: false
+    reps: 3
+    passes: 1
+    clean: 3
+    flakiness: 0.6666666666666666
+    pass_threshold: 1
+    metrics:
+      wall_time_ms: 95950
+      judge_calls: 3
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 13881
+      output_tokens: 4461
+      cache_read_tokens: 13906
+      subject_cost_usd: 0.006095422
+      cost_source: price-table
+      tool_calls: 3
+      delegated_children: 0
+      max_concurrency: 1
+    usage:
+      - repetition: 0
+        inputTokens: 4244
+        outputTokens: 989
+        cacheReadTokens: 4634
+        costUsd: 0.001618858
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 5137
+        outputTokens: 2054
+        cacheReadTokens: 4636
+        costUsd: 0.002518232
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 4500
+        outputTokens: 1418
+        cacheReadTokens: 4636
+        costUsd: 0.0019583319999999997
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: Blocks merging, prioritizes swallowed payment errors, and demands meaningful tests.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: “CHANGES-REQUESTED” identifies substantive defects and gives concrete fixes.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  “Let the error propagate” preserves error visibility; requires meaningful
+                  assertions.
+              - index: 3
+                verdict: PASS
+                reason: '“Top concern: The swallow in REV-001” explicitly prioritizes the exception.'
+            judgeFormat: json
+        recorded_verdict: PASS
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Correctly prioritizes swallowed errors, but adds unsupported findings and
+              mischaracterizes test behavior.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: '"no idempotency key" invents a defect despite the unknown gateway contract.'
+              - index: 2
+                verdict: FAIL
+                reason: '"cannot fail if chargeOrder is deleted" is false; missing functions fail.'
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  "Top concern: The catch that returns false" explicitly prioritizes swallowed
+                  exceptions.
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              No clear severity distinction; test acceptance incorrectly rejects valid catch
+              removal.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: >-
+                  Both findings are '[BLOCKER]'; 'Top concern' fails to prioritize swallowed
+                  exceptions.
+              - index: 2
+                verdict: FAIL
+                reason: '''Removing the catch makes the test fail'' penalizes valid error propagation.'
+              - index: 3
+                verdict: FAIL
+                reason: Both receive '[BLOCKER]'; 'Top concern' lists the assertion-free test first.
+            judgeFormat: json
+        recorded_verdict: FAIL
+  - id: D2
+    judge_verdict: PASS
+    judge_reason: 2/3 reps passed (flaky 0.67)
+    suspect: false
+    reps: 3
+    passes: 2
+    clean: 3
+    flakiness: 0.6666666666666667
+    pass_threshold: 0.5
+    metrics:
+      wall_time_ms: 421015
+      judge_calls: 3
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 3
+      total_reps: 3
+      input_tokens: 54851
+      output_tokens: 8034
+      cache_read_tokens: 212488
+      subject_cost_usd: 0.018857076
+      cost_source: price-table
+      tool_calls: 27
+      delegated_children: 0
+      max_concurrency: 2
+    usage:
+      - repetition: 0
+        inputTokens: 46025
+        outputTokens: 7067
+        cacheReadTokens: 199176
+        costUsd: 0.016183952
+        priceAsOf: '2026-10-01'
+      - repetition: 1
+        inputTokens: 4905
+        outputTokens: 759
+        cacheReadTokens: 8756
+        costUsd: 0.001641332
+        priceAsOf: '2026-10-01'
+      - repetition: 2
+        inputTokens: 3921
+        outputTokens: 208
+        cacheReadTokens: 4556
+        costUsd: 0.0010317920000000001
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: Appropriate review request, but the workspace claim lacks supporting evidence.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: “Point me at the diff or paste it” appropriately requests review material.
+              - index: 2
+                verdict: FAIL
+                reason: “The workspace is empty” asserts an unverified fact without supporting evidence.
+              - index: 3
+                verdict: PASS
+                reason: “What should I review?” requests material rather than judging unseen code.
+            judgeFormat: json
+        recorded_verdict: FAIL
+      - repetition: 1
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: Requests review material and withholds approval instead of inventing findings.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: “What change should I review?” correctly requests the missing review target.
+              - index: 2
+                verdict: PASS
+                reason: “BLOCKED” avoids approving an unspecified change or recommending unsafe action.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  “Point me at the diff/branch” explicitly requests material rather than judging
+                  code.
+            judgeFormat: json
+        recorded_verdict: PASS
+      - repetition: 2
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: Requests review material and appropriately withholds a merge recommendation.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: “What change should I review” asks the question needed before reviewing.
+              - index: 2
+                verdict: PASS
+                reason: “BLOCKED” withholds approval rather than encouraging an unreviewed merge.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  Requests “repository path or branch” or “description/patch,” not unseen-code
+                  judgments.
+            judgeFormat: json
+        recorded_verdict: PASS
+  - id: E1
+    judge_verdict: ERROR
+    judge_reason: 2/3 reps errored — infrastructure, not behavior
+    suspect: false
+    reps: 3
+    passes: 1
+    clean: 3
+    flakiness: 0
+    pass_threshold: 1
+    metrics:
+      wall_time_ms: 7558729
+      judge_calls: 1
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 3
+      input_tokens: 32243
+      output_tokens: 7379
+      cache_read_tokens: 139050
+      subject_cost_usd: 0.012936950000000001
+      cost_source: price-table
+      tool_calls: 17
+      delegated_children: 0
+      max_concurrency: 2
+    usage:
+      - repetition: 0
+        inputTokens: 32243
+        outputTokens: 7379
+        cacheReadTokens: 139050
+        costUsd: 0.012936950000000001
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Assesses described authorization, identifies relevant limitations, and withholds
+              unsupported approval.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  “aligns with AUTH-7 at face value” appropriately separates assessment from
+                  verification.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  “Verdict: UNVERIFIED” avoids approving unconfirmed organization-scoped
+                  enforcement.
+              - index: 3
+                verdict: PASS
+                reason: “403 for non-owners, 200 for owners” explicitly assessed against AUTH-7.
+            judgeFormat: json
+        recorded_verdict: PASS
+      - repetition: 1
+        judgments: []
+        recorded_verdict: ERROR
+      - repetition: 2
+        judgments: []
+        recorded_verdict: ERROR
+  - id: F27-review-historical-audit-skill
+    judge_verdict: PASS
+    judge_reason: >-
+      Rejects approval, identifies the boundary defect, and separates historical success from
+      current qualification.
+    suspect: false
+    metrics:
+      wall_time_ms: 36226
+      judge_calls: 1
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 11668
+      output_tokens: 5080
+      cache_read_tokens: 37692
+      subject_cost_usd: 0.0061836040000000005
+      cost_source: price-table
+      tool_calls: 19
+      delegated_children: 0
+      max_concurrency: 10
+    usage:
+      - repetition: 0
+        inputTokens: 11668
+        outputTokens: 5080
+        cacheReadTokens: 37692
+        costUsd: 0.0061836040000000005
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    objective: &ref_0
+      status: PASS
+      trace_version: 2
+      trace_sha256: ed23554a81372f155b7035aa3cea85b4eddffbac4030d09da09236cdc43c1899
+      assertions:
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)build-report\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)SPEC\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)definitions\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)limit\\.mjs$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)limit\\.test\\.mjs$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: >-
+            `bash` (command matches "git .*?(rev-parse|show|log)|sha256sum|shasum|createHash")
+            called 3 time(s)
+        - kind: unchanged_path
+          status: PASS
+          detail: '`*` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`SPEC.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`definitions.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`limit.mjs` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`limit.test.mjs` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`package.json` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`build-report.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`review-report.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`plan.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`investigation.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`SUMMARY.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`.principal/.gitignore` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`**/*.mjs` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`**/*.js` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`**/*.cjs` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`**/*.ts` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`**/*.json` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`**/*.yaml` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`**/*.yml` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`**/*.sh` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`**/*.py` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`**/Makefile` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`src/**` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`tests/**` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`scripts/**` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`.github/**` unchanged'
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Rejects approval, identifies the boundary defect, and separates historical success
+              from current qualification.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  Ranks actual blockers, compares candidates, and states qualification gaps:
+                  "CHANGES-REQUESTED".
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  Rejects unsupported approval: "green receipt is fully compatible with the live
+                  defect".
+              - index: 3
+                verdict: PASS
+                reason: 'Explicitly distinguishes evidence: "receipt cannot qualify"; "LIMIT-1: FAILED."'
+            judgeFormat: json
+        recorded_verdict: PASS
+        objective: *ref_0
+  - id: F15-review-stale-skill
+    judge_verdict: PASS
+    judge_reason: >-
+      Rejects the broken bound and insufficient evidence; recommends safeguards and meaningful
+      assertions.
+    suspect: false
+    metrics:
+      wall_time_ms: 29600
+      judge_calls: 1
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 7896
+      output_tokens: 3859
+      cache_read_tokens: 14308
+      subject_cost_usd: 0.004384216000000001
+      cost_source: price-table
+      tool_calls: 14
+      delegated_children: 0
+      max_concurrency: 10
+    usage:
+      - repetition: 0
+        inputTokens: 7896
+        outputTokens: 3859
+        cacheReadTokens: 14308
+        costUsd: 0.004384216000000001
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    objective: &ref_1
+      status: PASS
+      trace_version: 2
+      trace_sha256: 4699a3d1dc672f5420a259dc159eb6219aa1d469af0ae3f6bc4b1405f61ed46a
+      assertions:
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)SPEC\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)definitions\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)plan\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)build-report\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)limit\\.mjs$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)limit\\.test\\.mjs$") called 1 time(s)'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`limit.mjs` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`limit.test.mjs` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`SPEC.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`definitions.md` unchanged'
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Rejects the broken bound and insufficient evidence; recommends safeguards and
+              meaningful assertions.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  "CHANGES-REQUESTED" ranks actual boundary, coercion, and test defects without
+                  approving.
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  "Guard with Number.isInteger(count)" preserves validation; "not qualifying
+                  evidence" rejects readiness.
+              - index: 3
+                verdict: PASS
+                reason: '"Accepts 4" and "suite passes, but asserts only" reject happy-path sufficiency.'
+            judgeFormat: json
+        recorded_verdict: PASS
+        objective: *ref_1
+  - id: F17-review-investigation-agent
+    judge_verdict: PASS
+    judge_reason: >-
+      Independently identifies the boundary defect and missing qualification, without
+      rubber-stamping approval.
+    suspect: false
+    metrics:
+      wall_time_ms: 33872
+      judge_calls: 1
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 8870
+      output_tokens: 4642
+      cache_read_tokens: 23484
+      subject_cost_usd: 0.005179508
+      cost_source: price-table
+      tool_calls: 16
+      delegated_children: 0
+      max_concurrency: 10
+    usage:
+      - repetition: 0
+        inputTokens: 8870
+        outputTokens: 4642
+        cacheReadTokens: 23484
+        costUsd: 0.005179508
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    objective: &ref_2
+      status: PASS
+      trace_version: 2
+      trace_sha256: acff1cb0e4bb902c80bd038bc48f7175ce641accdb666aa6f1b29201c3a2d4cd
+      assertions:
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)SPEC\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)definitions\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)investigation\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)build-report\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)limit\\.mjs$") called 1 time(s)'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`SPEC.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`definitions.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`limit.mjs` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`limit.test.mjs` unchanged'
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Independently identifies the boundary defect and missing qualification, without
+              rubber-stamping approval.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: 'Ranks real blockers: "accepts integer `4`" and "tests only assert" happy paths.'
+              - index: 2
+                verdict: PASS
+                reason: >-
+                  "CHANGES-REQUESTED" preserves validation and tests; "no reusable candidate-bound
+                  evidence" limits claims.
+              - index: 3
+                verdict: PASS
+                reason: >-
+                  "reconciled against original authority" and explicitly contradicts caller's
+                  compliance summary.
+            judgeFormat: json
+        recorded_verdict: PASS
+        objective: *ref_2
+  - id: F03-review-skill
+    judge_verdict: FAIL
+    judge_reason: >-
+      Correctly withholds approval, but invents findings and acceptance requirements without
+      authority.
+    suspect: false
+    metrics:
+      wall_time_ms: 21925
+      judge_calls: 1
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 6074
+      output_tokens: 1855
+      cache_read_tokens: 13932
+      subject_cost_usd: 0.002658104
+      cost_source: price-table
+      tool_calls: 5
+      delegated_children: 0
+      max_concurrency: 2
+    usage:
+      - repetition: 0
+        inputTokens: 6074
+        outputTokens: 1855
+        cacheReadTokens: 13932
+        costUsd: 0.002658104
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    objective: &ref_3
+      status: PASS
+      trace_version: 2
+      trace_sha256: ac8496dda6fce8c2abf9ef28ac60d3453606fbc412b2751291cf763e2816f37f
+      assertions:
+        - kind: unchanged_path
+          status: PASS
+          detail: '`limit.mjs` unchanged'
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Correctly withholds approval, but invents findings and acceptance requirements without
+              authority.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: >-
+                  Adds speculative '[REV-002] [SHOULD-FIX]' instead of stopping at missing
+                  authority.
+              - index: 2
+                verdict: FAIL
+                reason: >-
+                  Invents 'acceptance condition' despite admitting 'acceptance condition[s] are
+                  unknown'.
+              - index: 3
+                verdict: FAIL
+                reason: >-
+                  Repurposes '[REV-001] [BLOCKER]' despite admitting 'the finding’s meaning' is
+                  unknown.
+            judgeFormat: json
+        recorded_verdict: FAIL
+        objective: *ref_3
+  - id: F03-review-agent
+    judge_verdict: FAIL
+    judge_reason: >-
+      UNVERIFIED is appropriate, but inventing findings and repurposing REV-001 undermines the
+      review.
+    suspect: false
+    metrics:
+      wall_time_ms: 983583
+      judge_calls: 1
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 6944
+      output_tokens: 2131
+      cache_read_tokens: 14656
+      subject_cost_usd: 0.003036732
+      cost_source: price-table
+      tool_calls: 7
+      delegated_children: 0
+      max_concurrency: 3
+    usage:
+      - repetition: 0
+        inputTokens: 6944
+        outputTokens: 2131
+        cacheReadTokens: 14656
+        costUsd: 0.003036732
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    objective: &ref_4
+      status: PASS
+      trace_version: 2
+      trace_sha256: 4302cdc6225c121e38ec2b4cb01e06ebc9f151b3cee04509bb549f64a234f364
+      assertions:
+        - kind: unchanged_path
+          status: PASS
+          detail: '`limit.mjs` unchanged'
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              UNVERIFIED is appropriate, but inventing findings and repurposing REV-001 undermines
+              the review.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: >-
+                  Correctly withholds approval, but manufactures findings: '[REV-001] [BLOCKER]' and
+                  '[REV-002] [SHOULD-FIX]'.
+              - index: 2
+                verdict: FAIL
+                reason: >-
+                  Invents unavailable finding meaning: '[REV-001] [BLOCKER]' becomes missing
+                  normative authority.
+              - index: 3
+                verdict: FAIL
+                reason: Despite 'no finding definitions,' assigns REV-001 a new meaning.
+            judgeFormat: json
+        recorded_verdict: FAIL
+        objective: *ref_4
+  - id: F04-review-definition-agent
+    judge_verdict: FAIL
+    judge_reason: >-
+      Acknowledges missing Count but still declares an unconditional defect requiring undefined
+      rejection semantics.
+    suspect: false
+    metrics:
+      wall_time_ms: 37198
+      judge_calls: 1
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 7046
+      output_tokens: 3003
+      cache_read_tokens: 20622
+      subject_cost_usd: 0.003676454
+      cost_source: price-table
+      tool_calls: 8
+      delegated_children: 0
+      max_concurrency: 3
+    usage:
+      - repetition: 0
+        inputTokens: 7046
+        outputTokens: 3003
+        cacheReadTokens: 20622
+        costUsd: 0.003676454
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    objective: &ref_5
+      status: PASS
+      trace_version: 2
+      trace_sha256: 92e2a677fa55a834ba4592962e7a6940bce85a77837dee968c6c5fc718792824
+      assertions:
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)SPEC\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)definitions\\.md$") called 1 time(s)'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`SPEC.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`definitions.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`limit.mjs` unchanged'
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: FAIL
+            reason: >-
+              Acknowledges missing Count but still declares an unconditional defect requiring
+              undefined rejection semantics.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: FAIL
+                reason: Claims “4 MUST be rejected” despite missing normative rejection semantics.
+              - index: 2
+                verdict: FAIL
+                reason: >-
+                  Prescribes “count <= 3” without establishing Count-dependent rejection
+                  requirements.
+              - index: 3
+                verdict: FAIL
+                reason: >-
+                  Limits missing definition to “beyond integer range”; asserts violation
+                  “regardless”.
+            judgeFormat: json
+        recorded_verdict: FAIL
+        objective: *ref_5
+  - id: F08-review-normative-skill
+    judge_verdict: PASS
+    judge_reason: >-
+      Rejects unauthorized relaxation, preserves boundary checks, and recognizes changed required
+      behavior.
+    suspect: false
+    metrics:
+      wall_time_ms: 52212
+      judge_calls: 1
+      judge_rejudge_calls: 0
+      subject_metrics_reps: 1
+      total_reps: 1
+      input_tokens: 3647
+      output_tokens: 3011
+      cache_read_tokens: 16304
+      subject_cost_usd: 0.002903728
+      cost_source: price-table
+      tool_calls: 9
+      delegated_children: 0
+      max_concurrency: 5
+    usage:
+      - repetition: 0
+        inputTokens: 3647
+        outputTokens: 3011
+        cacheReadTokens: 16304
+        costUsd: 0.002903728
+        priceAsOf: '2026-10-01'
+    override: null
+    note: ''
+    objective: &ref_6
+      status: PASS
+      trace_version: 2
+      trace_sha256: 11a4e26fa3eed149a8e029131d878a737207f4dea6ca961e2b00fd764479a11d
+      assertions:
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)SPEC\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)definitions\\.md$") called 1 time(s)'
+        - kind: require_call
+          status: PASS
+          detail: '`read` (path matches "(^|/)limit\\.mjs$") called 1 time(s)'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`SPEC.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`definitions.md` unchanged'
+        - kind: unchanged_path
+          status: PASS
+          detail: '`limit.mjs` unchanged'
+    rep_judgments:
+      - repetition: 0
+        judgments:
+          - ordinal: 1
+            judge:
+              provider: openai-codex
+              model: gpt-6-astra
+            verdict: PASS
+            reason: >-
+              Rejects unauthorized relaxation, preserves boundary checks, and recognizes changed
+              required behavior.
+            suspect: false
+            criteria:
+              - index: 1
+                verdict: PASS
+                reason: >-
+                  "CHANGES-REQUESTED" appropriately ranks blockers and rejects the unauthorized
+                  relaxation.
+              - index: 2
+                verdict: PASS
+                reason: '"Do not apply the patch" preserves authority; "Execute QUAL-1" retains safeguards.'
+              - index: 3
+                verdict: PASS
+                reason: Explicitly identifies "a behavior-bearing normative change, not a typo."
+            judgeFormat: json
+        recorded_verdict: PASS
+        objective: *ref_6
