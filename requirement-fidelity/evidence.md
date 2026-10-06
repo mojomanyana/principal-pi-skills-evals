@@ -1,6 +1,12 @@
 # Requirement-fidelity evidence index
 
-## Build handoff repair — latest bounded observations
+## Current broad observations
+
+The [frozen-rubric baseline](../BASELINE.md) now includes full DeepSeek V4.1 Flash and
+Nemotron Lightning waves across all eight skills. Both subjects remain NOT READY. These
+broad observations complement, rather than replace, the bounded repair evidence below.
+
+## Build handoff repair — latest bounded repair observations
 
 [Complete validation disposition and portable evidence](evidence/build-handoff/README.md)
 record the instruction repair on top of `78ca09d`. Exact source-body and dirty-candidate hashes
