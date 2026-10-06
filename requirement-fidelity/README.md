@@ -41,7 +41,9 @@ initialization and approval-gated inline Build/Review, not delegated transport o
 Separate ordinary Pi sessions retained a complete long plan, a manually orchestrated chain,
 and two normal-loading observations. Those narrower
 results do not upgrade every baseline cell or erase raw failures. Spark attempts returned
-provider errors, so lower-cost robustness remains unverified. No full SHIP claim is made.
+provider errors. Later frozen-rubric waves measured DeepSeek V4.1 Flash and Nemotron Lightning;
+both remain NOT READY across all eight skills. See the [current baseline](../BASELINE.md) for
+those observations. No full SHIP claim is made.
 
 ## Installed runner compatibility
 

@@ -1,10 +1,12 @@
 # Frozen-rubric baseline
 
-Date: **2026-10-04**
+Wave 1 structured regrade: **2026-10-04**
 
-This is the baseline for subsequent evaluation waves. All 765 retained repetitions were regraded from unchanged transcripts with the frozen human-judgment rubric, the explicit judge `openai-codex:gpt-6-astra`, and skill-harness 0.23.0's structured JSON judge contract. Subject transcripts were not rerun or changed.
+Waves 2 and 3 fresh runs: **2026-10-05–06**
 
-## Final results
+This is the frozen-rubric baseline. For Wave 1, all 765 retained repetitions were regraded from unchanged transcripts with the frozen human-judgment rubric, the explicit judge `openai-codex:gpt-6-astra`, and skill-harness 0.23.0's structured JSON judge contract. Subject transcripts were not rerun or changed.
+
+## Wave 1 final structured regrade
 
 `UNGRADED` counts are retained repetitions whose structured judge reply remained invalid after the one allowed retry. They count as non-passes. Objective-gate failures are failed retained objective gates in the complete run for each model.
 
@@ -62,7 +64,7 @@ The noise floor remains ±2 scenarios. Positive gaps mean SOL passed more scenar
 
 Costs are subject-only usage-derived values from the skill-harness result metrics and exclude judge cost.
 
-## Regrade accounting
+## Wave 1 regrade accounting
 
 - Retained runs: **37**.
 - Retained repetitions regraded: **765**.
@@ -71,7 +73,7 @@ Costs are subject-only usage-derived values from the skill-harness result metric
 - Retained repetitions with `judgeFormat: json`: **765/765**.
 - Changed subject transcripts: **0/765**.
 
-## Model gaps
+## Wave 1 GLM/SOL gaps
 
 The noise floor is ±2 scenarios.
 
