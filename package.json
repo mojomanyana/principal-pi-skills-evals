@@ -5,14 +5,15 @@
   "scripts": {
     "preflight": "skill-harness preflight all --skills node_modules/principal-pi-skills --specs .",
     "lint": "skill-harness lint all --skills node_modules/principal-pi-skills --specs .",
+    "lint:ci": "node scripts/lint-ci.mjs",
     "list": "skill-harness list --skills node_modules/principal-pi-skills --specs .",
     "run": "skill-harness run --skills node_modules/principal-pi-skills --specs .",
     "test": "node --test tests/unit/*.test.mjs tests/evidence/*.test.mjs"
   },
   "devDependencies": {
-    "@skill-harness/core": "0.32.0",
+    "@skill-harness/core": "0.32.1",
     "js-yaml": "^4.3.2",
     "principal-pi-skills": "4.7.2",
-    "skill-harness": "0.32.0"
+    "skill-harness": "0.32.1"
   }
 }

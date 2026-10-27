@@ -12,7 +12,7 @@ Behavioral tests and source/write boundaries remain required. Assertion spelling
 and a brief honest test-status note on a comment-only change are not failures.
 
 Install with `npm ci`, then run `npm test` and `npm run preflight`. The preflight
-uses the shared skill-harness 0.32.0 implementation; there is no separate local
+uses the shared skill-harness 0.32.1 implementation; there is no separate local
 authoring checker. `npm run lint` also checks preserved result consistency.
 Both commands are offline and make no provider calls. Their authoring advice is
 not proof of semantic validity, and historical staleness findings remain errors.
@@ -23,6 +23,37 @@ fixtures and observations. It does not evaluate or qualify the current Principal
 release. The changed evaluators need a new explicitly requested comparison before
 their scores can support an updated readiness claim. Trace invocation checks
 alone do not prove file contents, full source coverage, or successful execution.
+
+## CI and preserved historical evidence
+
+CI runs `npm test` and `npm run lint:ci`. The latter runs the same shared Harness
+lint, then reports a narrow historical exception separately. The exact run paths
+and SHA-256 hashes in [audit/historical-results.json](audit/historical-results.json)
+come from immutable base commit `3e40cdd5350efd866f8de2b046433393daca6a53`.
+Every file in each archived run must still match that inventory. Added, edited,
+deleted or symlinked evidence fails CI. The manifest itself is hash-pinned in
+`scripts/historical-evidence.mjs`; enrolling evidence requires explicit review of
+both the inventory and that policy pin, never automatic enrollment during CI.
+
+Only known gate/rubric source-staleness messages for verified, unchanged archived
+runs become **HISTORICAL ONLY** notices. Full messages, skill, scenario and run
+path must match; unknown messages fail closed. Skill, stimulus, fixture, scoring
+policy, unreadable-source, coverage and consistency failures remain errors.
+New runs receive the ordinary strict Harness checks with no archive exception.
+The full findings, including historical notices, are printed and retained in the
+CI `lint-report` artifact. `npm run lint` and `npm run preflight` remain strict and
+still fail on historical staleness. No old files, timestamps, hashes or scores are
+rewritten by any of these commands.
+
+A passing CI gate means the evaluator definitions validate and frozen evidence
+remains intact. It does **not** establish that old scores apply to the corrected
+evaluators or qualify the current Principal release. Principal remains pinned to
+4.7.2; fresh qualification requires separately authorized evaluation.
+
+To reproduce the inventory for review, run
+`node scripts/generate-historical-manifest.mjs > /tmp/historical-results.json`
+and compare its SHA-256 with the committed manifest. The generator reads Git
+blobs from the fixed baseline commit, not the working tree.
 
 ## Historical frozen-rubric results
 
