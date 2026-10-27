@@ -1,0 +1,740 @@
+{
+  "schema": 1,
+  "baseline_commit": "3e40cdd5350efd866f8de2b046433393daca6a53",
+  "qualification": "Historical frozen-rubric evidence only; not current evaluator or Principal qualification.",
+  "runs": [
+    {
+      "path": "architect/tests/results/pi-fireworks-accounts-fireworks-models-deepseek-v4p1-flash/2026-10-05T08-57-24-313Z",
+      "files": [
+        {
+          "path": "architect/tests/results/pi-fireworks-accounts-fireworks-models-deepseek-v4p1-flash/2026-10-05T08-57-24-313Z/results.yaml",
+          "sha256": "97b7fb27da71d3da055f9eee55a81ad228e1c766bc32ae672ff001c2aba54d8a"
+        }
+      ]
+    },
+    {
+      "path": "architect/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-09-29T23-58-54-401Z",
+      "files": [
+        {
+          "path": "architect/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-09-29T23-58-54-401Z/results.yaml",
+          "sha256": "97a009c36aee3ad4853b38b2078844874c8f4ff473eaba794693f1bad99690bb"
+        }
+      ]
+    },
+    {
+      "path": "architect/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-08-35-084Z",
+      "files": [
+        {
+          "path": "architect/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-08-35-084Z/D2.green.judge.txt",
+          "sha256": "497d53dc20bb7b9d86b29c4a488504084865767cb671e0e57caf1871622f66ad"
+        },
+        {
+          "path": "architect/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-08-35-084Z/D2.green.txt",
+          "sha256": "24f14511ad709e5648534a1b24cd7c6fe8e737d27fc4454a4dc82a5df386b3bd"
+        },
+        {
+          "path": "architect/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-08-35-084Z/journal.jsonl",
+          "sha256": "e74d301371bb1827a6cb03f289ff614911b52466829ccfd9660fd839849dd060"
+        },
+        {
+          "path": "architect/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-08-35-084Z/results.yaml",
+          "sha256": "92489cdd0523e1c52a2e4a5fb305e6ece9c094afc764fa2212ada5fd5b9bb8f7"
+        }
+      ]
+    },
+    {
+      "path": "architect/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-29-41-559Z",
+      "files": [
+        {
+          "path": "architect/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-29-41-559Z/D2.force.judge.txt",
+          "sha256": "efe79f603b30aa37af79056b0a923f3de05ba429118ee5f95d0f85bb66a9bab7"
+        },
+        {
+          "path": "architect/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-29-41-559Z/D2.force.txt",
+          "sha256": "adf08e60ff2455126f201ead1997d0e29212b31616b2c6d54e9b029db6e95d51"
+        },
+        {
+          "path": "architect/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-29-41-559Z/journal.jsonl",
+          "sha256": "9f557c3454322b929f3c1a31ccac2cca6df8e5230f3cb4047286e9609eeedf69"
+        },
+        {
+          "path": "architect/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-29-41-559Z/results.yaml",
+          "sha256": "6c41f50c4a12aba069ca428e63a50f37b40bb54610496b036eacb2db0b515a24"
+        }
+      ]
+    },
+    {
+      "path": "architect/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T14-34-58-995Z",
+      "files": [
+        {
+          "path": "architect/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T14-34-58-995Z/results.yaml",
+          "sha256": "c2b9e45453750045943db3b9631eafaf99dfc174cf37a8314ac56a81ad8f7046"
+        }
+      ]
+    },
+    {
+      "path": "architect/tests/results/pi-fireworks-accounts-fireworks-models-nemotron-lightning-3p5-30b-a3b/2026-10-06T12-43-56-826Z",
+      "files": [
+        {
+          "path": "architect/tests/results/pi-fireworks-accounts-fireworks-models-nemotron-lightning-3p5-30b-a3b/2026-10-06T12-43-56-826Z/results.yaml",
+          "sha256": "9577f05d48b4494141bfdd06ebd10f24b5c1d064234033a009b0c448e6724c62"
+        }
+      ]
+    },
+    {
+      "path": "architect/tests/results/pi-openai-codex-gpt-6.1-sol/2026-10-01T20-38-36-297Z",
+      "files": [
+        {
+          "path": "architect/tests/results/pi-openai-codex-gpt-6.1-sol/2026-10-01T20-38-36-297Z/results.yaml",
+          "sha256": "a7604f31ec848a5b1f5148b15dad3ca208f940c44b70ccc55b18578c6ec6763d"
+        }
+      ]
+    },
+    {
+      "path": "build/tests/results/pi-fireworks-accounts-fireworks-models-deepseek-v4p1-flash/2026-10-05T14-09-56-358Z",
+      "files": [
+        {
+          "path": "build/tests/results/pi-fireworks-accounts-fireworks-models-deepseek-v4p1-flash/2026-10-05T14-09-56-358Z/results.yaml",
+          "sha256": "a663b1f19f832863133210da338260cd6c496be563fca3b7e38c707572b5fd53"
+        }
+      ]
+    },
+    {
+      "path": "build/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-09-30T00-05-41-333Z",
+      "files": [
+        {
+          "path": "build/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-09-30T00-05-41-333Z/results.yaml",
+          "sha256": "4bbe2ed1190c68cee9b7623aa0e9a7e7139e7f5174e3340ddafdccb5564312e1"
+        }
+      ]
+    },
+    {
+      "path": "build/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-17-08-655Z",
+      "files": [
+        {
+          "path": "build/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-17-08-655Z/A1.green.diff.txt",
+          "sha256": "aff4ec6e926b3e1389680597ea993ab53748f0d52aab4ab8a625ac906558155a"
+        },
+        {
+          "path": "build/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-17-08-655Z/A1.green.txt",
+          "sha256": "a48207199101359e2032defbbc8c5656e98b18b8bf50e99e0fcab01f7adaeed2"
+        },
+        {
+          "path": "build/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-17-08-655Z/journal.jsonl",
+          "sha256": "5e53ed2d9d835983dc020324f7c7ac0f91f904c5841663a70444ef0a6377d9d5"
+        },
+        {
+          "path": "build/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-17-08-655Z/results.yaml",
+          "sha256": "a0bdba06f3e8db1e9e0e4dc4f172eeedcfb9ae579fd15976563cbcb8612aad7d"
+        }
+      ]
+    },
+    {
+      "path": "build/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-30-02-410Z",
+      "files": [
+        {
+          "path": "build/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-30-02-410Z/A1.force.diff.txt",
+          "sha256": "0ea08f19ace9199261d94429f90d6c10850de84a32d09a50f5b518404c9cd9d0"
+        },
+        {
+          "path": "build/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-30-02-410Z/A1.force.judge.txt",
+          "sha256": "30cd21990c05bbcdb305d1430d46622b2392341d1b04e3a788f34008fbb2e09a"
+        },
+        {
+          "path": "build/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-30-02-410Z/A1.force.txt",
+          "sha256": "78fcb495ebdea63704fa21e117c523ffad3e99e303d03d97f257fbce0ef2b106"
+        },
+        {
+          "path": "build/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-30-02-410Z/journal.jsonl",
+          "sha256": "7e4891abdc3311d59a5892e9646537b0d0192dfa26e3768b177e66a633403307"
+        },
+        {
+          "path": "build/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-30-02-410Z/results.yaml",
+          "sha256": "3284ef98d381224834d5aac7300aa2697adaea09543207487d160e5163b5a286"
+        }
+      ]
+    },
+    {
+      "path": "build/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T14-55-03-034Z",
+      "files": [
+        {
+          "path": "build/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T14-55-03-034Z/A3.force.rep0.judge.txt",
+          "sha256": "0351d3c6c3817a87ece47a1cfff459df1249cb6c998fdb43e1c4aaf2f33b76cc"
+        },
+        {
+          "path": "build/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T14-55-03-034Z/A3.force.rep2.judge.txt",
+          "sha256": "af87b0eed7e5921251eeb83efbbabe71cbd7cb83381143f5528f37c7900e66e2"
+        },
+        {
+          "path": "build/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T14-55-03-034Z/A5.force.rep1.judge.txt",
+          "sha256": "0d0e85d239164607d5eaac1ae1152fe285bfcde6eedcb92a8f700e0a47546585"
+        },
+        {
+          "path": "build/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T14-55-03-034Z/C1.force.rep1.judge.txt",
+          "sha256": "65c471e320fb060b86fa4bb61b97024066cf48925f576a85b7769345406bdedc"
+        },
+        {
+          "path": "build/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T14-55-03-034Z/C1.force.rep2.judge.txt",
+          "sha256": "ec2feec3bccfdd289d73c9880b3606bff7e0a50bc84368f6f6d9dd55d49ddd54"
+        },
+        {
+          "path": "build/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T14-55-03-034Z/results.yaml",
+          "sha256": "3b002665bdcd72e848c35c6d25855725b07382c4300003196e542f76aecc9aff"
+        }
+      ]
+    },
+    {
+      "path": "build/tests/results/pi-fireworks-accounts-fireworks-models-nemotron-lightning-3p5-30b-a3b/2026-10-05T23-49-28-830Z",
+      "files": [
+        {
+          "path": "build/tests/results/pi-fireworks-accounts-fireworks-models-nemotron-lightning-3p5-30b-a3b/2026-10-05T23-49-28-830Z/results.yaml",
+          "sha256": "96394fe316f45b7df8be36387a1fa55c18374502088ee91fb88f5266d18bb5a1"
+        }
+      ]
+    },
+    {
+      "path": "build/tests/results/pi-openai-codex-gpt-6.1-sol/2026-10-01T21-05-27-862Z",
+      "files": [
+        {
+          "path": "build/tests/results/pi-openai-codex-gpt-6.1-sol/2026-10-01T21-05-27-862Z/results.yaml",
+          "sha256": "6b18fe78a17e6602b6bbb7656889baecf2786d7b0403c4df4c8c74387ba0f463"
+        }
+      ]
+    },
+    {
+      "path": "debug/tests/results/pi-fireworks-accounts-fireworks-models-deepseek-v4p1-flash/2026-10-05T16-35-15-865Z",
+      "files": [
+        {
+          "path": "debug/tests/results/pi-fireworks-accounts-fireworks-models-deepseek-v4p1-flash/2026-10-05T16-35-15-865Z/results.yaml",
+          "sha256": "e39cb2deb829740edf1ad256bad3a0d292df2a3b07abb47e8b90155869433443"
+        }
+      ]
+    },
+    {
+      "path": "debug/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-09-30T00-13-07-592Z",
+      "files": [
+        {
+          "path": "debug/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-09-30T00-13-07-592Z/results.yaml",
+          "sha256": "1bd55ce2d8a43679c448217b1115ba0bc23d95c901dcedba8cc064b74b65df2a"
+        }
+      ]
+    },
+    {
+      "path": "debug/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-17-31-751Z",
+      "files": [
+        {
+          "path": "debug/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-17-31-751Z/A1.green.diff.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "debug/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-17-31-751Z/A1.green.judge.txt",
+          "sha256": "4b8ed479fa4e2f98a2e5aa76b637d6dad5b9d5c11f7bb25b0129d35b669b2b0f"
+        },
+        {
+          "path": "debug/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-17-31-751Z/A1.green.trace.jsonl",
+          "sha256": "426da219748e54eb112b20502aa9eab2ddffbb8f58bfd8e6d9ff1c2cd76cccb0"
+        },
+        {
+          "path": "debug/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-17-31-751Z/A1.green.txt",
+          "sha256": "5aa76faefb59bceffc7e1ddd6d304121496d84e4c1557cf282c9d09dca4b59d6"
+        },
+        {
+          "path": "debug/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-17-31-751Z/journal.jsonl",
+          "sha256": "e9671bd8663c7e5835081b3231c149d2cd7356731e4bfbfb00e27b797e3f5086"
+        },
+        {
+          "path": "debug/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-17-31-751Z/results.yaml",
+          "sha256": "84cbaca53c4c70d63d0500403d378e4d204dd086efab3241ceac13f26c2d2026"
+        }
+      ]
+    },
+    {
+      "path": "debug/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-30-48-475Z",
+      "files": [
+        {
+          "path": "debug/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-30-48-475Z/A1.force.diff.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "debug/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-30-48-475Z/A1.force.judge.txt",
+          "sha256": "4b9b62b46b60b619b82301b994edac9150c91b439ea78ed5fe97d4597f1329e0"
+        },
+        {
+          "path": "debug/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-30-48-475Z/A1.force.trace.jsonl",
+          "sha256": "7dcaa1fe43b5a5ee75478ae581524a306d3aab9991386ddc07e84d07202ff6dd"
+        },
+        {
+          "path": "debug/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-30-48-475Z/A1.force.txt",
+          "sha256": "6c3ece3acebfa0ce00458940ba76c1402cf9a9beea29fb56d93a8aa338bc8d97"
+        },
+        {
+          "path": "debug/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-30-48-475Z/journal.jsonl",
+          "sha256": "5fcda2646cd02dc70932223cf18253b754377157f5b91922b9e32bfa71c0d383"
+        },
+        {
+          "path": "debug/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-30-48-475Z/results.yaml",
+          "sha256": "58d93409489abeef118a55ee1c754efc475d9f424e1b34249b32ec3e68d1a0fb"
+        }
+      ]
+    },
+    {
+      "path": "debug/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T15-26-44-920Z",
+      "files": [
+        {
+          "path": "debug/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T15-26-44-920Z/A1.force.rep0.judge.txt",
+          "sha256": "aa32bb618582cf178b2ceb5dfdcbc3d49396c52e696f77c0065941715094feaf"
+        },
+        {
+          "path": "debug/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T15-26-44-920Z/A1.force.rep2.judge.txt",
+          "sha256": "1501166ee1b350e26ed3244eb8afb402f18b2d314ae1ab91bd8c4bf75bec2b50"
+        },
+        {
+          "path": "debug/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T15-26-44-920Z/A2.force.rep1.judge.txt",
+          "sha256": "8a1d23d8220bd74a575a0cbd831cc46369a4edd0a8a42504e65db050622d8192"
+        },
+        {
+          "path": "debug/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T15-26-44-920Z/A2.force.rep2.judge.txt",
+          "sha256": "3013fc643e16f4807756d32708cc8d364123c41a8c2d4d9c0a9dcb0b92493f45"
+        },
+        {
+          "path": "debug/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T15-26-44-920Z/A3.force.rep0.judge.txt",
+          "sha256": "96bd2d27b0a05570cb06341f473e808a49efa107efc1caf621c925809945f5f9"
+        },
+        {
+          "path": "debug/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T15-26-44-920Z/A3.force.rep1.judge.txt",
+          "sha256": "8f9ca4036226c2d42c4c903abefa76646dcc4480ba9ead5725b067af38d8e200"
+        },
+        {
+          "path": "debug/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T15-26-44-920Z/A4.force.rep0.judge.txt",
+          "sha256": "bd8eaffbc474ea4daba7dec686cc32a4ff07a2a8325f595a7877efe8a4b6d730"
+        },
+        {
+          "path": "debug/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T15-26-44-920Z/A4.force.rep1.judge.txt",
+          "sha256": "5c349e8fb89b766d3560a26832273edf60c15a877c3e0d045c648c6ee1c9324b"
+        },
+        {
+          "path": "debug/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T15-26-44-920Z/A4.force.rep2.judge.txt",
+          "sha256": "d08e5357b8060337c98331461d59903bf478516d6a12b441becf9d3307f20d7c"
+        },
+        {
+          "path": "debug/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T15-26-44-920Z/A5.force.rep0.judge.txt",
+          "sha256": "26415093bfc765eccd3a0d486ead1d51711a8fb6bfc3696f57dd378c4cb8886f"
+        },
+        {
+          "path": "debug/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T15-26-44-920Z/A5.force.rep2.judge.txt",
+          "sha256": "42f5dad69c6e4ca7cca497107d4a50087927fe26fa322ed2d4c343f7367af4f4"
+        },
+        {
+          "path": "debug/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T15-26-44-920Z/results.yaml",
+          "sha256": "7be4c64e6400e1fa785df4869823b40d260afda8c7f0f6c14049d154bb442a58"
+        }
+      ]
+    },
+    {
+      "path": "debug/tests/results/pi-fireworks-accounts-fireworks-models-nemotron-lightning-3p5-30b-a3b/2026-10-06T10-06-10-207Z",
+      "files": [
+        {
+          "path": "debug/tests/results/pi-fireworks-accounts-fireworks-models-nemotron-lightning-3p5-30b-a3b/2026-10-06T10-06-10-207Z/results.yaml",
+          "sha256": "1932c76b5eea1735ae148c59f4b3f1ec22582710d0c8481c1e84525401f85557"
+        }
+      ]
+    },
+    {
+      "path": "debug/tests/results/pi-openai-codex-gpt-6.1-sol/2026-10-01T21-54-06-608Z",
+      "files": [
+        {
+          "path": "debug/tests/results/pi-openai-codex-gpt-6.1-sol/2026-10-01T21-54-06-608Z/results.yaml",
+          "sha256": "588f57f5bf652233494483b687618f133884cb9debf58957adb40806db57d630"
+        }
+      ]
+    },
+    {
+      "path": "decide/tests/results/pi-fireworks-accounts-fireworks-models-deepseek-v4p1-flash/2026-10-05T18-11-33-925Z",
+      "files": [
+        {
+          "path": "decide/tests/results/pi-fireworks-accounts-fireworks-models-deepseek-v4p1-flash/2026-10-05T18-11-33-925Z/results.yaml",
+          "sha256": "0112c7d0252dd7f0cd16978bc2b37231363725a0cd2b9152818b2df3997fc600"
+        }
+      ]
+    },
+    {
+      "path": "decide/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-09-30T00-19-13-328Z",
+      "files": [
+        {
+          "path": "decide/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-09-30T00-19-13-328Z/results.yaml",
+          "sha256": "ede61c153fe99b56bff69e2cce658a852115a903768f650399e4d5aef129ed31"
+        }
+      ]
+    },
+    {
+      "path": "decide/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-18-03-388Z",
+      "files": [
+        {
+          "path": "decide/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-18-03-388Z/A2.green.judge.txt",
+          "sha256": "329ab0e1278dbe6891939fc5ff94024d6f9fef942dc919c1c11de4c771f56161"
+        },
+        {
+          "path": "decide/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-18-03-388Z/A2.green.txt",
+          "sha256": "fd3e1f987d71e3ee6aa06defeb2369a6d5732caaff0027f90d7d12a1d8516eed"
+        },
+        {
+          "path": "decide/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-18-03-388Z/journal.jsonl",
+          "sha256": "3d80380f4bd1b4a3d3193a81b640f95bc2597fc0208ca2d93764ab98850969d2"
+        },
+        {
+          "path": "decide/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-18-03-388Z/results.yaml",
+          "sha256": "b1de66f03cb2e76ee7476cbfe245a865d421f5e1c24610dd3f0b1e67fd177702"
+        }
+      ]
+    },
+    {
+      "path": "decide/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-31-37-065Z",
+      "files": [
+        {
+          "path": "decide/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-31-37-065Z/A2.force.judge.txt",
+          "sha256": "6c88a2df59fcbc223ef84b1fdc39b4551fdb16348ff28502bc899a77a81e7fd7"
+        },
+        {
+          "path": "decide/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-31-37-065Z/A2.force.txt",
+          "sha256": "9b546e7c0d2b9b8149b2abca3411e52f71b5d26ee763f4e58880bcc11f05d618"
+        },
+        {
+          "path": "decide/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-31-37-065Z/journal.jsonl",
+          "sha256": "ce787d10477b440f7dd9b5f79d65fa8b787eb6015a0b5a7c137f6529d9f87413"
+        },
+        {
+          "path": "decide/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-31-37-065Z/results.yaml",
+          "sha256": "a93b7a51aa35067b1af2c7453a7413cf8bb84baf24bb4156975ce4c6c4738e70"
+        }
+      ]
+    },
+    {
+      "path": "decide/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T16-04-00-422Z",
+      "files": [
+        {
+          "path": "decide/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T16-04-00-422Z/results.yaml",
+          "sha256": "6936d9ba5dac4c6145aabb9e49d8434ea177e8294b5a5cb1e945ff11ce925b13"
+        }
+      ]
+    },
+    {
+      "path": "decide/tests/results/pi-fireworks-accounts-fireworks-models-nemotron-lightning-3p5-30b-a3b/2026-10-06T11-19-16-808Z",
+      "files": [
+        {
+          "path": "decide/tests/results/pi-fireworks-accounts-fireworks-models-nemotron-lightning-3p5-30b-a3b/2026-10-06T11-19-16-808Z/results.yaml",
+          "sha256": "b58d8fbfb52328cda57c9f918dc9f40b3ccbe4cb1670e819da54a6d6a223b969"
+        }
+      ]
+    },
+    {
+      "path": "decide/tests/results/pi-openai-codex-gpt-6.1-sol/2026-10-01T22-36-09-360Z",
+      "files": [
+        {
+          "path": "decide/tests/results/pi-openai-codex-gpt-6.1-sol/2026-10-01T22-36-09-360Z/results.yaml",
+          "sha256": "d92b57c79dd3e4ece7772c6793027d0ecd1bd3cc09440daea01a503bf03d2a07"
+        }
+      ]
+    },
+    {
+      "path": "git-ops/tests/results/pi-fireworks-accounts-fireworks-models-deepseek-v4p1-flash/2026-10-05T18-43-08-018Z",
+      "files": [
+        {
+          "path": "git-ops/tests/results/pi-fireworks-accounts-fireworks-models-deepseek-v4p1-flash/2026-10-05T18-43-08-018Z/results.yaml",
+          "sha256": "76936e33e2ec5931f17843a4b8aa59b685dc0a67c647aaeab89876588119b1e4"
+        }
+      ]
+    },
+    {
+      "path": "git-ops/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-09-30T09-48-08-404Z",
+      "files": [
+        {
+          "path": "git-ops/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-09-30T09-48-08-404Z/A13.force.judge.txt",
+          "sha256": "baf7875da0fdef9aced59c8ffd988980690a348524b68d613579c8d909138de0"
+        },
+        {
+          "path": "git-ops/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-09-30T09-48-08-404Z/A13.force.txt",
+          "sha256": "37fa31f45a9eb49ca732b73ffedd20f0b40e93e672f740efd08689307310fe49"
+        },
+        {
+          "path": "git-ops/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-09-30T09-48-08-404Z/results.yaml",
+          "sha256": "d0b0e41d53a76239bba871fb8ac27e7ba1217c4d1630b4fe837946b332b32386"
+        }
+      ]
+    },
+    {
+      "path": "git-ops/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-19-24-112Z",
+      "files": [
+        {
+          "path": "git-ops/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-19-24-112Z/A13.force.judge.txt",
+          "sha256": "899dc5f4c8a16686a30b4e902ea82659a0902075f0b93bc4bfedc91119a56a9d"
+        },
+        {
+          "path": "git-ops/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-19-24-112Z/A13.force.txt",
+          "sha256": "3f5fae3714f89beef96093039ff4a93f9d73e7fb10c44f3fe8bc3049662ee863"
+        },
+        {
+          "path": "git-ops/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-19-24-112Z/journal.jsonl",
+          "sha256": "ba362b67b34ca6f6152f47eae7f80ac16af98be37700387c5271e24f29d80642"
+        },
+        {
+          "path": "git-ops/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-19-24-112Z/results.yaml",
+          "sha256": "ec38a40ecd9dff7607d0d29c67df7b37d56be0a573dfb8d91cae6d7654727c56"
+        }
+      ]
+    },
+    {
+      "path": "git-ops/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T17-31-06-335Z",
+      "files": [
+        {
+          "path": "git-ops/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T17-31-06-335Z/results.yaml",
+          "sha256": "77bedfe3397fb4bed45a1f47e58ffbf3a11f01d7e6b7c2e9339c543ad91d1ace"
+        }
+      ]
+    },
+    {
+      "path": "git-ops/tests/results/pi-fireworks-accounts-fireworks-models-nemotron-lightning-3p5-30b-a3b/2026-10-06T12-44-56-768Z",
+      "files": [
+        {
+          "path": "git-ops/tests/results/pi-fireworks-accounts-fireworks-models-nemotron-lightning-3p5-30b-a3b/2026-10-06T12-44-56-768Z/results.yaml",
+          "sha256": "1b772b8d78c7ec9acd718e3704e7cbe69468d8359b0d9e6af93ed4bfe07d7ded"
+        }
+      ]
+    },
+    {
+      "path": "git-ops/tests/results/pi-openai-codex-gpt-6.1-sol/2026-10-01T23-38-17-139Z",
+      "files": [
+        {
+          "path": "git-ops/tests/results/pi-openai-codex-gpt-6.1-sol/2026-10-01T23-38-17-139Z/results.yaml",
+          "sha256": "e21222a7acaef4b6ae0e44a7d1f842410975ff28dc15e9749d48b7002ffaa86b"
+        }
+      ]
+    },
+    {
+      "path": "investigate/tests/results/pi-fireworks-accounts-fireworks-models-deepseek-v4p1-flash/2026-10-05T19-25-46-467Z",
+      "files": [
+        {
+          "path": "investigate/tests/results/pi-fireworks-accounts-fireworks-models-deepseek-v4p1-flash/2026-10-05T19-25-46-467Z/results.yaml",
+          "sha256": "6de40aec0fb9f398a41adc0af8ea3f71a104418f1491177af4b11f249caac75d"
+        }
+      ]
+    },
+    {
+      "path": "investigate/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-09-30T12-50-44-151Z",
+      "files": [
+        {
+          "path": "investigate/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-09-30T12-50-44-151Z/results.yaml",
+          "sha256": "3188487b0a1a7e39a04d3a61b6e8bd718a57605d8466194422e58efa09aab175"
+        }
+      ]
+    },
+    {
+      "path": "investigate/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-19-44-191Z",
+      "files": [
+        {
+          "path": "investigate/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-19-44-191Z/B1.force.diff.txt",
+          "sha256": "053d6b6ecaa483d9fb55714a0c697b36b94fedfbda0beb79396696ef9ff90759"
+        },
+        {
+          "path": "investigate/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-19-44-191Z/B1.force.trace.jsonl",
+          "sha256": "761ca1badc86d1f25ad25dd36cae748aab6cecfbccd2f4a930c4dc59ed494af0"
+        },
+        {
+          "path": "investigate/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-19-44-191Z/B1.force.txt",
+          "sha256": "867c85c9d8983ddc80974af6df18efe023ad65b037719b9ff17094365d30ae97"
+        },
+        {
+          "path": "investigate/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-19-44-191Z/journal.jsonl",
+          "sha256": "9efcc5d3b2a973577c622d28ad526d076cbcd721579df35da2441700a8afc6bb"
+        },
+        {
+          "path": "investigate/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-19-44-191Z/results.yaml",
+          "sha256": "d3edcaddd12eb262bab2e54ec316107d91d847ddb3e0d76ec1b63deb8870e664"
+        }
+      ]
+    },
+    {
+      "path": "investigate/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T16-23-32-168Z",
+      "files": [
+        {
+          "path": "investigate/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T16-23-32-168Z/I1.force.judge.txt",
+          "sha256": "324fc3c9a296a8b8fdb8a5524fe32789584f0947ae94cb8c759d2c85fa89c16c"
+        },
+        {
+          "path": "investigate/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T16-23-32-168Z/results.yaml",
+          "sha256": "af2ec3a3cadbd2f0878083f56eb32560bb9cadee6350d0e10891b003d7bb9af5"
+        }
+      ]
+    },
+    {
+      "path": "investigate/tests/results/pi-fireworks-accounts-fireworks-models-nemotron-lightning-3p5-30b-a3b/2026-10-06T12-43-56-821Z",
+      "files": [
+        {
+          "path": "investigate/tests/results/pi-fireworks-accounts-fireworks-models-nemotron-lightning-3p5-30b-a3b/2026-10-06T12-43-56-821Z/results.yaml",
+          "sha256": "274e76debe1639ad2c5440167214253711f6223b774f7b85c43f2f536ae80dda"
+        }
+      ]
+    },
+    {
+      "path": "investigate/tests/results/pi-openai-codex-gpt-6.1-sol/2026-10-01T22-57-32-132Z",
+      "files": [
+        {
+          "path": "investigate/tests/results/pi-openai-codex-gpt-6.1-sol/2026-10-01T22-57-32-132Z/results.yaml",
+          "sha256": "7f6d112e824cf11140d0f9b2815e7929280ece14246fcf0e0867662657708b1d"
+        }
+      ]
+    },
+    {
+      "path": "plan/tests/results/pi-fireworks-accounts-fireworks-models-deepseek-v4p1-flash/2026-10-05T19-30-29-144Z",
+      "files": [
+        {
+          "path": "plan/tests/results/pi-fireworks-accounts-fireworks-models-deepseek-v4p1-flash/2026-10-05T19-30-29-144Z/results.yaml",
+          "sha256": "dd7c4620f6a555cec588134c68a63fda993e48b817985493a49d026f9cf09d7c"
+        }
+      ]
+    },
+    {
+      "path": "plan/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-09-30T00-33-16-320Z",
+      "files": [
+        {
+          "path": "plan/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-09-30T00-33-16-320Z/results.yaml",
+          "sha256": "221b5132aec614528cbc829c20ecfe7365ebf6300a3c1eab21844ba35525b529"
+        }
+      ]
+    },
+    {
+      "path": "plan/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-18-26-954Z",
+      "files": [
+        {
+          "path": "plan/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-18-26-954Z/A2.green.judge.txt",
+          "sha256": "f4f5c94fdf3fad16ea61b3d571f623534ad323368134b725ca99d0a5cc4c1313"
+        },
+        {
+          "path": "plan/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-18-26-954Z/A2.green.txt",
+          "sha256": "1b4fccd00d6b108dc917e0756d95125a4f4bc59087839fda5d6f05dd953da737"
+        },
+        {
+          "path": "plan/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-18-26-954Z/journal.jsonl",
+          "sha256": "d853ff118fb5e177455d01e36fef24793877fd4157755d735c343c21d70d8574"
+        },
+        {
+          "path": "plan/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-18-26-954Z/results.yaml",
+          "sha256": "74bb9e5b8c3f5a54f8d00fcef130e3ad05b08cfd8ad074852a0a4b7aad52b2ad"
+        }
+      ]
+    },
+    {
+      "path": "plan/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-32-06-536Z",
+      "files": [
+        {
+          "path": "plan/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-32-06-536Z/A2.force.judge.txt",
+          "sha256": "a553d4a980d8d2848db044ec1509e575b0d5fecc71ae87eb6b86b9e6d0abdc87"
+        },
+        {
+          "path": "plan/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-32-06-536Z/A2.force.txt",
+          "sha256": "bd7369895052324ea68fe89c6edd565657479690b86665cb1757a21d419deb6f"
+        },
+        {
+          "path": "plan/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-32-06-536Z/journal.jsonl",
+          "sha256": "95df1c2c2689b81bb11624d5b7ba9356bac61c97b830fa467fbaee6cfafae794"
+        },
+        {
+          "path": "plan/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-32-06-536Z/results.yaml",
+          "sha256": "44b5e3ddb09b4a5d4f817b22bafb6b9efd0575415c071dbddf2ecf463016fa56"
+        }
+      ]
+    },
+    {
+      "path": "plan/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T16-34-20-371Z",
+      "files": [
+        {
+          "path": "plan/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T16-34-20-371Z/results.yaml",
+          "sha256": "90f474deebd22a1c3230ec6324f4a29d10cd2ee9fda89abd44b7c627321ddb5a"
+        }
+      ]
+    },
+    {
+      "path": "plan/tests/results/pi-fireworks-accounts-fireworks-models-nemotron-lightning-3p5-30b-a3b/2026-10-06T12-58-17-007Z",
+      "files": [
+        {
+          "path": "plan/tests/results/pi-fireworks-accounts-fireworks-models-nemotron-lightning-3p5-30b-a3b/2026-10-06T12-58-17-007Z/results.yaml",
+          "sha256": "9fbe4fc1636be6357e0ecb228116473685ebb4f8aa3e0e9c297f231d52e7b9b3"
+        }
+      ]
+    },
+    {
+      "path": "plan/tests/results/pi-openai-codex-gpt-6.1-sol/2026-10-02T00-17-32-482Z",
+      "files": [
+        {
+          "path": "plan/tests/results/pi-openai-codex-gpt-6.1-sol/2026-10-02T00-17-32-482Z/results.yaml",
+          "sha256": "4e2613c40f0a9f714fe1118fc1b29c3c7a8d94ff42da1161e16ba7a3a0d3729f"
+        }
+      ]
+    },
+    {
+      "path": "review/tests/results/pi-fireworks-accounts-fireworks-models-deepseek-v4p1-flash/2026-10-05T20-17-57-917Z",
+      "files": [
+        {
+          "path": "review/tests/results/pi-fireworks-accounts-fireworks-models-deepseek-v4p1-flash/2026-10-05T20-17-57-917Z/results.yaml",
+          "sha256": "6cfb6746a61e0fe76a33ce62a31e19d578065031080896308db5a37e665e12f6"
+        }
+      ]
+    },
+    {
+      "path": "review/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-09-30T09-04-15-211Z",
+      "files": [
+        {
+          "path": "review/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-09-30T09-04-15-211Z/results.yaml",
+          "sha256": "59d7264fe58654ddec1f1141f9e387270f2e046dac2919bb060214660e7d9780"
+        }
+      ]
+    },
+    {
+      "path": "review/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-19-03-893Z",
+      "files": [
+        {
+          "path": "review/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-19-03-893Z/A2.force.judge.txt",
+          "sha256": "d32c91428201e61d2659c5478ffb5ca02338accfade53e779821059eac5153b3"
+        },
+        {
+          "path": "review/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-19-03-893Z/A2.force.txt",
+          "sha256": "eb3062985f846dcd5e98b17a703d796b49ab459799ad5620e6a403179a7a79c8"
+        },
+        {
+          "path": "review/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-19-03-893Z/journal.jsonl",
+          "sha256": "38ddda5c40397eaf583f3357ae39f623d2505a3ebe98a6f0b71ad45606b7f7d2"
+        },
+        {
+          "path": "review/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T13-19-03-893Z/results.yaml",
+          "sha256": "69a59e150fcd153b1a2ec7a838000bac6ddd4f8b581d6787b59cd1a25d86854b"
+        }
+      ]
+    },
+    {
+      "path": "review/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T17-00-20-647Z",
+      "files": [
+        {
+          "path": "review/tests/results/pi-fireworks-accounts-fireworks-models-glm-5p3-flash/2026-10-01T17-00-20-647Z/results.yaml",
+          "sha256": "68477c68a3e27de9f87032d7fc384599bd0e579785dae4be54235df9166e36ee"
+        }
+      ]
+    },
+    {
+      "path": "review/tests/results/pi-fireworks-accounts-fireworks-models-nemotron-lightning-3p5-30b-a3b/2026-10-06T14-16-20-657Z",
+      "files": [
+        {
+          "path": "review/tests/results/pi-fireworks-accounts-fireworks-models-nemotron-lightning-3p5-30b-a3b/2026-10-06T14-16-20-657Z/results.yaml",
+          "sha256": "8012bfafbbd851ab1b5dccd0248ffba92241c4dad0bb4dbcb52f93b28adf99cc"
+        }
+      ]
+    },
+    {
+      "path": "review/tests/results/pi-openai-codex-gpt-6.1-sol/2026-10-02T00-41-11-097Z",
+      "files": [
+        {
+          "path": "review/tests/results/pi-openai-codex-gpt-6.1-sol/2026-10-02T00-41-11-097Z/results.yaml",
+          "sha256": "c3ed3e2dfe2fcf4845e052bb776848564cb7260186ad15316af30b17e202981b"
+        }
+      ]
+    }
+  ]
+}

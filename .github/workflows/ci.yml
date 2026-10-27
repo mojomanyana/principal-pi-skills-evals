@@ -12,4 +12,11 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
-      - run: npm run lint
+      - run: npm test
+      - run: npm run lint:ci -- --report ci-lint-report.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lint-report
+          path: ci-lint-report.json
+          if-no-files-found: warn

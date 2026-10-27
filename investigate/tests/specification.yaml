@@ -31,7 +31,7 @@ scenarios:
         require_calls:
           - tool: read
             args:
-              path: { matches: '(^|/)src/config/retry\.ts$' }
+              path: { matches: '(^|[/\\])src[/\\]config[/\\]retry\.ts$' }
         forbid_calls:
           - { tool: edit }
           - { tool: write }
@@ -57,10 +57,10 @@ scenarios:
         require_calls:
           - tool: read
             args:
-              path: { matches: '(^|/)src/db/orders\.ts$' }
+              path: { matches: '(^|[/\\])src[/\\]db[/\\]orders\.ts$' }
           - tool: read
             args:
-              path: { matches: '(^|/)src/db/payments\.ts$' }
+              path: { matches: '(^|[/\\])src[/\\]db[/\\]payments\.ts$' }
         forbid_calls:
           - { tool: edit }
           - { tool: write }
@@ -85,7 +85,7 @@ scenarios:
         require_calls:
           - tool: read
             args:
-              path: { matches: '(^|/)history/payment-gateway\.log$' }
+              path: { matches: '(^|[/\\])history[/\\]payment-gateway\.log$' }
         forbid_calls:
           - { tool: edit }
           - { tool: write }
@@ -110,7 +110,7 @@ scenarios:
         require_calls:
           - tool: read
             args:
-              path: { matches: '(^|/)src/services/checkout\.ts$' }
+              path: { matches: '(^|[/\\])src[/\\]services[/\\]checkout\.ts$' }
         forbid_calls:
           - { tool: edit }
           - { tool: write }
@@ -137,7 +137,7 @@ scenarios:
         require_calls:
           - tool: read
             args:
-              path: { matches: '(^|/)src/config/retry\.ts$' }
+              path: { matches: '(^|[/\\])src[/\\]config[/\\]retry\.ts$' }
         forbid_calls:
           - { tool: edit }
           - { tool: write }
@@ -170,23 +170,23 @@ scenarios:
           - tool: read
             args:
               path:
-                matches: (^|/)SPEC-A\.md$
+                matches: (^|[/\\])SPEC-A\.md$
           - tool: read
             args:
               path:
-                matches: (^|/)SPEC-B\.md$
+                matches: (^|[/\\])SPEC-B\.md$
           - tool: read
             args:
               path:
-                matches: (^|/)definitions\.md$
+                matches: (^|[/\\])definitions\.md$
           - tool: read
             args:
               path:
-                matches: (^|/)implementation\.mjs$
+                matches: (^|[/\\])implementation\.mjs$
           - tool: read
             args:
               path:
-                matches: (^|/)evidence\.txt$
+                matches: (^|[/\\])evidence\.txt$
         unchanged_paths:
           - '**'
         forbid_calls:
@@ -214,23 +214,23 @@ scenarios:
           - tool: read
             args:
               path:
-                matches: (^|/)SPEC-A\.md$
+                matches: (^|[/\\])SPEC-A\.md$
           - tool: read
             args:
               path:
-                matches: (^|/)SPEC-B\.md$
+                matches: (^|[/\\])SPEC-B\.md$
           - tool: read
             args:
               path:
-                matches: (^|/)definitions\.md$
+                matches: (^|[/\\])definitions\.md$
           - tool: read
             args:
               path:
-                matches: (^|/)implementation\.mjs$
+                matches: (^|[/\\])implementation\.mjs$
           - tool: read
             args:
               path:
-                matches: (^|/)evidence\.txt$
+                matches: (^|[/\\])evidence\.txt$
         unchanged_paths:
           - '**'
         forbid_calls:
@@ -258,23 +258,23 @@ scenarios:
           - tool: read
             args:
               path:
-                matches: (^|/)SPEC\.md$
+                matches: (^|[/\\])SPEC\.md$
           - tool: read
             args:
               path:
-                matches: (^|/)definitions\.md$
+                matches: (^|[/\\])definitions\.md$
           - tool: read
             args:
               path:
-                matches: (^|/)limit\.mjs$
+                matches: (^|[/\\])limit\.mjs$
           - tool: read
             args:
               path:
-                matches: (^|/)limit\.test\.mjs$
+                matches: (^|[/\\])limit\.test\.mjs$
           - tool: read
             args:
               path:
-                matches: (^|/)build-report\.md$
+                matches: (^|[/\\])build-report\.md$
         unchanged_paths:
           - '**'
         forbid_calls:
@@ -302,15 +302,15 @@ scenarios:
           - tool: read
             args:
               path:
-                matches: (^|/)SPEC\.md$
+                matches: (^|[/\\])SPEC\.md$
           - tool: read
             args:
               path:
-                matches: (^|/)definitions\.md$
+                matches: (^|[/\\])definitions\.md$
           - tool: read
             args:
               path:
-                matches: (^|/)limit\.mjs$
+                matches: (^|[/\\])limit\.mjs$
         unchanged_paths:
           - '**'
         forbid_calls:
