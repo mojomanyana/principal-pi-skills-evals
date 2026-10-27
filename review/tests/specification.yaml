@@ -435,23 +435,23 @@ scenarios:
           - tool: read
             args:
               path:
-                matches: (^|/)build-report\.md$
+                matches: (^|[/\\])build-report\.md$
           - tool: read
             args:
               path:
-                matches: (^|/)SPEC\.md$
+                matches: (^|[/\\])SPEC\.md$
           - tool: read
             args:
               path:
-                matches: (^|/)definitions\.md$
+                matches: (^|[/\\])definitions\.md$
           - tool: read
             args:
               path:
-                matches: (^|/)limit\.mjs$
+                matches: (^|[/\\])limit\.mjs$
           - tool: read
             args:
               path:
-                matches: (^|/)limit\.test\.mjs$
+                matches: (^|[/\\])limit\.test\.mjs$
           - tool: bash
             args:
               command:
@@ -506,27 +506,27 @@ scenarios:
           - tool: read
             args:
               path:
-                matches: (^|/)SPEC\.md$
+                matches: (^|[/\\])SPEC\.md$
           - tool: read
             args:
               path:
-                matches: (^|/)definitions\.md$
+                matches: (^|[/\\])definitions\.md$
           - tool: read
             args:
               path:
-                matches: (^|/)plan\.md$
+                matches: (^|[/\\])plan\.md$
           - tool: read
             args:
               path:
-                matches: (^|/)build-report\.md$
+                matches: (^|[/\\])build-report\.md$
           - tool: read
             args:
               path:
-                matches: (^|/)limit\.mjs$
+                matches: (^|[/\\])limit\.mjs$
           - tool: read
             args:
               path:
-                matches: (^|/)limit\.test\.mjs$
+                matches: (^|[/\\])limit\.test\.mjs$
         unchanged_paths:
           - limit.mjs
           - limit.test.mjs
@@ -553,23 +553,23 @@ scenarios:
           - tool: read
             args:
               path:
-                matches: (^|/)SPEC\.md$
+                matches: (^|[/\\])SPEC\.md$
           - tool: read
             args:
               path:
-                matches: (^|/)definitions\.md$
+                matches: (^|[/\\])definitions\.md$
           - tool: read
             args:
               path:
-                matches: (^|/)investigation\.md$
+                matches: (^|[/\\])investigation\.md$
           - tool: read
             args:
               path:
-                matches: (^|/)build-report\.md$
+                matches: (^|[/\\])build-report\.md$
           - tool: read
             args:
               path:
-                matches: (^|/)limit\.mjs$
+                matches: (^|[/\\])limit\.mjs$
         unchanged_paths:
           - SPEC.md
           - definitions.md
@@ -635,11 +635,11 @@ scenarios:
           - tool: read
             args:
               path:
-                matches: (^|/)SPEC\.md$
+                matches: (^|[/\\])SPEC\.md$
           - tool: read
             args:
               path:
-                matches: (^|/)definitions\.md$
+                matches: (^|[/\\])definitions\.md$
         unchanged_paths:
           - SPEC.md
           - definitions.md
@@ -665,15 +665,15 @@ scenarios:
           - tool: read
             args:
               path:
-                matches: (^|/)SPEC\.md$
+                matches: (^|[/\\])SPEC\.md$
           - tool: read
             args:
               path:
-                matches: (^|/)definitions\.md$
+                matches: (^|[/\\])definitions\.md$
           - tool: read
             args:
               path:
-                matches: (^|/)limit\.mjs$
+                matches: (^|[/\\])limit\.mjs$
         unchanged_paths:
           - SPEC.md
           - definitions.md

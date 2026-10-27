@@ -249,15 +249,15 @@ scenarios:
           - tool: read
             args:
               path:
-                matches: (^|/)SPEC\.md$
+                matches: (^|[/\\])SPEC\.md$
           - tool: read
             args:
               path:
-                matches: (^|/)parse\.mjs$
+                matches: (^|[/\\])parse\.mjs$
           - tool: read
             args:
               path:
-                matches: (^|/)parse\.test\.mjs$
+                matches: (^|[/\\])parse\.test\.mjs$
         unchanged_paths:
           - SPEC.md
           - parse.mjs
@@ -283,15 +283,15 @@ scenarios:
           - tool: read
             args:
               path:
-                matches: (^|/)SPEC\.md$
+                matches: (^|[/\\])SPEC\.md$
           - tool: read
             args:
               path:
-                matches: (^|/)parse\.mjs$
+                matches: (^|[/\\])parse\.mjs$
           - tool: read
             args:
               path:
-                matches: (^|/)parse\.test\.mjs$
+                matches: (^|[/\\])parse\.test\.mjs$
         unchanged_paths:
           - SPEC.md
           - parse.mjs
@@ -318,15 +318,15 @@ scenarios:
           - tool: read
             args:
               path:
-                matches: (^|/)SPEC\.md$
+                matches: (^|[/\\])SPEC\.md$
           - tool: read
             args:
               path:
-                matches: (^|/)parse\.mjs$
+                matches: (^|[/\\])parse\.mjs$
           - tool: read
             args:
               path:
-                matches: (^|/)parse\.test\.mjs$
+                matches: (^|[/\\])parse\.test\.mjs$
         unchanged_paths:
           - SPEC.md
           - parse.mjs
@@ -353,15 +353,15 @@ scenarios:
           - tool: read
             args:
               path:
-                matches: (^|/)parse\.test\.mjs$
+                matches: (^|[/\\])parse\.test\.mjs$
           - tool: read
             args:
               path:
-                matches: (^|/)SPEC\.md$
+                matches: (^|[/\\])SPEC\.md$
           - tool: read
             args:
               path:
-                matches: (^|/)parse\.mjs$
+                matches: (^|[/\\])parse\.mjs$
         unchanged_paths:
           - '**'
         forbid_calls:
@@ -388,15 +388,15 @@ scenarios:
           - tool: read
             args:
               path:
-                matches: (^|/)parse\.test\.mjs$
+                matches: (^|[/\\])parse\.test\.mjs$
           - tool: read
             args:
               path:
-                matches: (^|/)SPEC\.md$
+                matches: (^|[/\\])SPEC\.md$
           - tool: read
             args:
               path:
-                matches: (^|/)parse\.mjs$
+                matches: (^|[/\\])parse\.mjs$
         unchanged_paths:
           - '**'
         forbid_calls:
@@ -425,15 +425,15 @@ scenarios:
           - tool: read
             args:
               path:
-                matches: (^|/)SPEC\.md$
+                matches: (^|[/\\])SPEC\.md$
           - tool: read
             args:
               path:
-                matches: (^|/)definitions\.md$
+                matches: (^|[/\\])definitions\.md$
           - tool: read
             args:
               path:
-                matches: (^|/)limit\.mjs$
+                matches: (^|[/\\])limit\.mjs$
         unchanged_paths:
           - '**'
         forbid_calls:

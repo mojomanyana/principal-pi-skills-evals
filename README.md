@@ -3,9 +3,30 @@
 skill-harness specifications, seeded fixtures and retained results for
 [principal-pi-skills](https://github.com/mojomanyana/principal-pi-skills).
 
-## Current frozen-rubric results
+## Evaluator correction candidate
 
-Fresh Pi runs across all eight skills found both lower-cost subjects **NOT READY**:
+The current specifications correct unfair invocation and reporting gates: source
+paths accept either platform's separators, `npm test` and `npm run test` are
+equivalent, and a complete source read need not be split into multiple calls.
+Behavioral tests and source/write boundaries remain required. Assertion spelling
+and a brief honest test-status note on a comment-only change are not failures.
+
+Install with `npm ci`, then run `npm test` and `npm run preflight`. The preflight
+uses the shared skill-harness 0.32.0 implementation; there is no separate local
+authoring checker. `npm run lint` also checks preserved result consistency.
+Both commands are offline and make no provider calls. Their authoring advice is
+not proof of semantic validity, and historical staleness findings remain errors.
+Do not erase results, restamp them, or change old scores to make these checks pass.
+
+This repair keeps principal-pi-skills pinned to 4.7.2 and retains the original
+fixtures and observations. It does not evaluate or qualify the current Principal
+release. The changed evaluators need a new explicitly requested comparison before
+their scores can support an updated readiness claim. Trace invocation checks
+alone do not prove file contents, full source coverage, or successful execution.
+
+## Historical frozen-rubric results
+
+The retained Pi runs across all eight skills found both lower-cost subjects **NOT READY**:
 
 | Subject | Scenarios passed | Infrastructure-error scenarios |
 |---|---:|---:|

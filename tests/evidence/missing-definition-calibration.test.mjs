@@ -11,9 +11,15 @@ const json = p => {
 
 test("original missing-definition stimulus and failed mutation traces remain intact", () => {
   const original = json("build/tests/specification.yaml").scenarios.find(s => s.id === "F04-build-missing-agent");
-  // Rubric wording may evolve; preserve every objective field and normalize only repository relocation.
+  // Rubric wording may evolve; preserve objective semantics after relocation and additive path portability.
   const objective = structuredClone(original);
   delete objective.checklist;
+  // Compare the historical POSIX projection; Windows separator support is additive.
+  for (const rule of [...(objective.assert.trace.require_calls ?? []), ...(objective.assert.trace.forbid_calls ?? [])]) {
+    if (rule?.args?.path?.matches) rule.args.path.matches = rule.args.path.matches
+      .replaceAll(String.raw`[/\\]`, "/")
+      .replaceAll(String.raw`[^/\\]`, "[^/]");
+  }
   const sourceForm = JSON.stringify(objective)
     .replaceAll("../../requirement-fidelity/", "../../evals/requirement-fidelity/")
     .replaceAll("../../node_modules/principal-pi-skills/agents/", "../../agents/");
