@@ -11,7 +11,13 @@ Two separate specification roots prevent development data from becoming a holdou
 | Root | Purpose | Cases | State |
 | --- | --- | ---: | --- |
 | `suites/accepted` | Previously accepted bounded Decide, Architect and Test Review contracts | 6 | Imported synthetic inputs; private observed results remain outside Git |
-| `suites/transfer` | New cash-commitment decision, durable-ingest structure and failed-batch test review | 3 | Not run; nine calibration labels proposed, not accepted |
+| `suites/transfer` | Cash-commitment decision, durable-ingest structure and failed-batch test review | 3 | Architect and Test Review measured locally; Decide calibration held |
+
+[The 2026-10-28 observation report](reports/2026-10-28-transfer.md) separates
+calibration from quality, preserves the unsuccessful controls and records the
+limited two-repetition results. **Decide is not ready for subject comparison:**
+its accepted replacement still matched only 2/3 control vectors. Do not use its
+proposed C3 PASS as an established oracle or silently replace it with FAIL.
 
 Neither lane qualifies all nine Principal skills or a complete delegated workflow.
 The review cases grant only read/grep/find/ls. Unavailable mutation/execute tools
@@ -40,8 +46,11 @@ are synthetic answer controls, not observed subject executions.
 
 Read each transfer `specification.yaml`, its `controls.json`, and the named
 fixtures together. Each skill has one positive, one focused negative and one
-equivalent valid answer, with a vote for each criterion. All nine labels require
-operator review; prior acceptance of different controls does not carry over.
+equivalent valid answer, with a vote for each criterion. The local operator
+reviewed the exact measured controls, including two prospective corrections;
+those private acceptance records are not distributed. A fresh run still requires
+its own explicit review of these public proposals. Prior acceptance of different
+controls does not carry over.
 `calibration-proposed.json` was prepared through shared `prepareCalibration` and
 binds the exact specification, reference and transcript bytes. It intentionally
 reports `needs-review`; do not edit an acceptance flag to bypass the review.
@@ -60,11 +69,12 @@ this lane. Commands below are a template, not authorization or an automatic run:
 
 ```sh
 # Set SUBJECT and JUDGE to the explicitly selected provider:model identifiers.
-npm run run:transfer -- decide --harness pi --model "$SUBJECT" --judge "$JUDGE" --mode red --parallel 1 --reps 2 --pass-threshold 1
-npm run run:transfer -- decide --harness pi --model "$SUBJECT" --judge "$JUDGE" --mode force --parallel 1 --reps 2 --pass-threshold 1
+npm run run:transfer -- test-review --harness pi --model "$SUBJECT" --judge "$JUDGE" --mode red --parallel 1 --reps 2 --pass-threshold 1
+npm run run:transfer -- test-review --harness pi --model "$SUBJECT" --judge "$JUDGE" --mode force --parallel 1 --reps 2 --pass-threshold 1
 ```
 
-Repeat sequentially for `architect` and `test-review`; a failing case is evidence
+Select each independently calibrated skill explicitly; Decide remains held.
+A failing case is evidence
 to diagnose, not a reason to rerun until it passes. Use Harness resource controls
 appropriate to the host, and inspect its settled-process receipts after each phase.
 Report errors separately from quality failures, and answers separately from fully
@@ -95,4 +105,4 @@ directory; results stay ignored until an explicit, reviewed publication selectio
 The transfer cases are fresh relative to the prior six-case subject comparison.
 Their authored controls disclose the intended acceptance policy and make them
 development tests once reviewed; they are not a secret benchmark or a stability
-study. Do not pool their future scores with historical scores to claim a larger run.
+study. Do not pool their scores with historical scores to claim a larger run.

@@ -21,6 +21,9 @@ test('current and historical dependency lanes stay distinct and imported synthet
   for (const file of provenance.files) {
     assert.equal(createHash('sha256').update(readFileSync(resolve(root, file.path))).digest('hex'), file.sha256, file.path);
   }
+  for (const file of json('history/transfer-initial-20261028/inventory.json')) {
+    assert.equal(createHash('sha256').update(readFileSync(resolve(root, file.path))).digest('hex'), file.sha256, file.path);
+  }
   assert.match(provenance.historicalObservation.interpretation, /Post-hoc/);
   const skills = ['decide', 'architect', 'test-review'];
   assert.equal(skills.reduce((sum, skill) => sum + spec('accepted', skill).scenarios.length, 0), 6);

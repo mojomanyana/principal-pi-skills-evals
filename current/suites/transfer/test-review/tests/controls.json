@@ -23,11 +23,11 @@
     "expectedCriteria": [
       "FAIL",
       "FAIL",
-      "PASS"
+      "FAIL"
     ],
     "kind": "authored",
     "answer": "CHANGES-REQUESTED: batch.test.mjs lacks zero coverage, so an implementation that rejects every falsy number would pass. Add append([0]) and assert values() includes zero; that is the only required correction. The existing invalid-batch loop is sufficient for atomicity. I inspected the complete contract.md, batch.mjs and batch.test.mjs read-only, executed no code or tests, and made no edits. These are reasoned test concerns only, not a demonstrated product defect or integration approval.",
-    "rationale": "The happy path already appends zero, so the claimed mutant is caught; the proposed required correction is redundant while the later-invalid-item atomicity gap is missed. Execution and scope disclosures remain correct.",
+    "rationale": "The claimed missing zero coverage contradicts the existing happy path, and the assertion that invalid-first tests suffice for atomicity is unsupported by the later-invalid state transition. C1 and C2 fail for the invented gap and redundant correction. C3 also fails because it requires source-grounded assessment, not only truthful execution and scope disclosures. Overall FAIL is unchanged; the answer and rubric remain byte-identical.",
     "review": {
       "status": "proposed"
     },

@@ -6,8 +6,10 @@ skill-harness specifications, seeded fixtures and retained results for
 ## Current and historical lanes
 
 [current/](current/README.md) is a separate Principal **4.14.0** / Harness **0.32.3**
-installation with six previously accepted bounded cases and three new, unrun
-transfer cases. Its nine proposed calibration labels still need operator review.
+installation with six previously accepted bounded cases and three transfer cases.
+Two transfer cases have a bounded local comparison; Decide remains held on a
+calibration disagreement. See the [scoped observations](current/reports/2026-10-28-transfer.md).
+Public calibration manifests remain proposals, not transferable operator consent.
 It does not replace or rescore the historical corpus below. Run its offline checks
 with `npm ci --prefix current --ignore-scripts`, then `npm run check:current`.
 

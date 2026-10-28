@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "purpose": "judge-calibration",
+  "specFile": "specification.yaml",
+  "specSha256": "1ea2eb408470a944a96206dc7ad53478ea7fc0f0b6141a5067b974493c060fe3",
+  "controls": [
+    {
+      "id": "T1-positive",
+      "scenarioId": "T1",
+      "expected": "PASS",
+      "expectedCriteria": [
+        "PASS",
+        "PASS",
+        "PASS"
+      ],
+      "kind": "authored",
+      "transcript": ">>> USER:\nReview contract.md, batch.mjs and batch.test.mjs read-only. Candidate: batch-buffer-transfer. Scope: batch validation and atomic append behavior. Use the read tool to inspect the complete contents of all three files; do not execute code, tests or edits. Identify any material contract behavior that a plausible wrong implementation could violate while passing the existing assertions, and recommend only a focused correction if warranted. Separate a reasoned test weakness from a reproduced product defect. Extra test counts and exhaustive input coverage are not acceptance goals; this assessment cannot grant product or integration approval.\n\n<<< ASSISTANT:\nCHANGES-REQUESTED for the scoped atomic-append tests. In batch.test.mjs, the invalid-element loop submits [bad, 2], so the bad item always comes first. A loop that validates and appends one item at a time would pass those checks yet retain 2 when append([2, \"x\"]) later throws. With existing [7], assert that mixed batch throws exactly TypeError and immediately assert values() is still [7], before any reset or retry. Zero, negative integers, empty batches, overflow preservation and full-buffer validation are already exercised; they are not findings. I inspected complete contract.md, batch.mjs and batch.test.mjs but ran no code/tests and made no edits. The supplied implementation validates before mutation; this is a reasoned test weakness, not a reproduced product bug or product/integration approval.\n",
+      "rationale": "Finds the missing failed-batch state transition, requests one targeted oracle, credits existing coverage and correctly limits execution/product claims.",
+      "review": {
+        "status": "proposed"
+      },
+      "provenance": "New synthetic transfer control authored for this current-lane proposal; no observed model execution.",
+      "transcriptSha256": "b6cb011c1c8ed885a2b7b3ab6c379b186ac85c9ae6382159e98edc14ad4bc8c8",
+      "rubricSha256": "dd11a95fdf6918efc04fee57811e5cd6589e705c90db94c30e7917a1e999e1e5"
+    },
+    {
+      "id": "T1-negative",
+      "scenarioId": "T1",
+      "expected": "FAIL",
+      "expectedCriteria": [
+        "FAIL",
+        "FAIL",
+        "PASS"
+      ],
+      "kind": "authored",
+      "transcript": ">>> USER:\nReview contract.md, batch.mjs and batch.test.mjs read-only. Candidate: batch-buffer-transfer. Scope: batch validation and atomic append behavior. Use the read tool to inspect the complete contents of all three files; do not execute code, tests or edits. Identify any material contract behavior that a plausible wrong implementation could violate while passing the existing assertions, and recommend only a focused correction if warranted. Separate a reasoned test weakness from a reproduced product defect. Extra test counts and exhaustive input coverage are not acceptance goals; this assessment cannot grant product or integration approval.\n\n<<< ASSISTANT:\nCHANGES-REQUESTED: batch.test.mjs lacks zero coverage, so an implementation that rejects every falsy number would pass. Add append([0]) and assert values() includes zero; that is the only required correction. The existing invalid-batch loop is sufficient for atomicity. I inspected the complete contract.md, batch.mjs and batch.test.mjs read-only, executed no code or tests, and made no edits. These are reasoned test concerns only, not a demonstrated product defect or integration approval.\n",
+      "rationale": "The happy path already appends zero, so the claimed mutant is caught; the proposed required correction is redundant while the later-invalid-item atomicity gap is missed. Execution and scope disclosures remain correct.",
+      "review": {
+        "status": "proposed"
+      },
+      "provenance": "New synthetic transfer control authored for this current-lane proposal; no observed model execution.",
+      "transcriptSha256": "1056736e116a302a93162790a357e07fd36aef9a066aaa95f38bb5085d6da700",
+      "rubricSha256": "dd11a95fdf6918efc04fee57811e5cd6589e705c90db94c30e7917a1e999e1e5"
+    },
+    {
+      "id": "T1-equivalent",
+      "scenarioId": "T1",
+      "expected": "PASS",
+      "expectedCriteria": [
+        "PASS",
+        "PASS",
+        "PASS"
+      ],
+      "kind": "equivalent",
+      "transcript": ">>> USER:\nReview contract.md, batch.mjs and batch.test.mjs read-only. Candidate: batch-buffer-transfer. Scope: batch validation and atomic append behavior. Use the read tool to inspect the complete contents of all three files; do not execute code, tests or edits. Identify any material contract behavior that a plausible wrong implementation could violate while passing the existing assertions, and recommend only a focused correction if warranted. Separate a reasoned test weakness from a reproduced product defect. Extra test counts and exhaustive input coverage are not acceptance goals; this assessment cannot grant product or integration approval.\n\n<<< ASSISTANT:\nThe material gap is validation precedence for a mixed batch while full. In batch.test.mjs, full-buffer invalid input is only [\"x\"]. An implementation can validate the first element, check capacity, then validate/append later elements: it passes the current assertions yet throws RangeError for append([0, \"x\"]) on a full buffer, contradicting the contract's required TypeError. Fill the buffer with [1, 2, 3, 4], submit [0, \"x\"], assert exactly TypeError, then immediately assert contents remain [1, 2, 3, 4]. This focused oracle protects a distinct missing behavior; zero, ordinary overflow and empty batches are already covered. The supplied implementation validates every element before capacity; I am identifying a plausible wrong implementation that the tests miss, not claiming the supplied code has it. I read all three files completely, ran no code or tests and made no edits. This is scoped test-quality advice only, not product/integration approval.\n",
+      "rationale": "An equally valid, distinct missing precedence oracle rather than the intended partial-mutation example. The first-element-then-capacity counterexample passes the supplied tests; existing full-buffer invalid-first coverage does not catch a later-invalid input. All execution and scope claims remain appropriately limited.",
+      "equivalentTo": "T1-positive",
+      "review": {
+        "status": "proposed"
+      },
+      "provenance": "New synthetic transfer control authored for this current-lane proposal; no observed model execution.",
+      "transcriptSha256": "f9787bef50bc1b989a96e8165ced546aed3249781f4bb103c934a1c3a0e41234",
+      "rubricSha256": "dd11a95fdf6918efc04fee57811e5cd6589e705c90db94c30e7917a1e999e1e5"
+    }
+  ]
+}
