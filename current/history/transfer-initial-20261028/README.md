@@ -11,7 +11,8 @@ proposals or treat their criterion expectations as established truth.
 
 Decide's original negative had an underspecified revisit trigger. Its prospective
 replacement made that trigger concrete but still disagreed on C3 because the same
-answer misstates permitted spending authority. Decide remains held.
+answer misstates permitted spending authority. Decide remained held at that
+boundary; `../decide-revisit-20261028/` records the later expected-vector correction.
 
 Test Review's original negative expected C3 PASS despite an invented missing-zero
 claim. C3 requires source grounding as well as honest execution disclosures. Its

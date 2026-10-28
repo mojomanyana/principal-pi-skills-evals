@@ -4,20 +4,22 @@ This lane pins **Principal 4.14.0** and **published Harness 0.32.3** independent
 of the repository's historical Principal 4.7.2 / Harness 0.32.1 root installation.
 It uses the shared Harness CLI and calibration core; there is no local judge or
 scoring implementation. Pi is required for model execution. Use the qualified
-Pi 1.4.0 runtime for the planned comparison; do not silently upgrade it.
+Pi 1.4.0 runtime used for the recorded comparison; do not silently upgrade it.
 
 Two separate specification roots prevent development data from becoming a holdout:
 
 | Root | Purpose | Cases | State |
 | --- | --- | ---: | --- |
 | `suites/accepted` | Previously accepted bounded Decide, Architect and Test Review contracts | 6 | Imported synthetic inputs; private observed results remain outside Git |
-| `suites/transfer` | Cash-commitment decision, durable-ingest structure and failed-batch test review | 3 | Architect and Test Review measured locally; Decide calibration held |
+| `suites/transfer` | Cash-commitment decision, durable-ingest structure and failed-batch test review | 3 | All three measured locally after explicit calibration corrections |
 
 [The 2026-10-28 observation report](reports/2026-10-28-transfer.md) separates
 calibration from quality, preserves the unsuccessful controls and records the
-limited two-repetition results. **Decide is not ready for subject comparison:**
-its accepted replacement still matched only 2/3 control vectors. Do not use its
-proposed C3 PASS as an established oracle or silently replace it with FAIL.
+limited two-repetition results. Decide's C3 expectation was corrected only after
+an explicit operator decision; three exact saved judgments then matched without
+new calls. Both earlier disagreements remain preserved. Decide and Test Review
+passed both answers in each mode, while Architect passed one of two force answers.
+These small observations do not qualify Principal as a whole.
 
 Neither lane qualifies all nine Principal skills or a complete delegated workflow.
 The review cases grant only read/grep/find/ls. Unavailable mutation/execute tools
@@ -47,7 +49,7 @@ are synthetic answer controls, not observed subject executions.
 Read each transfer `specification.yaml`, its `controls.json`, and the named
 fixtures together. Each skill has one positive, one focused negative and one
 equivalent valid answer, with a vote for each criterion. The local operator
-reviewed the exact measured controls, including two prospective corrections;
+reviewed the exact measured controls, including the prospective corrections;
 those private acceptance records are not distributed. A fresh run still requires
 its own explicit review of these public proposals. Prior acceptance of different
 controls does not carry over.
@@ -73,7 +75,7 @@ npm run run:transfer -- test-review --harness pi --model "$SUBJECT" --judge "$JU
 npm run run:transfer -- test-review --harness pi --model "$SUBJECT" --judge "$JUDGE" --mode force --parallel 1 --reps 2 --pass-threshold 1
 ```
 
-Select each independently calibrated skill explicitly; Decide remains held.
+Select each independently calibrated skill explicitly.
 A failing case is evidence
 to diagnose, not a reason to rerun until it passes. Use Harness resource controls
 appropriate to the host, and inspect its settled-process receipts after each phase.

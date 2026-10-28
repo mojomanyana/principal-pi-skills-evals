@@ -23,11 +23,11 @@
     "expectedCriteria": [
       "FAIL",
       "FAIL",
-      "PASS"
+      "FAIL"
     ],
     "kind": "authored",
     "answer": "Choose annual now: its $320 monthly-equivalent price is below $2000, so this fits CASH-1. Annual saves money over twelve months but the full nonrefundable $3840 must be paid today and is lost if use ends early; monthly costs more but can be cancelled. Revisit the choice once spending authority explicitly covers the $3840 upfront commitment and supported remaining use is long enough for annual to cost less than continuing at $400 per month. No system redesign is needed.",
-    "rationale": "The annual-now recommendation still incorrectly treats the $320 monthly equivalent as authorization for the $3840 upfront commitment (C1/C2 FAIL). The tradeoff is accurate and the prospective revisit condition now explicitly requires enough spending authority plus a supported duration that makes the nonrefundable annual cost preferable (C3 PASS). No numeric duration or exact wording requirement is added to the rubric.",
+    "rationale": "The annual-now recommendation falsely treats the $320 monthly equivalent as authorization for the $3840 upfront commitment. C3 explicitly includes permitted commitment as part of the real tradeoff. Its accurate cancellation description and corrected concrete future trigger do not repair that false current-authority claim. C1, C2 and C3 therefore fail; the overall FAIL, answer and rubric are unchanged. Prior proposal review overlooked this overlap.",
     "review": {
       "status": "proposed"
     },
