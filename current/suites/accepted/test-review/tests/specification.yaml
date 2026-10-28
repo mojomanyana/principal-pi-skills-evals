@@ -1,0 +1,103 @@
+schema: 1
+skill: test-review
+judge_persona: Review only synthetic queue validation and bounded FIFO admission tests. References are judge-only exact fixture files. Accept compact equivalent reports without incidental template requirements. Reasoned counterexamples are not executed mutations or reproduced production defects. No coverage or test-count quota. This is not complete skill qualification.
+ship_bar:
+  total: 2
+  min_pass: 2
+scenarios:
+  - id: Q1
+    title: Queue oracle gaps
+    mode: inline
+    env:
+      workspace: fixture:fixtures/case-a
+      tools:
+        - read
+        - grep
+        - find
+        - ls
+    judge_evidence: response
+    judge_references:
+      - fixtures/case-a/contract.md
+      - fixtures/case-a/queue.mjs
+      - fixtures/case-a/queue.test.mjs
+    reps: 2
+    covers:
+      - ../../../../node_modules/principal-pi-skills/test-review/SKILL.md#evaluate-the-important-behaviors
+      - ../../../../node_modules/principal-pi-skills/test-review/SKILL.md#output
+    turns:
+      - 'Review contract.md, queue.mjs and queue.test.mjs in the workspace, read-only. Candidate: queue-case-a. Scope: queue validation and bounded FIFO admission behavior only. Use the read tool to inspect the complete contents of all three named files; do not execute code, run tests or edit anything. Return a compact test-quality assessment, actionable findings if warranted, and evidence limitations. Distinguish test weaknesses from reproduced production defects. This is not product or integration approval.'
+    assert:
+      trace:
+        require_calls:
+          - tool: read
+            args:
+              path:
+                ends_with: contract.md
+            outcome: success
+          - tool: read
+            args:
+              path:
+                ends_with: queue.mjs
+            outcome: success
+          - tool: read
+            args:
+              path:
+                ends_with: queue.test.mjs
+            outcome: success
+        unchanged_paths:
+          - contract.md
+          - queue.mjs
+          - queue.test.mjs
+    checklist:
+      - 'C1: Requests changes and identifies concrete test weaknesses at actual source locations: permissive TypeError-or-RangeError assertions and missing representative capacity above one, explaining plausible contract-breaking behavior that could pass.'
+      - 'C2: Recommends minimal behavioral corrections: exact exception classes and a representative capacity above one (such as 3), with an overflow-preservation/FIFO/re-admission sequence, not a test-count quota or broad rewrite.'
+      - 'C3: Classifies the counterexamples as reasoned test weaknesses, not reproduced production defects, and states all three named files were inspected but code/tests were not executed or edited.'
+      - 'C4: Keeps conclusions limited to queue validation/bounded admission test quality, without product/integration approval or unrelated review claims.'
+  - id: Q2
+    title: Queue behavioral oracles
+    mode: inline
+    env:
+      workspace: fixture:fixtures/case-b
+      tools:
+        - read
+        - grep
+        - find
+        - ls
+    judge_evidence: response
+    judge_references:
+      - fixtures/case-b/contract.md
+      - fixtures/case-b/queue.mjs
+      - fixtures/case-b/queue.test.mjs
+    reps: 2
+    covers:
+      - ../../../../node_modules/principal-pi-skills/test-review/SKILL.md#evaluate-the-important-behaviors
+      - ../../../../node_modules/principal-pi-skills/test-review/SKILL.md#output
+    turns:
+      - 'Review contract.md, queue.mjs and queue.test.mjs in the workspace, read-only. Candidate: queue-case-b. Scope: queue validation and bounded FIFO admission behavior only. Use the read tool to inspect the complete contents of all three named files; do not execute code, run tests or edit anything. Return a compact test-quality assessment, actionable findings if warranted, and evidence limitations. Distinguish test weaknesses from reproduced production defects. This is not product or integration approval.'
+    assert:
+      trace:
+        require_calls:
+          - tool: read
+            args:
+              path:
+                ends_with: contract.md
+            outcome: success
+          - tool: read
+            args:
+              path:
+                ends_with: queue.mjs
+            outcome: success
+          - tool: read
+            args:
+              path:
+                ends_with: queue.test.mjs
+            outcome: success
+        unchanged_paths:
+          - contract.md
+          - queue.mjs
+          - queue.test.mjs
+    checklist:
+      - 'C1: Grounds the assessment in the actual validation and bounded FIFO assertions. For any finding used to request changes, identifies a plausible contract-breaking behavior that the existing assertions would miss, at relevant source locations; rejects a counterexample already caught by those assertions. Accurate nonblocking coverage limitations need not assert a counterexample. A reasoned unexecuted counterexample may establish a test weakness, not a reproduced production defect. SOUND and CHANGES-REQUESTED are both acceptable when supported; no particular verdict is predetermined.'
+      - 'C2: Keeps recommendations proportionate to the identified behavior and available evidence. A small correction for a credible unprotected contract behavior, or a clearly nonblocking note about that limitation, is acceptable. Does not demand deletion, a broad rewrite, an extra mutation campaign, exhaustive input enumeration, or a coverage/test-count target without a specific behavioral reason. The mere existence of an untested input is not enough; a plausible distinct contract violation must motivate a requested correction.'
+      - 'C3: States all three named files were inspected, not executed or edited; does not claim passing tests, executed challenges or reproduced defects.'
+      - 'C4: Limits the assessment to queue validation/bounded admission test quality and explicitly withholds product/integration approval.'

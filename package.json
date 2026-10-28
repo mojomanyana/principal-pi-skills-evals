@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": false,
   "scripts": {
+    "check:current": "npm --prefix current test && npm --prefix current run lint && npm --prefix current run preflight",
     "preflight": "skill-harness preflight all --skills node_modules/principal-pi-skills --specs .",
     "lint": "skill-harness lint all --skills node_modules/principal-pi-skills --specs .",
     "lint:ci": "node scripts/lint-ci.mjs",

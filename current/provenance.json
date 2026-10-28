@@ -1,0 +1,91 @@
+{
+  "schema": 1,
+  "principalVersion": "4.14.0",
+  "harnessVersion": "0.32.3",
+  "kind": "selected-current-contracts",
+  "files": [
+    {
+      "path": "suites/accepted/decide/tests/specification.yaml",
+      "sha256": "67191954e4642031569cec054b3ffae58e998db5f629eb745befb4a15bb73659",
+      "source": "principal-quality-2026-10-27/rubric-followup/packet/evals-repo/decide/tests/specification.yaml",
+      "sourceSha256": "85898ed662c7bf49029c9c64e80988b133ad273c22f7e52784b9cd61db64f566",
+      "change": "covers paths relocated only; behavior, judge inputs and policy unchanged"
+    },
+    {
+      "path": "suites/accepted/architect/tests/specification.yaml",
+      "sha256": "20a47d85f6024b11d76a3a9908547069735ef7005675c6248bca734aeb069a71",
+      "source": "principal-quality-2026-10-27/review-packet/evals-repo/architect/tests/specification.yaml",
+      "sourceSha256": "d4ecd4b2609b0a7394f15630edc5f04a34f7fd8a9407f099c3873c0c8c813eb7",
+      "change": "covers paths relocated only; behavior, judge inputs and policy unchanged"
+    },
+    {
+      "path": "suites/accepted/test-review/tests/specification.yaml",
+      "sha256": "abc72f971423d3d98667bb38760c4b82f91889a8d3f0a106408711cbaf7c90f6",
+      "source": "principal-quality-2026-10-27/rubric-followup/packet/evals-repo/test-review/tests/specification.yaml",
+      "sourceSha256": "67ce5809a1994ea4808ada13ad8bf4db15e9142c9a0072ee6ff41172666e4522",
+      "change": "covers paths relocated only; behavior, judge inputs and policy unchanged"
+    },
+    {
+      "path": "suites/accepted/test-review/tests/fixtures/case-a/contract.md",
+      "sha256": "5ba05b0099b1039fcd8f659cde58acfc015238192969f07baca64cc1ae0d09fb",
+      "source": "principal-quality-2026-10-27/rubric-followup/packet/evals-repo/test-review/tests/fixtures/case-a/contract.md",
+      "sourceSha256": "5ba05b0099b1039fcd8f659cde58acfc015238192969f07baca64cc1ae0d09fb",
+      "change": "byte-identical"
+    },
+    {
+      "path": "suites/accepted/test-review/tests/fixtures/case-a/queue.mjs",
+      "sha256": "7f36fb60335d9a7707f411c985f3c23fb018c929b2919a25a3df64c4bf21d2a8",
+      "source": "principal-quality-2026-10-27/rubric-followup/packet/evals-repo/test-review/tests/fixtures/case-a/queue.mjs",
+      "sourceSha256": "7f36fb60335d9a7707f411c985f3c23fb018c929b2919a25a3df64c4bf21d2a8",
+      "change": "byte-identical"
+    },
+    {
+      "path": "suites/accepted/test-review/tests/fixtures/case-a/queue.test.mjs",
+      "sha256": "50b37227fd7c12e4ad50f7eec5521892ffcf3ca85fc6f12d5fc6e42a875d6d11",
+      "source": "principal-quality-2026-10-27/rubric-followup/packet/evals-repo/test-review/tests/fixtures/case-a/queue.test.mjs",
+      "sourceSha256": "50b37227fd7c12e4ad50f7eec5521892ffcf3ca85fc6f12d5fc6e42a875d6d11",
+      "change": "byte-identical"
+    },
+    {
+      "path": "suites/accepted/test-review/tests/fixtures/case-b/contract.md",
+      "sha256": "5ba05b0099b1039fcd8f659cde58acfc015238192969f07baca64cc1ae0d09fb",
+      "source": "principal-quality-2026-10-27/rubric-followup/packet/evals-repo/test-review/tests/fixtures/case-b/contract.md",
+      "sourceSha256": "5ba05b0099b1039fcd8f659cde58acfc015238192969f07baca64cc1ae0d09fb",
+      "change": "byte-identical"
+    },
+    {
+      "path": "suites/accepted/test-review/tests/fixtures/case-b/queue.mjs",
+      "sha256": "7f36fb60335d9a7707f411c985f3c23fb018c929b2919a25a3df64c4bf21d2a8",
+      "source": "principal-quality-2026-10-27/rubric-followup/packet/evals-repo/test-review/tests/fixtures/case-b/queue.mjs",
+      "sourceSha256": "7f36fb60335d9a7707f411c985f3c23fb018c929b2919a25a3df64c4bf21d2a8",
+      "change": "byte-identical"
+    },
+    {
+      "path": "suites/accepted/test-review/tests/fixtures/case-b/queue.test.mjs",
+      "sha256": "48489185202db3bfaf20c1b9a9d3b33ec0bb910b641a3d587a6b56feea787659",
+      "source": "principal-quality-2026-10-27/rubric-followup/packet/evals-repo/test-review/tests/fixtures/case-b/queue.test.mjs",
+      "sourceSha256": "48489185202db3bfaf20c1b9a9d3b33ec0bb910b641a3d587a6b56feea787659",
+      "change": "byte-identical"
+    }
+  ],
+  "publicContents": "Synthetic tasks and fixtures only; no saved answers, traces, private transcripts or label-acceptance records.",
+  "historicalObservation": {
+    "date": "2026-10-28",
+    "subject": "openai-codex:gpt-6.1-sol",
+    "judge": "openai-codex:gpt-6-astra",
+    "pi": "1.4.0",
+    "harness": "0.32.2",
+    "scenarios": 6,
+    "repetitionsPerMode": 2,
+    "redPassedAnswers": 4,
+    "forcePassedAnswers": 12,
+    "answersPerMode": 12,
+    "forcePassedScenarios": 6,
+    "originalForcePassedAnswers": 10,
+    "interpretation": "Post-hoc rubric correction on selected saved answers, not fresh generalization, stability, full skill qualification or evidence for a new run.",
+    "localReport": "principal-quality-2026-10-27/rubric-followup/REPORT-20261028.txt",
+    "localReportSha256": "629a12a6088740f2401ea3188055ed498caab061d1c925d63cba64da7151d6cd",
+    "localAudit": "principal-quality-2026-10-27/rubric-followup/regrade-audit.json",
+    "localAuditSha256": "3ececb6a470ab590898a571b29e873e3ee7fbf98173ec1a5696c68f9c057f313"
+  }
+}

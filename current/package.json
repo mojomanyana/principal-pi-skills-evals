@@ -1,0 +1,27 @@
+{
+  "name": "principal-current-evals",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.mjs suites/accepted/test-review/tests/fixtures/*/queue.test.mjs suites/transfer/test-review/tests/fixtures/batch/batch.test.mjs",
+    "lint": "npm run lint:accepted && npm run lint:transfer",
+    "lint:accepted": "skill-harness lint all --skills node_modules/principal-pi-skills --specs suites/accepted",
+    "lint:transfer": "skill-harness lint all --skills node_modules/principal-pi-skills --specs suites/transfer",
+    "preflight": "npm run preflight:accepted && npm run preflight:transfer",
+    "preflight:accepted": "skill-harness preflight all --skills node_modules/principal-pi-skills --specs suites/accepted",
+    "preflight:transfer": "skill-harness preflight all --skills node_modules/principal-pi-skills --specs suites/transfer",
+    "list:accepted": "skill-harness list --skills node_modules/principal-pi-skills --specs suites/accepted",
+    "list:transfer": "skill-harness list --skills node_modules/principal-pi-skills --specs suites/transfer",
+    "run:accepted": "skill-harness run --skills node_modules/principal-pi-skills --specs suites/accepted",
+    "run:transfer": "skill-harness run --skills node_modules/principal-pi-skills --specs suites/transfer"
+  },
+  "devDependencies": {
+    "@skill-harness/core": "0.32.3",
+    "principal-pi-skills": "4.14.0",
+    "skill-harness": "0.32.3"
+  }
+}

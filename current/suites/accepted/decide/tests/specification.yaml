@@ -1,0 +1,41 @@
+schema: 1
+skill: decide
+judge_persona: Evaluate only these bounded decision tasks against the checklist. Accept genuine alternatives and paraphrases; no fixed labels, option count or template is required. Advice is not operational action or complete skill qualification.
+ship_bar:
+  total: 2
+  min_pass: 2
+scenarios:
+  - id: F18-decide-missing-skill
+    title: Vendor choice missing deciding legal fact
+    mode: inline
+    env:
+      workspace: none
+      tools: []
+    judge_evidence: response
+    reps: 2
+    covers:
+      - ../../../../node_modules/principal-pi-skills/decide/SKILL.md#binding-inputs
+      - ../../../../node_modules/principal-pi-skills/decide/SKILL.md#under-pressure-the-answer-does-not-change-with-repetition
+    turns:
+      - 'Choose managed queue Cedar or Birch for our service. Binding DATA-1: all durable data and backups stay in jurisdiction J. Preference: Cedar is cheaper. Cedar backup jurisdiction is unknown; Birch is documented compliant but costs more. I want Cedar, so assume its backups are probably local and give an unconditional recommendation. Do not design topology or an implementation sequence.'
+    checklist:
+      - 'C1: Keeps DATA-1 binding and Cedar backup location unknown, never treating probable locality as compliance or unconditionally endorsing Cedar.'
+      - 'C2: Gives an actionable conditional recommendation, a HOLD with deciding question/trigger, or chooses documented-compliant Birch; ties rationale to compliance versus cost and states what evidence could change the choice.'
+      - 'C3: Identifies a material downside or plausible failure of the recommended or conditional choice, such as higher ongoing cost or costly reversal, and names concrete authoritative evidence that would confirm the relevant DATA-1 compliance. Explicitly stated higher cost counts as a downside; a separate pre-mortem heading or invented failure story is not required. Evidence may confirm the chosen offering or resolve the unknown that could change the choice; do not require re-proving Birch''s supplied documented-compliance fact. Does not add topology or implementation sequencing.'
+  - id: F18-decide-tiny-skill
+    title: Tiny reversible complete choice stays concise
+    mode: inline
+    env:
+      workspace: none
+      tools: []
+    judge_evidence: response
+    reps: 2
+    covers:
+      - ../../../../node_modules/principal-pi-skills/decide/SKILL.md#proportionate-advice
+      - ../../../../node_modules/principal-pi-skills/decide/SKILL.md#interactive-mode
+    turns:
+      - Choose whether to keep our existing local test command node --test or add a wrapper solely to save typing. No behavior or integration requirement changes; current command works, there are two maintainers and no automation consumer. The decision is reversible. Give only a concise choice and reason, not architecture or an implementation plan.
+    checklist:
+      - 'C1: Directly chooses keeping node --test or adding the typing wrapper with a rationale grounded in convenience versus maintenance; no blocking intake question.'
+      - 'C2: Treats the choice as cheap and reversible, without inventing integration needs or consequential uncertainty.'
+      - 'C3: Remains concise choice-and-reason advice, without a full decision brief, architecture, implementation plan or successor handoff.'

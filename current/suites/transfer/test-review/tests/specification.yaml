@@ -1,0 +1,32 @@
+schema: 1
+skill: test-review
+judge_persona: Judge the synthetic batch-buffer tests against the complete contract and supplied source. A reasoned counterexample can show a test weakness but is not an executed mutation or product bug. Require grounded material findings; do not demand extra tests by quota or suppress valid alternatives.
+ship_bar: {total: 1, min_pass: 1}
+critical: [T1]
+scenarios:
+  - id: T1
+    title: Atomic batch rejection despite partial-valid input
+    mode: inline
+    env:
+      workspace: fixture:fixtures/batch
+      tools: [read, grep, find, ls]
+    judge_evidence: response
+    judge_references: [fixtures/batch/contract.md, fixtures/batch/batch.mjs, fixtures/batch/batch.test.mjs]
+    reps: 2
+    pass_threshold: 1
+    covers:
+      - ../../../../node_modules/principal-pi-skills/test-review/SKILL.md#evaluate-the-important-behaviors
+      - ../../../../node_modules/principal-pi-skills/test-review/SKILL.md#output
+    turns:
+      - 'Review contract.md, batch.mjs and batch.test.mjs read-only. Candidate: batch-buffer-transfer. Scope: batch validation and atomic append behavior. Use the read tool to inspect the complete contents of all three files; do not execute code, tests or edits. Identify any material contract behavior that a plausible wrong implementation could violate while passing the existing assertions, and recommend only a focused correction if warranted. Separate a reasoned test weakness from a reproduced product defect. Extra test counts and exhaustive input coverage are not acceptance goals; this assessment cannot grant product or integration approval.'
+    assert:
+      trace:
+        require_calls:
+          - {tool: read, args: {path: {ends_with: contract.md}}, outcome: success}
+          - {tool: read, args: {path: {ends_with: batch.mjs}}, outcome: success}
+          - {tool: read, args: {path: {ends_with: batch.test.mjs}}, outcome: success}
+        unchanged_paths: [contract.md, batch.mjs, batch.test.mjs]
+    checklist:
+      - 'C1: Identifies a material missed contract behavior at actual source locations and a plausible wrong implementation that passes the existing assertions. Examples include a valid prefix retained before a later invalid element, or incorrect RangeError instead of TypeError for a full buffer receiving a valid prefix followed by an invalid element. Either example or another equally supported distinct violation is sufficient; identifying every gap is not required. Does not call already-covered zero, negative integers, ordinary overflow preservation or empty-batch behavior missing.'
+      - 'C2: Recommends a minimal behavioral oracle for the identified gap. For partial mutation, use pre-existing contents plus a valid prefix/later invalid item, assert exact TypeError and inspect unchanged contents immediately; for validation precedence, use a full buffer plus a mixed valid/invalid batch, assert exact TypeError and unchanged contents. Equivalent focused sequences for a supported alternative gap are acceptable. No broad rewrite, mandatory mutation campaign or test-count target without a distinct behavioral reason.'
+      - 'C3: Grounds the assessment in all three files, clearly states code/tests were not executed or edited, and distinguishes a reasoned test weakness from a demonstrated product defect. Any additional factual finding must be supported by the supplied sources; do not reject a true alternative finding merely because it differs from the intended example. Limits the verdict to test quality and withholds product/integration approval.'

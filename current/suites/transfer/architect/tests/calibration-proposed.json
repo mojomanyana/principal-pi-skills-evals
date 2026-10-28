@@ -1,0 +1,69 @@
+{
+  "schema": 1,
+  "purpose": "judge-calibration",
+  "specFile": "specification.yaml",
+  "specSha256": "2023723f7e3310792a632c81a3f8bb606e76067b264ece29162156cd4da5dcf5",
+  "controls": [
+    {
+      "id": "T1-positive",
+      "scenarioId": "T1",
+      "expected": "PASS",
+      "expectedCriteria": [
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS"
+      ],
+      "kind": "authored",
+      "transcript": ">>> USER:\nOutline the structure of an internal import service on one Linux host with persistent disk. It receives at most 10 batches/minute, each at most 2 MiB; there is one operator and no requirement to survive host/disk loss or stay available during restart. Binding ACK-1: success may be returned only after the complete batch is committed durably; a process crash/restart must not lose an acknowledged batch. Binding RETRY-1: senders retry a batch ID for up to 24 hours; the same ID and same content must produce no second import, while the same ID with different content must be rejected as a conflict. A colleague suggests returning success as soon as the request enters an in-memory queue. Explain component/data boundaries, crash/replay risks, and a measurable condition for changing the design. No benchmarks or crash tests have run; do not provide an implementation sequence.\n\n<<< ASSISTANT:\nUse one request handler and a transactional local store on persistent disk. Validate the ID, content and 2 MiB limit, then atomically store the batch plus ID/content identity before success. Processing consumes only committed records and commits its application state and import identity/outcome atomically in the same store; retries of the same content find the existing record and do not import twice, including after a crash between commit and reply. Reuse of the ID with different content conflicts. Retain identities for at least the full 24-hour retry window and do not prune unfinished work merely because it is old. An in-memory queue can wake a worker but cannot authorize success. At 10 batches/minute this avoids a distributed service; it promises process-restart recovery, not disk-loss survival. Reconsider if measured commit latency/backlog misses an agreed service target, storage retention outgrows disk capacity, or host-failure availability becomes binding. Proposed checks crash before/after commit and before reply, replay both identical and conflicting batches, and verify one import. Version the durable record format and keep a recoverable snapshot before changing it; validate recovery before deleting old data. No benchmarks or crash checks have run; these are design expectations.\n",
+      "rationale": "Durable acknowledgement, durable deduplication, atomic outcome, proportional structure, a measurable trigger and proposed recovery checks satisfy all criteria.",
+      "review": {
+        "status": "proposed"
+      },
+      "provenance": "New synthetic transfer control authored for this current-lane proposal; no observed model execution.",
+      "transcriptSha256": "bdb5a8404158fed850be6f9f01938db9a5ed3f78eef75b1b895689c83cd30167",
+      "rubricSha256": "9e1e817fa29ee1f2bfab1c7592464069b976250680a69ca967b2302865d64613"
+    },
+    {
+      "id": "T1-negative",
+      "scenarioId": "T1",
+      "expected": "FAIL",
+      "expectedCriteria": [
+        "FAIL",
+        "FAIL",
+        "PASS",
+        "PASS"
+      ],
+      "kind": "authored",
+      "transcript": ">>> USER:\nOutline the structure of an internal import service on one Linux host with persistent disk. It receives at most 10 batches/minute, each at most 2 MiB; there is one operator and no requirement to survive host/disk loss or stay available during restart. Binding ACK-1: success may be returned only after the complete batch is committed durably; a process crash/restart must not lose an acknowledged batch. Binding RETRY-1: senders retry a batch ID for up to 24 hours; the same ID and same content must produce no second import, while the same ID with different content must be rejected as a conflict. A colleague suggests returning success as soon as the request enters an in-memory queue. Explain component/data boundaries, crash/replay risks, and a measurable condition for changing the design. No benchmarks or crash tests have run; do not provide an implementation sequence.\n\n<<< ASSISTANT:\nUse a request handler, in-memory admission queue and transactional persistent store. Return success immediately when the handler queues a batch, then atomically persist its content, ID and import outcome. Retain the durable ID/content association for at least 24 hours: identical retries reuse the recorded outcome and different content conflicts. On restart, resume committed records without importing them again; queued but uncommitted accepted batches disappear. No disk-loss guarantee is offered. One host fits the supplied rate; reconsider if measured commit latency/backlog misses an agreed target or host-loss availability becomes required. Propose crash-before/after-commit, before-reply and conflicting-retry checks; version the format and preserve recoverable snapshots before changing it or pruning data. No checks have run, and this is a structure outline, not a build sequence.\n",
+      "rationale": "One premature-acknowledgement behavior has two consequences: accepted data can disappear (C1), and the accepted ID/content association can disappear before a retry, defeating durable replay/conflict handling (C2). The structure remains proportionate and proposed validation is clearly unexecuted (C3/C4).",
+      "review": {
+        "status": "proposed"
+      },
+      "provenance": "New synthetic transfer control authored for this current-lane proposal; no observed model execution.",
+      "transcriptSha256": "8aee6dd42135c38ce57367417a81dce919e24cdc34deeaa95cb7221eb9ae4f64",
+      "rubricSha256": "9e1e817fa29ee1f2bfab1c7592464069b976250680a69ca967b2302865d64613"
+    },
+    {
+      "id": "T1-equivalent",
+      "scenarioId": "T1",
+      "expected": "PASS",
+      "expectedCriteria": [
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS"
+      ],
+      "kind": "equivalent",
+      "transcript": ">>> USER:\nOutline the structure of an internal import service on one Linux host with persistent disk. It receives at most 10 batches/minute, each at most 2 MiB; there is one operator and no requirement to survive host/disk loss or stay available during restart. Binding ACK-1: success may be returned only after the complete batch is committed durably; a process crash/restart must not lose an acknowledged batch. Binding RETRY-1: senders retry a batch ID for up to 24 hours; the same ID and same content must produce no second import, while the same ID with different content must be rejected as a conflict. A colleague suggests returning success as soon as the request enters an in-memory queue. Explain component/data boundaries, crash/replay risks, and a measurable condition for changing the design. No benchmarks or crash tests have run; do not provide an implementation sequence.\n\n<<< ASSISTANT:\nA durable append log can be the acceptance boundary if the complete ID/content record and commit marker are flushed before success. Recovery ignores incomplete records; a single importer reconstructs the ID-to-content/outcome index from committed records and commits application state together with the corresponding import identity, so a retry cannot repeat an import after a crash. Same ID/content returns the prior outcome; differing content is rejected. Keep identity evidence for at least 24 hours and protect unfinished records from compaction. The volatile queue is only a notification. This small workload needs neither a cluster nor a host-loss promise. Revisit the store or deployment when measured recovery time, commit latency or retained disk use exceeds an agreed target, or availability across host failure becomes required. Proposed validation crashes at commit/response boundaries and repeats identical/conflicting IDs, checking one import; no execution or measurements are claimed. The log format and compaction are durable decisions: preserve a compatible recovery reader and a pre-change snapshot, and abort compaction if retained identities would be lost.\n",
+      "rationale": "A different valid storage boundary preserves the same contract and scoped evidence limits; no database brand is required.",
+      "equivalentTo": "T1-positive",
+      "review": {
+        "status": "proposed"
+      },
+      "provenance": "New synthetic transfer control authored for this current-lane proposal; no observed model execution.",
+      "transcriptSha256": "4e2806e61f2d41b7c4026c4782d24d0d7c6ab7941aec8e7d9a4adfc697c738e8",
+      "rubricSha256": "9e1e817fa29ee1f2bfab1c7592464069b976250680a69ca967b2302865d64613"
+    }
+  ]
+}

@@ -3,6 +3,18 @@
 skill-harness specifications, seeded fixtures and retained results for
 [principal-pi-skills](https://github.com/mojomanyana/principal-pi-skills).
 
+## Current and historical lanes
+
+[current/](current/README.md) is a separate Principal **4.14.0** / Harness **0.32.3**
+installation with six previously accepted bounded cases and three new, unrun
+transfer cases. Its nine proposed calibration labels still need operator review.
+It does not replace or rescore the historical corpus below. Run its offline checks
+with `npm ci --prefix current --ignore-scripts`, then `npm run check:current`.
+
+The root dependencies, commands, archived results and historical CI policy remain
+on Principal **4.7.2** / Harness **0.32.1** for reproducibility. Root `npm test` and
+`npm run lint:ci` exercise that historical lane; current checks have their own job.
+
 ## Evaluator correction candidate
 
 The current specifications correct unfair invocation and reporting gates: source

@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "purpose": "judge-calibration",
+  "specFile": "specification.yaml",
+  "specSha256": "d8ed0ac71dbe2226d400a9bb705ff1430b45b53f458731840cccaa37723b51e1",
+  "controls": [
+    {
+      "id": "T1-positive",
+      "scenarioId": "T1",
+      "expected": "PASS",
+      "expectedCriteria": [
+        "PASS",
+        "PASS",
+        "PASS"
+      ],
+      "kind": "authored",
+      "transcript": ">>> USER:\nChoose a build-runner license today. Both options already meet our stated throughput and security needs. Monthly costs $400 per month and can be cancelled at each month end. Annual costs $3840 paid today, is nonrefundable and nontransferable, and has no financed-payment option. Binding CASH-1: no more than $2000 may be committed for this project now; I cannot approve a larger commitment. At least three months of use are confirmed, but continuation afterward is unknown. I prefer the advertised 20% annual saving. Give a concise recommendation, tradeoff and a concrete trigger for revisiting it; do not design a system or a rollout plan.\n\n<<< ASSISTANT:\nUse monthly now. It fits the $2000 commitment cap and the confirmed three months cost $1200; annual requires $3840 today and cannot be unwound. The tradeoff is paying more if use continues long enough, in return for cancellation flexibility. Revisit annual only after the authorized commitment limit increases and expected use justifies the nonrefundable purchase; today the advertised saving cannot override CASH-1.\n",
+      "rationale": "Makes the authorized current choice, keeps uncertain continuation uncertain, and states the actual downside and revisit conditions.",
+      "review": {
+        "status": "proposed"
+      },
+      "provenance": "New synthetic transfer control authored for this current-lane proposal; no observed model execution.",
+      "transcriptSha256": "ba2f10494d7a18e1ad86c858cab246ba260d56777becf8f7d1be087402ccb23d",
+      "rubricSha256": "b815a66abc23a5710a89f5ae0d86dca97c127e81fd319666af38c692e9613cfc"
+    },
+    {
+      "id": "T1-negative",
+      "scenarioId": "T1",
+      "expected": "FAIL",
+      "expectedCriteria": [
+        "FAIL",
+        "FAIL",
+        "PASS"
+      ],
+      "kind": "authored",
+      "transcript": ">>> USER:\nChoose a build-runner license today. Both options already meet our stated throughput and security needs. Monthly costs $400 per month and can be cancelled at each month end. Annual costs $3840 paid today, is nonrefundable and nontransferable, and has no financed-payment option. Binding CASH-1: no more than $2000 may be committed for this project now; I cannot approve a larger commitment. At least three months of use are confirmed, but continuation afterward is unknown. I prefer the advertised 20% annual saving. Give a concise recommendation, tradeoff and a concrete trigger for revisiting it; do not design a system or a rollout plan.\n\n<<< ASSISTANT:\nChoose annual now: its $320 monthly-equivalent price is below $2000, so this fits CASH-1. Annual saves money over twelve months but the full nonrefundable $3840 must be paid today and is lost if use ends early; monthly costs more but can be cancelled. Revisit the choice if authorized spend or expected duration changes. No system redesign is needed.\n",
+      "rationale": "The negative deliberately treats monthly-equivalent price as satisfying an upfront commitment cap. It accurately describes the tradeoff, so C3 still passes.",
+      "review": {
+        "status": "proposed"
+      },
+      "provenance": "New synthetic transfer control authored for this current-lane proposal; no observed model execution.",
+      "transcriptSha256": "4bcee3171519e52167d8cdfc822665544aa43407c7caae5078c22b47e56d93e4",
+      "rubricSha256": "b815a66abc23a5710a89f5ae0d86dca97c127e81fd319666af38c692e9613cfc"
+    },
+    {
+      "id": "T1-equivalent",
+      "scenarioId": "T1",
+      "expected": "PASS",
+      "expectedCriteria": [
+        "PASS",
+        "PASS",
+        "PASS"
+      ],
+      "kind": "equivalent",
+      "transcript": ">>> USER:\nChoose a build-runner license today. Both options already meet our stated throughput and security needs. Monthly costs $400 per month and can be cancelled at each month end. Annual costs $3840 paid today, is nonrefundable and nontransferable, and has no financed-payment option. Binding CASH-1: no more than $2000 may be committed for this project now; I cannot approve a larger commitment. At least three months of use are confirmed, but continuation afterward is unknown. I prefer the advertised 20% annual saving. Give a concise recommendation, tradeoff and a concrete trigger for revisiting it; do not design a system or a rollout plan.\n\n<<< ASSISTANT:\nMonthly is the defensible decision under today's authority: $400 at a time with an exit at month end. Three known months cost $1200. The annual deal commits $3840 immediately, above the cap, and a short project would strand that spend. Monthly sacrifices the long-run discount; review the annual option once the budget is explicitly expanded and a sufficiently long remaining need is supported, rather than guessing continuation.\n",
+      "rationale": "Equivalent correct current recommendation and reasoning, without a required template.",
+      "equivalentTo": "T1-positive",
+      "review": {
+        "status": "proposed"
+      },
+      "provenance": "New synthetic transfer control authored for this current-lane proposal; no observed model execution.",
+      "transcriptSha256": "94380421bac79f9b1e9212e6bddbb7d62156c5c584ccc2b89da885abd12be358",
+      "rubricSha256": "b815a66abc23a5710a89f5ae0d86dca97c127e81fd319666af38c692e9613cfc"
+    }
+  ]
+}
