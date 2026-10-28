@@ -1,0 +1,54 @@
+[
+  {
+    "id": "T1-positive",
+    "scenarioId": "T1",
+    "expected": "PASS",
+    "expectedCriteria": [
+      "PASS",
+      "PASS",
+      "PASS"
+    ],
+    "kind": "authored",
+    "answer": "Use monthly now. It fits the $2000 commitment cap and the confirmed three months cost $1200; annual requires $3840 today and cannot be unwound. The tradeoff is paying more if use continues long enough, in return for cancellation flexibility. Revisit annual only after the authorized commitment limit increases and expected use justifies the nonrefundable purchase; today the advertised saving cannot override CASH-1.",
+    "rationale": "Makes the authorized current choice, keeps uncertain continuation uncertain, and states the actual downside and revisit conditions.",
+    "review": {
+      "status": "proposed"
+    },
+    "provenance": "New synthetic transfer control authored for this current-lane proposal; no observed model execution."
+  },
+  {
+    "id": "T1-negative-revisit-v2",
+    "scenarioId": "T1",
+    "expected": "FAIL",
+    "expectedCriteria": [
+      "FAIL",
+      "FAIL",
+      "FAIL"
+    ],
+    "kind": "authored",
+    "answer": "Choose annual now: its $320 monthly-equivalent price is below $2000, so this fits CASH-1. Annual saves money over twelve months but the full nonrefundable $3840 must be paid today and is lost if use ends early; monthly costs more but can be cancelled. Revisit the choice once spending authority explicitly covers the $3840 upfront commitment and supported remaining use is long enough for annual to cost less than continuing at $400 per month. No system redesign is needed.",
+    "rationale": "The annual-now recommendation falsely treats the $320 monthly equivalent as authorization for the $3840 upfront commitment. C3 explicitly includes permitted commitment as part of the real tradeoff. Its accurate cancellation description and corrected concrete future trigger do not repair that false current-authority claim. C1, C2 and C3 therefore fail; the overall FAIL, answer and rubric are unchanged. Prior proposal review overlooked this overlap.",
+    "review": {
+      "status": "proposed"
+    },
+    "provenance": "New synthetic transfer control authored for this current-lane proposal; no observed model execution."
+  },
+  {
+    "id": "T1-equivalent",
+    "scenarioId": "T1",
+    "expected": "PASS",
+    "expectedCriteria": [
+      "PASS",
+      "PASS",
+      "PASS"
+    ],
+    "kind": "equivalent",
+    "answer": "Monthly is the defensible decision under today's authority: $400 at a time with an exit at month end. Three known months cost $1200. The annual deal commits $3840 immediately, above the cap, and a short project would strand that spend. Monthly sacrifices the long-run discount; review the annual option once the budget is explicitly expanded and a sufficiently long remaining need is supported, rather than guessing continuation.",
+    "rationale": "Equivalent correct current recommendation and reasoning, without a required template.",
+    "review": {
+      "status": "proposed"
+    },
+    "provenance": "New synthetic transfer control authored for this current-lane proposal; no observed model execution.",
+    "equivalentTo": "T1-positive"
+  }
+]

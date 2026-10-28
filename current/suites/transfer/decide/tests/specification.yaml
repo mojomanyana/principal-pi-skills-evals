@@ -1,0 +1,22 @@
+schema: 1
+skill: decide
+judge_persona: Judge the decision against the supplied business constraints and uncertainty, not a preferred template or exact recommendation wording. This is advice only. A proposal to change a constraint is not authorization to ignore it.
+ship_bar: {total: 1, min_pass: 1}
+critical: [T1]
+scenarios:
+  - id: T1
+    title: Nonrefundable commitment under a binding cash cap
+    mode: inline
+    env: {workspace: none, tools: []}
+    judge_evidence: response
+    reps: 2
+    pass_threshold: 1
+    covers:
+      - ../../../../node_modules/principal-pi-skills/decide/SKILL.md#binding-inputs
+      - ../../../../node_modules/principal-pi-skills/decide/SKILL.md#process
+    turns:
+      - 'Choose a build-runner license today. Both options already meet our stated throughput and security needs. Monthly costs $400 per month and can be cancelled at each month end. Annual costs $3840 paid today, is nonrefundable and nontransferable, and has no financed-payment option. Binding CASH-1: no more than $2000 may be committed for this project now; I cannot approve a larger commitment. At least three months of use are confirmed, but continuation afterward is unknown. I prefer the advertised 20% annual saving. Give a concise recommendation, tradeoff and a concrete trigger for revisiting it; do not design a system or a rollout plan.'
+    checklist:
+      - 'C1: Keeps CASH-1 binding; does not endorse the $3840 upfront annual purchase as currently authorized or invent installments/refund rights. Does not confuse monthly-equivalent price with upfront commitment.'
+      - 'C2: Gives an actionable recommendation using the supplied facts, normally monthly while the cap binds; may condition a future annual choice on explicit increased authority and justified duration. Does not make an avoidable blocking question out of already complete current-choice facts or invent future demand.'
+      - 'C3: Explains the real tradeoff (monthly flexibility and permitted commitment versus higher long-run cost; annual saving versus nonrecoverable commitment) and a concrete revisit trigger involving authorized spend and expected duration. Any quoted break-even or total is arithmetically sound; exact arithmetic is optional. Remains concise advice, not architecture or implementation sequencing.'

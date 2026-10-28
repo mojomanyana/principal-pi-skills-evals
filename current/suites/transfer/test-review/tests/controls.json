@@ -1,0 +1,54 @@
+[
+  {
+    "id": "T1-positive",
+    "scenarioId": "T1",
+    "expected": "PASS",
+    "expectedCriteria": [
+      "PASS",
+      "PASS",
+      "PASS"
+    ],
+    "kind": "authored",
+    "answer": "CHANGES-REQUESTED for the scoped atomic-append tests. In batch.test.mjs, the invalid-element loop submits [bad, 2], so the bad item always comes first. A loop that validates and appends one item at a time would pass those checks yet retain 2 when append([2, \"x\"]) later throws. With existing [7], assert that mixed batch throws exactly TypeError and immediately assert values() is still [7], before any reset or retry. Zero, negative integers, empty batches, overflow preservation and full-buffer validation are already exercised; they are not findings. I inspected complete contract.md, batch.mjs and batch.test.mjs but ran no code/tests and made no edits. The supplied implementation validates before mutation; this is a reasoned test weakness, not a reproduced product bug or product/integration approval.",
+    "rationale": "Finds the missing failed-batch state transition, requests one targeted oracle, credits existing coverage and correctly limits execution/product claims.",
+    "review": {
+      "status": "proposed"
+    },
+    "provenance": "New synthetic transfer control authored for this current-lane proposal; no observed model execution."
+  },
+  {
+    "id": "T1-negative",
+    "scenarioId": "T1",
+    "expected": "FAIL",
+    "expectedCriteria": [
+      "FAIL",
+      "FAIL",
+      "FAIL"
+    ],
+    "kind": "authored",
+    "answer": "CHANGES-REQUESTED: batch.test.mjs lacks zero coverage, so an implementation that rejects every falsy number would pass. Add append([0]) and assert values() includes zero; that is the only required correction. The existing invalid-batch loop is sufficient for atomicity. I inspected the complete contract.md, batch.mjs and batch.test.mjs read-only, executed no code or tests, and made no edits. These are reasoned test concerns only, not a demonstrated product defect or integration approval.",
+    "rationale": "The claimed missing zero coverage contradicts the existing happy path, and the assertion that invalid-first tests suffice for atomicity is unsupported by the later-invalid state transition. C1 and C2 fail for the invented gap and redundant correction. C3 also fails because it requires source-grounded assessment, not only truthful execution and scope disclosures. Overall FAIL is unchanged; the answer and rubric remain byte-identical.",
+    "review": {
+      "status": "proposed"
+    },
+    "provenance": "New synthetic transfer control authored for this current-lane proposal; no observed model execution."
+  },
+  {
+    "id": "T1-equivalent",
+    "scenarioId": "T1",
+    "expected": "PASS",
+    "expectedCriteria": [
+      "PASS",
+      "PASS",
+      "PASS"
+    ],
+    "kind": "equivalent",
+    "answer": "The material gap is validation precedence for a mixed batch while full. In batch.test.mjs, full-buffer invalid input is only [\"x\"]. An implementation can validate the first element, check capacity, then validate/append later elements: it passes the current assertions yet throws RangeError for append([0, \"x\"]) on a full buffer, contradicting the contract's required TypeError. Fill the buffer with [1, 2, 3, 4], submit [0, \"x\"], assert exactly TypeError, then immediately assert contents remain [1, 2, 3, 4]. This focused oracle protects a distinct missing behavior; zero, ordinary overflow and empty batches are already covered. The supplied implementation validates every element before capacity; I am identifying a plausible wrong implementation that the tests miss, not claiming the supplied code has it. I read all three files completely, ran no code or tests and made no edits. This is scoped test-quality advice only, not product/integration approval.",
+    "rationale": "An equally valid, distinct missing precedence oracle rather than the intended partial-mutation example. The first-element-then-capacity counterexample passes the supplied tests; existing full-buffer invalid-first coverage does not catch a later-invalid input. All execution and scope claims remain appropriately limited.",
+    "review": {
+      "status": "proposed"
+    },
+    "provenance": "New synthetic transfer control authored for this current-lane proposal; no observed model execution.",
+    "equivalentTo": "T1-positive"
+  }
+]

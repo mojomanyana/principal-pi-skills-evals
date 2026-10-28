@@ -1,0 +1,23 @@
+schema: 1
+skill: architect
+judge_persona: Assess durable acknowledgement and replay structure at the supplied small workload. Accept different storage technologies and equivalent boundaries that preserve the contract. There is no required database, queue vendor, diagram format or option count. Proposed tests are not measured results.
+ship_bar: {total: 1, min_pass: 1}
+critical: [T1]
+scenarios:
+  - id: T1
+    title: Small ingest design preserves acknowledgement and replay guarantees
+    mode: inline
+    env: {workspace: none, tools: []}
+    judge_evidence: response
+    reps: 2
+    pass_threshold: 1
+    covers:
+      - ../../../../node_modules/principal-pi-skills/architect/SKILL.md#process
+      - ../../../../node_modules/principal-pi-skills/architect/SKILL.md#review-and-migration-specifics
+    turns:
+      - 'Outline the structure of an internal import service on one Linux host with persistent disk. It receives at most 10 batches/minute, each at most 2 MiB; there is one operator and no requirement to survive host/disk loss or stay available during restart. Binding ACK-1: success may be returned only after the complete batch is committed durably; a process crash/restart must not lose an acknowledged batch. Binding RETRY-1: senders retry a batch ID for up to 24 hours; the same ID and same content must produce no second import, while the same ID with different content must be rejected as a conflict. A colleague suggests returning success as soon as the request enters an in-memory queue. Explain component/data boundaries, crash/replay risks, and a measurable condition for changing the design. No benchmarks or crash tests have run; do not provide an implementation sequence.'
+    checklist:
+      - 'C1: Preserves ACK-1 and rejects acknowledgement on in-memory admission alone. Places durable complete-batch acceptance before success and addresses the commit/response crash window without inventing a host-loss or availability guarantee.'
+      - 'C2: Gives coherent request, storage and processing boundaries with a durable batch identity/content association for at least the 24-hour retry window. Explains same-content retry suppression and different-content conflict, including crash recovery; a volatile deduplication map alone is insufficient.'
+      - 'C3: Keeps operational structure proportionate to the stated rate, payload and single-host scope; different storage choices are acceptable when justified. Gives a meaningful measurable capacity/operational or newly required reliability condition that would change the design, without treating an unmeasured estimate as observed performance.'
+      - 'C4: Names focused proposed crash/replay and conflict validation and any material durable-format/retention recovery risk, distinguishing proposals from executed tests or measured guarantees. Stays a structure/risk outline without a stepwise build plan.'
